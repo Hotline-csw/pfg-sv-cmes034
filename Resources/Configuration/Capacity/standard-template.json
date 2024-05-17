@@ -1,0 +1,18 @@
+{
+    "dayscount": "10",
+    "height": "500",
+    "workcenters": [
+      {
+        "capacityType": "CapacityByState",
+        "workcenter": "SAWTEQ B-400"
+      },
+      {
+        "capacityType": "CapacityByBulk",
+        "workcenter": "DRILLTEQ L-500"
+      },
+      {
+        "capacityType": "CapacityByState",
+        "workcenter": "CABTEQ S-250"
+      }
+    ]
+}
