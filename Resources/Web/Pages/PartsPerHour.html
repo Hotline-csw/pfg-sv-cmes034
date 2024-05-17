@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+      <head>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"/> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet"/> -->
+	<!-- <link href="{{ server }}/dao/script/lib/vuetify.min.css" rel="stylesheet"/> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"/> -->
+
+  </head>
+  <body>
+    <div id="app" >
+      <v-app >
+        <v-main  style="overflow:auto">
+          <v-sheet id="scrolling" class="overflow-y-auto">
+            <!-- <v-img src="{{ server }}/dao/image/customer_logo"
+              max-height="50" contain class="mt-2"></v-img> -->
+              <v-img src="{{ server }}/dao/script/assets/homag-logo.svg" max-height="50" contain class="ma-2"></v-img>
+              
+              <v-container >
+                  <v-row justify="space-between" >
+                    <v-col cols="12" sm="12" md="8">
+              <v-combobox  ref="workcenter" v-model="workcenter" :items="items" label="Arbeitsplatz" outlined multiple @change="getPartsPerHour" >
+              </v-combobox>
+                    </v-col>
+              <!-- Datumseingabe -->
+                    <v-col cols="12" sm="12" md="4">
+              <v-menu
+                v-model="menu"
+                :close-on-content-click="false"
+                transition="scale-transition"
+                offset-y
+                max-width="290px"
+                min-width="auto">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-text-field 
+                        v-model="computedDateFormatted"
+                        label="Datum"
+                        outlined
+                        append-icon="mdi-calendar"
+                        readonly
+                        v-bind="attrs"
+                        v-on="on"></v-text-field>
+                </template>
+                <v-date-picker
+                    v-model="date"
+                    no-title
+                    locale="DE-de"
+                    :first-day-of-week="1"
+                    @input="getPartsPerHour"></v-date-picker>
+              </v-menu>
+                    </v-col>
+                  </v-row>
+              </v-container>
+              <div id="chart" class="ma-2 ma-md-5">
+                <apexchart ref="chart" type="bar" height="345" :options="chartOptions" :series="series"></apexchart>
+              </div>
+          </v-sheet>
+        </v-main>
+      </v-app>
+    </div>
+        
+    <script>
+      // sleep time expects milliseconds
+      function sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+      }
+       window.vm = new Vue({
+        el: "#app",
+        components: {
+          apexchart: VueApexCharts,
+        },
+        vuetify: new Vuetify({
+          theme: {
+            themes: {
+              light: {
+                primary: "#001941",
+                secondary: "#00A0DC",
+                accent: "#00A0DC",
+              },
+            },
+          },
+        }),
+        created() {
+            // ToDo: INstallieren von EventHandlern
+          //window.eev.on("onLocalScanData", this.handleScanner);
+          //window.eev.on("onEntityChangedMessage", this.handleEntityChanged);
+        },
+        mounted() {
+
+          let urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.has("test")) this.workplace = urlParams.get("test");
+          this.focusInput();
+          console.log(this.datacollection);
+          this.getWorkCenters();
+          //document.addEventListener('keypress', this.keypressHandler);
+        },
+        destroyed(){
+            // Aufräumen: z.B. EventHandler entfernen, Timer löschen ect.
+            //window.eev.off("onLocalScanData", this.handleScanner);
+        },
+        data: {
+            articleid: "",
+            workcenter: [],
+            items:  [ ],
+            productionOrder: '',
+            series: [{
+                data: []
+            }],
+            chartOptions: {
+                chart: {
+                    type: 'bar',
+                    height: 350
+                    },
+            plotOptions: {
+                bar: {
+                    borderRadius: 4,
+                    horizontal: false,
+                }
+            },
+            dataLabels: {
+                enabled: true
+            },
+            title: {
+                text: 'Rückgemeldete Teile / Stunde'
+            },
+            colors: ['#2E93fA', '#66DA26', '#546E7A', '#E91E63', '#FF9800'],
+            xaxis: {
+              categories: [
+              ],
+            }
+          },
+          date: new Date().toISOString().substr(0, 10),
+          menu: false,
+        },
+
+        computed: {
+            computedDateFormatted () {
+                // return this.formatDate(this.date)
+                return window.DateTime.fromISO(this.date).setLocale('de').toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
+            },
+        },
+
+        methods: {
+
+        formatDate (date) {
+            if (!date) return null
+
+            const [year, month, day] = date.split('-')
+            return `${day}.${month}.${year}`
+        },
+
+           
+          keypressHandler(e) {
+            this.articleid += e.key;
+          },
+
+          focusInput() {
+            this.$refs.workcenter.focus();
+          },
+
+        //   handleScanner(msg){
+        //        this.articleid = msg;
+        //        this.getPartsPerHour();
+        //   },
+
+        //   handleEntityChanged(msg){
+        //       console.log('Entity Changed-');
+        //     var obj = JSON.parse(msg);
+        //     if (obj.Name === "Feedback") {
+        //       sleep(1000).then(() => {
+        //         this.getPartsPerHour();
+        //       });
+        //     }
+        //   },
+
+        getWorkCenters: function() {
+
+            window.cmesOdata
+                .get("WorkCenters")
+                .query({
+                    $select: "Code, Description",
+                })
+                .then((data) => {
+                    console.log(data);
+                    data.forEach((element) => {
+                        this.items.push(element.Code);
+                    })
+                })
+                .catch((err) => console.log(err));
+
+        },
+
+        getPartsPerHour: function () {
+            // debugger;
+            // window.cmesOdata
+            //     .get("ProductionOrders")
+            //     .query({
+            //         $apply: 'groupby((ProductionState),aggregate(Code with countdistinct as total))',
+            //     })
+            //     .then((data) => {
+            //         console.warn(data);
+            //     })
+            //     .catch((err) => console.error(err));
+            // this.menu = false;
+            // console.log('DebugStop');
+
+            window.cmesOdata
+                .get("ViewFinishedPerHours")
+                .query({
+                    $filter: `WorkCenterCode in ('${this.workcenter.join("','")}') and date(Date) eq ${this.date}`,
+                    $orderBy: 'WorkCenterCode, Hour',
+                })
+                .then((dat) => {
+                    
+                    //console.log(JSON.stringify(dat));
+                    this.series.data = [];
+                    this.series.name = this.workcenter;
+                    this.chartOptions.xaxis.categories = [];
+
+                    grouped = dat.reduce((h, a) => Object.assign(h, { [a.WorkCenterCode]:( h[a.WorkCenterCode] || [] ).concat(a) }), {});
+                    //console.log(grouped);
+
+                    // wir holen alle Hour-Properties
+                    let hourList = [...new Set(dat.map((o) => o.Hour))];
+                    let continuesHours = _.range(hourList[0], hourList[hourList.length-1]+1, 1);
+                    //console.log(continuesHours);
+                    let series = [];
+                    Object.entries(grouped).forEach(entry => {
+	                    const [key, value] = entry;
+                        //series.push({name: key, data: value.map(a => a.FinishedGood)})
+                        let ppH = [];
+                        continuesHours.forEach((hour)=>{
+                            val = value.find(e => e.Hour === hour);
+                            ppH.push(val != undefined? val.FinishedGood : 0);
+                        });
+                        series.push({name: key, data: ppH});
+
+                    });
+
+                    //let hours = [...new Set(dat.map((o) => o.Hour))].map(x => `${x} - ${x+1} Uhr`);
+                    let hours = [...new Set(continuesHours.map((x) => `${x} - ${x+1} Uhr`))];
+                    //console.log(hours);
+                    this.chartOptions.xaxis.categories = hours;	
+
+                    //this.$refs.chart.updateSeries([{name: this.workcenter, data: this.series.data}], false, true);
+                    this.$refs.chart.updateSeries(series, false, true);
+                    this.$refs.chart.updateOptions(this.chartOptions, false, true, true);
+                })
+                .catch((err) => console.log(err));
+          },
+        },
+      });
+    </script>
+    <style>
+    </style>
+  </body>
+</html>
+
