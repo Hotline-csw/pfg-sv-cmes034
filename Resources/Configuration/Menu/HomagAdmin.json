@@ -1,0 +1,129 @@
+
+[
+  {
+    "label": "Dashboard",
+    "link": "cmes-dashboard",
+    "icon": "grid_view"
+  },
+  {
+    "label": "Verwaltung",
+    "items": [
+      {
+        "label": "Sortieren",
+        "link": "cmes-sorting",
+        "icon": "notes"
+      },
+      {
+        "label": "Feedback",
+        "link": "cmes-custom-page/Feedback",
+        "navigationExtras": {
+          "queryParams": {
+            "test": "30041 Sorter Out"
+          }
+        },
+        "icon": "notes"
+      },
+      {
+        "label": "Template",
+        "link": "cmes-custom-page/Template",
+        "icon": "extension"
+      },
+      {
+        "label": "Auswertung",
+        "link": "cmes-custom-page/PartsPerHour",
+        "icon": "bar_chart"
+      },
+      {
+        "label": "Layout",
+        "link": "cmes-custom-page/Layout",
+        "icon": "location_on"
+      },
+      {
+        "label": "Demo",
+        "link": "cmes-custom-page/Demo",
+        "icon": "psychology"
+      },
+	  {
+        "label": "CmesHealthW3wp",
+        "link": "cmes-custom-page/CmesHealthW3wp",
+        "icon": "psychology"
+      },
+	  {
+        "label": "CMesHealthFredLocal",
+        "link": "cmes-custom-page/CMesHealthFredLocal",
+        "icon": "psychology"
+      },
+      {
+        "label": "Nobilia",
+        "link": "cmes-custom-page/W2Demo",
+        "icon": "category"
+      },
+      {
+        "label": "Dialog",
+        "link": "cmes-custom-page/TestDialog",
+        "icon": "category"
+      },
+      {
+        "label": "EChart",
+        "link": "cmes-custom-page/EChart",
+        "icon": "category"
+      },
+	  {
+        "label": "EChartFred",
+        "link": "cmes-custom-page/EChartFred",
+        "icon": "category"
+      }
+    ],
+    "icon": "offline_pin"
+  },
+  {
+    "label": "Editor",
+    "link": "cmes-rule-editor",
+    "icon": "format_align_left"
+  },
+  {
+    "label": "Kapazität / Pulk",
+    "link": "cmes-bulk-capacity",
+    "icon": "format_align_left"
+  },
+  {
+    "label": "Kapazität / Status",
+    "link": "cmes-state-capacity",
+    "icon": "format_align_left"
+  },
+  {
+    "label": "Kapazitätsanzeige",
+    "link": "cmes-capacity-page/Standard",
+    "icon": "format_align_left"
+  },
+  {
+    "label": "KapazitätsanzeigeStatus",
+    "link": "cmes-capacity-page/CapacityByState",
+    "icon": "bar_chart"
+  },
+  {
+    "label": "KapazitätsanzeigePulk",
+    "link": "cmes-capacity-page/CapacityByBulk",
+    "icon": "bar_chart"
+  },
+  {
+    "label": "Pulkplanung",
+    "link": "cmes-bulk-planning",
+    "icon": "format_align_left"
+  },
+  {
+    "label": "IntelliStack",
+    "link": "cmes-stack",
+    "icon": "format_align_justify"
+  },
+  {
+    "label": "Automatische Losbildung",
+    "link": "cmes-automatic-lotgeneration-page",
+    "icon": "format_align_left"
+  },
+  {
+    "label": "Abmelden",
+    "link": "login",
+    "icon": "logout"
+  }
+]
