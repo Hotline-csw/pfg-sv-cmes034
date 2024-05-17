@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="app" >	
+      <v-app :style="{background: $vuetify.theme.themes['light'].background}">
+        <v-main  style="overflow:auto">
+          <v-sheet id="scrolling-techniques-7" class="overflow-y-auto">
+            <v-img
+              src="{{ server }}/dao/image/customer_logo"
+              max-height="50"
+              contain
+              class="mt-2"></v-img>
+              <!-- <v-img src="{{ server }}/dao/script/assets/homag-logo.svg" max-height="50" contain class="ma-2"></v-img> -->
+            <!-- <h1 class="text-center">{{orderid}}</h1>    -->
+            <v-text-field ref="article" class="mx-2 mx-md-5" hide-details label="Bauteil" v-model="articleid" outlined
+              clearable clear-icon="mdi-close-circle" @keyup.enter="getWorkSteps" inputmode="none"
+            ></v-text-field>
+
+            <v-container class="my-1">
+              <v-card flat v-for="step in steps" :key="step.order" :class="`card ${step.ProductionState}`"> 
+                <div :class="`item project ${step.ProductionState}`">
+                  <v-img
+                    :src="`{{ server }}/dao/script/assets/${pictures[step.WorkCenterCode.substring(0,5)]}.svg`"
+                    max-width="75"
+                    class="icon mx-1"
+                    contain
+                  ></v-img>
+                  <div class="workstep">
+                    <div class="caption grey--text">Arbeitsgang</div>
+                    <div>{{ step.WorkstepDescription }}</div>
+                  </div>
+                  <div class="workcenter">
+                    <div class="caption grey--text">Arbeitsplatz</div>
+                    <div>{{ step.WorkCenterCode.substring(0,5) }}</div>
+                    <!-- <div>{{ pictures[step.WorkCenterCode.substring(0,5)] }}</div> -->
+                  </div>
+                  <div class="date">
+                    <div class="caption grey--text">Plandatum</div>
+                    <div>{{ step.DesiredStartDateProcessing }}</div>
+                  </div>
+                  <div class="state">
+                    <div class="right">
+                      <v-chip
+                        small
+                        :color="getColor(step.ProductionState)"
+                        class="white--text my-2 caption"
+                        >{{ step.ProductionState }}</v-chip
+                      >
+                    </div>
+                  </div>
+                </div>
+                <v-divider></v-divider>
+              </v-card>
+            </v-container>
+          </v-sheet>
+		   <v-btn fab dark fixed bottom right color="accent" v-show="!hidden" @click="feedback">
+            <v-icon dark> mdi-check-bold </v-icon>
+          </v-btn>
+        </v-main>
+      </v-app>
+    </div>
+
+   <script>
+      
+      function dynamicSort(property) {
+        var sortOrder = 1;
+        if (property[0] === "-") {
+          sortOrder = -1;
+          property = property.substr(1);
+        }
+        return function (a, b) {
+          /* next line works with strings and numbers,
+           * and you may want to customize it to your needs
+           */
+          var result =
+            a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+          return result * sortOrder;
+        };
+      }
+      // sleep time expects milliseconds
+      function sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+      }
+      window.vm = new Vue({		// Das Windwosobjekt mit samt der Prperty (Objekt) .vm wird von MES vordefiniert, 
+        el: "#app",             // Link zur oben definierten Oberfläche
+        vuetify: new Vuetify({  // Objekt im Objekt
+          theme: {
+            themes: {
+              light: {
+                primary: "#001941",		
+                secondary: "#00A0DC",
+                accent: "#00A0DC",
+                background: "#FFFFFF"
+              },
+            },
+          },
+        }),
+        created() {  					 
+          window.eev.on("onEntityChangedMessage", this.handleEntityChanged);
+          window.eev.on("onLocalScanData", this.handleScanner);
+          window.eev.on("onLocalScanData", this.handleScanner);
+
+          this.pictures["30010"] = "saw";
+          this.pictures["30015"] = "saw";
+          this.pictures["30020"] = "manual";
+          this.pictures["30030"] = "edge";
+          this.pictures["30035"] = "edge";
+          this.pictures["30040"] = "robot";
+          this.pictures["30041"] = "robot";
+          this.pictures["30045"] = "handling";
+          this.pictures["30050"] = "cnc";
+          this.pictures["30060"] = "drilling";
+          this.pictures["30140"] = "packaging";
+          this.pictures["30075"] = "press";
+        },
+        mounted() {
+          let urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.has("test")) this.workplace = urlParams.get("test"); 
+          this.focusInput();
+          document.addEventListener('keypress', this.keypressHandler);
+          console.log("Sollte nicht passieren (log)");
+          console.debug("Sollte nicht passieren (debug)");
+          console.info("Sollte nicht passieren (info)");
+          console.warn("Sollte nicht passieren (warn)");
+          console.error("Sollte nicht passieren (error)");
+        },
+        destroyed(){
+            console.log('Destroy Window');
+            window.eev.off("onLocalScanData", this.handleScanner);
+            document.removeEventListener('keypress', this.keypressHandler);
+            window.eev.off("onEntityChangedMessage", this.handleEntityChanged);
+        },
+        data: {					
+          projects: [],		    
+          articleid: "",        
+          orderid: "",
+          info: "",
+          steps: [],
+          workplace: "",
+          hidden: true,
+          pictures: {},
+        },
+
+        computed: {
+            actualPart(){
+                return this.articleid;
+            }
+        },
+
+        methods: {
+          keypressHandler(e) {
+              console.log(document.activeElement);
+              this.focusInput();
+           // this.articleid += e.key;
+          },
+          focusInput() {
+              console.log(this.$refs.article);
+            this.$refs.article.focus();  
+          },
+          handleScanner(msg){
+               console.log(msg); 
+               this.articleid = msg;     
+               this.getWorkSteps();
+          },
+          handleEntityChanged(msg){
+            var obj = JSON.parse(msg);
+           // if (obj.Name === "ProductionStep") {
+           //   sleep(100).then(() => {
+                this.getWorkSteps();
+           //   });
+            //}
+          },
+          getColor(v) {
+              
+            if (v === "Finished") return "#3cd1c2";
+            if (v === "New") return "lightgrey";
+            if (v === "Processing") return "blue";
+            return "lightgrey";
+          },
+          getWorkSteps: function () {
+              if(this.articleid === "")
+                return;
+
+            // window.cmesOdata
+            // .get('ProductionItemsHistory/$count').query(
+            //     {
+            //         $filter: `WorkCenterCode eq '${this.workplace}' and year(ModificationDate) eq 2022 and month(ModificationDate) eq 8 and day(ModificationDate) eq 12)`
+            //     }
+            // ).then((count) => {
+            //     console.error(count);
+            // });
+
+            window.cmesOdata					
+              .get("ProductionOrders")			
+              .query({                          
+                $filter: `ProductionItems/any(d:d/Code eq '${this.articleid}')`,
+                $expand: "ProductionSteps, ProductionItems",
+              })
+              .then((data) => {
+				
+                if (data === null || data.length === 0) 
+                {
+                    console.log('Bauteil nicht gefunden.')
+					window.messageservice.add({severity:'error', summary: 'Fehler', detail: `Bauteil ${this.articleid} nicht gefunden.`, key: 'c', life: 5000})
+                }
+                else
+				{
+					//console.log(JSON.stringify(data));
+					if(Array.isArray(data))
+                    {
+						console.log("array");
+                        if(data[0].ProductionItems === undefined){
+                            data = data[0];
+                            console.log('data changed')
+                        }
+                    }    
+					this.info = data[0].ProductionItems[0].Code;
+                    this.orderid = data[0].Code;
+					data[0].ProductionSteps.forEach((element) => {
+					  element.DesiredStartDateProcessing = window.DateTime.fromISO(
+						element.DesiredStartDateProcessing
+					  )
+						.setLocale("de")
+						.toLocaleString();
+					});
+					this.steps = data[0].ProductionSteps.sort(dynamicSort("Order"));
+
+					this.checkFeeback();
+				}
+              })
+              .catch((err) => console.log(err));
+	
+          },
+          checkFeeback: function () {
+            window.cmesOdata
+              .get("ProductionItemsHistory")
+              .query({
+                $filter: `ProductionItemCode eq '${this.articleid}' and WorkCenterCode eq '${this.workplace}'`  
+              })
+              .then((data) => {  
+                if (data === null || data.length === 0)  
+                {
+                    console.log("Test WorkCenter   ");
+                    if(this.steps.some((e) => e.WorkCenterCode === this.workplace))
+                        this.hidden = false;
+                    else
+                        this.hidden = true;
+                }
+                else
+                {
+                    console.log(data[0].FeedbackState);
+                    if(data[0].FeedbackState === 'Finished')
+                        this.hidden = true;
+                }
+
+              })
+              .catch((err) => console.log(err)); 
+          },
+          feedback: function () {	
+            localStep = this.steps.find(
+              (e) => e.WorkCenterCode === this.workplace
+            );
+            
+
+            const data = {
+              ProductionItemCode: this.articleid,
+              ProductionStepCode: localStep.Code,
+              WorkcenterCode: localStep.WorkCenterCode,
+              CountGood: 1,
+              FeedbackState: "Finished",
+              Timestamp: DateTime.local(),
+              ProcessingState: 10,
+              CreationSource: "FeedbackApp",
+            };
+            window.cmesOdata
+              .post("Feedbacks", data)
+              .query()
+			  .then((data)=>{window.messageservice.add({severity:'success', summary: `Bauteil ${data.ProductionItemCode} rückgemeldet`, key: 'c', life: 5000})})
+              .catch((msg) => window.messageservice.add({severity:'error', summary: 'Fehler', detail: `(${msg.status}) ${msg.statusText}`, key: 'c', life: 5000}));
+          },
+        },
+      });
+    </script>
+    <style>
+
+      .card.Finished {
+        background-color: #9ee5ff;
+      }
+      .project.Finished {
+        border-left: 4px solid #3cd1c2;
+      }
+      .project.New {
+        border-left: 4px solid lightgrey;
+      }
+      .project.Processing {
+        border-left: 4px solid blue;
+      }
+      .v-chip.Finished {
+        background: #3cd1c2;
+      }
+      .v-chip.New {
+        background: lightgrey;
+      }
+      .v-chip.Processing {
+        background: blue;
+      }
+
+      .item {
+        display: grid;
+
+        grid-gap: 2;
+
+        grid-template:
+          " icon    step        step    step " auto
+          " icon    workcenter  date    state " auto
+          / 80px 1fr 1fr 1fr;
+        height: auto;
+
+        padding: 2;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      .icon {
+        grid-area: icon;
+      }
+
+      .workstep {
+        grid-area: step;
+      }
+
+      .workcenter {
+        grid-area: workcenter;
+      }
+
+      .date {
+        grid-area: date;
+      }
+
+      .state {
+        grid-area: state;
+      }
+	  
+
+	}
+
+    </style>
+  </body>
+</html>
