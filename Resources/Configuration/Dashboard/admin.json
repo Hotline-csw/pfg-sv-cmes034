@@ -1,0 +1,435 @@
+[
+
+{
+    "title": "SAWTEQ B300",
+    "cols": 2,
+    "rows": 2,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-gauge-chart",
+    "input": {
+		"refresh": 10,	
+		"colors": ["#777777"],
+		"inputOData":
+		{
+			"entityType": "ProductionItemsHistory",
+			"filter": "WorkCenterCode eq '1010' and date(Timestamp) gt {now()-minutes(10)}",
+			"count": true
+		}
+    }
+  },
+  
+  {
+    "title": "EDGETEQ S-310",
+    "cols": 2,
+    "rows": 2,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-gauge-chart",
+    "input": {
+		"refresh": 12,      
+		"colors": ["#777777"],
+		"inputOData":
+		{
+			"entityType": "ProductionItemsHistory",
+			"filter": "WorkCenterCode eq '3010' and date(Timestamp) gt {now()-minutes(10)}",
+			"count": true
+		}
+    }
+  },
+  
+  {
+    "title": "DRILLTEQ V-200",
+    "cols": 2,
+    "rows": 2,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-gauge-chart",
+    "input": {
+		"refresh": 10,	
+		"colors": ["#777777"],
+		"inputOData":
+		{
+			"entityType": "ProductionItemsHistory",
+			"filter": "WorkCenterCode eq '5010' and date(Timestamp) gt {now()-minutes(10)}",
+			"count": true
+		}
+    }
+  },
+  
+  {
+    "title": "CENTATEQ E-310",
+    "cols": 2,
+    "rows": 2,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-gauge-chart",	
+    "input": {
+		"refresh": 10,	
+		"colors": ["#777777"],
+		"inputOData":
+		{
+			"entityType": "ProductionItemsHistory",
+			"filter": "WorkCenterCode eq '5020' and date(Timestamp) gt {now()-minutes(10)}",
+			"count": true
+		}
+    }
+  },
+  
+  {
+    "title": "SORTING & PICKING",
+    "cols": 2,
+    "rows": 2,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-gauge-chart",
+    "input": {
+		"refresh": 10,	
+		"colors": ["#777777"],
+		"inputOData":
+		{
+			"entityType": "ProductionItemsHistory",
+			"filter": "WorkCenterCode eq '5070' and date(Timestamp) gt {now()-minutes(10)}",
+			"count": true
+		}
+    }
+  },
+  
+  {
+    "title": "ASSEMBLY",
+    "cols": 2,
+    "rows": 2,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-gauge-chart",	
+    "input": {
+		"refresh": 10,	
+		"colors": ["#777777"],
+		"inputOData":
+		{
+			"entityType": "ProductionItemsHistory",
+			"filter": "WorkCenterCode eq '6010' and date(Timestamp) gt {now()-minutes(10)}",
+			"count": true
+		}
+    }
+  },
+  
+  {
+    "title": "Items not released to production",
+    "cols": 2,
+    "rows": 1,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-count-chart",	
+    "input": {
+		"refresh": 60,      
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "CustViewDashboardProgressDatas",
+			"top": "1",
+			"select": "ItemsNotReleased"
+		}
+    }
+  },
+  
+  {
+    "title": "Released/Not optimized",
+    "cols": 2,
+    "rows": 1,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-count-chart",	
+    "input": {
+		"refresh": 60,      
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "CustViewDashboardProgressDatas",
+			"top": "1",
+			"select": "ItemsReleasedAndNotOptimized"
+		}
+    }
+  },
+  
+  {
+    "title": "Optimized/Not produced",
+    "cols": 2,
+    "rows": 1,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-count-chart",	
+    "input": {
+		"refresh": 60,      
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "CustViewDashboardProgressDatas",
+			"top": "1",
+			"select": "ItemsOptimizedAndNotProduced"
+		}
+    }
+  },
+  
+  {
+    "title": "",
+    "cols": 2,
+    "rows": 1,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-count-chart",
+	"input": {
+		"refresh": 60,
+		"colors": ["#FFFFFF"],
+		"inputOData":
+		{
+			"entityType": "ViewDetailProgressInformations",
+			"count": true
+		}
+    }
+  },
+  
+  {
+    "title": "",
+    "cols": 2,
+    "rows": 1,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-count-chart",
+	"input": {
+		"refresh": 60,
+		"colors": ["#FFFFFF"],
+		"inputOData":
+		{
+			"entityType": "ViewDetailProgressInformations",
+			"count": true
+		}
+    }
+  },
+  
+  {
+    "title": "Post-Production Parts",
+    "cols": 2,
+    "rows": 1,
+    "background": "#FFFFFF",
+	"foreground": "#77777",
+    "component": "cmes-dashboard-count-chart",
+    "link": "cmes-custom-page/W2Demo",
+	"input": {
+		"refresh": 60,
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "ItemsNotReleased",
+			"filter": "ValidationState eq 'ReproductionNecessary' and date(CreationDate) eq {Today}",
+			"count": true
+		}
+    }
+  },
+  
+    {
+    "title": "B300 Finished",
+    "cols": 2,
+    "rows": 1,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-count-chart",
+	"input": {
+		"refresh": 60,
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "Feedbacks",
+			"filter": "WorkcenterCode eq '1010' and date(Timestamp) eq {Today}",
+			"count": true
+		}
+    }
+  },
+  
+  {
+    "title": "EDGE Finished",
+    "cols": 2,
+    "rows": 1,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-count-chart",
+	"input": {
+		"refresh": 60,
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "Feedbacks",
+			"filter": "WorkcenterCode eq '3010' and date(Timestamp) eq {Today}",
+			"count": true
+		}
+    }
+  },
+  
+  {
+    "title": "V200 Finished",
+    "cols": 2,
+    "rows": 1,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-count-chart",
+	"input": {
+		"refresh": 60,
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "Feedbacks",
+			"filter": "WorkcenterCode eq '5010' and date(Timestamp) eq {Today}",
+			"count": true
+		}
+    }
+  },
+  
+  {
+    "title": "E310 Finished",
+    "cols": 2,
+    "rows": 1,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-count-chart",
+	"input": {
+		"refresh": 60,
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "Feedbacks",
+			"filter": "WorkcenterCode eq '5020' and date(Timestamp) eq {Today}",
+			"count": true
+		}
+    }
+  },
+
+{
+    "title": "SORT Finished",
+    "cols": 2,
+    "rows": 1,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-count-chart",
+	"input": {
+		"refresh": 60,
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "Feedbacks",
+			"filter": "WorkcenterCode eq '5070' and date(Timestamp) eq {Today}",
+			"count": true
+		}
+    }
+  },
+  
+  {
+    "title": "ASSEM Finished",
+    "cols": 2,
+    "rows": 1,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-count-chart",
+	"input": {
+		"refresh": 60,
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "Feedbacks",
+			"filter": "WorkcenterCode eq '6010' and date(Timestamp) eq {Today}",
+			"count": true
+		}
+    }
+  },
+  
+ {
+    "title": "B300 Remaining",
+    "cols": 2,
+    "rows": 1,
+    "background": "#00A0DC",
+    "component": "cmes-dashboard-count-chart",
+    "input": {
+		"refresh": 60,      
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "CustViewDashboardProgressDatas",
+			"top": "1",
+			"select": "B300Remaining"
+		}
+    }
+  },
+  
+  {
+    "title": "EDGE Remaining",
+    "cols": 2,
+    "rows": 1,
+    "background": "#00A0DC",
+    "component": "cmes-dashboard-count-chart",	
+    "input": {
+		"refresh": 60,      
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "CustViewDashboardProgressDatas",
+			"top": "1",
+			"select": "EDGERemaining"
+		}
+    }
+  },
+  
+  {
+    "title": "V200 Remaining",
+    "cols": 2,
+    "rows": 1,
+    "background": "#00A0DC",
+    "component": "cmes-dashboard-count-chart",
+    "input": {
+		"refresh": 60,      
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "CustViewDashboardProgressDatas",
+			"top": "1",
+			"select": "V200Remaining"
+		}
+    }
+  },
+  
+  {
+    "title": "E310 Remaining",
+    "cols": 2,
+    "rows": 1,
+    "background": "#00A0DC",
+    "component": "cmes-dashboard-count-chart",
+    "input": {
+		"refresh": 60,      
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "CustViewDashboardProgressDatas",
+			"top": "1",
+			"select": "E310Remaining"
+		}
+    }
+  },
+  
+  {
+    "title": "SORT Remaining",
+    "cols": 2,
+    "rows": 1,
+    "background": "#00A0DC",
+    "component": "cmes-dashboard-count-chart",
+    "input": {
+		"refresh": 60,      
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "CustViewDashboardProgressDatas",
+			"top": "1",
+			"select": "SORTRemaining"
+		}
+    }
+  },
+  
+  {
+    "title": "ASSEM Remaining",
+    "cols": 2,
+    "rows": 1,
+    "background": "#00A0DC",
+    "component": "cmes-dashboard-count-chart",
+    "input": {
+		"refresh": 60,      
+		"colors": ["#77777"],
+		"inputOData":
+		{
+			"entityType": "CustViewDashboardProgressDatas",
+			"top": "1",
+			"select": "ASSEMRemaining"
+		}
+    }
+  }
+  
+ ]

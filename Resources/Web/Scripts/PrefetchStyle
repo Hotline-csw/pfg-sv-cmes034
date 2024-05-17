@@ -1,0 +1,2 @@
+<!-- Only CSS for CustomPages -->
+<link href="{{ server }}/dao/script/libs/vuetify.min.css" rel="stylesheet"/>

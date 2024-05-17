@@ -1,0 +1,118 @@
+<html>
+<body>
+  <div id="app" >
+    <v-app >
+      <v-main  style="overflow:auto">
+        <v-sheet id="scrolling" class="overflow-y-auto">
+            <v-img src="{{ server }}/dao/script/assets/homag-logo.svg" max-height="50" contain class="ma-2"></v-img>
+        </v-sheet>
+        
+        <h1>{{header}}</h1>
+        <v-btn depressed  @click="showDialog">Dialog</v-btn>
+         <v-btn depressed color="primary" @click="showDialogBis">DialogBis</v-btn>
+      </v-main>
+    </v-app>
+  </div>
+
+  <script>
+     window.vm = new Vue({
+      el: "#app",
+      components: {
+      },
+      vuetify: new Vuetify({
+        theme: {
+          themes: {
+            light: {
+              primary: "#001941",
+              secondary: "#00A0DC",
+              accent: "#00A0DC",
+            },
+          },
+        },
+      }),
+      created() {
+          // ToDo: INstallieren von EventHandlern
+      },
+      mounted() {
+      },
+      destroyed(){
+          // Aufräumen: z.B. EventHandler entfernen, Timer löschen ect.
+      },
+      data: {
+          header: "Hello from Controller MES",
+      },
+
+      computed: {
+      },
+
+      methods: {
+
+          showDialog(){
+                var dialogFields = [{
+                    label: "Eingabe",
+                    defaultValue: "leer",
+                    controlType: 'Input',
+                    isInput: ()=>{return true},
+                    isSelect: ()=>{return false}
+                                    }
+
+                    ];
+
+                //  var dialogFields = [
+                //      window.DialogInput
+                //     //new DialogInput("", "Ihren neuen Namen eingeben","Ha")
+                //     ];
+
+
+                console.log("Debug");
+                window.dialogservice.show("Html Seite","Inhalt allgemein",["Erstellen","Abbrechen"],0, dialogFields).then(res => {
+                console.log(res)
+            }
+            
+            
+            );
+
+            
+           
+          },
+
+                    showDialogBis(){
+
+ 
+                 var dialogFields = [{
+                     label: "label ist leer ",
+                     defaultValue: "defaultValue ist leer",
+                     controlType: 'Input'
+                        }];
+                
+
+                console.log("Debug");
+                window.dialogservice.show("Html Seite","Inhalt allgemein",["Erstellen","Abbrechen"],0, dialogFields)
+                                .then(res => {
+                if (res.buttonIndex == 0)
+                {
+                     console.log(res)
+                    var scriptName = res.result[0].dialogField;
+                     console.log(scriptName);
+                
+                   
+                }
+                                }
+            
+            
+            );
+
+            
+           
+          }
+
+          
+
+      },
+    });
+  </script>
+  <style>
+      
+  </style>
+</body>
+</html>

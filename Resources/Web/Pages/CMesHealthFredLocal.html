@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html>
+     
+    <body>
+        <head>
+
+             <style>
+      .Bluedot {
+  height: 10px;
+  width: 10px;
+  background-color: #008FFB;
+  border-radius: 50%;
+   display: inline-block;
+  
+}
+.Orangedot {
+  height: 10px;
+  width: 10px;
+  background-color: #E3A300;
+  border-radius: 50%;
+  display: inline-block;
+}
+.Greendot {
+  height: 10px;
+  width: 10px;
+  background-color: #00E396;
+  border-radius: 50%;
+  display: inline-block;
+}
+.Graydot {
+  height: 10px;
+  width: 10px;
+  background-color: #bcbcbc;
+  border-radius: 50%;
+  display: inline-block;
+
+ 
+}
+  </style>
+        </head>
+  <div id="app" >
+    <v-app >
+      <v-main  style="overflow:auto">
+        <v-sheet id="scrolling" class="overflow-y-auto">
+            <v-img src="{{ server }}/dao/script/assets/homag-logo.svg" max-height="50" contain class="ma-2"></v-img>
+        </v-sheet>
+        <h1 class="text-center">{{header}}</h1>
+        <div id="vChart"style="margin:0; height: 270px; font-family:Helvetica;" >
+         <v-chart autoresize :option="chartOptionsDaily"/>
+        </div>
+
+         <div id="vChartDB"style="margin:0; height: 270px; font-family:Helvetica" >
+         <v-chart autoresize :option="chartOptionsDailyDB"/>
+        <!-- </div>
+          <div id="chart">
+                <apexchart ref="chart" type="line" height="270"  :options="chartOptions" :series="series"></apexchart>
+         </div>
+          <div id="chartDB">
+                <apexchart ref="chartDB" type="line" height="200"  :options="chartOptionsDB" :series="seriesDB"></apexchart>
+            </div> -->
+       
+      </v-main>
+    </v-app>
+  </div>
+
+   <script>
+     window.vm = new Vue({
+      el: "#app",
+   
+    components: {
+          apexchart: VueApexCharts,
+            "v-chart": VueECharts
+        },
+      vuetify: new Vuetify({
+        theme: {
+          themes: {
+            light: {
+              primary: "#001941",
+              secondary: "#00A0DC",
+              accent: "#00A0DC",
+            },
+          },
+        },
+      }),
+      created() {
+         
+       
+             this.refreshChart();
+             this.refreshDaily();
+             this.refreshDailyJobHistory();
+             this.refreshDailyDB();
+             
+      },
+      mounted() {
+          
+       //  this.timerChart = setInterval(this.refreshChart, 5000);
+
+         // this.timerChartDaily = setInterval(this.refreshDaily, 500);
+         
+        
+          
+      },
+      
+      destroyed(){
+            this.cancelRefreshChart();
+            this.timerChart = null;
+          // Aufräumen: z.B. EventHandler entfernen, Timer löschen ect.
+      },
+      
+      data: {
+          timerChart: null,
+          dailyRefreshActive:false,
+          dailyJobHistoryRefreshActive:false,
+          timerChartDaily: null,
+           timerChartDailyJobHistory: null,
+            timerChartDailyExceptions: null,
+          timerChartDailyDB:null,
+          lastAnnotation:null,
+          lastSqlServer:null,
+           lastJobHistory:null,
+          lastDaily:null,
+          lastDailyDB:null,
+          chartStartDate:null,
+         dailyCmesWebExceptions:[],
+         dailyCmesWebExceptionsInstance:[],
+          yDailyAllSeries:[],
+          yDailyJobHistory:[],
+          yDailySerieMemory:[],
+          yDailySerieVirtualMemory:[],
+          yDailySerieCpu:[],
+          yDailySerieThreadCount:[],
+           xDailySerie:[],
+          yDailyDBSerie:[],
+          xDailyDBSerie:[],
+          refreshMinutes:10,
+           date: new Date().toISOString().substr(0, 10),
+          header: "",
+           seriesDaily: [{
+              name: "Daily",
+              type: 'line',
+              data:[]
+                 }
+          ],
+          seriesDB: [{
+              name: "DatabaseCPU",
+              type: 'line',
+              data:[]
+                 }
+          ],
+          series: [{
+              name: "PrivateBytes",
+              type: 'line',
+              data:[]
+                 },
+                 {
+            name: 'VirtualBytes',
+            type: 'line',
+            data: []
+            },
+            {
+            name: 'CPU',
+            type: 'line',
+            data: []
+            },
+            {
+            name: 'ThreadCount',
+            type: 'area',
+            data: []
+            }
+          ],
+          ////////////////////////////////////////////////////////////////////////////////////////////////////////
+chartOptionsDaily : {
+
+ 
+    // "#008FFB" Blau, "#E3A300" Orange, "#00E396" Grün,"#bcbcbc" Grau
+     color: ['#008FFB'],
+      tooltip: {
+          
+        triggerOn: 'click', 
+        textStyle: {
+           fontFamily: 'Helvetica',
+        fontSize: '8px'
+        },
+          position: ['20%', '20%'],
+        trigger: 'axis',
+      //  axisPointer: {
+      //    type: 'cross'
+      //  },
+        formatter: (params) => {
+           
+             var actDate =window.vm.xDailySerie[params[0].dataIndex];
+            var prevDate =window.vm.xDailySerie[params[0].dataIndex-1];
+            
+             var actJobs = window.vm.yDailyJobHistory.filter((f) =>  ((f[1] <= actDate && f[2] == null) 
+                          //|| (f[1] <= actDate && f[2] != null && f[2] >= actDate)
+                           || (f[1] <= actDate && f[2] != null && f[1] >= prevDate)
+                          ));
+            var actExceptions = window.vm.dailyCmesWebExceptionsInstance.filter((f) =>  
+                                  (f[0] <= actDate  && f[0] >= prevDate));
+                      
+             var jobHtml = actJobs.map(i => `<tr><td><b>${i[0]} : </b></td> <td>${window.vm.formatDateToDisplay(i[1])} - ${window.vm.formatDateToDisplay(i[2])}</td></tr>`) ;  
+              var exceptionHtml = actExceptions.map(i => `<tr><td><b>${i[1]}</b></td></tr>`) ;                        
+      return `            
+                <b>${window.vm.formatDateToDisplay(actDate)}</b><br/>
+               
+                 <table>
+                <tr>              
+                   <td style="width:70px"><span class="Bluedot"></span> ${params[0].value.toFixed(2)}  </td>
+                   <td style="width:70px"><span class="Orangedot"></span> ${params[3].value.toFixed(2)}  </td>
+                   <td style="width:70px"><span class="Greendot"></span> ${params[1].value.toFixed(2)}  </td>
+                   <td style="width:70px"><span class="Graydot"></span> ${params[2].value}  </td>
+                   
+                </tr>
+                 </Table>
+                <table>
+                ${jobHtml}
+                </Table>
+                 <table>
+                ${exceptionHtml}
+                </Table>
+                `;
+
+//    history: 
+                                   
+
+    },
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        /*position: function (pos, params, el, elRect, size) {
+          var obj = { top: 10 };
+          obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 30;
+          return obj;
+        },*/
+        //extraCssText: 'width: 170px'
+      },
+    //tooltip: {
+   // trigger: 'axis',
+    //position: function (pt) {
+    //  return [pt[0], '10%'];
+    //}
+   //  },
+      dataZoom:[
+         {
+           
+        type: 'slider',
+        show: true,
+        xAxisIndex: [0],
+        realtime : true,
+        filterMode: 'filter'
+       
+      },
+           {
+    start: 0,
+    type: "inside"
+  }],
+  
+ /*   dataZoom: [
+    {
+      type: 'inside',
+      start: 0,
+      end: 20
+    },
+    {
+      start: 0,
+      end: 20
+    }
+  ],*/
+  toolbox: {
+    feature: {
+      dataZoom: {
+        yAxisIndex: 'none'
+      },
+      restore: {},
+      saveAsImage: {},
+      //dataView:{}
+    }
+  },
+ // legend: {
+ //   data: ['PrivateBytes', 'ThreadCount']
+  //},
+  xAxis: {
+    type: 'category',
+      
+    boundaryGap: false,
+    axisLabel: {
+       // rotate:45,
+        //length:10,
+        fontFamily: 'Helvetica',
+        fontSize: '12px' ,
+        interval: 3600 ,
+//showMinLabel   :true,
+        formatter: function (value) {
+           return  window.vm.formatDateHourToDisplay(value);
+       //return  window.vm.formatDateToDisplay(value);
+    }
+},
+    data: []
+  },
+
+  yAxis:[ {
+      boundaryGap: false,
+    name: 'Private bytes',
+     min:0,
+     max:5,
+     interval:1,
+    type: 'value',
+    
+nameTextStyle: {
+     fontFamily: 'Helvetica',
+        fontSize: 11 ,
+        fontWeight: 900,
+},
+/* axisTick: {
+        alignWithLabel: true,
+        length: 2  
+      },*/
+      axisLine: {
+        
+        lineStyle: {
+          color: '#008FFB' //#00E396
+        }
+      },
+
+    axisLabel : {        
+        margin: 5,
+        fontFamily: 'Helvetica',
+        fontSize: 11 ,
+        formatter: function (value) {
+       return  value.toFixed(2);
+    }
+        
+    },
+       
+       // nameLocation: 'middle',
+       // nameGap: 40,
+         //data: [0, 4]
+       
+         
+  },
+  {
+         boundaryGap: false,
+      type: 'value',
+      name: 'CPU %',
+     nameTextStyle: {
+     fontFamily: 'Helvetica',
+        fontSize: 11 ,
+        fontWeight: 900,
+},
+      position: 'right',
+      //alignTicks: true,
+       min:0,
+     max:700,
+     interval:100,
+      //offset:80,
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#00E396'
+        }
+      },
+      axisLabel: {
+           fontFamily: 'Helvetica',
+        fontSize: 11 ,
+        formatter: function (value) {
+       return  value.toFixed(2);
+    },
+      }
+    },
+    {
+         boundaryGap: false,
+      type: 'value',
+      name: 'Thread Count',
+     nameTextStyle: {
+     fontFamily: 'Helvetica',
+        fontSize: 11 ,
+        fontWeight: 900,
+},
+      position: 'right',
+      //alignTicks: true,
+      min:0,
+      max:300,
+     interval:100,
+      offset:70,
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#bcbcbc'
+        }
+      },
+      axisLabel: {
+            fontFamily: 'Helvetica',
+        fontSize: 11 ,
+        formatter: '{value}'
+      }
+    },
+  
+  ],
+ 
+  series: [
+       {
+           
+        zlevel: 5 ,
+         yAxisIndex: 0,
+          markLine:{
+             
+               zlevel: 0 ,
+              /* label: {
+                  position:'middle',
+         rotate:90,
+          color: '#FF0000',
+        fontFamily: 'Helvetica',
+        fontSize: '8px' },*/
+        
+                 lineStyle:
+                {
+                     width :0.5,
+                     opacity:0.2,
+                    color: '#FF0000'
+
+                },
+                data:[],
+               
+        
+                     
+         },
+      smooth: true ,
+      name: 'PrivateBytes',
+      type: 'line',
+      symbol: 'none',
+      data: []
+    },
+      {
+          
+        zlevel: 1, 
+        yAxisIndex: 1,
+      smooth: true ,
+      name: 'Cpu',
+      type: 'line',
+       
+        lineStyle:
+                {
+                     width :1.0,
+                     opacity:0.3,
+                 color: '#00E396'
+
+                },    
+      symbol: 'none',
+      
+      data: []
+      
+    },
+     {
+         
+    zlevel: 1, 
+        yAxisIndex: 2,
+      smooth: true ,
+      name: 'ThreadCount',
+      type: 'line',
+       areaStyle: {
+           color: '#bcbcbc',           
+           opacity: 0.2
+      },
+       
+       
+        lineStyle:
+                {
+                     width :0.5,
+                     opacity: 0.2,
+                 color: '#bcbcbc'
+
+                },    
+      symbol: 'none',
+      data: []
+    },
+    
+  {
+      
+zlevel: 2 ,
+      yAxisIndex: 0,
+     lineStyle:
+                {
+                     width :1,
+                 color: '#E3A300'
+
+                },     
+      smooth: true ,
+      name: 'VirtualBytes',
+      type: 'line',
+      symbol: 'none',
+      data: []
+    },
+     
+  
+  ]
+},// End VchartOptions
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  chartOptionsDailyDB : {
+     color: ['#00E396'],
+  tooltip: {
+    trigger: 'axis',
+    position: function (pt) {
+      return [pt[0], '10%'];
+    }
+  },
+ 
+  toolbox: {
+    feature: {
+      dataZoom: {
+        yAxisIndex: 'none'
+      },
+      restore: {},
+      saveAsImage: {}
+    }
+  },
+  xAxis: {
+    type: 'category',
+      
+    boundaryGap: false,
+    axisLabel: {
+        //rotate:45,
+        length:10,
+        fontFamily: 'Helvetica',
+        fontSize: '12px' ,
+        interval: 120 ,
+//showMinLabel   :true,
+        formatter: function (value) {
+       return  window.vm.formatDateHourToDisplay(value);
+    }
+},
+    data: []
+  },
+
+  yAxis:[ {
+       boundaryGap: false,
+    name: 'Cpu DB %',
+     min:0,
+     max:100,
+     interval:25,
+    type: 'value',
+    
+nameTextStyle: {
+     fontFamily: 'Helvetica',
+        fontSize: 11 ,
+        fontWeight: 900,
+},
+ axisTick: {
+        alignWithLabel: true,
+        length: 2  
+      },
+      axisLine: {
+        onZero: false,
+        lineStyle: {
+          color: '#00E396' //#00E396
+        }
+      },
+
+    axisLabel : {        
+      //  margin: 5,
+        fontFamily: 'Helvetica',
+        fontSize: 11 ,
+        formatter: function (value) {
+       return  value.toFixed(2);
+    }
+        
+    },
+       
+       // nameLocation: 'middle',
+       // nameGap: 40,
+         //data: [0, 4]
+       
+         
+  }],
+ 
+  series: [
+     {
+         markLine:{
+             
+                 lineStyle:
+                {
+                 color: '#FF0000'
+
+                },
+                data:[
+               //     2022-04-13T23:31:54.906Z
+               //     [{  xAxis: '2022-04-13T23:37:55.665Z,yAxis: '0', symbol:'none'},
+               //     {   xAxis: '2022-04-13T23:37:55.665Z',yAxis: '5'}]
+                
+                
+                ], 
+        
+                     
+         },
+         
+      smooth: true ,
+      name: 'CpuDB',
+      type: 'line',
+      symbol: 'none',
+      data: []
+    },
+  
+  ]
+},// End VchartOptionsDB
+           chartOptions: {
+            chart: {
+              //id: 'CMesServerPerformance',
+             // group: 'health',
+            
+            /*  zoom: {
+                enabled: true
+              },*/
+             
+              events: {
+                   // scrolled: function(chartContext, { xaxis }) {
+                    
+                //}
+                updated: function (chart) {
+
+              //var commitsEl = document.querySelector('.cmeta span.commits');
+              //var commits = chart.getSeriesTotalXRange(chart.w.globals.minX, chart.w.globals.maxX)
+        
+              //commitsEl.innerHTML = commits
+            }
+               
+                },
+
+                
+              
+              toolbar: {
+                  show:false
+                /*tools: {
+                    customIcons:[
+                        {
+                            icon: '<img src="/static/icons/chart-carpet.png" width="20">',
+                            index: 4,
+                            title: 'tooltip of the icon',
+                            class: 'custom-icon',
+                           // click: function (chart, options, e) {
+                           //         chart.w.config.this.refresh();
+                           // }
+                            click: (chart, options, e) => {
+                                 console.log("im Referesh");
+                                 window.vm.refreshChart();
+                            }
+                        }
+                        ]
+                    }*/
+                }
+            },
+         
+             animations: {
+              enabled: false
+            },
+              
+            dataLabels: {
+              enabled: false
+            },
+            markers:{
+                size:0
+                
+            },
+            fill: {
+              opacity: [1,1, 1,0.1],
+              gradient: {
+                inverseColors: false,
+                shade: 'light',
+                type: "vertical",
+                opacityFrom: 0.85,
+                opacityTo: 0.55,
+                stops: [0, 100, 100, 100]
+              }},
+            stroke: {
+              curve: 'smooth',
+             width: [2, 1, 1,0.5],
+            },
+           /* title: {
+              text: 'CMes Memory and CPU usage',
+              align: 'left'
+            },*/
+             legend: {
+              position: 'top',
+              horizontalAlign: 'left'
+            },
+             colors: [
+              "#008FFB", "#E3A300", "#00E396","#bcbcbc"// "#F44336"
+            ],
+         /*   grid: {
+            //  row: {
+            //    colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            //    opacity: 0.5
+            //  },
+            },*/
+           xaxis: {
+                tickAmount:60,
+                type:'datetime',
+                labels: {
+                  
+                
+                    formatter: function (value) {
+                         
+                     return  window.vm.formatDateToDisplay(value);
+                     //return    window.DateTime.fromISO(value).setLocale('de').toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
+                     //return value;
+                    }
+                }
+            },
+                              
+              //type: 'datetime',
+             // min: new Date('01 Mar 2012').getTime(),
+            //  tickAmount: 12,
+            
+            yaxis: [
+              {
+                seriesName: 'PrivateBytes',
+                min: 0,
+                max: 5,
+                axisTicks: {
+                  show: true,
+                  
+                },
+                axisBorder: {
+                  show: true,
+                  color: '#008FFB'
+                },
+               
+      
+                labels: {
+                    minWidth: 40,
+                    formatter: function(val, index) {
+                        return val.toFixed(2);
+                        },
+                    style: {
+                        colors: '#008FFB',
+                        }
+                },
+                title: {
+                  text: "Memory in GB",
+                  style: {
+                    color: '#008FFB',
+                  }
+                },
+                tooltip: {
+                  enabled: true,
+                   colors: [
+              "#008FFB", "#E3A300", "#00E396","#bcbcbc"// "#F44336"
+            ],
+                }
+              },
+               {
+                   show:false,
+                seriesName: 'VirtualBytes',
+               // opposite: true,
+                axisTicks: {
+                  show: false,
+                },
+                axisBorder: {
+                  show: false,
+                  color: '#E3A300'
+                },
+                labels: {
+                  show: false,
+                  style: {
+                    colors: '#E3A300',
+                  }
+                },
+                /*title: {
+                  text: "Memory in GB",
+                  style: {
+                    color: '#E3A300',
+                  }}*/
+                },
+              {
+                seriesName: 'CPU',
+                opposite: true,
+                axisTicks: {
+                  show: true,
+                },
+                axisBorder: {
+                  show: true,
+                  color: '#00E396'
+                },
+                labels: {
+                    formatter: function(val, index) {
+                        return val.toFixed(2);
+                        },
+                  style: {
+                    colors: '#00E396',
+                  }
+                },
+                title: {
+                  text: "Total CPU usage %",
+                  style: {
+                    color: '#00E396',
+                  }
+                },
+              },
+              
+                 {
+                seriesName: 'TreadCount',
+                min: 0,
+                opposite: true,
+                axisTicks: {
+                  show: true,
+                },
+                axisBorder: {
+                  show: true,
+                  color: '#bcbcbc'
+                },
+                labels: {
+                    formatter: function(val, index) {
+                        return val.toFixed(1);
+                        },
+                  style: {
+                    colors: '#bcbcbc',
+                  }
+                },
+                title: {
+                  text: "TreadCount",
+                  style: {
+                    color: '#bcbcbc',
+                  }
+                },
+              }
+              
+            ],
+           tooltip: {
+               shared: true,
+               followCursor: false,
+              
+            //  x: {
+            //        
+            //        show:true
+            //        },
+             /*  y: {
+                    formatter: function(value, { series, seriesIndex, dataPointIndex, w }) {
+                      
+                        if(seriesIndex==3)
+                        {
+                            var jobs = w.globals.initialSeries[seriesIndex].data[dataPointIndex].history;
+                            console.log (jobs);
+                            var jobList = '';
+                            jobs.forEach((element, index, array) => {
+                              jobList += '<ul display:inline>' 
+                                      + '<li>' + element.job + '</li>'
+                                      + '<li>' + element.start + '</li>'
+                                      + '<li>' + element.finish + '</li>'
+                                      +'</ul>';
+                            });
+
+                            
+                            return value + jobList;
+                        }
+                        
+                     return value;
+                    }
+             }*/
+            
+               custom: function({series, seriesIndex, dataPointIndex, w}) {
+
+                       
+                        var serieData = w.globals.initialSeries[seriesIndex].data[dataPointIndex];
+                        var serieName = w.globals.seriesNames[seriesIndex];
+
+                        var tooltip = '<table>';
+                        tooltip += `<tr><td><b>Time : </b></td><td>${window.vm.formatDateToDisplay(serieData.x)}</td></tr>`;
+                        tooltip += `<tr><td><b>${serieName} : </b></td><td>${serieData.y}</td></tr>`;
+                        tooltip += `<tr><td></td><td></td></tr>`;
+                  
+                        tooltip += serieData.history.map(i => `<tr><td><b>${i.job} : </b></td> <td>${window.vm.formatDateToDisplay(i.start)} - ${window.vm.formatDateToDisplay(i.finish)}</td></tr>`)
+                        tooltip += '</table>';
+                        
+                        return tooltip;
+
+                    
+
+               /*var data = w.globals.initialSeries[seriesIndex].data[dataPointIndex];
+      
+                    return '<ul>' +
+                    '<li><b>Date</b>: ' + data.x + '</li>' +
+                    '<li><b>Private bytes</b>: ' + data.y + '</li>' +
+                    data.history.map(i => `<li>${i.job + i.start  + i.finish}</li>`).join('  ')
+                    //'<li><b>JobName</b>: \'' + data.history[0].job + '\'</li>' +
+                    //'<li><b>Startdate</b>: \'' + data.history[0].start + '\'</li>' +
+                    //'<li><b>Enddate</b>: \'' + data.history[0].finish + '\'</li>'  +
+                    '</ul>';
+                }*/
+           }}
+
+          }, //ChartOptions
+          chartOptionsDB: {
+            chart: {
+                
+                 id: 'SqlServerPerformance',
+                 //  group: 'health',
+            
+              zoom: {
+                enabled: true
+              },
+            /*  events: {
+                    scrolled: function(chartContext, { xaxis }) {
+                   
+                }},*/
+              
+             toolbar: {
+                 show: false
+                
+                }
+            },
+            animations: {
+              enabled: false
+            },
+              
+            dataLabels: {
+              enabled: false
+            },
+            markers:{
+                size:0
+            },
+            fill: {
+              opacity: [1,1, 0.5,0.1],
+              gradient: {
+                inverseColors: false,
+                shade: 'light',
+                type: "vertical",
+                opacityFrom: 0.85,
+                opacityTo: 0.55,
+                stops: [0, 100, 100, 100]
+              }},
+            stroke: {
+              curve: 'smooth',
+             width: [2],
+            },
+           
+          /*  title: {
+              text: 'SQL Server CPU',
+              align: 'left'
+            },*/
+          /*   legend: {
+              showForSingleSeries:true,
+              position: 'top',
+              horizontalAlign: 'left'
+            },*/
+             colors: [
+              "#00E396"
+            ],
+             xaxis: {
+               //  max:1000,
+                 type:'datetime',
+                tickAmount:60,
+               labels: {
+                   
+                    formatter: function (value) {
+                    
+                     return  window.vm.formatDateToDisplay(value);
+                     //return    window.DateTime.fromISO(value).setLocale('de').toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
+                     //return value;
+                    }
+                }
+            },
+            yaxis: [
+             {
+                seriesName: 'DatabaseCPU',
+                min: 0,
+                max: 100,
+                axisTicks: {
+                  show: true,
+                },
+                axisBorder: {
+                  show: true,
+                  color: '#00E396'
+                 
+                },
+              
+      
+                labels: {
+                    minWidth: 40,
+                    formatter: function(val, index) {
+                        return val.toFixed(2);
+                        },
+                    style: {
+                        colors: '#00E396',
+                        }
+                },
+                title: {
+                  text: "SQLServer Cpu",
+                  style: {
+                    color: '#00E396',
+                  }
+                },
+                tooltip: {
+                  enabled: true
+                }
+              },
+              {
+                seriesName: 'Just for Margin',
+                opposite: true,
+                axisTicks: {
+                  show: false,
+                },
+                axisBorder: {
+                  show: false,
+                  color: '#ffffff'
+                },
+                labels: {
+                     minWidth: 120,
+                   
+                  style: {
+                    colors: '#ffffff',
+                  }
+                },
+                title: {
+                  text: "Just for Margin",
+                  style: {
+                    color: '#ffffff',
+                  }
+                },
+              }
+                 
+              
+            ],
+                      
+
+          } ,//ChartOptionsDB
+          
+      },
+
+      computed: {
+      },
+
+      methods: {
+           
+          formatDateToDisplay:function(value)
+          {
+             var newDate = new Date(value);
+             var nowMilliseconds =  newDate.getMilliseconds();
+        
+             newDate = newDate.toLocaleString('de-DE', {
+                timeZone: 'Europe/Berlin',
+                hourCycle: 'h23',
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit"
+             })+ "." + nowMilliseconds ;
+            
+            
+             return newDate;
+          },
+          formatDateHourToDisplay:function(value)
+          {
+             var newDate = new Date(value);
+             newDate = newDate.toLocaleString('de-DE', {
+                timeZone: 'Europe/Berlin',
+                hourCycle: 'h23',
+                hour: "2-digit",
+               
+             });
+            
+            
+             return newDate;
+          },
+            refreshDaily:function(){
+
+                if(this.dailyRefreshActive == true)
+                return;
+                          
+                var startDate;
+                if (this.lastDaily != null)
+                {  
+                       startDate = this.lastDaily;
+                          
+                }
+                 else
+                {
+                  
+                  
+                   var newDate = new Date(this.chartStartDate);//.toISOString().substr(0, 10);
+                   newDate.setHours(0,0,0,0);
+                   startDate = newDate.toISOString(); 
+                 
+                   
+                    
+                }
+                this.getDailyPerformanceData(startDate);
+               
+          },
+             refreshDailyJobHistory:function(){
+
+                if(this.dailyJobHistoryRefreshActive == true)
+                return;
+
+                var startDate;
+                if (this.lastJobHistory != null)
+                {  
+                       startDate = this.lastJobHistory;
+                }
+                 else
+                {
+                  
+                  
+                   var newDate = new Date(this.chartStartDate);//.toISOString().substr(0, 10);
+                   newDate.setHours(0,0,0,0);
+                   startDate = newDate.toISOString(); 
+                   
+                }
+                this.getDailyJobHistory(startDate);
+          },
+          refreshDailyExceptions:function(){
+
+                
+                var startDate;
+                if (this.lastAnnotation != null)
+                {  
+                       startDate = this.lastAnnotation;
+                }
+                 else
+                {
+                  
+                  
+                   var newDate = new Date(this.chartStartDate);//.toISOString().substr(0, 10);
+                   newDate.setHours(0,0,0,0);
+                   startDate = newDate.toISOString(); 
+                }
+                this.getDailyCMesServerExceptions(startDate);
+          },
+          refreshDailyDB:function(){
+           
+               
+                var startDate;
+                if (this.lastDailyDB != null)
+                {  
+                       startDate = this.lastDailyDB;
+                          
+                }
+                 else
+                {
+                   
+                   var newDate = new Date(this.chartStartDate);//.toISOString().substr(0, 10);
+                   newDate.setHours(0,0,0,0);
+                   startDate = newDate.toISOString(); 
+                  
+                   
+                    
+                }
+
+
+                 
+               
+                 this.getDailyDBPerformanceData(startDate);
+                  
+                    
+          },
+          refreshChart:function(){
+            
+          
+               var startDate;
+               var strDateDaily;
+               var strDateDB;
+              
+                if (this.chartStartDate == null)
+                {
+                      
+                   var now = new Date();
+                    
+                    now.setMinutes(now.getMinutes() - this.refreshMinutes);
+                    startDate = now.toISOString();
+                    this.header =  `Cmes Health ${ window.DateTime.fromISO(startDate).setLocale('de').toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)}`;
+                 
+                    this.lastSqlServer = startDate; 
+                    this.chartStartDate = startDate;
+                    startDateDB = startDate;
+                    strDateDaily = startDate;
+                   //  strDateDaily = new Date(startDate).toISOString().substr(0, 10);
+                   //  this.getDailyPerformanceData(strDateDaily);
+                    
+                }
+                else{
+                      
+                  var lastData = this.series[0].data;
+                    strDateDaily =  lastData[this.series[0].data.length - 1].x;                 
+                 
+                    startDate = new Date(strDateDaily);
+                      startDate.setMinutes(startDate.getMinutes() - this.refreshMinutes);
+                       startDate = startDate.toISOString();
+                         
+
+                          var lastDataDB = this.seriesDB[0].data;
+                    strDateDaily =  lastDataDB[this.seriesDB[0].data.length - 1].x;                 
+                 
+                    startDateDB = new Date(strDateDaily);
+                      startDateDB.setMinutes(startDateDB.getMinutes() - this.refreshMinutes);
+                       startDateDB = startDateDB.toISOString();
+                          
+                   
+                }
+                
+
+                this.getPerformanceData(startDate);
+            
+                this.getSqlServerPerformanceData(startDateDB);
+               
+          },
+           cancelRefreshChart () {
+               console.log("im cancelRefreshChart : " + this.timerChart)
+                clearInterval(this.timerChart);
+                this.timerChart=null;
+                clearInterval(this.timerChartDaily);
+                this.timerChartDaily=null;
+                 clearInterval(this.timerChartDailyJobHistory);
+                this.timerChartDailyJobHistory=null;
+                clearInterval(this.timerChartDailyDB);
+                this.timerChartDailyDB=null;
+                  clearInterval(this.timerChartDailyExceptions);
+                this.timerChartDailyExceptions=null;
+            
+            },
+      
+          getDailyPerformanceData:function(strDate){
+
+
+              this.dailyRefreshActive = true;
+               console.log("getDailyPerformanceData :" + strDate);
+                            
+
+                            let w3wpData= {"mongoScript": [
+                                `{ $match: { DateTime:{$gt: ISODate('${strDate}')}}}`,
+                                "{ $sort: { DateTime: 1 }}",
+                                "{ $project: { _id:0 }}",
+                                "{ $limit : 7200 }"     
+                              
+                            ],
+                            "databaseName": "CMES",
+                            "collectionName": "PerfmonOneSecond"};
+
+                            axios.post('http://localhost:27725/mongoDb', JSON.stringify(w3wpData),
+                   //   axios.post('http://srv010wpapp1:8081/mongoDb', JSON.stringify(w3wpData),
+                            
+                                {headers: {'content-type': 'application/json'}})
+                                .then(response => {
+                                    var responseLength = response.data.length;
+                                    if (responseLength > 0)
+                                    {
+                                        console.log(response.data);
+                                        this.lastDaily =  response.data[responseLength - 1].dateTime
+                                       
+
+                                             response.data.map((resp) => 
+                                        {
+                                            this.xDailySerie.push(resp.dateTime);
+                                            this.yDailySerieMemory.push(resp.extraElements.cMesMemory/1000000000);
+                                            this.yDailySerieVirtualMemory.push(resp.extraElements.cMesVirtualMemory/1000000000);
+                                            this.yDailySerieCpu.push(resp.extraElements.cMesCpu);
+                                            this.yDailySerieThreadCount.push(resp.extraElements.cMesThreadCount);
+
+                                            
+                                           
+                                        });
+
+                                   
+                                        if(this.timerChartDaily == null)
+                                        {
+                                              this.timerChartDaily = setInterval(this.refreshDaily, 1500);
+                                        }
+                                        if(this.timerChartDailyExceptions == null)
+                                        {
+                                            this.timerChartDailyExceptions =  setInterval(this.refreshDailyExceptions, 2000);
+                                        }
+                                       
+                                       
+                                    // this.yDailySerie.push(response.data.map(x => x.extraElements.cMesMemory/1000000000));
+                                        //console.log(this.xDailySerie);
+                                        //console.log(this.yDailySerie);
+                                    this.chartOptionsDaily = {
+                                        xAxis: {
+                                                data: this.xDailySerie
+                                                },
+                                        series: [
+                                        {
+                                            name: 'PrivateBytes',
+                                            data: this.yDailySerieMemory
+                                        },
+                                        {
+                                            name: 'VirtualBytes',
+                                            data: this.yDailySerieVirtualMemory
+                                        },
+                                        {
+                                            name: 'Cpu',
+                                            data: this.yDailySerieCpu
+                                        },
+                                        {
+                                            name: 'ThreadCount',
+                                            data: this.yDailySerieThreadCount
+                                        }
+                                        ]
+                                        };
+
+                        // this.refreshDailyExceptions();
+                            // this.chartOptionsDaily.series[0].markLine = {data:this.dailyCmesWebExceptions};              
+  
+ /*this.dailyCmesWebExceptions.push(
+                                          [ {  xAxis: '2022-04-26T06:07:10.933Z',yAxis: '0', symbol:'none'},
+            {   xAxis: '2022-04-26T06:07:10.933Z',yAxis: '5'}]
+             ,[{  xAxis: '2022-04-26T02:51:33.819Z',yAxis: '0', symbol:'none'},
+            {   xAxis: '2022-04-26T02:51:33.819Z',yAxis: '5'}]
+            ); //push   */
+
+ this.chartOptionsDaily.series[0].markLine = {data:this.dailyCmesWebExceptions};              
+  
+             /*   this.chartOptionsDaily.series[0].markLine ={data:
+     [
+          [{  xAxis: '2022-04-26T06:07:10.933Z',yAxis: '0', symbol:'none'},
+            {   xAxis: '2022-04-26T06:07:10.933Z',yAxis: '5'}]
+           ,[{  xAxis: '2022-04-26T02:51:33.819Z',yAxis: '0', symbol:'none'},
+            {   xAxis: '2022-04-26T02:51:33.819Z',yAxis: '5'}]
+            //2022-04-14T12:57:57.6Z
+     ]
+                };      */
+                                    
+                                
+                            
+                                    }
+                                    this.dailyRefreshActive = false;
+                        
+                                });    
+                    
+  
+          },
+            getDailyJobHistory:function(strDate){
+              
+               console.log("getDailyJobHistory :" + strDate);
+                  this.dailyJobHistoryRefreshActive = true;          
+
+                let jobHistory= {"mongoScript":[
+                    `{ $match: { StartDate:{$gt: ISODate('${strDate}')}}}`,
+                       "{ $sort: { StartDate: 1 }}",
+                                            "{ $project: { _id:0 , JobName:1, StartDate:1,FinishDate:1}}",
+                                            "{ $limit : 5000 }"
+                                            ],
+                                            "databaseName": "CMES",
+                                            "collectionName": "JobHistory"};
+
+                                            axios.post('http://localhost:27725/mongoDb', JSON.stringify(jobHistory),
+                                           //  axios.post('http://srv010wpapp1:8081/mongoDb', JSON.stringify(jobHistory),
+                     
+                                            {headers: {'content-type': 'application/json'}})
+                                            .then(responseJobHistory => {
+                                                var responseLength = responseJobHistory.data.length;
+                                                if (responseLength > 0)  
+                                                {
+                             
+                                                this.lastJobHistory =  responseJobHistory.data[responseLength - 1].extraElements.StartDate;
+                         
+                                                responseJobHistory.data.map((x) => 
+                                                {
+                                                        this.yDailyJobHistory.push(
+                                                            [x.extraElements.JobName
+                                                            ,x.extraElements.StartDate
+                                                            ,x.extraElements.FinishDate]);
+                                                                                     
+                                           
+                                                });
+                                                }
+                                                 if(this.timerChartDailyJobHistory == null)
+                                        {
+                                              this.timerChartDailyJobHistory = setInterval(this.refreshDailyJobHistory, 2500);
+                                        }
+                                                        
+                                    this.dailyJobHistoryRefreshActive = false;
+                                            });
+                      
+                                       
+                                       
+                                  
+          },
+          getDailyCMesServerExceptions:function(strDate){
+               console.log("getDailyCMesServerExceptions :" + strDate);
+           
+                if (strDate>= this.lastDaily)  
+                    return;        
+             
+             // window.DateTime.fromISO(value).setLocale('de').toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
+            //if this.lastAnnotation 
+             
+               let dbExceptions= {"mongoScript": [
+                        `{ $match: { Date:{$gt: ISODate('${strDate}'),$lte: ISODate('${this.lastDaily}')}}}`,
+                        "{ $sort: { Date: 1 }}",
+                        "{ $project: { _id:0,Date:1,Instance:1}}",
+                        "{ $limit : 3600 }"                     
+
+                    ],
+                    "databaseName": "CMES",
+                    "collectionName": "CMesServerExceptions"};
+                   axios.post('http://localhost:27725/mongoDb', JSON.stringify(dbExceptions),
+                 //   axios.post('http://srv010wpapp1:8081/mongoDb', JSON.stringify(dbExceptions),
+                     
+                        {headers: {'content-type': 'application/json'}})
+                        .then(response => {
+
+                        var responseLength = response.data.length;
+                            
+                            
+                        if (responseLength > 0)  
+                        {
+                              
+                              this.lastAnnotation =  response.data[responseLength - 1].extraElements.Date;
+                              response.data.map((x) => 
+                                {
+                                    var newDate = this.xDailySerie.find((f) => {return f >= x.extraElements.Date});
+                                              this.dailyCmesWebExceptions.push(
+                                          [ {  xAxis: newDate,yAxis: '0', symbol:'none'},
+                                            {   xAxis: newDate,yAxis: '5',symbol:'none'}]); //push        
+                                   this.dailyCmesWebExceptionsInstance.push([{date:newDate,instance:x.extraElements.Instance}]);
+                                });
+                             console.log("DAILY EXCEPTIONS :" + this.dailyCmesWebExceptionsInstance);
+
+                       // this.chartOptionsDaily.series[0].markLine = {data:this.dailyCmesWebExceptions};     
+//console.log("MARKLINE : " + this.chartOptionsDaily.series[0].markLine);   
+  
+                            
+
+
+                          
+                        }
+
+                       
+
+                      
+
+
+               
+                               
+           /*            var test = this.$refs.chart.series[0].data.filter((f) => (f.x >  strDate))
+                                                     .map((j)=> {return j.x});
+
+                       
+                    
+                        var allException = datas.map((e) => {
+                                return {
+                                   label: {
+                                     borderColor: '#ff0000',
+                                    style: {
+                                        color: '#fff0000',
+                                        background: '#ff0000',
+                                        },
+                                    text: e.extraElements.Instance.split('_')[0]
+                                    },
+                                    borderColor: '#ff0000',
+                                   // strokeDashArray: 0, 
+                                    x: new Date(test.find((f) => {return f >= e.extraElements.Date})).getTime()
+                                    
+                            }});
+                             
+                       */
+
+
+             
+                    });
+                                          
+                         
+                                       
+                                
+                      
+     
+          },
+ getDailyDBPerformanceData:function(strDate){
+              
+               console.log("getDailyDBPerformanceData :" + strDate);
+                 let dbPerformance= {"mongoScript": [
+                        `{ $match: { EventTime:{$gte: ISODate('${strDate}')}}}`,
+                        "{ $sort: { EventTime: 1 }}",
+                        "{ $project: { _id:0 }}",
+                        "{ $limit : 7200 }"                     
+
+                    ],
+                    "databaseName": "CMES",
+                    "collectionName": "DatabasePerformance"};
+                   
+                                                  
+                            axios.post('http://localhost:27725/mongoDb', JSON.stringify(dbPerformance),
+                             //  axios.post('http://srv010wpapp1:8081/mongoDb', JSON.stringify(dbPerformance),
+                            
+                                {headers: {'content-type': 'application/json'}})
+                                .then(response => {
+                                    var responseLength = response.data.length;
+                                    if (responseLength > 0)
+                                    {
+                                        this.lastDailyDB =  response.data[responseLength - 1].dateTime
+                                      
+                                        response.data.map((x) => 
+                                        {
+                                            this.xDailyDBSerie.push(x.extraElements.EventTime);
+                                            this.yDailyDBSerie.push(x.extraElements.SqlServerCpu);
+                                           
+                                           
+                                        });
+                                        
+                                       
+                                    this.chartOptionsDailyDB = {
+                                        xAxis: {
+                                                data: this.xDailyDBSerie
+                                                },
+                                        series: [
+                                        {
+                                            name: 'CpuDB',
+                                            data: this.yDailyDBSerie
+                                        },
+                                      
+                                        ]
+                                        };
+
+                                        if(this.timerChartDailyDB == null)
+                                        {
+                                              this.timerChartDailyDB = setInterval(this.refreshDailyDB, 500);
+                                        }
+                                
+                            
+                                    }
+                        
+                                });    
+                      
+  
+          },
+         
+
+          getSqlServerPerformanceData:function(startDate){
+              
+            /*  var strDate =  new Date(startDate);
+              strDate.setMinutes(strDate.getMinutes() - this.refreshMinutes);
+              strDate = strDate.toISOString();
+              if (strDate < this.lastSqlServer)
+              { 
+                strDate = this.lastSqlServer;
+              }*/
+               console.log("getSqlServerPerformanceData :" + startDate);
+                let dbPerformance= {"mongoScript": [
+                        `{ $match: { EventTime:{$gte: ISODate('${startDate}')}}}`,
+                        "{ $sort: { EventTime: 1 }}",
+                        "{ $project: { _id:0 }}",
+                      //  "{ $limit : 600 }"                     
+
+                    ],
+                    "databaseName": "CMES",
+                    "collectionName": "DatabasePerformance"};
+                    axios.post('http://localhost:27725/mongoDb', JSON.stringify(dbPerformance),
+                     //  axios.post('http://srv010wpapp1:8081/mongoDb', JSON.stringify(dbPerformance),
+                     
+                        {headers: {'content-type': 'application/json'}})
+                        .then(response => {
+                      
+                           
+                           //console.log(JobHistoryItems);
+                          // var options = { timeZone: 'UTC' };    
+                          // new Date(opts.y1).toLocaleTimeString('de-DE', options)
+                        var allSeries = response.data.map((e) => {
+                                return {
+                                x: e.extraElements.EventTime,
+                                y: e.extraElements.SqlServerCpu
+                                    
+                            }});
+
+                            if(allSeries.length > 0)
+                            {
+                                  this.lastSqlServer =  allSeries[allSeries.length - 1].x;
+                            }
+                  //   console.log(allSeries);
+                      //   this.seriesDB = [
+                       //                 {data:allSeries.map((e) => {return {x: e.x,y: e.y}})}
+                        //             ];
+                                // console.log(this.series);
+                          
+  this.seriesDB = [
+                    //this.$refs.chartDB.appendData([
+                                        {data:allSeries.map((e) => {return {x: e.x,y: e.y}})}
+                                     ];
+
+                        }  ); // end Response Private Bytes
+
+                        
+  
+          },
+          getCMesServerExceptions:function(startDate){
+                return;
+              var strDate =  new Date(startDate);
+              strDate.setMinutes(strDate.getMinutes() - this.refreshMinutes);
+              strDate = strDate.toISOString();
+              if (strDate < this.lastAnnotation)
+              { 
+                strDate = this.lastAnnotation;
+              }
+             // window.DateTime.fromISO(value).setLocale('de').toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
+            //if this.lastAnnotation 
+              console.log("getCMesServerExceptions :" + strDate);
+               let dbPerformance= {"mongoScript": [
+                        `{ $match: { Date:{$gte: ISODate('${strDate}')}}}`,
+                        "{ $sort: { Date: 1 }}",
+                        "{ $project: { _id:0 }}",
+                      //  "{ $limit : 600 }"                     
+
+                    ],
+                    "databaseName": "CMES",
+                    "collectionName": "CMesServerExceptions"};
+                    axios.post('http://localhost:27725/mongoDb', JSON.stringify(dbPerformance),
+                 //      axios.post('http://srv010wpapp1:8081/mongoDb', JSON.stringify(dbPerformance),
+                     
+                        {headers: {'content-type': 'application/json'}})
+                        .then(response => {
+                        var datas = response.data;
+                                                       
+                        if (datas.length>0)  
+                        {
+                              this.lastAnnotation = datas[datas.length - 1].extraElements.Date;
+                              
+                        }
+                               
+                       var test = this.$refs.chart.series[0].data.filter((f) => (f.x >  strDate))
+                                                     .map((j)=> {return j.x});
+
+                       
+                    
+                        var allException = datas.map((e) => {
+                                return {
+                                   label: {
+                                     borderColor: '#ff0000',
+                                    style: {
+                                        color: '#fff0000',
+                                        background: '#ff0000',
+                                        },
+                                    text: e.extraElements.Instance.split('_')[0]
+                                    },
+                                    borderColor: '#ff0000',
+                                   // strokeDashArray: 0, 
+                                    x: new Date(test.find((f) => {return f >= e.extraElements.Date})).getTime()
+                                    
+                            }});
+                             
+                        if (allException.length > 0)
+                         allException.forEach((element, index, array) => {
+                          
+                             this.$refs.chart.addXaxisAnnotation(element);
+                            
+                         });
+                      
+                 
+
+                         });
+
+                         
+                                       
+                                
+                      
+     
+//map.forEach(function(value, key)
+                     /*   let i=0;
+                        for (const [key, value] of response.data.entries()) {
+                            i++;
+                                console.log( value.extraElements.Date);  
+                                if (i <11)
+                                {
+                                    console.log( "vor")
+                             this.$refs.chart.addXaxisAnnotation({
+                                x: value.extraElements.Date,
+                                borderColor: '#ff0000',
+                                strokeDashArray: 0                                    
+                            });
+                                }
+                          }*/
+                        
+
+                  
+                    /*    var exceptions =  response.data.map((e) => {
+                             return{
+                              x: e.extraElements.Date,
+                                borderColor: '#ff0000',
+                                strokeDashArray: 0                                  
+                            }});
+                            console.log(exceptions);*/
+                            
+                           //  response.data.forEach((element, index, array) => {
+                                // console.log(element);
+                               
+                             /*   this.$refs.chart.addXaxisAnnotation({
+                                   x: element.extraElements.Date,
+                                   borderColor: '#ff0000',
+                                  strokeDashArray: 0
+                                });*/
+                            
+
+                        /*     this.$refs.chart.addXaxisAnnotation({
+                            x: '2022-03-23T11:50:00.873Z',
+                             borderColor: '#ff0000',
+                          strokeDashArray: 0
+                     });*/
+                   
+                  //this.$refs.chart.addXaxisAnnotation(allExceptions[10]);
+
+                       // });
+
+          },
+          getPerformanceData: function(strDate) {
+          
+         
+                 console.log("getPerformanceData :" + strDate);
+                let JobHistoryItems = [];
+                let jobHistory= {"mongoScript":[
+                        `{ $match: { StartDate:{$gte: ISODate('${strDate}')}}}`,
+                        "{ $sort: { StartDate: 1 }}",
+                        "{ $project: { _id:0 , JobName:1, StartDate:1,FinishDate:1}}"
+                       // "{ $limit : 6000 }"
+                    ],
+                    "databaseName": "CMES",
+                    "collectionName": "JobHistory"};
+
+                    axios.post('http://localhost:27725/mongoDb', JSON.stringify(jobHistory),
+                   //    axios.post('http://srv010wpapp1:8081/mongoDb', JSON.stringify(jobHistory),
+                     
+                        {headers: {'content-type': 'application/json'}})
+                        .then(response => {
+                      
+                          JobHistoryItems = response.data;
+                     //     var testFred = JobHistoryItems.filter((f) =>  (f.extraElements.FinishDate == null));
+                                      
+                        //console.log(testFred);
+
+                /////////////////////////////////////////
+
+                let w3wpData= {"mongoScript": [
+                        `{ $match: { DateTime:{$gt: ISODate('${strDate}')}}}`,
+                        "{ $sort: { DateTime: 1 }}",
+                        "{ $project: { _id:0 }}",
+                    //    "{ $limit : 6000 }"                     
+
+                    ],
+                    "databaseName": "CMES",
+                    "collectionName": "PerfmonOneSecond"};
+
+                    axios.post('http://localhost:27725/mongoDb', JSON.stringify(w3wpData),
+                   //    axios.post('http://srv010wpapp1:8081/mongoDb', JSON.stringify(w3wpData),
+                     
+                        {headers: {'content-type': 'application/json'}})
+                        .then(response => {
+                      
+                           
+                           //console.log(JobHistoryItems);
+                          // var options = { timeZone: 'UTC' };    
+                          // new Date(opts.y1).toLocaleTimeString('de-DE', options)
+                        var allSeries = response.data.map((e) => {
+                                return {
+                                x: e.dateTime,
+                                y1: e.extraElements.cMesMemory/1000000000,
+                                y2: e.extraElements.cMesVirtualMemory/1000000000,
+                                y3: e.extraElements.cMesCpu,
+                                y4: e.extraElements.cMesThreadCount,
+                                history: JobHistoryItems.filter((f) =>  ((f.extraElements.StartDate <= e.dateTime && f.extraElements.FinishDate == null) 
+                                                                || (f.extraElements.StartDate <= e.dateTime && f.extraElements.FinishDate != null && f.extraElements.FinishDate >= e.dateTime)))
+                                                                .map((j)=> {return {job:j.extraElements.JobName,start:j.extraElements.StartDate,finish:j.extraElements.FinishDate}})
+                                    
+                            }});
+                     
+                     this.$refs.chart.clearAnnotations();
+                     this.$refs.chart.resetSeries();
+                 //    this.lastAnnotation= strDate;
+                      //   this.series = [
+                           // this.$refs.chart.appendData([
+                              this.series = [
+                                        {data:allSeries.map((e) => {return {x:e.x,y: e.y1,history: e.history}})},
+                                        {data:allSeries.map((e) => {return {x:e.x,y: e.y2,history: e.history}})},
+                                        {data:allSeries.map((e) => {return {x:e.x,y: e.y3,history: e.history}})},
+                                        {data:allSeries.map((e) => {return {x:e.x,y: e.y4,history: e.history}})}
+                                     ];
+                               //  console.log(this.series);
+                                    
+
+                    
+                     
+                        this.getCMesServerExceptions(strDate); 
+                    
+                    
+                                 
+                            });
+                     
+                            }); 
+            }
+
+      }   
+   
+    });
+  </script>
+  
+</body>
+</html>

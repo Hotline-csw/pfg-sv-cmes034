@@ -1,0 +1,440 @@
+openapi: 3.0.1
+info:
+  title: production-api
+  description: REST API to get information about production orders and related entities from UPOS.
+  version: 1.0.0
+  contact:
+    email: clemens.liebich@haba.de
+  #x-usage: Client
+servers:
+  - url: http://api.hff.de/production/v1
+security:
+  - ApiKeyAuth: []
+paths:
+  /production-orders/{code}:
+    get:
+      tags:
+        - production-order
+      summary: Retrieve a specific production order by its code
+      parameters:
+        - name: code
+          in: path
+          description: Unique identifier for one specific production order. This must consist of the companyId followed by an underscore and the productionOrderId, e.g. "001_12345"
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/production-order'
+        400:
+          description: Bad request, occurs when a parameter is not in the right format
+        404:
+          description: Not found, occurs when no entities with the given parameters exist
+  /single-json/production-orders/{code}:
+    get:
+      tags:
+        - production-order
+      summary: Retrieve a specific production order and all its related entities by its code
+      parameters:
+        - name: code
+          in: path
+          description: Unique identifier for one specific production order. This must consist of the companyId followed by an underscore and the productionOrderId, e.g. "001_12345"
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/production-order-single-json'
+        400:
+          description: Bad request, occurs when a parameter is not in the right format
+        404:
+          description: Not found, occurs when no entities with the given parameters exist
+  /production-orders/{code}/production-order-resources:
+    get:
+      tags:
+        - production-order-resource
+      summary: Retrieve all production order resources related to the given production order
+      parameters:
+        - name: code
+          in: path
+          description: Unique identifier for one specific production order. This must consist of the companyId followed by an underscore and the productionOrderId, e.g. "001_12345"
+          required: true
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: Maximal number of elements that will be retrieved. Use in combination with "offset" for pagination
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Index of element that the list will start with. Use in combination with "size" for pagination
+          required: false
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/production-order-resource'
+        400:
+          description: Bad request, occurs when a parameter is not in the right format
+        404:
+          description: Not found, occurs when no entities with the given parameters exist
+  /production-orders/{code}/work-steps:
+    get:
+      tags:
+        - work-step
+      summary: Retrieve all work steps related to the given production order
+      parameters:
+        - name: code
+          in: path
+          description: Unique identifier for one specific production order. This must consist of the companyId followed by an underscore and the productionOrderId, e.g. "001_12345"
+          required: true
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: Maximal number of elements that will be retrieved. Use in combination with "offset" for pagination
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Index of element that the list will start with. Use in combination with "size" for pagination
+          required: false
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/work-step'
+        400:
+          description: Bad request, occurs when a parameter is not in the right format
+        404:
+          description: Not found, occurs when no entities with the given parameters exist
+  /production-orders/{code}/work-step-details:
+    get:
+      tags:
+        - work-step-detail
+      summary: Retrieve all work step details related to the given production order
+      parameters:
+        - name: code
+          in: path
+          description: Unique identifier for one specific production order. This must consist of the companyId followed by an underscore and the productionOrderId, e.g. "001_12345"
+          required: true
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: Maximal number of elements that will be retrieved. Use in combination with "offset" for pagination
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Index of element that the list will start with. Use in combination with "size" for pagination
+          required: false
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/work-step-detail'
+        400:
+          description: Bad request, occurs when a parameter is not in the right format
+        404:
+          description: Not found, occurs when no entities with the given parameters exist
+  /production-orders/{code}/attribute-expressions:
+    get:
+      tags:
+        - attribute-expression
+      summary: Retrieve all attribute expressions related to the given production order
+      parameters:
+        - name: code
+          in: path
+          description: Unique identifier for one specific production order. This must consist of the companyId followed by an underscore and the productionOrderId, e.g. "001_12345"
+          required: true
+          schema:
+            type: string
+        - name: size
+          in: query
+          description: Maximal number of elements that will be retrieved. Use in combination with "offset" for pagination
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Index of element that the list will start with. Use in combination with "size" for pagination
+          required: false
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/meta'
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/attribute-expression'
+        400:
+          description: Bad request, occurs when a parameter is not in the right format
+        404:
+          description: Not found, occurs when no entities with the given parameters exist
+  /production-orders/{code}/work-order:
+    get:
+      tags:
+        - work-order
+      summary: Retrieve the work order related to the given production order
+      parameters:
+        - name: code
+          in: path
+          description: Unique identifier for one specific production order. This must consist of the companyId followed by an underscore and the productionOrderId, e.g. "001_12345"
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/work-order'
+        400:
+          description: Bad request, occurs when a parameter is not in the right format
+        404:
+          description: Not found, occurs when no entities with the given parameters exist
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+  schemas:
+    meta:
+      type: object
+      properties:
+        count:
+          type: integer
+    production-order:
+      type: object
+      properties:
+        client:
+          type: string
+        articleNumber:
+          type: string
+        variant:
+          type: integer
+        quantity:
+          type: number
+          format: double
+        planningGroup:
+          type: string
+        articleDescription1:
+          type: string
+        articleDescription2:
+          type: string
+        length:
+          type: number
+          format: double
+        width:
+          type: number
+          format: double
+        thickness:
+          type: number
+          format: double
+        productionRoute:
+          type: string
+        productionCategoryCode:
+          type: string
+        productionCategory:
+          type: string
+        customerOrderNumber:
+          type: string
+        position:
+          type: integer
+        tourNumber:
+          type: string
+        reference:
+          type: integer
+        customer:
+          type: string
+        customerName:
+          type: string
+        orderType:
+          type: string
+        addArticleDescription1:
+          type: string
+        addArticleDescription2:
+          type: string
+        addArticleDescription3:
+          type: string
+        orderDate:
+          type: string
+          format: date
+        trainStation:
+          type: string
+        customerOrderDate:
+          type: string
+        deliveryDate:
+          type: string
+          format: date
+        shippingDate:
+          type: string
+          format: date
+        customOrderFlag:
+          type: string
+        workOrder:
+          type: string
+    production-order-single-json:
+      allOf:
+        - $ref: '#/components/schemas/production-order'
+        - type: object
+          properties:
+            productionOrderResources:
+              type: array
+              items:
+                $ref: '#/components/schemas/production-order-resource'
+            attributeExpressions:
+              type: array
+              items:
+                $ref: '#/components/schemas/attribute-expression'
+            workSteps:
+              type: array
+              items:
+                $ref: '#/components/schemas/work-step'
+            workStepDetails:
+              type: array
+              items:
+                $ref: '#/components/schemas/work-step-detail'
+    production-order-resource:
+      type: object
+      properties:
+        bomPosition:
+          type: integer
+        articleNumber:
+          type: string
+        variant:
+          type: integer
+        drawingNumber:
+          type: string
+        length:
+          type: number
+          format: double
+        width:
+          type: number
+          format: double
+        thickness:
+          type: number
+          format: double
+        productCategoryCode:
+          type: string
+        productCategory:
+          type: string
+        articleDescription1:
+          type: string
+        articleDescription2:
+          type: string
+        quantity:
+          type: number
+          format: double
+    work-step:
+      type: object
+      properties:
+        workSequence:
+          type: integer
+        workStepCode:
+          type: string
+        workStepDescription1:
+          type: string
+        workStepDescription2:
+          type: string
+        workCenterCode:
+          type: string
+        desiredStartDate:
+          type: string
+          format: date
+        desiredEndDate:
+          type: string
+          format: date
+        workCenterGroup:
+          type: string
+        masterArea:
+          type: string
+        workCenterClass:
+          type: string
+        workCenterType:
+          type: string
+        workCenterDescription:
+          type: string
+    work-step-detail:
+      type: object
+      properties:
+        workStepCode:
+          type: string
+        description:
+          type: string
+        plannedProcessingTime:
+          type: string
+    attribute-expression:
+      type: object
+      properties:
+        attributeCode:
+          type: string
+        expressionCode:
+          type: string
+        attribute:
+          type: string
+        expression:
+          type: string
+    work-order:
+      type: object
+      properties:
+        productionOrderCode:
+          type: string
+        workOrder:
+          type: string

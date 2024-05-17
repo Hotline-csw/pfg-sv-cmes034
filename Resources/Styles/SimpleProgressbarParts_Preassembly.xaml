@@ -1,0 +1,79 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Resources = "clr-namespace:HomagGroup.FLS.Infrastructure.Framework.Themes.Resources"
+                    xmlns:hgc = "http://schemas.homag-group.com/ControlLibrary/1.0/xaml"
+                    xmlns:telerik = "http://schemas.telerik.com/2008/xaml/presentation"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:trans = "clr-namespace:HomagGroup.FLS.Domain.Data.Properties;assembly=HomagGroup.FLS.Domain.Data"
+                    xmlns:Commands = "clr-namespace:HomagGroup.FLS.Infrastructure.Framework.Commands;assembly=HomagGroup.FLS.Infrastructure.Framework"
+                    xmlns:Controls = "clr-namespace:HomagGroup.FLS.Infrastructure.Framework.Controls;assembly=HomagGroup.FLS.Infrastructure.Framework">
+  
+	<!-- Change 1: Style name = WorkCenter name -->
+    <Style x:Key="SimpleProgressbarParts_Preassembly" TargetType="telerik:GridViewCell"> 
+        <Style.Setters>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+							<!-- Change 2: Set name icon, add fields from the view -->
+							<StackPanel.Resources>
+								<PropertyPath x:Key="percentage">DataContext.PREASSPercentage</PropertyPath> <!-- Field with percentage info-->
+							</StackPanel.Resources>
+							
+							<!-- No more changes required -->
+								<Grid>
+								<ProgressBar x:Name="progressBar1"
+									Margin="6"
+									Width="150"
+									Height="30"
+									Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type telerik:GridViewCell}}, Path={StaticResource percentage}}" 
+									Minimum="0"
+									Maximum="100" 
+								>
+								<ProgressBar.Style>
+								<Style TargetType="{x:Type ProgressBar}">
+								<Setter Property="Foreground" Value="Yellow" />
+								<Setter Property="Background" Value="Gray" />
+								<Style.Triggers>
+									<DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type telerik:GridViewCell}}, Path={StaticResource percentage}, TargetNullValue=x}" Value="x">
+										<Setter Property="Visibility" Value="Hidden" />
+									</DataTrigger>
+													<DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type telerik:GridViewCell}}, Path={StaticResource percentage}, TargetNullValue=x}" Value="0">
+										<Setter Property="Foreground" Value="Red" />
+										<Setter Property="Background" Value="LightCoral" />
+									</DataTrigger>
+													<DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type telerik:GridViewCell}}, Path={StaticResource percentage}, TargetNullValue=x}" Value="100">
+										<Setter Property="Foreground" Value="LawnGreen" />
+										<Setter Property="Background" Value="Gray" />
+									</DataTrigger>
+									
+								</Style.Triggers>
+								</Style>
+								</ProgressBar.Style>
+								</ProgressBar>
+								
+								<TextBlock Text="{Binding ElementName=progressBar1, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="Black" >
+								<TextBlock.Style>
+								<Style TargetType="TextBlock">
+									<Style.Triggers>
+													<DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type telerik:GridViewCell}}, Path={StaticResource percentage}, TargetNullValue=x}" Value="x">
+										<Setter Property="Visibility" Value="Hidden" />
+										</DataTrigger>
+									</Style.Triggers>
+								</Style>
+								</TextBlock.Style>
+								</TextBlock>
+								</Grid>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+        <Style.Triggers>
+			
+        </Style.Triggers>
+    </Style>
+	
+	
+</ResourceDictionary>

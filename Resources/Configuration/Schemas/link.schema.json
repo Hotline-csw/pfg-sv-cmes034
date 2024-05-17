@@ -1,7 +1,0 @@
-{
-	"link": {
-		"type": "string",	
-		"choicesCMesUrl": "/assets/templates/configLink.json",
-		"choicesVerb": "GET"		 
-	}
-}

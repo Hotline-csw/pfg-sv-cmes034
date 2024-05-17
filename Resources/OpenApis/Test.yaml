@@ -1,0 +1,78 @@
+openapi: 3.0.0
+info:
+  description: API for ControllerMES
+  version: "1.0.0-oas3"
+  title: Controller MES Server API IDOC Receiver NOBIIA
+  #x-usage: Server
+security:
+  - basicAuth: []
+paths:
+  /idoc:
+    post:
+      x-userExit: IDocReceiver
+      summary: saves an IDoc
+      description: Adds an Idoc to the ControllerMES Import System
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+      parameters:
+        - in: query
+          name: Client
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The IDoc could be transmitted successfully to the data hub.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          description: The request is not authorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '500':
+          description: An unexpected error occured.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /name:
+    get:
+      x-userExit: NameFunction
+      parameters:
+        - in: query
+          name: Client
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: successful operation
+servers:
+  - url: 'https://virtserver.swaggerhub.com/sap'
+  - url: 'http://virtserver.swaggerhub.com/sap'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    ApiResponse:
+      type: object
+      required:
+        - message
+        - requestId
+      properties:
+        message:
+          type: string
+        requestId:
+          type: string
+        value:
+          type: string

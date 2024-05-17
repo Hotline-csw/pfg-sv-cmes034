@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="app" >	<!--  Das ist im Prinzip der Name der Applikation, der wird unten im Vue-Object als Parameter übergeben. -->
+      <v-app >
+        <v-main  style="overflow:auto">
+          <v-sheet id="scrolling-techniques-7" class="overflow-y-auto">
+            <v-img
+              src="{{ server }}/dao/image/customer_logo"
+              max-height="50"
+              contain
+              class="mt-2"></v-img>
+            <h1 class="text-center">{{orderid}}</h1>  <!--  Das ist ein Verweis auf eine Variable in der data: oder computed: im script -->
+		  
+			<!-- ToDo Die Info muss in boxtag und tournr geschrieben werden.  Done -->
+			
+            <v-text-field ref="Boxtag" class="mx-2 mx-md-5" hide-details label="Boxtag" v-model="boxtag" outlined
+              clearable clear-icon="mdi-close-circle" @keyup.enter="getProductionItems"
+            ></v-text-field>
+			
+            <v-text-field ref="Tournr" class="mx-2 mx-md-5" hide-details label="Tour" v-model="tournr" outlined
+              clearable clear-icon="mdi-close-circle" @keyup.enter="getProductionItems"
+            ></v-text-field>
+			
+            <v-text-field ref="article" class="mx-2 mx-md-5" hide-details label="Geladen" v-model="articleid" outlined
+              clearable clear-icon="mdi-close-circle" @keyup.enter="getWorkSteps"
+            ></v-text-field>
+
+			<!-- ToDo die Ausgabezeile anpassen -->
+			<!-- <table :class="JW">  -->
+            <table> 
+                <th> WORKSTEP / CENTER </th>
+                <th> DATUM </th>
+                <th> STATUS </th>
+            </table>  
+            <v-container class="my-1">
+              <v-card flat v-for="step in steps" :key="step.order" :class="`card ${step.ProductionState}`"> <!--  For-Kontstrukt in HTML: Vue - Spezialität.-->
+                <div :class="`item project ${step.ProductionState}`">
+
+                  <v-img
+                    :src="`{{ server }}/dao/script/assets/${pictures[step.WorkCenterCode.substring(0,5)]}.svg`"
+                    max-width="75"
+                    class="icon mx-1"
+                    contain
+                  ></v-img>
+				  
+				  
+                  <div class="workstep">
+                    <div class="caption grey--text">F-Auftrag</div>
+                    <div>{{ step.Code }}</div>
+                  </div>
+                  
+                  <div class="workcenter">
+                    <div class="caption grey--text">Auftrag</div>
+                    <div>{{ step.CustomerOrderCode }}</div>
+                    <!-- <div>{{ pictures[step.WorkCenterCode.substring(0,5)] }}</div> -->
+                  </div>
+
+                  <div class="date">
+                    <div class="caption grey--text">Position</div>
+                    <div>{{ step.CustomerOrderPosition }}</div>
+                  </div>
+
+                  <div class="date">
+                    <div class="caption grey--text">Status</div>
+                    <div>{{ step.ProductionState }}</div>
+                  </div>
+				  
+				  
+                  <div class="state">
+                    <div class="right">
+                      <v-chip
+                        small
+                        :color="getColor(step.ProductionState)"
+                        class="white--text my-2 caption"
+                        >{{ step.ProductionState }}</v-chip
+                      >
+                    </div>
+                  </div>
+				  
+				  
+                </div>
+                <v-divider></v-divider>
+              </v-card>
+            </v-container>
+          </v-sheet>
+		   <v-btn fab dark fixed bottom right color="accent" v-show="!hidden" @click="feedback">
+            <v-icon dark> mdi-check-bold </v-icon>
+          </v-btn>
+        </v-main>
+      </v-app>
+    </div>
+
+   <script>
+      
+      function dynamicSort(property) {
+        var sortOrder = 1;
+        if (property[0] === "-") {
+          sortOrder = -1;
+          property = property.substr(1);
+        }
+        return function (a, b) {
+          /* next line works with strings and numbers,
+           * and you may want to customize it to your needs
+           */
+          var result =
+            a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+          return result * sortOrder;
+        };
+      }
+      // sleep time expects milliseconds
+      function sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+      }
+      //---------------------------------------------------------------------------------------
+      // Der eigentliche Ablauf findet hier im Rahmen der ERzeugung eines neuen Objektes statt:
+      window.vm = new Vue({		// Das Windwosobjekt mit samt der Prperty (Objekt) .vm wird von MES vordefiniert, 
+        el: "#app",             // Link zur oben definierten Oberfläche
+        vuetify:  new Vuetify({  // Objekt im Objekt
+          theme: {
+            themes: {
+              light: {
+                primary: "#001941",		//  Farbschema f. GUI Material UI von Google
+                secondary: "#00A0DC",
+                accent: "#00A0DC",
+              },
+            },
+          },
+        }),
+        created() {  //  von Vuetify vorgegebene LifeCycleHooks created / mounted / destroyed
+                     // this.---  bezieht sich immer auf das aktuelle Objekt.
+					 // Asynchroden Prozess, --> promise.					 
+          window.eev.on("onEntityChangedMessage", this.handleEntityChanged);
+          window.eev.on("onLocalScanData", this.handleScanner);
+          window.eev.on("onLocalScanData", this.handleScanner);
+
+          this.pictures["30010"] = "saw";  //  Bild zu Arbeitsplatznummer
+          this.pictures["30015"] = "saw";
+          this.pictures["30020"] = "manual";
+          this.pictures["30030"] = "edge";
+          this.pictures["30035"] = "edge";
+          this.pictures["30040"] = "robot";
+          this.pictures["30041"] = "robot";
+          this.pictures["30045"] = "handling";
+          this.pictures["30050"] = "cnc";
+          this.pictures["30060"] = "drilling";
+          this.pictures["30140"] = "packaging";
+          this.pictures["30075"] = "press";
+        },
+        mounted() {
+          let urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.has("test")) this.workplace = urlParams.get("test"); // get ohne odata?
+          //this.focusInput();
+          //document.addEventListener('keypress', this.keypressHandler);
+        },
+        destroyed(){
+            console.log('Destroy Window');
+            window.eev.off("onLocalScanData", this.handleScanner);
+            //window.eev.off("onEntityChangedMessage", this.handleEntityChanged);
+        },
+        data: {					// die Variablen in data: und computed: können in der html - Section mit {{---}} angesprochen werden.
+          projects: [],		    // Im Script werden Sie mit this.---    angesprochen.
+          articleid: "",        // Wenn sie im HTMl verwendet werden und sich ändern lösen sie in dem betroffenen Block das Rendern aus.
+          orderid: "",
+          custorderid: "",
+          custorderpos: "",
+          info: "",
+          boxtag: "",		// Die Info kommt aus der Eingabemaske rein.
+          tournr: "",		// Die Info kommt aus der Eingabemaske rein.
+          loadstat: "",
+		  loadsort: "",  // JW: da wäre doch eine int besser, oder ?
+          steps: [],
+          workplace: "",
+          hidden: true,
+          pictures: {},
+        },
+
+        computed: {
+            actualPart(){
+                return this.articleid;
+            }
+        },
+
+        methods: {
+          keypressHandler(e) {
+            this.articleid += e.key;
+          },
+		  //---------------------------------------
+		  // ToDo Focus auf das zweite Feld
+		  // Done
+          //------------------------------------------
+          // setzt den Focus auf das angegebene Feld:
+          focusInput() {
+            this.$refs.Tournr.focus();  //  $refs ist ein V-Vorgabeobjekt,  focus() Methode in diesem Objekt, standardisierte Methode -> vuetify.
+										 //   $refs ist JS Vorgabe, enthält alle Elemente die im HTML mit Attribut ref vereinbart sind. 
+          },
+          //----------------------------------------
+          // ToDo Input Scanner:
+		  // JW: Wie wird das gehandelt, die Anzeige hängt ja von 2 Feldern ab, gescannt wird aber eine weitere Info (ProdItem)
+		  //     brauchen wir da ein drittes Feld?
+		  // Genau, das braucht ein weiteres Feld das der scanner liest.
+          handleScanner(msg){
+               console.log(msg); 
+               this.articleid = msg;     //  
+               this.getProductionItems();
+          },
+          handleEntityChanged(msg){
+              console.log('Entity Changed-');
+            var obj = JSON.parse(msg);
+            if (obj.Name === "ProductionStep") {
+              sleep(100).then(() => {
+                this.getProductionItems();
+              });
+            }
+          },
+          getColor(v) {
+            if (v === "Finished") return "#3cd1c2";
+            if (v === "New") return "lightgrey";
+            if (v === "Processing") return "blue";
+            return "lightgrey";
+          },
+
+		  //---------------------------------------
+		  // ToDo Auf Boxtag und Tournummer prüfen
+          getProductionItems: function () {
+              if(this.tournr === "" || this.boxtag === "")
+              {
+                  console.log("return");
+                  return;
+              }
+
+            
+            //so sieht die Eingabe aus: 2021-08-17
+            // Aus der machen wir jetzt erst mal ein Datumsobjekt. New bibts nicht, die Funktion DateTime.fromFormat liefert ein Objekt:
+
+            // Möglichkeit 1:
+            // let DateObj = window.DateTime.fromFormat(this.boxtag, 'yyyy-MM-dd'  );
+            // Das muss jetzt noch in das in der Datenbank verwendete Iso-Format konvertiert werden:
+            // let LocConvertBoxTag = DateObj.toISO().substr(0,19);
+
+            // Oder gleich zusammen:
+            //let LocConvertBoxTag = window.DateTime.fromFormat(this.boxtag, 'yyyy-MM-dd'  ).toISO();
+            
+            //-----------------------------------------
+            // Möglichkeit 2:
+            let LocConvertBoxTag = new Date(this.boxtag).toISOString().substr(0, 19); // Das wäre ein neues Objekt der Klasse Date
+            //-------------------------------------------------
+            // Falls wir da noch ein +02:00 wegschneiden müssen
+            // let iIdx = LocConvertBoxTag.indexOf("+");
+            // if(iIdx != -1)
+            // {
+            //     LocConvertBoxTag = LocConvertBoxTag.substr(0,iIdx);
+            // }
+            //LocConvertBoxTag = LocConvertBoxTag.substr(0,19);
+
+            //------------------------------------------------
+            // Das da braucht der Filter (siehe Postman)
+            //LocConvertBoxTag = LocConvertBoxTag + "Z";
+            //LocConvertBoxTag = Date.parse(LocConvertBoxTag); // gint die Zeit in Millisecunden seit 1970:000000000 zurück...
+            
+            
+            console.log('Konvertiert: ', LocConvertBoxTag);
+
+            window.cmesOdata					//  Das Objekt window ist im JS immer da, cmesOdata ist die hier zur Verfügung gestellte Odata-SS
+              .get("ProductionOrders")			//  cmesOData stellt im Prinzip die Browser - Standardmethoden Get, Put, Post, Delete unter
+              .query({                          //     In Form von Methoden zur Verfügung Verwendung einer dokumentierten Syntax
+												// Query ist asynchron, deshalb in Folge das .then
+                                                // Mit Expand wird angegeben, dass nicht nur im ProductionItems gesucht wird, sondern auch in den unterlagerten
+                                                // Tabellen ProductionSteps und ProductionItems. any sucht nach allen Elementen sucht nach allen Elementen, auf 
+                                                // die die angegebene Bedingung zutrifft.
+                                                // d:d wird von any benuzt, ist eine temporäre Bereichsvariable (Name egal) die das jeweilge Element
+                                                // enthält auf den der darauf folgende Vergleich angewendet wird.
+						// Hier sind wir ja schon am ProductionORder, un da stehen auch die Felder nach denen wir suchen...
+						// Syntax für die Datumskonvertierung: googeln...
+                $filter: `(date(DesiredEndDate) gt '${this.LocConvertBoxTag}' and RouteCode eq '${this.tournr}')`,  // Sim sprintf, Zugriff auf Variable Direkt mit  und einer {... ( HTML: 2{{ )
+                //$filter: `ProductionItems/any(d:d/window.DateTime.fromISO(DesiredEndDate) eq '${this.boxtag}' and RouteCode'${this.tournr}')`,  // Sim sprintf, Zugriff auf Variable Direkt mit  und einer {... ( HTML: 2{{ )
+                //$expand: "ProductionSteps, ProductionItems", // ProduktionOrder Plus Untertabellen (müssen verbunden sein, entspricht Join in SQL...)
+		  //---------------------------------------
+		  // ToDo select anpassen. Dafür muss DesiredEndDate aber noch die IsoUmwandlung durchlaufen
+              })
+              //-------------------------------------------------------------------------
+              // Lamda / Pfeilfunktion:
+              // das hier verwendete thrs beieht sich in dem Fall auf das Objekt data, da deses als Parameter an die Lamdafunktion
+              // übergeben wird. würde hier eine eigene Funktion definiert und aufgerufen, würde sich this auf die Funktionsumgebung
+              // (Funktionen werden hier wohl wie objekte behandelt) beziehen.
+              .then((data) => { // In data landet das Ergebnis des Querys, in diesem Fall ggf. mehrere Elemente --> Array.
+				
+                if (data === null || data.length === 0) 
+                {
+                    console.log('Bauteil nicht gefunden.')
+                    //---------------------------------------
+                    // Funktionen die ein Objekt als Parameter erwarten können direkt mit den geschweiften klammern aufgerufen werden.
+                    // (Das Objekt wird so impliziz erzeugt)
+                    // var someObjekt = { someProperty: 'someValue'}; wäre wohl eine gültige Objektdefinition, die auch direkt übergeben werden kann 
+					window.messageservice.add({severity:'error', summary: 'Fehler', detail: `Bauteil ${this.articleid} nicht gefunden.`, key: 'c', life: 5000})
+                }
+                else
+				{
+					//console.log(JSON.stringify(data));
+					if(Array.isArray(data))
+                    {
+						console.log("Bauteil gefunden");
+                        if(data[0].ProductionItems === undefined){
+                            data = data[0];
+                            console.log('data changed') // 
+                        }
+                    }    
+                    //----------------------------------------
+                    // ToDo Die richtigen Variablen setzen.
+                    //      Bzw. nicht Produktionsteps auswerten , sondern die ORders selbst...
+					this.info = data[0].ProductionItems[0].Code; // 
+                    this.orderid = data[0].Code;
+					
+					
+					
+					//-------------------------------
+					// Umwandlung des Datumsangaben in ISO:
+					data[0].forEach((element) => {	// Das sollten doch die ORders sein, oder?
+					  element.DesiredEndDate = window.DateTime.fromISO(
+						element.DesiredEndDate
+					  )
+						.setLocale("de")
+						.toLocaleString();
+					});
+          //----------------------------------------
+          // ToDo Richtiges sortierfeld verwenden:
+
+					this.steps = data[0].sort(dynamicSort("Sequence")); // Zuweisung zu den Steps
+
+					this.checkFeeback();
+				}
+              })
+              .catch((err) => console.log(err));
+	
+          },
+
+          
+
+          
+          checkFeeback: function () {
+            window.cmesOdata
+              .get("ProductionItemsHistory")
+              .query({
+                $filter: `ProductionItemCode eq '${this.articleid}' and WorkCenterCode eq '${this.workplace}'`  //  $: Bestandteil der Odata - Syntax? Strings?
+              })
+              .then((data) => {  // Syntax lambda? Verwendung ? Funktion ohne Namen?
+                if (data === null || data.length === 0)  //  === vergleicht auf Objektreferenz, == vergleicht Inhalt
+                {
+                    console.log("Test WorkCenter   ");
+                    if(this.steps.some((e) => e.WorkCenterCode === this.workplace))
+                        this.hidden = false;
+                    else
+                        this.hidden = true;
+                }
+                else
+                {
+                    console.log(data[0].FeedbackState);
+                    if(data[0].FeedbackState === 'Finished')
+                        this.hidden = true;
+                }
+
+              })
+              .catch((err) => console.log(err)); // Aus der Api von OData
+          },
+          feedback: function () {	//  über den Click im Html gebunden, die F wird aufgerufen...
+            localStep = this.steps.find(
+              (e) => e.WorkCenterCode === this.workplace
+            );
+            
+
+            const data = {
+              ProductionItemCode: this.articleid,
+              ProductionStepCode: localStep.Code,
+              WorkcenterCode: localStep.WorkCenterCode,
+              CountGood: 1,
+              FeedbackState: "Finished",
+              Timestamp: DateTime.local(),
+              ProcessingState: 10,
+              CreationSource: "FeedbackApp",
+            };
+            window.cmesOdata
+              .post("Feedbacks", data)
+              .query()
+			  .then((data)=>{window.messageservice.add({severity:'success', summary: `Bauteil ${data.ProductionItemCode} rückgemeldet`, key: 'c', life: 5000})})
+              .catch((msg) => window.messageservice.add({severity:'error', summary: 'Fehler', detail: `(${msg.status}) ${msg.statusText}`, key: 'c', life: 5000}));
+          },
+        },
+      });
+    </script>
+    <style>
+      .card.Finished {
+        background-color: #9ee5ff;
+      }
+      .project.Finished {
+        border-left: 4px solid #3cd1c2;
+      }
+      .project.New {
+        border-left: 4px solid lightgrey;
+      }
+      .project.Processing {
+        border-left: 4px solid blue;
+      }
+      .v-chip.Finished {
+        background: #3cd1c2;
+      }
+      .v-chip.New {
+        background: lightgrey;
+      }
+      .v-chip.Processing {
+        background: blue;
+      }
+
+      .item {
+        display: grid;
+
+        grid-gap: 2;
+
+        grid-template:
+          " icon    step        step    step  " auto
+          " icon    workcenter  date    state " auto
+          / 80px 1fr 1fr 1fr;
+        height: auto;
+
+        padding: 2;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      .icon {
+        grid-area: icon;
+      }
+
+      .workstep {
+        grid-area: step;
+      }
+
+      .workcenter {
+        grid-area: workcenter;
+      }
+
+      .date {
+        grid-area: date;
+      }
+
+      .state {
+        grid-area: state;
+      }
+	  
+
+	}
+
+    </style>
+  </body>
+</html>
+
+//-------------------
+// Fragen:
+// -	+"Z" macht wieder einen String draus???. Wie komme ich auf das richtig formatierte Datum als DateObj?
+// -    Wieso liefert eq kein Ergebnis, wenn ein Order mit dem Datum im System ist?
+
+
+2021-08-17
+Artikel
+
+
+
+
+
+
+2021-08-17T00:00:00+02:00
+Artikel
+
+
+http://srv010wpapp1/Demo13/Application/odata/ProductionOrders?$filter=DesiredEndDate gt 2021-08-17T00:00:00Z
+
+
+
+
+2021-08-17T00:00:00+02:00
+Artikel

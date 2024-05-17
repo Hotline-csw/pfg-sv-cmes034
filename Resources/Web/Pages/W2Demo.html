@@ -1,0 +1,171 @@
+<html>
+<body>
+  <div id="app" >
+    <v-app>
+        <v-main>
+            <div class="mainlayout">
+                <div class="content">{{content}}</div>
+                <div class="ab pa-4">AB:  {{customerOrderCode}}</div>
+                <div class="pos pa-4">POS:  </div>
+                <div class="sab pa-2">AB:  {{customerOrderCode}}</div>
+                <div class="spos pa-2">POS:  </div>
+                <div class="cad pa-2">CAD:  </div>
+                <div class="storno pa-2">Storno:  </div>
+                <div class="type pa-2">Art:  </div>
+          </div>
+      </v-main>
+    </v-app>
+  </div>
+
+  <script>
+     window.vm = new Vue({
+      el: "#app",
+      components: {
+      },
+      vuetify: new Vuetify({
+        theme: {
+          themes: {
+            light: {
+              primary: "#001941",
+              secondary: "#00A0DC",
+              accent: "#00A0DC",
+            },
+          },
+        },
+      }),
+      created() {
+          // wir reagieren auf neue Scanner-Messages
+          console.log('messageHAndler');
+          window.eev.on("onScannerDataReceivedMessage", this.handleScanner);
+          window.eev.on("onNotificationMessage", this.handleNotification);
+      },
+      mounted() {
+          console.log("mounted");
+      },
+      destroyed(){
+          // Aufräumen: MessageHandler für Scanner aushängen
+          window.eev.off("onScannerDataReceivedMessage", this.handleScanner);
+          window.eev.off("onNotificationMessage", this.handleNotification);
+      },
+      data: {
+          content: "",
+          customerOrderCode: "",
+      },
+
+      computed: {
+      },
+
+      methods: {
+        //
+        // Daten zum Fertigungsauftrag lesen
+        //
+        getProductionOrder: async function (barcode) {
+            try{
+                data = await window.cmesOdata
+                    .get("ProductionOrders")
+                    .query({
+                        //$filter: `ProductionItems/any(d:d/CustomBarcodeId eq '${barcode}')`,
+                        $filter: `ProductionItems/any(d:d/Code eq '${barcode}')`,
+                        //$select: "CustomerOrderCode, ArticleDescription",
+                        $expand: "ProductionSteps($select=Code), ProductionItems"
+                    });
+                if (data === null || data.length === 0) 
+                {
+                    console.log('Bauteil nicht gefunden.')
+                    window.messageservice.add({severity:'error', summary: 'Fehler', detail: `Bauteil ${this.articleid} nicht gefunden.`, key: 'c', life: 5000})
+                }
+                else 
+                {
+                    console.log(data[0]);
+                    this.header = `AB: ${data[0].CustomerOrderCode}, Pos: ${data[0].ArticleDescription}`;
+                    this.content = data[0].ArticleDescription;
+                    this.customerOrderCode = data[0].CustomerOrderCode;
+                    console.log(JSON.stringify(data));
+                }
+
+            }
+            catch(err){
+                console.log(err);
+            }
+        },
+        //
+        // neue Scanner-Message
+        //
+        handleScanner: function(data){
+            console.log(data);
+            if(data != null){
+                var obj = JSON.parse(data);
+                // wir reagieren nur auf Daten von einem bestimmten Scanner
+                if(obj.ScannerId == 'PostMan'){
+                    this.getProductionOrder(obj.ReceivedMessage);
+                }
+            }
+        },
+
+        //
+        // neue Notification-Message
+        //
+        handleNotification: function(data){
+            console.log("Notification Message");
+            console.log(data);
+        }
+      },
+    });
+  </script>
+  <style>
+        .mainlayout {
+        display: grid;
+
+        grid-template:
+          " content  content  content  content  content " 1fr
+          " ab       ab       pos      pos      pos     " auto
+          " sab      spos     cad      storno   type    " auto
+          / 1fr      1fr      1fr      1fr      1fr;
+
+        height: 100%;
+      }
+
+      .content {
+        grid-area: content;
+        background: #d8efff;
+        font-size: 50px;
+        display: grid;
+        font-weight: 900;
+        place-items: center;
+      }
+      .ab {
+        grid-area: ab;
+        font-size: 30px;
+        font-weight: 900;
+        background: #d8efff;
+      }
+      .pos {
+        grid-area: pos;
+        font-size: 30px;
+        font-weight: 900;
+        background: #d8efff;
+      }
+      .sab {
+        grid-area: sab;
+        background: #afd9e7;
+      }
+      .spos {
+        grid-area: spos;
+        background: #afd9e7;
+      }
+      .cad {
+        grid-area: cad;
+        background: #afd9e7;
+      }
+      .storno {
+        grid-area: storno;
+        background: #afd9e7;
+      }
+      .type {
+        grid-area: type;
+        background: #afd9e7;
+      }
+
+  </style>
+</body>
+</html>

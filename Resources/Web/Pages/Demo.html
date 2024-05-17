@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <body>
+  <div id="app" >
+    <v-app >
+      <v-main  style="overflow:auto">
+        <v-sheet id="scrolling" class="overflow-y-auto">
+            <v-img src="{{ server }}/dao/script/assets/homag-logo.svg" max-height="50" contain class="ma-2"></v-img>
+        </v-sheet>
+        <h1 class="text-center">{{header}}</h1>
+        <div id="chartdiv" class="ma-2 ma-md-5">
+            <apexchart ref="chart" type="rangeBar" height="450" :options="chartOptions" :series="series"></apexchart>
+        </div>
+      </v-main>
+    </v-app>
+  </div>
+
+   <script>
+     window.vm = new Vue({
+      el: "#app",
+    components: {
+          apexchart: VueApexCharts,
+        },
+      vuetify: new Vuetify({
+        theme: {
+          themes: {
+            light: {
+              primary: "#001941",
+              secondary: "#00A0DC",
+              accent: "#00A0DC",
+            },
+          },
+        },
+      }),
+      created() {
+          this.getJobHistoryData();
+          // ToDo: INstallieren von EventHandlern test
+      },
+      mounted() {
+          
+      },
+      destroyed(){
+          // Aufräumen: z.B. EventHandler entfernen, Timer löschen ect.
+      },
+      data: {
+          header: "Job-Scheduler",
+          date: new Date().toISOString().substr(0, 10),
+          series: [
+            {
+              name: 'Succeeded',
+              data: [
+                
+                {
+                  x: 'FLS Demo Data Import',
+                  y: [
+                    new Date('2021-04-13T19:47:37.7634153+02:00').getTime(),
+                    new Date('2021-04-13T19:49:28.7187259+02:00').getTime()
+                  ]
+                },
+                {
+                  x: 'GeneratePlanning',
+                  y: [
+                    new Date('2021-04-13T19:47:31.6155631+02:00').getTime(),
+                    new Date('2021-04-13T19:48:15.2600616+02:00').getTime()
+                  ]
+                }
+              ]
+            },
+            {
+              name: 'Error',
+              data: [
+                {
+                  x: 'FLS Demo Data Import',
+                  y: [
+                    new Date('2021-04-13T19:47:35.86051+02:00').getTime(),
+                    new Date('2021-04-13T19:47:36.2345166+02:00').getTime()
+                  ]
+                }
+              ]
+            }
+            ],
+          chartOptions: {
+            chart: {
+                toolbar: {
+                    tools: {
+                        customIcons:[
+                            {
+icon: '<img src="/static/icons/chart-carpet.png" width="20">',
+index: 0,
+title: 'tooltip of the icon',
+class: 'custom-icon',
+click: function (chart, options, e) {
+  console.log("clicked custom-icon")
+}
+}
+                        ]
+                    }
+                },
+              height: 450,
+              type: 'rangeBar',
+              animations:{
+                  enabled: false
+              }
+
+            },
+            plotOptions: {
+              bar: {
+                horizontal: true,
+                barHeight: '80%'
+              }
+            },
+            xaxis: {
+              type: 'datetime'
+            },
+            stroke: {
+              width: 1
+            },
+            fill: {
+              type: 'solid',
+              opacity: 0.6
+            },
+            legend: {
+              position: 'top',
+              horizontalAlign: 'left'
+            },
+            colors: [
+              "#00E396", "#FF0000", "#FEB019", "#FF4560", "#775DD0"
+            ],
+            tooltip: {
+                custom: function(opts) {
+                var options = { timeZone: 'UTC' };    
+                const from = new Date(opts.y1).toLocaleTimeString('de-DE', options)
+                const to = new Date(opts.y2).toLocaleTimeString('de-DE', options)
+                const values = opts.ctx.rangeBar.getTooltipValues(opts)
+            
+                return (
+                  `${from} - ${to}`
+                )
+              }
+            }
+
+          },
+      },
+
+      computed: {
+      },
+
+      methods: {
+          getJobHistoryData: function() {
+            var d = new Date();
+            d.setHours(d.getHours() - 1);
+            window.cmesOdata
+                .get("JobHistory")
+                .query({
+                    $filter: `StartDate gt ${d.toISOString()}`,
+                    $orderBy: "JobName",
+                    $select: "JobName, StartDate, FinishDate, JobResult",
+                })
+                .then((data) => {
+                    //console.log(data);
+                    grouped = data.reduce((h, a) => Object.assign(h, { [a.JobResult]:( h[a.JobResult] || [] ).concat(a) }), {});
+                    //console.log(grouped);
+                    var options = { timeZone: 'UTC' };  
+
+                    let series = [];
+                    Object.entries(grouped).forEach(entry => {
+	                    const [key, value] = entry;
+                        //console.log("Value:")
+                        //console.log(value);
+                        let ppH = [];
+                        value.forEach(job => {
+                            //console.log("Job:")
+                            //console.log(job);
+                            ppH.push({x: job.JobName, y:[window.DateTime.fromISO(job.StartDate).toJSDate().getTime(),
+                                                         job.FinishDate == null?new Date().getTime(): window.DateTime.fromISO(job.FinishDate).toJSDate().getTime() ]})
+                            });
+
+                        series.push({name: key, data: ppH});
+                    
+                    });
+                    //console.log(series);                                                           
+                    this.$refs.chart.updateSeries(series, false, true);
+                })
+                .catch((err) => console.log(err));
+
+        },
+
+
+      },
+    });
+  </script>
+  <style>
+  </style>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+    "dayscount": "20",
+    "height": "500",
+    "workcenters": [  
+        {
+            "type": "CapacityByBulk",
+            "workcenter": "1010"
+        },		
+        {
+            "type": "CapacityByBulk",
+            "workcenter": "3010"
+        },
+        {
+            "type": "CapacityByBulk",
+            "workcenter": "3020"
+        },
+        {
+            "type": "CapacityByBulk",
+            "workcenter": "3030"
+        },
+        {
+            "type": "CapacityByBulk",
+            "workcenter": "5010"
+        },
+		{
+            "type": "CapacityByBulk",
+            "workcenter": "5020"
+        },
+		{
+            "type": "CapacityByBulk",
+            "workcenter": "5070"
+        },
+		{
+            "type": "CapacityByBulk",
+            "workcenter": "6010"
+        }
+    ]
+}

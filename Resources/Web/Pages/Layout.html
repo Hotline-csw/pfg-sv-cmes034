@@ -1,0 +1,533 @@
+<html>
+<body>
+  <div id="app" >
+    <v-app>
+        <v-main>
+            <div :class="setDefaultClass">
+                <div>
+                    <h1  style = "text-align:center;"> Arbeitsplatz: M310</h1>
+                </div>
+                <div class="FirstSection">
+
+                    <div class="first-item ordertext">AB:</div>
+                    <div class="first-itemData  first4Order">{{orderFirst4Dgt}}</div>
+                    <div class="first-itemData  secnd4Order">{{orderSecnd4Dgt}}</div>  
+                    <div class="first-item postext">POS:</div>
+                    <div class="first-itemData  pos">{{orderPos}}</div>
+                    <div class="first-item proctext">Nach.Proz.:</div>
+                    <div class="first-itemData  proc">{{process}}</div>
+                    <div class="first-item stacktext">Ziel:</div>
+                    <div class="first-itemData stack">{{stack}}</div>
+                    <div class="first-item boxdaytext">Boxtag:</div>
+                    <div class="first-itemData boxday">{{box}}</div>
+                    <div class="first-item ">Tour:</div>
+                    <div class="first-itemData  ">{{tour}}</div>
+                    <div class="first-item "></div>
+                    <div class="first-item "></div>
+                    <div class="first-item descrtext">Beschreibung:</div>
+                    <div class="first-itemData descr">{{description}}</div>
+                    <div class="first-item materialtext">Material:</div>
+                    <div class="first-itemData material">{{material}}</div>
+                    <div class="first-item steptext">Nächster Arbeitsgang:</div>
+                    <div class="first-itemData step">{{nextstep}}</div>
+                    <div class="first-item hinttext">Hinweis:</div>
+                    <div class="first-itemData hint">{{hint}}</div>
+                    <div class="first-item fixtext">Reperaturteil:</div>
+                    <div class="first-itemData fix">{{fixpart}}</div>
+
+  
+
+                </div>
+            
+                <div class="SecondSection">
+                    <v-card :class="[stackActive===1?'seconditemactive':'seconditem']" elevation="24" >
+                        <v-card-header>
+                            <v-card-header-text>
+                                <!-- Titel und Actionelemente sind in der v-card flexelemente deshalb hier justify-center... -->
+                                <v-card-title class="justify-center">
+                                    <h1>{{this.stackarray[0].number}}</h1>
+                                </v-card-title>
+                                <v-card-subtitle style="text-align:center;font-size:20px">{{this.stackarray[0].block}}</v-card-subtitle>
+                            </v-card-header-text>   
+                        </v-card-header>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[0].subblock}}</p></v-card-text>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[0].status}}</p></v-card-text>   
+                    
+                    </v-card>
+
+                    <v-card :class="[stackActive===2?'seconditemactive':'seconditem']" elevation="24" >
+                        <v-card-header>
+                            <v-card-header-text>
+                                <!-- Titel und Actionelemente sind in der v-card flexelemente deshalb hier justify-center... -->
+                                <v-card-title class="justify-center">
+                                    <h1>{{this.stackarray[1].number}}</h1>
+                                </v-card-title>
+                                <v-card-subtitle style="text-align:center;font-size:20px">{{this.stackarray[1].block}}</v-card-subtitle>
+                            </v-card-header-text>   
+                        </v-card-header>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[1].subblock}}</p></v-card-text>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[1].status}}</p></v-card-text>   
+                    
+                    </v-card>
+
+                    <v-card :class="[stackActive===3?'seconditemactive':'seconditem']" elevation="24" >
+                        <v-card-header>
+                            <v-card-header-text>
+                                <v-card-title class="justify-center">
+                                    <h1>{{this.stackarray[2].number}}</h1>
+                                </v-card-title>
+                                <v-card-subtitle style="text-align:center;font-size:20px">{{this.stackarray[2].block}}</v-card-subtitle>
+                            </v-card-header-text>   
+                        </v-card-header>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[2].subblock}}</p></v-card-text>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[2].status}}</p></v-card-text>   
+                    
+                    </v-card>
+
+                    <v-card :class="[stackActive===4?'seconditemactive':'seconditem']" elevation="24" >
+                        <v-card-header>
+                            <v-card-header-text>
+                                <!-- Titel und Actionelemente sind in der v-card flexelemente deshalb hier justify-center... -->
+                                <v-card-title class="justify-center">
+                                    <h1>{{this.stackarray[3].number}}</h1>
+                                </v-card-title>
+                                <v-card-subtitle style="text-align:center;font-size:20px">{{this.stackarray[3].block}}</v-card-subtitle>
+                            </v-card-header-text>   
+                        </v-card-header>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[3].subblock}}</p></v-card-text>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[3].status}}</p></v-card-text>   
+                    
+                    </v-card>
+
+                    <v-card :class="[stackActive===5?'seconditemactive':'seconditem']" elevation="24" >
+                        <v-card-header>
+                            <v-card-header-text>
+                                <!-- Titel und Actionelemente sind in der v-card flexelemente deshalb hier justify-center... -->
+                                <v-card-title class="justify-center">
+                                    <h1>{{this.stackarray[4].number}}</h1>
+                                </v-card-title>
+                                <v-card-subtitle style="text-align:center;font-size:20px">{{this.stackarray[4].block}}</v-card-subtitle>
+                            </v-card-header-text>   
+                        </v-card-header>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[4].subblock}}</p></v-card-text>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[4].status}}</p></v-card-text>   
+                    
+                    </v-card>
+
+
+                </div>
+
+            
+            </div>
+        </v-main>
+        
+    </v-app>
+  </div>
+
+  <script>
+     window.vm = new Vue({
+      el: "#app",
+      components: {
+      },
+      vuetify: new Vuetify({
+        theme: {
+          themes: {
+            light: {
+              primary: "#001941",
+              secondary: "#00A0DC",
+              accent: "#00A0DC",
+            },
+          },
+        },
+      }),
+      created() {
+          // wir reagieren auf neue Scanner-Messages
+          //window.eev.on("onScannerDataReceivedMessage", this.handleScanner);
+          this.initstartdata();
+          // setInterval(this.initstartdata, 3000);
+      },
+      mounted() {
+          
+      },
+      destroyed(){
+          // Aufräumen: MessageHandler für Scanner aushängen
+          // window.eev.off("onScannerDataReceivedMessage", this.handleScanner);
+      },
+      data: {
+          //------------------------------------------------------------------
+          // Zuerst die Daten für den Anzeigeteil Oben:
+          status:  "Standard",
+          content: "TextInhalt",
+          customerOrderCode: "OrderCode",
+          orderFirst4Dgt: "1234",
+          orderSecnd4Dgt: "6789",
+          orderPos:        "004",
+          process:         "Standard",
+          stack:           "3",
+          box:             "26.11.2021",
+          tour:            "5027",
+          description:     "Raumplanwange 25mm",
+          material:         "F198 Eiche Sierra",
+          nextstep:         "Verpackung",
+          hint:             "25er Wangenschuh 1170mm",
+          fixpart:          "N",
+          stackActive:      1,
+          iTmp:             1,
+
+          //------------------------------------------------------------------
+          // Und dann noch die Objekte für die Anzeige der Cards / Stacks:
+
+          stackarray: [],
+
+        
+      },
+
+      computed: {
+            //-----------------------------------------------------
+            // Default Basisklasse (haupts. wegen dem Hintergrund)
+            setDefaultClass: function(){
+
+                if(this.status === "Standard"){
+                    return "defaultGrey";
+
+                }
+                else{
+                    return "defaultWuerg";
+
+                }
+
+
+        },
+
+
+
+
+
+
+
+      },
+
+      methods: {
+
+            initstartdata: function(){
+                console.log("Initialisiere Array...");
+
+                this.stackarray[0] = {
+                    number:     1,
+                    block:  "101-110",
+                    subblock: "(51-60)",
+                    status:    "offen"
+                };
+
+               this.stackarray[1] = {
+                    number:     2,
+                    block:  "61-70",
+                    subblock: "(11-20)",
+                    status:    "offen"
+                };
+
+
+                this.stackarray[2] = {
+                    number:     3,
+                    block:  "71-80",
+                    subblock: "(21-30)",
+                    status:    "offen"
+                };
+
+
+                this.stackarray[3] = {
+                    number:     4,
+                    block:  "81-90",
+                    subblock: "(31-40)",
+                    status:    "offen"
+                };
+
+
+                this.stackarray[4] = {
+                    number:     5,
+                    block:  "41-50",
+                    subblock: "()",
+                    status:    "offen"
+                };
+
+
+/*
+                this.iTmp += 1;
+
+                if(this.stack === 99) this.stack = 1;
+                else
+                this.stack += 1;
+
+
+                if(this.stack === 6) this.stack = 1;
+
+
+                if(this.iTmp === 4){
+                    this.process = "CNC";
+                    this.status = "CNC";
+                    this.stack = 99;
+
+
+                }
+                else if(this.iTmp === 5)
+                {
+                    this.process = "Standard";
+                    this.status = "Standard";
+                    this.iTmp = 1;
+                    this.stack = 1;
+                }
+*/
+
+            },  // Ende    initstartdata()
+
+      },  
+
+      
+
+    });// Ende der methoden
+  </script>
+  <style>
+
+      .defaultGrey{
+        background-color: #CFD8DC;  
+       
+        
+      }
+
+      .defaultWuerg{
+        background-color: #BCE422;  
+        
+      }
+    /*--------------------------------------------------------
+
+    Die Verwendung des Grids ist sehr variabel:
+    -   Entweder kann das Grid via 
+                    grid-template-columns: auto auto auto auto auto auto auto auto auto;
+                    grid-template-rows: auto;
+        beschrieben werden, oder es wird für die Items angegeben in welchen Spalten / Zeile die Elemente sein sollen
+        und ggf. welche sich daraus ergebenden Felder zusammengeführt werden sollen. 
+
+
+        - justify-items:start / end / center / stretch              --> positioniert die Items in X-Richtung
+        - align-items:start / end / center / stretch                --> positioniert die Items in Y-Richtung
+        - justify-content:start / end / center / stretch            --> passt die Position an, wenn die Gridfelder kleiner sind als der Ihnen
+                        space-around / space-between /space-evenly.     zugedachte Platz. (z.B. wenn ihre Größe mit width / height festgelegt wurde)
+        - justify-self                                              --> kann direkt im Item verwendet werden um es z.B. anders zu platzieren als die
+                                                                        restlichen Items: <div class="item" style="justify-self: end;">3</div>
+        Der geamte Container kann mit analog positioniert werden.
+        - justify-content und align-content:
+
+    All diese Kommandos platzieren nicht den Text / den Inhalt innerhalb des Items
+
+    Um deren Inhalt zu zentrieren kann entweder etwas wie text-align verwendet werden (gibt's aber nur für die X-Achse)
+    oder aber der Inhalt wird mit Hilfe von diplay flex positioniert (Y-Achse)
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
+                        
+    -----------------------------------------------------------*/
+    .FirstSection {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto auto;
+        grid-gap: 10px;
+        padding: 10px;
+        //background-color: #2196F3;
+        font-size:20px;
+        //--> Hat keine Auswirkung, wenn die Größe der Grid-Felder genau in die Teilung passt: 
+        align-items:center;
+    }
+
+
+
+
+        .first-item {
+        padding: 10px;
+        //font-size: 20px;
+        //background-color: rgba(255, 255, 255, 0.8);
+        
+        display: flex; 
+        justify-content: start; 
+        align-items: center;
+
+        }
+    .first-itemData {
+        padding: 10px;
+        font-size: 30px;
+        background-color: rgba(255, 255, 255, 0.8);
+        
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
+
+        }
+
+          .ordertext {
+            grid-column: 1 ;
+            grid-row: 1;
+            }
+
+           .first4Order {
+            grid-column: 2 ;
+            grid-row: 1;
+            justify-content:end;
+            }
+
+           .secnd4Order {
+            grid-column: 3 ;
+            grid-row: 1;
+            font-size: 40px;
+            justify-content:start;
+            }
+
+
+
+
+
+          .postext {
+            grid-column: 4 ;
+            grid-row: 1;
+            }
+
+          .pos {
+            grid-column: 5 ;
+            grid-row: 1;
+            }
+
+          .proctext {
+            grid-column: 6 ;
+            grid-row: 1;
+            }
+
+          .proc {
+            grid-column: 7 ;
+            grid-row: 1;
+            }
+
+
+
+          .stacktext {
+            grid-column: 8 ;
+            grid-row: 1 / span 2;
+            text-align:center;
+            
+            }
+
+            .stack {
+            grid-column: 9 ;
+            grid-row: 1 / span 2;
+            text-align:center;
+            font-size:100px;
+            }
+
+            .boxdaytext {
+            grid-column: 1 ;
+            grid-row: 2;
+            }
+
+
+            .boxday {
+            grid-column: 2 / span 2 ;
+            grid-row: 2;
+            }
+
+            .descrtext {
+            grid-column: 1;
+            grid-row: 3;
+            }
+
+            .descr {
+            grid-column: 2 / span 8 ;
+            grid-row: 3;
+            justify-content:start;
+            }
+
+            .materialtext {
+            grid-column: 1;
+            grid-row: 4;
+            }
+
+            .material {
+            grid-column: 2 / span 5 ;
+            grid-row: 4;
+            justify-content:start;
+            }
+
+            .steptext {
+            grid-column: 7;
+            grid-row: 4;
+            }
+
+            .step {
+            grid-column: 8 / span 2 ;
+            grid-row: 4;
+            justify-content:start;
+            }
+
+            .hinttext {
+            grid-column: 1;
+            grid-row: 5;
+            }
+
+            .hint {
+            grid-column: 2 / span 6 ;
+            grid-row: 5;
+            justify-content:start;
+            }
+
+            .fixtext {
+            grid-column: 8;
+            grid-row: 5;
+            }
+
+            .fix {
+            grid-column: 9 ;
+            grid-row: 5;
+            }
+
+
+
+
+.SecondSection {
+
+
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        grid-gap: 10px;
+        //background-color: #2196F3;
+        padding: 10px;
+        font-size:20px;
+
+
+      }
+
+
+
+        .seconditem {
+        background-color: #FFFF00;
+        justify-content: center; 
+        //text-align: center;
+        padding: 10px;
+ 
+        }
+
+        .seconditemactive {
+        background-color: green !important;
+        //color:green;
+        //text-align: center;
+        //padding: 10px;
+ 
+        }
+
+        .card.1 {
+        
+        color: green;
+        background-color: green;
+        }
+
+
+        
+
+
+  </style>
+</body>
+</html>

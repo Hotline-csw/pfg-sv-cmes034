@@ -1,0 +1,55 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Resources = "clr-namespace:HomagGroup.FLS.Infrastructure.Framework.Themes.Resources"
+                    xmlns:hgc = "http://schemas.homag-group.com/ControlLibrary/1.0/xaml"
+                    xmlns:telerik = "http://schemas.telerik.com/2008/xaml/presentation"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:trans = "clr-namespace:HomagGroup.FLS.Domain.Data.Properties;assembly=HomagGroup.FLS.Domain.Data"
+                    xmlns:Commands = "clr-namespace:HomagGroup.FLS.Infrastructure.Framework.Commands;assembly=HomagGroup.FLS.Infrastructure.Framework"
+                    xmlns:Controls = "clr-namespace:HomagGroup.FLS.Infrastructure.Framework.Controls;assembly=HomagGroup.FLS.Infrastructure.Framework"
+                    xmlns:Converter = "clr-namespace:HomagGroup.FLS.Infrastructure.Framework.Converter;assembly=HomagGroup.FLS.Infrastructure.Framework">
+
+    <Converter:ValueToImageConverter x:Key="_ToImageConverter">
+        <Converter:ValueToImage Value="Undefined" ImageKey="undefined"/>      
+        <Converter:ValueToImage Value="SidePanel" ImageKey="SidePanel"/>
+        <Converter:ValueToImage Value="AdjustableShelf" ImageKey="AdjustableShelf"/>
+        <Converter:ValueToImage Value="TopShelf" ImageKey="TopShelf"/>
+        <Converter:ValueToImage Value="BottomShelf" ImageKey="BottomShelf"/>
+        <Converter:ValueToImage Value="BackPanel" ImageKey="BackPanel"/>
+        <Converter:ValueToImage Value="Panel" ImageKey="Panel"/>
+        <Converter:ValueToImage Value="Door" ImageKey="Door"/>
+        <Converter:ValueToImage Value="DoorLeft" ImageKey="DoorLeft"/>
+        <Converter:ValueToImage Value="DoorRight" ImageKey="DoorRight"/>
+        <Converter:ValueToImage Value="FixedShelf" ImageKey="FixedShelf"/>
+        <Converter:ValueToImage Value="Partition" ImageKey="Partition"/>
+        <Converter:ValueToImage Value="DrawerBottom" ImageKey="DrawerBottom"/>
+        <Converter:ValueToImage Value="DrawerSide" ImageKey="DrawerSide"/>
+		<Converter:ValueToImage Value="DrawerFront" ImageKey="DrawerFront"/>
+		<Converter:ValueToImage Value="Plinth" ImageKey="Plinth"/>
+		<Converter:ValueToImage Value="WorkTop" ImageKey="WorkTop"/>
+		<Converter:ValueToImage Value="Traverse" ImageKey="Traverse"/>	
+    </Converter:ValueToImageConverter>
+
+    <!-- Do not delete - style is set in Settings -->
+    <Style x:Key="DescriptionIconStyle" TargetType="telerik:GridViewCell">
+        <Style.Setters>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle x:Name="img" Width="40" Height="40" Margin="2,2,2,2" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type telerik:GridViewCell}}, Path=DataContext.ComponentType, Converter={StaticResource _ToImageConverter}}"/>
+                            <TextBlock Margin="5,0,0,0" VerticalAlignment="Center"  FontFamily="{DynamicResource {x:Static hgc:Keys.StandardFontFamily}}"  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type telerik:GridViewCell}}, Path=DataContext.ArticleNumber}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger  Property="IsSelected" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static hgc:Keys.LightLightForegroundBrush}}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+	
+	
+</ResourceDictionary>

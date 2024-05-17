@@ -1,0 +1,33 @@
+
+[
+  {
+    "label": "Feedback",
+    "link": "cmes-custom-page/Feedback",
+    "navigationExtras": {
+      "queryParams": {
+        "test": "30020 Stacking"
+      }
+    },
+    "icon": "notes"
+  },
+  {
+    "label": "Template",
+    "link": "cmes-custom-page/Template",
+    "icon": "extension"
+  },
+  {
+    "label": "Auswertung",
+    "link": "cmes-custom-page/PartsPerHour",
+    "icon": "extension"
+  },
+  {
+    "label": "Abmelden",
+    "link": "login",
+    "icon": "logout"
+  },
+  {
+    "label": "Nobilia",
+    "link": "cmes-custom-page/Nobilia",
+    "icon": "category"
+  }
+]

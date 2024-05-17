@@ -1,0 +1,53 @@
+<html>
+<body>
+  <div id="app" >
+    <v-app >
+      <v-main  style="overflow:auto">
+        <v-sheet id="scrolling" class="overflow-y-auto">
+            <v-img src="{{ server }}/dao/script/assets/homag-logo.svg" max-height="50" contain class="ma-2"></v-img>
+        </v-sheet>
+        <h1>{{header}}</h1>
+      </v-main>
+    </v-app>
+  </div>
+
+  <script>
+     window.vm = new Vue({
+      el: "#app",
+      components: {
+      },
+      vuetify: new Vuetify({
+        theme: {
+          themes: {
+            light: {
+              primary: "#001941",
+              secondary: "#00A0DC",
+              accent: "#00A0DC",
+            },
+          },
+        },
+      }),
+      created() {
+          // ToDo: INstallieren von EventHandlern
+      },
+      mounted() {
+      },
+      destroyed(){
+          // Aufräumen: z.B. EventHandler entfernen, Timer löschen ect.
+      },
+      data: {
+          header: "Hello from Controller MES",
+      },
+
+      computed: {
+      },
+
+      methods: {
+
+      },
+    });
+  </script>
+  <style>
+  </style>
+</body>
+</html>
