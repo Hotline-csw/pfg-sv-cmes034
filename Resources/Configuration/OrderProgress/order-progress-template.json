@@ -1,0 +1,95 @@
+{
+  "$schema": "./order-progress-schema.json",
+  "mainView": {
+    "interval": 300,
+    "dateFilter":
+    {
+      "field": "ProductionOrder.CustomerOrder.DeliveryDate",
+      "dayOffsetStart": -7,
+      "dayOffsetEnd": 14
+    },
+    "columns": [
+      { "field": "ProductionOrder.ManualBulk.PlanningNumber", 
+        "type":  "group", 
+        "selected": false
+      },
+      {
+        "field": "ProductionOrder.CustomerOrderCode", 
+        "type": "group", 
+        "selected": true
+      },
+      {
+        "field": "ProductionOrder.CustomerOrder.DeliveryDate", 
+        "type": "group", 
+        "selected": true,
+        "dateAggregation": "isoCalendarWeek"
+      },
+      {
+        "field": "Reproduction", 
+        "type": "reproduction",
+        "headerImage": "cmes-rework.png"
+      },
+      {
+        "field": "Total", 
+        "type": "total", 
+        "totalDisplayType": "status"
+      },
+      {
+        "field": "Total2", 
+        "type": "total", 
+        "totalDisplayType": "progress"
+      },
+      {
+        "field": "B300", 
+        "type": "aggregate", 
+        "headerImage": "cmes-cut.png", 
+        "selected": true
+      }, 
+      {
+        "field": "EDGETEQ", 
+        "type": "aggregate", 
+        "headerImage": "cmes-edge.png", 
+        "selected": true
+      },
+      {
+        "field": "V200", 
+        "type": "aggregate", 
+        "headerImage": "cmes-drill.png"
+      },
+      { 
+        "field": "ASSEMBLY", 
+        "type": "aggregate", 
+        "headerImage": "cmes-assembly.png"
+      }
+    ]
+  },
+  "detailView": {
+    "dataSource": "ViewOrderProgressDetail",
+    "orderBy": ["DesiredEndDate", "CustomerOrderCode", "ProductionOrderCode"],
+    "columns": [
+      {"field": "DesiredEndDate"},
+      {"field": "CustomerOrderCode"},
+      {"field": "ProductionOrderCode"},
+      {"field": "ProductionStepCode"},
+      {"field": "PlanningNumber"},
+      {"field": "WorkCenterCode"},
+      {"field": "ArticleNumber"},
+      {"field": "CustomerOrderPosition"},
+      {"field": "OrderProductionState"},
+      {"field": "ReproductionType"},
+      {"field": "OriginalProductionOrderCode"},
+      {"field": "OriginalProductionItemCode"},
+      {"field": "RouteCode"},
+      {"field": "ComponentType"},
+      {"field": "OrderType"},
+      {"field": "WorkstepDescription"},
+      {"field": "ProductionState"},
+      {"field": "DesiredTargetQuantity"},
+      {"field": "CurrentTargetQuantity"},
+      {"field": "CurrentFirstDate"},
+      {"field": "CurrentLastDate"},
+      {"field": "ProductionItemCode"},
+      {"field": "OptimizationCode"}
+    ]
+  }
+}
