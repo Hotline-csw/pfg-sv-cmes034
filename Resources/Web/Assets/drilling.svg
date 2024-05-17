@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="drilling.svg"
+   id="svg4"
+   version="1.1"
+   viewBox="0 0 56.7 26.4"
+   style="fill: #fff">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     inkscape:current-layer="svg4"
+     inkscape:window-maximized="0"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:cy="7.3773733"
+     inkscape:cx="24.916353"
+     inkscape:zoom="4.4753086"
+     showgrid="false"
+     id="namedview6"
+     inkscape:window-height="480"
+     inkscape:window-width="944"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <path
+     style="fill:#000000"
+     id="path2"
+     d="M54.8 19.1H1.9c-1 0-1.9.8-1.9 1.9v3.6c0 1 .8 1.9 1.9 1.9h52.9c1 0 1.9-.8 1.9-1.9V21c0-1-.8-1.9-1.9-1.9zM48 25.5h-3v-5.4h3v5.4zm-4 0h-8.7v-5.4H44v5.4zm-12.7-5.4h3v5.4h-3v-5.4zM1 24.6V21c0-.5.4-.9.9-.9h28.5v5.4H1.9c-.5 0-.9-.4-.9-.9zm54.8 0c0 .5-.4.9-.9.9h-6v-5.4h6c.5 0 .9.4.9.9v3.6zM18.7.1l-.8.9v2.9L21.6.1zM21.8 9.3l-3.9 3.9v2.7l3.9-3.9zM20 18l1.8-1.8v-2.9l-3.3 3.2L20 18zM21.8 1.2l-3.9 4v2.5l3.9-3.9zM21.8 5.1L17.9 9v2.9L21.8 8zM32.3 17.3h1c.6 0 1-.5 1-1V4.6c0-.6-.5-1-1-1h-1c-.6 0-1 .5-1 1v11.6c0 .6.5 1.1 1 1.1zm-.1-12.7s.1-.1 0 0l1.1-.1c.1 0 .1 0 .1.1v11.6c0 .1 0 .1-.1.1h-1c-.1 0-.1 0-.1-.1V4.6zM45.8 17.3h1c.6 0 1-.5 1-1V4.6c0-.6-.5-1-1-1h-1c-.6 0-1 .5-1 1v11.6c0 .6.4 1.1 1 1.1zm-.1-12.7s0-.1 0 0l1.1-.1c.1 0 .1 0 .1.1v11.6c0 .1 0 .1-.1.1h-1c-.1 0-.1 0-.1-.1V4.6z" />
+</svg>
