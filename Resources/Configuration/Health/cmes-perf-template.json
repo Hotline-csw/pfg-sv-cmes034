@@ -1,0 +1,10 @@
+{
+"input": {
+		"refresh": 2,
+		"inputMongo":
+		{
+				"dataSource": "PerfmonOneSecond",
+				"instance": "CMES-DEV"
+		}
+	}
+}
