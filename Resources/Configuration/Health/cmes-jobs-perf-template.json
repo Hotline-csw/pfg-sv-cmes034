@@ -1,0 +1,10 @@
+{
+"input": {
+		"refresh": 2,
+		"inputMongo":
+		{
+				"dataSource": "JobHistory",
+				"instance": "CMES-DEV"
+		}
+	}
+}
