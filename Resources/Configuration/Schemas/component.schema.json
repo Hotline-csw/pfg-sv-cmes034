@@ -1,0 +1,7 @@
+{
+	"component": {
+		"type": "string",	
+		"choicesCMesUrl": "/assets/templates/configComponent.json",
+		"choicesVerb": "GET"		 
+	}
+}
