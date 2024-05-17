@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["mainView", "detailView"],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "mainView": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["columns"],
+      "properties": {
+        "interval": {
+          "type": "integer",
+          "minimum": 10,
+          "default": 60,
+          "description": "Interval for updating the main view in seconds. Minimum is 10 sec."
+        },
+        "dateFilter": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "field": {
+              "type": "string"
+            },
+            "dayOffsetStart": {
+              "type": "integer",
+              "description": "The offset in days where the date filter starts."
+            },
+            "dayOffsetEnd": {
+              "type": "integer",
+              "description": "The offset in days where the date filter ends."
+            }
+          }
+        },
+        "columns": {
+          "type": "array",
+          "additionalProperties": false,
+          "items": {
+            "type": "object",
+            "required": ["field","type"],
+            "additionalProperties": false,
+            "properties": {
+              "field": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["group","reproduction","total","aggregate"],
+                "description": "Available values are: 'group', 'reproduction', 'total', 'aggregate'"
+              },
+              "dateAggregation": {
+                "type": "string",
+                "enum": ["isoCalendarWeek", "dbCalendarWeek"],
+                "description": "This works only with columns of type = 'group' and type 'Date' in the database."
+              },
+              "totalDisplayType": {
+                "type": "string",
+                "enum": ["status", "progress"],
+                "description": "The way the total column is displayed. 'status' shows only an icon. 'progress' shows a progressbar. Could only be applied to column type = 'total'."
+              },
+              "selected": {
+                "type": "boolean"
+              },
+              "headerImage": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "detailView": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dataSource", "columns"],
+      "properties": {
+        "dataSource": {
+          "type": "string"
+        },
+        "orderBy": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "columns": {
+          "type": "array",
+          "additionalProperties": false,
+          "items": {
+            "type": "object",
+            "required": ["field"],
+            "additionalProperties": false,
+            "properties": {
+              "field": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
