@@ -1,0 +1,176 @@
+[
+
+    {
+    "label": "SAWTEQ B300",
+    "cols": 2,
+    "rows": 2,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-gauge-chart",
+    "link": "cmes-custom-page/W2Demo",
+      "input": {
+        "colors": [ "#777777" ],
+        "refresh": 10,
+        "inputOData": {
+          "dataSource": "ProductionItemsHistory",
+          "filter": "WorkCenterCode eq '30010 Saw' and date(Timestamp) gt {now()-minutes(1)}",
+          "count": true
+        }
+      }
+      },
+      {
+    "label": "SAWTEQ B400",
+    "cols": 2,
+    "rows": 2,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-gauge-chart",
+    "link": "cmes-custom-page/W2Demo",
+        "input": {
+          "colors": [ "#777777" ],
+          "refresh": 12,
+          "inputOData": {
+            "dataSource": "ProductionItemsHistory",
+            "filter": "WorkCenterCode eq '30015 Saw' and date(Timestamp) gt {now()-minutes(1)}",
+            "count": true
+          }
+          }
+        },
+        {
+    "label": "EDGETEC S-310",
+    "cols": 2,
+    "rows": 2,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-gauge-chart",
+    "link": "cmes-custom-page/W2Demo",
+          "input": {
+            "colors": [ "#777777" ],
+            "refresh": 12,
+            "inputOData": {
+              "dataSource": "ProductionItemsHistory",
+              "filter": "WorkCenterCode eq '30030 Edge' and date(Timestamp) gt {now()-minutes(1)}",
+              "count": true
+            }
+          }
+          },
+  {
+    "label": "Aufträge für heute",
+    "cols": 2,
+    "rows": 1,
+    "background": "#FFFFFF",
+    "component": "cmes-dashboard-count-chart",
+    "link": "cmes-custom-page/W2Demo",
+    "input": {
+      "colors": [ "#777777" ],
+      "refresh": 60,
+      "inputOData": {
+        "dataSource": "ProductionOrders",
+        "filter": "date(DesiredEndDate) eq {Today}",
+        "count": true
+      }
+    }
+    },
+  {
+    "label": "Stapel",
+    "cols": 2,
+    "rows": 2,
+    "background": "#D2691E",
+    "foreground": "#ffffff",
+    "component": "cmes-dashboard-count-chart",
+    "link": "cmes-stack",
+    "input": {
+      "colors": [ "#FFFFFF" ],
+      "refresh": 60,
+      "inputOData": {
+        "dataSource": "IntelliStacks",
+        "filter": "date(CreationDate) eq {Today}",
+        "count": true
+      }
+      }
+    },
+  {
+    "label": "Nachfertigungen",
+    "cols": 2,
+    "rows": 1,
+    "background": "#ff8000",
+	"foreground": "#ffffff",
+    "component": "cmes-dashboard-count-chart",
+    "link": "cmes-custom-page/W2Demo",
+    "input": {
+      "colors": [ "#FFFFFF" ],
+      "refresh": 60,
+      "inputOData": {
+        "dataSource": "ProductionItemsValidations",
+        "filter": "ValidationState eq 'ReproductionNecessary' and date(CreationDate) eq {Today}",
+        "count": true
+      }
+      }
+    },
+
+  {
+    "label": "Kundenaufträge",
+    "cols": 2,
+    "rows": 1,
+    "background": "#009933",
+    "component": "cmes-dashboard-count-chart",
+    "link": "cmes-custom-page/W2Demo",
+    "input": {
+      "colors": [ "#FFFFFF" ],
+      "refresh": 120,
+      "inputOData": {
+        "dataSource": "ProductionOrders",
+        "groupField": "ProductionState",
+        "valueField": "total",
+        "apply": "filter(date(DesiredEndDate) eq {Today} and ProductionState eq 'Finished')/groupby((ProductionState),aggregate(CustomerOrderCode with countdistinct as total))"
+      }
+      }
+    },
+  {
+    "label": "Benutzer",
+    "cols": 2,
+    "rows": 1,
+    "background": "#FAF0E6",
+    "component": "cmes-dashboard-user",
+    "link": "cmes-custom-page/CmesHealthW3wp"
+
+  },
+  {
+    "label": "Fortschritt Zuschnitt",
+    "cols": 4,
+    "rows": 3,
+    "background": "#ffffff",
+    "component": "cmes-dashboard-bar-chart",
+    "link": "cmes-custom-page/W2Demo",
+    "input": {
+      "names": [ "30015 Saw" ],
+      "colors": [ "#33b2df" ],
+      "refresh": 25,
+      "inputOData": {
+        "dataSource": "ViewFinishedPerHours",
+        "groupField": "Hour",
+        "valueField": "FinishedGood",
+        "filter": "WorkCenterCode eq '30015 Saw' and date(Date) eq {Today}"
+      }
+      }
+    },
+
+  {
+    "label": "letzte Rückmeldungen",
+    "cols": 8,
+    "rows": 3,
+    "background": "#D2691E",
+    "foreground": "#fff",
+    "component": "cmes-dashboard-table-chart",
+    "link": "cmes-custom-page/W2Demo",
+    "input": {
+      "names": [ "Server Error" ],
+      "colors": [ "#FF0000" ],
+      "refresh": 5,
+      "inputOData": {
+        "dataSource": "ProductionItemsHistory",
+        "select": "Timestamp, WorkCenterCode, ProductionOrderCode, ProductionItemCode, ProductionStepCode",
+        "orderBy": "Sequence desc",
+        "top": 15
+      }
+    }
+
+    }
+]
