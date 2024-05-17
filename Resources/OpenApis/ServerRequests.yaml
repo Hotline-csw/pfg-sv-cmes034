@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  description: API for ControllerMES
+  version: "1.0.0-oas3"
+  title: Controller MES Server test if is alive
+  x-usage: Server     
+paths:
+  /ServerAlive:    
+    get:
+      x-userExit: ServerAlive    
+      responses:
+        200:
+          description: Collection of items
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ServiceChecks' 
+  /StartServices:    
+    put:
+      x-userExit: StartServices    
+      responses:
+        200:
+          description: successful operation
+  /StopServices:    
+    put:
+      x-userExit: StopServices    
+      responses:
+        200:
+          description: successful operation
+
+servers:
+  - url: 'https://virtserver.swaggerhub.com/rest'
+  - url: 'http://virtserver.swaggerhub.com/rest'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    ServiceCheck:
+      type: object
+      required:
+        - serviceName
+        - state
+      properties:
+        serviceName:
+          type: string
+        state:
+          type: string
+    ServiceChecks:
+      type: array
+      items:
+        $ref: '#/components/schemas/ServiceCheck'
