@@ -1,0 +1,118 @@
+{
+  "type": "array",
+  "layout": "vertical",		
+  "items": {
+    "type": "object",
+	"required": [
+    "label",
+	"cols",
+	"rows"
+	],
+	"properties": {
+      "label": {"$ref": "#/definitions/label"},
+      "cols": {"$ref": "#/definitions/cols"},
+      "rows": {"$ref": "#/definitions/rows"},
+      "background": {"$ref": "#/definitions/background"},
+      "foreground": {"$ref": "#/definitions/foreground"},
+      "component": {"$ref": "#/definitions/component"},
+      "link": {"$ref": "#/definitions/link"},
+      "input": {"$ref": "#/definitions/input"}  
+     }
+    },  
+	"definitions": {
+		"label": {
+			"type": "string"
+			
+		},
+		"cols": {
+			"type": "number"
+			
+		},
+		"rows": {
+			"type": "number"
+			
+		},
+		"background": {
+			"type": "string",
+			"widget": "color",
+			"required":true
+		},
+		"foreground": {
+			"type": "string",
+			"widget": "color"
+		},
+		"component": {"$ref": "../schemas/component.schema.json#/component"},
+		"link": {"$ref": "../schemas/link.schema.json#/link"},
+		"input": {
+			"type": "object",
+			"layout": "horizontal",
+			"properties": {
+				"chartName": {
+				"type": "string"
+				},
+				"refresh": {
+					"type": "number"
+				},
+				"names": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"colors": {
+				"type": "array",				
+				"items": {
+					"type": "string",
+					"widget": "color"
+					}
+				},
+			
+			"inputOData": {"$ref": "#/definitions/inputOData"},         
+			"inputMongo": {"$ref": "#/definitions/inputMongo"}			
+			}
+		},
+		"inputOData": {
+			"type": "object",	 
+			"layout": "horizontal",
+			"properties": {       	
+				"dataSource":{
+					"type": "string",
+					"widget": "select",
+					"choicesCMesEntity":"DataSource"
+				},
+				"groupField": {"type": "string"},
+				"valueGroupField":{"type": "string"},
+				"count": {"type": "boolean"},
+				"valueGroupFieldValues":{
+					"type": "array",
+					"layout": "horizontal",
+					"items": {"type": "string"}
+				},
+				"valueFields": {
+					"type": "array",
+					"layout": "horizontal",
+					"items": {"type": "string"}
+				},
+				"filter": {"type": "string", "widget": "textarea"},
+				"apply": {"type": "string", "widget": "textarea"}
+								 
+			}
+      },
+	  "inputMongo": {
+		    "type": "object",
+			"layout": "horizontal",
+            "properties": {
+              "dataSource": {
+                "type": "string",
+				 "required":true
+              },
+              "instance": {
+                "type": "string",
+				 "required":true
+              }
+            }
+	  }
+	}	
+	
+
+}
