@@ -1,0 +1,18 @@
+{
+"input": {
+		"refresh": 1,
+		"inputMongo":
+		{
+				"dataSource": "JobHistory",
+				"instance": "CMES-DEV"
+		}
+	},
+"config":{
+	"limitExecutionCount": 1000,
+	"limitMaxRow": 150,
+	"limitMaxWorkerTime": 200,
+	"limitSingleRead": 2
+}
+}
+
+
