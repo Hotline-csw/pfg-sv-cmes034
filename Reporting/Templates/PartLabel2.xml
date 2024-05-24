@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="23.2.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="PartLabel2" DisplayName="partlabel" PageWidth="850" PageHeight="1100" Version="23.2" Tag_type="System.String" Tag="ProductionOrder">
+  <Bands>
+    <Item1 Ref="1" ControlType="ReportHeaderBand" Name="ReportHeader1" />
+    <Item2 Ref="2" ControlType="PageHeaderBand" Name="PageHeader1" />
+    <Item3 Ref="3" ControlType="GroupHeaderBand" Name="GroupHeader1" />
+    <Item4 Ref="4" ControlType="DetailBand" Name="Detail1" />
+    <Item5 Ref="5" ControlType="GroupFooterBand" Name="GroupFooter1" />
+    <Item6 Ref="6" ControlType="PageFooterBand" Name="PageFooter1" />
+    <Item7 Ref="7" ControlType="ReportFooterBand" Name="ReportFooter1" />
+    <Item8 Ref="8" ControlType="TopMarginBand" Name="TopMargin1" />
+    <Item9 Ref="9" ControlType="BottomMarginBand" Name="BottomMargin1" />
+  </Bands>
+</XtraReportsLayoutSerializer>
