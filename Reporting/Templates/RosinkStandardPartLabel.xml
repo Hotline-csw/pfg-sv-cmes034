@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="16.2.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v16.2, Version=16.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="RosinkStandardPartLabel" ScriptsSource="private void EdgeSouth_GetValue(object sender, DevExpress.XtraReports.UI.GetValueEventArgs e) {&#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;private void EdgeSouth_GetValue_1(object sender, DevExpress.XtraReports.UI.GetValueEventArgs e) {&#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;" SnapGridSize="31.75" ReportUnit="TenthsOfAMillimeter" Landscape="true" Margins="0, 0, 0, 0" PaperKind="Custom" PageWidth="800" PageHeight="1001" Version="16.2" ShowPrintStatusDialog="false" ShowPrintMarginsWarning="false" Dpi="254" Tag_type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Tag="CustViewRosinkPartsLabel">
+  <FormattingRuleSheet>
+    <Item1 Ref="1" Name="ShowFrontCNC" Condition="Iif([EdgeNoCncZeroLine] &lt;&gt; 'FRONT', true , false )">
+      <Formatting Ref="2" Visible="False" BorderStyle="Inset" StringFormat="Near;Near;0;None;Character;Default" />
+    </Item1>
+    <Item2 Ref="3" Name="ShowBackCNC" Condition="[EdgeNoCncZeroLine] != 'BACK'">
+      <Formatting Ref="4" Visible="False" BorderStyle="Inset" StringFormat="Near;Near;0;None;Character;Default" />
+    </Item2>
+    <Item3 Ref="5" Name="ShowLeftCNC" Condition="[EdgeNoCncZeroLine] != 'LEFT'">
+      <Formatting Ref="6" Visible="False" BorderStyle="Inset" StringFormat="Near;Near;0;None;Character;Default" />
+    </Item3>
+    <Item4 Ref="7" Name="ShowRightCNC" Condition="[EdgeNoCncZeroLine] != 'RIGHT'">
+      <Formatting Ref="8" Visible="False" BorderStyle="Inset" StringFormat="Near;Near;0;None;Character;Default" />
+    </Item4>
+    <Item5 Ref="9" Name="Assembled" Condition="Iif([Address2] &lt;&gt; 'Assembled', true, false )">
+      <Formatting Ref="10" Visible="False" BorderStyle="Inset" StringFormat="Near;Near;0;None;Character;Default" />
+    </Item5>
+    <Item6 Ref="11" Name="Flatpack" Condition="Iif([Address2] &lt;&gt; 'Flatpack', true, false )">
+      <Formatting Ref="12" Visible="False" BorderStyle="Inset" StringFormat="Near;Near;0;None;Character;Default" />
+    </Item6>
+    <Item7 Ref="13" Name="FirstEdge" Condition="[EdgeSouth] != [EdgeSouth]">
+      <Formatting Ref="14" Visible="False" BorderStyle="Inset" StringFormat="Near;Near;0;None;Character;Default" />
+    </Item7>
+    <Item8 Ref="15" Name="SecondEdge" Condition="[EdgeEast] != [EdgeEast]">
+      <Formatting Ref="16" Visible="False" BorderStyle="Inset" StringFormat="Near;Near;0;None;Character;Default" />
+    </Item8>
+    <Item9 Ref="17" Name="ThirdEdge" Condition="[EdgeNorth] != [EdgeNorth]">
+      <Formatting Ref="18" Visible="False" BorderStyle="Inset" StringFormat="Near;Near;0;None;Character;Default" />
+    </Item9>
+    <Item10 Ref="19" Name="FourthEdge" Condition="[EdgeWest] != [EdgeWest]">
+      <Formatting Ref="20" Visible="False" BorderStyle="Inset" StringFormat="Near;Near;0;None;Character;Default" />
+    </Item10>
+  </FormattingRuleSheet>
+  <CalculatedFields>
+    <Item1 Ref="21" Name="OrderType" Expression="[ProductionOrder.OrderType]" />
+    <Item2 Ref="22" Name="SourceLocation" Expression="[ProductionOrder.CustomSourceLocation]" />
+    <Item3 Ref="23" Name="ProdOrderAndQty" DisplayName="ProdOrderAndQty" Expression="[ProductionOrderCode] + '_'+ [DesiredTargetQuantity]" />
+    <Item4 Ref="24" Name="FinalDim" DisplayName="FinalDim" Expression="[CuttingLength] + ' x ' + [CuttingWidth] + ' x ' + [Thickness]" />
+    <Item5 Ref="25" Name="PosAndArticle" Expression="[CustomerOrderPosition] + '_' + [CabinetDescription]" />
+    <Item6 Ref="26" Name="EdgeSouth" Expression="'iX[1]-' + [EdgeMaterialSouth] + '-iX[1]'" />
+    <Item7 Ref="27" Name="EdgeEast" Expression="'iX[2]- ' + [EdgeMaterialEast]+ ' -iX[2]'" />
+    <Item8 Ref="28" Name="EdgeNorth" Expression="'iX[3]- ' + [EdgeMaterialNorth] + ' -iX[3]'" />
+    <Item9 Ref="29" Name="EdgeWest" Expression="'iX[4]- ' + [EdgeMaterialWest] + ' -iX[4]'" />
+  </CalculatedFields>
+  <Bands>
+    <Item1 Ref="30" ControlType="DetailBand" Name="Detail1" HeightF="1001" Dpi="254" BackColor="White" Tag_type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Tag="CustViewPartLabel">
+      <SortFields>
+        <Item1 Ref="31" FieldName="Code" />
+      </SortFields>
+      <Controls>
+        <Item1 Ref="32" ControlType="XRLabel" Name="label20" CanGrow="false" Angle="180" Text="label20" SizeF="228.781036,40.00006" LocationFloat="505.638763, 890.08" Dpi="254" Font="Arial, 8pt">
+          <DataBindings>
+            <Item1 Ref="33" FormatString="Final-L: {0}" PropertyName="Text" DataMember="CuttingLength" />
+          </DataBindings>
+        </Item1>
+        <Item2 Ref="34" ControlType="XRLabel" Name="label1" CanGrow="false" Angle="90" Text="label1" TextAlignment="TopCenter" SizeF="49.99997,236.255035" LocationFloat="204.000015, 410.499969" Dpi="254" Font="Arial, 8pt">
+          <DataBindings>
+            <Item1 Ref="35" FormatString="Final-W: {0}" PropertyName="Text" DataMember="CuttingWidth" />
+          </DataBindings>
+        </Item2>
+        <Item3 Ref="36" ControlType="XRLabel" Name="label3" CanGrow="false" Text="label3" TextAlignment="MiddleCenter" SizeF="418.669861,21.9999084" LocationFloat="282.3349, 415.5" Dpi="254" Font="Arial, 6.7pt">
+          <FormattingRuleLinks>
+            <Item1 Ref="37" Value="#Ref-17" />
+          </FormattingRuleLinks>
+          <DataBindings>
+            <Item1 Ref="38" FormatString="{0}" PropertyName="Text" DataMember="EdgeNorth" />
+          </DataBindings>
+        </Item3>
+        <Item4 Ref="39" ControlType="XRLabel" Name="label19" CanGrow="false" Angle="180" Text="label19" TextAlignment="MiddleCenter" SizeF="415.5,21.9998779" LocationFloat="285.75, 862.500061" Dpi="254" Font="Arial, 6.7pt">
+          <FormattingRuleLinks>
+            <Item1 Ref="40" Value="#Ref-13" />
+          </FormattingRuleLinks>
+          <DataBindings>
+            <Item1 Ref="41" FormatString="{0}" PropertyName="Text" DataMember="EdgeSouth" />
+          </DataBindings>
+        </Item4>
+        <Item5 Ref="42" ControlType="XRLabel" Name="label2" Text="label2" TextAlignment="TopCenter" SizeF="386.080048,40" LocationFloat="296.775177, 658.089966" Dpi="254" Font="Arial, 9.75pt, style=Bold">
+          <Summary Ref="43" FormatString="{0:dd.MM.yyyy HH:mm:ss tt}" />
+          <DataBindings>
+            <Item1 Ref="44" PropertyName="Text" DataMember="DesiredEndDate" />
+          </DataBindings>
+        </Item5>
+        <Item6 Ref="45" ControlType="XRLabel" Name="label16" CanGrow="false" Text="label16" TextAlignment="TopCenter" SizeF="386.080048,58.4200439" LocationFloat="296.775177, 457.079956" Dpi="254" Font="Arial, 9.7pt, style=Bold">
+          <DataBindings>
+            <Item1 Ref="46" PropertyName="Text" DataMember="OptimizationCode" />
+          </DataBindings>
+        </Item6>
+        <Item7 Ref="47" ControlType="XRLabel" Name="label8" CanGrow="false" Text="FP" TextAlignment="MiddleCenter" SizeF="68,89.5" LocationFloat="680.7703, 195.5" Dpi="254" Font="Arial, 12pt, style=Bold">
+          <FormattingRuleLinks>
+            <Item1 Ref="48" Value="#Ref-11" />
+          </FormattingRuleLinks>
+        </Item7>
+        <Item8 Ref="49" ControlType="XRLabel" Name="label14" CanGrow="false" Text="AS" TextAlignment="MiddleCenter" SizeF="68.7296753,89.5" LocationFloat="680.7703, 195.5" Dpi="254" Font="Arial, 12pt, style=Bold">
+          <FormattingRuleLinks>
+            <Item1 Ref="50" Value="#Ref-9" />
+          </FormattingRuleLinks>
+        </Item8>
+        <Item9 Ref="51" ControlType="XRLabel" Name="label6" Text="label6" TextAlignment="TopCenter" SizeF="386.080078,58.4199829" LocationFloat="296.775146, 588.335" Dpi="254" Font="Arial, 9.75pt, style=Bold">
+          <DataBindings>
+            <Item1 Ref="52" PropertyName="Text" DataMember="PosAndArticle" />
+          </DataBindings>
+        </Item9>
+        <Item10 Ref="53" ControlType="XRLabel" Name="label5" CanGrow="false" Text="label5" TextAlignment="MiddleCenter" SizeF="554.5,25.9200439" LocationFloat="195, 352" Dpi="254" Font="Arial, 8pt, style=Bold">
+          <DataBindings>
+            <Item1 Ref="54" PropertyName="Text" DataMember="FinalDim" />
+          </DataBindings>
+        </Item10>
+        <Item11 Ref="55" ControlType="XRLabel" Name="label18" CanGrow="false" Text="label18" TextAlignment="TopRight" SizeF="190.5,35" LocationFloat="476.25, 225.5" Dpi="254" Font="Arial, 8pt, style=Bold">
+          <DataBindings>
+            <Item1 Ref="56" PropertyName="Text" DataMember="ProdOrderAndQty" />
+          </DataBindings>
+        </Item11>
+        <Item12 Ref="57" ControlType="XRLine" Name="line10" LineWidth="8" LineDirection="Vertical" SizeF="8.000061,416.75" LocationFloat="692.0252, 440.25" Dpi="254">
+          <FormattingRuleLinks>
+            <Item1 Ref="58" Value="#Ref-7" />
+          </FormattingRuleLinks>
+        </Item12>
+        <Item13 Ref="59" ControlType="XRLine" Name="line9" LineWidth="8" LineDirection="Vertical" SizeF="8,416.75" LocationFloat="285.75, 440.5" Dpi="254">
+          <FormattingRuleLinks>
+            <Item1 Ref="60" Value="#Ref-5" />
+          </FormattingRuleLinks>
+        </Item13>
+        <Item14 Ref="61" ControlType="XRLine" Name="line8" LineWidth="8" SizeF="415.5001,8" LocationFloat="284.525177, 440.25" Dpi="254">
+          <FormattingRuleLinks>
+            <Item1 Ref="62" Value="#Ref-3" />
+          </FormattingRuleLinks>
+        </Item14>
+        <Item15 Ref="63" ControlType="XRLine" Name="line7" LineWidth="8" SizeF="415.5,8" LocationFloat="287.3349, 848.999939" Dpi="254">
+          <FormattingRuleLinks>
+            <Item1 Ref="64" Value="#Ref-1" />
+          </FormattingRuleLinks>
+        </Item15>
+        <Item16 Ref="65" ControlType="XRLabel" Name="label12" CanGrow="false" Angle="90" Text="label12" TextAlignment="MiddleCenter" SizeF="22,420.0001" LocationFloat="256.025177, 440.499969" Dpi="254" Font="Arial, 6.75pt, charSet=0">
+          <FormattingRuleLinks>
+            <Item1 Ref="66" Value="#Ref-19" />
+          </FormattingRuleLinks>
+          <DataBindings>
+            <Item1 Ref="67" FormatString="{0}" PropertyName="Text" DataMember="EdgeWest" />
+          </DataBindings>
+        </Item16>
+        <Item17 Ref="68" ControlType="XRLabel" Name="label7" CanGrow="false" Angle="270" Text="label7" TextAlignment="MiddleCenter" SizeF="22,420.000061" LocationFloat="706.025146, 440.5" Dpi="254" Font="Arial, 6.75pt, charSet=0">
+          <FormattingRuleLinks>
+            <Item1 Ref="69" Value="#Ref-15" />
+          </FormattingRuleLinks>
+          <DataBindings>
+            <Item1 Ref="70" FormatString="{0}" PropertyName="Text" DataMember="EdgeEast" />
+          </DataBindings>
+        </Item17>
+        <Item18 Ref="71" ControlType="XRPageInfo" Name="pageInfo1" PageInfo="DateTime" Format="{0:dd/MM/yy HH:mm tt}" SizeF="274.701,30" LocationFloat="204.000015, 228" Dpi="254" Font="Arial, 8pt" />
+        <Item19 Ref="72" ControlType="XRLabel" Name="label9" CanGrow="false" Angle="180" Text="label9" SizeF="228.781067,40.00006" LocationFloat="254.419861, 890.08" Dpi="254" Font="Arial, 8pt">
+          <DataBindings>
+            <Item1 Ref="73" FormatString="L1: {0}" PropertyName="Text" DataMember="Length" />
+          </DataBindings>
+        </Item19>
+        <Item20 Ref="74" ControlType="XRLabel" Name="label13" CanGrow="false" Angle="90" Text="label13" TextAlignment="TopCenter" SizeF="49.99997,179.999939" LocationFloat="204.000015, 704.5" Dpi="254" Font="Arial, 8pt">
+          <DataBindings>
+            <Item1 Ref="75" FormatString="W1: {0}" PropertyName="Text" DataMember="Width" />
+          </DataBindings>
+        </Item20>
+        <Item21 Ref="76" ControlType="XRLabel" Name="label11" CanGrow="false" Text="label11" SizeF="279.200928,29.999939" LocationFloat="204.000015, 195.5" Dpi="254" Font="Arial, 7pt, style=Bold">
+          <DataBindings>
+            <Item1 Ref="77" PropertyName="Text" DataMember="OptimizationCode" />
+          </DataBindings>
+        </Item21>
+        <Item22 Ref="78" ControlType="XRLine" Name="line6" LineWidth="3" LineDirection="Vertical" SizeF="5.080017,188.000031" LocationFloat="754.1914, 194" Dpi="254" BackColor="White" BorderWidth="1" />
+        <Item23 Ref="79" ControlType="XRLine" Name="line5" LineWidth="3" SizeF="562.75,5.07998657" LocationFloat="195, 381" Dpi="254" />
+        <Item24 Ref="80" ControlType="XRLabel" Name="label15" CanGrow="false" Text="label15" TextAlignment="TopRight" SizeF="471.75,25.9200439" LocationFloat="195, 259.079956" Dpi="254" Font="Arial, 6pt, style=Bold">
+          <DataBindings>
+            <Item1 Ref="81" PropertyName="Text" DataMember="RouteCode" />
+          </DataBindings>
+        </Item24>
+        <Item25 Ref="82" ControlType="XRLine" Name="line4" LineWidth="3" LineDirection="Vertical" SizeF="5.080017,93" LocationFloat="666.75, 194" Dpi="254" />
+        <Item26 Ref="83" ControlType="XRLine" Name="line3" LineWidth="3" SizeF="561,5.07998657" LocationFloat="195, 285.75" Dpi="254" />
+        <Item27 Ref="84" ControlType="XRLine" Name="line2" LineWidth="3" LineDirection="Vertical" SizeF="5.080002,788.75" LocationFloat="190.5, 195.5" Dpi="254" />
+        <Item28 Ref="85" ControlType="XRBarCode" Name="barCode2" Module="5.08" AutoModule="true" TextAlignment="BottomCenter" SizeF="686,149.999985" LocationFloat="63.5, 31.75" Dpi="254" Font="Arial, 8pt, style=Bold" BackColor="White">
+          <Symbology Ref="86" Name="Code128" />
+          <DataBindings>
+            <Item1 Ref="87" PropertyName="Text" DataMember="Code" />
+          </DataBindings>
+        </Item28>
+        <Item29 Ref="88" ControlType="XRLabel" Name="label17" CanGrow="false" Text="label17" TextAlignment="MiddleCenter" SizeF="554.5,29.999939" LocationFloat="195, 317.5" Dpi="254" Font="Arial, 8pt, style=Bold">
+          <DataBindings>
+            <Item1 Ref="89" PropertyName="Text" DataMember="Material" />
+          </DataBindings>
+        </Item29>
+        <Item30 Ref="90" ControlType="XRLabel" Name="label10" CanGrow="false" Text="label10" TextAlignment="MiddleCenter" SizeF="554.5,35" LocationFloat="195, 285.75" Dpi="254" Font="Arial, 9pt, style=Bold">
+          <DataBindings>
+            <Item1 Ref="91" PropertyName="Text" DataMember="ArticleNumber" />
+          </DataBindings>
+        </Item30>
+        <Item31 Ref="92" ControlType="XRLine" Name="line1" LineWidth="3" SizeF="726,5.080002" LocationFloat="31.75, 190.5" Dpi="254" />
+        <Item32 Ref="93" ControlType="XRLabel" Name="label4" CanGrow="false" Text="label4" TextAlignment="TopCenter" SizeF="386.080048,40" LocationFloat="296.775177, 521.33" Dpi="254" Font="Arial, 8pt, style=Bold">
+          <DataBindings>
+            <Item1 Ref="94" FormatString="{0}" PropertyName="Text" DataMember="CustomerOrderCode" />
+          </DataBindings>
+        </Item32>
+        <Item33 Ref="95" ControlType="XRBarCode" Name="barCode1" Module="5.08" AutoModule="true" BarCodeOrientation="RotateLeft" TextAlignment="BottomCenter" ShowText="false" SizeF="149.999985,698.5" LocationFloat="31.75, 254" Dpi="254" Font="Arial, 9.75pt, style=Bold" BackColor="White">
+          <Symbology Ref="96" Name="Code128" />
+          <DataBindings>
+            <Item1 Ref="97" PropertyName="Text" DataMember="Code" />
+          </DataBindings>
+        </Item33>
+        <Item34 Ref="98" ControlType="XRShape" Name="shape2" SizeF="419.999939,420.000061" LocationFloat="285.75, 440.5" Dpi="254">
+          <Shape Ref="99" ShapeName="Rectangle" />
+        </Item34>
+        <Item35 Ref="100" ControlType="XRShape" Name="shape1" SizeF="479.999939,480.000031" LocationFloat="254.419861, 410.499969" Dpi="254">
+          <Shape Ref="101" ShapeName="Rectangle" />
+        </Item35>
+      </Controls>
+    </Item1>
+    <Item2 Ref="102" ControlType="TopMarginBand" Name="TopMargin1" HeightF="0" Dpi="254" />
+    <Item3 Ref="103" ControlType="BottomMarginBand" Name="BottomMargin1" HeightF="0" Dpi="254" Tag_type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Tag="CustViewXiloFeedbackTile" Visible="false" />
+  </Bands>
+  <ReportPrintOptions Ref="104" PrintOnEmptyDataSource="false" />
+</XtraReportsLayoutSerializer>
