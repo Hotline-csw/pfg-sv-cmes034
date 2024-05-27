@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<XtraReportsLayoutSerializer SerializerVersion="23.2.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="PartLabel" SnapGridSize="31.75" ReportUnit="TenthsOfAMillimeter" Margins="0, 0, 0, 0" PaperKind="Custom" PageWidth="80" PageHeight="100" Version="23.2" Dpi="254" Tag_type="System.String" Tag="ProductionItem">
+<XtraReportsLayoutSerializer SerializerVersion="23.2.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="PartLabel" DisplayName="partlabel" SnapGridSize="31.75" ReportUnit="TenthsOfAMillimeter" Margins="0, 0, 0, 0" PaperKind="Custom" PageWidth="800" PageHeight="1000" Version="23.2" Dpi="254" Tag_type="System.String" Tag="ProductionItem">
   <Bands>
-    <Item1 Ref="1" ControlType="DetailBand" Name="Detail1" HeightF="1270" Dpi="254">
+    <Item1 Ref="1" ControlType="DetailBand" Name="Detail1" HeightF="1048.71216" Dpi="254">
       <HierarchyPrintOptions Ref="2" Indent="50.8" />
     </Item1>
     <Item2 Ref="3" ControlType="TopMarginBand" Name="TopMargin1" HeightF="0" Dpi="254" />
