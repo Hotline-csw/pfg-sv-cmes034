@@ -1,6 +1,7 @@
--- View für Etiketten
+-- View für Etiketten (sfeist)
+
 -- Last Changes: 
--- 2022-11-10 - addinfo fields - by SF
+-- 2024-xx-xx - 
 
 
 CREATE VIEW[cust].[ViewPartsLabels]
