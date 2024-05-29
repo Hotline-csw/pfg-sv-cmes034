@@ -2,20 +2,35 @@
 <XtraReportsLayoutSerializer SerializerVersion="23.2.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="PartLabel" DisplayName="partlabel" SnapGridSize="31.75" ReportUnit="TenthsOfAMillimeter" Margins="0, 0, 0, 0" PaperKind="Custom" PageWidth="800" PageHeight="1000" Version="23.2" Dpi="254" Tag_type="System.String" Tag="ProductionItem">
   <CalculatedFields>
     <Item1 Ref="1" Name="calculatedField1" FieldType="DateTime" Expression="Now()" />
-    <Item2 Ref="2" Name="calculatedField2" FieldType="Double" Expression="ToDouble([OptimizationCode])" />
+    <Item2 Ref="2" Name="calculatedField2" FieldType="Double" Expression="ToDouble([Code])" />
+    <Item3 Ref="3" Name="calculatedField3" FieldType="String" Expression="Substring([Code], 0, 3)" />
+    <Item4 Ref="4" Name="calculatedField4" FieldType="String" Expression="Substring([Code], Len([Code]) - 3)" />
   </CalculatedFields>
   <Bands>
-    <Item1 Ref="3" ControlType="DetailBand" Name="Detail1" HeightF="1000" Dpi="254">
-      <HierarchyPrintOptions Ref="4" Indent="50.8" />
+    <Item1 Ref="5" ControlType="DetailBand" Name="Detail1" HeightF="1000" Dpi="254">
+      <HierarchyPrintOptions Ref="6" Indent="50.8" />
       <Controls>
-        <Item1 Ref="5" ControlType="XRLabel" Name="label1" Multiline="true" Text="label1" SizeF="304.7118,58.42" LocationFloat="58.2083321,56.86778" Dpi="254" Padding="5,5,0,0,254">
+        <Item1 Ref="7" ControlType="XRLabel" Name="label6" Multiline="true" Text="label6" SizeF="254,58.42" LocationFloat="417.4184,226.73027" Dpi="254" Padding="5,5,0,0,254">
           <ExpressionBindings>
-            <Item1 Ref="6" EventName="BeforePrint" PropertyName="Text" Expression="[calculatedField2]" />
+            <Item1 Ref="8" EventName="BeforePrint" PropertyName="Text" Expression="[calculatedField4]" />
           </ExpressionBindings>
         </Item1>
+        <Item2 Ref="9" ControlType="XRLabel" Name="label5" Multiline="true" Text="TeileNr, letzte 3 Zeichen:" SizeF="368.2118,61.73611" LocationFloat="26.458334,225.07222" Dpi="254" Padding="5,5,0,0,254" />
+        <Item3 Ref="10" ControlType="XRLabel" Name="label4" Multiline="true" Text="TeileNr, erste 3 Zeichen:" SizeF="368.2118,61.73611" LocationFloat="26.458334,135.731247" Dpi="254" Padding="5,5,0,0,254" />
+        <Item4 Ref="11" ControlType="XRLabel" Name="label3" Multiline="true" Text="TeileNr, komplett:" SizeF="368.2118,61.73611" LocationFloat="26.458334,44.1854172" Dpi="254" Padding="5,5,0,0,254" />
+        <Item5 Ref="12" ControlType="XRLabel" Name="label1" Multiline="true" Text="label1" SizeF="254,58.42" LocationFloat="417.4184,45.8434753" Dpi="254" Padding="5,5,0,0,254">
+          <ExpressionBindings>
+            <Item1 Ref="13" EventName="BeforePrint" PropertyName="Text" Expression="[Code]" />
+          </ExpressionBindings>
+        </Item5>
+        <Item6 Ref="14" ControlType="XRLabel" Name="label2" Multiline="true" Text="label2" SizeF="254,58.42" LocationFloat="417.4184,137.3893" Dpi="254" Padding="5,5,0,0,254">
+          <ExpressionBindings>
+            <Item1 Ref="15" EventName="BeforePrint" PropertyName="Text" Expression="[calculatedField3]" />
+          </ExpressionBindings>
+        </Item6>
       </Controls>
     </Item1>
-    <Item2 Ref="7" ControlType="TopMarginBand" Name="TopMargin1" HeightF="0" Dpi="254" />
-    <Item3 Ref="8" ControlType="BottomMarginBand" Name="BottomMargin1" HeightF="0" Dpi="254" />
+    <Item2 Ref="16" ControlType="TopMarginBand" Name="TopMargin1" HeightF="0" Dpi="254" />
+    <Item3 Ref="17" ControlType="BottomMarginBand" Name="BottomMargin1" HeightF="0" Dpi="254" />
   </Bands>
 </XtraReportsLayoutSerializer>
