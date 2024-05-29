@@ -2,12 +2,20 @@
 <XtraReportsLayoutSerializer SerializerVersion="23.2.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="PartLabel" DisplayName="partlabel" SnapGridSize="31.75" ReportUnit="TenthsOfAMillimeter" Margins="0, 0, 0, 0" PaperKind="Custom" PageWidth="800" PageHeight="1000" Version="23.2" Dpi="254" Tag_type="System.String" Tag="ProductionItem">
   <CalculatedFields>
     <Item1 Ref="1" Name="calculatedField1" FieldType="DateTime" Expression="Now()" />
+    <Item2 Ref="2" Name="calculatedField2" FieldType="Double" Expression="ToDouble([OptimizationCode])" />
   </CalculatedFields>
   <Bands>
-    <Item1 Ref="2" ControlType="DetailBand" Name="Detail1" HeightF="1000" Dpi="254">
-      <HierarchyPrintOptions Ref="3" Indent="50.8" />
+    <Item1 Ref="3" ControlType="DetailBand" Name="Detail1" HeightF="1000" Dpi="254">
+      <HierarchyPrintOptions Ref="4" Indent="50.8" />
+      <Controls>
+        <Item1 Ref="5" ControlType="XRLabel" Name="label1" Multiline="true" Text="label1" SizeF="304.7118,58.42" LocationFloat="58.2083321,56.86778" Dpi="254" Padding="5,5,0,0,254">
+          <ExpressionBindings>
+            <Item1 Ref="6" EventName="BeforePrint" PropertyName="Text" Expression="[calculatedField2]" />
+          </ExpressionBindings>
+        </Item1>
+      </Controls>
     </Item1>
-    <Item2 Ref="4" ControlType="TopMarginBand" Name="TopMargin1" HeightF="0" Dpi="254" />
-    <Item3 Ref="5" ControlType="BottomMarginBand" Name="BottomMargin1" HeightF="0" Dpi="254" />
+    <Item2 Ref="7" ControlType="TopMarginBand" Name="TopMargin1" HeightF="0" Dpi="254" />
+    <Item3 Ref="8" ControlType="BottomMarginBand" Name="BottomMargin1" HeightF="0" Dpi="254" />
   </Bands>
 </XtraReportsLayoutSerializer>
