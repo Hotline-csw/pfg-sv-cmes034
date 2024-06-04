@@ -22,12 +22,7 @@
     {
       "name": "Auftragsdatum",
       "label": "Auftragsdatum",
-      "field": "Min(CustomerOrder.DeliveryDate) as Auftragsdatum"
-    },
-    {
-      "name": "Materials",
-      "label": "Materialien",
-      "field": "g.Select(x => x.Material).Distinct() as Materials"
+      "field": "Min(CustomerOrder.ShippingDate) as Auftragsdatum"
     },
     {
       "name": "Schmalteile",
@@ -43,6 +38,11 @@
       "name": "Volumen",
       "label": "Volumen",
       "field": "Sum(CustomVolume) as Volumen"
+    },
+    {
+      "name": "Materials",
+      "label": "Materialien",
+      "field": "g.Select(x => x.Material).Distinct() as Materials"
     }
   ],
   "where": [
