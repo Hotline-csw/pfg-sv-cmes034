@@ -20,19 +20,14 @@
       "field": "Min(CustomerOrder.Code) as Auftragsnummer"
     },
     {
-      "name": "Schmalteile",
-      "label": "Anz. Schmalteile",
-      "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS Schmalteile",
-      "keyFigure": {
-        "label": "Anzahl Schmalteile",
-        "max": "60",
-        "aggregate": "sum"
-      }
+      "name": "Auftragsdatum",
+      "label": "Auftragsdatum",
+      "field": "Key.CustomerOrderDate as Auftragsdatum",
     },
     {
-      "name": "PartArea",
-      "label": "Ø Teilefläche (m²)",
-      "field": "Average(Width*Length/1000000) AS PartArea"
+      "name": "Volumen",
+      "label": "Volumen (dm³)",
+      "field": "Key.ProductionOrder.CustomVolume as Volumen"
     },
     {
       "name": "Materials",
