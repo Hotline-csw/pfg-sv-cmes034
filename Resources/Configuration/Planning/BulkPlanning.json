@@ -45,7 +45,6 @@
     "(PlanningSequence == null)"
   ],
   "groupBy": [
-    "SqlFunctions.DatePart(\"wk\", DesiredEndDate.Value) as Date",
     "CustomerOrder.Reference AS CustomerOrder"
   ],
   "orderBy": [
