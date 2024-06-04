@@ -24,7 +24,7 @@
       "label": "Materialien",
       "field": "g.Select(x => x.Material).Distinct() as Materials"
     },
-   {
+    {
       "name": "Schmalteile",
       "label": "Anz. Schmalteile",
       "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS Schmalteile",
