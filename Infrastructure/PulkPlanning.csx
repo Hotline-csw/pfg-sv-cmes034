@@ -22,7 +22,7 @@ using System.ComponentModel;
 
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IUserExit))]
 [Export("PulkPlanning", typeof(HomagGroup.FLS.Infrastructure.Common.Rest.ILocalizedRestFunction))]
-[Description("Pulk-Verplanung (Anlegen/Zuweisen/Umplanen)")]
+[Description("PULK: Pulk-Verplanung (Anlegen/Zuweisen/Umplanen)")]
 [EnabledScript(true)]
 public class PulkPlanning : HomagGroup.FLS.Infrastructure.Common.Customization.UserExitBase, HomagGroup.FLS.Infrastructure.Common.Rest.ILocalizedRestFunction
 {
