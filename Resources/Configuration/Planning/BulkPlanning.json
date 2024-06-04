@@ -20,6 +20,11 @@
       "field": "Min(CustomerOrder.Code) as Auftragsnummer"
     },
     {
+      "name": "Auftragsdatum",
+      "label": "Auftragsdatum",
+      "field": "Min(CustomerOrder.DeliveryDate) as Auftragsdatum"
+    },
+    {
       "name": "Materials",
       "label": "Materialien",
       "field": "g.Select(x => x.Material).Distinct() as Materials"
