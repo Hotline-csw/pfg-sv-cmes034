@@ -82,10 +82,7 @@
     {
       "component": "cmes-simulate-capacity",
       "parameter": [
-        "SAWTEQ S-200",
-        "EDGETEC S-380 profiLine",
-        "CABTEQ T-250",
-        "DRILLTEC V-300"
+        "6010"
       ]
     }
   ]
