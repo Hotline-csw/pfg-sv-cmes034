@@ -20,14 +20,14 @@
       "field": "Min(CustomerOrder.Code) as Auftragsnummer"
     },
     {
-      "name": "Auftragsdatum",
-      "label": "Auftragsdatum",
-      "field": "Key.CustomerOrderDate as Auftragsdatum",
-    },
-    {
-      "name": "Volumen",
-      "label": "Volumen (dm³)",
-      "field": "Key.ProductionOrder.CustomVolume as Volumen"
+      "name": "Schmalteile",
+      "label": "Anz. Schmalteile",
+      "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS Schmalteile",
+      "keyFigure": {
+        "label": "Anzahl Schmalteile",
+        "max": "60",
+        "aggregate": "sum"
+      }
     },
     {
       "name": "Materials",
@@ -35,14 +35,9 @@
       "field": "g.Select(x => x.Material).Distinct() as Materials"
     },
     {
-      "name": "Schmalteile",
-      "label": "Anz. Schmalteile",
-      "field": "Sum(if(Width <= 130 && Width > 0, 1, 0)) AS Schmalteile",
-      "keyFigure": {
-        "label": "Anzahl Schmalteile",
-        "max": "60",
-        "aggregate": "sum"
-      }
+      "name": "Volumen",
+      "label": "Volumen",
+      "field": "Key.CustomVolume as Volumen"
     }
   ],
   "where": [
@@ -59,9 +54,9 @@
   ],
   "functionBlock": {
     "label": "Verplanen",
-    "initialize": "CustomBulkPlanningSetCust",
-    "execute": "CustomBulkPlanningExecuteCust",
-    "progress": "CustomBulkPlanningProgressChart",
+    "initialize": "PulkPlanningSet",
+    "execute": "PulkPlanning",
+    "progress": "PulkPlanningProgress",
     "fields": [
       {
         "name": "name",
@@ -86,10 +81,12 @@
   "infoArea": [
     {
       "component": "cmes-simulate-capacity",
-      "parameter": "6010"
-    },
-    {
-      "component": "cmes-key-figures"
+      "parameter": [
+        "SAWTEQ S-200",
+        "EDGETEC S-380 profiLine",
+        "CABTEQ T-250",
+        "DRILLTEC V-300"
+      ]
     }
   ]
 }
