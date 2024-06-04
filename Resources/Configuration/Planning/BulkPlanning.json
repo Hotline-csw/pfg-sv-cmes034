@@ -20,16 +20,6 @@
       "field": "Min(CustomerOrder.Code) as Auftragsnummer"
     },
     {
-      "name": "OrderCount",
-      "label": "Anzahl FAs",
-      "field": "Count() AS OrderCount",
-      "keyFigure": {
-        "label": "Anzahl Fertigungsaufträge",
-        "max": "500",
-        "aggregate": "sum"
-      }
-    },
-    {
       "name": "Schmalteile",
       "label": "Anz. Schmalteile",
       "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS Schmalteile",
