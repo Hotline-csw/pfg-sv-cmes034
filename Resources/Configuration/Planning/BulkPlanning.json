@@ -1,87 +1,87 @@
 {
-  "label": "Kundenauftragsverplanung",
-  "entityType": "ProductionOrder",
-  "valueField": "Quantity",
-  "returnDetailSequence": true,
-  "select": [
-    {
-      "name": "Kunde",
-      "label": "Kunde",
-      "field": "Key.CustomerOrder as Kunde",
-      "keyFigure": {
-        "label": "Anzahl Kundenaufträge",
-        "max": "2",
-        "aggregate": "distinct"
-      }
-    },
-    {
-      "name": "Auftragsnummer",
-      "label": "Auftragsnummer",
-      "field": "Min(CustomerOrder.Code) as Auftragsnummer"
-    },
-    {
-      "name": "Materials",
-      "label": "Materialien",
-      "field": "g.Select(x => x.Material).Distinct() as Materials"
-    },
-    {
-      "name": "Schmalteile",
-      "label": "Anz. Schmalteile",
-      "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS Schmalteile",
-      "keyFigure": {
-        "label": "Anzahl Schmalteile",
-        "max": "60",
-        "aggregate": "sum"
-      }
-    },
-    {
-      "name": "Volumen",
-      "label": "Volumen",
-      "field": "Key.CustomVolume as Volumen"
-    }
-  ],
-  "where": [
-    "(ProductionState == \"New\")",
-    "(PlanningSequence == null)"
-  ],
-  "groupBy": [
-    "CustomerOrder.Reference AS CustomerOrder"
-  ],
-  "orderBy": [
-    "Key.CustomerOrder"
-  ],
-  "functionBlock": {
-    "label": "Verplanen",
-    "initialize": "PulkPlanningSet",
-    "execute": "PulkPlanning",
-    "progress": "PulkPlanningProgress",
-    "fields": [
-      {
-        "name": "name",
-        "label": "Pulkname",
-        "fieldType": "text",
-        "value": ""
-      },
-      {
-        "name": "date",
-        "label": "Plandatum",
-        "fieldType": "date",
-        "value": ""
-      },
-      {
-        "name": "color",
-        "label": "Farbe",
-        "fieldType": "color",
-        "value": ""
-      }
-    ]
-  },
-  "infoArea": [
-    {
-      "component": "cmes-simulate-capacity",
-      "parameter": [
-        "6010"
-      ]
-    }
-  ]
+	"label": "Kundenauftragsverplanung",
+	"entityType": "ProductionOrder",
+	"valueField": "Quantity",
+	"returnDetailSequence": true,
+	"select": [
+		{
+			"name": "Kunde",
+			"label": "Kunde",
+			"field": "Key.CustomerOrder as Kunde",
+			"keyFigure": {
+				"label": "Anzahl Kundenaufträge",
+				"max": "2",
+				"aggregate": "distinct"
+			}
+		},
+		{
+			"name": "Auftragsnummer",
+			"label": "Auftragsnummer",
+			"field": "Min(CustomerOrder.Code) as Auftragsnummer"
+		},
+		{
+			"name": "Materials",
+			"label": "Materialien",
+			"field": "g.Select(x => x.Material).Distinct() as Materials"
+		},
+		{
+			"name": "Schmalteile",
+			"label": "Anz. Schmalteile",
+			"field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS Schmalteile",
+			"keyFigure": {
+				"label": "Anzahl Schmalteile",
+				"max": "60",
+				"aggregate": "sum"
+			}
+		},
+		{
+			"name": "Volumen",
+			"label": "Volumen",
+			"field": "Sum(CustomVolume) as Volumen"
+		}
+	],
+	"where": [
+		"(ProductionState == \"New\")",
+		"(PlanningSequence == null)"
+	],
+	"groupBy": [
+		"CustomerOrder.Reference AS CustomerOrder"
+	],
+	"orderBy": [
+		"Key.CustomerOrder"
+	],
+	"functionBlock": {
+		"label": "Verplanen",
+		"initialize": "PulkPlanningSet",
+		"execute": "PulkPlanning",
+		"progress": "PulkPlanningProgress",
+		"fields": [
+			{
+				"name": "name",
+				"label": "Pulkname",
+				"fieldType": "text",
+				"value": ""
+			},
+			{
+				"name": "date",
+				"label": "Plandatum",
+				"fieldType": "date",
+				"value": ""
+			},
+			{
+				"name": "color",
+				"label": "Farbe",
+				"fieldType": "color",
+				"value": ""
+			}
+		]
+	},
+	"infoArea": [
+		{
+			"component": "cmes-simulate-capacity",
+			"parameter": [
+				"6010"
+			]
+		}
+	]
 }
