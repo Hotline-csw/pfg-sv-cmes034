@@ -23,7 +23,7 @@ using System.ComponentModel;
 
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IUserExit))]
 [Export("PulkPlanningProgress", typeof(HomagGroup.FLS.Infrastructure.Common.Rest.IRestFunction))]
-[Description("Calculate needed capycities")]
+[Description("PULK: Kalkulation der Werte für den Graphen")]
 [EnabledScript(true)]
 public class PulkPlanningProgress : HomagGroup.FLS.Infrastructure.Common.Customization.UserExitBase, HomagGroup.FLS.Infrastructure.Common.Rest.IRestFunction
 {
