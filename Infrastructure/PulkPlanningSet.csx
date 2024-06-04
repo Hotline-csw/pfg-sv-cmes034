@@ -7,13 +7,14 @@
 //
 //   Requirements:   <eg. DB-Tables/Attributes, ...>
 //
-//   Author:         <Author>
-//   Date:           2024-06-03
+//   Author:         A. Plumeyer
+//   Date:           2024-03-25
 //
 //-----------------------------------------------------------------------------
 //   Revision History:
 //   Name            Date          Description
-//   <Author>        2024-06-03    Created
+//   <Author>        2024-03-25    Created
+//   A. Kais         2024-06-04    Fix Bug in RangeOfNumbersHelper
 //   
 //-----------------------------------------------------------------------------
 
@@ -21,7 +22,7 @@ using System.ComponentModel;
 
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IUserExit))]
 [Export("PulkPlanningSet", typeof(HomagGroup.FLS.Infrastructure.Common.Rest.IRestFunction))]
-[Description("Daten für neuen Pulk initialisieren")]
+[Description("PULK: Initialisieren von PulkPlanung in CMES Web")]
 [EnabledScript(true)]
 public class PulkPlanningSet : HomagGroup.FLS.Infrastructure.Common.Customization.UserExitBase, HomagGroup.FLS.Infrastructure.Common.Rest.IRestFunction
 {
