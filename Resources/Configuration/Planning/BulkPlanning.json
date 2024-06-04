@@ -33,6 +33,16 @@
       "name": "Materials",
       "label": "Materialien",
       "field": "g.Select(x => x.Material).Distinct() as Materials"
+    },
+    {
+      "name": "Schmalteile",
+      "label": "Anz. Schmalteile",
+      "field": "Sum(if(Width <= 130 && Width > 0, 1, 0)) AS Schmalteile",
+      "keyFigure": {
+        "label": "Anzahl Schmalteile",
+        "max": "60",
+        "aggregate": "sum"
+      }
     }
   ],
   "where": [
