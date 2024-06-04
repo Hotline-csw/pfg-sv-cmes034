@@ -15,25 +15,9 @@
       }
     },
     {
-      "name": "Planwoche",
-      "label": "Endtermin (KW)",
-      "field": "Key.Date AS Planwoche"
-    },
-    {
       "name": "Auftragsnummer",
       "label": "Auftragsnummer",
       "field": "Min(CustomerOrder.Code) as Auftragsnummer"
-    },
-    {
-      "name": "Quantity",
-      "label": "Anzahl Bauteile",
-      "field": "Sum(DesiredTargetQuantity) AS Quantity",
-      "keyFigure": {
-        "label": "Anzahl Bauteile",
-        "max": "500",
-        "aggregate": "sum",
-        "min": "100"
-      }
     },
     {
       "name": "OrderCount",
