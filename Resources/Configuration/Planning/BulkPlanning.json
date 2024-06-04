@@ -48,7 +48,6 @@
     "CustomerOrder.Reference AS CustomerOrder"
   ],
   "orderBy": [
-    "Key.Date",
     "Key.CustomerOrder"
   ],
   "functionBlock": {
