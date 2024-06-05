@@ -52,7 +52,7 @@ public class CustomCalculateSalesItemsVolume : UserExitCustomBase, HomagGroup.FL
                 {
                     if (productionOrder.Length > 0 && productionOrder.Width > 0 && productionOrder.Thickness > 0)
                     {
-                        productionOrder.CustomVolume = Math.Round((productionOrder.Length * productionOrder.Width * productionOrder.Thickness / 10000000),2);
+                        productionOrder.CustomVolume = Math.Round((productionOrder.Length * productionOrder.Width * productionOrder.Thickness / 10000000000),2);
                     }
                     
                     else
