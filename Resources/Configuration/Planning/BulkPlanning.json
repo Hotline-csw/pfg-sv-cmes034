@@ -37,7 +37,12 @@
     {
       "name": "Volumen",
       "label": "Volumen",
-      "field": "Sum(CustomVolume) as Volumen"
+      "field": "Round((Sum(CustomVolume)/1000),2) as Volumen",
+      "keyFigure": {
+        "label": "Volumen",
+        "max": "1000",
+        "aggregate": "sum"
+      }
     },
     {
       "name": "Materials",
@@ -84,6 +89,7 @@
   "infoArea": [
     {
       "component": "cmes-simulate-capacity",
+      "calculate": "PulkPlanningProgress",
       "parameter": [
         "6010"
       ]
