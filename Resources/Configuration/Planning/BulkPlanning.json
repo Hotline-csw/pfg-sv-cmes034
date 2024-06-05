@@ -31,7 +31,8 @@
       "keyFigure": {
         "label": "Anzahl Schmalteile",
         "max": "60",
-        "aggregate": "sum"
+        "aggregate": "sum",
+        "min": "20"
       }
     },
     {
@@ -42,13 +43,17 @@
         "label": "Volumen",
         "max": "1000",
         "aggregate": "sum",
-        "min": "100"
+        "min": "400"
       }
     },
     {
       "name": "Materials",
       "label": "Materialien",
-      "field": "g.Select(x => x.Material).Distinct() as Materials"
+      "field": "g.Select(x => x.Material).Distinct() as Materials",
+      "keyFigure": {
+        "label": "Materialien",
+        "aggregate": "distinct"
+      }
     }
   ],
   "where": [
