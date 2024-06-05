@@ -1,7 +1,7 @@
 {
   "label": "Kundenauftragsverplanung",
   "entityType": "ProductionOrder",
-  "valueField": "Quantity",
+  "valueField": "Volumen",
   "returnDetailSequence": true,
   "select": [
     {
@@ -10,7 +10,7 @@
       "field": "Key.CustomerOrder as Kunde",
       "keyFigure": {
         "label": "Anzahl Kundenaufträge",
-        "max": "3",
+        "max": "5",
         "aggregate": "distinct"
       }
     },
@@ -37,11 +37,12 @@
     {
       "name": "Volumen",
       "label": "Volumen",
-      "field": "Round((Sum(CustomVolume)/1000),2) as Volumen",
+      "field": "Sum(CustomVolume) as Volumen",
       "keyFigure": {
         "label": "Volumen",
         "max": "1000",
-        "aggregate": "sum"
+        "aggregate": "sum",
+        "min": "100"
       }
     },
     {
@@ -89,7 +90,6 @@
   "infoArea": [
     {
       "component": "cmes-simulate-capacity",
-      "calculate": "PulkPlanningProgress",
       "parameter": [
         "6010"
       ]
