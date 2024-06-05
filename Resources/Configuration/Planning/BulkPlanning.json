@@ -52,7 +52,7 @@
       "field": "g.Select(x => x.Material).Distinct() as Materials",
       "keyFigure": {
         "label": "Materialien",
-        "aggregate": "distinct"
+        "aggregate": "merge"
       }
     }
   ],
@@ -95,6 +95,7 @@
   "infoArea": [
     {
       "component": "cmes-simulate-capacity",
+      "calculate": "PulkPlanningProgress",
       "parameter": [
         "6010"
       ]
