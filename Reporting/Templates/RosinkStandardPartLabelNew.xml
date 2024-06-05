@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <XtraReportsLayoutSerializer SerializerVersion="23.2.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="RosinkStandardPartLabelNew" ScriptsSource="private void EdgeSouth_GetValue(object sender, DevExpress.XtraReports.UI.GetValueEventArgs e) {&#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;private void EdgeSouth_GetValue_1(object sender, DevExpress.XtraReports.UI.GetValueEventArgs e) {&#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;private void ABDRaute_BeforePrint(object sender, System.ComponentModel.CancelEventArgs e) {&#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;private void pictureBox1_BeforePrint(object sender, System.ComponentModel.CancelEventArgs e) {&#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;" SnapGridSize="31.75" ReportUnit="TenthsOfAMillimeter" Margins="0, 0, 0, 0" PaperKind="Custom" PageWidth="800" PageHeight="1001" Version="23.2" ShowPrintStatusDialog="false" ShowPrintMarginsWarning="false" Dpi="254" Tag_type="System.String" Tag="CustViewPartsLabel">
   <CalculatedFields>
-    <Item1 Ref="1" Name="OrderType" Expression="[ProductionOrderCode.ProductionOrder.OrderType]" />
+    <Item1 Ref="1" Name="OrderType" Expression="[ProductionOrder.OrderType]" />
     <Item2 Ref="2" Name="SourceLocation" Expression="[ProductionOrder.CustomSourceLocation]" />
     <Item3 Ref="3" Name="ProdOrderAndQty" DisplayName="ProdOrderAndQty" Expression="[ProductionOrderCode] + '_'+ [DesiredTargetQuantity]" />
     <Item4 Ref="4" Name="FinalDim" DisplayName="FinalDim" Expression="[Length] + ' x ' + [Width] + ' x ' + [Thickness]" />
