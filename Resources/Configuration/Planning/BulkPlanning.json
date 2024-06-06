@@ -6,7 +6,7 @@
   "select": [
     {
       "name": "Kunde",
-      "label": "Client",
+      "label": "Customer",
       "field": "Key.CustomerOrder as Kunde",
       "keyFigure": {
         "label": "Anzahl Kundenaufträge",
@@ -16,20 +16,20 @@
     },
     {
       "name": "Auftragsnummer",
-      "label": "Auftragsnummer",
-      "field": "Min(CustomerOrder.Code) as Auftragsnummer"
+      "label": "Order number",
+      "field": "Min(CustomerOrder.Code) as OrderNumber"
     },
     {
       "name": "Auftragsdatum",
-      "label": "Auftragsdatum",
-      "field": "Min(CustomerOrder.ShippingDate) as Auftragsdatum"
+      "label": "Order date",
+      "field": "Min(CustomerOrder.ShippingDate) as OrderDate"
     },
     {
       "name": "Schmalteile",
-      "label": "Anz. Schmalteile",
-      "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS Schmalteile",
+      "label": "Qty narrow parts",
+      "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS NarrowParts",
       "keyFigure": {
-        "label": "Anzahl Schmalteile",
+        "label": "Qty narrow parts",
         "max": "60",
         "aggregate": "sum",
         "min": "20"
@@ -37,10 +37,10 @@
     },
     {
       "name": "Volumen",
-      "label": "Volumen",
-      "field": "Sum(CustomVolume) as Volumen",
+      "label": "Volume",
+      "field": "Sum(CustomVolume) as Volume",
       "keyFigure": {
-        "label": "Volumen",
+        "label": "Volume",
         "max": "10",
         "aggregate": "sum",
         "min": "4"
@@ -48,7 +48,7 @@
     },
     {
       "name": "Materials",
-      "label": "Materialien",
+      "label": "Materials",
       "field": "g.Select(x => x.Material).Distinct() as Materials",
       "keyFigure": {
         "label": "Materialien",
