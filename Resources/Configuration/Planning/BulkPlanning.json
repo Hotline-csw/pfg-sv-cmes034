@@ -27,7 +27,7 @@
     {
       "name": "Schmalteile",
       "label": "Anz. Schmalteile",
-      "field": "Sum(iif(Width <= 124 && Width > 0, 1, 0)) AS Schmalteile",
+      "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS Schmalteile",
       "keyFigure": {
         "label": "Anzahl Schmalteile",
         "max": "60",
@@ -38,12 +38,12 @@
     {
       "name": "Volumen",
       "label": "Volumen",
-      "field": "Sum(CustomVolume/1000) as Volumen",
+      "field": "Sum(CustomVolume) as Volumen",
       "keyFigure": {
         "label": "Volumen",
-        "max": "1000",
+        "max": "10",
         "aggregate": "sum",
-        "min": "400"
+        "min": "4"
       }
     },
     {
