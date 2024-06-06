@@ -6,7 +6,7 @@
   "select": [
     {
       "name": "Kunde",
-      "label": "Kunde",
+      "label": "Client",
       "field": "Key.CustomerOrder as Kunde",
       "keyFigure": {
         "label": "Anzahl Kundenaufträge",
