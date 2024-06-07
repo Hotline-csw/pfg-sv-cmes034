@@ -95,6 +95,7 @@
   "infoArea": [
     {
       "component": "cmes-simulate-capacity",
+	  "calculate": "PulkPlanningProgress",
       "parameter": [
         "6010"
       ]
