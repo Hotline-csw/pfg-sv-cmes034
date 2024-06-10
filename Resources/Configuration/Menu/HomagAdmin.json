@@ -5,10 +5,10 @@
 		"icon": "grid_view"
 	},
 	{
-		"label": "Verwaltung",
+		"label": "Management",
 		"items": [
 			{
-				"label": "Sortieren",
+				"label": "Sorting",
 				"link": "cmes-sorting",
 				"icon": "notes"
 			},
@@ -28,7 +28,7 @@
 				"icon": "extension"
 			},
 			{
-				"label": "Auswertung",
+				"label": "Evaluation",
 				"link": "cmes-custom-page/PartsPerHour",
 				"icon": "bar_chart"
 			},
@@ -76,7 +76,7 @@
 		"icon": "offline_pin"
 	},
 	{
-		"label": "Konfig Verwaltung",
+		"label": "Config Management",
 		"icon": "category",
 		"navigationExtras": {},
 		"items": [
@@ -106,32 +106,32 @@
 		"icon": "format_align_left"
 	},
 	{
-		"label": "Kapazität / Pulk",
+		"label": "Capacity - Bulk",
 		"link": "cmes-bulk-capacity",
 		"icon": "format_align_left"
 	},
 	{
-		"label": "Kapazität / Status",
+		"label": "Capacity - Status",
 		"link": "cmes-state-capacity",
 		"icon": "format_align_left"
 	},
 	{
-		"label": "Kapazitätsanzeige",
+		"label": "Capacity display",
 		"link": "cmes-capacity-page/Standard",
 		"icon": "format_align_left"
 	},
 	{
-		"label": "KapazitätsanzeigeStatus",
+		"label": "Capacity display - Status",
 		"link": "cmes-capacity-page/CapacityByState",
 		"icon": "bar_chart"
 	},
 	{
-		"label": "KapazitätsanzeigePulk",
+		"label": "Capacity display - Bulk",
 		"link": "cmes-capacity-page/CapacityByBulk",
 		"icon": "bar_chart"
 	},
 	{
-		"label": "Manuelle Pulkbildung",
+		"label": "Manual Bulk planning",
 		"icon": "stacked_bar_chart",
 		"link": "cmes-planning-view/BulkPlanning",
 		"navigationExtras": {}
@@ -142,12 +142,12 @@
 		"icon": "format_align_justify"
 	},
 	{
-		"label": "Automatische Losbildung",
+		"label": "Automatic lot generation",
 		"link": "cmes-automatic-lotgeneration-page",
 		"icon": "format_align_left"
 	},
 	{
-		"label": "Abmelden",
+		"label": "Logout",
 		"link": "login",
 		"icon": "logout"
 	}
