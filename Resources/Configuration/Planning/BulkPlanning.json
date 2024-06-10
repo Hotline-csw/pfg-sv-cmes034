@@ -1,102 +1,101 @@
 {
-	"label": "Customer order bulk planning",
-	"entityType": "ProductionOrder",
-	"valueField": "Volume",
-	"returnDetailSequence": true,
-	"select": [
-		{
-			"name": "OrderNumber",
-			"label": "Order number",
-			"field": "Min(CustomerOrder.Code) as OrderNumber",
-			"keyFigure": {
-				"label": "Qty customer orders",
-				"max": "5",
-				"aggregate": "distinct"
-			}
-		},
-		{
-			"name": "OrderDate",
-			"label": "Order date",
-			"field": "Min(CustomerOrder.ShippingDate) as OrderDate"
-		},
-		{
-			"name": "NarrowParts",
-			"label": "Narrow parts",
-			"field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS NarrowParts",
-			"keyFigure": {
-				"label": "Qty narrow parts",
-				"max": "60",
-				"aggregate": "sum",
-				"min": "20"
-			}
-		},
-		{
-			"name": "Volume",
-			"label": "Volume",
-			"field": "Sum(CustomVolume) as Volume",
-			"keyFigure": {
-				"label": "Volume",
-				"max": "10",
-				"aggregate": "sum",
-				"min": "4"
-			}
-		},
-		{
-			"name": "Materials",
-			"label": "Materials",
-			"field": "g.Select(x => x.Material).Distinct() as Materials",
-			"keyFigure": {
-				"label": "Materials",
-				"aggregate": "merge"
-			}
-		}
-	],
-	"where": [
-		"(ProductionState == \"New\")",
-		"(PlanningSequence == null)"
-	],
-	"groupBy": [
-		"CustomerOrder.Reference AS CustomerOrder"
-	],
-	"orderBy": [
-		"Key.CustomerOrder"
-	],
-	"functionBlock": {
-		"label": "Add to bulk",
-		"initialize": "PulkPlanningSet",
-		"execute": "PulkPlanning",
-		"progress": "PulkPlanningProgress",
-		"fields": [
-			{
-				"name": "name",
-				"label": "Bulk name",
-				"fieldType": "text",
-				"value": ""
-			},
-			{
-				"name": "date",
-				"label": "Plan date",
-				"fieldType": "date",
-				"value": ""
-			},
-			{
-				"name": "color",
-				"label": "color",
-				"fieldType": "color",
-				"value": ""
-			}
-		]
-	},
-	"infoArea": [
-		{
-			"component": "cmes-simulate-capacity",
-			"calculate": "PulkPlanningProgress",
-			"parameter": [
-				"6010"
-			]
-		},
-		{
-			"component": "cmes-key-figures"
-		}
-	]
+  "label": "Customer order bulk planning",
+  "entityType": "ProductionOrder",
+  "valueField": "Volume",
+  "returnDetailSequence": true,
+  "select": [
+    {
+      "name": "OrderNumber",
+      "label": "Order number",
+      "field": "Min(CustomerOrder.Code) as OrderNumber",
+      "keyFigure": {
+        "label": "Qty customer orders",
+        "max": "5",
+        "aggregate": "distinct"
+      }
+    },
+    {
+      "name": "OrderDate",
+      "label": "Order date",
+      "field": "Min(CustomerOrder.ShippingDate) as OrderDate"
+    },
+    {
+      "name": "NarrowParts",
+      "label": "Narrow parts",
+      "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS NarrowParts",
+      "keyFigure": {
+        "label": "Qty narrow parts",
+        "max": "60",
+        "aggregate": "sum",
+        "min": "20"
+      }
+    },
+    {
+      "name": "Volume",
+      "label": "Volume",
+      "field": "Sum(CustomVolume) as Volume",
+      "keyFigure": {
+        "label": "Volume",
+        "max": "10",
+        "aggregate": "sum",
+        "min": "4"
+      }
+    },
+    {
+      "name": "Materials",
+      "label": "Materials",
+      "field": "g.Select(x => x.Material).Distinct() as Materials",
+      "keyFigure": {
+        "label": "Materials",
+        "aggregate": "merge"
+      }
+    }
+  ],
+  "where": [
+    "(ProductionState == \"New\")",
+    "(PlanningSequence == null)"
+  ],
+  "groupBy": [
+    "CustomerOrder.Code AS CustomerOrder"
+  ],
+  "orderBy": [
+    "Key.CustomerOrder"
+  ],
+  "functionBlock": {
+    "label": "Add to bulk",
+    "initialize": "BulkPlanningSet",
+    "execute": "BulkPlanning",
+    "progress": "BulkPlanningProgress",
+    "fields": [
+      {
+        "name": "name",
+        "label": "Bulk name",
+        "fieldType": "text",
+        "value": ""
+      },
+      {
+        "name": "date",
+        "label": "Plan date",
+        "fieldType": "date",
+        "value": ""
+      },
+      {
+        "name": "color",
+        "label": "color",
+        "fieldType": "color",
+        "value": ""
+      }
+    ]
+  },
+  "infoArea": [
+    {
+      "component": "cmes-simulate-capacity",
+      "parameter": [
+        "6010"
+      ]
+    },
+    {
+      "component": "cmes-key-figures"
+    }
+  ]
 }
