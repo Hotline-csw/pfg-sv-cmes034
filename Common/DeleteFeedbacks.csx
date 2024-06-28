@@ -53,7 +53,7 @@ public class DeleteFeedbacks : GenericTaskBase, HomagGroup.FLS.Services.Common.C
             using(IUnitOfWork unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
             {
                 var feedbacksRep = unitOfWork.GetRepository<Feedback>();
-                var feedback = feedbacksRep.Get();
+                var feedback = feedbacksRep.GetQueryable(false);
                 
                 if(feedback.Any())
                 {
