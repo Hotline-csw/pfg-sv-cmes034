@@ -66,6 +66,7 @@ public class DeleteFeedbacks : GenericTaskBase, HomagGroup.FLS.Services.Common.C
                 {
                     _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while deleting feedbacks!", _TaskName)));
                 }
+                
                 unitOfWork.Save();
             }
         }
