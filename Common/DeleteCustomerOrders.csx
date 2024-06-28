@@ -57,8 +57,7 @@ public class DeleteCustomerOrders : GenericTaskBase, HomagGroup.FLS.Services.Com
                 
                 if(customerOrder.Any())
                 {
-                    unitOfWork.Delete(customerOrder);
-                    unitOfWork.Save();
+                    unitOfWork.BulkDelete(customerOrder);
                     
                     _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Deleted all customer orders successfully!", _TaskName)));
                 }
@@ -67,6 +66,8 @@ public class DeleteCustomerOrders : GenericTaskBase, HomagGroup.FLS.Services.Com
                 {
                     _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while deleting customer orders!", _TaskName)));
                 }
+                
+                unitOfWork.Save();
             }
         }
         catch (Exception e)
