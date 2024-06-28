@@ -53,7 +53,7 @@ public class DeleteCustomerOrders : GenericTaskBase, HomagGroup.FLS.Services.Com
             using(IUnitOfWork unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
             {
                 var customerOrdersRep = unitOfWork.GetRepository<CustomerOrder>();
-                var customerOrder = customerOrdersRep.Get();
+                var customerOrder = customerOrdersRep.GetQueryable(false);
                 
                 if(customerOrder.Any())
                 {
