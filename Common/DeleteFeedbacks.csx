@@ -57,8 +57,7 @@ public class DeleteFeedbacks : GenericTaskBase, HomagGroup.FLS.Services.Common.C
                 
                 if(feedback.Any())
                 {
-                    unitOfWork.Delete(feedback);
-                    unitOfWork.Save();
+                    unitOfWork.BulkDelete(feedback);
                     
                     _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Deleted all feedbacks successfully!", _TaskName)));
                 }
@@ -67,6 +66,7 @@ public class DeleteFeedbacks : GenericTaskBase, HomagGroup.FLS.Services.Common.C
                 {
                     _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while deleting feedbacks!", _TaskName)));
                 }
+                unitOfWork.Save();
             }
         }
         catch (Exception e)
