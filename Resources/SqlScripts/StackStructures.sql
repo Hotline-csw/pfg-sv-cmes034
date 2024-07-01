@@ -1,3 +1,4 @@
+-- intelliStack table for stack structure
 CREATE TABLE [cust].[StackStructures]
 (
     Sequence                        bigint          not null identity(1,1),
