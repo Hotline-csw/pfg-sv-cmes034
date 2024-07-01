@@ -28,7 +28,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization))]
 [Export("CustomWccSetDates", typeof(HomagGroup.FLS.Services.DataImport.Contracts.Contracts.UserExits.IDataImportBeforeSavePackageUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("04_Set planned end date, shipping date and delivery date")]
+[Description("03_Set planned end date, shipping date and delivery date")]
 [EnabledScript(true)]
 public class CustomWccSetDates : UserExitCustomBase, HomagGroup.FLS.Services.DataImport.Contracts.Contracts.UserExits.IDataImportBeforeSavePackageUserExit
 {
