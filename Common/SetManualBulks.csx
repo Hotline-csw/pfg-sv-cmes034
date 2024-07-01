@@ -31,7 +31,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization))]
 [Export("SetManualBulks", typeof(HomagGroup.FLS.Services.Common.Contracts.JobScheduling.Configuration.Tasks.Generic.IGenericTask))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("05_Set manual bulks")]
+[Description("07_Set manual bulks")]
 [EnabledScript(true)]
 public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Contracts.JobScheduling.Configuration.Tasks.Generic.IGenericTask, IPartImportsSatisfiedNotification
 {
