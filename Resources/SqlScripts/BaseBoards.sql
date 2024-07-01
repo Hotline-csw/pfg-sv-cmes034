@@ -1,4 +1,4 @@
--- intelliStack base boards (Schonerplatten)
+-- intelliStack table for base boards (Schonerplatten)
 CREATE TABLE [cust].[BaseBoards]
 (
     Sequence                        bigint          not null identity(1,1),
