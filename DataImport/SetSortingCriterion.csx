@@ -28,7 +28,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization))]
 [Export("SetSortingCriterion", typeof(HomagGroup.FLS.Services.DataImport.Contracts.Contracts.UserExits.IDataImportBeforeSavePackageUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("04_Divide parttypes in different sorting criterions")]
+[Description("[03] Divide parttypes in different sorting criterions")]
 [EnabledScript(true)]
 public class SetSortingCriterion : UserExitCustomBase, HomagGroup.FLS.Services.DataImport.Contracts.Contracts.UserExits.IDataImportBeforeSavePackageUserExit
 {
