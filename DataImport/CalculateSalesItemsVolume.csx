@@ -28,7 +28,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization))]
 [Export("CalculateSalesItemsVolume", typeof(HomagGroup.FLS.Services.DataImport.Contracts.Contracts.UserExits.IDataImportTransformationUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("04_Calculate volume of sales items")]
+[Description("[03] Calculate volume of sales items")]
 [EnabledScript(true)]
 public class CalculateSalesItemsVolume : UserExitCustomBase, HomagGroup.FLS.Services.DataImport.Contracts.Contracts.UserExits.IDataImportTransformationUserExit
 {
