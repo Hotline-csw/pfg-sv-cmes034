@@ -28,7 +28,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization))]
 [Export("CustomWccProductionSetAndCheckStructure", typeof(HomagGroup.FLS.Services.DataImport.Contracts.Contracts.UserExits.IDataImportBeforeSavePackageUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("[04] Set productionOrder.DesiredEndDate = customerOrder.CustomPlannedEndDate")]
+[Description("[03] Set productionOrder.DesiredEndDate = customerOrder.CustomPlannedEndDate")]
 [EnabledScript(true)]
 public class CustomWccProductionSetAndCheckStructure : WccProductionSetAndCheckStructure
 {
