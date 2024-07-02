@@ -28,7 +28,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization))]
 [Export("SetProductionStepCapacity", typeof(HomagGroup.FLS.Services.DataImport.Contracts.Contracts.UserExits.IDataImportBeforeSavePackageUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("04_Set capacity for production step")]
+[Description("[03] Set capacity for production step")]
 [EnabledScript(true)]
 public class SetProductionStepCapacity : UserExitCustomBase, HomagGroup.FLS.Services.DataImport.Contracts.Contracts.UserExits.IDataImportBeforeSavePackageUserExit
 {
