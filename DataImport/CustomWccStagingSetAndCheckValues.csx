@@ -45,7 +45,7 @@ public class CustomWccStagingSetAndCheckValues : WccStagingSetAndCheckValues
         Guard.ThrowOnArgumentNull(targetRecord, "targetRecord");
         
         // Get ICNID and convert it from int to string
-        string productionOrderCode = source["ID"].ToString();
+        string productionOrderCode = source["Id"].ToString();
         
         if (!String.IsNullOrEmpty(productionOrderCode))
         {
