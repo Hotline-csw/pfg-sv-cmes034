@@ -28,7 +28,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization))]
 [Export("CustomCreateProductionItems", typeof(HomagGroup.FLS.Services.Common.Contracts.JobScheduling.Configuration.Tasks.Generic.IGenericTask))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("describe here")]
+[Description("[05] describe here")]
 [EnabledScript(true)]
 public class CustomCreateProductionItems : CreateProductionItems
 {
