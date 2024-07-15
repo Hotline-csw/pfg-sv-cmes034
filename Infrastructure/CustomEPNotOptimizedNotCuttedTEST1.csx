@@ -122,7 +122,7 @@ public class CustomEPNotOptimizedNotCuttedTEST1 : UserExitCustomBase, Controller
                         }
                         else
                         {
-                            _Logger.Debug($"Kein ProductionItem gefunden für ProductionitemCode='{prodItem.Code}'");
+                            //_Logger.Debug($"Kein ProductionItem gefunden für ProductionitemCode='{prodItem.Code}'");
                         }
 
                     }
@@ -146,7 +146,7 @@ public class CustomEPNotOptimizedNotCuttedTEST1 : UserExitCustomBase, Controller
                     
                     TimeSpan totalRuntime = DateTime.Now - startUE;
                     
-                    _Logger.Info(string.Format("{0}: Teileanzahl: [{1}] | Abfragezeit ProdItem: [{2}] | Abfragezeit UpdateEP: [{3}] | Gesamtabfragezeit: [{4}]", _PreviewName, productionItems.Count(), queryProdItem, queryEp, totalRuntime));                    
+                    //_Logger.Info(string.Format("{0}: Teileanzahl: [{1}] | Abfragezeit ProdItem: [{2}] | Abfragezeit UpdateEP: [{3}] | Gesamtabfragezeit: [{4}]", _PreviewName, productionItems.Count(), queryProdItem, queryEp, totalRuntime));                    
 			     }
 		     }
 		     
