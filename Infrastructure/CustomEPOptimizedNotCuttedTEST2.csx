@@ -43,7 +43,7 @@ public class CustomEPOptimizedNotCuttedTEST2 : UserExitCustomBase, ControllerMES
             
         _Logger = LogHelper.GetLogger(executionContext.Area, typeof(CustomEPOptimizedNotCuttedTEST2));
         _Logger.LogContext.AddOrUpdate(LogHelper.InstanceNameKey, executionContext.Instance);
-		_Logger.Debug("Horizon 1 start befor config" );
+		//_Logger.Debug("Horizon 1 start befor config" );
 		
 		// Laden der Konfigurationen
         // Get the edgeMachinesConfiguration
@@ -65,7 +65,7 @@ public class CustomEPOptimizedNotCuttedTEST2 : UserExitCustomBase, ControllerMES
 			     {
 		            // Set the PreviewHorizon
     				var previewHorizon = edgePreviewHorizonConfiguration.Name;
-    				_Logger.Debug("Horizon:" + previewHorizon);
+    				//_Logger.Debug("Horizon:" + previewHorizon);
     				
     				//IRepository<ProductionStep> productionStepRepository = unitOfWork.GetRepository<ProductionStep>();
     				// !!! Disable bulk insert because of parallel processing, otherwise deadlocks will occur !!!
@@ -91,7 +91,7 @@ public class CustomEPOptimizedNotCuttedTEST2 : UserExitCustomBase, ControllerMES
                     				                                && pi.ProductionOrder.EdgePasses.Any()
                     				                                ).ToList();
                     TimeSpan queryProdItem = DateTime.Now - startQueryProdItem;                 
-                    _Logger.Info($"CustomEPOptimizedNotCuttedTEST2 - Abfragezeit ProdItem: [{queryProdItem}] - Teileanzahl: " + productionItems.Count());                                 
+                    //_Logger.Info($"CustomEPOptimizedNotCuttedTEST2 - Abfragezeit ProdItem: [{queryProdItem}] - Teileanzahl: " + productionItems.Count());                                 
                     
                     DateTime startQueryUpdateEp = DateTime.Now;
                     
@@ -127,12 +127,12 @@ public class CustomEPOptimizedNotCuttedTEST2 : UserExitCustomBase, ControllerMES
                         }
                         else
                         {
-                            _Logger.Debug($"Kein ProductionItem gefunden für ProductionitemCode='{prodItem.Code}'");
+                            //_Logger.Debug($"Kein ProductionItem gefunden für ProductionitemCode='{prodItem.Code}'");
                         }
                     }
                     
                     TimeSpan queryEp = DateTime.Now - startQueryUpdateEp;
-                    _Logger.Info($"CustomEPOptimizedNotCuttedTEST2 - Abfragezeit UpdateEP: [{queryEp}]");
+                    //_Logger.Info($"CustomEPOptimizedNotCuttedTEST2 - Abfragezeit UpdateEP: [{queryEp}]");
                     
                     //**************************************** Delete Items of this horizon ****************************************//
                     //Delete parts which have at least one feedback OR that have been optimized and not produced for more than 30 days 
@@ -150,7 +150,7 @@ public class CustomEPOptimizedNotCuttedTEST2 : UserExitCustomBase, ControllerMES
                     unitOfWork.Save();
                     
                     TimeSpan totalRuntime = DateTime.Now - startUE;
-                    _Logger.Info($"CustomEPOptimizedNotCuttedTEST2 - Gesamtabfragezeit: [{totalRuntime}]"); 
+                    //_Logger.Info($"CustomEPOptimizedNotCuttedTEST2 - Gesamtabfragezeit: [{totalRuntime}]"); 
                      
 			     }
 		     }
