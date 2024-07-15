@@ -64,7 +64,7 @@ public class CustomEPNotOptimizedCutted : UserExitCustomBase, ControllerMES.Infr
 			     {
 		            // Set the PreviewHorizon
     				var previewHorizon = edgePreviewHorizonConfiguration.Name;
-    				_Logger.Debug("Horizon:" + previewHorizon);
+    				//_Logger.Debug("Horizon:" + previewHorizon);
     				
     				//IRepository<ProductionStep> productionStepRepository = unitOfWork.GetRepository<ProductionStep>();
     				// !!! Disable bulk insert because of parallel processing, otherwise deadlocks will occur !!!
@@ -189,8 +189,8 @@ public class CustomEPNotOptimizedCutted : UserExitCustomBase, ControllerMES.Infr
                     
                     TimeSpan totalRuntime = DateTime.Now - startUE;
                     
-                    _Logger.Info(string.Format("{0}: Teileanzahl: [{1}] | Abfragezeit ProdItem: [{2}] | Abfragezeit UpdateEP: [{3}] | Gesamtabfragezeit: [{4}]", 
-                    _PreviewName, productionItems.Count(), queryProdItem, queryEp, totalRuntime));                    
+                    //_Logger.Info(string.Format("{0}: Teileanzahl: [{1}] | Abfragezeit ProdItem: [{2}] | Abfragezeit UpdateEP: [{3}] | Gesamtabfragezeit: [{4}]", 
+                    //_PreviewName, productionItems.Count(), queryProdItem, queryEp, totalRuntime));                    
 			     }
 		     }
 		     
