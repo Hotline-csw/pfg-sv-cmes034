@@ -59,7 +59,7 @@ public class CustomEPNotOptimizedNotCuttedTEST2 : UserExitCustomBase, Controller
 			     {
 		            // Set the PreviewHorizon
     				var previewHorizon = edgePreviewHorizonConfiguration.Name;
-    				_Logger.Info($"{previewHorizon}");
+    				//_Logger.Info($"{previewHorizon}");
     				
     				//IRepository<ProductionStep> productionStepRepository = unitOfWork.GetRepository<ProductionStep>();
     				// !!! Disable bulk insert because of parallel processing, otherwise deadlocks will occur !!!
@@ -82,7 +82,7 @@ public class CustomEPNotOptimizedNotCuttedTEST2 : UserExitCustomBase, Controller
                             .Select(s => s.ProductionItemCode)
                         .ToList();
                         
-                    _Logger.Info(string.Format("{0}: Anzahl epPreviewItems: [{1}]", _PreviewName, epPreviewItem.Count()));
+                    //_Logger.Info(string.Format("{0}: Anzahl epPreviewItems: [{1}]", _PreviewName, epPreviewItem.Count()));
                     
                     List<string> prodItems = unitOfWork.GetRepository<ProductionItem>()
                         .GetQueryable()
@@ -94,7 +94,7 @@ public class CustomEPNotOptimizedNotCuttedTEST2 : UserExitCustomBase, Controller
                             .Select(s => s.Code)	
             			.ToList();
             			
-        			_Logger.Info(string.Format("{0}: Anzahl productionItems: [{1}]", _PreviewName, prodItems.Count()));
+        			//_Logger.Info(string.Format("{0}: Anzahl productionItems: [{1}]", _PreviewName, prodItems.Count()));
 
 
                     //Get all parts that have been optimized + no feedback + edge passes
@@ -200,7 +200,7 @@ public class CustomEPNotOptimizedNotCuttedTEST2 : UserExitCustomBase, Controller
                     
                     TimeSpan totalRuntime = DateTime.Now - startUE;
                     
-                    _Logger.Info(string.Format("{0}: Teileanzahl Gesamt: [{1}] | Abfragezeit ProdItem: [{3}] | Abfragezeit UpdateEP: [{4}] | Gesamtabfragezeit: [{5}]", _PreviewName, productionItems.Count(), queryProdItem, queryEp, totalRuntime));                    
+                    //_Logger.Info(string.Format("{0}: Teileanzahl Gesamt: [{1}] | Abfragezeit ProdItem: [{3}] | Abfragezeit UpdateEP: [{4}] | Gesamtabfragezeit: [{5}]", _PreviewName, productionItems.Count(), queryProdItem, queryEp, totalRuntime));                    
 			     }
 		     }
 		     
