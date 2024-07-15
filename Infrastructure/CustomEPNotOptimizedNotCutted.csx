@@ -102,12 +102,12 @@ public class CustomEPNotOptimizedNotCutted : UserExitCustomBase, ControllerMES.I
                         if (epRequirementOtherParts != null)
                         {
                             epRequirementRepository.Delete(epRequirementOtherParts);
-                            _Logger.Info(string.Format("{0}: Geändertes Teil: [{1}]", _PreviewName, epRequirementOtherParts.ProductionItemCode));
+                            //_Logger.Info(string.Format("{0}: Geändertes Teil: [{1}]", _PreviewName, epRequirementOtherParts.ProductionItemCode));
                         }
                         
                         if (epRequirementItem == null)
                         {
-                            _Logger.Info("epRequirementItem == null");
+                            //_Logger.Info("epRequirementItem == null");
 
                             //Write entry in EPRequirement
                             var epRequirement = new EPRequirement();
@@ -182,7 +182,7 @@ public class CustomEPNotOptimizedNotCutted : UserExitCustomBase, ControllerMES.I
                     
                     TimeSpan totalRuntime = DateTime.Now - startUE;
                     
-                    _Logger.Info(string.Format("{0}: Teileanzahl Gesamt: [{1}] | Geupdatete Teile: [{2}] | Abfragezeit ProdItem: [{3}] | Abfragezeit UpdateEP: [{4}] | Gesamtabfragezeit: [{5}]", _PreviewName, productionItems.Count(), countParts, queryProdItem, queryEp, totalRuntime));                    
+                    //_Logger.Info(string.Format("{0}: Teileanzahl Gesamt: [{1}] | Geupdatete Teile: [{2}] | Abfragezeit ProdItem: [{3}] | Abfragezeit UpdateEP: [{4}] | Gesamtabfragezeit: [{5}]", _PreviewName, productionItems.Count(), countParts, queryProdItem, queryEp, totalRuntime));                    
 			     }
 		     }
 		     
