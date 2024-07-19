@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="23.2.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="PartLabel_2" DisplayName="partlabel" SnapGridSize="31.75" ReportUnit="TenthsOfAMillimeter" Margins="0, 0, 0, 0" PaperKind="Custom" PageWidth="800" PageHeight="1000" Version="23.2" Dpi="254" Tag_type="System.String" Tag="CustViewPartsLabel">
+  <CalculatedFields>
+    <Item1 Ref="1" Name="calculatedField1" FieldType="DateTime" Expression="Now()" />
+    <Item2 Ref="2" Name="calculatedField2" FieldType="Double" Expression="ToDouble([Code])" />
+    <Item3 Ref="3" Name="calculatedField3" FieldType="String" Expression="Substring([Code], 0, 3)" />
+    <Item4 Ref="4" Name="calculatedField4" FieldType="String" Expression="Substring([Code], Len([Code]) - 3)" />
+  </CalculatedFields>
+  <Bands>
+    <Item1 Ref="5" ControlType="DetailBand" Name="Detail1" HeightF="1013" Dpi="254" BackColor="White" Tag_type="System.String" Tag="CustViewPartLabel">
+      <Controls>
+        <Item1 Ref="6" ControlType="XRBarCode" Name="barCode1" Module="5.08" AutoModule="true" BarCodeOrientation="RotateLeft" TextAlignment="BottomCenter" ShowText="false" SizeF="124,660" LocationFloat="15,262" Dpi="254" Font="Arial, 9.75pt, style=Bold" BackColor="White">
+          <Symbology Ref="7" Name="Code128" />
+          <ExpressionBindings>
+            <Item1 Ref="8" EventName="BeforePrint" PropertyName="Text" Expression="[Code]" />
+          </ExpressionBindings>
+        </Item1>
+        <Item2 Ref="9" ControlType="XRLabel" Name="label4" TextFormatString="{0}" CanGrow="false" Text="label4" TextAlignment="TopLeft" WordWrap="false" SizeF="335,30" LocationFloat="350,485" Dpi="254" Font="Arial, 7pt, style=Bold">
+          <ExpressionBindings>
+            <Item1 Ref="10" EventName="BeforePrint" PropertyName="Text" Expression="[Customer]" />
+          </ExpressionBindings>
+        </Item2>
+        <Item3 Ref="11" ControlType="XRLine" Name="line1" SizeF="790,6" LocationFloat="0,188" Dpi="254" />
+        <Item4 Ref="12" ControlType="XRLabel" Name="label10" CanGrow="false" Text="label10" TextAlignment="TopLeft" SizeF="610,45" LocationFloat="169.999985,285" Dpi="254" Font="Arial, 6.75pt">
+          <ExpressionBindings>
+            <Item1 Ref="13" EventName="BeforePrint" PropertyName="Text" Expression="[ManufacturingInformation]" />
+          </ExpressionBindings>
+          <StylePriority Ref="14" UseFont="false" UsePadding="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item4>
+        <Item5 Ref="15" ControlType="XRBarCode" Name="barCode2" Module="5.08" AutoModule="true" TextAlignment="BottomCenter" SizeF="660.5214,150" LocationFloat="65,15" Dpi="254" Font="Arial, 8pt, style=Bold" BackColor="White">
+          <Symbology Ref="16" Name="Code128" />
+          <ExpressionBindings>
+            <Item1 Ref="17" EventName="BeforePrint" PropertyName="Text" Expression="[Code]" />
+          </ExpressionBindings>
+        </Item5>
+        <Item6 Ref="18" ControlType="XRLine" Name="line2" LineDirection="Vertical" SizeF="5.080002,780.000061" LocationFloat="158,196" Dpi="254" />
+        <Item7 Ref="19" ControlType="XRLine" Name="line3" SizeF="630,6" LocationFloat="160,278" Dpi="254" />
+        <Item8 Ref="20" ControlType="XRLine" Name="line4" LineDirection="Vertical" SizeF="5.080078,93.0000153" LocationFloat="690,189.999985" Dpi="254" />
+        <Item9 Ref="21" ControlType="XRLabel" Name="label15" CanGrow="false" Text="label15" TextAlignment="MiddleRight" SizeF="515,25" LocationFloat="169.999985,252.354172" Dpi="254" Font="Arial, 6.5pt, style=Bold">
+          <ExpressionBindings>
+            <Item1 Ref="22" EventName="BeforePrint" PropertyName="Text" Expression="[RouteCode]" />
+          </ExpressionBindings>
+        </Item9>
+        <Item10 Ref="23" ControlType="XRLine" Name="line5" SizeF="630,5.08" LocationFloat="162,370" Dpi="254" />
+        <Item11 Ref="24" ControlType="XRLabel" Name="label11" CanGrow="false" Text="label11" TextAlignment="MiddleLeft" SizeF="515,25" LocationFloat="169.999985,195" Dpi="254" Font="Arial, 6pt">
+          <ExpressionBindings>
+            <Item1 Ref="25" EventName="BeforePrint" PropertyName="Text" Expression="[OptimizationCode]" />
+          </ExpressionBindings>
+        </Item11>
+        <Item12 Ref="26" ControlType="XRLabel" Name="label13" TextFormatString="W1: {0}" CanGrow="false" Angle="90" Text="label13" TextAlignment="MiddleCenter" SizeF="30,235" LocationFloat="175,695" Dpi="254" Font="Arial, 7pt">
+          <ExpressionBindings>
+            <Item1 Ref="27" EventName="BeforePrint" PropertyName="Text" Expression="[CuttingWidth]" />
+          </ExpressionBindings>
+        </Item12>
+        <Item13 Ref="28" ControlType="XRLabel" Name="label9" TextFormatString="L1: {0}" CanGrow="false" Text="label9" TextAlignment="MiddleLeft" SizeF="244.999985,30" LocationFloat="220,400" Dpi="254" Font="Arial, 7pt">
+          <ExpressionBindings>
+            <Item1 Ref="29" EventName="BeforePrint" PropertyName="Text" Expression="[CuttingLength]" />
+          </ExpressionBindings>
+        </Item13>
+        <Item14 Ref="30" ControlType="XRPageInfo" Name="pageInfo1" PageInfo="DateTime" TextFormatString="{0:dd/MM/yy HH:mm tt}" TextAlignment="MiddleLeft" SizeF="205.000046,24.9999847" LocationFloat="169.999985,225" Dpi="254" Font="Arial, 6pt" />
+        <Item15 Ref="31" ControlType="XRLabel" Name="label7" TextFormatString="{0}" CanGrow="false" Angle="270" Text="label7" TextAlignment="MiddleCenter" SizeF="20,416" LocationFloat="705,477" Dpi="254" Font="Arial, 6pt, charSet=0">
+          <ExpressionBindings>
+            <Item1 Ref="32" EventName="BeforePrint" PropertyName="Text" Expression="[EdgeContentRight]" />
+            <Item2 Ref="33" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([EdgeEast] &lt;&gt; [EdgeEast], False, ?)" />
+          </ExpressionBindings>
+        </Item15>
+        <Item16 Ref="34" ControlType="XRLabel" Name="label12" TextFormatString="{0}" CanGrow="false" Angle="90" Text="label12" TextAlignment="MiddleCenter" SizeF="20,416" LocationFloat="225,477" Dpi="254" Font="Arial, 6pt, charSet=0">
+          <ExpressionBindings>
+            <Item1 Ref="35" EventName="BeforePrint" PropertyName="Text" Expression="[EdgeContentLeft]" />
+            <Item2 Ref="36" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([EdgeWest] &lt;&gt; [EdgeWest], False, ?)" />
+          </ExpressionBindings>
+        </Item16>
+        <Item17 Ref="37" ControlType="XRLabel" Name="label18" CanGrow="false" Text="label18" TextAlignment="MiddleRight" SizeF="305.000031,24.9999847" LocationFloat="379.999969,225" Dpi="254" Font="Arial, 6pt, style=Bold">
+          <ExpressionBindings>
+            <Item1 Ref="38" EventName="BeforePrint" PropertyName="Text" Expression="[ProdOrderAndQty]" />
+          </ExpressionBindings>
+        </Item17>
+        <Item18 Ref="39" ControlType="XRLabel" Name="label5" CanGrow="false" Text="label5" TextAlignment="MiddleRight" SizeF="310,36" LocationFloat="470,334" Dpi="254" Font="Arial, 6pt, style=Bold">
+          <ExpressionBindings>
+            <Item1 Ref="40" EventName="BeforePrint" PropertyName="Text" Expression="[FinalDim]" />
+          </ExpressionBindings>
+        </Item18>
+        <Item19 Ref="41" ControlType="XRLabel" Name="label19" TextFormatString="{0}" CanGrow="false" Angle="180" Text="label19" TextAlignment="MiddleCenter" SizeF="446,19.999939" LocationFloat="252,900" Dpi="254" Font="Arial, 5pt">
+          <ExpressionBindings>
+            <Item1 Ref="42" EventName="BeforePrint" PropertyName="Text" Expression="[EdgeContentFront]" />
+            <Item2 Ref="43" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([EdgeSouth] &lt;&gt; [EdgeSouth], False, ?)" />
+          </ExpressionBindings>
+        </Item19>
+        <Item20 Ref="44" ControlType="XRLabel" Name="label3" TextFormatString="{0}" CanGrow="false" Text="label3" TextAlignment="MiddleCenter" SizeF="446,20" LocationFloat="252,450" Dpi="254" Font="Arial, 6pt">
+          <ExpressionBindings>
+            <Item1 Ref="45" EventName="BeforePrint" PropertyName="Text" Expression="[EdgeContentBack]" />
+            <Item2 Ref="46" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([EdgeNorth] &lt;&gt; [EdgeNorth], False, ?)" />
+          </ExpressionBindings>
+        </Item20>
+        <Item21 Ref="47" ControlType="XRLabel" Name="label1" TextFormatString="W2: {0}" CanGrow="false" Angle="90" Text="label1" TextAlignment="MiddleCenter" SizeF="30,250" LocationFloat="175,440" Dpi="254" Font="Arial, 7pt">
+          <ExpressionBindings>
+            <Item1 Ref="48" EventName="BeforePrint" PropertyName="Text" Expression="[Width]" />
+          </ExpressionBindings>
+        </Item21>
+        <Item22 Ref="49" ControlType="XRLabel" Name="label20" TextFormatString="L2: {0}" CanGrow="false" CanShrink="true" Text="label20" TextAlignment="MiddleCenter" SizeF="255,30" LocationFloat="470,400" Dpi="254" Font="Arial, 7pt">
+          <ExpressionBindings>
+            <Item1 Ref="50" EventName="BeforePrint" PropertyName="Text" Expression="[Length]" />
+          </ExpressionBindings>
+        </Item22>
+        <Item23 Ref="51" ControlType="XRLabel" Name="label21" CanGrow="false" CanShrink="true" Text="[Employee]" TextAlignment="MiddleLeft" SizeF="295,36" LocationFloat="169.999985,334" Dpi="254" Font="Arial, 6pt" />
+        <Item24 Ref="52" ControlType="XRLabel" Name="label16" TextFormatString="{0}" CanGrow="false" Text="label16" TextAlignment="TopLeft" WordWrap="false" SizeF="335,30" LocationFloat="350,520" Dpi="254" Font="Arial, 7pt, style=Bold">
+          <ExpressionBindings>
+            <Item1 Ref="53" EventName="BeforePrint" PropertyName="Text" Expression="[Position]" />
+          </ExpressionBindings>
+        </Item24>
+        <Item25 Ref="54" ControlType="XRLabel" Name="label17" TextFormatString="{0}" CanGrow="false" Text="label17" TextAlignment="TopLeft" WordWrap="false" SizeF="335,30" LocationFloat="350,555" Dpi="254" Font="Arial, 7pt, style=Bold">
+          <ExpressionBindings>
+            <Item1 Ref="55" EventName="BeforePrint" PropertyName="Text" Expression="[CustomerOrderCode]" />
+          </ExpressionBindings>
+        </Item25>
+        <Item26 Ref="56" ControlType="XRLabel" Name="label2" TextFormatString="{0}" CanGrow="false" Text="label2" TextAlignment="TopLeft" WordWrap="false" SizeF="335,30" LocationFloat="350,590" Dpi="254" Font="Arial, 7pt, style=Bold">
+          <ExpressionBindings>
+            <Item1 Ref="57" EventName="BeforePrint" PropertyName="Text" Expression="[LPos]" />
+          </ExpressionBindings>
+        </Item26>
+        <Item27 Ref="58" ControlType="XRLabel" Name="label6" TextFormatString="{0}" CanGrow="false" Text="label6" TextAlignment="TopLeft" WordWrap="false" SizeF="335,29.999939" LocationFloat="350,625" Dpi="254" Font="Arial, 7pt, style=Bold">
+          <ExpressionBindings>
+            <Item1 Ref="59" EventName="BeforePrint" PropertyName="Text" Expression="[PnxInfoIxPartId]" />
+          </ExpressionBindings>
+        </Item27>
+        <Item28 Ref="60" ControlType="XRLabel" Name="label23" CanGrow="false" Text="Flip" TextAlignment="TopLeft" SizeF="335,30" LocationFloat="350,660" Dpi="254" Font="Arial, 7pt, style=Bold">
+          <ExpressionBindings>
+            <Item1 Ref="61" EventName="BeforePrint" PropertyName="Text" Expression="[FlipInfo]" />
+          </ExpressionBindings>
+        </Item28>
+        <Item29 Ref="62" ControlType="XRLabel" Name="label22" CanGrow="false" Text="Kunde:" SizeF="85,30" LocationFloat="260,485" Dpi="254" Font="Arial, 6pt" />
+        <Item30 Ref="63" ControlType="XRLabel" Name="label24" CanGrow="false" Text="Vorgang" SizeF="85,30" LocationFloat="260,520" Dpi="254" Font="Arial, 6pt" />
+        <Item31 Ref="64" ControlType="XRLabel" Name="label25" CanGrow="false" Text="Liste:" SizeF="85,30" LocationFloat="260,555" Dpi="254" Font="Arial, 6pt" />
+        <Item32 Ref="65" ControlType="XRLabel" Name="label26" CanGrow="false" Text="L-Pos:" SizeF="85,30" LocationFloat="260,590" Dpi="254" Font="Arial, 6pt" />
+        <Item33 Ref="66" ControlType="XRLabel" Name="label27" CanGrow="false" Text="Code:" SizeF="85,29.999939" LocationFloat="260,625" Dpi="254" Font="Arial, 6pt" />
+        <Item34 Ref="67" ControlType="XRLabel" Name="label28" CanGrow="false" Text="Flip:" SizeF="85,30" LocationFloat="260,660" Dpi="254" Font="Arial, 6pt" />
+        <Item35 Ref="68" ControlType="XRLabel" Name="label31" TextFormatString="{0}" CanGrow="false" TextTrimming="None" Text="label31" XlsxFormatString="TextFitMode" TextAlignment="TopLeft" WordWrap="false" SizeF="425,30" LocationFloat="260,695" Dpi="254" Font="Arial, 7pt, style=Bold">
+          <ExpressionBindings>
+            <Item1 Ref="69" EventName="BeforePrint" PropertyName="Text" Expression="[ArticleDescription]" />
+          </ExpressionBindings>
+        </Item35>
+        <Item36 Ref="70" ControlType="XRLabel" Name="label32" TextFormatString="{0}" CanGrow="false" Text="label32" TextAlignment="TopLeft" WordWrap="false" SizeF="425,29.999939" LocationFloat="260,730" Dpi="254" Font="Arial, 7pt, style=Bold">
+          <ExpressionBindings>
+            <Item1 Ref="71" EventName="BeforePrint" PropertyName="Text" Expression="[ArticleNumber]" />
+          </ExpressionBindings>
+        </Item36>
+        <Item37 Ref="72" ControlType="XRLabel" Name="label33" TextFormatString="{0}" CanGrow="false" Text="label33" TextAlignment="TopLeft" SizeF="427,20" LocationFloat="260,765" Dpi="254" Font="Arial, 5pt">
+          <ExpressionBindings>
+            <Item1 Ref="73" EventName="BeforePrint" PropertyName="Text" Expression="[PnxInfoSurfaceFinishTop]" />
+          </ExpressionBindings>
+        </Item37>
+        <Item38 Ref="74" ControlType="XRLabel" Name="label34" TextFormatString="{0}" CanGrow="false" Text="label34" TextAlignment="TopLeft" SizeF="427,20" LocationFloat="260,785" Dpi="254" Font="Arial, 5pt">
+          <ExpressionBindings>
+            <Item1 Ref="75" EventName="BeforePrint" PropertyName="Text" Expression="[SurfaceTop]" />
+          </ExpressionBindings>
+        </Item38>
+        <Item39 Ref="76" ControlType="XRLabel" Name="label35" TextFormatString="{0}" CanGrow="false" Text="label35" TextAlignment="TopLeft" SizeF="427,29.999939" LocationFloat="260,805" Dpi="254" Font="Arial, 7pt, style=Bold">
+          <ExpressionBindings>
+            <Item1 Ref="77" EventName="BeforePrint" PropertyName="Text" Expression="[Material]" />
+          </ExpressionBindings>
+        </Item39>
+        <Item40 Ref="78" ControlType="XRLabel" Name="label36" TextFormatString="{0}" CanGrow="false" Text="label36" TextAlignment="TopLeft" SizeF="427,19.999939" LocationFloat="260,834.999939" Dpi="254" Font="Arial, 5pt">
+          <ExpressionBindings>
+            <Item1 Ref="79" EventName="BeforePrint" PropertyName="Text" Expression="[SurfaceBottom]" />
+          </ExpressionBindings>
+        </Item40>
+        <Item41 Ref="80" ControlType="XRLabel" Name="label37" TextFormatString="{0}" CanGrow="false" Text="label37" TextAlignment="TopLeft" SizeF="427,20" LocationFloat="260,855" Dpi="254" Font="Arial, 5pt">
+          <ExpressionBindings>
+            <Item1 Ref="81" EventName="BeforePrint" PropertyName="Text" Expression="[PnxInfoSurfaceFinishBottom]" />
+          </ExpressionBindings>
+        </Item41>
+        <Item42 Ref="82" ControlType="XRLabel" Name="label14" CanGrow="false" Text="label14" TextAlignment="MiddleCenter" SizeF="80,80" LocationFloat="700,195" Dpi="254" Font="Arial, 12pt, style=Bold">
+          <ExpressionBindings>
+            <Item1 Ref="83" EventName="BeforePrint" PropertyName="Text" Expression="[EdgeLineFlagConverted]" />
+          </ExpressionBindings>
+        </Item42>
+        <Item43 Ref="84" ControlType="XRShape" Name="ArrowBack" FillColor="0,0,0,0" SizeF="157.375,222.25" LocationFloat="396,564" Dpi="254" BackColor="0,0,0,0" BorderWidth="0.5">
+          <Shape Ref="85" ShapeName="Arrow" />
+          <ExpressionBindings>
+            <Item1 Ref="86" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([OrientationFirstPass] &lt;&gt; 'BACK', False, ?)" />
+          </ExpressionBindings>
+        </Item43>
+        <Item44 Ref="87" ControlType="XRShape" Name="ArrowFront" Angle="180" FillColor="0,0,0,0" SizeF="157.375,222.25" LocationFloat="396,564" Dpi="254" BackColor="0,0,0,0" BorderWidth="0.5">
+          <Shape Ref="88" ShapeName="Arrow" />
+          <ExpressionBindings>
+            <Item1 Ref="89" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([OrientationFirstPass] &lt;&gt; 'FRONT', False, ?)" />
+          </ExpressionBindings>
+        </Item44>
+        <Item45 Ref="90" ControlType="XRShape" Name="ArrowLeft" Angle="90" FillColor="0,0,0,0" SizeF="157.375,222.25" LocationFloat="396,564" Dpi="254" BackColor="0,0,0,0" BorderWidth="0.5">
+          <Shape Ref="91" ShapeName="Arrow" />
+          <ExpressionBindings>
+            <Item1 Ref="92" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([OrientationFirstPass] &lt;&gt; 'LEFT', False, ?)" />
+          </ExpressionBindings>
+        </Item45>
+        <Item46 Ref="93" ControlType="XRShape" Name="ArrowRight" Angle="270" FillColor="0,0,0,0" SizeF="157.375,222.25" LocationFloat="396,564" Dpi="254" BackColor="0,0,0,0" BorderWidth="0.5">
+          <Shape Ref="94" ShapeName="Arrow" />
+          <ExpressionBindings>
+            <Item1 Ref="95" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([OrientationFirstPass] &lt;&gt; 'RIGHT', False, ?)" />
+          </ExpressionBindings>
+        </Item46>
+        <Item47 Ref="96" ControlType="XRLine" Name="line10" LineWidth="3" LineDirection="Vertical" SizeF="8,420" LocationFloat="690,475" Dpi="254">
+          <ExpressionBindings>
+            <Item1 Ref="97" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([CncZeroLine] &lt;&gt; 'RIGHT', False, ?)" />
+          </ExpressionBindings>
+        </Item47>
+        <Item48 Ref="98" ControlType="XRLine" Name="line9" LineWidth="3" LineDirection="Vertical" SizeF="8.000015,420" LocationFloat="249.999985,475" Dpi="254">
+          <ExpressionBindings>
+            <Item1 Ref="99" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([CncZeroLine] &lt;&gt; 'LEFT', False, ?)" />
+          </ExpressionBindings>
+        </Item48>
+        <Item49 Ref="100" ControlType="XRLine" Name="line8" LineWidth="3" SizeF="450,8" LocationFloat="249.999985,475" Dpi="254">
+          <ExpressionBindings>
+            <Item1 Ref="101" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([CncZeroLine] &lt;&gt; 'BACK', False, ?)" />
+          </ExpressionBindings>
+        </Item49>
+        <Item50 Ref="102" ControlType="XRLine" Name="line7" LineWidth="3" SizeF="450,8.000061" LocationFloat="249.999985,890" Dpi="254">
+          <ExpressionBindings>
+            <Item1 Ref="103" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([CncZeroLine] &lt;&gt; 'FRONT', False, ?)" />
+          </ExpressionBindings>
+        </Item50>
+        <Item51 Ref="104" ControlType="XRPictureBox" Name="GrainOrientationHorizontal" ImageSource="img,iVBORw0KGgoAAAANSUhEUgAAADYAAAAdCAYAAADhLp8oAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAywAAAMsABKGRa2wAAAEZJREFUWEft2DEKgFAMRMEc28LCm2v4hR4guCLMwDvAdiE1cHRnoL2LMmxYfBgA8KLUBZFq6xbDftI9DACAz3iYDjPsUXUB1GM2sYkOJ2EAAAAASUVORK5CYII=" ImageAlignment="MiddleCenter" SizeF="30,40" LocationFloat="175,395" Dpi="254">
+          <ExpressionBindings>
+            <Item1 Ref="105" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([Grain] &lt;&gt; '1', False, ?)" />
+          </ExpressionBindings>
+        </Item51>
+        <Item52 Ref="106" ControlType="XRPictureBox" Name="GrainOrientationVertical" ImageSource="img,iVBORw0KGgoAAAANSUhEUgAAABwAAAA2CAYAAADUOvnEAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAywAAAMsABKGRa2wAAANtJREFUWEft1DEOAjEQQ9E9NgUFNwe5y6/wX6KIYp6UwpK90+11w2t5R7yXd8Qc3G4ObjcHt5uDX9m//52DuGE/YPuBDULB9gMbhILtBzYIBdsPbBAKth/YIBRsP7BBKNh+YINQsP3ABqFg+4ENQsH2AxuEgu0HNggF2w9sEAq2H9ggFGw/sEEo2H5gg1Cw/cAGoWD7gQ1CwfYDG4SC7Qc2CAXbD2wQCrYf2CAUbD+wQSjYfmCDULD9wAahYPuBzXN5DYxL9gbcOfiTObjdHNxuDm53/OBjef/uuj4C1DaxVNT12wAAAABJRU5ErkJggg==" ImageAlignment="MiddleCenter" SizeF="40,30" LocationFloat="175,400" Dpi="254">
+          <ExpressionBindings>
+            <Item1 Ref="107" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([Grain] &lt;&gt; '2', False, ?)" />
+          </ExpressionBindings>
+        </Item52>
+        <Item53 Ref="108" ControlType="XRShape" Name="CornerLineNx1" Angle="270" SizeF="27.9999847,5.080017" LocationFloat="222,473" Dpi="254">
+          <Shape Ref="109" ShapeName="Line" />
+          <ExpressionBindings>
+            <Item1 Ref="110" EventName="BeforePrint" PropertyName="Visible" Expression="Iif(Not [EdgeTransitionN] In ('001', '011'), False, ?)" />
+          </ExpressionBindings>
+        </Item53>
+        <Item54 Ref="111" ControlType="XRShape" Name="CornerLineS1x" Angle="270" SizeF="27.9999847,5.080017" LocationFloat="222,891.5" Dpi="254">
+          <Shape Ref="112" ShapeName="Line" />
+          <ExpressionBindings>
+            <Item1 Ref="113" EventName="BeforePrint" PropertyName="Visible" Expression="Iif(Not [EdgeTransitionS] In ('010', '011'), False, ?)" />
+          </ExpressionBindings>
+        </Item54>
+        <Item55 Ref="114" ControlType="XRShape" Name="CornerLineSx1" Angle="270" SizeF="28,5.080017" LocationFloat="700,891.5" Dpi="254">
+          <Shape Ref="115" ShapeName="Line" />
+          <ExpressionBindings>
+            <Item1 Ref="116" EventName="BeforePrint" PropertyName="Visible" Expression="Iif(Not [EdgeTransitionS] In ('001', '011'), False, ?)" />
+          </ExpressionBindings>
+        </Item55>
+        <Item56 Ref="117" ControlType="XRShape" Name="CornerLineN1x" Angle="270" SizeF="28,5.080017" LocationFloat="700,473" Dpi="254">
+          <Shape Ref="118" ShapeName="Line" />
+          <ExpressionBindings>
+            <Item1 Ref="119" EventName="BeforePrint" PropertyName="Visible" Expression="Iif(Not [EdgeTransitionN] In ('010', '011'), False, ?)" />
+          </ExpressionBindings>
+        </Item56>
+        <Item57 Ref="120" ControlType="XRShape" Name="CornerLineW1x" Angle="180" TextAlignment="MiddleCenter" SizeF="5.080002,28" LocationFloat="248,445" Dpi="254">
+          <Shape Ref="121" ShapeName="Line" />
+          <ExpressionBindings>
+            <Item1 Ref="122" EventName="BeforePrint" PropertyName="Visible" Expression="Iif(Not [EdgeTransitionW] In ('010', '011'), False, ?)" />
+          </ExpressionBindings>
+        </Item57>
+        <Item58 Ref="123" ControlType="XRShape" Name="CornerLineEx1" Angle="180" TextAlignment="MiddleCenter" SizeF="5.080017,28" LocationFloat="696,445" Dpi="254">
+          <Shape Ref="124" ShapeName="Line" />
+          <ExpressionBindings>
+            <Item1 Ref="125" EventName="BeforePrint" PropertyName="Visible" Expression="Iif(Not [EdgeTransitionE] In ('001', '011'), False, ?)" />
+          </ExpressionBindings>
+        </Item58>
+        <Item59 Ref="126" ControlType="XRShape" Name="CornerLineWx1" Angle="180" TextAlignment="MiddleCenter" SizeF="5.080002,28" LocationFloat="248,894" Dpi="254">
+          <Shape Ref="127" ShapeName="Line" />
+          <ExpressionBindings>
+            <Item1 Ref="128" EventName="BeforePrint" PropertyName="Visible" Expression="Iif(Not [EdgeTransitionW] In ('001', '011'), False, ?)" />
+          </ExpressionBindings>
+        </Item59>
+        <Item60 Ref="129" ControlType="XRShape" Name="CornerLineE1x" Angle="180" TextAlignment="MiddleCenter" SizeF="5.080017,28" LocationFloat="696,894" Dpi="254">
+          <Shape Ref="130" ShapeName="Line" />
+          <ExpressionBindings>
+            <Item1 Ref="131" EventName="BeforePrint" PropertyName="Visible" Expression="Iif(Not [EdgeTransitionE] In ('010', '011'), False, ?)" />
+          </ExpressionBindings>
+        </Item60>
+        <Item61 Ref="132" ControlType="XRLine" Name="line6" LineWidth="3" LineStyle="Dash" SizeF="350,8" LocationFloat="297.5,476.25" Dpi="254" BorderDashStyle="Solid">
+          <ExpressionBindings>
+            <Item1 Ref="133" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([PnxLabelInfoCncZeroLineNoDc] &lt;&gt; 'BACK', False, ?)" />
+          </ExpressionBindings>
+        </Item61>
+        <Item62 Ref="134" ControlType="XRLine" Name="line11" LineWidth="3" LineDirection="Vertical" LineStyle="Dash" SizeF="8.000015,320" LocationFloat="252,520" Dpi="254" BorderDashStyle="Solid">
+          <ExpressionBindings>
+            <Item1 Ref="135" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([PnxLabelInfoCncZeroLineNoDc] &lt;&gt; 'LEFT', False, ?)" />
+          </ExpressionBindings>
+        </Item62>
+        <Item63 Ref="136" ControlType="XRLine" Name="line12" LineWidth="3" LineStyle="Dash" SizeF="350,8.000061" LocationFloat="300,890" Dpi="254" BorderDashStyle="Solid">
+          <ExpressionBindings>
+            <Item1 Ref="137" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([PnxLabelInfoCncZeroLineNoDc] &lt;&gt; 'FRONT', False, ?)" />
+          </ExpressionBindings>
+        </Item63>
+        <Item64 Ref="138" ControlType="XRLine" Name="line13" LineWidth="3" LineDirection="Vertical" LineStyle="Dash" SizeF="8,320" LocationFloat="690,524.5" Dpi="254" BorderDashStyle="Solid">
+          <ExpressionBindings>
+            <Item1 Ref="139" EventName="BeforePrint" PropertyName="Visible" Expression="Iif([PnxLabelInfoCncZeroLineNoDc] &lt;&gt; 'RIGHT', False, ?)" />
+          </ExpressionBindings>
+        </Item64>
+        <Item65 Ref="140" ControlType="XRShape" Name="shape1" SizeF="510,480" LocationFloat="222,444.5" Dpi="254" BorderWidth="1">
+          <Shape Ref="141" ShapeName="Rectangle" />
+        </Item65>
+        <Item66 Ref="142" ControlType="XRShape" Name="shape2" SizeF="450,420.000122" LocationFloat="249.999985,475" Dpi="254">
+          <Shape Ref="143" ShapeName="Rectangle" />
+        </Item66>
+      </Controls>
+    </Item1>
+    <Item2 Ref="144" ControlType="TopMarginBand" Name="TopMargin1" HeightF="0" Dpi="254" />
+    <Item3 Ref="145" ControlType="BottomMarginBand" Name="BottomMargin1" HeightF="0" Dpi="254" />
+  </Bands>
+</XtraReportsLayoutSerializer>
