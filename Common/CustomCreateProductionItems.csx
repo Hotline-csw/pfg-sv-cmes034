@@ -45,7 +45,7 @@ public class CustomCreateProductionItems : CreateProductionItems
         productionOrder.ProductionItems.Add(new ProductionItem
         {
             Code = productionOrder.CustomProdItemCode,       // Get the ProductionItemCode for a new ProductionItem;  Standard: Create the value by RangeOfNumbers
-            DesiredQuantity = productionOrder.DesiredTargetQuantity ?? 1,
+            DesiredQuantity = 1,
             CreationDate = DateTime.Now,
             ModificationDate = DateTime.Now,
             CreationSource = "FLS",
