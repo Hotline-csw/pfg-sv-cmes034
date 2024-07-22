@@ -136,7 +136,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                                 
                                 if(prodItemsStepsDataPreassem003 != null)
                                 {
-                                    prodItemPreassem003.InsertFeedbackFinishedGood(unitOfWork, _TaskName, preassemblyWorkCenterCode, "", 1, _Logger);
+                                    //prodItemPreassem003.InsertFeedbackFinishedGood(unitOfWork, _TaskName, preassemblyWorkCenterCode, "", 1, _Logger);
+                                    prodItemPreassem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, "PREASSEM", 2, 0, 0, _Logger);
                                 }
                             }
                         }
