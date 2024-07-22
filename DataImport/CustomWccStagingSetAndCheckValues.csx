@@ -28,7 +28,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization))]
 [Export("CustomWccStagingSetAndCheckValues", typeof(HomagGroup.FLS.Services.DataImport.Contracts.Contracts.UserExits.IDataImportTransformationUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("describe here")]
+[Description("[93]")]
 [EnabledScript(true)]
 public class CustomWccStagingSetAndCheckValues : WccStagingSetAndCheckValues
 {
