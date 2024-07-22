@@ -5,6 +5,11 @@
 		"icon": "grid_view"
 	},
 	{
+		"label": "Dashboard Revived",
+		"link": "old-dashboard",
+		"icon": "grid_view"
+	},
+	{
 		"label": "Management",
 		"items": [
 			{
