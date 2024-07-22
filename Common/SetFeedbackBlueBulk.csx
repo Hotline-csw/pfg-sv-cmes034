@@ -166,7 +166,9 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                                 
                                 if(prodItemsStepsDataAssem003 != null)
                                 {
-                                    prodItemAssem003.InsertFeedbackFinishedGood(unitOfWork, _TaskName, assemblyWorkCenterCode, "", 1, _Logger);
+                                    //prodItemAssem003.InsertFeedbackFinishedGood(unitOfWork, _TaskName, assemblyWorkCenterCode, "", 1, _Logger);
+                                    prodItemAssem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, assemblyWorkCenterCode, "ASSEM", 0, FeedbackState.Finished, 0, _Logger);
+
                                 }
                             }
                         }
@@ -204,7 +206,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             
                             if(prodItemsStepsDataSort004!=null)
                             {
-                                prodItemSort004.InsertFeedbackFinishedGood(unitOfWork, _TaskName, sortingWorkCenterCode, "", 1, _Logger);
+                                //prodItemSort004.InsertFeedbackFinishedGood(unitOfWork, _TaskName, sortingWorkCenterCode, "", 1, _Logger);
+                                prodItemSort004.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, sortingWorkCenterCode, "SORT", 0, FeedbackState.Finished, 0, _Logger);
                             }
                         }
                     }
@@ -229,7 +232,9 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             
                             if(prodItemsStepsDataPreassepisd != null)
                             {
-                                prodItemPreassepisd.InsertFeedbackFinishedGood(unitOfWork, _TaskName, preassemblyWorkCenterCode, "", 1, _Logger);
+                                //prodItemPreassepisd.InsertFeedbackFinishedGood(unitOfWork, _TaskName, preassemblyWorkCenterCode, "", 1, _Logger);
+                                prodItemPreassepisd.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, "PREASSEM", 0, FeedbackState.Finished, 0, _Logger);
+
                             }
                         }
                     }
