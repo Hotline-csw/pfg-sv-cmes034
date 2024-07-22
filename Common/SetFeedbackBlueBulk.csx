@@ -123,8 +123,6 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                               po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "006" && po.OrderType == ProductionOrderType.ConstructionPart ||
                               po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "007" && po.OrderType == ProductionOrderType.ConstructionPart);
                               
-_Logger.Info("Christian");
-
                     if(preassemDKS003 != null)
                     {   
                         foreach(var preassem003 in preassemDKS003)
@@ -153,9 +151,6 @@ _Logger.Info("Christian");
                               po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "005" && po.OrderType == ProductionOrderType.SalesArticle ||
                               po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "006" && po.OrderType == ProductionOrderType.SalesArticle ||
                               po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "007" && po.OrderType == ProductionOrderType.SalesArticle );
-
-
-_Logger.Info("Thomas");
 
                     if(assemDKS003 != null)
                     {   
