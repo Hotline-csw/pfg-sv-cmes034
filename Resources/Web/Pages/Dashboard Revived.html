@@ -1,5 +1,5 @@
-<html>                                                                                                                                        
-     <body>
+<html>                                                                                                                                         
+      <body>
 	<div id="app">
 		<v-app>
 			<v-main style="overflow:auto">
@@ -29,168 +29,105 @@
 		</v-app>
 	</div>
 
-	 <script>
-     window.vm = new Vue({
-      el: "#app",
-      components: {
-      },
-      vuetify: new Vuetify({
-        theme: {
-          themes: {
-            light: {
-              primary: "#001941",
-              secondary: "#00A0DC",
-              accent: "#00A0DC",
+	  <script>
+		window.vm = new Vue({
+        el: "#app",
+        vuetify: new Vuetify({
+          theme: {
+            themes: {
+              light: {
+                primary: "#001941",
+                secondary: "#00A0DC",
+                accent: "#00A0DC",
+              },
             },
           },
+        }),
+        created() {
+            // ToDo: INstallieren von EventHandlern
+          window.eev.on("onLocalScanData", this.handleScanner);
+          window.eev.on("onScannerDataReceivedMessage", this.handleNotification);
         },
-      }),
-      created() {
-          // wir reagieren auf neue Scanner-Messages
-          //window.eev.on("onScannerDataReceivedMessage", this.handleScanner);
-          this.initstartdata();
-          // setInterval(this.initstartdata, 3000);
-      },
-      mounted() {
-          
-      },
-      destroyed(){
-          // Aufräumen: MessageHandler für Scanner aushängen
-          // window.eev.off("onScannerDataReceivedMessage", this.handleScanner);
-      },
-      data: {
-          //------------------------------------------------------------------
-          // Zuerst die Daten für den Anzeigeteil Oben:
-          status:  "Standard",
-          content: "TextInhalt",
-          customerOrderCode: "OrderCode",
-          orderFirst4Dgt: "1234",
-          orderSecnd4Dgt: "6789",
-          orderPos:        "004",
-          process:         "Standard",
-          stack:           "3",
-          box:             "26.11.2021",
-          tour:            "5027",
-          description:     "Raumplanwange 25mm",
-          material:         "F198 Eiche Sierra",
-          nextstep:         "Verpackung",
-          hint:             "25er Wangenschuh 1170mm",
-          fixpart:          "N",
-          stackActive:      1,
-          iTmp:             1,
+        mounted() {
 
-          //------------------------------------------------------------------
-          // Und dann noch die Objekte für die Anzeige der Cards / Stacks:
+          this.focusInput();
 
-          stackarray: [],
-
-        
-      },
-
-      computed: {
-            //-----------------------------------------------------
-            // Default Basisklasse (haupts. wegen dem Hintergrund)
-            setDefaultClass: function(){
-
-                if(this.status === "Standard"){
-                    return "defaultGrey";
-
-                }
-                else{
-                    return "defaultWuerg";
-
-                }
-
-
+          //document.addEventListener('keypress', this.keypressHandler);
+        },
+        destroyed(){
+            // Aufräumen: z.B. EventHandler entfernen, Timer löschen ect.
+            console.log("Template-Page destroyed");
+            window.eev.off("onLocalScanData", this.handleScanner);
+            window.eev.off("onScannerDataReceivedMessage", this.handleNotification);
+        },
+        data: {
+          articleid: "",
+          productionOrder: '',
         },
 
+        computed: {
+        },
 
+        methods: {
+          keypressHandler(e) {
+            this.articleid += e.key;
+          },
 
+          focusInput() {
+            this.$refs.article.focus();
+          },
 
+          handleScanner(msg){
+               this.articleid = msg;
+               this.getProductionOrder();
+          },
 
+          handleNotification(msg){
+              console.log(msg);
+          },
 
+           getProductionOrder: async function () {
 
-      },
+            console.log("getProductionOrder");
 
-      methods: {
+            try{
 
-            initstartdata: function(){
-                console.log("Initialisiere Array...");
-
-                this.stackarray[0] = {
-                    number:     1,
-                    block:  "101-110",
-                    subblock: "(51-60)",
-                    status:    "offen"
-                };
-
-               this.stackarray[1] = {
-                    number:     2,
-                    block:  "61-70",
-                    subblock: "(11-20)",
-                    status:    "offen"
-                };
-
-
-                this.stackarray[2] = {
-                    number:     3,
-                    block:  "71-80",
-                    subblock: "(21-30)",
-                    status:    "offen"
-                };
-
-
-                this.stackarray[3] = {
-                    number:     4,
-                    block:  "81-90",
-                    subblock: "(31-40)",
-                    status:    "offen"
-                };
-
-
-                this.stackarray[4] = {
-                    number:     5,
-                    block:  "41-50",
-                    subblock: "()",
-                    status:    "offen"
-                };
-
-
-/*
-                this.iTmp += 1;
-
-                if(this.stack === 99) this.stack = 1;
-                else
-                this.stack += 1;
-
-
-                if(this.stack === 6) this.stack = 1;
-
-
-                if(this.iTmp === 4){
-                    this.process = "CNC";
-                    this.status = "CNC";
-                    this.stack = 99;
-
-
-                }
-                else if(this.iTmp === 5)
+            const data = await window.cmesOdata
+              .get("ProductionOrders")
+              .query({
+                $filter: `ProductionItems/any(d:d/Code eq '${this.articleid}')`
+                //, $select: "Code, DesiredStartDate"
+                // $include: {"Productionst"}
+              });
+                  console.log("Debug");
+                if (data === null || data.length === 0) 
                 {
-                    this.process = "Standard";
-                    this.status = "Standard";
-                    this.iTmp = 1;
-                    this.stack = 1;
+					window.messageservice.add({severity:'error', summary: 'Fehler', detail: `Bauteil ${this.articleid} nicht gefunden.`, life: 5000})
                 }
-*/
-
-            },  // Ende    initstartdata()
-
-      },  
-
-      
-
-    });// Ende der methoden
-     </script><style>  
+                else
+				{
+					if(Array.isArray(data))
+                    {
+						this.productionOrder = data[0];
+                        // Umsetzen der Datumsfelder in 'lesbare' Formatierung
+                        Object.entries(data[0]).forEach(entry => {
+                                    const [key, value] = entry;
+                                    if(key.indexOf("Date") != -1 && value != null){
+                                        console.log(key, value);
+                                        this.productionOrder[key] = window.DateTime.fromISO(value).setLocale('de').toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
+                                    }
+                        });
+                        
+                    }    
+				}
+            }
+            catch(err){
+                console.log(err);
+            }
+          },
+        },
+      });
+	 </script><style>   
 
       .defaultGrey{
         background-color: #CFD8DC;  
@@ -432,6 +369,6 @@
         
 
 
-    </style>
+     </style>
 </body>
-                              </html>
+                               </html>
