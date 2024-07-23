@@ -1,57 +1,130 @@
-<html>                                                                                                                                    
- <body>
-    <div id="app" >
-    <v-app >
-        <v-main style="overflow:auto">
-            <v-sheet id="scrolling" class="overflow-y-auto">
-                <!v-img src="{{ server }}/dao/script/assets/homag-logo.svg" max-height="50" contain class="ma-2"></v-img>
-            </v-sheet>
+<html>                                                                                                                                     
+  <body>
+  <div id="app" >
+    <v-app>
+        <v-main>
+            <div :class="setDefaultClass">
+                <div>
+                    <h1  style = "text-align:center;"> Arbeitsplatz: M310</h1>
+                </div>
+                <div class="FirstSection">
 
-            <div class="information">
-                <div class="kittingContent">
-                    <div class="kittingArea">Kitting 1</div>
-                    <div class="icnid">ICNID</div>
-                    <div class="icnidData">{{icnid}}</div>
-                    <div class="schedule">Schedule</div>
-                    <div class="scheduleData">{{scheduleID}}</div>
-                    <div class="trolleyID">Trolley ID</div>
-                    <div class="trolleyIDData">{{trolleyID}}</div>
-                    <div class="sectionID">Section ID</div>
-                    <div class="sectionIDData">{{sectionID}}</div>
-                    <div class="slotID">Slot ID</div>
-                    <div class="slotIDData">{{slotID}}</div>
+                    <div class="first-item ordertext">AB:</div>
+                    <div class="first-itemData  first4Order">{{orderFirst4Dgt}}</div>
+                    <div class="first-itemData  secnd4Order">{{orderSecnd4Dgt}}</div>  
+                    <div class="first-item postext">POS:</div>
+                    <div class="first-itemData  pos">{{orderPos}}</div>
+                    <div class="first-item proctext">Nach.Proz.:</div>
+                    <div class="first-itemData  proc">{{process}}</div>
+                    <div class="first-item stacktext">Ziel:</div>
+                    <div class="first-itemData stack">{{stack}}</div>
+                    <div class="first-item boxdaytext">Boxtag:</div>
+                    <div class="first-itemData boxday">{{box}}</div>
+                    <div class="first-item ">Tour:</div>
+                    <div class="first-itemData  ">{{tour}}</div>
+                    <div class="first-item "></div>
+                    <div class="first-item "></div>
+                    <div class="first-item descrtext">Beschreibung:</div>
+                    <div class="first-itemData descr">{{description}}</div>
+                    <div class="first-item materialtext">Material:</div>
+                    <div class="first-itemData material">{{material}}</div>
+                    <div class="first-item steptext">Nächster Arbeitsgang:</div>
+                    <div class="first-itemData step">{{nextstep}}</div>
+                    <div class="first-item hinttext">Hinweis:</div>
+                    <div class="first-itemData hint">{{hint}}</div>
+                    <div class="first-item fixtext">Reperaturteil:</div>
+                    <div class="first-itemData fix">{{fixpart}}</div>
+
+  
+
                 </div>
-                <div class="kittingDisplay">
-                    <div class="rolloutState" v-show="rolloutMode=='RolloutActive'">
-                        <div class="caption green--text">
-                            <div style="font-size:400%">
-                                {{rolloutStateString}}
-                            </div>
-                        </div>               
-                    </div>
-                    <div class="rolloutState" v-show="rolloutMode=='RolloutInactive'">
-                        <div class="caption red--text">
-                            <div style="font-size:400%">
-                                {{rolloutStateString}}
-                            </div>
-                        </div>               
-                    </div>
-                    <div class="trolleyID">Trolley ID</div>
-                    <div class="trolleyIDData">{{trolleyID}}</div>
-                        <div class="sectionContent">
-                            <div v-for="(item, index) in sectionItems" :key="index" :class="{ 'section-item': true, 'active': active && index === activeIndex }">
-                                <template v-if="active && index === activeIndex">
-                                    {{slotID}}
-                                </template>
-                            </div>
-                        </div>
-                    </div>
+            
+                <div class="SecondSection">
+                    <v-card :class="[stackActive===1?'seconditemactive':'seconditem']" elevation="24" >
+                        <v-card-header>
+                            <v-card-header-text>
+                                <!-- Titel und Actionelemente sind in der v-card flexelemente deshalb hier justify-center... -->
+                                <v-card-title class="justify-center">
+                                    <h1>{{this.stackarray[0].number}}</h1>
+                                </v-card-title>
+                                <v-card-subtitle style="text-align:center;font-size:20px">{{this.stackarray[0].block}}</v-card-subtitle>
+                            </v-card-header-text>   
+                        </v-card-header>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[0].subblock}}</p></v-card-text>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[0].status}}</p></v-card-text>   
+                    
+                    </v-card>
+
+                    <v-card :class="[stackActive===2?'seconditemactive':'seconditem']" elevation="24" >
+                        <v-card-header>
+                            <v-card-header-text>
+                                <!-- Titel und Actionelemente sind in der v-card flexelemente deshalb hier justify-center... -->
+                                <v-card-title class="justify-center">
+                                    <h1>{{this.stackarray[1].number}}</h1>
+                                </v-card-title>
+                                <v-card-subtitle style="text-align:center;font-size:20px">{{this.stackarray[1].block}}</v-card-subtitle>
+                            </v-card-header-text>   
+                        </v-card-header>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[1].subblock}}</p></v-card-text>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[1].status}}</p></v-card-text>   
+                    
+                    </v-card>
+
+                    <v-card :class="[stackActive===3?'seconditemactive':'seconditem']" elevation="24" >
+                        <v-card-header>
+                            <v-card-header-text>
+                                <v-card-title class="justify-center">
+                                    <h1>{{this.stackarray[2].number}}</h1>
+                                </v-card-title>
+                                <v-card-subtitle style="text-align:center;font-size:20px">{{this.stackarray[2].block}}</v-card-subtitle>
+                            </v-card-header-text>   
+                        </v-card-header>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[2].subblock}}</p></v-card-text>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[2].status}}</p></v-card-text>   
+                    
+                    </v-card>
+
+                    <v-card :class="[stackActive===4?'seconditemactive':'seconditem']" elevation="24" >
+                        <v-card-header>
+                            <v-card-header-text>
+                                <!-- Titel und Actionelemente sind in der v-card flexelemente deshalb hier justify-center... -->
+                                <v-card-title class="justify-center">
+                                    <h1>{{this.stackarray[3].number}}</h1>
+                                </v-card-title>
+                                <v-card-subtitle style="text-align:center;font-size:20px">{{this.stackarray[3].block}}</v-card-subtitle>
+                            </v-card-header-text>   
+                        </v-card-header>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[3].subblock}}</p></v-card-text>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[3].status}}</p></v-card-text>   
+                    
+                    </v-card>
+
+                    <v-card :class="[stackActive===5?'seconditemactive':'seconditem']" elevation="24" >
+                        <v-card-header>
+                            <v-card-header-text>
+                                <!-- Titel und Actionelemente sind in der v-card flexelemente deshalb hier justify-center... -->
+                                <v-card-title class="justify-center">
+                                    <h1>{{this.stackarray[4].number}}</h1>
+                                </v-card-title>
+                                <v-card-subtitle style="text-align:center;font-size:20px">{{this.stackarray[4].block}}</v-card-subtitle>
+                            </v-card-header-text>   
+                        </v-card-header>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[4].subblock}}</p></v-card-text>   
+                        <v-card-text ><p style="text-align:center;font-size:20px">{{this.stackarray[4].status}}</p></v-card-text>   
+                    
+                    </v-card>
+
+
                 </div>
+
+            
             </div>
         </v-main>
+        
     </v-app>
-</div> 
-  <script>     window.vm = new Vue({
+  </div>
+
+   <script>     window.vm = new Vue({
       el: "#app",
       components: {
       },
@@ -92,7 +165,7 @@
       methods: {
       },
     });
- </script><style>   .information {
+  </script><style>    .information {
     display: flex;
     height: 100%;
     background-color: #E6EBEE;
@@ -180,6 +253,6 @@
     border-width: 3px;
     border-color: red;
     background-color: #fedb9b;
-}   </style>
+}    </style>
 </body>
-                          </html>
+                           </html>

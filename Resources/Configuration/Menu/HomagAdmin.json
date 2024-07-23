@@ -28,7 +28,7 @@
 				"icon": "extension"
 			},
 			{
-				"label": "Dashboard Revived",
+				"label": "DBRevived",
 				"link": "cmes-custom-page/DBRevived",
 				"icon": "grid_view"
 			},
