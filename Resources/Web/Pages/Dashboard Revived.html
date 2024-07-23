@@ -1,5 +1,5 @@
-<html>                                                                                                                                     
-  <body>
+<html>                                                                                                                                      
+   <body>
   <div id="app" >
     <v-app>
         <v-main>
@@ -124,7 +124,8 @@
     </v-app>
   </div>
 
-   <script>     window.vm = new Vue({
+    <script>
+     window.vm = new Vue({
       el: "#app",
       components: {
       },
@@ -140,32 +141,151 @@
         },
       }),
       created() {
+          // wir reagieren auf neue Scanner-Messages
+          //window.eev.on("onScannerDataReceivedMessage", this.handleScanner);
+          this.initstartdata();
+          // setInterval(this.initstartdata, 3000);
       },
       mounted() {
+          
       },
       destroyed(){
+          // Aufräumen: MessageHandler für Scanner aushängen
+          // window.eev.off("onScannerDataReceivedMessage", this.handleScanner);
       },
       data: {
-        productionItemCode: '114797',
-        icnid: '1',
-        scheduleID: '1',
-        trolleyID: '1',
-        sectionID: '1',
-        slotID: '1',
-        rolloutState: '1',
-        rolloutStateString: '1',
-        rolloutMode:"RolloutActive",
-        sectionItems: ['Section 1','Section 2','Section 3','Section 4','Section 5','Section 6','Section 7','Section 8','Section 9','Section 10'],
-        active: true,
+          //------------------------------------------------------------------
+          // Zuerst die Daten für den Anzeigeteil Oben:
+          status:  "Standard",
+          content: "TextInhalt",
+          customerOrderCode: "OrderCode",
+          orderFirst4Dgt: "1234",
+          orderSecnd4Dgt: "6789",
+          orderPos:        "004",
+          process:         "Standard",
+          stack:           "3",
+          box:             "26.11.2021",
+          tour:            "5027",
+          description:     "Raumplanwange 25mm",
+          material:         "F198 Eiche Sierra",
+          nextstep:         "Verpackung",
+          hint:             "25er Wangenschuh 1170mm",
+          fixpart:          "N",
+          stackActive:      1,
+          iTmp:             1,
+
+          //------------------------------------------------------------------
+          // Und dann noch die Objekte für die Anzeige der Cards / Stacks:
+
+          stackarray: [],
+
+        
       },
 
       computed: {
+            //-----------------------------------------------------
+            // Default Basisklasse (haupts. wegen dem Hintergrund)
+            setDefaultClass: function(){
+
+                if(this.status === "Standard"){
+                    return "defaultGrey";
+
+                }
+                else{
+                    return "defaultWuerg";
+
+                }
+
+
+        },
+
+
+
+
+
+
+
       },
 
       methods: {
-      },
-    });
-  </script><style>    .information {
+
+            initstartdata: function(){
+                console.log("Initialisiere Array...");
+
+                this.stackarray[0] = {
+                    number:     1,
+                    block:  "101-110",
+                    subblock: "(51-60)",
+                    status:    "offen"
+                };
+
+               this.stackarray[1] = {
+                    number:     2,
+                    block:  "61-70",
+                    subblock: "(11-20)",
+                    status:    "offen"
+                };
+
+
+                this.stackarray[2] = {
+                    number:     3,
+                    block:  "71-80",
+                    subblock: "(21-30)",
+                    status:    "offen"
+                };
+
+
+                this.stackarray[3] = {
+                    number:     4,
+                    block:  "81-90",
+                    subblock: "(31-40)",
+                    status:    "offen"
+                };
+
+
+                this.stackarray[4] = {
+                    number:     5,
+                    block:  "41-50",
+                    subblock: "()",
+                    status:    "offen"
+                };
+
+
+/*
+                this.iTmp += 1;
+
+                if(this.stack === 99) this.stack = 1;
+                else
+                this.stack += 1;
+
+
+                if(this.stack === 6) this.stack = 1;
+
+
+                if(this.iTmp === 4){
+                    this.process = "CNC";
+                    this.status = "CNC";
+                    this.stack = 99;
+
+
+                }
+                else if(this.iTmp === 5)
+                {
+                    this.process = "Standard";
+                    this.status = "Standard";
+                    this.iTmp = 1;
+                    this.stack = 1;
+                }
+*/
+
+            },  // Ende    initstartdata()
+
+      },  
+
+      
+
+    });// Ende der methoden
+   </script><style>     .information {
     display: flex;
     height: 100%;
     background-color: #E6EBEE;
@@ -253,6 +373,6 @@
     border-width: 3px;
     border-color: red;
     background-color: #fedb9b;
-}    </style>
+}     </style>
 </body>
-                           </html>
+                            </html>
