@@ -1,31 +1,34 @@
-<html>  
+<html>   
+   <body>
+	<div id="app">
+		<v-app>
+			<v-main style="overflow:auto">
+				<v-sheet id="scrolling" class="overflow-y-auto">
+					<!v-img src="{{ server }}/dao/script/assets/homag-logo.svg" max-height="50" contain class="ma-2"></v-img>
+				</v-sheet>
 
-  <body><div id="app">
-    <v-app>
-        <v-main style="overflow:auto">
-            <v-sheet id="scrolling" class="overflow-y-auto">
-            </v-sheet>
-
-            <div class="information">
-                
-            </div>
-        </v-main>
-    </v-app>
-</div>
-
-	  <script>window.vm = new Vue({
+				<div class="information">
+					
+				</div>
+			</v-main>
+		</v-app>
+	</div>
+ <script>
+	window.vm = new Vue({
     el: "#app",
-    vuetify: new Vuetify({
+    components: {
+      },
+      vuetify: new Vuetify({
         theme: {
-            themes: {
-                light: {
-                    primary: "#001941",
-                    secondary: "#00A0DC",
-                    accent: "#00A0DC",
-                },
+          themes: {
+            light: {
+              primary: "#001941",
+              secondary: "#00A0DC",
+              accent: "#00A0DC",
             },
+          },
         },
-    }),
+      }),
 
     created() {
     },
@@ -44,11 +47,13 @@
 
     methods: {
     },
-});  </script><style> .information{
+});  
+ </script><style>  
+.information{
     display: flex;
     height: 100%;
     background-color: #F3FA7F;
-}	  </style>
+}	  
+ </style>
 </body>
-
-  </html>
+ </html>
