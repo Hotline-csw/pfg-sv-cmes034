@@ -6,7 +6,7 @@
 	},
 	{
 		"label": "Dashboard Revived",
-		"link": "old-dashboard",
+		"link": "cmes-custom-page/DBRevived",
 		"icon": "grid_view"
 	},
 	{

@@ -1,17 +1,20 @@
-<html> 
+<html>  
 
- <body>
+  <body>
 	<div id="app">
 		<v-app>
 			<v-main style="overflow:auto">
 				<v-sheet id="scrolling" class="overflow-y-auto">
-
 				</v-sheet>
+
+                <div class="information">
+                    
+                </div>
 			</v-main>
 		</v-app>
 	</div>
 
-	 <script>window.vm = new Vue({
+	  <script>window.vm = new Vue({
     el: "#app",
     vuetify: new Vuetify({
         theme: {
@@ -42,8 +45,12 @@
 
     methods: {
     },
-}); </script><style> 
-	 </style>
+});  </script><style> .information{
+    display: flex;
+    height: 100%;
+    background-color: #E6EBEE;
+}
+	  </style>
 </body>
 
- </html>
+  </html>
