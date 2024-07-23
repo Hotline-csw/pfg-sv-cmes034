@@ -7,105 +7,32 @@
             </v-sheet>
         </v-main>
     </v-app>
-</div> <script>
-		window.vm = new Vue({
-        el: "#app",
-        vuetify: new Vuetify({
-          theme: {
+</div> <script>window.vm = new Vue({
+    el: "#app",
+    vuetify: new Vuetify({
+        theme: {
             themes: {
-              light: {
-                primary: "#001941",
-                secondary: "#00A0DC",
-                accent: "#00A0DC",
-              },
+                light: {
+                    primary: "#001941",
+                    secondary: "#00A0DC",
+                    accent: "#00A0DC",
+                },
             },
-          },
-        }),
-        created() {
-            // ToDo: INstallieren von EventHandlern
-          window.eev.on("onLocalScanData", this.handleScanner);
-          window.eev.on("onScannerDataReceivedMessage", this.handleNotification);
         },
-        mounted() {
-
-          this.focusInput();
-
-          //document.addEventListener('keypress', this.keypressHandler);
-        },
-        destroyed(){
-            // Aufräumen: z.B. EventHandler entfernen, Timer löschen ect.
-            console.log("Template-Page destroyed");
-            window.eev.off("onLocalScanData", this.handleScanner);
-            window.eev.off("onScannerDataReceivedMessage", this.handleNotification);
-        },
-        data: {
-          articleid: "",
-          productionOrder: '',
-        },
-
-        computed: {
-        },
-
-        methods: {
-          keypressHandler(e) {
-            this.articleid += e.key;
-          },
-
-          focusInput() {
-            this.$refs.article.focus();
-          },
-
-          handleScanner(msg){
-               this.articleid = msg;
-               this.getProductionOrder();
-          },
-
-          handleNotification(msg){
-              console.log(msg);
-          },
-
-           getProductionOrder: async function () {
-
-            console.log("getProductionOrder");
-
-            try{
-
-            const data = await window.cmesOdata
-              .get("ProductionOrders")
-              .query({
-                $filter: `ProductionItems/any(d:d/Code eq '${this.articleid}')`
-                //, $select: "Code, DesiredStartDate"
-                // $include: {"Productionst"}
-              });
-                  console.log("Debug");
-                if (data === null || data.length === 0) 
-                {
-					window.messageservice.add({severity:'error', summary: 'Fehler', detail: `Bauteil ${this.articleid} nicht gefunden.`, life: 5000})
-                }
-                else
-				{
-					if(Array.isArray(data))
-                    {
-						this.productionOrder = data[0];
-                        // Umsetzen der Datumsfelder in 'lesbare' Formatierung
-                        Object.entries(data[0]).forEach(entry => {
-                                    const [key, value] = entry;
-                                    if(key.indexOf("Date") != -1 && value != null){
-                                        console.log(key, value);
-                                        this.productionOrder[key] = window.DateTime.fromISO(value).setLocale('de').toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
-                                    }
-                        });
-                        
-                    }    
-				}
-            }
-            catch(err){
-                console.log(err);
-            }
-          },
-        },
-      });
-	   </script><style>  
+    }),
+    created() {
+    },
+    mounted() {
+    },
+    destroyed(){
+    },
+    data: {
+    },
+    computed: {
+    },
+    methods: {
+    },
+});   </script><style>  
   </style>
 </body>
                                  </html>
