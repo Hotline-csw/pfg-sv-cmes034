@@ -1,24 +1,59 @@
-<html>   
-   <body>
-	<div id="app">
-		<v-app>
-			<v-main style="overflow:auto">
-				<v-sheet id="scrolling" class="overflow-y-auto">
-				</v-sheet>
+<html>                                                                                                                                    
+ <body>
+    <div id="app" >
+    <v-app >
+        <v-main style="overflow:auto">
+            <v-sheet id="scrolling" class="overflow-y-auto">
+                <!v-img src="{{ server }}/dao/script/assets/homag-logo.svg" max-height="50" contain class="ma-2"></v-img>
+            </v-sheet>
 
-				<div class="information">
-                    <div class="productionItemCode">
-                        {{productionItemCode}}
+            <div class="information">
+                <div class="kittingContent">
+                    <div class="kittingArea">Kitting 1</div>
+                    <div class="icnid">ICNID</div>
+                    <div class="icnidData">{{icnid}}</div>
+                    <div class="schedule">Schedule</div>
+                    <div class="scheduleData">{{scheduleID}}</div>
+                    <div class="trolleyID">Trolley ID</div>
+                    <div class="trolleyIDData">{{trolleyID}}</div>
+                    <div class="sectionID">Section ID</div>
+                    <div class="sectionIDData">{{sectionID}}</div>
+                    <div class="slotID">Slot ID</div>
+                    <div class="slotIDData">{{slotID}}</div>
+                </div>
+                <div class="kittingDisplay">
+                    <div class="rolloutState" v-show="rolloutMode=='RolloutActive'">
+                        <div class="caption green--text">
+                            <div style="font-size:400%">
+                                {{rolloutStateString}}
+                            </div>
+                        </div>               
                     </div>
-					
-				</div>
-			</v-main>
-		</v-app>
-	</div>
- <script>
-	window.vm = new Vue({
-    el: "#app",
-    components: {
+                    <div class="rolloutState" v-show="rolloutMode=='RolloutInactive'">
+                        <div class="caption red--text">
+                            <div style="font-size:400%">
+                                {{rolloutStateString}}
+                            </div>
+                        </div>               
+                    </div>
+                    <div class="trolleyID">Trolley ID</div>
+                    <div class="trolleyIDData">{{trolleyID}}</div>
+                        <div class="sectionContent">
+                            <div v-for="(item, index) in sectionItems" :key="index" :class="{ 'section-item': true, 'active': active && index === activeIndex }">
+                                <template v-if="active && index === activeIndex">
+                                    {{slotID}}
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </v-main>
+    </v-app>
+</div> 
+  <script>     window.vm = new Vue({
+      el: "#app",
+      components: {
       },
       vuetify: new Vuetify({
         theme: {
@@ -31,39 +66,120 @@
           },
         },
       }),
-
-    created() {
-    },
-
-    mounted() {
-    },
-
-    destroyed(){
-    },
-
-    data: {
+      created() {
+      },
+      mounted() {
+      },
+      destroyed(){
+      },
+      data: {
         productionItemCode: '114797',
-    },
+        icnid: '1',
+        scheduleID: '1',
+        trolleyID: '1',
+        sectionID: '1',
+        slotID: '1',
+        rolloutState: '1',
+        rolloutStateString: '1',
+        rolloutMode:"RolloutActive",
+        sectionItems: ['Section 1','Section 2','Section 3','Section 4','Section 5','Section 6','Section 7','Section 8','Section 9','Section 10'],
+        active: true,
+      },
 
-    computed: {
-    },
+      computed: {
+      },
 
-    methods: {
-    },
-});  
- </script><style>  
-.information {
+      methods: {
+      },
+    });
+ </script><style>   .information {
     display: flex;
     height: 100%;
-    background-color: #F3FA7F;
-}	  
-.productionItemCode {
+    background-color: #E6EBEE;
+}
+
+.kittingContent {
+    grid-area: kittingContent;
+    flex: 40%;
+    display: grid;
+    grid-template: 
+    "kittingArea kittingArea" 8%
+    "icnid icnidData" 8%
+    "schedule scheduleData" 8%
+    "trolleyID trolleyIDData" 8%
+    "sectionID sectionIDData" 8%
+    "slotID slotIDData" 8%
+    / 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+}
+
+.kittingArea {
+    grid-area: kittingArea;
     align-items: center;
     justify-content: center;
     display: flex;
     font-size: 250%;
     border: 3px solid #ADADAD;
     background-color: #FFFFFF;
-} </style>
+}
+
+.icnid, .icnidData, .schedule, .scheduleData, .trolleyID, .trolleyIDData, .sectionID, .sectionIDData, .slotID, .slotIDData {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 250%;
+    border: 3px solid #ADADAD;
+    background-color: #FFFFFF;
+}
+
+.kittingDisplay{
+    grid-area: kittingDisplay;
+    flex: 60%;
+    display: grid;
+    grid-template: 
+    "rolloutState rolloutState" 8%
+    "trolleyID trolleyIDData" 8%
+    "sectionContent sectionContent"
+    / 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+}
+
+.rolloutState{
+    grid-area: rolloutState;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 250%;
+    border: 3px solid #ADADAD;
+    background-color: #FFFFFF;
+}
+
+.sectionContent{
+    grid-area: sectionContent;
+    display: grid;
+    grid-template: 
+    "section6 section7 section8 section9 section10"
+    "section1 section2 section3 section4 section5"
+    / 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.section-item {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 250%;
+    border: 3px solid #ADADAD;
+    background-color: #FFFFFF;
+}
+
+.active { 
+    border-style: solid;
+    border-width: 3px;
+    border-color: red;
+    background-color: #fedb9b;
+}   </style>
 </body>
- </html>
+                          </html>

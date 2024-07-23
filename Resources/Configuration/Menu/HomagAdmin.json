@@ -5,11 +5,6 @@
 		"icon": "grid_view"
 	},
 	{
-		"label": "Dashboard Revived",
-		"link": "cmes-custom-page/DBRevived",
-		"icon": "grid_view"
-	},
-	{
 		"label": "Management",
 		"items": [
 			{
@@ -31,6 +26,11 @@
 				"label": "Template",
 				"link": "cmes-custom-page/Template",
 				"icon": "extension"
+			},
+			{
+				"label": "Dashboard Revived",
+				"link": "cmes-custom-page/DBRevived",
+				"icon": "grid_view"
 			},
 			{
 				"label": "Evaluation",
