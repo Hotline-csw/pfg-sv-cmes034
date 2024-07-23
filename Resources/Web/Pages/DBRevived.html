@@ -1,35 +1,13 @@
-<html>                                                                                                                                          
-       <body>
-	<div id="app">
-		<v-app>
-			<v-main style="overflow:auto">
-				<v-sheet id="scrolling" class="overflow-y-auto">
-					<v-img src="{{ server }}/dao/image/customer_logo" max-height="50" contain class="mt-2"></v-img>
-					<v-text-field ref="article" class="mx-2 mx-md-5" hide-details label="Bauteil" v-model="articleid"
-						outlined clearable clear-icon="mdi-close-circle" @keyup.enter="getProductionOrder">
-					</v-text-field>
-					<v-simple-table class="mx-2 mx-md-6">
-						<template v-slot:default>
-							<thead>
-								<tr>
-									<th class="text-left">Property</th>
-									<th class="text-left">Valus</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr v-for="(value, propertyName) in productionOrder" :key="propertyName">
-									<td>{{ propertyName }}</td>
-									<td>{{ value }}</td>
-								</tr>
-							</tbody>
-						</template>
-					</v-simple-table>
-				</v-sheet>
-			</v-main>
-		</v-app>
-	</div>
-
-	   <script>
+<html>                                                                                                                                           
+        <body><div id="app">
+    <v-app>
+        <v-main style="overflow:auto">
+            <v-sheet id="scrolling" class="overflow-y-auto">
+                <v-img src="{{ server }}/dao/image/customer_logo" max-height="50" contain class="mt-2"></v-img>
+            </v-sheet>
+        </v-main>
+    </v-app>
+</div> <script>
 		window.vm = new Vue({
         el: "#app",
         vuetify: new Vuetify({
@@ -127,7 +105,7 @@
           },
         },
       });
-	  </script><style> 
- </style>
+	   </script><style>  
+  </style>
 </body>
-                                </html>
+                                 </html>
