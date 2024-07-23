@@ -52,18 +52,18 @@
     /*background-color: #E6EBEE;*/
 }
 
-.workCenters{
+.workCenters {
     grid-area: workCenters;
-    flex: auto;
+    flex: 100%;
     display: grid;
     grid-template:
-    ". . controllerMES controllerMES . ." 20%
-    "B300 Edge Puffer1 V200 Sorting Assembly" 20%
-    ". . Puffer2 E310 . ." 20% 
+    ". . controllerMES controllerMES . ."
+    "B300 Edge Puffer1 V200 Sorting Assembly"
+    ". . Puffer2 E310 . ."
     /1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-.controllerMES, .B300, .Edge, .Puffer1, .V200, .Sorting, .Assembly, .Puffer2, .E310{
+.controllerMES, .B300, .Edge, .Puffer1, .V200, .Sorting, .Assembly, .Puffer2, .E310 {
     align-items: center;
     justify-content: center;
     display: flex;
