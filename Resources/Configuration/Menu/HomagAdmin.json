@@ -30,7 +30,7 @@
 			{
 				"label": "DBRevived",
 				"link": "cmes-custom-page/DBRevived",
-				"icon": "grid_view"
+				"icon": "extension"
 			},
 			{
 				"label": "Evaluation",
