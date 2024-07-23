@@ -1,5 +1,5 @@
-<html>                                                                                                                                      
-   <body>
+<html>                                                                                                                                       
+    <body>
   <div id="app" >
     <v-app>
         <v-main>
@@ -124,7 +124,7 @@
     </v-app>
   </div>
 
-    <script>
+     <script>
      window.vm = new Vue({
       el: "#app",
       components: {
@@ -285,94 +285,248 @@
       
 
     });// Ende der methoden
-   </script><style>     .information {
-    display: flex;
-    height: 100%;
-    background-color: #E6EBEE;
-}
+    </script><style> 
 
-.kittingContent {
-    grid-area: kittingContent;
-    flex: 40%;
-    display: grid;
-    grid-template: 
-    "kittingArea kittingArea" 8%
-    "icnid icnidData" 8%
-    "schedule scheduleData" 8%
-    "trolleyID trolleyIDData" 8%
-    "sectionID sectionIDData" 8%
-    "slotID slotIDData" 8%
-    / 1fr 1fr;
-    gap: 10px;
-    padding: 10px;
-}
+      .defaultGrey{
+        background-color: #CFD8DC;  
+       
+        
+      }
 
-.kittingArea {
-    grid-area: kittingArea;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    font-size: 250%;
-    border: 3px solid #ADADAD;
-    background-color: #FFFFFF;
-}
+      .defaultWuerg{
+        background-color: #BCE422;  
+        
+      }
+    /*--------------------------------------------------------
 
-.icnid, .icnidData, .schedule, .scheduleData, .trolleyID, .trolleyIDData, .sectionID, .sectionIDData, .slotID, .slotIDData {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    font-size: 250%;
-    border: 3px solid #ADADAD;
-    background-color: #FFFFFF;
-}
+    Die Verwendung des Grids ist sehr variabel:
+    -   Entweder kann das Grid via 
+                    grid-template-columns: auto auto auto auto auto auto auto auto auto;
+                    grid-template-rows: auto;
+        beschrieben werden, oder es wird für die Items angegeben in welchen Spalten / Zeile die Elemente sein sollen
+        und ggf. welche sich daraus ergebenden Felder zusammengeführt werden sollen. 
 
-.kittingDisplay{
-    grid-area: kittingDisplay;
-    flex: 60%;
-    display: grid;
-    grid-template: 
-    "rolloutState rolloutState" 8%
-    "trolleyID trolleyIDData" 8%
-    "sectionContent sectionContent"
-    / 1fr 1fr;
-    gap: 10px;
-    padding: 10px;
-}
 
-.rolloutState{
-    grid-area: rolloutState;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    font-size: 250%;
-    border: 3px solid #ADADAD;
-    background-color: #FFFFFF;
-}
+        - justify-items:start / end / center / stretch              --> positioniert die Items in X-Richtung
+        - align-items:start / end / center / stretch                --> positioniert die Items in Y-Richtung
+        - justify-content:start / end / center / stretch            --> passt die Position an, wenn die Gridfelder kleiner sind als der Ihnen
+                        space-around / space-between /space-evenly.     zugedachte Platz. (z.B. wenn ihre Größe mit width / height festgelegt wurde)
+        - justify-self                                              --> kann direkt im Item verwendet werden um es z.B. anders zu platzieren als die
+                                                                        restlichen Items: <div class="item" style="justify-self: end;">3</div>
+        Der geamte Container kann mit analog positioniert werden.
+        - justify-content und align-content:
 
-.sectionContent{
-    grid-area: sectionContent;
-    display: grid;
-    grid-template: 
-    "section6 section7 section8 section9 section10"
-    "section1 section2 section3 section4 section5"
-    / 1fr 1fr 1fr 1fr 1fr;
-    gap: 10px;
-}
+    All diese Kommandos platzieren nicht den Text / den Inhalt innerhalb des Items
 
-.section-item {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    font-size: 250%;
-    border: 3px solid #ADADAD;
-    background-color: #FFFFFF;
-}
+    Um deren Inhalt zu zentrieren kann entweder etwas wie text-align verwendet werden (gibt's aber nur für die X-Achse)
+    oder aber der Inhalt wird mit Hilfe von diplay flex positioniert (Y-Achse)
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
+                        
+    -----------------------------------------------------------*/
+    .FirstSection {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto auto;
+        grid-gap: 10px;
+        padding: 10px;
+        //background-color: #2196F3;
+        font-size:20px;
+        //--> Hat keine Auswirkung, wenn die Größe der Grid-Felder genau in die Teilung passt: 
+        align-items:center;
+    }
 
-.active { 
-    border-style: solid;
-    border-width: 3px;
-    border-color: red;
-    background-color: #fedb9b;
-}     </style>
+
+
+
+        .first-item {
+        padding: 10px;
+        //font-size: 20px;
+        //background-color: rgba(255, 255, 255, 0.8);
+        
+        display: flex; 
+        justify-content: start; 
+        align-items: center;
+
+        }
+    .first-itemData {
+        padding: 10px;
+        font-size: 30px;
+        background-color: rgba(255, 255, 255, 0.8);
+        
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
+
+        }
+
+          .ordertext {
+            grid-column: 1 ;
+            grid-row: 1;
+            }
+
+           .first4Order {
+            grid-column: 2 ;
+            grid-row: 1;
+            justify-content:end;
+            }
+
+           .secnd4Order {
+            grid-column: 3 ;
+            grid-row: 1;
+            font-size: 40px;
+            justify-content:start;
+            }
+
+
+
+
+
+          .postext {
+            grid-column: 4 ;
+            grid-row: 1;
+            }
+
+          .pos {
+            grid-column: 5 ;
+            grid-row: 1;
+            }
+
+          .proctext {
+            grid-column: 6 ;
+            grid-row: 1;
+            }
+
+          .proc {
+            grid-column: 7 ;
+            grid-row: 1;
+            }
+
+
+
+          .stacktext {
+            grid-column: 8 ;
+            grid-row: 1 / span 2;
+            text-align:center;
+            
+            }
+
+            .stack {
+            grid-column: 9 ;
+            grid-row: 1 / span 2;
+            text-align:center;
+            font-size:100px;
+            }
+
+            .boxdaytext {
+            grid-column: 1 ;
+            grid-row: 2;
+            }
+
+
+            .boxday {
+            grid-column: 2 / span 2 ;
+            grid-row: 2;
+            }
+
+            .descrtext {
+            grid-column: 1;
+            grid-row: 3;
+            }
+
+            .descr {
+            grid-column: 2 / span 8 ;
+            grid-row: 3;
+            justify-content:start;
+            }
+
+            .materialtext {
+            grid-column: 1;
+            grid-row: 4;
+            }
+
+            .material {
+            grid-column: 2 / span 5 ;
+            grid-row: 4;
+            justify-content:start;
+            }
+
+            .steptext {
+            grid-column: 7;
+            grid-row: 4;
+            }
+
+            .step {
+            grid-column: 8 / span 2 ;
+            grid-row: 4;
+            justify-content:start;
+            }
+
+            .hinttext {
+            grid-column: 1;
+            grid-row: 5;
+            }
+
+            .hint {
+            grid-column: 2 / span 6 ;
+            grid-row: 5;
+            justify-content:start;
+            }
+
+            .fixtext {
+            grid-column: 8;
+            grid-row: 5;
+            }
+
+            .fix {
+            grid-column: 9 ;
+            grid-row: 5;
+            }
+
+
+
+
+.SecondSection {
+
+
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        grid-gap: 10px;
+        //background-color: #2196F3;
+        padding: 10px;
+        font-size:20px;
+
+
+      }
+
+
+
+        .seconditem {
+        background-color: #FFFF00;
+        justify-content: center; 
+        //text-align: center;
+        padding: 10px;
+ 
+        }
+
+        .seconditemactive {
+        background-color: green !important;
+        //color:green;
+        //text-align: center;
+        //padding: 10px;
+ 
+        }
+
+        .card.1 {
+        
+        color: green;
+        background-color: green;
+        }
+
+
+        
+
+
+   </style>
 </body>
-                            </html>
+                             </html>
