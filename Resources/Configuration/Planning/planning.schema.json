@@ -22,7 +22,6 @@
         "type": "object",
          "required": [
           "label",
-          "execute",
           "fields"
         ],
        
@@ -34,9 +33,6 @@
             "type": "string"
           },
           "execute": {
-            "type": "string"
-          },
-          "progress": {
             "type": "string"
           },
           "fields": {
@@ -81,7 +77,8 @@
           ],
           "properties": {
               "component": {"$ref": "#/definitions/component"},
-			  "parameter":{ "type": "string",  "widget": "textarea"}
+              "calculate":{ "type": "string"},
+			        "parameter":{ "type": "string",  "widget": "textarea"}
           }
          
         }
@@ -126,7 +123,12 @@
 		  "widget": "textarea"
         }
       },
-	  "component": {"$ref": "../schemas/component.schema.json#/component"},
+	  "component": {
+      "type": "string",
+      "choices": [
+        "cmes-simulate-capacity",
+        "cmes-key-figures"
+    ]},
 	  "select": {
         "type": "array",
 		    "layout": "vertical",		
@@ -144,24 +146,43 @@
             "label": {
               "type": "string"
             },
+            "filter": {
+              "type":"boolean"
+            },
             "field": {
               "type": "string",
 			  "widget": "textarea"
             },
             "keyFigure": {
               "type": "object",
+            
               "properties": {
                 "label": {
+                  "type": "string"
+                },
+                "min": {
                   "type": "string"
                 },
                 "max": {
                   "type": "string"
                 },
                 "aggregate": {
-                  "type": "string"
+                  "type": "string",
+                  "choices": [
+                    "sum",
+                    "min",
+                    "max",
+                    "distinct",
+                    "merge"
+                  ]
                 },
-                "min": {
-                  "type": "string"
+                "fieldType": {
+                  "type": "string",
+                  "choices": [
+                    "text",
+                    "number",
+                    "date"
+                  ]
                 }
               }
 
