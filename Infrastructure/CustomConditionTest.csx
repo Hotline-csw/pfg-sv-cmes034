@@ -26,7 +26,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IUserExit))]
 [Export("CustomConditionTest", typeof(ControllerMES.Infrastructure.BaseCommon.Contracts.IAutomaticOptimizationRuleConditionUserExit))]
 [Description("Condition: Old Parts Remaining")]
-[EnabledScript(true)]
+[EnabledScript(false)]
 public class CustomConditionTest : HomagGroup.FLS.Infrastructure.Common.Customization.UserExitBase, ControllerMES.Infrastructure.BaseCommon.Contracts.IAutomaticOptimizationRuleConditionUserExit
 {
     private Logger logger{get;set;}
