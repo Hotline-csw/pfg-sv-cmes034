@@ -1,116 +1,197 @@
 {
-  "label": "Kundenauftragsverplanung",
-  "entityType": "ProductionOrder",
-  "returnDetailSequence": true,
-  "valueField": "Schmalteile",
-  "where": [
-    "(ProductionState == \"New\")",
-    "(PlanningSequence == null)"
+    "type": "object",
+  "required": [
+    "label",
+    "entityType",
+    "returnDetailSequence",
+    "select",
+    "functionBlock"
   ],
-  "groupBy": [
-    "SqlFunctions.DatePart(\"wk\", DesiredEndDate.Value) as Date",
-    "CustomerOrder.Reference AS CustomerOrder"
-  ],
-  "orderBy": [
-    "Key.Date",
-    "Key.CustomerOrder"
-  ],
-  "select": [
-    {
-      "name": "Kunde",
-      "label": "Kunde",
-      "field": "Key.CustomerOrder as Kunde",
-      "keyFigure":{
-        "label": "Anzahl Kundenaufträge",
-        "max": "2",
-        "aggregate": "distinct"
-      }      
-    },
-    {
-      "name": "Planwoche",
-      "label": "Endtermin (KW)",
-      "field": "Key.Date AS Planwoche"
-    },
-    {
-      "name": "Auftragsnummer",
-      "label": "Auftragsnummer",
-      "field": "Min(CustomerOrder.Code) as Auftragsnummer"
-    },
-    {
-      "name": "Quantity",
-      "label": "Anzahl Bauteile",
-      "field": "Sum(DesiredTargetQuantity) AS Quantity",
-      "keyFigure":{
-        "label": "Anzahl Bauteile",
-        "max": "500",
-        "min": "100",
-        "aggregate": "sum"
+    "properties": {
+      "label": {"$ref": "#/definitions/label"},
+      "entityType": {"$ref": "#/definitions/entityType"},    
+      "valueField": {"$ref": "#/definitions/valueField"},
+      "imageField": {"$ref": "#/definitions/imageField"},
+	  "returnDetailSequence": {"$ref": "#/definitions/returnDetailSequence"},
+      "select": {"$ref": "#/definitions/select"},
+	  "where": {"$ref": "#/definitions/where"},
+      "groupBy": {"$ref": "#/definitions/groupBy"},
+      "orderBy": {"$ref": "#/definitions/orderBy"},		
+      
+      "functionBlock": {
+        "type": "object",
+         "required": [
+          "label",
+          "fields"
+        ],
+       
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "initialize": {
+            "type": "string"
+          },
+          "execute": {
+            "type": "string"
+          },
+          "fields": {
+            "type": "array",
+			      "layout": "vertical",
+            "items": {
+              "type": "object",
+               "required": [
+                "name",
+                "label",
+                "fieldType"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "fieldType": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
+             
+            }
+          }
+        }
+       
+      },
+	  
+	
+      "infoArea": {
+        "type": "array",
+		"layout": "horizontal",		
+        "items": {
+          "type": "object",
+           "required": [
+            "component"
+          ],
+          "properties": {
+              "component": {"$ref": "#/definitions/component"},
+              "calculate":{ "type": "string"},
+			        "parameter":{ "type": "string",  "widget": "textarea"}
+          }
+         
+        }
       }
     },
-    {
-      "name": "OrderCount",
-      "label": "Anzahl FAs",
-      "field": "Count() AS OrderCount",
-      "keyFigure":{
-        "label": "Anzahl Fertigungsaufträge",
-        "max": "500",
-        "aggregate": "sum"
-      }
-    },
-    {
-      "name": "Schmalteile",
-      "label": "Anz. Schmalteile",
-      "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS Schmalteile",
-      "keyFigure":{
-        "label": "Anzahl Schmalteile",
-        "max": "60",
-        "aggregate": "sum"
-      }
-    },
-    {
-      "name": "PartArea",
-      "label": "Ø Teilefläche (m²)",
-      "field": "Average(Width*Length/1000000) AS PartArea"
-    },
-    {
-      "name": "Materials",
-      "label": "Materialien",
-      "field": "g.Select(x => x.Material).Distinct() as Materials"
-    }
-  ],
-  "functionBlock":{ 
-    "label": "Verplanen",
-    "initialize": "PulkPlanningSet",
-    "execute": "PulkPlanning",
-    "progress": "PulkPlanningProgress",
-    "fields": [
-    {
-      "name": "name",
-      "label": "Pulkname",
-      "fieldType": "text",
-      "value": ""
-    },
-    {
-      "name": "date",
-      "label": "Plandatum",
-      "fieldType": "date",
-      "value": ""
-    },
-    {
-      "name": "color",
-      "label": "Farbe",
-      "fieldType": "color",
-      "value": ""    
-    }
+    "definitions": {
+      "label": {
+          "type": "string"
+      },
+      "entityType":{
+          "type": "string",
+          "widget": "select",
+          "choicesCMesEntity":"EntityType"
+      },
+      "returnDetailSequence": {
+        "type": "boolean"
+      },
+      "valueField": {
+        "type": "string"
+      },
+      "imageField": {
+        "type": "string"
+      },
+      "where": {
+        "type": "array",
+        "items": {
+          "type": "string",
+		  "widget": "textarea"
+        }
+      },
+      "groupBy": {
+        "type": "array",
+        "items": {
+          "type": "string",
+		  "widget": "textarea"
+        }
+      },
+      "orderBy": {
+        "type": "array",
+        "items": {
+          "type": "string",
+		  "widget": "textarea"
+        }
+      },
+	  "component": {
+      "type": "string",
+      "choices": [
+        "cmes-simulate-capacity",
+        "cmes-key-figures"
+    ]},
+	  "select": {
+        "type": "array",
+		    "layout": "vertical",		
+        "items": {
+          "type": "object",
+          "required": [
+            "name",
+            "label",
+            "field"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "filter": {
+              "type":"boolean"
+            },
+            "field": {
+              "type": "string",
+			  "widget": "textarea"
+            },
+            "keyFigure": {
+              "type": "object",
+            
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "min": {
+                  "type": "string"
+                },
+                "max": {
+                  "type": "string"
+                },
+                "aggregate": {
+                  "type": "string",
+                  "choices": [
+                    "sum",
+                    "min",
+                    "max",
+                    "distinct",
+                    "merge"
+                  ]
+                },
+                "fieldType": {
+                  "type": "string",
+                  "choices": [
+                    "text",
+                    "number",
+                    "date"
+                  ]
+                }
+              }
 
-  ]
-},
-"infoArea":[
-  {
-    "component": "cmes-simulate-capacity",
-    "parameter": [
-      "SAWTEQ S-200", "EDGETEC S-380 profiLine", "CABTEQ T-250", "DRILLTEC V-300"
-    ]
+            }
+          }
+          
+        }
+      }
+     
+    }
+   
   }
-]
-}
