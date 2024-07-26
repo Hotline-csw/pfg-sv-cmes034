@@ -1,0 +1,41 @@
+[
+  {
+    "label": "DemoTranslate",
+    "appenders": [
+      {
+        "appenderType": "console",
+        "logLevel": "Error"
+      },
+      {
+        "appenderType": "webApi",
+        "logLevel": "Warn"
+      }
+    ]
+  },
+  {
+    "label": "RuleEditorComponent",
+    "appenders": [
+      {
+        "appenderType": "console",
+        "logLevel": "Error"
+      },
+      {
+        "appenderType": "webApi",
+        "logLevel": "Warn"
+      }
+    ]
+  },
+  {
+    "label": "TestLogFromHtmlNewName",
+    "appenders": [
+      {
+        "appenderType": "console",
+        "logLevel": "Error"
+      },
+      {
+        "appenderType": "webApi",
+        "logLevel": "Info"
+      }
+    ]
+  }
+]
