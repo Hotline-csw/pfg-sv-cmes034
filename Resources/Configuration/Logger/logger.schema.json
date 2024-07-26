@@ -1,0 +1,36 @@
+{
+  "type": "array",
+  "layout": "vertical",
+  "items": {
+    "type": "object",
+	"required": ["label"],
+    "properties": {
+      "label": {"type": "string"},
+	  "layout": "vertical",
+      "appenders": {
+        "type": "array",
+        "items": {
+          "type": "object",
+		  "required": ["appenderType","logLevel"],
+          "properties": {
+			    "appenderType": {"$ref": "#/definitions/appenderType"},		
+                "logLevel": {"$ref": "#/definitions/logLevel"}
+           }
+         }
+          
+        }
+      }      
+  },
+  	"definitions": {
+		"appenderType": {
+			"type": "string",
+			"widget": "select",
+			"choices": ["console","webApi"]
+		},
+		"logLevel": {
+			"type": "string",
+			"widget": "select",
+			"choices": ["Debug","Info","Warn","Error","Fatal"]
+		}
+	}
+}
