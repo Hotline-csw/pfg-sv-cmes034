@@ -17,17 +17,19 @@
     {
       "name": "OrderDate",
       "label": "Order date",
+      "filter": true,
       "field": "Min(CustomerOrder.ShippingDate) as OrderDate"
     },
     {
       "name": "NarrowParts",
       "label": "Narrow parts",
+      "filter": true,
       "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS NarrowParts",
       "keyFigure": {
         "label": "Qty narrow parts",
+        "min": "20",
         "max": "60",
-        "aggregate": "sum",
-        "min": "20"
+        "aggregate": "sum"
       }
     },
     {
@@ -36,9 +38,9 @@
       "field": "Sum(CustomVolume) as Volume",
       "keyFigure": {
         "label": "Volume",
+        "min": "4",
         "max": "10",
-        "aggregate": "sum",
-        "min": "4"
+        "aggregate": "sum"
       }
     },
     {
@@ -65,7 +67,6 @@
     "label": "Add to bulk",
     "initialize": "BulkPlanningSet",
     "execute": "BulkPlanning",
-    "progress": "BulkPlanningProgress",
     "fields": [
       {
         "name": "name",
