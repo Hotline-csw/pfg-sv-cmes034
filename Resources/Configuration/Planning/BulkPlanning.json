@@ -96,6 +96,7 @@
   "infoArea": [
     {
       "component": "cmes-simulate-capacity",
+      "calculate": "BulkPlanningProgress",
       "parameter": [
         "3010",
         "6010"
