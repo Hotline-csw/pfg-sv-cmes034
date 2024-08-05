@@ -1,109 +1,109 @@
 {
-  "label": "Customer order bulk planning",
-  "entityType": "ProductionOrder",
-  "valueField": "",
-  "returnDetailSequence": true,
-  "select": [
-    {
-      "name": "OrderNumber",
-      "label": "Order number",
-      "field": "Min(CustomerOrder.Code) as OrderNumber",
-      "keyFigure": {
-        "label": "Qty customer orders",
-        "max": "5",
-        "aggregate": "distinct",
-        "fieldType": "number"
-      }
-    },
-    {
-      "name": "OrderDate",
-      "label": "Order date",
-      "filter": true,
-      "field": "Min(CustomerOrder.ShippingDate) as OrderDate"
-    },
-    {
-      "name": "NarrowParts",
-      "label": "Narrow parts",
-      "filter": true,
-      "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS NarrowParts",
-      "keyFigure": {
-        "label": "Qty narrow parts",
-        "min": "20",
-        "max": "60",
-        "aggregate": "sum",
-        "fieldType": "number"
-      }
-    },
-    {
-      "name": "Volume",
-      "label": "Volume",
-      "field": "Sum(CustomVolume) as Volume",
-      "keyFigure": {
-        "label": "Volume",
-        "min": "4",
-        "max": "10",
-        "aggregate": "sum",
-        "fieldType": "number"
-      }
-    },
-    {
-      "name": "Materials",
-      "label": "Materials",
-      "filter": true,
-      "field": "g.Select(x => x.Material).Distinct() as Materials",
-      "keyFigure": {
-        "label": "Materials",
-        "aggregate": "merge",
-        "fieldType": "text"
-      }
-    }
-  ],
-  "where": [
-    "(ProductionState == \"New\")",
-    "(PlanningSequence == null)"
-  ],
-  "groupBy": [
-    "CustomerOrder.Code AS CustomerOrder"
-  ],
-  "orderBy": [
-    "Key.CustomerOrder"
-  ],
-  "functionBlock": {
-    "label": "Add to bulk",
-    "initialize": "BulkPlanningSet",
-    "execute": "BulkPlanning",
-    "fields": [
-      {
-        "name": "name",
-        "label": "Bulk name",
-        "fieldType": "text",
-        "value": ""
-      },
-      {
-        "name": "date",
-        "label": "Plan date",
-        "fieldType": "date",
-        "value": ""
-      },
-      {
-        "name": "color",
-        "label": "color",
-        "fieldType": "color",
-        "value": ""
-      }
-    ]
-  },
-  "infoArea": [
-    {
-      "component": "cmes-simulate-capacity",
-      "calculate": "BulkPlanningProgress",
-      "parameter": [
-        "3010",
-        "6010"
-      ]
-    },
-    {
-      "component": "cmes-key-figures"
-    }
-  ]
+	"label": "Customer order bulk planning",
+	"entityType": "ProductionOrder",
+	"valueField": "",
+	"returnDetailSequence": true,
+	"select": [
+		{
+			"name": "OrderNumber",
+			"label": "Order number",
+			"field": "Min(CustomerOrder.Code) as OrderNumber",
+			"keyFigure": {
+				"label": "Qty customer orders",
+				"max": "5",
+				"aggregate": "distinct",
+				"fieldType": "number"
+			}
+		},
+		{
+			"name": "OrderDate",
+			"label": "Order date",
+			"filter": true,
+			"field": "Min(CustomerOrder.ShippingDate) as OrderDate"
+		},
+		{
+			"name": "NarrowParts",
+			"label": "Narrow parts",
+			"filter": true,
+			"field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS NarrowParts",
+			"keyFigure": {
+				"label": "Qty narrow parts",
+				"min": "20",
+				"max": "60",
+				"aggregate": "sum",
+				"fieldType": "number"
+			}
+		},
+		{
+			"name": "Volume",
+			"label": "Volume",
+			"field": "Sum(CustomVolume) as Volume",
+			"keyFigure": {
+				"label": "Volume",
+				"min": "4",
+				"max": "10",
+				"aggregate": "sum",
+				"fieldType": "number"
+			}
+		},
+		{
+			"name": "Materials",
+			"label": "Materials",
+			"filter": true,
+			"field": "g.Select(x => x.Material).Distinct() as Materials",
+			"keyFigure": {
+				"label": "Materials",
+				"aggregate": "merge",
+				"fieldType": "text"
+			}
+		}
+	],
+	"where": [
+		"(ProductionState == \"New\")",
+		"(PlanningSequence == null)"
+	],
+	"groupBy": [
+		"CustomerOrder.Code AS CustomerOrder"
+	],
+	"orderBy": [
+		"Key.CustomerOrder"
+	],
+	"functionBlock": {
+		"label": "Add to bulk",
+		"initialize": "BulkPlanningSet",
+		"execute": "BulkPlanning",
+		"fields": [
+			{
+				"name": "name",
+				"label": "Bulk name",
+				"fieldType": "text",
+				"value": ""
+			},
+			{
+				"name": "date",
+				"label": "Plan date",
+				"fieldType": "date",
+				"value": ""
+			},
+			{
+				"name": "color",
+				"label": "color",
+				"fieldType": "color",
+				"value": ""
+			}
+		]
+	},
+	"infoArea": [
+		{
+			"component": "cmes-simulate-capacity",
+			"calculate": "BulkPlanningProgress",
+			"parameter": [
+				"3010",
+				"6010"
+			]
+		},
+		{
+			"component": "cmes-key-figures"
+		}
+	]
 }

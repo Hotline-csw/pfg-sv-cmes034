@@ -43,6 +43,7 @@ public class BulkPlanningProgress : HomagGroup.FLS.Infrastructure.Common.Customi
         _Logger.Info("Name: " + data.name);
         _Logger.Info("Farbe: " + data.color);
         _Logger.Info("Datum: " + data.date);
+        _Logger.Error("AX!!");        
         long[] ids = Array.ConvertAll(data.entities, long.Parse);
 
         var res = _BulkInfoProvider.SimulateBulkPlanningCapacity(ids, data.date, data.date);
