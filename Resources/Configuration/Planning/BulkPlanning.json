@@ -1,7 +1,7 @@
 {
   "label": "Customer order bulk planning",
   "entityType": "ProductionOrder",
-  "valueField": "Volume",
+  "valueField": "",
   "returnDetailSequence": true,
   "select": [
     {
