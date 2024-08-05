@@ -46,6 +46,7 @@
     {
       "name": "Materials",
       "label": "Materials",
+      "filter": true,
       "field": "g.Select(x => x.Material).Distinct() as Materials",
       "keyFigure": {
         "label": "Materials",
