@@ -11,7 +11,8 @@
       "keyFigure": {
         "label": "Qty customer orders",
         "max": "5",
-        "aggregate": "distinct"
+        "aggregate": "distinct",
+        "fieldType": "number"
       }
     },
     {
@@ -29,7 +30,8 @@
         "label": "Qty narrow parts",
         "min": "20",
         "max": "60",
-        "aggregate": "sum"
+        "aggregate": "sum",
+        "fieldType": "number"
       }
     },
     {
@@ -40,7 +42,8 @@
         "label": "Volume",
         "min": "4",
         "max": "10",
-        "aggregate": "sum"
+        "aggregate": "sum",
+        "fieldType": "number"
       }
     },
     {
@@ -50,7 +53,8 @@
       "field": "g.Select(x => x.Material).Distinct() as Materials",
       "keyFigure": {
         "label": "Materials",
-        "aggregate": "merge"
+        "aggregate": "merge",
+        "fieldType": "text"
       }
     }
   ],
