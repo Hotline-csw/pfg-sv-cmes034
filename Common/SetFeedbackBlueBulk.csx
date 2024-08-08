@@ -142,7 +142,7 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             }
                         }
                     }
-/*				
+				
                 // Assembly
                 var assemDKS003 = prodOrdersRep.Get(
                         po => po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "001" && po.OrderType == ProductionOrderType.SalesArticle ||
@@ -168,7 +168,6 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                                 {
                                     //prodItemAssem003.InsertFeedbackFinishedGood(unitOfWork, _TaskName, assemblyWorkCenterCode, "", 1, _Logger);
                                     prodItemAssem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, assemblyWorkCenterCode, "ASSEM", 0, FeedbackState.Finished, 0, _Logger);
-
                                 }
                             }
                         }
@@ -239,8 +238,7 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         }
                     }
                 }
-*/
-/*    
+   
                 // Assembly Sale Item            
                 var assemDKS004 = prodOrdersRep.Get(
 						po => po.CustomerOrderCode == dks004 && po.CustomerOrderPosition == "001" && po.OrderType == ProductionOrderType.SalesArticle ||
@@ -260,7 +258,9 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             
                             if(prodItemsStepsDataAssem004 != null)
                             {
-                                prodItemAssem004.InsertFeedbackFinishedGood(unitOfWork, _TaskName, assemblyWorkCenterCode, "", 1, _Logger);
+                                //prodItemAssem004.InsertFeedbackFinishedGood(unitOfWork, _TaskName, assemblyWorkCenterCode, "", 1, _Logger);
+                                prodItemAssem004.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, assemblyWorkCenterCode, "ASSEM", 0, FeedbackState.Finished, 0, _Logger);
+
                             }
                         }
                     }
@@ -287,7 +287,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             
                             if(prodItemsStepsDataCnc005 != null)
                             {
-                                prodItemCnc005.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cncWorkCenterCode, "", 1, _Logger);
+                                //prodItemCnc005.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cncWorkCenterCode, "", 1, _Logger);
+                                prodItemCnc005.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cncWorkCenterCode, "E310", 0, FeedbackState.Finished, 0, _Logger);
                             }
                         }
                     }
@@ -318,7 +319,9 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             
                             if(prodItemsStepsDataSort005!=null)
                             {
-                                prodItemSort005.InsertFeedbackFinishedGood(unitOfWork, _TaskName, sortingWorkCenterCode, "", 1, _Logger);
+                                //prodItemSort005.InsertFeedbackFinishedGood(unitOfWork, _TaskName, sortingWorkCenterCode, "", 1, _Logger);
+                                prodItemSort005.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, sortingWorkCenterCode, "SORT", 0, FeedbackState.Finished, 0, _Logger);
+
                             }
                         }
                     }
@@ -348,7 +351,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             
                             if(prodItemsStepsDataPreassem005 != null)
                             {
-                                prodItemPreassem005.InsertFeedbackFinishedGood(unitOfWork, _TaskName, preassemblyWorkCenterCode, "", 1, _Logger);
+                                //prodItemPreassem005.InsertFeedbackFinishedGood(unitOfWork, _TaskName, preassemblyWorkCenterCode, "", 1, _Logger);
+                                prodItemPreassem005.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, "PREASSEM", 0, FeedbackState.Finished, 0, _Logger);
                             }
                         }
                     }
@@ -373,7 +377,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             
                             if(prodItemsStepsDataCut001 != null)
                             {
-                                prodItemCut001.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cuttingWorkCenterCode, "", 1, _Logger);
+                                //prodItemCut001.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cuttingWorkCenterCode, "", 1, _Logger);
+                                prodItemCut001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cuttingWorkCenterCode, "B300", 0, FeedbackState.Finished, 0, _Logger);
                             }
                         }
                     }
@@ -402,7 +407,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             
                             if(prodItemsStepsDataDrill001 != null)
                             {
-                                prodItemDrill001.InsertFeedbackFinishedGood(unitOfWork, _TaskName, drillingWorkCenterCode, "", 1, _Logger);
+                                //prodItemDrill001.InsertFeedbackFinishedGood(unitOfWork, _TaskName, drillingWorkCenterCode, "", 1, _Logger);
+                                prodItemDrill001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, drillingWorkCenterCode, "V200", 0, FeedbackState.Finished, 0, _Logger);
                             }
                         }
                     }
@@ -427,7 +433,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             
                             if(prodItemsStepsDataCnc001 != null)
                             {
-                                prodItemCnc001.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cncWorkCenterCode, "", 1, _Logger);
+                                //prodItemCnc001.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cncWorkCenterCode, "", 1, _Logger);
+                                prodItemCnc001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cncWorkCenterCode, "E310", 0, FeedbackState.Finished, 0, _Logger);
                             }
                         }
                     }
@@ -455,7 +462,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             
                             if(prodItemsStepsDataSort001!=null)
                             {
-                                prodItemSort001.InsertFeedbackFinishedGood(unitOfWork, _TaskName, sortingWorkCenterCode, "", 1, _Logger);
+                                //prodItemSort001.InsertFeedbackFinishedGood(unitOfWork, _TaskName, sortingWorkCenterCode, "", 1, _Logger);
+                                prodItemSort001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, sortingWorkCenterCode, "SORT", 0, FeedbackState.Finished, 0, _Logger);
                             }
                         }
                     }
@@ -481,12 +489,13 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             
                             if(prodItemsStepsDataPreassem001 != null)
                             {
-                                prodItemPreassem001.InsertFeedbackFinishedGood(unitOfWork, _TaskName, preassemblyWorkCenterCode, "", 1, _Logger);
+                                //prodItemPreassem001.InsertFeedbackFinishedGood(unitOfWork, _TaskName, preassemblyWorkCenterCode, "", 1, _Logger);
+                                prodItemPreassem001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, "PREASSEM", 0, FeedbackState.Finished, 0, _Logger);
                             }
                         }
                     }
                 }
-*/
+                
                 unitOfWork.Save();
             }
 
