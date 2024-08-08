@@ -3,8 +3,8 @@
 		"refresh": 2,
 		"inputMongo":
 		{
-				"entityType": "PerfmonOneSecond",
-				"instance": "CMES-DEV"
+				"dataSource": "PerfmonOneSecond",
+				"instance": "CMES-PROD"
 		}
 	}
 }

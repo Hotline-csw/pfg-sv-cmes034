@@ -3,7 +3,7 @@
 		"refresh": 2,
 		"inputMongo":
 		{
-				"dataSource": "DatabasePerformance",
+				"dataSource": "JobHistory",
 				"instance": "CMES-PROD"
 		}
 	}

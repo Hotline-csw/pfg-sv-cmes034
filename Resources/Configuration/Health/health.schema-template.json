@@ -1,0 +1,63 @@
+{
+ 
+  "type": "object",
+  "required": [
+    "input"
+  ],
+  "properties": {
+	"input": {"$ref": "#/definitions/input"},
+	"config": {"$ref": "#/definitions/config"}
+    
+   
+  },
+  
+  "definitions": {
+	"config": {
+      "type": "object",
+      "properties": {
+        "limitExecutionCount": {
+          "type": "number"
+        },
+        "limitMaxRow": {
+          "type": "number"
+        },
+        "limitMaxWorkerTime": {
+          "type": "number"
+        },
+        "limitSingleRead": {
+          "type": "number"
+        }
+      }      
+    },
+	 "input": {
+      "type": "object",
+	   "required": [
+        "refresh",
+        "inputMongo"
+      ],
+      "properties": {
+        "refresh": {
+          "type": "number"
+        },
+        "inputMongo": {
+          "type": "object",
+		  "required": [
+            "dataSource",
+            "instance"
+          ],
+          "properties": {
+            "dataSource": {
+              "type": "string"
+            },
+            "instance": {
+              "type": "string"
+            }
+          }
+          
+        }
+      }
+     
+    }
+  }
+  
+}
