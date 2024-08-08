@@ -1,6 +1,6 @@
 [ 
   {
-    "label": "CMes JobHistory",
+    "label": "cMES JobHistory",
     "cols": 6,
     "rows": 3,
     "background": "#f7f7f7",
@@ -8,16 +8,16 @@
     "component": "cmes-dashboard-cmes-jobs-perf-chart",
     "link": "cmes-jobs-health",
     "input": {
-      "chartName": "CMes JobHistory 1",
+      "chartName": "cMES JobHistory",
       "refresh": 5,
       "inputOData": {},
       "inputMongo": {
-        "instance": "CMES-PROD"
+        "instance": "CMES_DEV"
       }
     }
   },
 {
-    "label": "Cmes Server 108",
+    "label": "Cmes Server DemoVM",
     "cols": 6,
     "rows": 3,
     "background": "#ffffff",
@@ -31,12 +31,12 @@
 		"inputMongo":
 		{
 			"dataSource": "PerfmonOneSecond",
-			"instance": "CMES-PROD"
+			"instance": "CMES_DEV"
 		}
 	}
  },
 {
-    "label": "SQL Server PROD",
+    "label": "SQL Server DEV",
     "cols": 6,
     "rows": 3,
     "background": "#ffffff",
@@ -44,13 +44,13 @@
     "component": "cmes-dashboard-sql-server-perf-chart",
     "link": "sql-server-health",
 	"input": {
-		"chartName":"SqlServer Server PROD",
+		"chartName":"SqlServer Server DEV",
 		"refresh": 2,
 		"inputOData": {},
 		"inputMongo":
 		{
 			"dataSource": "DatabasePerformance",
-			"instance": "CMES-PROD"
+			"instance": "CMES_DEV"
 		}
 	}
  },

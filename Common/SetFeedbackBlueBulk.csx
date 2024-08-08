@@ -142,7 +142,7 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             }
                         }
                     }
-				
+/*				
                 // Assembly
                 var assemDKS003 = prodOrdersRep.Get(
                         po => po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "001" && po.OrderType == ProductionOrderType.SalesArticle ||
@@ -239,6 +239,7 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         }
                     }
                 }
+*/
 /*    
                 // Assembly Sale Item            
                 var assemDKS004 = prodOrdersRep.Get(
