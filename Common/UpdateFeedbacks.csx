@@ -28,7 +28,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization))]
 [Export("UpdateFeedbacks", typeof(HomagGroup.FLS.Services.Common.Contracts.JobScheduling.UserExits.IAfterJobExecutionUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("[09] Update ProcessingState of Feedbacks")]
+[Description("[08] Update ProcessingState of Feedbacks")]
 [EnabledScript(true)]
 public class UpdateFeedbacks : UserExitCustomBase, HomagGroup.FLS.Services.Common.Contracts.JobScheduling.UserExits.IAfterJobExecutionUserExit
 {
