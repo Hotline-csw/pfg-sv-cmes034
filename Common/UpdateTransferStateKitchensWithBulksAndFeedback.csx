@@ -105,7 +105,6 @@ public class UpdateTransferStateKitchensWithBulksAndFeedback : GenericTaskBase, 
                 {
                     foreach(var importOrder in importOrders)
                     {
-//                        importOrder.TransferState = WccStagingTransferState.ImportFromWccToStagingCompleted; // 10
                         importOrder.TransferState = HomagGroup.FLS.Domain.Data.WccStagingTransferState.ImportFromWccToStagingCompleted;
                     }
                     
