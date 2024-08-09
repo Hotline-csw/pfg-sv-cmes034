@@ -130,8 +130,7 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         var prodItemPreassem003 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == preassem003.Code);
                 
                         var prodItemsStepsDataPreassem003 = prodItemsStepsDataRep.GetFirstOrDefault(
-                            pisd => pisd.ProductionOrderCode == preassem003.Code && pisd.ProductionStepCode == preassemblyStepCode
-                        );
+                                pisd => pisd.ProductionOrderCode == preassem003.Code && pisd.ProductionStepCode == preassemblyStepCode);
                 
                         if(prodItemPreassem003 != null && prodItemsStepsDataPreassem003 != null)
                         {
@@ -152,15 +151,12 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         {           
                             var prodItemAssem003 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == assem003.Code);
                             
-                            if(prodItemAssem003 != null)
+                            var prodItemsStepsDataAssem003 = prodItemsStepsDataRep.GetFirstOrDefault(
+                                    pisd => pisd.ProductionOrderCode == assem003.Code && pisd.ProductionStepCode == assemblyStepCode);
+                            
+                            if(prodItemAssem003 != null && prodItemsStepsDataAssem003 != null)
                             {
-                                var prodItemsStepsDataAssem003 = prodItemsStepsDataRep.GetFirstOrDefault(
-                                        pisd => pisd.ProductionOrderCode == assem003.Code && pisd.ProductionStepCode == assemblyStepCode);
-                                
-                                if(prodItemsStepsDataAssem003 != null)
-                                {
-                                    prodItemAssem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, assemblyWorkCenterCode, "ASSEM", 0, FeedbackState.Finished, 0, _Logger);
-                                }
+                                prodItemAssem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, assemblyWorkCenterCode, "ASSEM", 0, FeedbackState.Finished, 0, _Logger);
                             }
                         }
                     }
