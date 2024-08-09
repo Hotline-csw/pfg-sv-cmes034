@@ -219,31 +219,30 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                     }
                 }
    
-                // Assembly Sale Item            
+                // Assembly Sale Item
+                var validPositionsDKS004 = new List<string> { "001", "003", "006" };
+                
                 var assemDKS004 = prodOrdersRep.Get(
-						po => po.CustomerOrderCode == dks004 && po.CustomerOrderPosition == "001" && po.OrderType == ProductionOrderType.SalesArticle ||
-							  po.CustomerOrderCode == dks004 && po.CustomerOrderPosition == "003" && po.OrderType == ProductionOrderType.SalesArticle ||
-							  po.CustomerOrderCode == dks004 && po.CustomerOrderPosition == "006" && po.OrderType == ProductionOrderType.SalesArticle);
-                                                        
-                if(assemDKS004 != null)
-                {   
-                    foreach(var assem004 in assemDKS004)
-                    {           
-                        var prodItemAssem004 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == assem004.Code);
-                        
-                        if(prodItemAssem004 != null)
-                        {
+                    po => po.CustomerOrderCode == dks004 && 
+                          validPositionsDKS004.Contains(po.CustomerOrderPosition) && 
+                          po.OrderType == ProductionOrderType.SalesArticle);
+
+                    if(assemDKS004.Any())
+                    {   
+                        foreach(var assem004 in assemDKS004)
+                        {           
+                            var prodItemAssem004 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == assem004.Code);
+                            
                             var prodItemsStepsDataAssem004 = prodItemsStepsDataRep.GetFirstOrDefault(
                                 pisd => pisd.ProductionOrderCode == assem004.Code && pisd.ProductionStepCode == assemblyStepCode);
                             
-                            if(prodItemsStepsDataAssem004 != null)
+                            if(prodItemAssem004 != null && prodItemsStepsDataAssem004 != null)
                             {
-                                prodItemAssem004.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, assemblyWorkCenterCode, "ASSEM", 0, FeedbackState.Finished, 0, _Logger);
+                                prodItemAssem004.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, assemblyWorkCenterCode, assemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
                             }
                         }
                     }
-                }
-				
+                    
 //-----------------------------------------------------------------------------
 
                 // Demo_Kitchen_Small_005
