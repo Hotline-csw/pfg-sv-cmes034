@@ -115,33 +115,30 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 
                 // Demo_Kitchen_Small_003
 				// Preassembly
+                var validPositions = new List<string> { "001", "002", "003", "004", "005", "006", "007" };
+
                 var preassemDKS003 = prodOrdersRep.Get(
-                        po => po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "001" && po.OrderType == ProductionOrderType.ConstructionPart ||
-                              po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "002" && po.OrderType == ProductionOrderType.ConstructionPart ||
-                              po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "003" && po.OrderType == ProductionOrderType.ConstructionPart ||
-                              po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "004" && po.OrderType == ProductionOrderType.ConstructionPart ||
-                              po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "005" && po.OrderType == ProductionOrderType.ConstructionPart ||
-                              po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "006" && po.OrderType == ProductionOrderType.ConstructionPart ||
-                              po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "007" && po.OrderType == ProductionOrderType.ConstructionPart);
-                              
-                    if(preassemDKS003 != null)
-                    {   
-                        foreach(var preassem003 in preassemDKS003)
-                        {           
-                            var prodItemPreassem003 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == preassem003.Code);
-                            
-                            if(prodItemPreassem003 != null)
-                            {
-                                var prodItemsStepsDataPreassem003 = prodItemsStepsDataRep.GetFirstOrDefault(
-                                        pisd => pisd.ProductionOrderCode == preassem003.Code && pisd.ProductionStepCode == preassemblyStepCode);
-                                
-                                if(prodItemsStepsDataPreassem003 != null)
-                                {
-                                    prodItemPreassem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, "PREASSEM", 0, FeedbackState.Finished, 0, _Logger);
-                                }
-                            }
+                    po => po.CustomerOrderCode == dks003 && 
+                          validPositions.Contains(po.CustomerOrderPosition) && 
+                          po.OrderType == ProductionOrderType.ConstructionPart
+                );
+            
+                if(preassemDKS003.Any())
+                {   
+                    foreach(var preassem003 in preassemDKS003)
+                    {           
+                        var prodItemPreassem003 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == preassem003.Code);
+                
+                        var prodItemsStepsDataPreassem003 = prodItemsStepsDataRep.GetFirstOrDefault(
+                            pisd => pisd.ProductionOrderCode == preassem003.Code && pisd.ProductionStepCode == preassemblyStepCode
+                        );
+                
+                        if(prodItemPreassem003 != null && prodItemsStepsDataPreassem003 != null)
+                        {
+                            prodItemPreassem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, "PREASSEM", 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
+                }
 				
                 // Assembly
                 var assemDKS003 = prodOrdersRep.Get(
