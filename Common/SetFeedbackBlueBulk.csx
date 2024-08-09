@@ -187,41 +187,7 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         }
                     }
                 }
-/*
-                var sortDKS004 = prodOrdersRep.Get(
-						po => po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.AdjustableShelf ||
-							  po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.DoorLeft ||
-							  po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.FixedShelf ||
-							  po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.Partition ||
-							  po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.DrawerBottom ||
-							  po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.DrawerSide ||
-							  po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.DrawerFront ||
-							  po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.Plinth ||
-							  po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.WorkTop ||
-							  po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.Traverse ||
-							  po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.BackPanel ||
-							  po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.BottomShelf ||
-                              po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.TopShelf);
-                                                        
-                if(sortDKS004 != null)
-                {   
-                    foreach(var sort004 in sortDKS004)
-                    {           
-                        var prodItemSort004 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == sort004.Code);
-                        
-                        if(prodItemSort004 != null)
-                        {
-                            var prodItemsStepsDataSort004 = prodItemsStepsDataRep.GetFirstOrDefault(
-                                pisd => pisd.ProductionOrderCode == sort004.Code && pisd.ProductionStepCode == sortingStepCode);
-                            
-                            if(prodItemsStepsDataSort004!=null)
-                            {
-                                prodItemSort004.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, sortingWorkCenterCode, "SORT", 0, FeedbackState.Finished, 0, _Logger);
-                            }
-                        }
-                    }
-                }
-*/
+
                 
                 // Preassembly 
                 var preassemDKS004 = prodOrdersRep.Get(
