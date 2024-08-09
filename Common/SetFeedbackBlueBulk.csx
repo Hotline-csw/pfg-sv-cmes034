@@ -165,16 +165,12 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 // Demo_Kitchen_Small_004
                 // Sorting
                 var componentTypes = new List<ComponentType> {
-                ComponentType.AdjustableShelf, ComponentType.DoorLeft, ComponentType.FixedShelf, 
-                ComponentType.Partition, ComponentType.DrawerBottom, ComponentType.DrawerSide, 
-                ComponentType.DrawerFront, ComponentType.Plinth, ComponentType.WorkTop, 
-                ComponentType.Traverse, ComponentType.BackPanel, ComponentType.BottomShelf, 
-                ComponentType.TopShelf
-                };
+                    ComponentType.AdjustableShelf, ComponentType.DoorLeft, ComponentType.FixedShelf, ComponentType.Partition, 
+                    ComponentType.DrawerBottom, ComponentType.DrawerSide, ComponentType.DrawerFront, ComponentType.Plinth, ComponentType.WorkTop, 
+                    ComponentType.Traverse, ComponentType.BackPanel, ComponentType.BottomShelf, ComponentType.TopShelf};
                 
                 var sortDKS004 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dks004 && componentTypes.Contains(po.ComponentType)
-                );
+                    po => po.CustomerOrderCode == dks004 && componentTypes.Contains(po.ComponentType));
                 
                 if(sortDKS004.Any())
                 {   
@@ -183,8 +179,7 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         var prodItemSort004 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == sort004.Code);
                 
                         var prodItemsStepsDataSort004 = prodItemsStepsDataRep.GetFirstOrDefault(
-                            pisd => pisd.ProductionOrderCode == sort004.Code && pisd.ProductionStepCode == sortingStepCode
-                        );
+                            pisd => pisd.ProductionOrderCode == sort004.Code && pisd.ProductionStepCode == sortingStepCode);
                 
                         if(prodItemSort004 != null && prodItemsStepsDataSort004 != null)
                         {
