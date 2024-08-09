@@ -115,11 +115,11 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 
                 // Demo_Kitchen_Small_003
 				// Preassembly
-                var validPositions = new List<string> { "001", "002", "003", "004", "005", "006", "007" };
+                var validPositionsDKS003 = new List<string> { "001", "002", "003", "004", "005", "006", "007" };
 
                 var preassemDKS003 = prodOrdersRep.Get(
                     po => po.CustomerOrderCode == dks003 && 
-                          validPositions.Contains(po.CustomerOrderPosition) && 
+                          validPositionsDKS003.Contains(po.CustomerOrderPosition) && 
                           po.OrderType == ProductionOrderType.ConstructionPart);
             
                 if(preassemDKS003.Any())
@@ -133,7 +133,7 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 
                         if(prodItemPreassem003 != null && prodItemsStepsDataPreassem003 != null)
                         {
-                            prodItemPreassem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, "PREASSEM", 0, FeedbackState.Finished, 0, _Logger);
+                            prodItemPreassem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, preassemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }
@@ -141,7 +141,7 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 // Assembly
                 var assemDKS003 = prodOrdersRep.Get(
                     po => po.CustomerOrderCode == dks003 && 
-                          validPositions.Contains(po.CustomerOrderPosition) && 
+                          validPositionsDKS003.Contains(po.CustomerOrderPosition) && 
                           po.OrderType == ProductionOrderType.SalesArticle);
 
                     if(assemDKS003.Any())
@@ -155,7 +155,7 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             
                             if(prodItemAssem003 != null && prodItemsStepsDataAssem003 != null)
                             {
-                                prodItemAssem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, assemblyWorkCenterCode, "ASSEM", 0, FeedbackState.Finished, 0, _Logger);
+                                prodItemAssem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, assemblyWorkCenterCode, assemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
                             }
                         }
                     }
