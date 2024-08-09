@@ -142,15 +142,11 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
 				
                 // Assembly
                 var assemDKS003 = prodOrdersRep.Get(
-                        po => po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "001" && po.OrderType == ProductionOrderType.SalesArticle ||
-                              po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "002" && po.OrderType == ProductionOrderType.SalesArticle ||
-                              po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "003" && po.OrderType == ProductionOrderType.SalesArticle ||
-                              po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "004" && po.OrderType == ProductionOrderType.SalesArticle ||
-                              po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "005" && po.OrderType == ProductionOrderType.SalesArticle ||
-                              po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "006" && po.OrderType == ProductionOrderType.SalesArticle ||
-                              po.CustomerOrderCode == dks003 && po.CustomerOrderPosition == "007" && po.OrderType == ProductionOrderType.SalesArticle );
+                    po => po.CustomerOrderCode == dks003 && 
+                          validPositions.Contains(po.CustomerOrderPosition) && 
+                          po.OrderType == ProductionOrderType.SalesArticle);
 
-                    if(assemDKS003 != null)
+                    if(assemDKS003.Any())
                     {   
                         foreach(var assem003 in assemDKS003)
                         {           
