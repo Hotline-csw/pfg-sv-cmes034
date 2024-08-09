@@ -164,13 +164,16 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
     
                 // Demo_Kitchen_Small_004
                 // Sorting
-                var componentTypes = new List<ComponentType> {
-                    ComponentType.AdjustableShelf, ComponentType.DoorLeft, ComponentType.FixedShelf, ComponentType.Partition, 
-                    ComponentType.DrawerBottom, ComponentType.DrawerSide, ComponentType.DrawerFront, ComponentType.Plinth, ComponentType.WorkTop, 
-                    ComponentType.Traverse, ComponentType.BackPanel, ComponentType.BottomShelf, ComponentType.TopShelf};
+                var componentTypesDKS004Sorting = new List<ComponentType>
+                    {
+                        ComponentType.AdjustableShelf,  ComponentType.TopShelf,     ComponentType.BottomShelf,      ComponentType.BackPanel,
+                        ComponentType.DoorLeft,         ComponentType.FixedShelf,   ComponentType.Partition,        ComponentType.DrawerBottom, 
+                        ComponentType.DrawerSide,       ComponentType.DrawerFront,  ComponentType.Plinth,           ComponentType.WorkTop, 
+                        ComponentType.Traverse 
+                    };
                 
                 var sortDKS004 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dks004 && componentTypes.Contains(po.ComponentType));
+                    po => po.CustomerOrderCode == dks004 && componentTypesDKS004Sorting.Contains(po.ComponentType));
                 
                 if(sortDKS004.Any())
                 {   
@@ -183,34 +186,35 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 
                         if(prodItemSort004 != null && prodItemsStepsDataSort004 != null)
                         {
-                            prodItemSort004.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, sortingWorkCenterCode, "SORT", 0, FeedbackState.Finished, 0, _Logger);
+                            prodItemSort004.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, sortingWorkCenterCode, sortingStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }
 
                 
                 // Preassembly 
+				var componentTypesDKS004Preassembly = new List<ComponentType>
+                    {
+                        ComponentType.SidePanel,        ComponentType.Door,     ComponentType.DoorRight
+                    };
+                    
                 var preassemDKS004 = prodOrdersRep.Get(
-						po => po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.Door && po.OrderType == ProductionOrderType.ConstructionPart ||
-							  po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.SidePanel && po.OrderType == ProductionOrderType.ConstructionPart ||
-							  po.CustomerOrderCode == dks004 && po.ComponentType == ComponentType.DoorRight && po.OrderType == ProductionOrderType.ConstructionPart);
+                    po => po.CustomerOrderCode == dks004 && 
+                          componentTypesDKS004Preassembly.Contains(po.ComponentType) && 
+                          po.OrderType == ProductionOrderType.ConstructionPart);
                                                         
-                if(preassemDKS004 != null)
+                if(preassemDKS004.Any())
                 {   
                     foreach(var preassem004 in preassemDKS004)
                     {           
                         var prodItemPreassepisd = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == preassem004.Code);
                         
-                        if(prodItemPreassepisd != null)
-                        {
-                            var prodItemsStepsDataPreassepisd = prodItemsStepsDataRep.GetFirstOrDefault(
+                        var prodItemsStepsDataPreassepisd = prodItemsStepsDataRep.GetFirstOrDefault(
                                 pisd => pisd.ProductionOrderCode == preassem004.Code && pisd.ProductionStepCode == preassemblyStepCode);
-                            
-                            if(prodItemsStepsDataPreassepisd != null)
-                            {
-                                prodItemPreassepisd.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, "PREASSEM", 0, FeedbackState.Finished, 0, _Logger);
-
-                            }
+                        
+                        if(prodItemPreassepisd != null && prodItemsStepsDataPreassepisd != null)
+                        {
+                            prodItemPreassepisd.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, preassemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }
