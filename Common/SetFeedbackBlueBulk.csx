@@ -436,34 +436,33 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 }
                 
                 // Preassembly 
+                var componentTypesDKM001Preassembly = new List<ComponentType>
+                {
+                    ComponentType.SidePanel,        ComponentType.TopShelf,     ComponentType.DrawerBottom,     ComponentType.DrawerFront,
+                };
+                
                 var preassemDKM001 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm001 && po.ComponentType == ComponentType.SidePanel && po.OrderType == ProductionOrderType.ConstructionPart ||
-                            po.CustomerOrderCode == dkm001 && po.ComponentType == ComponentType.TopShelf && po.OrderType == ProductionOrderType.ConstructionPart && po.ReproductionType == ReproductionType.NoReproduction ||
-                            po.CustomerOrderCode == dkm001 && po.ComponentType == ComponentType.DrawerBottom && po.OrderType == ProductionOrderType.ConstructionPart ||
-                            po.CustomerOrderCode == dkm001 && po.ComponentType == ComponentType.DrawerFront && po.OrderType == ProductionOrderType.ConstructionPart && po.ReproductionType == ReproductionType.NoReproduction);
-                                                        
+                    po => po.CustomerOrderCode == dkm001 && componentTypesDKM001Preassembly.Contains(po.ComponentType) && 
+                          po.ReproductionType == ReproductionType.NoReproduction);
+
                 if(preassemDKM001 != null)
                 {   
                     foreach(var preassem001 in preassemDKM001)
                     {           
                         var prodItemPreassem001 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == preassem001.Code);
                         
-                        if(prodItemPreassem001 != null)
+                        var prodItemsStepsDataPreassem001 = prodItemsStepsDataRep.GetFirstOrDefault(
+                            pisd => pisd.ProductionOrderCode == preassem001.Code && pisd.ProductionStepCode == preassemblyStepCode);
+                        
+                        if(prodItemPreassem001 != null && prodItemsStepsDataPreassem001 != null)
                         {
-                            var prodItemsStepsDataPreassem001 = prodItemsStepsDataRep.GetFirstOrDefault(
-                                pisd => pisd.ProductionOrderCode == preassem001.Code && pisd.ProductionStepCode == preassemblyStepCode);
-                            
-                            if(prodItemsStepsDataPreassem001 != null)
-                            {
-                                prodItemPreassem001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, "PREASSEM", 0, FeedbackState.Finished, 0, _Logger);
-                            }
+                            prodItemPreassem001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, preassemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }
                 
                 unitOfWork.Save();
             }
-
         }
         catch (Exception e)
         {
