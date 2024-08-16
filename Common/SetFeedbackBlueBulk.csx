@@ -354,31 +354,30 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                     }
                 }
                 
-                // Drilling V200
+                // Drilling V200                          
+                var componentTypesDKM001Drilling = new List<ComponentType>
+                {
+                    ComponentType.AdjustableShelf,      ComponentType.BottomShelf,      ComponentType.BackPanel,        ComponentType.Panel,
+                    ComponentType.Plinth,               ComponentType.Traverse
+                };
+                
                 var drillDKM001 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm001 && po.ComponentType == ComponentType.BottomShelf ||
-						  po.CustomerOrderCode == dkm001 && po.ComponentType == ComponentType.BackPanel ||
-                          po.CustomerOrderCode == dkm001 && po.ComponentType == ComponentType.AdjustableShelf ||
-                          po.CustomerOrderCode == dkm001 && po.ComponentType == ComponentType.Plinth ||
-                          po.CustomerOrderCode == dkm001 && po.ComponentType == ComponentType.Traverse ||
-                          po.CustomerOrderCode == dkm001 && po.ComponentType == ComponentType.Panel);
+                    po => po.CustomerOrderCode == dkm001 && componentTypesDKM001Drilling.Contains(po.ComponentType));
                                                         
-                if(drillDKM001 != null)
+                if(drillDKM001.Any())
                 {   
                     foreach(var drill001 in drillDKM001)
                     {           
                         var prodItemDrill001 = prodItemsRep.GetFirstOrDefault(
                             pi => pi.ProductionOrderCode == drill001.Code);
-                        
-                        if(prodItemDrill001 != null)
-                        {
-                            var prodItemsStepsDataDrill001 = prodItemsStepsDataRep.GetFirstOrDefault(
-                                pisd => pisd.ProductionOrderCode == drill001.Code && pisd.ProductionStepCode == drillingStepCode);
                             
-                            if(prodItemsStepsDataDrill001 != null)
-                            {
-                                prodItemDrill001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, drillingWorkCenterCode, "V200", 0, FeedbackState.Finished, 0, _Logger);
-                            }
+                        var prodItemsStepsDataDrill001 = prodItemsStepsDataRep.GetFirstOrDefault(
+                            pisd => pisd.ProductionOrderCode == drill001.Code && pisd.ProductionStepCode == drillingStepCode);
+
+                        
+                        if(prodItemDrill001 != null && prodItemsStepsDataDrill001 != null)
+                        {
+                            prodItemDrill001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, drillingWorkCenterCode, drillingStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }
