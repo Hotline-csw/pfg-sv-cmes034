@@ -174,9 +174,8 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                 
                 var sortDKS006 = prodOrdersRep.Get(
                     po => po.CustomerOrderCode == dks006 && componentTypesDKS006Sorting.Contains(po.ComponentType));
-
                                                         
-                if(sortDKS006 != null)
+                if(sortDKS006.Any())
                 {   
                     foreach(var sort006 in sortDKS006)
                     {           
@@ -196,24 +195,27 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                 
                 // Demo_Kitchen_Medium_006
                 // Cutting B300
+                var componentTypesDKM006Cutting = new List<ComponentType>
+                {
+                    ComponentType.TopShelf,
+                };
+                
                 var cutDKM006 = prodOrdersRep.Get(
-                        po => po.CustomerOrderCode == dkm006 && po.ComponentType == ComponentType.TopShelf && po.ReproductionType == ReproductionType.Standard);
+                        po => po.CustomerOrderCode == dkm006 && componentTypesDKM006Cutting.Contains(po.ComponentType) && 
+                              po.ReproductionType == ReproductionType.Standard);
                                                         
-                if(cutDKM006 != null)
+                if(cutDKM006.Any())
                 {   
                     foreach(var cut006 in cutDKM006)
                     {           
                         var prodItemCut006 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == cut006.Code);
                         
-                        if(prodItemCut006 != null)
+                        var prodItemsStepsDataCut006 = prodItemsStepsDataRep.GetFirstOrDefault(
+                            pisd => pisd.ProductionOrderCode == cut006.Code && pisd.ProductionStepCode == cuttingStepCode);                        
+                        
+                        if(prodItemCut006 != null && prodItemsStepsDataCut006 != null)
                         {
-                            var prodItemsStepsDataCut006 = prodItemsStepsDataRep.GetFirstOrDefault(
-                                pisd => pisd.ProductionOrderCode == cut006.Code && pisd.ProductionStepCode == cuttingStepCode);
-                            
-                            if(prodItemsStepsDataCut006 != null)
-                            {
-                                prodItemCut006.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cuttingWorkCenterCode, "", 1, _Logger);
-                            }
+                            prodItemCut006.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cuttingWorkCenterCode, cuttingStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }                
