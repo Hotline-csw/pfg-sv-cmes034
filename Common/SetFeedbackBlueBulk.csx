@@ -300,32 +300,28 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                     }
                 }
                 
-                // Preassembly 
+                // Preassembly                
+                var componentTypesDKS005Preassembly = new List<ComponentType>
+                {
+                    ComponentType.AdjustableShelf,      ComponentType.TopShelf,     ComponentType.BottomShelf,      ComponentType.BackPanel,
+                    ComponentType.FixedShelf,           ComponentType.DrawerBottom, ComponentType.Plinth,           ComponentType.Traverse
+                };
+                
                 var preassemDKS005 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dks005 && po.ComponentType == ComponentType.AdjustableShelf && po.OrderType == ProductionOrderType.ConstructionPart ||
-                            po.CustomerOrderCode == dks005 && po.ComponentType == ComponentType.TopShelf && po.OrderType == ProductionOrderType.ConstructionPart ||
-                            po.CustomerOrderCode == dks005 && po.ComponentType == ComponentType.BackPanel && po.OrderType == ProductionOrderType.ConstructionPart ||
-                            po.CustomerOrderCode == dks005 && po.ComponentType == ComponentType.FixedShelf && po.OrderType == ProductionOrderType.ConstructionPart ||
-                            po.CustomerOrderCode == dks005 && po.ComponentType == ComponentType.DrawerBottom && po.OrderType == ProductionOrderType.ConstructionPart ||
-                            po.CustomerOrderCode == dks005 && po.ComponentType == ComponentType.Plinth && po.OrderType == ProductionOrderType.ConstructionPart ||
-                            po.CustomerOrderCode == dks005 && po.ComponentType == ComponentType.BottomShelf && po.OrderType == ProductionOrderType.ConstructionPart ||
-                            po.CustomerOrderCode == dks005 && po.ComponentType == ComponentType.Traverse && po.OrderType == ProductionOrderType.ConstructionPart);
-                                                        
-                if(preassemDKS005 != null)
+                    po => po.CustomerOrderCode == dks005 && componentTypesDKS005Preassembly.Contains(po.ComponentType));
+
+                if(preassemDKS005.Any())
                 {   
                     foreach(var preassem005 in preassemDKS005)
                     {           
                         var prodItemPreassem005 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == preassem005.Code);
                         
-                        if(prodItemPreassem005 != null)
-                        {
-                            var prodItemsStepsDataPreassem005 = prodItemsStepsDataRep.GetFirstOrDefault(
+                        var prodItemsStepsDataPreassem005 = prodItemsStepsDataRep.GetFirstOrDefault(
                                 pisd => pisd.ProductionOrderCode == preassem005.Code && pisd.ProductionStepCode == preassemblyStepCode);
-                            
-                            if(prodItemsStepsDataPreassem005 != null)
-                            {
-                                prodItemPreassem005.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, "PREASSEM", 0, FeedbackState.Finished, 0, _Logger);
-                            }
+                        
+                        if(prodItemPreassem005 != null && prodItemsStepsDataPreassem005 != null)
+                        {
+                            prodItemPreassem005.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, preassemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }
