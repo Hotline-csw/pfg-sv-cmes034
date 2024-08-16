@@ -328,25 +328,28 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
 //-----------------------------------------------------------------------------
                 
                 // Demo_Kitchen_Medium_001
-                // Cutting B300
+                // Cutting B300                        
+                var componentTypesDKM001Cutting = new List<ComponentType>
+                    {
+                        ComponentType.TopShelf                   
+                    };
+                    
                 var cutDKM001 = prodOrdersRep.Get(
-                        po => po.CustomerOrderCode == dkm001 && po.ComponentType == ComponentType.TopShelf && po.ReproductionType == ReproductionType.Standard);
+                    po => po.CustomerOrderCode == dkm001 && componentTypesDKM001Cutting.Contains(po.ComponentType) && 
+                          po.ReproductionType == ReproductionType.NoReproduction);
                                                         
-                if(cutDKM001 != null)
+                if(cutDKM001.Any())
                 {   
                     foreach(var cut001 in cutDKM001)
                     {           
                         var prodItemCut001 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == cut001.Code);
                         
-                        if(prodItemCut001 != null)
-                        {
-                            var prodItemsStepsDataCut001 = prodItemsStepsDataRep.GetFirstOrDefault(
+                        var prodItemsStepsDataCut001 = prodItemsStepsDataRep.GetFirstOrDefault(
                                 pisd => pisd.ProductionOrderCode == cut001.Code && pisd.ProductionStepCode == cuttingStepCode);
-                            
-                            if(prodItemsStepsDataCut001 != null)
-                            {
-                                prodItemCut001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cuttingWorkCenterCode, "B300", 0, FeedbackState.Finished, 0, _Logger);
-                            }
+                        
+                        if(prodItemCut001 != null && prodItemsStepsDataCut001 != null)
+                        {
+                            prodItemCut001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cuttingWorkCenterCode, cuttingStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }
