@@ -412,86 +412,80 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                 
                 // Demo_Kitchen_Medium_009
                 // Edgebanding S810
+                var componentTypesDKM009Edge = new List<ComponentType>
+                {
+                    ComponentType.AdjustableShelf,      ComponentType.Panel,        ComponentType.Door,         ComponentType.DoorRight,
+                    ComponentType.FixedShelf,           ComponentType.Partition,    ComponentType.DrawerFront,  ComponentType.WorkTop
+                };
+                
                 var edgeDKM009 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.AdjustableShelf ||
-                            po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.Panel ||
-                            po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.Door ||
-                            po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.DoorRight ||
-                            po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.FixedShelf ||
-                            po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.DrawerFront ||
-                            po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.Partition ||
-                            po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.WorkTop);
+                    po => po.CustomerOrderCode == dkm009 && componentTypesDKM009Edge.Contains(po.ComponentType));
                                                         
-                if(edgeDKM009 != null)
+                if(edgeDKM009.Any())
                 {   
                     foreach(var edge009 in edgeDKM009)
                     {           
                         var prodItemEdge009 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == edge009.Code);
                         
-                        if(prodItemEdge009 != null)
-                        {
-                            var prodItemsStepsDataEdge009 = prodItemsStepsDataRep.GetFirstOrDefault(
+                        var prodItemsStepsDataEdge009 = prodItemsStepsDataRep.GetFirstOrDefault(
                                 pisd => pisd.ProductionOrderCode == edge009.Code && pisd.ProductionStepCode == edgeStepCode);
-                            
-                            if(prodItemsStepsDataEdge009 != null)
-                            {
-                                prodItemEdge009.InsertFeedbackFinishedGood(unitOfWork, _TaskName, edgeWorkCenterCode, "", 1, _Logger);
-                            }
+                                
+                        if(prodItemEdge009 != null && prodItemsStepsDataEdge009 != null)
+                        {
+                            prodItemEdge009.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, edgeWorkCenterCode, edgeStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }
                 
                 // Drilling V200
+                var componentTypesDKM009Drill = new List<ComponentType>
+                {
+                    ComponentType.SidePanel,        ComponentType.TopShelf,     ComponentType.BottomShelf,      ComponentType.BackPanel,
+                    ComponentType.Plinth,           ComponentType.Traverse
+                };
+                
                 var drillDKM009 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.TopShelf ||
-                            po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.Plinth ||
-                            po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.BackPanel ||
-                            po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.SidePanel ||
-                            po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.BottomShelf ||
-                            po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.Traverse);
+                    po => po.CustomerOrderCode == dkm009 && componentTypesDKM009Drill.Contains(po.ComponentType));
                                                         
-                if(drillDKM009 != null)
+                if(drillDKM009.Any())
                 {   
                     foreach(var drill009 in drillDKM009)
                     {           
                         var prodItemDrill009 = prodItemsRep.GetFirstOrDefault(
                             pi => pi.ProductionOrderCode == drill009.Code);
-                        
-                        if(prodItemDrill009 != null)
-                        {
-                            var prodItemsStepsDataDrill009 = prodItemsStepsDataRep.GetFirstOrDefault(
-                                pisd => pisd.ProductionOrderCode == drill009.Code && pisd.ProductionStepCode == drillingStepCode);
                             
-                            if(prodItemsStepsDataDrill009 != null)
-                            {
-                                prodItemDrill009.InsertFeedbackFinishedGood(unitOfWork, _TaskName, drillingWorkCenterCode, "", 1, _Logger);
-                            }
+                        var prodItemsStepsDataDrill009 = prodItemsStepsDataRep.GetFirstOrDefault(
+                                pisd => pisd.ProductionOrderCode == drill009.Code && pisd.ProductionStepCode == drillingStepCode);
+                                
+                        if(prodItemDrill009 != null && prodItemsStepsDataDrill009 != null)
+                        {
+                            prodItemDrill009.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, drillingWorkCenterCode, drillingStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }			
 				
-				// CNC 310
+				// CNC 310                            
+                var componentTypesDKM009CNC = new List<ComponentType>
+                {
+                    ComponentType.DoorLeft,     ComponentType.DrawerBottom,     ComponentType.DrawerSide
+                };
+                
                 var cncDKM009 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.DoorLeft ||
-                            po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.DrawerBottom ||
-                            po.CustomerOrderCode == dkm009 && po.ComponentType == ComponentType.DrawerSide);
+                    po => po.CustomerOrderCode == dkm009 && componentTypesDKM009CNC.Contains(po.ComponentType));
                                                         
-                if(cncDKM009 != null)
+                if(cncDKM009.Any())
                 {   
                     foreach(var cnc009 in cncDKM009)
                     {           
                         var prodItemCnc009 = prodItemsRep.GetFirstOrDefault(
                             pi => pi.ProductionOrderCode == cnc009.Code);
-                        
-                        if(prodItemCnc009 != null)
-                        {
-                            var prodItemsStepsDataCnc009 = prodItemsStepsDataRep.GetFirstOrDefault(
-                                pisd => pisd.ProductionOrderCode == cnc009.Code && pisd.ProductionStepCode == cncStepCode);
                             
-                            if(prodItemsStepsDataCnc009 != null)
-                            {
-                                prodItemCnc009.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cncWorkCenterCode, "", 1, _Logger);
-                            }
+                        var prodItemsStepsDataCnc009 = prodItemsStepsDataRep.GetFirstOrDefault(
+                                pisd => pisd.ProductionOrderCode == cnc009.Code && pisd.ProductionStepCode == cncStepCode);
+                                
+                        if(prodItemCnc009 != null && prodItemsStepsDataCnc009 != null)
+                        {
+                            prodItemCnc009.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cncWorkCenterCode, cncStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }
