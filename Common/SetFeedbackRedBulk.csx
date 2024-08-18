@@ -330,28 +330,27 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                 
                 // Demo_Kitchen_Medium_008
                 // Edgebanding S810
+                var componentTypesDKM008Edge = new List<ComponentType>
+                {
+                    ComponentType.SidePanel,        ComponentType.BottomShelf,      ComponentType.Panel,        ComponentType.DrawerSide,
+                    ComponentType.DrawerFront
+                };
+                
                 var edgeDKM008 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm008 && po.ComponentType == ComponentType.SidePanel ||
-                            po.CustomerOrderCode == dkm008 && po.ComponentType == ComponentType.BottomShelf ||
-                            po.CustomerOrderCode == dkm008 && po.ComponentType == ComponentType.Panel ||
-                            po.CustomerOrderCode == dkm008 && po.ComponentType == ComponentType.DrawerSide ||
-                            po.CustomerOrderCode == dkm008 && po.ComponentType == ComponentType.DrawerFront);
+                    po => po.CustomerOrderCode == dkm008 && componentTypesDKM008Edge.Contains(po.ComponentType));
                                                         
-                if(edgeDKM008 != null)
+                if(edgeDKM008.Any())
                 {   
                     foreach(var edge008 in edgeDKM008)
                     {           
                         var prodItemEdge008 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == edge008.Code);
                         
-                        if(prodItemEdge008 != null)
-                        {
-                            var prodItemsStepsDataEdge008 = prodItemsStepsDataRep.GetFirstOrDefault(
+                        var prodItemsStepsDataEdge008 = prodItemsStepsDataRep.GetFirstOrDefault(
                                 pisd => pisd.ProductionOrderCode == edge008.Code && pisd.ProductionStepCode == edgeStepCode);
-                            
-                            if(prodItemsStepsDataEdge008 != null)
-                            {
-                                prodItemEdge008.InsertFeedbackFinishedGood(unitOfWork, _TaskName, edgeWorkCenterCode, "", 1, _Logger);
-                            }
+                                
+                        if(prodItemEdge008 != null && prodItemsStepsDataEdge008 != null)
+                        {
+                            prodItemEdge008.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, edgeWorkCenterCode, edgeStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }
