@@ -383,11 +383,13 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                 }
 				
 				// CNC 310
+                var componentTypesDKM008CNC = new List<ComponentType>
+                {
+                    ComponentType.Door,     ComponentType.DoorLeft,     ComponentType.DoorRight,        ComponentType.DrawerBottom
+                };
+                
                 var cncDKM008 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm008 && po.ComponentType == ComponentType.Door ||
-                            po.CustomerOrderCode == dkm008 && po.ComponentType == ComponentType.DoorLeft ||
-                            po.CustomerOrderCode == dkm008 && po.ComponentType == ComponentType.DrawerBottom ||
-                            po.CustomerOrderCode == dkm008 && po.ComponentType == ComponentType.DoorRight);
+                    po => po.CustomerOrderCode == dkm008 && componentTypesDKM008CNC.Contains(po.ComponentType));
                                                         
                 if(cncDKM008 != null)
                 {   
@@ -395,16 +397,13 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     {           
                         var prodItemCnc008 = prodItemsRep.GetFirstOrDefault(
                             pi => pi.ProductionOrderCode == cnc008.Code);
-                        
-                        if(prodItemCnc008 != null)
-                        {
-                            var prodItemsStepsDataCnc008 = prodItemsStepsDataRep.GetFirstOrDefault(
-                                pisd => pisd.ProductionOrderCode == cnc008.Code && pisd.ProductionStepCode == cncStepCode);
                             
-                            if(prodItemsStepsDataCnc008 != null)
-                            {
-                                prodItemCnc008.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cncWorkCenterCode, "", 1, _Logger);
-                            }
+                        var prodItemsStepsDataCnc008 = prodItemsStepsDataRep.GetFirstOrDefault(
+                                pisd => pisd.ProductionOrderCode == cnc008.Code && pisd.ProductionStepCode == cncStepCode);
+                                
+                        if(prodItemCnc008 != null && prodItemsStepsDataCnc008 != null)
+                        {
+                            prodItemCnc008.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cncWorkCenterCode, cncStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }
