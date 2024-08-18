@@ -274,53 +274,54 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                 }
 				
 				// CNC 310
+                var componentTypesDKM006CNC = new List<ComponentType>
+                {
+                    ComponentType.DoorRight,        ComponentType.DrawerBottom,     ComponentType.DrawerSide
+                };
+                
                 var cncDKM006 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm006 && po.ComponentType == ComponentType.DrawerBottom ||
-                            po.CustomerOrderCode == dkm006 && po.ComponentType == ComponentType.DoorRight && po.ReproductionType == ReproductionType.NoReproduction ||
-                            po.CustomerOrderCode == dkm006 && po.ComponentType == ComponentType.DrawerSide);
+                    po => po.CustomerOrderCode == dkm006 && componentTypesDKM006CNC.Contains(po.ComponentType) &&
+                          po.ReproductionType == ReproductionType.NoReproduction);
                                                         
-                if(cncDKM006 != null)
+                if(cncDKM006.Any())
                 {   
                     foreach(var cnc006 in cncDKM006)
                     {           
                         var prodItemCnc006 = prodItemsRep.GetFirstOrDefault(
                             pi => pi.ProductionOrderCode == cnc006.Code);
-                        
-                        if(prodItemCnc006 != null)
-                        {
-                            var prodItemsStepsDataCnc006 = prodItemsStepsDataRep.GetFirstOrDefault(
-                                pisd => pisd.ProductionOrderCode == cnc006.Code && pisd.ProductionStepCode == cncStepCode);
                             
-                            if(prodItemsStepsDataCnc006 != null)
-                            {
-                                prodItemCnc006.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cncWorkCenterCode, "", 1, _Logger);
-                            }
+                        var prodItemsStepsDataCnc006 = prodItemsStepsDataRep.GetFirstOrDefault(
+                            pisd => pisd.ProductionOrderCode == cnc006.Code && pisd.ProductionStepCode == cncStepCode);
+
+                        if(prodItemCnc006 != null && prodItemsStepsDataCnc006 != null)
+                        {
+                            prodItemCnc006.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cncWorkCenterCode, cncStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }			
 				
                 // Sorting
+                var componentTypesDKM006Sorting = new List<ComponentType>
+                {
+                    ComponentType.TopShelf,     ComponentType.DrawerFront,      ComponentType.Partition,        ComponentType.Plinth
+                };
+                
                 var sortDKM006 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm006 && po.ComponentType == ComponentType.Partition ||
-                            po.CustomerOrderCode == dkm006 && po.ComponentType == ComponentType.DrawerFront ||
-                            po.CustomerOrderCode == dkm006 && po.ComponentType == ComponentType.TopShelf && po.ReproductionType == ReproductionType.NoReproduction ||
-                            po.CustomerOrderCode == dkm006 && po.ComponentType == ComponentType.Plinth);
+                    po => po.CustomerOrderCode == dkm006 && componentTypesDKM006Sorting.Contains(po.ComponentType) &&
+                          po.ReproductionType == ReproductionType.NoReproduction);
                                                         
-                if(sortDKM006 != null)
+                if(sortDKM006.Any())
                 {   
                     foreach(var sort006 in sortDKM006)
                     {           
                         var prodItemSort006 = prodItemsRep.GetFirstOrDefault(pi => pi.ProductionOrderCode == sort006.Code);
                         
-                        if(prodItemSort006 != null)
-                        {
-                            var prodItemsStepsDataSort006 = prodItemsStepsDataRep.GetFirstOrDefault(
+                        var prodItemsStepsDataSort006 = prodItemsStepsDataRep.GetFirstOrDefault(
                                 pisd => pisd.ProductionOrderCode == sort006.Code && pisd.ProductionStepCode == sortingStepCode);
-                            
-                            if(prodItemsStepsDataSort006!=null)
-                            {
-                                prodItemSort006.InsertFeedbackFinishedGood(unitOfWork, _TaskName, sortingWorkCenterCode, "", 1, _Logger);
-                            }
+                                
+                        if(prodItemSort006 != null && prodItemsStepsDataSort006 != null)
+                        {
+                            prodItemSort006.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, sortingWorkCenterCode, sortingStepCode, 0, FeedbackState.Finished, 0, _Logger);
                         }
                     }
                 }
