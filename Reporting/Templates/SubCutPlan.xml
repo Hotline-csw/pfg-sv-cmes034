@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<XtraReportsLayoutSerializer SerializerVersion="23.2.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="SubCutPlan" Margins="100, 100, 0, 0" PageWidth="850" PageHeight="1100" Version="23.2" Tag_type="System.String" Tag="OptimizationPart">
+<XtraReportsLayoutSerializer SerializerVersion="23.2.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="SubCutPlan" Margins="100, 100, 0, 0" PageWidth="850" PageHeight="1100" Version="23.2" FilterString="[OptimizationCode] = ?LosNr" Tag_type="System.String" Tag="OptimizationPart">
   <Parameters>
     <Item1 Ref="2" Visible="false" Description="Parameter1" Name="LosNr" />
   </Parameters>
