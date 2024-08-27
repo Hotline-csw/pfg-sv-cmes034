@@ -1,40 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <XtraReportsLayoutSerializer SerializerVersion="23.2.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="SubCutPlan" Margins="100, 100, 0, 0" PageWidth="850" PageHeight="1100" Version="23.2" Tag_type="System.String" Tag="OptimizationPart">
+  <Parameters>
+    <Item1 Ref="2" Visible="false" Description="Parameter1" Name="LosNr" />
+  </Parameters>
   <Bands>
-    <Item1 Ref="1" ControlType="GroupHeaderBand" Name="GroupHeader1">
+    <Item1 Ref="3" ControlType="GroupHeaderBand" Name="GroupHeader1">
       <Controls>
-        <Item1 Ref="2" ControlType="XRTable" Name="table1" SizeF="650,23" LocationFloat="0,77">
+        <Item1 Ref="4" ControlType="XRTable" Name="table1" SizeF="650,23" LocationFloat="0,77">
           <Rows>
-            <Item1 Ref="3" ControlType="XRTableRow" Name="tableRow1" Weight="1">
+            <Item1 Ref="5" ControlType="XRTableRow" Name="tableRow1" Weight="1">
               <Cells>
-                <Item1 Ref="4" ControlType="XRTableCell" Name="tableCell1" Weight="1" Text="Schnittplan" Padding="2,2,0,0,96" />
-                <Item2 Ref="5" ControlType="XRTableCell" Name="tableCell2" Weight="1" Text="TeileNr." Padding="2,2,0,0,96" />
-                <Item3 Ref="6" ControlType="XRTableCell" Name="tableCell3" Weight="1" Text="Fertigungsauftrag" Padding="2,2,0,0,96" />
+                <Item1 Ref="6" ControlType="XRTableCell" Name="tableCell1" Weight="1" Text="Schnittplan" Padding="2,2,0,0,96" />
+                <Item2 Ref="7" ControlType="XRTableCell" Name="tableCell2" Weight="1" Text="TeileNr." Padding="2,2,0,0,96" />
+                <Item3 Ref="8" ControlType="XRTableCell" Name="tableCell3" Weight="1" Text="Fertigungsauftrag" Padding="2,2,0,0,96" />
               </Cells>
             </Item1>
           </Rows>
         </Item1>
       </Controls>
     </Item1>
-    <Item2 Ref="7" ControlType="DetailBand" Name="Detail1" HeightF="26.041666">
+    <Item2 Ref="9" ControlType="DetailBand" Name="Detail1" HeightF="26.041666">
       <Controls>
-        <Item1 Ref="8" ControlType="XRTable" Name="table2" SizeF="650,23" LocationFloat="0,0">
+        <Item1 Ref="10" ControlType="XRTable" Name="table2" SizeF="650,23" LocationFloat="0,0">
           <Rows>
-            <Item1 Ref="9" ControlType="XRTableRow" Name="tableRow2" Weight="1">
+            <Item1 Ref="11" ControlType="XRTableRow" Name="tableRow2" Weight="1">
               <Cells>
-                <Item1 Ref="10" ControlType="XRTableCell" Name="tableCell4" Weight="1" Text="tableCell4" Padding="2,2,0,0,96">
+                <Item1 Ref="12" ControlType="XRTableCell" Name="tableCell4" Weight="1" Text="tableCell4" Padding="2,2,0,0,96">
                   <ExpressionBindings>
-                    <Item1 Ref="11" EventName="BeforePrint" PropertyName="Text" Expression="[OptimizationCuttingPlanCode]" />
+                    <Item1 Ref="13" EventName="BeforePrint" PropertyName="Text" Expression="[OptimizationCuttingPlanCode]" />
                   </ExpressionBindings>
                 </Item1>
-                <Item2 Ref="12" ControlType="XRTableCell" Name="tableCell5" Weight="1" Text="tableCell5" Padding="2,2,0,0,96">
+                <Item2 Ref="14" ControlType="XRTableCell" Name="tableCell5" Weight="1" Text="tableCell5" Padding="2,2,0,0,96">
                   <ExpressionBindings>
-                    <Item1 Ref="13" EventName="BeforePrint" PropertyName="Text" Expression="[Code]" />
+                    <Item1 Ref="15" EventName="BeforePrint" PropertyName="Text" Expression="[Code]" />
                   </ExpressionBindings>
                 </Item2>
-                <Item3 Ref="14" ControlType="XRTableCell" Name="tableCell6" Weight="1" Text="tableCell6" Padding="2,2,0,0,96">
+                <Item3 Ref="16" ControlType="XRTableCell" Name="tableCell6" Weight="1" Text="tableCell6" Padding="2,2,0,0,96">
                   <ExpressionBindings>
-                    <Item1 Ref="15" EventName="BeforePrint" PropertyName="Text" Expression="[ProductionOrderCode]" />
+                    <Item1 Ref="17" EventName="BeforePrint" PropertyName="Text" Expression="[ProductionOrderCode]" />
                   </ExpressionBindings>
                 </Item3>
               </Cells>
@@ -43,8 +46,8 @@
         </Item1>
       </Controls>
     </Item2>
-    <Item3 Ref="16" ControlType="GroupFooterBand" Name="GroupFooter1" HeightF="27.083334" />
-    <Item4 Ref="17" ControlType="TopMarginBand" Name="TopMargin1" HeightF="0" />
-    <Item5 Ref="18" ControlType="BottomMarginBand" Name="BottomMargin1" HeightF="0" />
+    <Item3 Ref="18" ControlType="GroupFooterBand" Name="GroupFooter1" HeightF="27.083334" />
+    <Item4 Ref="19" ControlType="TopMarginBand" Name="TopMargin1" HeightF="0" />
+    <Item5 Ref="20" ControlType="BottomMarginBand" Name="BottomMargin1" HeightF="0" />
   </Bands>
 </XtraReportsLayoutSerializer>
