@@ -59,27 +59,28 @@
     </Item4>
     <Item5 Ref="23" ControlType="GroupFooterBand" Name="GroupFooter1" HeightF="87.5">
       <Controls>
-        <Item1 Ref="24" ControlType="XRTable" Name="table3" SizeF="650,23" LocationFloat="0,0">
+        <Item1 Ref="24" ControlType="XRSubreport" Name="subreport1" ReportSourceUrl="&quot;C:\ProgramData\Homag Group\FLS\ControllerMES\dev\Reporting\Templates\SubCutPlan.xml&quot;" SizeF="650,23" LocationFloat="0,42.7083359" />
+        <Item2 Ref="25" ControlType="XRTable" Name="table3" SizeF="650,23" LocationFloat="0,0">
           <Rows>
-            <Item1 Ref="25" ControlType="XRTableRow" Name="tableRow3" Weight="1">
+            <Item1 Ref="26" ControlType="XRTableRow" Name="tableRow3" Weight="1">
               <Cells>
-                <Item1 Ref="26" ControlType="XRTableCell" Name="tableCell8" Weight="2" Text="Gesamt:" TextAlignment="TopRight" Padding="2,2,0,0,96">
-                  <StylePriority Ref="27" UseTextAlignment="false" />
+                <Item1 Ref="27" ControlType="XRTableCell" Name="tableCell8" Weight="2" Text="Gesamt:" TextAlignment="TopRight" Padding="2,2,0,0,96">
+                  <StylePriority Ref="28" UseTextAlignment="false" />
                 </Item1>
-                <Item2 Ref="28" ControlType="XRTableCell" Name="tableCell9" Weight="1" Text="tableCell9" Padding="2,2,0,0,96">
+                <Item2 Ref="29" ControlType="XRTableCell" Name="tableCell9" Weight="1" Text="tableCell9" Padding="2,2,0,0,96">
                   <ExpressionBindings>
-                    <Item1 Ref="29" EventName="BeforePrint" PropertyName="Text" Expression="Sum([QuantityPart])" />
+                    <Item1 Ref="30" EventName="BeforePrint" PropertyName="Text" Expression="Sum([QuantityPart])" />
                   </ExpressionBindings>
                 </Item2>
               </Cells>
             </Item1>
           </Rows>
-        </Item1>
+        </Item2>
       </Controls>
     </Item5>
-    <Item6 Ref="30" ControlType="PageFooterBand" Name="PageFooter1" HeightF="30.208334" />
-    <Item7 Ref="31" ControlType="ReportFooterBand" Name="ReportFooter1" HeightF="28.125" />
-    <Item8 Ref="32" ControlType="TopMarginBand" Name="TopMargin1" HeightF="29.166666" />
-    <Item9 Ref="33" ControlType="BottomMarginBand" Name="BottomMargin1" HeightF="27.083334" />
+    <Item6 Ref="31" ControlType="PageFooterBand" Name="PageFooter1" HeightF="30.208334" />
+    <Item7 Ref="32" ControlType="ReportFooterBand" Name="ReportFooter1" HeightF="28.125" />
+    <Item8 Ref="33" ControlType="TopMarginBand" Name="TopMargin1" HeightF="29.166666" />
+    <Item9 Ref="34" ControlType="BottomMarginBand" Name="BottomMargin1" HeightF="27.083334" />
   </Bands>
 </XtraReportsLayoutSerializer>
