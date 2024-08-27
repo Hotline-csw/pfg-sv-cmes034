@@ -1,43 +1,43 @@
 {
-    "dayscount": "20",
-    "height": "500",
-    "workcenters": [  
-        {
-            "type": "CapacityByBulk",
-            "workcenter": "1010"
-        },		
-		{
-            "type": "CapacityByState",
-            "workcenter": "1010",
-			"showPreviousCapacity": "false"
-        },		
-        {
-            "type": "CapacityByState",
-            "workcenter": "3010"
-        },
-        {
-            "type": "CapacityByState",
-            "workcenter": "3020"
-        },
-        {
-            "type": "CapacityByState",
-            "workcenter": "3030"
-        },
-        {
-            "type": "CapacityByState",
-            "workcenter": "5010"
-        },
-		{
-            "type": "CapacityByState",
-            "workcenter": "5020"
-        },
-		{
-            "type": "CapacityByState",
-            "workcenter": "5070"
-        },
-		{
-            "type": "CapacityByState",
-            "workcenter": "6010"
-        }
-    ]
+  "dayscount": "20",
+  "height": "500",
+  "workcenters": [
+    {
+      "workcenter": "1010",
+      "capacityType": "CapacityByState"
+    },
+    {
+      "workcenter": "1010",
+      "capacityType": "CapacityByState",
+      "showPreviousCapacity": "false"
+    },
+    {
+      "workcenter": "3010",
+      "capacityType": "CapacityByState"
+    },
+    {
+      "workcenter": "3020",
+      "capacityType": "CapacityByState"
+    },
+    {
+      "workcenter": "3030",
+      "capacityType": "CapacityByState"
+    },
+    {
+      "workcenter": "5010",
+      "capacityType": "CapacityByState"
+    },
+    {
+      "workcenter": "5020",
+      "capacityType": "CapacityByState"
+    },
+    {
+      "workcenter": "5070",
+      "capacityType": "CapacityByState"
+    },
+    {
+      "workcenter": "6010",
+      "capacityType": "CapacityByState"
+    }
+  ]
 }
