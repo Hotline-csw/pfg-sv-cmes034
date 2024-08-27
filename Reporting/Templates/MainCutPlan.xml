@@ -59,7 +59,7 @@
     </Item4>
     <Item5 Ref="23" ControlType="GroupFooterBand" Name="GroupFooter1" HeightF="87.5">
       <Controls>
-        <Item1 Ref="24" ControlType="XRSubreport" Name="subreport1" ReportSourceUrl="&quot;C:\ProgramData\Homag Group\FLS\ControllerMES\dev\Reporting\Templates\SubCutPlan.xml&quot;" SizeF="650,23" LocationFloat="0,42.7083359" />
+        <Item1 Ref="24" ControlType="XRSubreport" Name="subreport1" ReportSourceUrl="C:\ProgramData\Homag Group\FLS\ControllerMES\dev\Reporting\Templates\SubCutPlan.xml" SizeF="650,23" LocationFloat="0,42.7083359" />
         <Item2 Ref="25" ControlType="XRTable" Name="table3" SizeF="650,23" LocationFloat="0,0">
           <Rows>
             <Item1 Ref="26" ControlType="XRTableRow" Name="tableRow3" Weight="1">
