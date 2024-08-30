@@ -3,35 +3,35 @@
     "height": "500",
     "workcenters": [          
 		{
-            "type": "CapacityByState",
+            "capacityType": "CapacityByState",
             "workcenter": "1010"			
         },		
         {
-            "type": "CapacityByState",
+            "capacityType": "CapacityByState",
             "workcenter": "3010"
         },
         {
-            "type": "CapacityByState",
+            "capacityType": "CapacityByState",
             "workcenter": "3020"
         },
         {
-            "type": "CapacityByState",
+            "capacityType": "CapacityByState",
             "workcenter": "3030"
         },
         {
-            "type": "CapacityByState",
+            "capacityType": "CapacityByState",
             "workcenter": "5010"
         },
 		{
-            "type": "CapacityByState",
+            "capacityType": "CapacityByState",
             "workcenter": "5020"
         },
 		{
-            "type": "CapacityByState",
+            "capacityType": "CapacityByState",
             "workcenter": "5070"
         },
 		{
-            "type": "CapacityByState",
+            "capacityType": "CapacityByState",
             "workcenter": "6010"
         }
     ]
