@@ -47,6 +47,9 @@ public class BulkPlanningProgress : HomagGroup.FLS.Infrastructure.Common.Customi
 
         var res = _BulkInfoProvider.SimulateBulkPlanningCapacity(ids, data.date, data.date);
         result.Content = new StringContent(res);
+        
+        _Logger.Info("Kapazität: " + res);
+        
         return result;
     }
    
