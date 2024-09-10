@@ -30,10 +30,16 @@
             "type": "string"
           },
           "initialize": {
-            "type": "string"
+            "type": "string",  
+            "widget": "select",
+            "choicesUrl": "{{server}}/dao/UserExits/Planning",
+            "choicesVerb": "GET"
           },
           "execute": {
-            "type": "string"
+            "type": "string",  
+            "widget": "select",
+            "choicesUrl": "{{server}}/dao/UserExits/Planning",
+            "choicesVerb": "GET"
           },
           "fields": {
             "type": "array",
@@ -77,7 +83,12 @@
           ],
           "properties": {
               "component": {"$ref": "#/definitions/component"},
-              "calculate":{ "type": "string"},
+              "calculate":{ 
+                "type": "string",  
+                "widget": "select",
+                "choicesUrl": "{{server}}/dao/UserExits/Planning",
+                "choicesVerb": "GET"
+              },
 			        "parameter":{ "type": "string",  "widget": "textarea"}
           }
          
