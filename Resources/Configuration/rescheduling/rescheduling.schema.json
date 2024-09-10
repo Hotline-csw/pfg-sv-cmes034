@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ReScheduling",
+  "type": "object",
+  "properties": {
+    "execute": {
+      "type": "string",
+      "widget": "select",
+      "choicesUrl": "{{server}}/dao/UserExits/Planning",
+      "choicesVerb": "GET"
+    },
+    "workCenters": {
+      "type": "array",
+      "items": {
+        "type": "string",  
+        "widget": "select",
+        "choicesUrl": "{{server}}/odata/WorkCenters?$select=Code",
+        "jsonata": "value.Code",
+        "choicesVerb": "GET"
+      }
+    }
+  },
+  "required": [
+    "workCenters"
+  ]
+}
