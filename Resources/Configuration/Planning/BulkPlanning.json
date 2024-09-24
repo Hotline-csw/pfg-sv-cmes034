@@ -1,6 +1,6 @@
 {
   "label": "CustomerOrder bulk planning",
-  "entityType": "ProductionOrder",
+  "entityType": "CustViewBulkPlanning",
   "valueField": "",
   "returnDetailSequence": true,
   "select": [
