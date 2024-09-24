@@ -3,11 +3,11 @@
 CREATE VIEW[cust].[ViewBulkPlannings]
  AS SELECT 
 	PO.Sequence AS [Sequence],
-	CO.Code AS OrderNumber, 
+	CO.Code AS OrderNumber,
 	CO.OrderDate,
-	PO.Width AS NarrowPart,			
-	PO.CustomVolume AS Volume,		
-	PO.Material						
+	PO.NarrowPartType AS NarrowPart,
+	PO.CustomVolume AS Volume,
+	PO.Material				
 	
 	FROM base.CustomerOrders CO
 	join base.ProductionOrders PO on CO.Code = PO.CustomerOrderCode
