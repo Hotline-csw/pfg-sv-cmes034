@@ -5,48 +5,6 @@
   "returnDetailSequence": true,
   "select": [
     {
-      "name": "OrderNumber",
-      "label": "Order number",
-      "field": "Min(Key.OrderNumber)",
-      "keyFigure": {
-        "label": "Qty customer orders",
-        "max": "5",
-        "aggregate": "distinct",
-        "fieldType": "number"
-      }
-    },
-    {
-      "name": "OrderDate",
-      "label": "Order date",
-      "filter": true,
-      "field": "Min(OrderDate) as OrderDate"
-    },
-    {
-      "name": "NarrowParts",
-      "label": "Narrow parts",
-      "filter": true,
-      "field": "Sum(if(NarrowPart > 1, 1, 0)) AS NarrowParts",
-      "keyFigure": {
-        "label": "Qty narrow parts",
-        "min": "20",
-        "max": "60",
-        "aggregate": "sum",
-        "fieldType": "number"
-      }
-    },
-    {
-      "name": "Volume",
-      "label": "Volume",
-      "field": "Sum(Volume)",
-      "keyFigure": {
-        "label": "Volume",
-        "min": "4",
-        "max": "10",
-        "aggregate": "sum",
-        "fieldType": "number"
-      }
-    },
-    {
       "name": "Materials",
       "label": "Materials",
       "filter": true,
