@@ -13,6 +13,9 @@
   "where": [
     "(ProductionState == 0)"
   ],
+  "groupBy": [
+    "orderNumber"
+  ],
   "functionBlock": {
     "label": "Add to bulk",
     "initialize": "BulkPlanningSet",
