@@ -37,7 +37,7 @@
     {
       "name": "Volume",
       "label": "Volume",
-      "field": "Sum(CustomVolume) as Volume",
+      "field": "Sum(Volume)",
       "keyFigure": {
         "label": "Volume",
         "min": "4",
@@ -64,10 +64,10 @@
     "(OrderType == 3)"
   ],
   "groupBy": [
-    "CustomerOrder.Code AS CustomerOrder"
+    "OrderNumber"
   ],
   "orderBy": [
-    "Key.CustomerOrder"
+    "Key.OrderNumber"
   ],
   "functionBlock": {
     "label": "Add to bulk",
