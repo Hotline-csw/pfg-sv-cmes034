@@ -9,5 +9,7 @@
       "field": "Min(Key.OrderNumber)"
     }
   ],
-  "functionBlock": {}
+  "functionBlock": {
+    "label": "Add to bulk"
+  }
 }
