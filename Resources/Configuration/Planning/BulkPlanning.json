@@ -50,7 +50,7 @@
       "name": "Materials",
       "label": "Materials",
       "filter": true,
-      "field": "z.where(f=> f.OrderType == 3).Select(x => x.Material).Distinct() as Materials",
+      "field": "g.where(f=> f.OrderType == 3).Select(x => x.Material).Distinct() as Materials",
       "keyFigure": {
         "label": "Materials",
         "aggregate": "merge",
