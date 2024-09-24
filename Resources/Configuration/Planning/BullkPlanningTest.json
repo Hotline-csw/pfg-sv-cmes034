@@ -10,6 +10,8 @@
     }
   ],
   "functionBlock": {
-    "label": "Add to bulk"
+    "label": "Add to bulk",
+    "initialize": "BulkPlanningSet",
+    "execute": "BulkPlanning"
   }
 }
