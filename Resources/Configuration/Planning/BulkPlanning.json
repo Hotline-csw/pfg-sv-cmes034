@@ -40,7 +40,7 @@
       "field": "Sum(CustomVolume) as Volume",
       "keyFigure": {
         "label": "Volume",
-        "min": "4",
+        "min": "1",
         "max": "10",
         "aggregate": "sum",
         "fieldType": "number"
