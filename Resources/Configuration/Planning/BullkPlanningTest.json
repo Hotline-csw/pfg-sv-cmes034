@@ -15,7 +15,8 @@
     "execute": "BulkPlanning",
     "fields": [
       {
-        "name": "Bulk planning"
+        "name": "Name",
+        "label": "Bulk name"
       }
     ]
   }
