@@ -1,6 +1,13 @@
--- CREATING NEW VIEW
--- The schema name has to be 'cust'
--- The view name has to start with the prefix 'View'
+-- View for the manual bulk planing in the web environment
+-- 2024-09-24 SG: Created
 CREATE VIEW[cust].[ViewBulkPlannings]
- AS SELECT DISTINCT base.Users.Sequence
-FROM base.Users
+ AS SELECT 
+	PO.Sequence AS [Sequence],
+	CO.Code AS OrderNumber, 
+	CO.OrderDate,
+	PO.Width AS NarrowPart,			
+	PO.CustomVolume AS Volume,		
+	PO.Material						
+	
+	FROM base.CustomerOrders CO
+	join base.ProductionOrders PO on CO.Code = PO.CustomerOrderCode
