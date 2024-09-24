@@ -20,12 +20,6 @@
     "(ProductionState == 0)",
     "(PlanningSequence == null)"
   ],
-  "groupBy": [
-    "Key.OrderNumber"
-  ],
-  "orderBy": [
-    "Key.OrderNumber"
-  ],
   "functionBlock": {
     "label": "Add to bulk",
     "initialize": "BulkPlanningSet",
