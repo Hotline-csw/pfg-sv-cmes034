@@ -7,7 +7,7 @@
     {
       "name": "OrderNumber",
       "label": "Order number",
-      "field": "Min(OrderNumber)",
+      "field": "Min(Key.OrderNumber)",
       "keyFigure": {
         "label": "Qty customer orders",
         "max": "5",
