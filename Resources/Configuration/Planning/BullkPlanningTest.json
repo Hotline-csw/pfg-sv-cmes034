@@ -6,7 +6,7 @@
     {
       "name": "OrderNumber",
       "label": "OrderNumber",
-      "field": "Min(Key.OrderNumber)"
+      "field": "Min(OrderNumber)"
     }
   ],
   "functionBlock": {
