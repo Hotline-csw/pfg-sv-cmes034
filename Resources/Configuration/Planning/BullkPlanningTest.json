@@ -23,6 +23,11 @@
         "name": "Date",
         "label": "plan date",
         "fieldType": "date"
+      },
+      {
+        "name": "color",
+        "label": "color",
+        "fieldType": "color"
       }
     ]
   }
