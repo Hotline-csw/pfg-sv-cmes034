@@ -19,13 +19,13 @@
       "name": "OrderDate",
       "label": "Order date",
       "filter": true,
-      "field": "Min(CustomerOrder.ShippingDate) as OrderDate"
+      "field": "Min(OrderDate) as OrderDate"
     },
     {
       "name": "NarrowParts",
       "label": "Narrow parts",
       "filter": true,
-      "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS NarrowParts",
+      "field": "Sum(iif(NarrowPartType > 1, 1, 0)) AS NarrowParts",
       "keyFigure": {
         "label": "Qty narrow parts",
         "min": "20",
