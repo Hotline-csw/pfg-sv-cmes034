@@ -1,1 +1,27 @@
-[]
+{
+  "label": "Test",
+  "entityType": "CustViewBulkPlanning",
+  "returnDetailSequence": true,
+  "functionBlock": {
+    "label": "Add",
+    "initialize": "BulkPlanningSet",
+    "execute": "BulkPlanningProgress",
+    "fields": [
+      {
+        "name": "Name",
+        "label": "BulkName",
+        "fieldType": "text"
+      },
+      {
+        "name": "date",
+        "label": "date",
+        "fieldType": "date"
+      },
+      {
+        "name": "color",
+        "label": "color",
+        "fieldType": "color"
+      }
+    ]
+  }
+}
