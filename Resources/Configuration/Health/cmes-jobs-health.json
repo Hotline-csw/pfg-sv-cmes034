@@ -4,7 +4,7 @@
 		"inputMongo":
 		{
 				"dataSource": "JobHistory",
-				"instance": "CMES-PROD"
+				"instance": "CMES_Health"
 		}
 	},
 "config":{

@@ -12,7 +12,7 @@
       "refresh": 5,
       "inputOData": {},
       "inputMongo": {
-        "instance": "CMES_DEV"
+        "instance": "CMES_Health"
       }
     }
   },
@@ -25,13 +25,13 @@
     "component": "cmes-dashboard-cmes-perf-chart",
     "link": "cmes-health",
 	"input": {
-		"chartName":"CMes Server 1",
+		"chartName":"cMES_Server_Host",
 		"refresh": 2,
 		"inputOData": {},
 		"inputMongo":
 		{
 			"dataSource": "PerfmonOneSecond",
-			"instance": "CMES_DEV"
+			"instance": "CMES_Health"
 		}
 	}
  },
@@ -50,7 +50,7 @@
 		"inputMongo":
 		{
 			"dataSource": "DatabasePerformance",
-			"instance": "CMES_DEV"
+			"instance": "CMES_Health"
 		}
 	}
  },

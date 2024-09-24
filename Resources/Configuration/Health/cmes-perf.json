@@ -4,7 +4,7 @@
 		"inputMongo":
 		{
 				"dataSource": "PerfmonOneSecond",
-				"instance": "CMES-PROD"
+				"instance": "CMES_Health"
 		}
 	}
 }

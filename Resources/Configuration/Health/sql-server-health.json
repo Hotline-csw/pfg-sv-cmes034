@@ -4,7 +4,7 @@
 		"inputMongo":
 		{
 				"dataSource": "DatabaseQueryPerformance",
-				"instance": "CMES-PROD"
+				"instance": "CMES_Health"
 		}
 	},
 "config":{
