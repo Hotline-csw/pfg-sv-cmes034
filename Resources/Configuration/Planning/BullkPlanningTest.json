@@ -10,6 +10,9 @@
       "field": "g.Select(x => x.Material).Distinct() as Materials"
     }
   ],
+  "where": [
+    "(ProductionState == 0)"
+  ],
   "functionBlock": {
     "label": "Add to bulk",
     "initialize": "BulkPlanningSet",
