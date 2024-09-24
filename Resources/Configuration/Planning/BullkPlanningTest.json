@@ -4,9 +4,10 @@
   "returnDetailSequence": true,
   "select": [
     {
-      "name": "OrderNumber",
-      "label": "OrderNumber",
-      "field": "Min(OrderNumber)"
+      "name": "Materials",
+      "label": "Materials",
+      "filter": true,
+      "field": "g.Select(x => x.Material).Distinct() as Materials"
     }
   ],
   "functionBlock": {
