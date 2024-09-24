@@ -19,7 +19,11 @@
         "label": "Bulk name",
         "fieldType": "text"
       },
-      null
+      {
+        "name": "Date",
+        "label": "plan date",
+        "fieldType": "date"
+      }
     ]
   }
 }
