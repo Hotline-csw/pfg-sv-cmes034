@@ -16,7 +16,8 @@
     "fields": [
       {
         "name": "Name",
-        "label": "Bulk name"
+        "label": "Bulk name",
+        "fieldType": "text"
       }
     ]
   }
