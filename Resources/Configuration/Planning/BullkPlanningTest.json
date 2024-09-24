@@ -12,6 +12,11 @@
   "functionBlock": {
     "label": "Add to bulk",
     "initialize": "BulkPlanningSet",
-    "execute": "BulkPlanning"
+    "execute": "BulkPlanning",
+    "fields": [
+      {
+        "name": "Bulk planning"
+      }
+    ]
   }
 }
