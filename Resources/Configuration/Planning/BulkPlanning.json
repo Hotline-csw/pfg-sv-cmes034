@@ -64,7 +64,7 @@
     "(OrderType == 3)"
   ],
   "groupBy": [
-    "OrderNumber"
+    "Key.OrderNumber"
   ],
   "orderBy": [
     "Key.OrderNumber"
