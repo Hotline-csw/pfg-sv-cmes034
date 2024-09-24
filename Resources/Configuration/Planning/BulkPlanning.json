@@ -18,8 +18,7 @@
   ],
   "where": [
     "(ProductionState == 0)",
-    "(PlanningSequence == null)",
-    "(OrderType == 3)"
+    "(PlanningSequence == null)"
   ],
   "groupBy": [
     "Key.OrderNumber"
