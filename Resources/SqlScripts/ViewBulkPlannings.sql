@@ -7,7 +7,10 @@ CREATE VIEW[cust].[ViewBulkPlannings]
 	CO.OrderDate,
 	PO.NarrowPartType AS NarrowPart,
 	PO.CustomVolume AS Volume,
-	PO.Material				
+	PO.Material,
+	PO.ProductionState,
+	PO.PlanningSequence,
+	PO.OrderType
 	
 	FROM base.CustomerOrders CO
 	join base.ProductionOrders PO on CO.Code = PO.CustomerOrderCode
