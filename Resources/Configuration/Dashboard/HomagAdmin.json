@@ -44,7 +44,7 @@
     "component": "cmes-dashboard-sql-server-perf-chart",
     "link": "sql-server-health",
 	"input": {
-		"chartName":"SqlServer Server DEV",
+		"chartName":"SqlServer DEV",
 		"refresh": 2,
 		"inputOData": {},
 		"inputMongo":
