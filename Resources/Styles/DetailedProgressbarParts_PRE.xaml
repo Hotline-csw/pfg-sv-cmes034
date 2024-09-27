@@ -13,7 +13,7 @@
     </Converter:ValueToImageConverter>
 	
 	<!-- Change 1: Style name = WorkCenter name -->
-    <Style x:Key="DetailedProgressbarParts_B300" TargetType="telerik:GridViewCell"> 
+    <Style x:Key="DetailedProgressbarParts_PRE" TargetType="telerik:GridViewCell"> 
         <Style.Setters>
             <Setter Property="ContentTemplate">
                 <Setter.Value>
@@ -23,9 +23,9 @@
 							
 							<!-- Change 2: Set name icon, add fields from the view -->
 							<StackPanel.Resources>
-								<system:String x:Key="imagekey">cut</system:String>
-								<PropertyPath x:Key="percentage">DataContext.B300Percentage</PropertyPath> <!-- Field with percentage info-->
-								<PropertyPath x:Key="qty">DataContext.B300Qty</PropertyPath> <!-- Field with current and desired quantity info-->
+								<system:String x:Key="imagekey">Preassembly</system:String>
+								<PropertyPath x:Key="percentage">DataContext.PREPercentage</PropertyPath> <!-- Field with percentage info-->
+								<PropertyPath x:Key="qty">DataContext.PREQty</PropertyPath> <!-- Field with current and desired quantity info-->
 							</StackPanel.Resources>
 							<!-- No more changes required -->
 						

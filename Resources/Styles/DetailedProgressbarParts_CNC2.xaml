@@ -13,7 +13,7 @@
     </Converter:ValueToImageConverter>
 	
 	<!-- Change 1: Style name = WorkCenter name -->
-    <Style x:Key="DetailedProgressbarParts_EDGETEQ" TargetType="telerik:GridViewCell"> 
+    <Style x:Key="DetailedProgressbarParts_CNC2" TargetType="telerik:GridViewCell"> 
         <Style.Setters>
             <Setter Property="ContentTemplate">
                 <Setter.Value>
@@ -23,9 +23,9 @@
 							
 							<!-- Change 2: Set name icon, add fields from the view -->
 							<StackPanel.Resources>
-								<system:String x:Key="imagekey">edge</system:String>
-								<PropertyPath x:Key="percentage">DataContext.EDGETEQPercentage</PropertyPath> <!-- Field with percentage info-->
-								<PropertyPath x:Key="qty">DataContext.EDGETEQQty</PropertyPath> <!-- Field with current and desired quantity info-->
+								<system:String x:Key="imagekey">drill</system:String>
+								<PropertyPath x:Key="percentage">DataContext.CNC2Percentage</PropertyPath> <!-- Field with percentage info-->
+								<PropertyPath x:Key="qty">DataContext.CNC2Qty</PropertyPath> <!-- Field with current and desired quantity info-->
 							</StackPanel.Resources>
 							<!-- No more changes required -->
 						
