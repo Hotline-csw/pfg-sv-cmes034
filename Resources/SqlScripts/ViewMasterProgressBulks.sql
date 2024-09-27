@@ -108,7 +108,7 @@ Group by
 ) 
 As ReworkQty,
 
--- B300
+-- CU1 (SAWTEQ B-300)
 -- Percentage
 (
 Select  
@@ -121,13 +121,13 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode = '1010'
+	ps.WorkCenterCode = 'CU1'
 	and
 	ps.DisposeState = 0
 Group by 
 	mbb.PlanningNumber
 )
-As B300Percentage,
+As CU1Percentage,
 -- Quantity
 (
 Select 
@@ -140,15 +140,15 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode = '1010'
+	ps.WorkCenterCode = 'CU1'
 	and
 	ps.DisposeState = 0
 Group by 
 	mbb.PlanningNumber
 ) 
-As B300Qty,
+As CU1Qty,
 
--- EDGETEQ
+-- EB1 (EDGETEQ S-810)
 -- Percentage
 (
 Select  
@@ -161,13 +161,13 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode = '3010'
+	ps.WorkCenterCode = 'EB1'
 	and
 	ps.DisposeState = 0
 Group by 
 	mbb.PlanningNumber
 )
-As EDGETEQPercentage,
+As EB1Percentage,
 -- Quantity
 (
 Select 
@@ -180,15 +180,15 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode = '3010'
+	ps.WorkCenterCode = 'EB1'
 	and
 	ps.DisposeState = 0
 Group by 
 	mbb.PlanningNumber
 ) 
-As EDGETEQQty,
+As EB1Qty,
 
--- V200
+-- CNC1 (DRILLTEQ V-200)
 -- Percentage
 (
 Select  
@@ -201,13 +201,13 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode = '5010'
+	ps.WorkCenterCode = 'CNC1'
 	and
 	ps.DisposeState = 0
 Group by 
 	mbb.PlanningNumber
 )
-As V200Percentage,
+As CNC1Percentage,
 -- Quantity
 (
 Select 
@@ -220,15 +220,15 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode = '5010'
+	ps.WorkCenterCode = 'CNC1'
 	and
 	ps.DisposeState = 0
 Group by 
 	mbb.PlanningNumber
 ) 
-As V200Qty,
+As CNC1Qty,
 
--- E310
+-- CNC2 (CENTATEQ E-310)
 -- Percentage
 (
 Select  
@@ -241,13 +241,13 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode = '5020'
+	ps.WorkCenterCode = 'CNC2'
 	and
 	ps.DisposeState = 0
 Group by 
 	mbb.PlanningNumber
 )
-As E310Percentage,
+As CNC2Percentage,
 -- Quantity
 (
 Select 
@@ -260,15 +260,15 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode = '5020'
+	ps.WorkCenterCode = 'CNC2'
 	and
 	ps.DisposeState = 0
 Group by 
 	mbb.PlanningNumber
 ) 
-As E310Qty,
+As CNC2Qty,
 
--- SORTING
+-- SP (Manual sorting and picking)
 -- Percentage
 (
 Select  
@@ -281,13 +281,13 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode = '5070'
+	ps.WorkCenterCode = 'SP'
 	and
 	ps.DisposeState = 0
 Group by 
 	mbb.PlanningNumber
 )
-As SORTPercentage,
+As SPPercentage,
 -- Quantity
 (
 Select 
@@ -300,15 +300,15 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode = '5070'
+	ps.WorkCenterCode = 'SP'
 	and
 	ps.DisposeState = 0
 Group by 
 	mbb.PlanningNumber
 ) 
-As SORTQty,
+As SPQty,
 
--- PREASSEMBLY
+-- PRE (Manual pre-assembly of parts)
 -- Percentage
 (
 Select  
@@ -321,15 +321,13 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode = '6010'
+	ps.WorkCenterCode = 'PRE'
 	and
 	ps.DisposeState = 0
-	and
-	po.OrderType = '3'
 Group by 
 	mbb.PlanningNumber
 )
-As PREASSPercentage,
+As PREPercentage,
 -- Quantity
 (
 Select 
@@ -342,17 +340,15 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode = '6010'
+	ps.WorkCenterCode = 'PRE'
 	and
 	ps.DisposeState = 0
-	and
-	po.OrderType = '3'
 Group by 
 	mbb.PlanningNumber
 ) 
-As PREASSQty,
+As PREQty,
 
--- ASSEMBLY
+-- QC (Manual quality control)
 -- Percentage
 (
 Select  
@@ -365,15 +361,13 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode = '6010'
+	ps.WorkCenterCode = 'QC'
 	and
 	ps.DisposeState = 0
-	and
-	po.OrderType = '1'
 Group by 
 	mbb.PlanningNumber
 )
-As ASSPercentage,
+As QCPercentage,
 -- Quantity
 (
 Select 
@@ -386,15 +380,53 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode = '6010'
+	ps.WorkCenterCode = 'QC'
 	and
 	ps.DisposeState = 0
-	and
-	po.OrderType = '1'
 Group by 
 	mbb.PlanningNumber
 ) 
-As ASSQty
+As QCQty,
+
+-- AS1 (Manual assembly of furnitures)
+-- Percentage
+(
+Select  
+	CAST(ROUND(CAST(SUM(ps.CurrentTargetQuantity) as decimal(6,2))/CAST(SUM(ps.DesiredTargetQuantity) as decimal(6,2))*100,2) as decimal(6,2))
+From
+	base.ProductionSteps ps
+	LEFT OUTER JOIN base.ProductionOrders po on po.Code = ps.ProductionOrderCode
+	LEFT OUTER JOIN base.ProductionOrders ts on ts.code = po.TopProductionOrderNumber   
+	LEFT OUTER JOIN base.ManualBulks mbb on mbb.Sequence = ts.PlanningSequence
+Where 
+	mbb.PlanningNumber = mb.PlanningNumber
+	and
+	ps.WorkCenterCode = 'AS1'
+	and
+	ps.DisposeState = 0
+Group by 
+	mbb.PlanningNumber
+)
+As AS1Percentage,
+-- Quantity
+(
+Select 
+	CAST(SUM(ps.CurrentTargetQuantity) as nvarchar) + '/' + CAST(SUM(ps.DesiredTargetQuantity) as nvarchar)
+From 
+	base.ProductionSteps ps
+	LEFT OUTER JOIN base.ProductionOrders po on po.Code = ps.ProductionOrderCode
+	LEFT OUTER JOIN base.ProductionOrders ts on ts.code = po.TopProductionOrderNumber   
+	LEFT OUTER JOIN base.ManualBulks mbb on mbb.Sequence = ts.PlanningSequence
+Where 
+	mbb.PlanningNumber = mb.PlanningNumber
+	and
+	ps.WorkCenterCode = 'AS1'
+	and
+	ps.DisposeState = 0
+Group by 
+	mbb.PlanningNumber
+) 
+As AS1Qty
 
 
 From base.ProductionOrders po
