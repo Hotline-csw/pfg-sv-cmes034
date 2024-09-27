@@ -7,7 +7,7 @@ Select
 ISNULL(ROW_NUMBER() over (Order by op.OptimizationCode),-1) as RowID
 ,op.OptimizationCode
 
--- OrderCompleted: OverallPercentage = 100.00 without Preassembly and Assembly
+-- OrderCompleted: OverallPercentage = 100.00 without Preassembly, Quality Control and Assembly
 ,Case when
 (
 Select  
@@ -19,7 +19,7 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	ps.DisposeState = 0
 Group by 
@@ -44,7 +44,7 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	ps.DisposeState = 0
 Group by 
@@ -62,7 +62,7 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	ps.DisposeState = 0
 Group by 
@@ -82,7 +82,7 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ReproductionType IN (1)
 	and
@@ -102,7 +102,7 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ReproductionType IN (1)
 	and
@@ -112,7 +112,7 @@ Group by
 ) 
 As ReworkQty,
 
--- B300
+-- CU1 (SAWTEQ B-300)
 -- Percentage
 (
 Select  
@@ -124,13 +124,13 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode = '1010'
+	ps.WorkCenterCode = 'CU1'
 	and
 	ps.DisposeState = 0
 Group by 
 	opc.OptimizationCode
 )
-As B300Percentage,
+As CU1Percentage,
 -- Quantity
 (
 Select 
@@ -142,15 +142,15 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode = '1010'
+	ps.WorkCenterCode = 'CU1'
 	and
 	ps.DisposeState = 0
 Group by 
 	opc.OptimizationCode
 ) 
-As B300Qty,
+As CU1Qty,
 
--- EDGETEQ
+-- EB1 (EDGETEQ S-810)
 -- Percentage
 (
 Select  
@@ -162,13 +162,13 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode = '3010'
+	ps.WorkCenterCode = 'EB1'
 	and
 	ps.DisposeState = 0
 Group by 
 	opc.OptimizationCode
 )
-As EDGETEQPercentage,
+As EB1Percentage,
 -- Quantity
 (
 Select 
@@ -180,15 +180,15 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode = '3010'
+	ps.WorkCenterCode = 'EB1'
 	and
 	ps.DisposeState = 0
 Group by 
 	opc.OptimizationCode
 ) 
-As EDGETEQQty,
+As EB1Qty,
 
--- V200
+-- CNC1 (DRILLTEQ V-200)
 -- Percentage
 (
 Select  
@@ -200,13 +200,13 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode = '5010'
+	ps.WorkCenterCode = 'CNC1'
 	and
 	ps.DisposeState = 0
 Group by 
 	opc.OptimizationCode
 )
-As V200Percentage,
+As CNC1Percentage,
 -- Quantity
 (
 Select 
@@ -218,15 +218,15 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode = '5010'
+	ps.WorkCenterCode = 'CNC1'
 	and
 	ps.DisposeState = 0
 Group by 
 	opc.OptimizationCode
 ) 
-As V200Qty,
+As CNC1Qty,
 
--- E310
+-- CNC2 (CENTATEQ E-310)
 -- Percentage
 (
 Select  
@@ -238,13 +238,13 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode = '5020'
+	ps.WorkCenterCode = 'CNC2'
 	and
 	ps.DisposeState = 0
 Group by 
 	opc.OptimizationCode
 )
-As E310Percentage,
+As CNC2Percentage,
 -- Quantity
 (
 Select 
@@ -256,15 +256,15 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode = '5020'
+	ps.WorkCenterCode = 'CNC2'
 	and
 	ps.DisposeState = 0
 Group by 
 	opc.OptimizationCode
 ) 
-As E310Qty,
+As CNC2Qty,
 
--- SORTING
+-- SP (Manual sorting and picking)
 -- Percentage
 (
 Select  
@@ -276,13 +276,13 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode = '5070'
+	ps.WorkCenterCode = 'SP'
 	and
 	ps.DisposeState = 0
 Group by 
 	opc.OptimizationCode
 )
-As SORTPercentage,
+As SPPercentage,
 -- Quantity
 (
 Select 
@@ -294,13 +294,13 @@ From
 Where 
 	opc.OptimizationCode = op.OptimizationCode
 	and
-	ps.WorkCenterCode = '5070'
+	ps.WorkCenterCode = 'SP'
 	and
 	ps.DisposeState = 0
 Group by 
 	opc.OptimizationCode
 ) 
-As SORTQty
+As SPQty
 
 
 From base.ProductionOrders po
