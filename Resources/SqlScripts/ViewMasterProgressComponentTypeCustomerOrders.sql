@@ -26,7 +26,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	ps.DisposeState = 0
 Group by 
@@ -50,7 +50,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	ps.DisposeState = 0
 Group by 
@@ -67,7 +67,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	ps.DisposeState = 0
 Group by 
@@ -86,7 +86,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ReproductionType IN (1)
 	and
@@ -105,7 +105,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ReproductionType IN (1)
 	and
@@ -126,7 +126,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (6,7,8,9) -- Filler, Door, DoorLeft, DoorRight
 	and
@@ -145,7 +145,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (6,7,8,9) -- Filler, Door, DoorLeft, DoorRight
 	and
@@ -166,7 +166,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (1,2,3,4,5,12,13,20,21,24) -- SidePanel, AdjustableShelf, TopShelf, BottomShelf, BackPanel, FixedShelf, Partition, Toekick, Worktop, Traverse
 	and
@@ -185,7 +185,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (1,2,3,4,5,12,13,20,21,24) -- SidePanel, AdjustableShelf, TopShelf, BottomShelf, BackPanel, FixedShelf, Partition, Toekick, Worktop, Traverse
 	and
@@ -206,7 +206,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (17,18,19) -- DrawerBottom, DrawerSide, DrawerFront
 	and
@@ -225,7 +225,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (17,18,19) -- DrawerBottom, DrawerSide, DrawerFront
 	and
@@ -246,7 +246,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (20,21) -- Toekick, Worktop
 	and
@@ -265,7 +265,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (20,21) -- Toekick, Worktop
 	and
@@ -286,7 +286,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (1) -- SidePanel
 	and
@@ -305,7 +305,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (1) -- SidePanel
 	and
@@ -326,7 +326,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (2,3,4,5,12,13,24) -- AdjustableShelf, TopShelf, BottomShelf, BackPanel, FixedShelf, Partition, Traverse
 	and
@@ -345,7 +345,7 @@ From
 Where 
 	po.CustomerOrderCode = co.Code
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (2,3,4,5,12,13,24) -- AdjustableShelf, TopShelf, BottomShelf, BackPanel, FixedShelf, Partition, Traverse
 	and
