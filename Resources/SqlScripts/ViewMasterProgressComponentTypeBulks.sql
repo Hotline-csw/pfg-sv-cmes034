@@ -22,7 +22,7 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	ps.DisposeState = 0
 Group by 
@@ -48,7 +48,7 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	ps.DisposeState = 0
 Group by 
@@ -67,7 +67,7 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	ps.DisposeState = 0
 Group by 
@@ -88,7 +88,7 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ReproductionType IN (1)
 	and
@@ -109,7 +109,7 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ReproductionType IN (1)
 	and
@@ -132,7 +132,7 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (6,7,8,9) -- Filler, Door, DoorLeft, DoorRight
 	and
@@ -153,7 +153,7 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (6,7,8,9) -- Filler, Door, DoorLeft, DoorRight
 	and
@@ -176,7 +176,7 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (1,18,19) -- SidePanel, DrawerSide, DrawerFront
 	and
@@ -197,7 +197,7 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (1,18,19) -- SidePanel, DrawerSide, DrawerFront
 	and
@@ -220,7 +220,7 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (2,3,4,5,12,13,17,20,21,24) -- AdjustableShelf, TopShelf, BottomShelf, BackPanel, FixedShelf, Partition, DrawerBottom, Toekick, Worktop, Traverse
 	and
@@ -241,7 +241,7 @@ From
 Where 
 	mbb.PlanningNumber = mb.PlanningNumber
 	and
-	ps.WorkCenterCode in ('1010','3010','5010','5020','5070')
+	ps.WorkCenterCode in ('CU1','EB1','CNC1','CNC2','SP')
 	and
 	po.ComponentType in (2,3,4,5,12,13,17,20,21,24) -- AdjustableShelf, TopShelf, BottomShelf, BackPanel, FixedShelf, Partition, DrawerBottom, Toekick, Worktop, Traverse
 	and
