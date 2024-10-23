@@ -97,7 +97,7 @@
     {
       "component": "cmes-simulate-capacity",
       "calculate": "BulkPlanningProgress",
-      "parameter": "EB1,AS1"
+      "parameter": "EB1"
     },
     {
       "component": "cmes-key-figures"
