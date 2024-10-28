@@ -67,6 +67,8 @@ public class BulkPlanningSet : HomagGroup.FLS.Infrastructure.Common.Customizatio
             data.date = DateTime.Today.AddWorkdays(5, new DateTime[0]).ToString("yyyy-MM-dd");
             settings.SetValue("Value", lastIndex);
             result.Content = new StringContent(JsonConvert.SerializeObject(data));
+            
+            _Logger.Error(string.Format("data.name [{0}] data.color [{1}] data.date [{2}] ",data.name,data.color,data.date));
         }
         catch(Exception Ex)
         {
@@ -88,7 +90,7 @@ public class BulkPlanningSet : HomagGroup.FLS.Infrastructure.Common.Customizatio
     private class Data
     {   
         public string name { get; set; }
-        public string date {get; set; }
+        public string date { get; set; }
         public string color { get; set; } 
     }
 }
