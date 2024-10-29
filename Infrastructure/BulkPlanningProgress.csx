@@ -24,7 +24,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IUserExit))]
 [Export("BulkPlanningProgress", typeof(HomagGroup.FLS.Infrastructure.Common.Rest.IRestFunction))]
 [Description("PULK: Kalkulation der Werte für den Graphen")]
-[EnabledScript(true)]
+[EnabledScript(false)]
 public class BulkPlanningProgress : HomagGroup.FLS.Infrastructure.Common.Customization.UserExitBase, HomagGroup.FLS.Infrastructure.Common.Rest.IRestFunction
 {
     [Import]
