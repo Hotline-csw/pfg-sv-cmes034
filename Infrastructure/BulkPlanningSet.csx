@@ -23,7 +23,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IUserExit))]
 [Export("BulkPlanningSet", typeof(HomagGroup.FLS.Infrastructure.Common.Rest.IRestFunction))]
 [Description("PULK: Initialisieren von PulkPlanung in CMES Web")]
-[EnabledScript(true)]
+[EnabledScript(false)]
 public class BulkPlanningSet : HomagGroup.FLS.Infrastructure.Common.Customization.UserExitBase, HomagGroup.FLS.Infrastructure.Common.Rest.IRestFunction
 {
     [Import]
