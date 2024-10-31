@@ -29,7 +29,7 @@
       "keyFigure": {
         "label": "Qty narrow parts",
         "min": "20",
-        "max": "60",
+        "max": "",
         "aggregate": "sum",
         "fieldType": "number"
       }
