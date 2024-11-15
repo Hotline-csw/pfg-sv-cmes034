@@ -28,7 +28,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization))]
 [Export("CustomCreateProductionItems", typeof(HomagGroup.FLS.Services.Common.Contracts.JobScheduling.Configuration.Tasks.Generic.IGenericTask))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("[05] Copy ProductionItemCdoes from production order CustomProdItemCode")]
+[Description("[05] Copy ProductionItemCodes from production order CustomProdItemCode")]
 [EnabledScript(true)]
 public class CustomCreateProductionItems : CreateProductionItems
 {
