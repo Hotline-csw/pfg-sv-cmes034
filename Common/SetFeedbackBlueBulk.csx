@@ -20,6 +20,7 @@
 //   T.Stürzer       2023-02-12    Created
 //   T.Stürzer       2023-03-03    Added Condition "NoReproduction"
 //   T.Stürzer       2024-08-08    Changed Feedback from InsertFeedbackFinishedGood to InsertFeedback
+//   T.Stürzer       2024-11-15    Changed Workcenters for feedback
 //   
 //-----------------------------------------------------------------------------
 
@@ -45,22 +46,22 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
     private string _TaskName = "SetFeedbackBlueBulk";
     
     // WorkCenterCodes
-    private string cuttingWorkCenterCode = "1010";
-    private string edgeWorkCenterCode = "3010";
-    private string drillingWorkCenterCode = "5010";
-    private string cncWorkCenterCode = "5020";
-    private string sortingWorkCenterCode = "5070";
-    private string preassemblyWorkCenterCode = "6010";
-    private string assemblyWorkCenterCode = "6010";
+    private string cuttingWorkCenterCode = "CU1";
+    private string edgeWorkCenterCode = "EB1";
+    private string drillingWorkCenterCode = "CNC1";
+    private string cncWorkCenterCode = "CNC2";
+    private string sortingWorkCenterCode = "SP";
+    private string preassemblyWorkCenterCode = "PRE";
+    private string assemblyWorkCenterCode = "AS1";
     
     // ProductionStepCodes
-    private string cuttingStepCode = "B300";
-    private string edgeStepCode = "KALWZ14";
-    private string drillingStepCode = "V200";
-    private string cncStepCode = "E310";
-    private string sortingStepCode = "SORT";
-    private string preassemblyStepCode = "PREASSEM";
-    private string assemblyStepCode = "ASSEM";
+    private string cuttingStepCode = "CU1";
+    private string edgeStepCode = "EB1";
+    private string drillingStepCode = "CNC1";
+    private string cncStepCode = "CNC2";
+    private string sortingStepCode = "SP";
+    private string preassemblyStepCode = "PRE";
+    private string assemblyStepCode = "AS1";
     
     // Small Kitchens
     private string dks003 = "Demo_Kitchen_Small_003";
