@@ -12,6 +12,7 @@
       "refresh": 5,
       "inputOData": {},
       "inputMongo": {
+        "dataSource": "JobHistory",
         "instance": "CMES_Health"
       }
     }
