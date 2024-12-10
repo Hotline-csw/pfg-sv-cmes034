@@ -1,5 +1,5 @@
 {
-    "type": "object",
+  "type": "object",
   "required": [
     "label",
     "entityType",
@@ -7,202 +7,214 @@
     "select",
     "functionBlock"
   ],
-    "properties": {
-      "label": {"$ref": "#/definitions/label"},
-      "entityType": {"$ref": "#/definitions/entityType"},    
-      "valueField": {"$ref": "#/definitions/valueField"},
-      "imageField": {"$ref": "#/definitions/imageField"},
-	  "returnDetailSequence": {"$ref": "#/definitions/returnDetailSequence"},
-      "select": {"$ref": "#/definitions/select"},
-	  "where": {"$ref": "#/definitions/where"},
-      "groupBy": {"$ref": "#/definitions/groupBy"},
-      "orderBy": {"$ref": "#/definitions/orderBy"},		
-      
-      "functionBlock": {
+  "properties": {
+    "label": { "$ref": "#/definitions/label" },
+    "entityType": { "$ref": "#/definitions/entityType" },
+    "valueField": { "$ref": "#/definitions/valueField" },
+    "imageField": { "$ref": "#/definitions/imageField" },
+    "returnDetailSequence": { "$ref": "#/definitions/returnDetailSequence" },
+    "select": { "$ref": "#/definitions/select" },
+    "where": { "$ref": "#/definitions/where" },
+    "groupBy": { "$ref": "#/definitions/groupBy" },
+    "orderBy": { "$ref": "#/definitions/orderBy" },
+
+    "functionBlock": {
+      "type": "object",
+      "required": [
+        "label",
+        "fields"
+      ],
+
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "initialize": {
+          "type": "string",
+          "widget": "select",
+          "choicesUrl": "{{server}}/dao/UserExits/Planning",
+          "choicesVerb": "GET"
+        },
+        "execute": {
+          "type": "string",
+          "widget": "select",
+          "choicesUrl": "{{server}}/dao/UserExits/Planning",
+          "choicesVerb": "GET"
+        },
+        "fields": {
+          "type": "array",
+          "layout": "vertical",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "label",
+              "fieldType"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "fieldType": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+
+          }
+        }
+      }
+
+    },
+
+
+    "infoArea": {
+      "type": "array",
+      "layout": "horizontal",
+      "items": {
         "type": "object",
-         "required": [
-          "label",
-          "fields"
+        "required": [
+          "component"
         ],
-       
         "properties": {
+          "component": { "$ref": "#/definitions/component" },
           "label": {
             "type": "string"
           },
-          "initialize": {
-            "type": "string",  
+          "calculate": {
+            "type": "string",
             "widget": "select",
             "choicesUrl": "{{server}}/dao/UserExits/Planning",
             "choicesVerb": "GET"
           },
-          "execute": {
-            "type": "string",  
-            "widget": "select",
-            "choicesUrl": "{{server}}/dao/UserExits/Planning",
-            "choicesVerb": "GET"
-          },
-          "fields": {
+          "parameter": {
             "type": "array",
-			      "layout": "vertical",
+            "layout": "horizontal",
             "items": {
-              "type": "object",
-               "required": [
-                "name",
-                "label",
-                "fieldType"
-              ],
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "label": {
-                  "type": "string"
-                },
-                "fieldType": {
-                  "type": "string"
-                },
-                "value": {
-                  "type": "string"
-                }
-              }
-             
+              "type": "string"
             }
           }
         }
-       
-      },
-	  
-	
-      "infoArea": {
-        "type": "array",
-		"layout": "horizontal",		
-        "items": {
-          "type": "object",
-           "required": [
-            "component"
-          ],
-          "properties": {
-              "component": {"$ref": "#/definitions/component"},
-              "calculate":{ 
-                "type": "string",  
-                "widget": "select",
-                "choicesUrl": "{{server}}/dao/UserExits/Planning",
-                "choicesVerb": "GET"
-              },
-			        "parameter":{ "type": "string",  "widget": "textarea"}
-          }
-         
-        }
+
+      }
+    }
+  },
+  "definitions": {
+    "label": {
+      "type": "string"
+    },
+    "entityType": {
+      "type": "string",
+      "widget": "select",
+      "choicesCMesEntity": "EntityType"
+    },
+    "returnDetailSequence": {
+      "type": "boolean"
+    },
+    "valueField": {
+      "type": "string"
+    },
+    "imageField": {
+      "type": "string"
+    },
+    "where": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "widget": "textarea"
       }
     },
-    "definitions": {
-      "label": {
-          "type": "string"
-      },
-      "entityType":{
-          "type": "string",
-          "widget": "select",
-          "choicesCMesEntity":"EntityType"
-      },
-      "returnDetailSequence": {
-        "type": "boolean"
-      },
-      "valueField": {
-        "type": "string"
-      },
-      "imageField": {
-        "type": "string"
-      },
-      "where": {
-        "type": "array",
-        "items": {
-          "type": "string",
-		  "widget": "textarea"
-        }
-      },
-      "groupBy": {
-        "type": "array",
-        "items": {
-          "type": "string",
-		  "widget": "textarea"
-        }
-      },
-      "orderBy": {
-        "type": "array",
-        "items": {
-          "type": "string",
-		  "widget": "textarea"
-        }
-      },
-	  "component": {
+    "groupBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "widget": "textarea"
+      }
+    },
+    "orderBy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "widget": "textarea"
+      }
+    },
+    "component": {
       "type": "string",
       "choices": [
         "cmes-simulate-capacity",
         "cmes-key-figures"
-    ]},
-	  "select": {
-        "type": "array",
-		    "layout": "vertical",		
-        "items": {
-          "type": "object",
-          "required": [
-            "name",
-            "label",
-            "field"
-          ],
-          "properties": {
-            "name": {
-              "type": "string"
-            },
-            "label": {
-              "type": "string"
-            },
-            "filter": {
-              "type":"boolean"
-            },
-            "field": {
-              "type": "string",
-			  "widget": "textarea"
-            },
-            "keyFigure": {
-              "type": "object",
-            
-              "properties": {
-                "label": {
-                  "type": "string"
-                },
-                "min": {
-                  "type": "string"
-                },
-                "max": {
-                  "type": "string"
-                },
-                "aggregate": {
-                  "type": "string",
-                  "choices": [
-                    "sum",
-                    "min",
-                    "max",
-                    "distinct",
-                    "merge"
-                  ]
-                },
-                "fieldType": {
-                  "type": "string",
-                  "choices": [
-                    "text",
-                    "number",
-                    "date"
-                  ]
-                }
-              }
+      ]
+    },
+    "select": {
+      "type": "array",
+      "layout": "vertical",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "label",
+          "field"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-zA-Z_]+$",
+            "errorMessage": "Only Characters and _ allowed"
+          },
+          "label": {
+            "type": "string"
+          },
+          "filter": {
+            "type": "boolean"
+          },
+          "field": {
+            "type": "string",
+            "widget": "textarea"
+          },
+          "keyFigure": {
+            "type": "object",
 
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "min": {
+                "type": "string"
+              },
+              "max": {
+                "type": "string"
+              },
+              "aggregate": {
+                "type": "string",
+                "choices": [
+                  "sum",
+                  "min",
+                  "max",
+                  "distinct",
+                  "merge"
+                ]
+              },
+              "fieldType": {
+                "type": "string",
+                "choices": [
+                  "text",
+                  "number",
+                  "date"
+                ]
+              }
             }
+
           }
-          
         }
+
       }
-     
     }
-   
+
   }
+
+}
