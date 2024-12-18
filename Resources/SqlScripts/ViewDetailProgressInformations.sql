@@ -69,8 +69,8 @@ As NextStep
 
 
 From base.ProductionOrders po
-INNER JOIN base.ProductionSteps ps on ps.ProductionOrderCode = po.Code and ps.DisposeState = 0
-INNER JOIN base.ProductionItems pdi on pdi.ProductionOrderCode = po.Code
+LEFT OUTER JOIN base.ProductionSteps ps on ps.ProductionOrderCode = po.Code and ps.DisposeState = 0
+LEFT OUTER JOIN base.ProductionItems pdi on pdi.ProductionOrderCode = po.Code
 LEFT OUTER JOIN base.OptimizationParts opp on opp.ProductionOrderCode = po.Code
 LEFT OUTER JOIN base.ProductionOrders ts on ts.Code = po.TopProductionOrderNumber   
 LEFT OUTER JOIN base.ManualBulks mb on mb.Sequence = ts.PlanningSequence
