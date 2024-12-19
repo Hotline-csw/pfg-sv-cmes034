@@ -40,8 +40,8 @@
       "field": "Sum(CustomVolume) as Volume",
       "keyFigure": {
         "label": "Volume",
-        "min": "1",
-        "max": "10",
+        "min": "0.1",
+        "max": "3",
         "aggregate": "sum",
         "fieldType": "number"
       }
@@ -98,9 +98,9 @@
       "component": "cmes-simulate-capacity",
       "calculate": "BulkPlanningProgress",
       "parameter": [
-      "CU1",
-      "EB1",
-      "AS1"
+        "CU1",
+        "EB1",
+        "AS1"
       ]
     },
     {
