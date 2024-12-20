@@ -353,7 +353,7 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
         }
     }
     
-    public void SetManualBulk(IUnitOfWork unitOfWork, string planningNumber, DateTime startDate, string color, DateTime endDate)
+    public void SetManualBulk(IUnitOfWork unitOfWork, string planningNumber, DateTime startDate, string color, DateTime endDate, List<ProductionOrder> prodOrders)
     {
         
     }
