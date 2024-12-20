@@ -79,7 +79,7 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
                 var blackBulkOrderCodes = new[]{"Demo_Kitchen_Small_023","Demo_Kitchen_Small_025","Demo_Kitchen_Medium_021","Demo_Kitchen_Medium_024"};
                                                 
                 // Dark-Blue-Bulk
-                var darkblueBulkOrderCodes = new[]{"Demo_Kitchen_Small_023","Demo_Kitchen_Small_025","Demo_Kitchen_Medium_021","Demo_Kitchen_Medium_024"};
+                var darkblueBulkOrderCodes = new[]{"Demo_Kitchen_Small_002","Demo_Kitchen_Medium_004","Demo_Kitchen_Medium_005"};
                 
                 // Set new bulks + start and end date         
                 // Blue bulk                              
