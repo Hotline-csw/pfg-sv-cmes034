@@ -329,6 +329,8 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
                     var darkBlueBulkStartDate = Convert.ToDateTime(darkBlueBulkDate.DesiredStartDate);
                     var darkBlueBulkEndDate = Convert.ToDateTime(darkBlueBulkDate.DesiredEndDate);
                     
+                    SetManualBulk(unitOfWork, "Bulk-Dark-Blue", darkBlueBulkStartDate, "#FF1919C8", darkBlueBulkEndDate, prodOrderDarkBlueBulk);
+                    
 
 /*
                     //Bulk
