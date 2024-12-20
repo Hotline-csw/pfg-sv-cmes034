@@ -88,12 +88,19 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
                 
                 // Set new bulks + start and end date         
                 // Blue bulk
-                var prodOrderBlueBulk = prodOrdersRep.Get(
+                /*var prodOrderBlueBulk = prodOrdersRep.Get(
                         po => po.CustomerOrderCode == dks003 ||
                               po.CustomerOrderCode == dks004 || 
                               po.CustomerOrderCode == dks005 || 
                               po.CustomerOrderCode == dkm001
-                              );
+                              );*/
+                              
+                var prodOrderBlueBulk = prodOrdersRep.GetQueryable(false).Where(
+                        po => po.CustomerOrderCode == dks003 ||
+                              po.CustomerOrderCode == dks004 || 
+                              po.CustomerOrderCode == dks005 || 
+                              po.CustomerOrderCode == dkm001
+                              ).ToList();
                 
                 if(prodOrderBlueBulk != null)
                 {               
