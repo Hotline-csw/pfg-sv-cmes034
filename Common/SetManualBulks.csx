@@ -46,31 +46,6 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
     private Logger _Logger;
     
     private string _TaskName = "SetManualBulks";
-
-    // Small Kitchens
-    private string dks002 = "Demo_Kitchen_Small_002";
-    private string dks003 = "Demo_Kitchen_Small_003";
-    private string dks004 = "Demo_Kitchen_Small_004";
-    private string dks005 = "Demo_Kitchen_Small_005";
-    private string dks006 = "Demo_Kitchen_Small_006";
-    private string dks011 = "Demo_Kitchen_Small_011";
-    private string dks014 = "Demo_Kitchen_Small_014";
-    private string dks023 = "Demo_Kitchen_Small_023";
-    private string dks025 = "Demo_Kitchen_Small_025";
-    
-    // Medium Kitchens
-    private string dkm001 = "Demo_Kitchen_Medium_001";
-    private string dkm004 = "Demo_Kitchen_Medium_004";
-    private string dkm005 = "Demo_Kitchen_Medium_005";
-    private string dkm006 = "Demo_Kitchen_Medium_006";
-    private string dkm008 = "Demo_Kitchen_Medium_008";
-    private string dkm009 = "Demo_Kitchen_Medium_009";
-    private string dkm012 = "Demo_Kitchen_Medium_012";
-    private string dkm014 = "Demo_Kitchen_Medium_014";
-    private string dkm016 = "Demo_Kitchen_Medium_016";
-    private string dkm018 = "Demo_Kitchen_Medium_018";
-    private string dkm021 = "Demo_Kitchen_Medium_021";
-    private string dkm024 = "Demo_Kitchen_Medium_024";
     
 
     public override void Execute(IJobExecutionContext executionContext)
@@ -84,32 +59,30 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
             
             using(var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
             {
-                var blueBulkOrderCodes = new[]  {
-                                                    "Demo_Kitchen_Small_003",
-                                                    "Demo_Kitchen_Small_004",
-                                                    "Demo_Kitchen_Small_005",
-                                                    "Demo_Kitchen_Medium_001"
-                                                };
-                                                
-                var redBulkOrderCodes = new[]  {
-                                                    "Demo_Kitchen_Small_006",
-                                                    "Demo_Kitchen_Medium_006",
-                                                    "Demo_Kitchen_Medium_008",
-                                                    "Demo_Kitchen_Medium_009"
-                                                };
-            
-            
+                // Repositorys
                 var prodOrdersRep = unitOfWork.GetRepository<ProductionOrder>();
                 
+                // CustomerOrders sorted by bulk
+                // Blue-Bulk
+                var blueBulkOrderCodes = new[]{"Demo_Kitchen_Small_003","Demo_Kitchen_Small_004","Demo_Kitchen_Small_005","Demo_Kitchen_Medium_001"};
+                
+                // Red-Bulk                                
+                var redBulkOrderCodes = new[]{"Demo_Kitchen_Small_006","Demo_Kitchen_Medium_006","Demo_Kitchen_Medium_008","Demo_Kitchen_Medium_009"};
+                
+                // Green-Bulk
+                var greenBulkOrderCodes = new[]{"Demo_Kitchen_Small_011","Demo_Kitchen_Small_014","Demo_Kitchen_Medium_012","Demo_Kitchen_Medium_014"};
+                
+                // Yellow-Bulk
+                var yellowBulkOrderCodes = new[]{"Demo_Kitchen_Medium_016","Demo_Kitchen_Medium_018"};
+                                                
+                // Black-Bulk
+                var blackBulkOrderCodes = new[]{"Demo_Kitchen_Small_023","Demo_Kitchen_Small_025","Demo_Kitchen_Medium_021","Demo_Kitchen_Medium_024"};
+                                                
+                // Dark-Blue-Bulk
+                var darkblueBulkOrderCodes = new[]{"Demo_Kitchen_Small_023","Demo_Kitchen_Small_025","Demo_Kitchen_Medium_021","Demo_Kitchen_Medium_024"};
+                
                 // Set new bulks + start and end date         
-                // Blue bulk
-                /*var prodOrderBlueBulk = prodOrdersRep.Get(
-                        po => po.CustomerOrderCode == dks003 ||
-                              po.CustomerOrderCode == dks004 || 
-                              po.CustomerOrderCode == dks005 || 
-                              po.CustomerOrderCode == dkm001
-                              );*/
-                              
+                // Blue bulk                              
                 var prodOrderBlueBulk = prodOrdersRep.GetQueryable(false).Where(po => blueBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
                 
                 if(prodOrderBlueBulk != null)
@@ -153,22 +126,14 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
                 
 
                 // Red bulk
-                var prodOrderRedBulk = prodOrdersRep.Get(
-                        po => po.CustomerOrderCode == dks006 || 
-                              po.CustomerOrderCode == dkm006 || 
-                              po.CustomerOrderCode == dkm008 || 
-                              po.CustomerOrderCode == dkm009
-                              );
+                var prodOrderRedBulk = prodOrdersRep.GetQueryable(false).Where(po => redBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
                 
                 if(prodOrderRedBulk != null)
                 {
                     //Get date
                     var redBulkDate = prodOrdersRep.GetFirstOrDefault(
                             po => po.ComponentType == ComponentType.SidePanel &&
-                                  po.CustomerOrderCode == dks006 || 
-                                  po.CustomerOrderCode == dkm006 || 
-                                  po.CustomerOrderCode == dkm008 || 
-                                  po.CustomerOrderCode == dkm009
+                                  redBulkOrderCodes.Contains(po.CustomerOrderCode)
                                   );
                     
                     var redBulkStartDate = Convert.ToDateTime(redBulkDate.DesiredStartDate);
@@ -205,22 +170,14 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
                 
                 
                 // Green bulk
-                var prodOrderGreenBulk = prodOrdersRep.Get(
-                        po => po.CustomerOrderCode == dks011 || 
-                              po.CustomerOrderCode == dks014 || 
-                              po.CustomerOrderCode == dkm012 || 
-                              po.CustomerOrderCode == dkm014
-                              );
+                var prodOrderGreenBulk = prodOrdersRep.GetQueryable(false).Where(po => greenBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
                 
                 if(prodOrderGreenBulk != null)
                 {
                     //Get date
                     var greenBulkDate = prodOrdersRep.GetFirstOrDefault(
                             po => po.ComponentType == ComponentType.SidePanel &&
-                                  po.CustomerOrderCode == dks011 || 
-                                  po.CustomerOrderCode == dks014 || 
-                                  po.CustomerOrderCode == dkm012 || 
-                                  po.CustomerOrderCode == dkm014
+                                  greenBulkOrderCodes.Contains(po.CustomerOrderCode)
                                   );
                     
                     var greenBulkStartDate = Convert.ToDateTime(greenBulkDate.DesiredStartDate);
@@ -257,18 +214,14 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
                 
                         
                 // Yellow bulk
-                var prodOrderYellowBulk = prodOrdersRep.Get(
-                        po => po.CustomerOrderCode == dkm016 || 
-                              po.CustomerOrderCode == dkm018
-                              );
+                var prodOrderYellowBulk = prodOrdersRep.GetQueryable(false).Where(po => yellowBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
                 
                 if(prodOrderYellowBulk != null)
                 {               
                     //Get date
                     var yellowBulkDate = prodOrdersRep.GetFirstOrDefault(
                             po => po.ComponentType == ComponentType.SidePanel &&
-                                  po.CustomerOrderCode == dkm016 || 
-                                  po.CustomerOrderCode == dkm018
+                                  yellowBulkOrderCodes.Contains(po.CustomerOrderCode)
                                   );
                     
                     var yellowBulkStartDate = Convert.ToDateTime(yellowBulkDate.DesiredStartDate);
@@ -304,21 +257,16 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
                 
                 
                 // Black bulk
-                var prodOrderBlackBulk = prodOrdersRep.Get(
-                        po => po.CustomerOrderCode == dks023 ||
-                              po.CustomerOrderCode == dks025 ||
-                              po.CustomerOrderCode == dkm021 ||
-                              po.CustomerOrderCode == dkm024);
+                var prodOrderBlackBulk = prodOrdersRep.GetQueryable(false).Where(po => blackBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
+
                 
                 if(prodOrderBlackBulk != null)
                 {               
                     //Get date
                     var blackBulkDate = prodOrdersRep.GetFirstOrDefault(
                             po => po.ComponentType == ComponentType.SidePanel && 
-                                  po.CustomerOrderCode == dks023 ||
-                                  po.CustomerOrderCode == dks025 ||
-                                  po.CustomerOrderCode == dkm021 ||
-                                  po.CustomerOrderCode == dkm024);
+                                  blackBulkOrderCodes.Contains(po.CustomerOrderCode)
+                                  );
                     
                     var blackBulkStartDate = Convert.ToDateTime(blackBulkDate.DesiredStartDate);
                     var blackBulkEndDate = Convert.ToDateTime(blackBulkDate.DesiredEndDate);
@@ -353,19 +301,15 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
                 
                 
                 // Dark-Blue bulk
-                var prodOrderDarkBlueBulk = prodOrdersRep.Get(
-                        po => po.CustomerOrderCode == dks002 ||
-                              po.CustomerOrderCode == dkm004 ||
-                              po.CustomerOrderCode == dkm005);
+                var prodOrderDarkBlueBulk = prodOrdersRep.GetQueryable(false).Where(po => darkblueBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
                 
                 if(prodOrderDarkBlueBulk != null)
                 {               
                     //Get date
                     var darkBlueBulkDate = prodOrdersRep.GetFirstOrDefault(
                             po => po.ComponentType == ComponentType.SidePanel && 
-                                  po.CustomerOrderCode == dks002 ||
-                                  po.CustomerOrderCode == dkm004 ||
-                                  po.CustomerOrderCode == dkm005);
+                                  darkblueBulkOrderCodes.Contains(po.CustomerOrderCode)
+                                  );
                     
                     var darkBlueBulkStartDate = Convert.ToDateTime(darkBlueBulkDate.DesiredStartDate);
                     var darkBlueBulkEndDate = Convert.ToDateTime(darkBlueBulkDate.DesiredEndDate);
@@ -407,6 +351,11 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
             _Logger.Error(ResourcesKeys.ErrorInUserExit("SetManualBulks"), null, e);
             throw;
         }
+    }
+    
+    public void SetManualBulk(IUnitOfWork unitOfWork, string planningNumber, DateTime startDate, string color, DateTime endDate)
+    {
+        
     }
 
 
