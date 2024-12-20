@@ -10,7 +10,7 @@
       "field": "Min(CustomerOrder.Code) as OrderNumber",
       "keyFigure": {
         "label": "Qty customer orders",
-        "max": "5",
+        "max": "7",
         "aggregate": "distinct",
         "fieldType": "number"
       }
@@ -28,7 +28,7 @@
       "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS NarrowParts",
       "keyFigure": {
         "label": "Qty narrow parts",
-        "min": "20",
+        "min": "4",
         "max": "",
         "aggregate": "sum",
         "fieldType": "number"
