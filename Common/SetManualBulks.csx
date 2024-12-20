@@ -84,7 +84,19 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
             
             using(var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
             {
-                var blueBulkOrderCodes = new[] {"Demo_Kitchen_Small_003","Demo_Kitchen_Small_004","Demo_Kitchen_Small_005"};
+                var blueBulkOrderCodes = new[]  {
+                                                    "Demo_Kitchen_Small_003",
+                                                    "Demo_Kitchen_Small_004",
+                                                    "Demo_Kitchen_Small_005",
+                                                    "Demo_Kitchen_Medium_001"
+                                                };
+                                                
+                var redBulkOrderCodes = new[]  {
+                                                    "Demo_Kitchen_Small_006",
+                                                    "Demo_Kitchen_Medium_006",
+                                                    "Demo_Kitchen_Medium_008",
+                                                    "Demo_Kitchen_Medium_009"
+                                                };
             
             
                 var prodOrdersRep = unitOfWork.GetRepository<ProductionOrder>();
@@ -98,12 +110,7 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
                               po.CustomerOrderCode == dkm001
                               );*/
                               
-                var prodOrderBlueBulk = prodOrdersRep.GetQueryable(false).Where(
-                        po => po.CustomerOrderCode == dks003 ||
-                              po.CustomerOrderCode == dks004 || 
-                              po.CustomerOrderCode == dks005 || 
-                              po.CustomerOrderCode == dkm001
-                              ).ToList();
+                var prodOrderBlueBulk = prodOrdersRep.GetQueryable(false).Where(po => blueBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
                 
                 if(prodOrderBlueBulk != null)
                 {               
