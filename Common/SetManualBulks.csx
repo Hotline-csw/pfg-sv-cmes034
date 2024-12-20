@@ -95,7 +95,9 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
                     
                     var blueBulkStartDate = Convert.ToDateTime(blueBulkDate.DesiredStartDate);
                     var blueBulkEndDate = Convert.ToDateTime(blueBulkDate.DesiredEndDate);
-                                                   
+                    
+                    SetManualBulk(unitOfWork, "Bulk-Blue", blueBulkStartDate, "#FF6464FA", blueBulkEndDate, prodOrderBlueBulk);
+/*                                                   
                     //Bulk
                     var blueBulk = new ManualBulk();               
                     
@@ -117,6 +119,7 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
                     _BulkInfoProvider.PlanProductionDaysForBulkWithoutDelete(blueBulk.PlanningNumber, blueBulk.StartDate, blueBulk.EndDate);
                     
                     _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Succesfully added Bulk-Blue!", _TaskName)));
+*/
                 }
                 
                 else
