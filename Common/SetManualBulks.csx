@@ -117,10 +117,7 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
                     //Get date
                     var blueBulkDate = prodOrdersRep.GetFirstOrDefault(
                             po => po.ComponentType == ComponentType.SidePanel && 
-                                  po.CustomerOrderCode == dks003 || 
-                                  po.CustomerOrderCode == dks004 || 
-                                  po.CustomerOrderCode == dks005 || 
-                                  po.CustomerOrderCode == dkm001
+                                  blueBulkOrderCodes.Contains(po.CustomerOrderCode)
                                   );
                     
                     var blueBulkStartDate = Convert.ToDateTime(blueBulkDate.DesiredStartDate);
