@@ -84,30 +84,21 @@ public class UpdateTransferStateKitchensWithBulksAndFeedback : GenericTaskBase, 
             _Logger = LogHelper.GetLogger(executionContext.Area, typeof(UpdateTransferStateKitchensWithBulksAndFeedback));
             _Logger.LogContext.AddOrUpdate(LogHelper.InstanceNameKey, executionContext.Instance);
             
-            using(var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
+            using (var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
             {
                 var wccStagingRecordsRep = unitOfWork.GetRepository<WccStagingRecord>();
-                var importOrders = wccStagingRecordsRep.GetQueryable(false).Where(
-                        io => //Bulk-Blue
-                              io.OrderId == dks003 || io.OrderId == dks004 || io.OrderId == dks005 || io.OrderId == dkm001 ||
-                              //Bulk-Red
-                              io.OrderId == dks006 || io.OrderId == dkm006 || io.OrderId == dkm008 || io.OrderId == dkm009 ||
-                              //Bulk-Green
-                              io.OrderId == dks011 || io.OrderId == dks014 || io.OrderId == dkm012 || io.OrderId == dkm014 ||
-                              //Bulk-Yellow
-                              io.OrderId == dkm016 || io.OrderId == dkm018 ||
-                              //Bulk-Black
-                              io.OrderId == dks023 || io.OrderId == dks025 || io.OrderId == dkm021 || io.OrderId == dkm024 ||
-                              //Bulk-Dark-Blue
-                              io.OrderId == dks002 || io.OrderId == dkm004 || io.OrderId == dkm005 );
-                
-                if(importOrders != null)
+                var importOrderIds = new[] { dks003, dks004, dks005, dkm001, dks006, dkm006, dkm008, dkm009, dks011, dks014, dkm012, dkm014, dkm016, dkm018, dks023, dks025, dkm021, dkm024, dks002, dkm004, dkm005 };
+            
+                var importOrders = wccStagingRecordsRep.GetQueryable(false)
+                    .Where(io => importOrderIds.Contains(io.OrderId));
+            
+                if (importOrders.Any())
                 {
-                    foreach(var importOrder in importOrders)
+                    foreach (var importOrder in importOrders)
                     {
                         importOrder.TransferState = HomagGroup.FLS.Domain.Data.WccStagingTransferState.ImportFromWccToStagingCompleted;
                     }
-                    
+            
                     unitOfWork.BulkUpdate(importOrders);
                 }
             }
