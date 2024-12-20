@@ -13,6 +13,19 @@
     ]
   },
   {
+    "label": "Feedback",
+    "appenders": [
+      {
+        "appenderType": "console",
+        "logLevel": "Error"
+      },
+      {
+        "appenderType": "webApi",
+        "logLevel": "Info"
+      }
+    ]
+  },
+  {
     "label": "Layout",
     "appenders": [
       {
