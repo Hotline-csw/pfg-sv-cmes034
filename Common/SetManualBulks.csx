@@ -84,6 +84,9 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
             
             using(var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
             {
+                var blueBulkOrderCodes = new[] {"Demo_Kitchen_Small_003","Demo_Kitchen_Small_004","Demo_Kitchen_Small_005"};
+            
+            
                 var prodOrdersRep = unitOfWork.GetRepository<ProductionOrder>();
                 
                 // Set new bulks + start and end date         
