@@ -391,8 +391,6 @@ public class SetManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Co
         
         _BulkInfoProvider.PlanProductionDaysForBulkWithoutDelete(manualBulk.PlanningNumber, manualBulk.StartDate, manualBulk.EndDate);
         
-        unitOfWork.Save();
-        
         //_Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Succesfully added Bulk-Blue!", _TaskName)));
     }
 
