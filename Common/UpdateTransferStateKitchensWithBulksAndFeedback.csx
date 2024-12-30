@@ -87,7 +87,7 @@ public class UpdateTransferStateKitchensWithBulksAndFeedback : GenericTaskBase, 
             using (var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
             {
                 var wccStagingRecordsRep = unitOfWork.GetRepository<WccStagingRecord>();
-                var importOrderIds = new[] { dks003, dks004, dks005, dkm001, dks006, dkm006, dkm008, dkm009, dks011, dks014, dkm012, dkm014, dkm016, dkm018, dks023, dks025, dkm021, dkm024, dks002, dkm004, dkm005 };
+                var importOrderIds = new[] {dks003, dks004, dks005, dkm001, dks006, dkm006, dkm008, dkm009, dks011, dks014, dkm012, dkm014, dkm016, dkm018, dks023, dks025, dkm021, dkm024, dks002, dkm004, dkm005};
             
                 var importOrders = wccStagingRecordsRep.GetQueryable(false).Where(io => importOrderIds.Contains(io.OrderId)).ToList();
             
