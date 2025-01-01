@@ -34,9 +34,6 @@ public class UpdateTransferStateFirstSetOfKitchens : GenericTaskBase, HomagGroup
 {
     [Import]
     private IUnitOfWorkFactory _UnitOfWorkFactory;
-    
-    [Import]
-    protected IHelperMethodsCommon _HelperMethodsCommon;
 
     private Logger _Logger;
     
