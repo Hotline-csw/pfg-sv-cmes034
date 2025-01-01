@@ -53,12 +53,10 @@ public class UpdateTransferStateSecondSetOfKitchens : GenericTaskBase, HomagGrou
             {
                 var wccStagingRecordsRep = unitOfWork.GetRepository<WccStagingRecord>();
                 var importOrderIds = new[] {
-                        "Demo_Kitchen_Small_003",   "Demo_Kitchen_Small_004",   "Demo_Kitchen_Small_005",   "Demo_Kitchen_Medium_001",  //Blue-Bulk
-                        "Demo_Kitchen_Small_006",   "Demo_Kitchen_Medium_006",  "Demo_Kitchen_Medium_008",  "Demo_Kitchen_Medium_009",  // Red-Bulk
-                        "Demo_Kitchen_Small_011",   "Demo_Kitchen_Small_014",   "Demo_Kitchen_Medium_012",  "Demo_Kitchen_Medium_014",  // Green-Bulk
-                        "Demo_Kitchen_Medium_016",  "Demo_Kitchen_Medium_018",                                                          // Yellow-Bulk
-                        "Demo_Kitchen_Small_023",   "Demo_Kitchen_Small_025",   "Demo_Kitchen_Medium_021",  "Demo_Kitchen_Medium_024",  // Black-Bulk
-                        "Demo_Kitchen_Small_002",   "Demo_Kitchen_Medium_004",  "Demo_Kitchen_Medium_005"                               // Dark-Blue-Bulk                
+                        "Demo_Kitchen_Small_017",   "Demo_Kitchen_Small_018",   "Demo_Kitchen_Small_019",   "Demo_Kitchen_Medium_019",  // Dark-Yellow-Bulk
+                        "Demo_Kitchen_Small_007",   "Demo_Kitchen_Small_008",   "Demo_Kitchen_Medium_007",                              // Dark-Red-Bulk
+                        "Demo_Kitchen_Small_012",   "Demo_Kitchen_Small_015",   "Demo_Kitchen_Medium_011",  "Demo_Kitchen_Medium_015",  // Dark-Green-Bulk
+                        "Demo_Kitchen_Small_022",   "Demo_Kitchen_Small_024",   "Demo_Kitchen_Medium_022"                               // Dark-Black-Bulk
                 };
                 
             
