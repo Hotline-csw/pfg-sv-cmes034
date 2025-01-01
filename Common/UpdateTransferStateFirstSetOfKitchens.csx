@@ -28,7 +28,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization))]
 [Export("UpdateTransferStateFirstSetOfKitchens", typeof(HomagGroup.FLS.Services.Common.Contracts.JobScheduling.Configuration.Tasks.Generic.IGenericTask))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("[02] Update TransferState for kitchens with bulk planning and feedbacks")]
+[Description("[02] Update TransferState of the first set of kitchens with bulk planning and feedbacks")]
 [EnabledScript(true)]
 public class UpdateTransferStateFirstSetOfKitchens : GenericTaskBase, HomagGroup.FLS.Services.Common.Contracts.JobScheduling.Configuration.Tasks.Generic.IGenericTask
 {
