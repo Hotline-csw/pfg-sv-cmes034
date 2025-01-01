@@ -87,7 +87,15 @@ public class UpdateTransferStateKitchensWithBulksAndFeedback : GenericTaskBase, 
             using (var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
             {
                 var wccStagingRecordsRep = unitOfWork.GetRepository<WccStagingRecord>();
-                var importOrderIds = new[] {dks003, dks004, dks005, dkm001, dks006, dkm006, dkm008, dkm009, dks011, dks014, dkm012, dkm014, dkm016, dkm018, dks023, dks025, dkm021, dkm024, dks002, dkm004, dkm005};
+                var importOrderIds = new[] {
+                        "Demo_Kitchen_Small_003",   "Demo_Kitchen_Small_004",   "Demo_Kitchen_Small_005",   "Demo_Kitchen_Medium_001",  //Blue-Bulk
+                        "Demo_Kitchen_Small_006",   "Demo_Kitchen_Medium_006",  "Demo_Kitchen_Medium_008",  "Demo_Kitchen_Medium_009",  // Red-Bulk
+                        "Demo_Kitchen_Small_011",   "Demo_Kitchen_Small_014",   "Demo_Kitchen_Medium_012",  "Demo_Kitchen_Medium_014",  // Green-Bulk
+                        "Demo_Kitchen_Medium_016",  "Demo_Kitchen_Medium_018",                                                          // Yellow-Bulk
+                        "Demo_Kitchen_Small_023",   "Demo_Kitchen_Small_025",   "Demo_Kitchen_Medium_021",  "Demo_Kitchen_Medium_024",  // Black-Bulk
+                        "Demo_Kitchen_Small_002",   "Demo_Kitchen_Medium_004",  "Demo_Kitchen_Medium_005"                               // Dark-Blue-Bulk                
+                };
+                
             
                 var importOrders = wccStagingRecordsRep.GetQueryable(false).Where(io => importOrderIds.Contains(io.OrderId)).ToList();
             
