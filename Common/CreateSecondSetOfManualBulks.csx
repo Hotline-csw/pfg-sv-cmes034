@@ -30,7 +30,7 @@ using System.ComponentModel;
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("[91] Create second set of manual bulks")]
 [EnabledScript(true)]
-public class CreateSecondSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Contracts.JobScheduling.Configuration.Tasks.Generic.IGenericTask
+public class CreateSecondSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Services.Common.Contracts.JobScheduling.Configuration.Tasks.Generic.IGenericTask, IPartImportsSatisfiedNotification
 {
     [Import]
     private IUnitOfWorkFactory _UnitOfWorkFactory;
@@ -41,6 +41,8 @@ public class CreateSecondSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Serv
     private ICommonServiceDistributed _BulkInfoProvider;
 
     private Logger _Logger;
+    
+    private string _TaskName = "CreateSecondSetOfManualBulks";
     
 
     public override void Execute(IJobExecutionContext executionContext)
@@ -130,5 +132,10 @@ public class CreateSecondSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Serv
                 // new UserExitParameter("MyParameter", typeof(string), true)
             };
         }
+    }
+    
+    public void OnImportsSatisfied()
+    {
+        _BulkInfoProvider = _DistributedServiceProvider.GetService<ICommonServiceDistributed>();
     }
 }
