@@ -34,8 +34,14 @@ public class CreateSecondSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Serv
 {
     [Import]
     private IUnitOfWorkFactory _UnitOfWorkFactory;
+    
+    [Import]
+    private IDistributedServiceProvider _DistributedServiceProvider;
+    
+    private ICommonServiceDistributed _BulkInfoProvider;
 
     private Logger _Logger;
+    
 
     public override void Execute(IJobExecutionContext executionContext)
     {
@@ -46,11 +52,42 @@ public class CreateSecondSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Serv
             _Logger = LogHelper.GetLogger(executionContext.Area, typeof(CreateSecondSetOfManualBulks));
             _Logger.LogContext.AddOrUpdate(LogHelper.InstanceNameKey, executionContext.Instance);
 
-            throw new NotImplementedException();
+            using(var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
+            {
+                // Repositorys
+                var prodOrdersRep = unitOfWork.GetRepository<ProductionOrder>();
+                
+                // CustomerOrders sorted by bulk
+                // Dark-Yellow-Bulk
+                var darkYellowBulkOrderCodes = new[]{"Demo_Kitchen_Small_017","Demo_Kitchen_Small_018","Demo_Kitchen_Small_019","Demo_Kitchen_Medium_019"};
+                
+                // Dark-Red-Bulk                                
+                var darkRedBulkOrderCodes = new[]{"Demo_Kitchen_Small_007","Demo_Kitchen_Small_008","Demo_Kitchen_Medium_007"};
+                
+                // Dark-Green-Bulk
+                var darkGreenBulkOrderCodes = new[]{"Demo_Kitchen_Small_012","Demo_Kitchen_Small_015","Demo_Kitchen_Medium_011","Demo_Kitchen_Medium_015"};
+                                                
+                // Dark-Black-Bulk
+                var darkBlackBulkOrderCodes = new[]{"Demo_Kitchen_Small_022","Demo_Kitchen_Small_024","Demo_Kitchen_Medium_022"};
+                
+                // Set new bulks + start and end date         
+                // Dark-Yellow-Bulk                            
+                var prodOrderDarkYellowBulk = prodOrdersRep.GetQueryable(false).Where(po => darkYellowBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
             
-            // example to read the value of a parameter, defined below in UserExitInputParameters:
-            // string myParameter = executionContext.Inputs.FirstOrDefault(input => input.Key == "MyParameter").Value.ToString();
-
+                if(prodOrderDarkYellowBulk != null)
+                {
+                    //Get date
+                    var darkYellowDate = prodOrdersRep.GetFirstOrDefault(
+                            po => po.ComponentType == ComponentType.SidePanel && 
+                                  darkYellowBulkOrderCodes.Contains(po.CustomerOrderCode)
+                                  );
+                    
+                    var darkYellowBulkStartDate = Convert.ToDateTime(darkYellowDate.DesiredStartDate);
+                    var darkYellowBulkEndDate = Convert.ToDateTime(darkYellowDate.DesiredEndDate);
+                }
+            
+            
+            }
         }
         catch (Exception e)
         {
@@ -58,6 +95,28 @@ public class CreateSecondSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Serv
             _Logger.Error(ResourcesKeys.ErrorInUserExit("CreateSecondSetOfManualBulks"), null, e);
             throw;
         }
+    }
+    
+    
+    public void SetManualBulk(IUnitOfWork unitOfWork, string planningNumber, DateTime startDate, string color, DateTime endDate, List<ProductionOrder> prodOrders)
+    {
+        var manualBulk = new ManualBulk();               
+        
+        manualBulk.PlanningNumber = planningNumber;
+        manualBulk.PlanningState = PlanningState.Planned;
+        manualBulk.StartDate = startDate;
+        manualBulk.Color = color;
+        manualBulk.CreationSource = "BulkPlanning";
+        manualBulk.EndDate = endDate;
+        manualBulk.SchedulingMode = SchedulingMode.Backward;
+        manualBulk.ProductionOrders = prodOrders;
+            
+        unitOfWork.AddOrUpdate(new[] {manualBulk});
+        unitOfWork.Save();
+        
+        _BulkInfoProvider.PlanProductionDaysForBulkWithoutDelete(manualBulk.PlanningNumber, manualBulk.StartDate, manualBulk.EndDate);
+        
+        //_Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Succesfully added Bulk-Blue!", _TaskName)));
     }
 
 
