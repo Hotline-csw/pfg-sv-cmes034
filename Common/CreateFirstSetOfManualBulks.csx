@@ -243,7 +243,7 @@ public class CreateFirstSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Servi
         
         _BulkInfoProvider.PlanProductionDaysForBulkWithoutDelete(manualBulk.PlanningNumber, manualBulk.StartDate, manualBulk.EndDate);
         
-        _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Succesfully added {[1]}!", _TaskName, planningNumber)));
+        //_Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Succesfully added {[1]}!", _TaskName, planningNumber)));
     }
 
 
