@@ -86,6 +86,33 @@ public class CreateSecondSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Serv
                     
                     var darkYellowBulkStartDate = Convert.ToDateTime(darkYellowDate.DesiredStartDate);
                     var darkYellowBulkEndDate = Convert.ToDateTime(darkYellowDate.DesiredEndDate);
+                    
+                    SetManualBulk(unitOfWork, "Dark-Yellow-Bulk", darkYellowBulkStartDate, "#FFFFEA25", darkYellowBulkEndDate, prodOrderDarkYellowBulk);
+                }
+                else
+                {
+                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Dark-Yellow-Bulk!", _TaskName)));
+                }
+                
+                // Dark-Red-Bulk
+                var prodOrderDarkRedBulk = prodOrdersRep.GetQueryable(false).Where(po => darkRedBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
+            
+                if(prodOrderDarkRedBulk != null)
+                {
+                    //Get date
+                    var darkRedDate = prodOrdersRep.GetFirstOrDefault(
+                            po => po.ComponentType == ComponentType.SidePanel && 
+                                  darkRedBulkOrderCodes.Contains(po.CustomerOrderCode)
+                                  );
+                    
+                    var darkRedBulkStartDate = Convert.ToDateTime(darkRedDate.DesiredStartDate);
+                    var darkRedBulkEndDate = Convert.ToDateTime(darkRedDate.DesiredEndDate);
+                    
+                    SetManualBulk(unitOfWork, "Dark-Red-Bulk", darkRedBulkStartDate, "#FFC84B4B", darkRedBulkEndDate, prodOrderDarkRedBulk);
+                }
+                else
+                {
+                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Dark-Red-Bulk!", _TaskName)));
                 }
             
             
