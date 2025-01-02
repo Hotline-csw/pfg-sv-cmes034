@@ -28,7 +28,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization))]
 [Export("UpdateTransferStateThirdSetOfKitchens", typeof(HomagGroup.FLS.Services.Common.Contracts.JobScheduling.Configuration.Tasks.Generic.IGenericTask))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("describe here")]
+[Description("[11] Update TransferState of the third set of kitchens with bulk planning and feedbacks")]
 [EnabledScript(true)]
 public class UpdateTransferStateThirdSetOfKitchens : GenericTaskBase, HomagGroup.FLS.Services.Common.Contracts.JobScheduling.Configuration.Tasks.Generic.IGenericTask
 {
@@ -36,6 +36,9 @@ public class UpdateTransferStateThirdSetOfKitchens : GenericTaskBase, HomagGroup
     private IUnitOfWorkFactory _UnitOfWorkFactory;
 
     private Logger _Logger;
+    
+    private string _TaskName = "UpdateTransferStateThirdSetOfKitchens";
+    
 
     public override void Execute(IJobExecutionContext executionContext)
     {
@@ -46,11 +49,30 @@ public class UpdateTransferStateThirdSetOfKitchens : GenericTaskBase, HomagGroup
             _Logger = LogHelper.GetLogger(executionContext.Area, typeof(UpdateTransferStateThirdSetOfKitchens));
             _Logger.LogContext.AddOrUpdate(LogHelper.InstanceNameKey, executionContext.Instance);
 
-            throw new NotImplementedException();
+            using (var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
+            {
+                var wccStagingRecordsRep = unitOfWork.GetRepository<WccStagingRecord>();
+                var importOrderIds = new[] {
+                        "Demo_Kitchen_Small_016",   "Demo_Kitchen_Small_020",   "Demo_Kitchen_Medium_017",  "Demo_Kitchen_Medium_020",  // Bright-Yellow-Bulk
+                        "Demo_Kitchen_Small_009",   "Demo_Kitchen_Small_010",   "Demo_Kitchen_Medium_010",                              // Bright-Red-Bulk
+                        "Demo_Kitchen_Small_001",   "Demo_Kitchen_Medium_002",  "Demo_Kitchen_Medium_003",                              // Bright-Blue-Bulk
+                        "Demo_Kitchen_Small_021",   "Demo_Kitchen_Medium_023",  "Demo_Kitchen_Medium_025",                              // Bright-Black-Bulk
+                        "Demo_Kitchen_Small_013",   "Demo_Kitchen_Medium_013"                                                           // Bright-Green-Bulk
+                };
+                
             
-            // example to read the value of a parameter, defined below in UserExitInputParameters:
-            // string myParameter = executionContext.Inputs.FirstOrDefault(input => input.Key == "MyParameter").Value.ToString();
-
+                var importOrders = wccStagingRecordsRep.GetQueryable(false).Where(io => importOrderIds.Contains(io.OrderId)).ToList();
+            
+                if (importOrders.Any())
+                {
+                    foreach (var importOrder in importOrders)
+                    {
+                        importOrder.TransferState = HomagGroup.FLS.Domain.Data.WccStagingTransferState.ImportFromWccToStagingCompleted;
+                    }
+            
+                    unitOfWork.BulkUpdate(importOrders);
+                }
+            }
         }
         catch (Exception e)
         {
