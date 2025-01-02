@@ -56,7 +56,6 @@ public class CreateThirdSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Servi
 
             using(var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
             {
-/*
                 // Repositorys
                 var prodOrdersRep = unitOfWork.GetRepository<ProductionOrder>();
                 
@@ -133,56 +132,56 @@ public class CreateThirdSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Servi
                     var brightBlueBulkStartDate = Convert.ToDateTime(brightBlueDate.DesiredStartDate);
                     var brightBlueBulkEndDate = Convert.ToDateTime(brightBlueDate.DesiredEndDate);
                     
-                    SetManualBulk(unitOfWork, "Bright-Blue-Bulk", brightBlueBulkStartDate, "#FFC8C8FA", brightBlueBulkEndDate, prodOrderBrighBlueBulk);
+                    SetManualBulk(unitOfWork, "Bright-Blue-Bulk", brightBlueBulkStartDate, "#FFC8C8FA", brightBlueBulkEndDate, prodOrderBrightBlueBulk);
                 }
                 else
                 {
                     _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Bright-Blue-Bulk!", _TaskName)));
                 }
                 
-                // Dark-Green-Bulk
-                var prodOrderDarkGreenBulk = prodOrdersRep.GetQueryable(false).Where(po => darkGreenBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
+                // Bright-Black-Bulk
+                var prodOrderBrightBlackBulk = prodOrdersRep.GetQueryable(false).Where(po => brightBlackBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
             
-                if(prodOrderDarkGreenBulk != null)
+                if(prodOrderBrightBlackBulk != null)
                 {
                     //Get date
-                    var darkGreenDate = prodOrdersRep.GetFirstOrDefault(
+                    var brightBlackDate = prodOrdersRep.GetFirstOrDefault(
                             po => po.ComponentType == ComponentType.SidePanel && 
-                                  darkGreenBulkOrderCodes.Contains(po.CustomerOrderCode)
+                                  brightBlackBulkOrderCodes.Contains(po.CustomerOrderCode)
                                   );
                     
-                    var darkGreenBulkStartDate = Convert.ToDateTime(darkGreenDate.DesiredStartDate);
-                    var darkGreenBulkEndDate = Convert.ToDateTime(darkGreenDate.DesiredEndDate);
+                    var brightBlackBulkStartDate = Convert.ToDateTime(brightBlackDate.DesiredStartDate);
+                    var brightBlackBulkEndDate = Convert.ToDateTime(brightBlackDate.DesiredEndDate);
                     
-                    SetManualBulk(unitOfWork, "Dark-Green-Bulk", darkGreenBulkStartDate, "#FF4BC84B", darkGreenBulkEndDate, prodOrderDarkGreenBulk);
+                    SetManualBulk(unitOfWork, "Bright-Black-Bulk", brightBlackBulkStartDate, "#FFE6E6E6", brightBlackBulkEndDate, prodOrderBrightBlackBulk);
                 }
                 else
                 {
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Dark-Green-Bulk!", _TaskName)));
+                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Bright-Black-Bulk!", _TaskName)));
                 }
                 
-                // Dark-Black-Bulk
-                var prodOrderDarkBlackBulk = prodOrdersRep.GetQueryable(false).Where(po => darkBlackBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
+                // Bright-Green-Bulk
+                var prodOrderBrightGreenBulk = prodOrdersRep.GetQueryable(false).Where(po => brightGreenBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
             
-                if(prodOrderDarkBlackBulk != null)
+                if(prodOrderBrightGreenBulk != null)
                 {
                     //Get date
-                    var darkBlackDate = prodOrdersRep.GetFirstOrDefault(
+                    var brightGreenDate = prodOrdersRep.GetFirstOrDefault(
                             po => po.ComponentType == ComponentType.SidePanel && 
-                                  darkBlackBulkOrderCodes.Contains(po.CustomerOrderCode)
+                                  brightGreenBulkOrderCodes.Contains(po.CustomerOrderCode)
                                   );
                     
-                    var darkBlackBulkStartDate = Convert.ToDateTime(darkBlackDate.DesiredStartDate);
-                    var darkBlackBulkEndDate = Convert.ToDateTime(darkBlackDate.DesiredEndDate);
+                    var brightGreenBulkStartDate = Convert.ToDateTime(brightGreenDate.DesiredStartDate);
+                    var brightGreenBulkEndDate = Convert.ToDateTime(brightGreenDate.DesiredEndDate);
                     
-                    SetManualBulk(unitOfWork, "Dark-Black-Bulk", darkBlackBulkStartDate, "#FF323232", darkBlackBulkEndDate, prodOrderDarkBlackBulk);
+                    SetManualBulk(unitOfWork, "Bright-Green-Bulk", brightGreenBulkStartDate, "#FFC8FAC8", brightGreenBulkEndDate, prodOrderBrightGreenBulk);
                 }
                 else
                 {
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Dark-Black-Bulk!", _TaskName)));
+                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Bright-Green-Bulk!", _TaskName)));
                 }
                 
-                unitOfWork.Save();*/
+                unitOfWork.Save();
             }
         }
         catch (Exception e)
