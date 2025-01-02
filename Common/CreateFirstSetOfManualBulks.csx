@@ -92,35 +92,12 @@ public class CreateFirstSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Servi
                     var blueBulkStartDate = Convert.ToDateTime(blueBulkDate.DesiredStartDate);
                     var blueBulkEndDate = Convert.ToDateTime(blueBulkDate.DesiredEndDate);
                     
-                    SetManualBulk(unitOfWork, "Bulk-Blue", blueBulkStartDate, "#FF6464FA", blueBulkEndDate, prodOrderBlueBulk);
-/*                                                   
-                    //Bulk
-                    var blueBulk = new ManualBulk();               
-                    
-                    blueBulk.PlanningNumber = "Bulk-Blue";
-                    blueBulk.PlanningState = PlanningState.Planned;
-                    blueBulk.StartDate = blueBulkStartDate;
-                    blueBulk.Color = "#FF6464FA";
-                    blueBulk.CreationDate = DateTime.Now;
-                    blueBulk.CreationSource = "BulkPlanning";
-                    blueBulk.ModificationDate = DateTime.Now;
-                    blueBulk.ModificationSource = "BulkPlanning";
-                    blueBulk.EndDate = blueBulkEndDate;
-                    blueBulk.SchedulingMode = SchedulingMode.Backward;
-                    blueBulk.ProductionOrders = prodOrderBlueBulk;
-                        
-                    unitOfWork.AddOrUpdate(new[] {blueBulk});
-                    unitOfWork.Save();
-                    
-                    _BulkInfoProvider.PlanProductionDaysForBulkWithoutDelete(blueBulk.PlanningNumber, blueBulk.StartDate, blueBulk.EndDate);
-                    
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Succesfully added Bulk-Blue!", _TaskName)));
-*/
+                    SetManualBulk(unitOfWork, "Blue-Bulk", blueBulkStartDate, "#FF6464FA", blueBulkEndDate, prodOrderBlueBulk);
                 }
                 
                 else
                 {
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating Bulk-Blue!", _TaskName)));
+                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating Blue-Bulk!", _TaskName)));
                 }
                 
 
@@ -138,35 +115,12 @@ public class CreateFirstSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Servi
                     var redBulkStartDate = Convert.ToDateTime(redBulkDate.DesiredStartDate);
                     var redBulkEndDate = Convert.ToDateTime(redBulkDate.DesiredEndDate);
                     
-                    SetManualBulk(unitOfWork, "Bulk-Red", redBulkStartDate, "#FFFA6464", redBulkEndDate, prodOrderRedBulk);
-/*                   
-                    //Bulk
-                    var redBulk = new ManualBulk();
-                    
-                    redBulk.PlanningNumber = "Bulk-Red";
-                    redBulk.PlanningState = PlanningState.Planned;
-                    redBulk.StartDate = redBulkStartDate;
-                    redBulk.Color = "#FFFA6464";
-                    redBulk.CreationDate = DateTime.Now;
-                    redBulk.CreationSource = "BulkPlanning";
-                    redBulk.ModificationDate = DateTime.Now;
-                    redBulk.ModificationSource = "BulkPlanning";
-                    redBulk.EndDate = redBulkEndDate;
-                    redBulk.SchedulingMode = SchedulingMode.Backward;
-                    redBulk.ProductionOrders = prodOrderRedBulk;
-                    
-                    unitOfWork.AddOrUpdate(new[] {redBulk});
-                    unitOfWork.Save();
-                    
-                    _BulkInfoProvider.PlanProductionDaysForBulkWithoutDelete(redBulk.PlanningNumber, redBulk.StartDate, redBulk.EndDate);               
-                    
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Succesfully added Bulk-Red!", _TaskName)));
-*/
+                    SetManualBulk(unitOfWork, "Red-Bulk", redBulkStartDate, "#FFFA6464", redBulkEndDate, prodOrderRedBulk);
                 }
                 
                 else
                 {
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating Bulk-Red!", _TaskName)));
+                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating Red-Bulk!", _TaskName)));
                 }                
                 
                 
@@ -184,36 +138,12 @@ public class CreateFirstSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Servi
                     var greenBulkStartDate = Convert.ToDateTime(greenBulkDate.DesiredStartDate);
                     var greenBulkEndDate = Convert.ToDateTime(greenBulkDate.DesiredEndDate);
                     
-                    SetManualBulk(unitOfWork, "Bulk-Green", greenBulkStartDate, "#FF64FA64", greenBulkEndDate, prodOrderGreenBulk);
-    
-/*    
-                    //Bulk
-                    var greenBulk = new ManualBulk();
-                    
-                    greenBulk.PlanningNumber = "Bulk-Green";
-                    greenBulk.PlanningState = PlanningState.Planned;
-                    greenBulk.StartDate = greenBulkStartDate;
-                    greenBulk.Color = "#FF64FA64";
-                    greenBulk.CreationDate = DateTime.Now;
-                    greenBulk.CreationSource = "BulkPlanning";
-                    greenBulk.ModificationDate = DateTime.Now;
-                    greenBulk.ModificationSource = "BulkPlanning";
-                    greenBulk.EndDate = greenBulkEndDate;
-                    greenBulk.SchedulingMode = SchedulingMode.Backward;
-                    greenBulk.ProductionOrders = prodOrderGreenBulk;
-                
-                    unitOfWork.AddOrUpdate(new[] {greenBulk});
-                    unitOfWork.Save();
-                    
-                    _BulkInfoProvider.PlanProductionDaysForBulkWithoutDelete(greenBulk.PlanningNumber, greenBulk.StartDate, greenBulk.EndDate);
-                    
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Succesfully added Bulk-Green!", _TaskName)));
-*/
+                    SetManualBulk(unitOfWork, "Green-Bulk", greenBulkStartDate, "#FF64FA64", greenBulkEndDate, prodOrderGreenBulk);
                 }
                 
                 else
                 {
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating Bulk-Green!", _TaskName)));
+                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating Green-Bulk!", _TaskName)));
                 }
                 
                         
@@ -231,35 +161,12 @@ public class CreateFirstSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Servi
                     var yellowBulkStartDate = Convert.ToDateTime(yellowBulkDate.DesiredStartDate);
                     var yellowBulkEndDate = Convert.ToDateTime(yellowBulkDate.DesiredEndDate);
                      
-                    SetManualBulk(unitOfWork, "Bulk-Yellow", yellowBulkStartDate, "#FFFFF064", yellowBulkEndDate, prodOrderYellowBulk);
-/*                     
-                    //Bulk
-                    var yellowBulk = new ManualBulk();               
-                    
-                    yellowBulk.PlanningNumber = "Bulk-Yellow";
-                    yellowBulk.PlanningState = PlanningState.Planned;
-                    yellowBulk.StartDate = yellowBulkStartDate;
-                    yellowBulk.Color = "#FFFFF064";
-                    yellowBulk.CreationDate = DateTime.Now;
-                    yellowBulk.CreationSource = "BulkPlanning";
-                    yellowBulk.ModificationDate = DateTime.Now;
-                    yellowBulk.ModificationSource = "BulkPlanning";
-                    yellowBulk.EndDate = yellowBulkEndDate;
-                    yellowBulk.SchedulingMode = SchedulingMode.Backward;
-                    yellowBulk.ProductionOrders = prodOrderYellowBulk;
-                        
-                    unitOfWork.AddOrUpdate(new[] {yellowBulk});
-                    unitOfWork.Save();
-                    
-                    _BulkInfoProvider.PlanProductionDaysForBulkWithoutDelete(yellowBulk.PlanningNumber, yellowBulk.StartDate, yellowBulk.EndDate);
-                    
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Succesfully added Bulk-Yellow!", _TaskName)));
-*/
+                    SetManualBulk(unitOfWork, "Yellow-Bulk", yellowBulkStartDate, "#FFFFF064", yellowBulkEndDate, prodOrderYellowBulk);
                 }
                 
                 else
                 {
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating Bulk-Yellow!", _TaskName)));
+                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating Yellow-Bulk!", _TaskName)));
                 }
                 
                 
@@ -278,38 +185,13 @@ public class CreateFirstSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Servi
                     var blackBulkStartDate = Convert.ToDateTime(blackBulkDate.DesiredStartDate);
                     var blackBulkEndDate = Convert.ToDateTime(blackBulkDate.DesiredEndDate);
                     
-                    SetManualBulk(unitOfWork, "Bulk-Black", blackBulkStartDate, "#FF969696", blackBulkEndDate, prodOrderBlackBulk);
-
-/*
-                    //Bulk
-                    var blackBulk = new ManualBulk();               
-                    
-                    blackBulk.PlanningNumber = "Bulk-Black";
-                    blackBulk.PlanningState = PlanningState.Planned;
-                    blackBulk.StartDate = blackBulkStartDate;
-                    blackBulk.Color = "#FF969696";
-                    blackBulk.CreationDate = DateTime.Now;
-                    blackBulk.CreationSource = "BulkPlanning";
-                    blackBulk.ModificationDate = DateTime.Now;
-                    blackBulk.ModificationSource = "BulkPlanning";
-                    blackBulk.EndDate = blackBulkEndDate;
-                    blackBulk.SchedulingMode = SchedulingMode.Backward;
-                    blackBulk.ProductionOrders = prodOrderBlackBulk;
-                        
-                    unitOfWork.AddOrUpdate(new[] {blackBulk});
-                    unitOfWork.Save();
-                    
-                    _BulkInfoProvider.PlanProductionDaysForBulkWithoutDelete(blackBulk.PlanningNumber, blackBulk.StartDate, blackBulk.EndDate);
-                    
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Succesfully added Bulk-Black!", _TaskName)));
-*/
+                    SetManualBulk(unitOfWork, "Black-Bulk", blackBulkStartDate, "#FF969696", blackBulkEndDate, prodOrderBlackBulk);
                 }
                 
                 else
                 {
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating Bulk-Black!", _TaskName)));
+                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating Black-Bulk!", _TaskName)));
                 }
-                
                 
                 // Dark-Blue bulk
                 var prodOrderDarkBlueBulk = prodOrdersRep.GetQueryable(false).Where(po => darkblueBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
@@ -325,39 +207,13 @@ public class CreateFirstSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Servi
                     var darkBlueBulkStartDate = Convert.ToDateTime(darkBlueBulkDate.DesiredStartDate);
                     var darkBlueBulkEndDate = Convert.ToDateTime(darkBlueBulkDate.DesiredEndDate);
                     
-                    SetManualBulk(unitOfWork, "Bulk-Dark-Blue", darkBlueBulkStartDate, "#FF1919C8", darkBlueBulkEndDate, prodOrderDarkBlueBulk);
-                    
-
-/*
-                    //Bulk
-                    var darkBlueBulk = new ManualBulk();               
-                    
-                    darkBlueBulk.PlanningNumber = "Bulk-Dark-Blue";
-                    darkBlueBulk.PlanningState = PlanningState.Planned;
-                    darkBlueBulk.StartDate = darkBlueBulkStartDate;
-                    darkBlueBulk.Color = "#FF1919C8";
-                    darkBlueBulk.CreationDate = DateTime.Now;
-                    darkBlueBulk.CreationSource = "BulkPlanning";
-                    darkBlueBulk.ModificationDate = DateTime.Now;
-                    darkBlueBulk.ModificationSource = "BulkPlanning";
-                    darkBlueBulk.EndDate = darkBlueBulkEndDate;
-                    darkBlueBulk.SchedulingMode = SchedulingMode.Backward;
-                    darkBlueBulk.ProductionOrders = prodOrderDarkBlueBulk;
-                        
-                    unitOfWork.AddOrUpdate(new[] {darkBlueBulk});
-                    unitOfWork.Save();
-                    
-                    _BulkInfoProvider.PlanProductionDaysForBulkWithoutDelete(darkBlueBulk.PlanningNumber, darkBlueBulk.StartDate, darkBlueBulk.EndDate);
-                    
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Succesfully added Bulk-Dark-Blue!", _TaskName)));
-*/
+                    SetManualBulk(unitOfWork, "Dark-Blue-Bulk", darkBlueBulkStartDate, "#FF1919C8", darkBlueBulkEndDate, prodOrderDarkBlueBulk);
                 }
-                
                 else
                 {
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating Bulk-Dark-Blue!", _TaskName)));
+                _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating Dark-Blue-Bulk!", _TaskName)));
                 }
-
+                
                 unitOfWork.Save();
             }
         }
@@ -387,7 +243,7 @@ public class CreateFirstSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Servi
         
         _BulkInfoProvider.PlanProductionDaysForBulkWithoutDelete(manualBulk.PlanningNumber, manualBulk.StartDate, manualBulk.EndDate);
         
-        //_Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Succesfully added Bulk-Blue!", _TaskName)));
+        _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Succesfully added {[1]}!", _TaskName, planningNumber)));
     }
 
 
