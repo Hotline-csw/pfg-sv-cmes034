@@ -13,7 +13,7 @@
     </Converter:ValueToImageConverter>
 	
 	<!-- Change 1: Style name = WorkCenter name -->
-    <Style x:Key="DetailedProgressbarParts_SP" TargetType="telerik:GridViewCell"> 
+    <Style x:Key="DetailedProgressbarParts_SOR" TargetType="telerik:GridViewCell"> 
         <Style.Setters>
             <Setter Property="ContentTemplate">
                 <Setter.Value>
@@ -24,8 +24,8 @@
 							<!-- Change 2: Set name icon, add fields from the view -->
 							<StackPanel.Resources>
 								<system:String x:Key="imagekey">sort</system:String>
-								<PropertyPath x:Key="percentage">DataContext.SPPercentage</PropertyPath> <!-- Field with percentage info-->
-								<PropertyPath x:Key="qty">DataContext.SPQty</PropertyPath> <!-- Field with current and desired quantity info-->
+								<PropertyPath x:Key="percentage">DataContext.SORPercentage</PropertyPath> <!-- Field with percentage info-->
+								<PropertyPath x:Key="qty">DataContext.SORQty</PropertyPath> <!-- Field with current and desired quantity info-->
 							</StackPanel.Resources>
 							<!-- No more changes required -->
 						
