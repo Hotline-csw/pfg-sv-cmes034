@@ -56,63 +56,88 @@ public class CreateThirdSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Servi
 
             using(var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
             {
+/*
                 // Repositorys
                 var prodOrdersRep = unitOfWork.GetRepository<ProductionOrder>();
                 
                 // CustomerOrders sorted by bulk
-                // Dark-Yellow-Bulk
-                var darkYellowBulkOrderCodes = new[]{"Demo_Kitchen_Small_017","Demo_Kitchen_Small_018","Demo_Kitchen_Small_019","Demo_Kitchen_Medium_019"};
+                // Bright-Yellow-Bulk
+                var brightYellowBulkOrderCodes = new[]{"Demo_Kitchen_Small_016","Demo_Kitchen_Small_020","Demo_Kitchen_Medium_017","Demo_Kitchen_Medium_020"};
                 
-                // Dark-Red-Bulk                                
-                var darkRedBulkOrderCodes = new[]{"Demo_Kitchen_Small_007","Demo_Kitchen_Small_008","Demo_Kitchen_Medium_007"};
+                // Bright-Red-Bulk                                
+                var brightRedBulkOrderCodes = new[]{"Demo_Kitchen_Small_009","Demo_Kitchen_Small_010","Demo_Kitchen_Medium_010"};
                 
-                // Dark-Green-Bulk
-                var darkGreenBulkOrderCodes = new[]{"Demo_Kitchen_Small_012","Demo_Kitchen_Small_015","Demo_Kitchen_Medium_011","Demo_Kitchen_Medium_015"};
-                                                
-                // Dark-Black-Bulk
-                var darkBlackBulkOrderCodes = new[]{"Demo_Kitchen_Small_022","Demo_Kitchen_Small_024","Demo_Kitchen_Medium_022"};
+                // Bright-Blue-Bulk                                
+                var brightBlueBulkOrderCodes = new[]{"Demo_Kitchen_Small_001","Demo_Kitchen_Medium_002","Demo_Kitchen_Medium_003"};
+                
+                // Bright-Black-Bulk
+                var brightBlackBulkOrderCodes = new[]{"Demo_Kitchen_Small_021","Demo_Kitchen_Medium_023","Demo_Kitchen_Medium_025"};
+                
+                // Bright-Green-Bulk
+                var brightGreenBulkOrderCodes = new[]{"Demo_Kitchen_Small_013","Demo_Kitchen_Medium_013"};
                 
                 // Set new bulks + start and end date         
-                // Dark-Yellow-Bulk                            
-                var prodOrderDarkYellowBulk = prodOrdersRep.GetQueryable(false).Where(po => darkYellowBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
+                // Bright-Yellow-Bulk                            
+                var prodOrderBrightYellowBulk = prodOrdersRep.GetQueryable(false).Where(po => brightYellowBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
             
-                if(prodOrderDarkYellowBulk != null)
+                if(prodOrderBrightYellowBulk != null)
                 {
                     //Get date
-                    var darkYellowDate = prodOrdersRep.GetFirstOrDefault(
+                    var brightYellowDate = prodOrdersRep.GetFirstOrDefault(
                             po => po.ComponentType == ComponentType.SidePanel && 
-                                  darkYellowBulkOrderCodes.Contains(po.CustomerOrderCode)
+                                  brightYellowBulkOrderCodes.Contains(po.CustomerOrderCode)
                                   );
                     
-                    var darkYellowBulkStartDate = Convert.ToDateTime(darkYellowDate.DesiredStartDate);
-                    var darkYellowBulkEndDate = Convert.ToDateTime(darkYellowDate.DesiredEndDate);
+                    var brightYellowBulkStartDate = Convert.ToDateTime(brightYellowDate.DesiredStartDate);
+                    var brightYellowBulkEndDate = Convert.ToDateTime(brightYellowDate.DesiredEndDate);
                     
-                    SetManualBulk(unitOfWork, "Dark-Yellow-Bulk", darkYellowBulkStartDate, "#FFFFEA25", darkYellowBulkEndDate, prodOrderDarkYellowBulk);
+                    SetManualBulk(unitOfWork, "Bright-Yellow-Bulk", brightYellowBulkStartDate, "#FFF4FF7E", brightYellowBulkEndDate, prodOrderBrightYellowBulk);
                 }
                 else
                 {
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Dark-Yellow-Bulk!", _TaskName)));
+                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Bright-Yellow-Bulk!", _TaskName)));
                 }
                 
-                // Dark-Red-Bulk
-                var prodOrderDarkRedBulk = prodOrdersRep.GetQueryable(false).Where(po => darkRedBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
+                // Bright-Red-Bulk
+                var prodOrderBrightRedBulk = prodOrdersRep.GetQueryable(false).Where(po => brightRedBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
             
-                if(prodOrderDarkRedBulk != null)
+                if(prodOrderBrightRedBulk != null)
                 {
                     //Get date
-                    var darkRedDate = prodOrdersRep.GetFirstOrDefault(
+                    var brightRedDate = prodOrdersRep.GetFirstOrDefault(
                             po => po.ComponentType == ComponentType.SidePanel && 
-                                  darkRedBulkOrderCodes.Contains(po.CustomerOrderCode)
+                                  brightRedBulkOrderCodes.Contains(po.CustomerOrderCode)
                                   );
                     
-                    var darkRedBulkStartDate = Convert.ToDateTime(darkRedDate.DesiredStartDate);
-                    var darkRedBulkEndDate = Convert.ToDateTime(darkRedDate.DesiredEndDate);
+                    var brightRedBulkStartDate = Convert.ToDateTime(brightRedDate.DesiredStartDate);
+                    var brightRedBulkEndDate = Convert.ToDateTime(brightRedDate.DesiredEndDate);
                     
-                    SetManualBulk(unitOfWork, "Dark-Red-Bulk", darkRedBulkStartDate, "#FFC84B4B", darkRedBulkEndDate, prodOrderDarkRedBulk);
+                    SetManualBulk(unitOfWork, "Bright-Red-Bulk", brightRedBulkStartDate, "#FFFAC8C8", brightRedBulkEndDate, prodOrderBrightRedBulk);
                 }
                 else
                 {
-                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Dark-Red-Bulk!", _TaskName)));
+                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Bright-Red-Bulk!", _TaskName)));
+                }
+                
+                // Bright-Blue-Bulk
+                var prodOrderBrightBlueBulk = prodOrdersRep.GetQueryable(false).Where(po => brightBlueBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
+            
+                if(prodOrderBrightBlueBulk != null)
+                {
+                    //Get date
+                    var brightBlueDate = prodOrdersRep.GetFirstOrDefault(
+                            po => po.ComponentType == ComponentType.SidePanel && 
+                                  brightBlueBulkOrderCodes.Contains(po.CustomerOrderCode)
+                                  );
+                    
+                    var brightBlueBulkStartDate = Convert.ToDateTime(brightBlueDate.DesiredStartDate);
+                    var brightBlueBulkEndDate = Convert.ToDateTime(brightBlueDate.DesiredEndDate);
+                    
+                    SetManualBulk(unitOfWork, "Bright-Blue-Bulk", brightBlueBulkStartDate, "#FFC8C8FA", brightBlueBulkEndDate, prodOrderBrighBlueBulk);
+                }
+                else
+                {
+                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Bright-Blue-Bulk!", _TaskName)));
                 }
                 
                 // Dark-Green-Bulk
@@ -157,7 +182,7 @@ public class CreateThirdSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Servi
                     _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Dark-Black-Bulk!", _TaskName)));
                 }
                 
-                unitOfWork.Save();
+                unitOfWork.Save();*/
             }
         }
         catch (Exception e)
