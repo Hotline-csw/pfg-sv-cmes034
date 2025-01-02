@@ -135,8 +135,29 @@ public class CreateSecondSetOfManualBulks : GenericTaskBase, HomagGroup.FLS.Serv
                 {
                     _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Dark-Green-Bulk!", _TaskName)));
                 }
+                
+                // Dark-Black-Bulk
+                var prodOrderDarkBlackBulk = prodOrdersRep.GetQueryable(false).Where(po => darkBlackBulkOrderCodes.Contains(po.CustomerOrderCode)).ToList();
             
-            
+                if(prodOrderDarkBlackBulk != null)
+                {
+                    //Get date
+                    var darkBlackDate = prodOrdersRep.GetFirstOrDefault(
+                            po => po.ComponentType == ComponentType.SidePanel && 
+                                  darkBlackBulkOrderCodes.Contains(po.CustomerOrderCode)
+                                  );
+                    
+                    var darkBlackBulkStartDate = Convert.ToDateTime(darkBlackDate.DesiredStartDate);
+                    var darkBlackBulkEndDate = Convert.ToDateTime(darkBlackDate.DesiredEndDate);
+                    
+                    SetManualBulk(unitOfWork, "Dark-Black-Bulk", darkBlackBulkStartDate, "#FF323232", darkBlackBulkEndDate, prodOrderDarkBlackBulk);
+                }
+                else
+                {
+                    _Logger.Info(ResourcesKeys.CommonMessage(string.Format("{0}: Error while generating the Dark-Black-Bulk!", _TaskName)));
+                }
+                
+                unitOfWork.Save();
             }
         }
         catch (Exception e)
