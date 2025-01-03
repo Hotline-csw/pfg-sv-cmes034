@@ -34,7 +34,7 @@ using System.Collections;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization))]
 [Export("FeedbackCNC", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("Manual feedback for cnc workcenters")]
+[Description("[03] Manual feedback for cnc workcenters")]
 [EnabledScript(true)]
 public class FeedbackCNC : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit//, IPartImportsSatisfiedNotification // TODO MESSAGING
 {
