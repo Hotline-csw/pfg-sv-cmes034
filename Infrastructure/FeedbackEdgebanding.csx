@@ -34,7 +34,7 @@ using System.Collections;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization))]
 [Export("FeedbackEdgebanding", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("Manual feedback for edgebanding workcenter")]
+[Description("[02] Manual feedback for edgebanding workcenter")]
 [EnabledScript(true)]
 public class FeedbackEdgebanding : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit//, IPartImportsSatisfiedNotification // TODO MESSAGING
 {
