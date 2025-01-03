@@ -46,7 +46,7 @@ public class CustomCreateProductionItems : CreateProductionItems
         {
             productionOrder.ProductionItems.Add(new ProductionItem
             {
-                Code = productionOrder.CustomProdItemCode,
+                Code = "NF-" + productionOrder.CustomProdItemCode,
                 DesiredQuantity = productionOrder.DesiredTargetQuantity ?? 1,
                 CreationDate = DateTime.Now,
                 ModificationDate = DateTime.Now,
