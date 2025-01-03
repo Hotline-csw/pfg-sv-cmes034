@@ -70,7 +70,7 @@ public class FeedbackCutting : UserExitCustomBase, HomagGroup.FLS.Infrastructure
                     foreach (var selectedItem in itemEnumerable.OfType<CustViewMasterManualFeedback>())
                     {
                         var productionItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(
-                            pi => pi.Code == selectedItem.ProductionItemCode);
+                                pi => pi.Code == selectedItem.ProductionItemCode);
 
                         if (productionItem != null)
                         {
