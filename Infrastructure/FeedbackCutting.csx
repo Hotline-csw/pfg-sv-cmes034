@@ -42,6 +42,9 @@ public class FeedbackCutting : UserExitCustomBase, HomagGroup.FLS.Infrastructure
 
     private Logger _Logger;
     
+    [Import]
+    protected UserExitHelper UserExitHelper { get; set; }
+    
     private string _TaskName = "FeedbackCutting";
     
     private string cuttingWorkCenter = "CU1";
@@ -78,6 +81,8 @@ public class FeedbackCutting : UserExitCustomBase, HomagGroup.FLS.Infrastructure
                             } 
                         }
                     }
+                    
+                    UserExitHelper.RefreshView();
                 }
             }
         }
