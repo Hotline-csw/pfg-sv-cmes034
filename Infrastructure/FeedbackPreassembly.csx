@@ -69,20 +69,24 @@ public class FeedbackPreassembly : UserExitCustomBase, HomagGroup.FLS.Infrastruc
                 {
                     foreach (var selectedItem in itemEnumerable.OfType<CustViewMasterManualFeedback>())
                     {
-                        var productionItemsRepository = unitOfWork.GetRepository<ProductionItem>();
-                        var productionItem = productionItemsRepository.GetFirstOrDefault(pi => pi.Code == selectedItem.ProductionItemCode);
+                        var productionItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(
+                                pi => pi.Code == selectedItem.ProductionItemCode);
 
                         if (productionItem != null)
                         {
-                            var ProductionItemsStepsDataRepository = unitOfWork.GetRepository<ProductionItemsStepsData>();
-                            var ProductionItemsStepsData = ProductionItemsStepsDataRepository.GetFirstOrDefault(po => po.ProductionItemCode == selectedItem.ProductionItemCode && po.ProductionStepCode == "PREASSEM");
+                            var productionItemsStepsData = unitOfWork.GetRepository<ProductionItemsStepsData>().GetFirstOrDefault(
+                                    po => 
+                                        po.ProductionItemCode == selectedItem.ProductionItemCode && 
+                                        po.ProductionStepCode == preassemblyStepCode);
 
-                            if (ProductionItemsStepsData != null)
+                            if (productionItemsStepsData != null)
                             {
-                                productionItem.InsertFeedbackFinishedGood( unitOfWork, _TaskName,"6010","",1, _Logger);
+                                productionItem.InsertFeedbackFinishedGood(unitOfWork, _TaskName, preassemblyStepCode, "",1, _Logger);
                             } 
                         }
                     }
+                    
+                    UserExitHelper.RefreshView();
                 }
             }        
         }
