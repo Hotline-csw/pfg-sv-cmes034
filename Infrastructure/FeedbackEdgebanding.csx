@@ -49,6 +49,7 @@ public class FeedbackEdgebanding : UserExitCustomBase, HomagGroup.FLS.Infrastruc
     private string _TaskName = "FeedbackEdgebanding";
     
     private string edgebandingWorkCenter = "EB1";
+    private string edgebandingStepCode = "EB1";
     
 
     public void Execute(object parameter)
@@ -68,15 +69,17 @@ public class FeedbackEdgebanding : UserExitCustomBase, HomagGroup.FLS.Infrastruc
                 {
                     foreach (var selectedItem in itemEnumerable.OfType<CustViewMasterManualFeedback>())
                     {
-                        var productionItemsRepository = unitOfWork.GetRepository<ProductionItem>();
-                        var productionItem = productionItemsRepository.GetFirstOrDefault(pi => pi.Code == selectedItem.ProductionItemCode);
+                        var productionItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(
+                                pi => pi.Code == selectedItem.ProductionItemCode);
 
                         if (productionItem != null)
                         {
-                            var ProductionItemsStepsDataRepository = unitOfWork.GetRepository<ProductionItemsStepsData>();
-                            var ProductionItemsStepsData = ProductionItemsStepsDataRepository.GetFirstOrDefault(po => po.ProductionItemCode == selectedItem.ProductionItemCode && po.ProductionStepCode == "KALWZ14");
+                            var productionItemsStepsData = unitOfWork.GetRepository<ProductionItemsStepsData>().GetFirstOrDefault(
+                                    po => 
+                                        po.ProductionItemCode == selectedItem.ProductionItemCode && 
+                                        po.ProductionStepCode == edgebandingStepCode);
 
-                            if (ProductionItemsStepsData != null)
+                            if (productionItemsStepsData != null)
                             {
                                 productionItem.InsertFeedbackFinishedGood(unitOfWork, _TaskName, edgebandingWorkCenter, "", 1, _Logger);
                             } 
