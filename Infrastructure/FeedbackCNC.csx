@@ -49,6 +49,7 @@ public class FeedbackCNC : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Fra
     private string _TaskName = "FeedbackCNC";
     
     private string cncWorkCenter1 = "CNC1";
+    private string cncWorkCenter2 = "CNC2";
     
 
     public void Execute(object parameter)
@@ -79,15 +80,17 @@ public class FeedbackCNC : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Fra
                             
                             if (ProductionItemsStepsDataDrilling != null)
                             {
-                                productionItem.InsertFeedbackFinishedGood( unitOfWork, _TaskName,"5010","",1, _Logger);
+                                productionItem.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cncWorkCenter1, "", 1, _Logger);
                             }
                             
-                            else if(ProductionItemsStepsDataCnc != null)
+                            if(ProductionItemsStepsDataCnc != null)
                             {
-                                productionItem.InsertFeedbackFinishedGood( unitOfWork, _TaskName,"5020","",1, _Logger);
+                                productionItem.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cncWorkCenter2, "", 1, _Logger);
                             }                            
                         }
                     }
+                    
+                    UserExitHelper.RefreshView();
                 }
             }        
         }
