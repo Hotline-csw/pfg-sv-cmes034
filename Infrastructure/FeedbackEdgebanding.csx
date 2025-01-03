@@ -17,6 +17,7 @@
 //   Revision History:
 //   Name            Date          Description
 //   T.Stürzer       2023-02-13    Created
+//   T.Stürzer       2025-01-03    Changed workcenter and added RefreshView
 //   
 //-----------------------------------------------------------------------------
 
@@ -42,7 +43,12 @@ public class FeedbackEdgebanding : UserExitCustomBase, HomagGroup.FLS.Infrastruc
 
     private Logger _Logger;
     
+    [Import]
+    protected UserExitHelper UserExitHelper { get; set; }
+    
     private string _TaskName = "FeedbackEdgebanding";
+    
+    private string edgebandingWorkCenter = "EB1";
     
 
     public void Execute(object parameter)
@@ -72,10 +78,12 @@ public class FeedbackEdgebanding : UserExitCustomBase, HomagGroup.FLS.Infrastruc
 
                             if (ProductionItemsStepsData != null)
                             {
-                                productionItem.InsertFeedbackFinishedGood( unitOfWork, _TaskName,"3010","",1, _Logger);
+                                productionItem.InsertFeedbackFinishedGood(unitOfWork, _TaskName, edgebandingWorkCenter, "", 1, _Logger);
                             } 
                         }
                     }
+                    
+                    UserExitHelper.RefreshView();
                 }
             }
         }
