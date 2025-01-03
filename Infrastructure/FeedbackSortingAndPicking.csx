@@ -17,6 +17,7 @@
 //   Revision History:
 //   Name            Date          Description
 //   T.Stürzer       2023-02-13    Created
+//   T.Stürzer       2025-01-03    Changed workcenter and added RefreshView
 //   
 //-----------------------------------------------------------------------------
 
@@ -33,7 +34,7 @@ using System.Collections;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization))]
 [Export("FeedbackSortingAndPicking", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("Manual feedback for sorting workcenter")]
+[Description("Manual feedback for sorting and picking workcenter")]
 [EnabledScript(true)]
 public class FeedbackSortingAndPicking : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit//, IPartImportsSatisfiedNotification // TODO MESSAGING
 {
@@ -41,6 +42,7 @@ public class FeedbackSortingAndPicking : UserExitCustomBase, HomagGroup.FLS.Infr
     private IUnitOfWorkFactory _UnitOfWorkFactory;
 
     private Logger _Logger;
+    
     
     private string _TaskName = "FeedbackSortingAndPicking";
     
