@@ -17,6 +17,7 @@
 //   Revision History:
 //   Name            Date          Description
 //   T.Stürzer       2023-02-13    Created
+//   T.Stürzer       2025-01-03    Changed workcenter and added RefreshView
 //   
 //-----------------------------------------------------------------------------
 
@@ -41,6 +42,9 @@ public class FeedbackDrilling : UserExitCustomBase, HomagGroup.FLS.Infrastructur
     private IUnitOfWorkFactory _UnitOfWorkFactory;
 
     private Logger _Logger;
+    
+    [Import]
+    protected UserExitHelper UserExitHelper { get; set; }
     
     private string _TaskName = "FeedbackDrilling";
     
