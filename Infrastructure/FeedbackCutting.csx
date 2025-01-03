@@ -49,6 +49,7 @@ public class FeedbackCutting : UserExitCustomBase, HomagGroup.FLS.Infrastructure
     private string _TaskName = "FeedbackCutting";
     
     private string cuttingWorkCenter = "CU1";
+    private string cuttingStepCode = "CU1";
     
     
     public void Execute(object parameter)
@@ -68,15 +69,17 @@ public class FeedbackCutting : UserExitCustomBase, HomagGroup.FLS.Infrastructure
                 {
                     foreach (var selectedItem in itemEnumerable.OfType<CustViewMasterManualFeedback>())
                     {
-                        var productionItemsRepository = unitOfWork.GetRepository<ProductionItem>();
-                        var productionItem = productionItemsRepository.GetFirstOrDefault(pi => pi.Code == selectedItem.ProductionItemCode);
+                        var productionItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(
+                            pi => pi.Code == selectedItem.ProductionItemCode);
 
                         if (productionItem != null)
                         {
-                            var ProductionItemsStepsDataRepository = unitOfWork.GetRepository<ProductionItemsStepsData>();
-                            var ProductionItemsStepsData = ProductionItemsStepsDataRepository.GetFirstOrDefault(po => po.ProductionItemCode == selectedItem.ProductionItemCode && po.ProductionStepCode == "B300");
+                            var productionItemsStepsData = unitOfWork.GetRepository<ProductionItemsStepsData>().GetFirstOrDefault(
+                                    po => 
+                                        po.ProductionItemCode == selectedItem.ProductionItemCode && 
+                                        po.ProductionStepCode == cuttingStepCode);
 
-                            if (ProductionItemsStepsData != null)
+                            if (productionItemsStepsData != null)
                             {
                                 productionItem.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cuttingWorkCenter, "", 1, _Logger);
                             } 
