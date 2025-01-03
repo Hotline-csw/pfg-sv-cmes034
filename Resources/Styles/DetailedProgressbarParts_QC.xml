@@ -23,7 +23,7 @@
 							
 							<!-- Change 2: Set name icon, add fields from the view -->
 							<StackPanel.Resources>
-								<system:String x:Key="imagekey">QualitiyCheck</system:String>
+								<system:String x:Key="imagekey">qualitycheck</system:String>
 								<PropertyPath x:Key="percentage">DataContext.QCPercentage</PropertyPath> <!-- Field with percentage info-->
 								<PropertyPath x:Key="qty">DataContext.QCQty</PropertyPath> <!-- Field with current and desired quantity info-->
 							</StackPanel.Resources>
