@@ -43,8 +43,13 @@ public class FeedbackSortingAndPicking : UserExitCustomBase, HomagGroup.FLS.Infr
 
     private Logger _Logger;
     
+    [Import]
+    protected UserExitHelper UserExitHelper { get; set; }
     
     private string _TaskName = "FeedbackSortingAndPicking";
+    
+    private string sortAndPickWorkCenter = "SP";
+    private string sortAndPickStepCode = "SP";
     
 
     public void Execute(object parameter)
@@ -64,20 +69,24 @@ public class FeedbackSortingAndPicking : UserExitCustomBase, HomagGroup.FLS.Infr
                 {
                     foreach (var selectedItem in itemEnumerable.OfType<CustViewMasterManualFeedback>())
                     {
-                        var productionItemsRepository = unitOfWork.GetRepository<ProductionItem>();
-                        var productionItem = productionItemsRepository.GetFirstOrDefault(pi => pi.Code == selectedItem.ProductionItemCode);
+                        var productionItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(
+                                pi => pi.Code == selectedItem.ProductionItemCode);
 
                         if (productionItem != null)
                         {
-                            var ProductionItemsStepsDataRepository = unitOfWork.GetRepository<ProductionItemsStepsData>();
-                            var ProductionItemsStepsData = ProductionItemsStepsDataRepository.GetFirstOrDefault(po => po.ProductionItemCode == selectedItem.ProductionItemCode && po.ProductionStepCode == "SORT");
+                            var productionItemsStepsData = unitOfWork.GetRepository<ProductionItemsStepsData>().GetFirstOrDefault(
+                                    po => 
+                                        po.ProductionItemCode == selectedItem.ProductionItemCode && 
+                                        po.ProductionStepCode == sortAndPickStepCode);
 
-                            if (ProductionItemsStepsData != null)
+                            if (productionItemsStepsData != null)
                             {
-                                productionItem.InsertFeedbackFinishedGood( unitOfWork, _TaskName,"5070","",1, _Logger);
+                                productionItem.InsertFeedbackFinishedGood(unitOfWork, _TaskName, sortAndPickWorkCenter, "", 1, _Logger);
                             } 
                         }
                     }
+                    
+                    UserExitHelper.RefreshView();
                 }
             }
         }
