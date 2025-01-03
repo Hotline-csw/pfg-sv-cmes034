@@ -34,7 +34,7 @@ using System.Collections;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization))]
 [Export("FeedbackPreassembly", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("Manual feedback for preassembly workcenter")]
+[Description("[05] Manual feedback for preassembly workcenter")]
 [EnabledScript(true)]
 public class FeedbackPreassembly : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit//, IPartImportsSatisfiedNotification // TODO MESSAGING
 {
