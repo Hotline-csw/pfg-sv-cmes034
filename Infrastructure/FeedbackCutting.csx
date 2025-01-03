@@ -44,6 +44,8 @@ public class FeedbackCutting : UserExitCustomBase, HomagGroup.FLS.Infrastructure
     
     private string _TaskName = "FeedbackCutting";
     
+    private string cuttingWorkCenter = "CU1";
+    
     
     public void Execute(object parameter)
     {
@@ -72,7 +74,7 @@ public class FeedbackCutting : UserExitCustomBase, HomagGroup.FLS.Infrastructure
 
                             if (ProductionItemsStepsData != null)
                             {
-                                productionItem.InsertFeedbackFinishedGood( unitOfWork, _TaskName,"1010","",1, _Logger);
+                                productionItem.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cuttingWorkCenter, "", 1, _Logger);
                             } 
                         }
                     }
