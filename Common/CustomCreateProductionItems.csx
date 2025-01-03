@@ -42,15 +42,30 @@ public class CustomCreateProductionItems : CreateProductionItems
         Guard.ThrowOnArgumentNull(logger, "logger");
         Guard.ThrowOnArgumentNull(productionOrder, "productionOrder");
 
-        productionOrder.ProductionItems.Add(new ProductionItem
+        if(productionOrder.ReproductionType == ReproductionType.Standard)
         {
-//            Code = "2"+productionOrder.Code,       // Get the ProductionItemCode for a new ProductionItem;  Standard: Create the value by RangeOfNumbers
-            Code = productionOrder.CustomProdItemCode,
-            DesiredQuantity = productionOrder.DesiredTargetQuantity ?? 1,
-            CreationDate = DateTime.Now,
-            ModificationDate = DateTime.Now,
-            CreationSource = "FLS",
-            ModificationSource = "FLS",
-        });
+            productionOrder.ProductionItems.Add(new ProductionItem
+            {
+                Code = productionOrder.CustomProdItemCode,
+                DesiredQuantity = productionOrder.DesiredTargetQuantity ?? 1,
+                CreationDate = DateTime.Now,
+                ModificationDate = DateTime.Now,
+                CreationSource = "FLS",
+                ModificationSource = "FLS",
+            });
+        
+        }
+        else
+        {
+            productionOrder.ProductionItems.Add(new ProductionItem
+            {
+                Code = productionOrder.CustomProdItemCode,
+                DesiredQuantity = productionOrder.DesiredTargetQuantity ?? 1,
+                CreationDate = DateTime.Now,
+                ModificationDate = DateTime.Now,
+                CreationSource = "FLS",
+                ModificationSource = "FLS",
+            });
+        }
     }
 }
