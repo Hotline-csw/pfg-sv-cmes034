@@ -48,6 +48,8 @@ public class FeedbackCNC : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Fra
     
     private string _TaskName = "FeedbackCNC";
     
+    private string cncWorkCenter1 = "CNC1";
+    
 
     public void Execute(object parameter)
     {
