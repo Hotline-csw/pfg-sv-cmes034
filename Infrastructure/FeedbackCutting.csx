@@ -34,7 +34,7 @@ using System.Collections;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization))]
 [Export("FeedbackCutting", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("Manual feedback for cutting workcenter")]
+[Description("[01] Manual feedback for cutting workcenter")]
 [EnabledScript(true)]
 public class FeedbackCutting : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit//, IPartImportsSatisfiedNotification // TODO MESSAGING
 {
