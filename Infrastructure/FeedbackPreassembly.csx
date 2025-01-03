@@ -43,8 +43,13 @@ public class FeedbackPreassembly : UserExitCustomBase, HomagGroup.FLS.Infrastruc
 
     private Logger _Logger;
     
+    [Import]
+    protected UserExitHelper UserExitHelper { get; set; }
     
     private string _TaskName = "FeedbackPreassembly";
+    
+    private string preassemblyWorkCenter = "PRE";
+    private string preassemblyStepCode = "PRE";
     
     
     public void Execute(object parameter)
