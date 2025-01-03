@@ -48,8 +48,11 @@ public class FeedbackCNC : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Fra
     
     private string _TaskName = "FeedbackCNC";
     
-    private string cncWorkCenter1 = "CNC1";
-    private string cncWorkCenter2 = "CNC2";
+    private string cnc1WorkCenter = "CNC1";
+    private string cnc2WorkCenter = "CNC2";
+    
+    private string cnc1StepCode = "CNC1";
+    private string cnc2StepCode = "CNC2";
     
 
     public void Execute(object parameter)
@@ -69,23 +72,29 @@ public class FeedbackCNC : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Fra
                 {
                     foreach (var selectedItem in itemEnumerable.OfType<CustViewMasterManualFeedback>())
                     {
-                        var productionItemsRepository = unitOfWork.GetRepository<ProductionItem>();
-                        var productionItem = productionItemsRepository.GetFirstOrDefault(pi => pi.Code == selectedItem.ProductionItemCode);
+                        var productionItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(
+                                pi => pi.Code == selectedItem.ProductionItemCode);
 
                         if (productionItem != null)
                         {
-                            var ProductionItemsStepsDataRepository = unitOfWork.GetRepository<ProductionItemsStepsData>();
-                            var ProductionItemsStepsDataDrilling = ProductionItemsStepsDataRepository.GetFirstOrDefault(po => po.ProductionItemCode == selectedItem.ProductionItemCode && po.ProductionStepCode == "V200");
-                            var ProductionItemsStepsDataCnc = ProductionItemsStepsDataRepository.GetFirstOrDefault(po2 => po2.ProductionItemCode == selectedItem.ProductionItemCode && po2.ProductionStepCode == "E310");
-                            
-                            if (ProductionItemsStepsDataDrilling != null)
+                            var productionItemsStepsDataCnc1 = unitOfWork.GetRepository<ProductionItemsStepsData>().GetFirstOrDefault(
+                                    po => 
+                                        po.ProductionItemCode == selectedItem.ProductionItemCode && 
+                                        po.ProductionStepCode == cnc1StepCode);
+                                        
+                            var productionItemsStepsDataCnc2 = unitOfWork.GetRepository<ProductionItemsStepsData>().GetFirstOrDefault(
+                                    po => 
+                                        po.ProductionItemCode == selectedItem.ProductionItemCode && 
+                                        po.ProductionStepCode == cnc2StepCode);
+                                        
+                            if (productionItemsStepsDataCnc1 != null)
                             {
-                                productionItem.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cncWorkCenter1, "", 1, _Logger);
+                                productionItem.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cnc1WorkCenter, "", 1, _Logger);
                             }
                             
-                            if(ProductionItemsStepsDataCnc != null)
+                            if(productionItemsStepsDataCnc2 != null)
                             {
-                                productionItem.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cncWorkCenter2, "", 1, _Logger);
+                                productionItem.InsertFeedbackFinishedGood(unitOfWork, _TaskName, cnc2WorkCenter, "", 1, _Logger);
                             }                            
                         }
                     }
