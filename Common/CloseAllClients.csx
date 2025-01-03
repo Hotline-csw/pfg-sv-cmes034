@@ -28,7 +28,7 @@ using System.ComponentModel;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization))]
 [Export("CloseAllClients", typeof(HomagGroup.FLS.Services.Common.Contracts.JobScheduling.Configuration.Tasks.Generic.IGenericTask))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("Task to Close all open clients")]
+[Description("[99] Task to close all open clients")]
 [EnabledScript(true)]
 public class CloseAllClients : GenericTaskBase, HomagGroup.FLS.Services.Common.Contracts.JobScheduling.Configuration.Tasks.Generic.IGenericTask
                                 , IPartImportsSatisfiedNotification
