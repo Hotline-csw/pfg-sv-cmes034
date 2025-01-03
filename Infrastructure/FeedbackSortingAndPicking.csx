@@ -34,7 +34,7 @@ using System.Collections;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization))]
 [Export("FeedbackSortingAndPicking", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("Manual feedback for sorting and picking workcenter")]
+[Description("[04] Manual feedback for sorting and picking workcenter")]
 [EnabledScript(true)]
 public class FeedbackSortingAndPicking : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit//, IPartImportsSatisfiedNotification // TODO MESSAGING
 {
