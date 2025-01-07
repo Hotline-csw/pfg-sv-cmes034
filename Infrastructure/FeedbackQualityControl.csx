@@ -10,13 +10,14 @@
 //
 //   Requirements:   <eg. DB-Tables/Attributes, ...>
 //
-//   Author:         <Author>
-//   Date:           2025-01-07
+//   Author:         T.Stürzer
+//   Date:           2023-02-13
 //
 //-----------------------------------------------------------------------------
 //   Revision History:
 //   Name            Date          Description
-//   <Author>        2025-01-07    Created
+//   T.Stürzer       2023-02-13    Created
+//   T.Stürzer       2025-01-03    Changed workcenter and added RefreshView
 //   
 //-----------------------------------------------------------------------------
 
@@ -33,42 +34,22 @@ using System.Collections;
 [Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization))]
 [Export("FeedbackQualityControl", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("describe here")]
+[Description("[06] Manual feedback for quality control workcenter")]
 [EnabledScript(true)]
 public class FeedbackQualityControl : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit//, IPartImportsSatisfiedNotification // TODO MESSAGING
 {
-#pragma warning disable 0649
-    // TODO REFRESH
-    ///// <summary>
-    ///// UserExitHelper
-    ///// </summary>
-    //[Import]
-    //protected UserExitHelper UserExitHelper { get; set; }
-
-
-
-    // TODO MESSAGING
-    ///// <summary>
-    ///// DistributedServiceProvider
-    ///// </summary>
-    //[Import]
-    //protected IDistributedServiceProvider DistributedServiceProvider { get; set; }
-#pragma warning restore 0649
-
-
-
-    // TODO MESSAGING
-    ///// <summary>
-    ///// Messaging service interface.
-    ///// </summary>
-    //private IMessagingService _MessagingService;
-
-
-
     [Import]
     private IUnitOfWorkFactory _UnitOfWorkFactory;
 
     private Logger _Logger;
+    
+    [Import]
+    protected UserExitHelper UserExitHelper { get; set; }
+    
+    private string _TaskName = "FeedbackQualityControl";
+    
+    private string qualityControlWorkCenter = "QC";
+    private string qualityControlStepCode = "QC";
 
     public void Execute(object parameter)
     {
@@ -83,17 +64,29 @@ public class FeedbackQualityControl : UserExitCustomBase, HomagGroup.FLS.Infrast
 
             if (itemEnumerable != null)
             {
-                throw new NotImplementedException();
+                using (var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
+                {
+                    foreach (var selectedItem in itemEnumerable.OfType<CustViewMasterManualFeedback>())
+                    {
+                        var productionItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(
+                                pi => pi.Code == selectedItem.ProductionItemCode);
 
+                        if (productionItem != null)
+                        {
+                            var productionItemsStepsData = unitOfWork.GetRepository<ProductionItemsStepsData>().GetFirstOrDefault(
+                                    po => 
+                                        po.ProductionItemCode == selectedItem.ProductionItemCode && 
+                                        po.ProductionStepCode == qualityControlStepCode);
 
-                // TODO MESSAGING // TODO: implement filter
-                //Filter adHocFilter = null;
-                //NavigateToViewMessage navigate2Message = new NavigateToViewMessage(this, "ProductionOrder", "ProductionOrder", adHocFilter); //, navigationParameters);
-                //_MessagingService.PublishOnlyLocal(navigate2Message);
-
-                // TODO REFRESH
-				// Refresh the active View
-                //UserExitHelper.RefreshView();
+                            if (productionItemsStepsData != null)
+                            {
+                                productionItem.InsertFeedbackFinishedGood(unitOfWork, _TaskName, qualityControlWorkCenter, "", 1, _Logger);
+                            } 
+                        }
+                    }
+                    
+                    UserExitHelper.RefreshView();
+                }            
             }
         }
         catch (Exception e)
@@ -114,15 +107,4 @@ public class FeedbackQualityControl : UserExitCustomBase, HomagGroup.FLS.Infrast
 
         return false;
     }
-
-
-
-    // TODO MESSAGING
-    ///// <summary>
-    ///// Called when a part's imports have been satisfied and it is safe to use.
-    ///// </summary>
-    //public void OnImportsSatisfied()
-    //{
-    //    _MessagingService = DistributedServiceProvider.GetService<IMessagingService>();
-    //}
 }
