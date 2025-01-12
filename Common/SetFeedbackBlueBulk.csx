@@ -118,10 +118,10 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
 				// Preassembly
                 var validPositionsDKS003 = new List<string> { "001", "002", "003", "004", "005", "006", "007" };
 
-                var preassemDKS003 = prodOrdersRep.Get(
+                var preassemDKS003 = prodOrdersRep.GetQueryable(false).Where(
                     po => po.CustomerOrderCode == dks003 && 
                           validPositionsDKS003.Contains(po.CustomerOrderPosition) && 
-                          po.OrderType == ProductionOrderType.ConstructionPart);
+                          po.OrderType == ProductionOrderType.ConstructionPart).ToList();
             
                 if(preassemDKS003.Any())
                 {   
