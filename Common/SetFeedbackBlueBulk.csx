@@ -140,10 +140,10 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 }
 				
                 // Assembly Sale Item
-                var assemDKS003 = prodOrdersRep.Get(
+                var assemDKS003 = prodOrdersRep.GetQueryable(false).Where(
                     po => po.CustomerOrderCode == dks003 && 
                           validPositionsDKS003.Contains(po.CustomerOrderPosition) && 
-                          po.OrderType == ProductionOrderType.SalesArticle);
+                          po.OrderType == ProductionOrderType.SalesArticle).ToList();
 
                     if(assemDKS003.Any())
                     {   
@@ -173,8 +173,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         ComponentType.Traverse 
                     };
                 
-                var sortDKS004 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dks004 && componentTypesDKS004Sorting.Contains(po.ComponentType));
+                var sortDKS004 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dks004 && componentTypesDKS004Sorting.Contains(po.ComponentType)).ToList();
                 
                 if(sortDKS004.Any())
                 {   
@@ -199,10 +199,10 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         ComponentType.SidePanel,        ComponentType.Door,     ComponentType.DoorRight
                     };
                     
-                var preassemDKS004 = prodOrdersRep.Get(
+                var preassemDKS004 = prodOrdersRep.GetQueryable(false).Where(
                     po => po.CustomerOrderCode == dks004 && 
                           componentTypesDKS004Preassembly.Contains(po.ComponentType) && 
-                          po.OrderType == ProductionOrderType.ConstructionPart);
+                          po.OrderType == ProductionOrderType.ConstructionPart).ToList();
                                                         
                 if(preassemDKS004.Any())
                 {   
@@ -223,10 +223,10 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 // Assembly Sale Item
                 var validPositionsDKS004 = new List<string> { "001", "003", "006" };
                 
-                var assemDKS004 = prodOrdersRep.Get(
+                var assemDKS004 = prodOrdersRep.GetQueryable(false).Where(
                     po => po.CustomerOrderCode == dks004 && 
                           validPositionsDKS004.Contains(po.CustomerOrderPosition) && 
-                          po.OrderType == ProductionOrderType.SalesArticle);
+                          po.OrderType == ProductionOrderType.SalesArticle).ToList();
 
                     if(assemDKS004.Any())
                     {   
@@ -253,8 +253,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         ComponentType.DrawerFront
                     };
                     
-                var cncDKS005 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dks004 && componentTypesDKS005CNC.Contains(po.ComponentType));
+                var cncDKS005 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dks004 && componentTypesDKS005CNC.Contains(po.ComponentType)).ToList();
                                                         
                 if(cncDKS005.Any())
                 {   
@@ -281,9 +281,9 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         ComponentType.WorkTop                        
                     };
                     
-                var sortDKS005 = prodOrdersRep.Get(
+                var sortDKS005 = prodOrdersRep.GetQueryable(false).Where(
                     po => po.CustomerOrderCode == dks005 && componentTypesDKS005Sorting.Contains(po.ComponentType) && 
-                          po.ReproductionType == ReproductionType.NoReproduction);
+                          po.ReproductionType == ReproductionType.NoReproduction).ToList();
                                                         
                 if(sortDKS005.Any())
                 {   
@@ -308,8 +308,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                     ComponentType.FixedShelf,           ComponentType.DrawerBottom, ComponentType.Plinth,           ComponentType.Traverse
                 };
                 
-                var preassemDKS005 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dks005 && componentTypesDKS005Preassembly.Contains(po.ComponentType));
+                var preassemDKS005 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dks005 && componentTypesDKS005Preassembly.Contains(po.ComponentType)).ToList();
 
                 if(preassemDKS005.Any())
                 {   
@@ -335,9 +335,9 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         ComponentType.TopShelf                   
                     };
                     
-                var cutDKM001 = prodOrdersRep.Get(
+                var cutDKM001 = prodOrdersRep.GetQueryable(false).Where(
                     po => po.CustomerOrderCode == dkm001 && componentTypesDKM001Cutting.Contains(po.ComponentType) && 
-                          po.ReproductionType == ReproductionType.NoReproduction);
+                          po.ReproductionType == ReproductionType.NoReproduction).ToList();
                                                         
                 if(cutDKM001.Any())
                 {   
@@ -362,8 +362,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                     ComponentType.Plinth,               ComponentType.Traverse
                 };
                 
-                var drillDKM001 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm001 && componentTypesDKM001Drilling.Contains(po.ComponentType));
+                var drillDKM001 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dkm001 && componentTypesDKM001Drilling.Contains(po.ComponentType)).ToList();
                                                         
                 if(drillDKM001.Any())
                 {   
@@ -389,9 +389,9 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         ComponentType.Door,     ComponentType.DrawerFront
                     };
                     
-                var cncDKM001 = prodOrdersRep.Get(
+                var cncDKM001 = prodOrdersRep.GetQueryable(false).Where(
                     po => po.CustomerOrderCode == dkm001 && componentTypesDKM001CNC.Contains(po.ComponentType) && 
-                          po.ReproductionType == ReproductionType.NoReproduction);
+                          po.ReproductionType == ReproductionType.NoReproduction).ToList();
                                                         
                 if(cncDKM001.Any())
                 {   
@@ -417,8 +417,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         ComponentType.DrawerSide,   ComponentType.WorkTop
                     };
                     
-                var sortDKM001 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm001 && componentTypesDKM001Sorting.Contains(po.ComponentType));
+                var sortDKM001 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dkm001 && componentTypesDKM001Sorting.Contains(po.ComponentType)).ToList();
                                                         
                 if(sortDKM001.Any())
                 {   
@@ -442,9 +442,9 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                     ComponentType.SidePanel,        ComponentType.TopShelf,     ComponentType.DrawerBottom,     ComponentType.DrawerFront,
                 };
                 
-                var preassemDKM001 = prodOrdersRep.Get(
+                var preassemDKM001 = prodOrdersRep.GetQueryable(false).Where(
                     po => po.CustomerOrderCode == dkm001 && componentTypesDKM001Preassembly.Contains(po.ComponentType) && 
-                          po.ReproductionType == ReproductionType.NoReproduction);
+                          po.ReproductionType == ReproductionType.NoReproduction).ToList();
 
                 if(preassemDKM001 != null)
                 {   
