@@ -119,8 +119,8 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     ComponentType.DoorRight,
                 };
                     
-                var edgeDKS006 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dks006 && componentTypesDKS006Edge.Contains(po.ComponentType));
+                var edgeDKS006 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dks006 && componentTypesDKS006Edge.Contains(po.ComponentType)).ToList();
                                                         
                 if(edgeDKS006.Any())
                 {   
@@ -144,8 +144,8 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     ComponentType.Door,     ComponentType.DrawerBottom,     ComponentType.DrawerSide
                 };
                 
-                var cncDKS006 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dks006 && componentTypesDKS006Cnc.Contains(po.ComponentType));
+                var cncDKS006 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dks006 && componentTypesDKS006Cnc.Contains(po.ComponentType)).ToList();
                                                         
                 if(cncDKS006.Any())
                 {   
@@ -173,8 +173,8 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     ComponentType.Traverse
                 };
                 
-                var sortDKS006 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dks006 && componentTypesDKS006Sorting.Contains(po.ComponentType));
+                var sortDKS006 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dks006 && componentTypesDKS006Sorting.Contains(po.ComponentType)).ToList();
                                                         
                 if(sortDKS006.Any())
                 {   
@@ -201,9 +201,9 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     ComponentType.TopShelf,
                 };
                 
-                var cutDKM006 = prodOrdersRep.Get(
+                var cutDKM006 = prodOrdersRep.GetQueryable(false).Where(
                         po => po.CustomerOrderCode == dkm006 && componentTypesDKM006Cutting.Contains(po.ComponentType) && 
-                              po.ReproductionType == ReproductionType.Standard);
+                              po.ReproductionType == ReproductionType.Standard).ToList();
                                                         
                 if(cutDKM006.Any())
                 {   
@@ -228,8 +228,8 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     ComponentType.FixedShelf
                 };
                 
-                var edgeDKM006 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm006 && componentTypesDKM006Edge.Contains(po.ComponentType));
+                var edgeDKM006 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dkm006 && componentTypesDKM006Edge.Contains(po.ComponentType)).ToList();
                                                         
                 if(edgeDKM006.Any())
                 {   
@@ -254,8 +254,8 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     ComponentType.Traverse
                 };
                 
-                var drillDKM006 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm006 && componentTypesDKM006Drill.Contains(po.ComponentType));
+                var drillDKM006 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dkm006 && componentTypesDKM006Drill.Contains(po.ComponentType)).ToList();
                                                         
                 if(drillDKM006.Any())
                 {   
@@ -280,9 +280,9 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     ComponentType.DoorRight,        ComponentType.DrawerBottom,     ComponentType.DrawerSide
                 };
                 
-                var cncDKM006 = prodOrdersRep.Get(
+                var cncDKM006 = prodOrdersRep.GetQueryable(false).Where(
                     po => po.CustomerOrderCode == dkm006 && componentTypesDKM006CNC.Contains(po.ComponentType) &&
-                          po.ReproductionType == ReproductionType.NoReproduction);
+                          po.ReproductionType == ReproductionType.NoReproduction).ToList();
                                                         
                 if(cncDKM006.Any())
                 {   
@@ -307,9 +307,9 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     ComponentType.TopShelf,     ComponentType.DrawerFront,      ComponentType.Partition,        ComponentType.Plinth
                 };
                 
-                var sortDKM006 = prodOrdersRep.Get(
+                var sortDKM006 = prodOrdersRep.GetQueryable(false).Where(
                     po => po.CustomerOrderCode == dkm006 && componentTypesDKM006Sorting.Contains(po.ComponentType) &&
-                          po.ReproductionType == ReproductionType.NoReproduction);
+                          po.ReproductionType == ReproductionType.NoReproduction).ToList();
                                                         
                 if(sortDKM006.Any())
                 {   
@@ -337,8 +337,8 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     ComponentType.DrawerFront
                 };
                 
-                var edgeDKM008 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm008 && componentTypesDKM008Edge.Contains(po.ComponentType));
+                var edgeDKM008 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dkm008 && componentTypesDKM008Edge.Contains(po.ComponentType)).ToList();
                                                         
                 if(edgeDKM008.Any())
                 {   
@@ -363,8 +363,8 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     ComponentType.Partition,            ComponentType.Plinth,       ComponentType.WorkTop,          ComponentType.Traverse
                 };
                 
-                var drillDKM008 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm008 && componentTypesDKM008Drill.Contains(po.ComponentType));
+                var drillDKM008 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dkm008 && componentTypesDKM008Drill.Contains(po.ComponentType)).ToList();
                                                         
                 if(drillDKM008.Any())
                 {   
@@ -389,8 +389,8 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     ComponentType.Door,     ComponentType.DoorLeft,     ComponentType.DoorRight,        ComponentType.DrawerBottom
                 };
                 
-                var cncDKM008 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm008 && componentTypesDKM008CNC.Contains(po.ComponentType));
+                var cncDKM008 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dkm008 && componentTypesDKM008CNC.Contains(po.ComponentType)).ToList();
                                                         
                 if(cncDKM008 != null)
                 {   
@@ -419,8 +419,8 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     ComponentType.FixedShelf,           ComponentType.Partition,    ComponentType.DrawerFront,  ComponentType.WorkTop
                 };
                 
-                var edgeDKM009 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm009 && componentTypesDKM009Edge.Contains(po.ComponentType));
+                var edgeDKM009 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dkm009 && componentTypesDKM009Edge.Contains(po.ComponentType)).ToList();
                                                         
                 if(edgeDKM009.Any())
                 {   
@@ -445,8 +445,8 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     ComponentType.Plinth,           ComponentType.Traverse
                 };
                 
-                var drillDKM009 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm009 && componentTypesDKM009Drill.Contains(po.ComponentType));
+                var drillDKM009 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dkm009 && componentTypesDKM009Drill.Contains(po.ComponentType)).ToList();
                                                         
                 if(drillDKM009.Any())
                 {   
@@ -471,8 +471,8 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                     ComponentType.DoorLeft,     ComponentType.DrawerBottom,     ComponentType.DrawerSide
                 };
                 
-                var cncDKM009 = prodOrdersRep.Get(
-                    po => po.CustomerOrderCode == dkm009 && componentTypesDKM009CNC.Contains(po.ComponentType));
+                var cncDKM009 = prodOrdersRep.GetQueryable(false).Where(
+                    po => po.CustomerOrderCode == dkm009 && componentTypesDKM009CNC.Contains(po.ComponentType)).ToList();
                                                         
                 if(cncDKM009.Any())
                 {   
