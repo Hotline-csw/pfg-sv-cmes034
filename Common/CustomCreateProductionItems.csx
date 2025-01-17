@@ -18,6 +18,7 @@
 //   Revision History:
 //   Name            Date          Description
 //   T.Stürzer       2024-07-09    Created
+//   T.Stürzer       2025-01-17    Changed ProductionItemCode generation for rework parts
 //   
 //-----------------------------------------------------------------------------
 
@@ -46,7 +47,7 @@ public class CustomCreateProductionItems : CreateProductionItems
         {
             productionOrder.ProductionItems.Add(new ProductionItem
             {
-                Code = "NF-" + productionOrder.CustomProdItemCode,
+                Code = GetProductionItemCodeForNewItem(logger, productionOrder),
                 DesiredQuantity = productionOrder.DesiredTargetQuantity ?? 1,
                 CreationDate = DateTime.Now,
                 ModificationDate = DateTime.Now,
