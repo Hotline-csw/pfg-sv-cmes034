@@ -28,7 +28,7 @@
       "field": "Sum(iif(Width <= 130 && Width > 0, 1, 0)) AS NarrowParts",
       "keyFigure": {
         "label": "Qty narrow parts",
-        "min": "4",
+        "min": "20",
         "max": "",
         "aggregate": "sum",
         "fieldType": "number"
@@ -40,7 +40,7 @@
       "field": "Sum(CustomVolume) as Volume",
       "keyFigure": {
         "label": "Volume",
-        "min": "0.1",
+        "min": "0.8",
         "max": "3",
         "aggregate": "sum",
         "fieldType": "number"
