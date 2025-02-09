@@ -2,22 +2,39 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:hgc = "http://schemas.homag-group.com/ControlLibrary/1.0/xaml"
             xmlns:properties = "clr-namespace:HomagGroup.FLS.Infrastructure.Resource.Properties;assembly=HomagGroup.FLS.Infrastructure.Resource"
-            Width="400" 
-            Title="Test-Dialog"
-            SizeToContent="Height"
-            FocusManager.FocusedElement="{Binding ElementName=_MyInputField}"
-            hgc:UIAdjustments.DisplayMode="NonTouch">
+			Width="600" 
+            Title="Auftragsbezogene Rückmeldung"
+            SizeToContent="WidthAndHeight"
+            FocusManager.FocusedElement="{Binding ElementName=DropDownWorkCenters}">
     <!-- Template für einen Custom Dialog -->
-    <Grid>
-        <hgc:InputField 
-            Name="_MyInputField"
-            Label="Eingabe"  
-            hgc:UIAdjustments.DisplayMode="Touch"
-            IsImageVisible="False"
-            IsUnitVisible="False"                                                  
-            HorizontalAlignment="Stretch"
-            FieldType="All"
-            Text="{Binding TestData, Mode=TwoWay}"/>
+	<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "Auto"/>
+            <RowDefinition Height = "*"/>
+        </Grid.RowDefinitions>
+    	      
+	        <TextBlock 	Grid.Row="0" 
+        		Grid.Column="1" 
+        		Text="{Binding CustomerOrder, Mode=TwoWay}"
+        		FontSize="14"
+        		FontWeight="Normal"
+        		FontFamily="Tahoma"
+        		Width = "500"
+        		TextWrapping="Wrap"
+        		Margin="10,10,10,10"/>
+
+		    <hgc:DropDownList 
+		        x:Name="DropDownWorkCenters"
+		        Label="Arbeitsplatz auswählen"
+		        Grid.Row = "1"
+	        	Grid.Column = "1"
+		        Width="350"
+		        HorizontalAlignment="Center"
+		        ItemsSource="{Binding DropDownWorkCenters, Mode=TwoWay}"
+		        SelectedItem="{Binding DropDownWorkCenter, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/> 
     </Grid>
     <hgc:Dialog.Footer>
         <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
