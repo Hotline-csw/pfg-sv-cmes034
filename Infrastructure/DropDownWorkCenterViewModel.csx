@@ -31,6 +31,9 @@
 public class DropDownWorkCenterViewModel : HomagGroup.Base.UI.Windows.DialogBaseViewModel, HomagGroup.FLS.Infrastructure.Framework.Contracts.IDialogViewModel
 {
 
+    [Import]
+    private IUnitOfWorkFactory _UnitOfWorkFactory;
+
     /// <summary>
     /// Gets or sets the settings
     /// </summary>
@@ -49,6 +52,22 @@ public class DropDownWorkCenterViewModel : HomagGroup.Base.UI.Windows.DialogBase
     {
         // DialogResult must be set to null here
         DialogResult = null;
+        
+        // Liste für Arbeitsplätze anlegen
+        DropDownWorkCenters = new List<string>();
+
+        using (IUnitOfWorkBase unitOfWork = _UnitOfWorkFactory.CreateUnitOfWorkBase())
+        {
+            // Alle Arbeitsplätze aus der DB holen und nach Code absteigend sortieren
+            var workCenters = unitOfWork.GetRepository<WorkCenter>().Get().OrderBy(wc => wc.Code);
+            
+            // Ausgabe des WorkCenterCodes im DropDown Menü
+            foreach(var workCenter in workCenters)
+            {
+                DropDownWorkCenters.Add(workCenter.Code);
+            }
+            DropDownWorkCenters.Add("Alle Arbeitsplätze");
+        }
     }
 
     public string Name
@@ -59,19 +78,34 @@ public class DropDownWorkCenterViewModel : HomagGroup.Base.UI.Windows.DialogBase
         }
     }
 
-    // Example of Handling data between ViewModel & View
-    private string _TestData;
-
-    public string TestData
+    // Example of Handling data between ViewModel & View    
+    private List<string> _DropDownWorkCenters;
+   
+    public List<string> DropDownWorkCenters
     {
         get
         {
-            return _TestData;
+            return _DropDownWorkCenters;
         }
         set
         {
-            _TestData = value;
-            RaisePropertyChanged(() => TestData);
+            _DropDownWorkCenters = value;
+            RaisePropertyChanged(() => DropDownWorkCenters);
+        }
+    }  
+
+    private string _DropDownWorkCenter;
+   
+    public string DropDownWorkCenter
+    {
+        get
+        {
+            return _DropDownWorkCenter;
+        }
+        set
+        {
+            _DropDownWorkCenter = value;
+            RaisePropertyChanged(() => DropDownWorkCenter);
         }
     }
 
