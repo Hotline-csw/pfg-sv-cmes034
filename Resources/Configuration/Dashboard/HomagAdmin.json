@@ -10,7 +10,6 @@
     "input": {
       "chartName": "cMES JobHistory",
       "refresh": 5,
-      "inputOData": {},
       "inputMongo": {
         "dataSource": "JobHistory",
         "instance": "CMES_Health"
@@ -28,7 +27,6 @@
 	"input": {
 		"chartName":"cMES_Server_Host",
 		"refresh": 2,
-		"inputOData": {},
 		"inputMongo":
 		{
 			"dataSource": "PerfmonOneSecond",
@@ -47,7 +45,6 @@
 	"input": {
 		"chartName":"SqlServer DEV",
 		"refresh": 2,
-		"inputOData": {},
 		"inputMongo":
 		{
 			"dataSource": "DatabasePerformance",
@@ -62,7 +59,6 @@
     "background": "#ff0000",
     "foreground": "#fff",
     "component": "cmes-dashboard-table-chart",
-    "link": "cmes-custom-page/W2Demo",
     "input": {
       "names": ["Server Error"],
       "colors": ["#ff0000"],
@@ -84,7 +80,6 @@
     "background": "#E3A300",
     "foreground": "#fff",
     "component": "cmes-dashboard-table-chart",
-    "link": "cmes-custom-page/W2Demo",
     "input": {
       "names": ["Server Error"],
       "colors": ["#E3A300"],
