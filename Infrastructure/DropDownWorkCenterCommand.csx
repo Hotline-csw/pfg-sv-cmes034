@@ -67,8 +67,9 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                 {
                     var selectedProdOrderFeedbacks = itemEnumerable.Cast<CustViewMasterManualFeedback>().ToArray();
                     
+                    string dropDownWorkCenter = "";
                     
-                    string dropDownWorkCenter = (dialogViewModel as DropDownWorkCenterViewModel).DropDownWorkCenter.ToString();
+                    (dialogViewModel as DropDownWorkCenterViewModel).DropDownWorkCenter = dropDownWorkCenter;
                     bool? result = _LooseXaml.ShowDialog(_ViewName, dialogViewModel);
                 }                
             }
