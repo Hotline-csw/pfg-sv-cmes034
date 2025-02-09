@@ -42,10 +42,13 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
     [Import(_ViewModelName)]
     HomagGroup.FLS.Infrastructure.Framework.Contracts.IDialogViewModel dialogViewModel;
 
-    //[Import]
-    //private IUnitOfWorkFactory _UnitOfWorkFactory;
+    [Import]
+    private IUnitOfWorkFactory _UnitOfWorkFactory;
 
     private Logger _Logger;
+    
+    private string _TaskName = "DropDownWorkCenterCommand";
+    
 
     public void Execute(object parameter)
     {
@@ -60,6 +63,9 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
 
             if (itemEnumerable != null)
             {
+                using (var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
+                {
+                }                
             }
         }
         catch (Exception e)
