@@ -30,7 +30,7 @@ using System.Globalization;
 [Export("DropDownWorkCenterCommand", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("describe here")]
-[EnabledScript(true)]
+[EnabledScript(false)]
 public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit
 {
     private const string _ViewName = "DropDownWorkCenterView";
@@ -71,6 +71,33 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                     
                     (dialogViewModel as DropDownWorkCenterViewModel).DropDownWorkCenter = dropDownWorkCenter;
                     bool? result = _LooseXaml.ShowDialog(_ViewName, dialogViewModel);
+                    
+                    
+                    foreach (var selectedItem in selectedProdOrderFeedbacks)
+                    {
+                        var prodItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(
+                                pi => pi.Code == selectedItem.ProductionItemCode);
+                                
+                        var prodStep = unitOfWork.GetRepository<ProductionStep>().GetFirstOrDefault(
+                                ps => 
+                                    ps.WorkCenterCode == dropDownWorkCenter &&
+                                    ps.ProductionOrderCode == prodItem.ProductionOrderCode);
+
+                        if (prodItem != null && prodStep != null)
+                        {
+                            var prodItemsStepsData = unitOfWork.GetRepository<ProductionItemsStepsData>().GetFirstOrDefault(
+                                    po => 
+                                        po.ProductionItemCode == prodItem.Code && 
+                                        po.ProductionStepCode == prodStep.Code);
+
+                            if (prodItemsStepsData != null)
+                            {
+                                prodItem.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, dropDownWorkCenter, prodStep.Code, 0, FeedbackState.Finished, _Logger);
+                            } 
+                        }
+                    }
+                    
+                    UserExitHelper.RefreshView();                    
                 }                
             }
         }
