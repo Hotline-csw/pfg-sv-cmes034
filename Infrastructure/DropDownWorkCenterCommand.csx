@@ -30,7 +30,7 @@ using System.Globalization;
 [Export("DropDownWorkCenterCommand", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("describe here")]
-[EnabledScript(false)]
+[EnabledScript(true)]
 public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit
 {
     private const string _ViewName = "DropDownWorkCenterView";
@@ -92,12 +92,12 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
 
                             if (prodItemsStepsData != null)
                             {
-                                prodItem.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, dropDownWorkCenter, prodStep.Code, 0, FeedbackState.Finished, _Logger);
+                                prodItem.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, dropDownWorkCenter, prodStep.Code, 0, FeedbackState.Finished, 0, _Logger);
                             } 
                         }
                     }
                     
-                    UserExitHelper.RefreshView();                    
+                    //UserExitHelper.RefreshView();                    
                 }                
             }
         }
