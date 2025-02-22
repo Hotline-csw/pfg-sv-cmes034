@@ -67,6 +67,39 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                 {
                     var selectedProdOrderFeedbacks = itemEnumerable.Cast<CustViewMasterManualFeedback>().ToArray();
                     
+                    var selectedCustomerOrders = selectedProdOrderFeedbacks.Select(co => co.CustomerOrderCode).Distinct();
+                    
+/*                    
+                    // Messagebox öffnen und Details nochmals anzeigen
+                                                    var result = System.Windows.MessageBoxResult.No;
+                                    
+                                                    System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                                                    {
+                                                        result = HomagGroup.Base.UI.Windows.MessageBox.Show(
+                                                                    "Aktueller cMES Benutzer:\t  " + currentEmployee
+                                                                    + System.Environment.NewLine
+                                                                    + "Bauteilnummer:\t\t  " + productionItemFirst.Code
+                                                                    + System.Environment.NewLine
+                                                                    + "Fertigungsauftragsnummer: " + productionItemFirst.ProductionOrderCode
+                                                                    + System.Environment.NewLine
+                                                                    + "Morelo-Teilenummer:\t  " + productionItemFirst.ProductionOrder.CustomPartId
+                                                                    + System.Environment.NewLine
+                                                                    + "Statusdetail:\t\t  " + valStateDetail.Code
+                                                                    + System.Environment.NewLine
+                                                                    + "Verursacher:\t\t  " + valStateSource.Code
+                                                                    + System.Environment.NewLine
+                                                                    + "Kommentar:\t\t  " + comment
+                                                                    + System.Environment.NewLine
+                                                                    ,"Nachfertigung erfassen?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                                                    });
+*/                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     string dropDownWorkCenter = "";
                     
                     (dialogViewModel as DropDownWorkCenterViewModel).DropDownWorkCenter = dropDownWorkCenter;
