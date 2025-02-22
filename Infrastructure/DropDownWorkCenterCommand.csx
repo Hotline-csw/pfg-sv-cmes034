@@ -68,14 +68,14 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                 {
                     var selectedProdOrderFeedbacks = itemEnumerable.Cast<CustViewMasterManualFeedback>().ToArray();
                     
-                    //int selectedSidePanels = selectedProdOrderFeedbacks.Where(po => po.ArticleNumber == ComponentType.SidePanel).Count();
+                    int selectedSidePanels = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.SidePanel).Count();
 
                     var resultBox = System.Windows.MessageBoxResult.No;
                                     
                     System.Windows.Application.Current.Dispatcher.Invoke(() =>
                     {
                         resultBox = HomagGroup.Base.UI.Windows.MessageBox.Show(
-                                    "Side Panels:" //+ selectedSidePanels
+                                    "Side Panels:" + selectedSidePanels
                                     + System.Environment.NewLine
                                     + "Bulks:"
                                     + System.Environment.NewLine
