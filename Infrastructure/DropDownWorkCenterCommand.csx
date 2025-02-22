@@ -68,17 +68,17 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                     var selectedProdOrderFeedbacks = itemEnumerable.Cast<CustViewMasterManualFeedback>().ToArray();
                     
                     string selectedCustomerOrdersString = selectedProdOrderFeedbacks.Select(co => co.CustomerOrderCode)
-                            .Distinct().OrderBy(x => x).Aggregate((current, next) => current + ", " + next);
+                            .Distinct().OrderBy(x => x != null).Aggregate((current, next) => current + ", " + next);
                             
-                    var selectedBulksString = selectedProdOrderFeedbacks.Select(mb => mb.PlanningNumber)
-                            .Distinct().OrderBy(x => x).Aggregate((current, next) => current + ", " + next);
+                    string selectedBulksString = selectedProdOrderFeedbacks.Select(mb => mb.PlanningNumber)
+                            .Distinct().OrderBy(x => x != null).Aggregate((current, next) => current + ", " + next);
                             
-                    var selectedOptimizationsString = selectedProdOrderFeedbacks.Select(op => op.OptimizationCode)
-                            .Distinct().OrderBy(x => x).Aggregate((current, next) => current + ", " + next);
+                    string selectedOptimizationsString = selectedProdOrderFeedbacks.Select(op => op.OptimizationCode)
+                            .Distinct().OrderBy(x => x != null).Aggregate((current, next) => current + ", " + next);
                             
-                    _Logger.Info(string.Format("{0}: CustomerOrders: [{1}] - Bulks: [{2}], Opti: [{3}]", 
-                            _TaskName, selectedCustomerOrdersString, selectedBulksString, selectedOptimizationsString));
-                    
+                    _Logger.Info(string.Format("{0}: CustomerOrders: [{1}]", _TaskName, selectedCustomerOrdersString));
+                    _Logger.Info(string.Format("{0}: Bulks: [{1}]", _TaskName, selectedBulksString));
+                    _Logger.Info(string.Format("{0}: Opti: [{1}]", _TaskName, selectedOptimizationsString));
 /*                    
                     // Messagebox öffnen und Details nochmals anzeigen
                                                     var result = System.Windows.MessageBoxResult.No;
