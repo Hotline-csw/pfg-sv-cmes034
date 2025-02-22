@@ -98,9 +98,11 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                                     "CustomerOrders:"
                                     + System.Environment.NewLine
                                     + selectedCustomerOrdersString
+                                    + System.Environment.NewLine
                                     + "Bulks:"
                                     + System.Environment.NewLine
                                     + selectedBulksString
+                                    + System.Environment.NewLine
                                     + "Optimizations:"
                                     + System.Environment.NewLine
                                     + selectedOptimizationsString
