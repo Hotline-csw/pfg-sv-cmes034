@@ -31,7 +31,7 @@
 		        Label="Choose Workplace:"
 		        Grid.Row = "1"
 	        	Grid.Column = "1"
-		        Width="Width"
+		        Width="500"
 		        HorizontalAlignment="Center"
 		        ItemsSource="{Binding DropDownWorkCenters, Mode=TwoWay}"
 		        SelectedItem="{Binding DropDownWorkCenter, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/> 
