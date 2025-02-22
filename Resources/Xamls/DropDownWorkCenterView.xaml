@@ -2,7 +2,7 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:hgc = "http://schemas.homag-group.com/ControlLibrary/1.0/xaml"
             xmlns:properties = "clr-namespace:HomagGroup.FLS.Infrastructure.Resource.Properties;assembly=HomagGroup.FLS.Infrastructure.Resource"
-			Width="600" 
+			Width="800" 
             Title="Manual Feedback"
             SizeToContent="WidthAndHeight"
             FocusManager.FocusedElement="{Binding ElementName=DropDownWorkCenters}">
@@ -31,7 +31,7 @@
 		        Label="Choose Workplace:"
 		        Grid.Row = "1"
 	        	Grid.Column = "1"
-		        Width="350"
+		        Width="Width"
 		        HorizontalAlignment="Center"
 		        ItemsSource="{Binding DropDownWorkCenters, Mode=TwoWay}"
 		        SelectedItem="{Binding DropDownWorkCenter, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/> 
