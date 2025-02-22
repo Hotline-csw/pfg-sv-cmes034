@@ -95,12 +95,15 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                     System.Windows.Application.Current.Dispatcher.Invoke(() =>
                     {
                         resultBox = HomagGroup.Base.UI.Windows.MessageBox.Show(
-                                    "CustomerOrders:  " + selectedCustomerOrdersString
+                                    "CustomerOrders:"
                                     + System.Environment.NewLine
-                                    + "Bulks:  " + selectedBulksString
+                                    + selectedCustomerOrdersString
+                                    + "Bulks:"
                                     + System.Environment.NewLine
-                                    + "Optimizations: " + selectedOptimizationsString
+                                    + selectedBulksString
+                                    + "Optimizations:"
                                     + System.Environment.NewLine
+                                    + selectedOptimizationsString
                                     ,"Feedback?", MessageBoxButton.YesNo, MessageBoxImage.Question);
                     });                   
                     
