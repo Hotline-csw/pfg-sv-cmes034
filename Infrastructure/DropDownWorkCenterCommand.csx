@@ -72,7 +72,8 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                     (dialogViewModel as DropDownWorkCenterViewModel).DropDownWorkCenter = dropDownWorkCenter;
                     bool? result = _LooseXaml.ShowDialog(_ViewName, dialogViewModel);
                     
-                    
+                    _Logger.Info(string.Format("{0}: DropDownResult: [{1}]", _TaskName, result));
+/*                    
                     foreach (var selectedItem in selectedProdOrderFeedbacks)
                     {
                         var prodItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(
@@ -97,7 +98,8 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                         }
                     }
                     
-                    //UserExitHelper.RefreshView();                    
+                    //UserExitHelper.RefreshView();
+*/
                 }                
             }
         }
