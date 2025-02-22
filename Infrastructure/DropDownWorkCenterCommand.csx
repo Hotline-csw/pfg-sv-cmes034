@@ -92,41 +92,41 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                     System.Windows.Application.Current.Dispatcher.Invoke(() =>
                     {
                         resultBox = HomagGroup.Base.UI.Windows.MessageBox.Show(
-                                    "Side Panels:" + selectedSidePanels
+                                    "Side Panels: " + selectedSidePanels
                                     + System.Environment.NewLine
-                                    + "Adjustable Shelves:" + selectedAdjustableShelves
+                                    + "Adjustable Shelves: " + selectedAdjustableShelves
                                     + System.Environment.NewLine
-                                    + "Top Shelves:" + selectedTopShelves
+                                    + "Top Shelves: " + selectedTopShelves
                                     + System.Environment.NewLine
-                                    + "Bottom Shelves:" + selectedBottomShelves
+                                    + "Bottom Shelves: " + selectedBottomShelves
                                     + System.Environment.NewLine
-                                    + "Back Panels:" + selectedBackPanels
+                                    + "Back Panels: " + selectedBackPanels
                                     + System.Environment.NewLine
-                                    + "Fillers:" + selectedFillers
+                                    + "Fillers: " + selectedFillers
                                     + System.Environment.NewLine
-                                    + "Flaps:" + selectedFlaps
+                                    + "Flaps: " + selectedFlaps
                                     + System.Environment.NewLine
-                                    + "Doors Left:" + selectedDoorsLeft
+                                    + "Doors Left: " + selectedDoorsLeft
                                     + System.Environment.NewLine
-                                    + "Doors Right:" + selectedDoorsLeft
+                                    + "Doors Right: " + selectedDoorsLeft
                                     + System.Environment.NewLine
-                                    + "Fixed Shelves:" + selectedFixedShelves
+                                    + "Fixed Shelves: " + selectedFixedShelves
                                     + System.Environment.NewLine                                    
-                                    + "Partitions:" + selectedPartitions
+                                    + "Partitions: " + selectedPartitions
                                     + System.Environment.NewLine
-                                    + "Drawer Bottoms:" + selectedDrawerBottoms
+                                    + "Drawer Bottoms: " + selectedDrawerBottoms
                                     + System.Environment.NewLine                                       
-                                    + "Drawer Sides:" + selectedDrawerSides
+                                    + "Drawer Sides: " + selectedDrawerSides
                                     + System.Environment.NewLine                                      
-                                    + "Drawer Fronts:" + selectedDrawerFronts
+                                    + "Drawer Fronts: " + selectedDrawerFronts
                                     + System.Environment.NewLine                                     
-                                    + "Toekicks:" + selectedToekicks
+                                    + "Toekicks: " + selectedToekicks
                                     + System.Environment.NewLine                                       
-                                    + "Worktops:" + selectedWorktops
+                                    + "Worktops: " + selectedWorktops
                                     + System.Environment.NewLine                                      
-                                    + "Traverses:" + selectedTraverses
+                                    + "Traverses: " + selectedTraverses
                                     + System.Environment.NewLine                                      
-                                    ,"Selected Parts", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                                    ,"Selected Parts ", MessageBoxButton.YesNo, MessageBoxImage.Question);
                     });                   
                     
                     
