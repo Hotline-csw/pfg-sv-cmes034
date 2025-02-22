@@ -108,7 +108,7 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                                     + System.Environment.NewLine
                                     + "Doors Left: " + selectedDoorsLeft
                                     + System.Environment.NewLine
-                                    + "Doors Right: " + selectedDoorsLeft
+                                    + "Doors Right: " + selectedDoorsRight
                                     + System.Environment.NewLine
                                     + "Fixed Shelves: " + selectedFixedShelves
                                     + System.Environment.NewLine                                    
