@@ -68,27 +68,7 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                 {
                     var selectedProdOrderFeedbacks = itemEnumerable.Cast<CustViewMasterManualFeedback>().ToArray();
                     
-                    string selectedCustomerOrdersString = selectedProdOrderFeedbacks.Select(co => co.CustomerOrderCode)
-                            .Where(x => x != null)
-                                .Distinct()
-                                    .OrderBy(x => x)
-                                        .Aggregate((current, next) => current + ", " + next);
-                            
-                    string selectedBulksString = selectedProdOrderFeedbacks.Select(mb => mb.PlanningNumber)
-                            .Where(x => x != null)
-                                .Distinct()
-                                    .OrderBy(x => x)
-                                        .Aggregate((current, next) => current + ", " + next);
-                            
-                    string selectedOptimizationsString = selectedProdOrderFeedbacks.Select(op => op.OptimizationCode)
-                            .Where(x => x != null)
-                                .Distinct()
-                                    .OrderBy(x => x)
-                                        .Aggregate((current, next) => current + ", " + next);
-                            
-                    _Logger.Info(string.Format("{0}: CustomerOrders: [{1}]", _TaskName, selectedCustomerOrdersString));
-                    _Logger.Info(string.Format("{0}: Bulks: [{1}]", _TaskName, selectedBulksString));
-                    _Logger.Info(string.Format("{0}: Opti: [{1}]", _TaskName, selectedOptimizationsString));
+                    //int selectedSidePanels = selectedProdOrderFeedbacks.Where(po => po.)
 
                     var resultBox = System.Windows.MessageBoxResult.No;
                                     
@@ -97,17 +77,11 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                         resultBox = HomagGroup.Base.UI.Windows.MessageBox.Show(
                                     "CustomerOrders:"
                                     + System.Environment.NewLine
-                                    + selectedCustomerOrdersString
-                                    + System.Environment.NewLine
-                                    + System.Environment.NewLine
                                     + "Bulks:"
-                                    + System.Environment.NewLine
-                                    + selectedBulksString
-                                    + System.Environment.NewLine
                                     + System.Environment.NewLine
                                     + "Optimizations:"
                                     + System.Environment.NewLine
-                                    + selectedOptimizationsString
+
                                     ,"Feedback?", MessageBoxButton.YesNo, MessageBoxImage.Question);
                     });                   
                     
