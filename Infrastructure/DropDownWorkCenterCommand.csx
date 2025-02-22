@@ -69,6 +69,23 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                     var selectedProdOrderFeedbacks = itemEnumerable.Cast<CustViewMasterManualFeedback>().ToArray();
                     
                     int selectedSidePanels = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.SidePanel).Count();
+                    int selectedAdjustableShelves = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.AdjustableShelf).Count();
+                    int selectedTopShelves = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.TopShelf).Count();
+                    int selectedBottomShelves = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.BottomShelf).Count();
+                    int selectedBackPanels = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.BackPanel).Count();
+                    int selectedFillers = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.Panel).Count();
+                    int selectedFlaps = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.Door).Count();
+                    int selectedDoorsLeft = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.DoorLeft).Count();
+                    int selectedDoorsRight = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.DoorRight).Count();
+                    int selectedFixedShelves = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.FixedShelf).Count();
+                    int selectedPartitions = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.Partition).Count();
+                    int selectedDrawerBottoms = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.DrawerBottom).Count();
+                    int selectedDrawerSides = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.DrawerSide).Count();
+                    int selectedDrawerFronts = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.DrawerFront).Count();
+                    int selectedToekicks = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.Plinth).Count();
+                    int selectedWorktops = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.WorkTop).Count();
+                    int selectedTraverses = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.Traverse).Count();
+                    
 
                     var resultBox = System.Windows.MessageBoxResult.No;
                                     
@@ -77,12 +94,39 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                         resultBox = HomagGroup.Base.UI.Windows.MessageBox.Show(
                                     "Side Panels:" + selectedSidePanels
                                     + System.Environment.NewLine
-                                    + "Bulks:"
+                                    + "Adjustable Shelves:" + selectedAdjustableShelves
                                     + System.Environment.NewLine
-                                    + "Optimizations:"
+                                    + "Top Shelves:" + selectedTopShelves
                                     + System.Environment.NewLine
-
-                                    ,"Feedback?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                                    + "Bottom Shelves:" + selectedBottomShelves
+                                    + System.Environment.NewLine
+                                    + "Back Panels:" + selectedBackPanels
+                                    + System.Environment.NewLine
+                                    + "Fillers:" + selectedFillers
+                                    + System.Environment.NewLine
+                                    + "Flaps:" + selectedFlaps
+                                    + System.Environment.NewLine
+                                    + "Doors Left:" + selectedDoorsLeft
+                                    + System.Environment.NewLine
+                                    + "Doors Right:" + selectedDoorsLeft
+                                    + System.Environment.NewLine
+                                    + "Fixed Shelves:" + selectedFixedShelves
+                                    + System.Environment.NewLine                                    
+                                    + "Partitions:" + selectedPartitions
+                                    + System.Environment.NewLine
+                                    + "Drawer Bottoms:" + selectedDrawerBottoms
+                                    + System.Environment.NewLine                                       
+                                    + "Drawer Sides:" + selectedDrawerSides
+                                    + System.Environment.NewLine                                      
+                                    + "Drawer Fronts:" + selectedDrawerFronts
+                                    + System.Environment.NewLine                                     
+                                    + "Toekicks:" + selectedToekicks
+                                    + System.Environment.NewLine                                       
+                                    + "Worktops:" + selectedWorktops
+                                    + System.Environment.NewLine                                      
+                                    + "Traverses:" + selectedTraverses
+                                    + System.Environment.NewLine                                      
+                                    ,"Selected Parts", MessageBoxButton.YesNo, MessageBoxImage.Question);
                     });                   
                     
                     
