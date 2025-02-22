@@ -141,7 +141,7 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                     dropDownWorkCenter = (dialogViewModel as DropDownWorkCenterViewModel).DropDownWorkCenter;
                     
                     _Logger.Info(string.Format("{0}: WorkCenter: [{1}]", _TaskName, dropDownWorkCenter));
-/*                    
+                    
                     foreach (var selectedItem in selectedProdOrderFeedbacks)
                     {
                         var prodItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(
@@ -167,7 +167,6 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                     }
                     
                     //UserExitHelper.RefreshView();
-*/
                 }                
             }
         }
