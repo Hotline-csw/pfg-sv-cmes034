@@ -67,8 +67,14 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                 {
                     var selectedProdOrderFeedbacks = itemEnumerable.Cast<CustViewMasterManualFeedback>().ToArray();
                     
-                    var selectedCustomerOrdersString = selectedProdOrderFeedbacks.Select(co => co.CustomerOrderCode)
-                            .Distinct().OrderByDescending(x => x).Aggregate((current, next) => current + ", " + next);
+                    string selectedCustomerOrdersString = selectedProdOrderFeedbacks.Select(co => co.CustomerOrderCode)
+                            .Distinct().OrderBy(x => x).Aggregate((current, next) => current + ", " + next);
+                            
+                    var selectedBulksString = selectedProdOrderFeedbacks.Select(mb => mb.PlanningNumber)
+                            .Distinct().OrderBy(x => x).Aggregate((current, next) => current + ", " + next);
+                            
+                    var selectedOptimizationsString = selectedProdOrderFeedbacks.Select(op => op.OptimizationCode)
+                            .Distinct().OrderBy(x => x).Aggregate((current, next) => current + ", " + next);
                             
                     _Logger.Info(string.Format("{0}: CustomerOrders: [{1}]", _TaskName, selectedCustomerOrdersString));
                     
