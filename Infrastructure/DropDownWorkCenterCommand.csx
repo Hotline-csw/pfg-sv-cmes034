@@ -76,7 +76,8 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                     var selectedOptimizationsString = selectedProdOrderFeedbacks.Select(op => op.OptimizationCode)
                             .Distinct().OrderBy(x => x).Aggregate((current, next) => current + ", " + next);
                             
-                    _Logger.Info(string.Format("{0}: CustomerOrders: [{1}]", _TaskName, selectedCustomerOrdersString));
+                    _Logger.Info(string.Format("{0}: CustomerOrders: [{1}] - Bulks: [{2}], Opti: [{3}]", 
+                            _TaskName, selectedCustomerOrdersString, selectedBulksString, selectedOptimizationsString));
                     
 /*                    
                     // Messagebox öffnen und Details nochmals anzeigen
