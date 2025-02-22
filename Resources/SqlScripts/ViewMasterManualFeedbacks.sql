@@ -7,6 +7,7 @@ Select
  po.Sequence
 ,po.Code As ProductionOrderCode
 ,po.ArticleNumber
+,po.ComponentType
 ,po.ArticleDescription
 ,po.CustomerOrderCode
 ,po.CustomerOrderPosition
