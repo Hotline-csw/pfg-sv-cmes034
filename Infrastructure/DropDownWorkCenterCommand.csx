@@ -125,7 +125,8 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                                 + System.Environment.NewLine                                      
                                 + "Traverses: " + selectedTraverses
                                 + System.Environment.NewLine
-                                + "Total: " + selectedTotal
+                                + System.Environment.NewLine
+                                + "\bTotal: " + selectedTotal
                                 + System.Environment.NewLine
                                 ,"Selected Parts", MessageBoxButton.OK, MessageBoxImage.Information);
                     });                   
