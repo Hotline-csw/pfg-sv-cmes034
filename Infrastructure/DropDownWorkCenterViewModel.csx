@@ -59,14 +59,13 @@ public class DropDownWorkCenterViewModel : HomagGroup.Base.UI.Windows.DialogBase
         using (IUnitOfWorkBase unitOfWork = _UnitOfWorkFactory.CreateUnitOfWorkBase())
         {
             // Alle Arbeitsplätze aus der DB holen und nach Code absteigend sortieren
-            var workCenters = unitOfWork.GetRepository<WorkCenter>().Get().OrderBy(wc => wc.Code);
+            var workCenters = unitOfWork.GetRepository<WorkCenter>().Get(wc => wc.Code != "EB2" && wc.Code != "EB3").OrderBy(wc => wc.Code);
             
             // Ausgabe des WorkCenterCodes im DropDown Menü
             foreach(var workCenter in workCenters)
             {
                 DropDownWorkCenters.Add(workCenter.Code);
             }
-            DropDownWorkCenters.Add("Alle Arbeitsplätze");
         }
     }
 
