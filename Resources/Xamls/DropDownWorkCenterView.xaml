@@ -3,7 +3,7 @@
             xmlns:hgc = "http://schemas.homag-group.com/ControlLibrary/1.0/xaml"
             xmlns:properties = "clr-namespace:HomagGroup.FLS.Infrastructure.Resource.Properties;assembly=HomagGroup.FLS.Infrastructure.Resource"
 			Width="600" 
-            Title="Auftragsbezogene Rückmeldung"
+            Title="Manual Feedback"
             SizeToContent="WidthAndHeight"
             FocusManager.FocusedElement="{Binding ElementName=DropDownWorkCenters}">
     <!-- Template für einen Custom Dialog -->
@@ -28,7 +28,7 @@
 
 		    <hgc:DropDownList 
 		        x:Name="DropDownWorkCenters"
-		        Label="Arbeitsplatz auswählen"
+		        Label="Choose Workplace:"
 		        Grid.Row = "1"
 	        	Grid.Column = "1"
 		        Width="350"
