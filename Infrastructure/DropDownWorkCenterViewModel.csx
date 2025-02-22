@@ -64,7 +64,7 @@ public class DropDownWorkCenterViewModel : HomagGroup.Base.UI.Windows.DialogBase
             // Ausgabe des WorkCenterCodes im DropDown Menü
             foreach(var workCenter in workCenters)
             {
-                DropDownWorkCenters.Add(workCenter.Code);
+                DropDownWorkCenters.Add(workCenter.Code + "" +workCenter.Description);
             }
         }
     }
