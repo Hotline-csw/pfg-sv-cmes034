@@ -22,6 +22,7 @@
 
 
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Globalization;
 
@@ -88,35 +89,20 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                     _Logger.Info(string.Format("{0}: CustomerOrders: [{1}]", _TaskName, selectedCustomerOrdersString));
                     _Logger.Info(string.Format("{0}: Bulks: [{1}]", _TaskName, selectedBulksString));
                     _Logger.Info(string.Format("{0}: Opti: [{1}]", _TaskName, selectedOptimizationsString));
-/*                    
-                    // Messagebox öffnen und Details nochmals anzeigen
-                                                    var result = System.Windows.MessageBoxResult.No;
+
+                    var resultBox = System.Windows.MessageBoxResult.No;
                                     
-                                                    System.Windows.Application.Current.Dispatcher.Invoke(() =>
-                                                    {
-                                                        result = HomagGroup.Base.UI.Windows.MessageBox.Show(
-                                                                    "Aktueller cMES Benutzer:\t  " + currentEmployee
-                                                                    + System.Environment.NewLine
-                                                                    + "Bauteilnummer:\t\t  " + productionItemFirst.Code
-                                                                    + System.Environment.NewLine
-                                                                    + "Fertigungsauftragsnummer: " + productionItemFirst.ProductionOrderCode
-                                                                    + System.Environment.NewLine
-                                                                    + "Morelo-Teilenummer:\t  " + productionItemFirst.ProductionOrder.CustomPartId
-                                                                    + System.Environment.NewLine
-                                                                    + "Statusdetail:\t\t  " + valStateDetail.Code
-                                                                    + System.Environment.NewLine
-                                                                    + "Verursacher:\t\t  " + valStateSource.Code
-                                                                    + System.Environment.NewLine
-                                                                    + "Kommentar:\t\t  " + comment
-                                                                    + System.Environment.NewLine
-                                                                    ,"Nachfertigung erfassen?", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                                                    });
-*/                    
-                    
-                    
-                    
-                    
-                    
+                    System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        resultBox = HomagGroup.Base.UI.Windows.MessageBox.Show(
+                                    "CustomerOrders:  " + selectedCustomerOrdersString
+                                    + System.Environment.NewLine
+                                    + "Bulks:  " + selectedBulksString
+                                    + System.Environment.NewLine
+                                    + "Optimizations: " + selectedOptimizationsString
+                                    + System.Environment.NewLine
+                                    ,"Feedback?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    });                   
                     
                     
                     string dropDownWorkCenter = "";
