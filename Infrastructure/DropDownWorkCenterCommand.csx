@@ -68,7 +68,7 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                 {
                     var selectedProdOrderFeedbacks = itemEnumerable.Cast<CustViewMasterManualFeedback>().ToArray();
                     
-                    //int selectedSidePanels = selectedProdOrderFeedbacks.Where(po => po.)
+                    //int selectedSidePanels = selectedProdOrderFeedbacks.Where(po => po.ArticleNumber == Part)
 
                     var resultBox = System.Windows.MessageBoxResult.No;
                                     
