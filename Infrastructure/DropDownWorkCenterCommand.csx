@@ -70,7 +70,10 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                     string dropDownWorkCenter = "";
                     
                     (dialogViewModel as DropDownWorkCenterViewModel).DropDownWorkCenter = dropDownWorkCenter;
+                    
                     bool? result = _LooseXaml.ShowDialog(_ViewName, dialogViewModel);
+                    
+                    dropDownWorkCenter = (dialogViewModel as DropDownWorkCenterViewModel).DropDownWorkCenter;
                     
                     _Logger.Info(string.Format("{0}: WorkCenter: [{1}]", _TaskName, dropDownWorkCenter));
 /*                    
