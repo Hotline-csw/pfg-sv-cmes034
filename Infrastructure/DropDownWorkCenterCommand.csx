@@ -87,7 +87,7 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                     int selectedTraverses = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.Traverse).Count();
                     int selectedTotal = selectedProdOrderFeedbacks.Count();
 
-
+/*
                     System.Windows.Application.Current.Dispatcher.Invoke(() =>
                     {
                         HomagGroup.Base.UI.Windows.MessageBox.Show(
@@ -130,12 +130,8 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                                 + System.Environment.NewLine
                                 ,"Selected Parts", MessageBoxButton.OK, MessageBoxImage.Information);
                     });                   
-                    
-                    
-                    //string dropDownWorkCenter = "";
-                    
-                    //(dialogViewModel as DropDownWorkCenterViewModel).DropDownWorkCenter = dropDownWorkCenter;
-                    
+*/                    
+                                        
                     bool? result = _LooseXaml.ShowDialog(_ViewName, dialogViewModel);
                     
                     string dropDownWorkCenter = (dialogViewModel as DropDownWorkCenterViewModel).DropDownWorkCenter;
