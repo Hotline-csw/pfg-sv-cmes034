@@ -38,17 +38,17 @@ ISNULL(ROW_NUMBER() over (order by ShippingDateData.ShippingDate),-1) as RowID
 from ShippingDateData
 
 -- B300
-left outer join StepsData B300 on B300.ShippingDate = ShippingDateData.ShippingDate and B300.WorkCenterCode='1010'
+left outer join StepsData B300 on B300.ShippingDate = ShippingDateData.ShippingDate and B300.WorkCenterCode='CU1'
 -- EDGETEQ
-left outer join StepsData EDGETEQ on EDGETEQ.ShippingDate = ShippingDateData.ShippingDate and EDGETEQ.WorkCenterCode='3010'
+left outer join StepsData EDGETEQ on EDGETEQ.ShippingDate = ShippingDateData.ShippingDate and EDGETEQ.WorkCenterCode='EB1'
 -- V200
-left outer join StepsData V200 on V200.ShippingDate = ShippingDateData.ShippingDate and V200.WorkCenterCode='5010'
+left outer join StepsData V200 on V200.ShippingDate = ShippingDateData.ShippingDate and V200.WorkCenterCode='CNC1'
 -- E310
-left outer join StepsData E310 on E310.ShippingDate = ShippingDateData.ShippingDate and E310.WorkCenterCode='5020'
+left outer join StepsData E310 on E310.ShippingDate = ShippingDateData.ShippingDate and E310.WorkCenterCode='CNC2'
 -- SORT
-left outer join StepsData SORT on SORT.ShippingDate = ShippingDateData.ShippingDate and SORT.WorkCenterCode='5070'
+left outer join StepsData SORT on SORT.ShippingDate = ShippingDateData.ShippingDate and SORT.WorkCenterCode='SP'
 -- PREASSEM
-left outer join StepsData PREASSEM on PREASSEM.ShippingDate = ShippingDateData.ShippingDate and PREASSEM.WorkCenterCode='6010' and PREASSEM.OrderType = 3
+left outer join StepsData PREASSEM on PREASSEM.ShippingDate = ShippingDateData.ShippingDate and PREASSEM.WorkCenterCode='PRE'
 -- ASSEM
-left outer join StepsData ASSEM on ASSEM.ShippingDate = ShippingDateData.ShippingDate and ASSEM.WorkCenterCode='6010' and ASSEM.OrderType = 1
+left outer join StepsData ASSEM on ASSEM.ShippingDate = ShippingDateData.ShippingDate and ASSEM.WorkCenterCode='AS1'
 
