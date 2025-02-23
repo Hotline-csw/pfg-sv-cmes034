@@ -142,8 +142,15 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                     
                     _Logger.Info(string.Format("{0}: WorkCenter: [{1}]", _TaskName, dropDownWorkCenter));
                     
-                    
-                    
+                    int index = dropDownWorkCenter.IndexOf('(');
+
+                    if (index != -1)
+                    {
+                        string workCenterCode = dropDownWorkCenter.Substring(0, index).Trim();
+                        
+                        _Logger.Info(string.Format("{0}: WorkCenterCode: [{1}]", _TaskName, workCenterCode));
+                    }
+/*                    
                     foreach (var selectedItem in selectedProdOrderFeedbacks)
                     {
                         var prodItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(
@@ -167,7 +174,7 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                             } 
                         }
                     }
-                    
+*/                    
                     //UserExitHelper.RefreshView();
                 }                
             }
