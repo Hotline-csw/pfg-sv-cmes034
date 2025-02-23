@@ -132,12 +132,13 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                                 + "Total: " + selectedTotal
                                 + System.Environment.NewLine
                                 ,"Selected Parts", MessageBoxButton.OK, MessageBoxImage.Information);
-                    });                   
-                    
+                    });          
+
+                    string dropDownWorkCenter = "";
                                         
                     bool? result = _LooseXaml.ShowDialog(_ViewName, dialogViewModel);
                     
-                    string dropDownWorkCenter = (dialogViewModel as DropDownWorkCenterViewModel).DropDownWorkCenter;
+                    dropDownWorkCenter = (dialogViewModel as DropDownWorkCenterViewModel).DropDownWorkCenter;
                     
                     _Logger.Info(string.Format("{0}: WorkCenter: [{1}]", _TaskName, dropDownWorkCenter));
                     
@@ -148,6 +149,16 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                         string workCenterCode = dropDownWorkCenter.Substring(0, index).Trim();
                         
                         _Logger.Info(string.Format("{0}: WorkCenterCode: [{1}]", _TaskName, workCenterCode));
+                        
+                        System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            HomagGroup.Base.UI.Windows.MessageBox.Show(
+                                    "Feedback will be created for " + selectedTotal + " part(s)"
+                                    + System.Environment.NewLine
+                                    + "Selected WorkCenter: " + dropDownWorkCenter
+                                    + System.Environment.NewLine
+                                    ,"Feedback will be created", MessageBoxButton.OK, MessageBoxImage.Information);
+                        });
                     
                         foreach (var selectedItem in selectedProdOrderFeedbacks)
                         {
