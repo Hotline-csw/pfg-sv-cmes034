@@ -155,6 +155,7 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                             HomagGroup.Base.UI.Windows.MessageBox.Show(
                                     "Feedback will be created for " + selectedTotal + " part(s)"
                                     + System.Environment.NewLine
+                                    + System.Environment.NewLine
                                     + "Selected WorkCenter: " + dropDownWorkCenter
                                     + System.Environment.NewLine
                                     ,"Feedback will be created", MessageBoxButton.OK, MessageBoxImage.Information);
