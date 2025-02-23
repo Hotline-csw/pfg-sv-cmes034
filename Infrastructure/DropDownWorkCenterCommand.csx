@@ -174,6 +174,17 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                         }
                     }
                     
+                    var updateFeedbacks = unitOfWork.GetRepository<Feedback>().GetQueryable(false).Where(fb => fb.ProcessingState == 0);
+                    
+                    if(updateFeedbacks.Any())
+                    {
+                        updateFeedbacks.UpdateFromQuery(fb => new Feedback
+                        {
+                            ProcessingState = 10
+                        });
+                    }
+                    
+                    
                     UserExitHelper.RefreshView();
                 }                
             }
