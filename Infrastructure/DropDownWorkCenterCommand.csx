@@ -148,29 +148,29 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                         string workCenterCode = dropDownWorkCenter.Substring(0, index).Trim();
                         
                         _Logger.Info(string.Format("{0}: WorkCenterCode: [{1}]", _TaskName, workCenterCode));
-                    }
                     
-                    foreach (var selectedItem in selectedProdOrderFeedbacks)
-                    {
-                        var prodItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(
-                                pi => pi.Code == selectedItem.ProductionItemCode);
-                                
-                        var prodStep = unitOfWork.GetRepository<ProductionStep>().GetFirstOrDefault(
-                                ps => 
-                                    ps.WorkCenterCode == dropDownWorkCenter &&
-                                    ps.ProductionOrderCode == prodItem.ProductionOrderCode);
-
-                        if (prodItem != null && prodStep != null)
+                        foreach (var selectedItem in selectedProdOrderFeedbacks)
                         {
-                            var prodItemsStepsData = unitOfWork.GetRepository<ProductionItemsStepsData>().GetFirstOrDefault(
-                                    po => 
-                                        po.ProductionItemCode == prodItem.Code && 
-                                        po.ProductionStepCode == prodStep.Code);
-
-                            if (prodItemsStepsData != null)
+                            var prodItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(
+                                    pi => pi.Code == selectedItem.ProductionItemCode);
+                                    
+                            var prodStep = unitOfWork.GetRepository<ProductionStep>().GetFirstOrDefault(
+                                    ps => 
+                                        ps.WorkCenterCode == workCenterCode &&
+                                        ps.ProductionOrderCode == prodItem.ProductionOrderCode);
+    
+                            if (prodItem != null && prodStep != null)
                             {
-                                prodItem.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, dropDownWorkCenter, prodStep.Code, 0, FeedbackState.Finished, 0, _Logger);
-                            } 
+                                var prodItemsStepsData = unitOfWork.GetRepository<ProductionItemsStepsData>().GetFirstOrDefault(
+                                        po => 
+                                            po.ProductionItemCode == prodItem.Code && 
+                                            po.ProductionStepCode == prodStep.Code);
+    
+                                if (prodItemsStepsData != null)
+                                {
+                                    prodItem.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, dropDownWorkCenter, prodStep.Code, 0, FeedbackState.Finished, 0, _Logger);
+                                } 
+                            }
                         }
                     }
                     
