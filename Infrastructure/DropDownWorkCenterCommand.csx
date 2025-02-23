@@ -38,6 +38,9 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
     private const string _ViewModelName = "DropDownWorkCenterViewModel";
 
     [Import]
+    protected UserExitHelper UserExitHelper { get; set; }
+
+    [Import]
     private LooseXaml _LooseXaml;
 
     [Import(_ViewModelName)]
@@ -87,7 +90,7 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                     int selectedTraverses = selectedProdOrderFeedbacks.Where(po => po.ComponentType == ComponentType.Traverse).Count();
                     int selectedTotal = selectedProdOrderFeedbacks.Count();
 
-/*
+
                     System.Windows.Application.Current.Dispatcher.Invoke(() =>
                     {
                         HomagGroup.Base.UI.Windows.MessageBox.Show(
@@ -130,7 +133,7 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                                 + System.Environment.NewLine
                                 ,"Selected Parts", MessageBoxButton.OK, MessageBoxImage.Information);
                     });                   
-*/                    
+                    
                                         
                     bool? result = _LooseXaml.ShowDialog(_ViewName, dialogViewModel);
                     
@@ -146,7 +149,7 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                         
                         _Logger.Info(string.Format("{0}: WorkCenterCode: [{1}]", _TaskName, workCenterCode));
                     }
-/*                    
+                    
                     foreach (var selectedItem in selectedProdOrderFeedbacks)
                     {
                         var prodItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(
@@ -170,8 +173,8 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                             } 
                         }
                     }
-*/                    
-                    //UserExitHelper.RefreshView();
+                    
+                    UserExitHelper.RefreshView();
                 }                
             }
         }
