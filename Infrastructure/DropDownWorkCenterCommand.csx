@@ -180,7 +180,7 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
     
                                 if (prodItemsStepsData != null)
                                 {
-                                    prodItem.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, dropDownWorkCenter, prodStep.Code, 0, FeedbackState.Finished, 0, _Logger);
+                                    //prodItem.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, dropDownWorkCenter, prodStep.Code, 0, FeedbackState.Finished, 0, _Logger);
                                 } 
                             }
                         }
