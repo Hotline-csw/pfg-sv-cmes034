@@ -180,8 +180,6 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
     
                                 if (prodItemsStepsData != null)
                                 {
-                                    //prodItem.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, dropDownWorkCenter, prodStep.Code, 0, FeedbackState.Finished, 0, _Logger);
-                                    
                                     var feedback = new Feedback();
                                     
                                     feedback.ProductionItemCode = prodItem.Code;
@@ -217,6 +215,10 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                         });
                     }
                     
+                    // Return Success-Message
+                    string successMessage = string.Format("Created feedback for {0} part(s).", selectedTotal);
+
+                    TileViewHelperStatic.SetInfoBalloon(successMessage,HomagGroup.Base.UI.DeviceState.Ok);
                     
                     UserExitHelper.RefreshView();
                 }                
