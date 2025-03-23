@@ -501,6 +501,37 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
             throw;
         }
     }
+    
+    
+    public void WriteFeedback(IUnitOfWork unitOfWork, string prodItemCode, string prodStepCode, string workCenterCode, Logger _Logger)
+    {
+        try
+        {
+            var feedback = new Feedback();
+                                    
+            feedback.ProductionItemCode = prodItemCode;
+            feedback.ProductionStepCode = prodStepCode;
+            feedback.WorkcenterCode = workCenterCode;
+            feedback.CountGood = 1;
+            feedback.CountScrap = 0;
+            feedback.CountRework = 0;
+            feedback.Timestamp = DateTime.Now;
+            feedback.FeedbackState = FeedbackState.Finished;
+            feedback.ProcessingState = 0;
+            feedback.ProcessingTime = 0;
+            feedback.CreationDate = DateTime.Now;
+            feedback.CreationSource = "SetFeedbackRedBulk";
+            feedback.ModificationDate = DateTime.Now;
+            feedback.ModificationSource = "SetFeedbackRedBulk";
+            
+            unitOfWork.AddOrUpdate(new[] { feedback } );
+        }
+        catch (Exception e)
+        {
+            _Logger.Error(ResourcesKeys.ErrorInUserExit(Name), null, e);
+            throw;
+        }
+    }
 
 
     public override ICollection<UserExitParameter> UserExitInputParameters
