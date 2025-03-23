@@ -157,7 +157,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             
                             if(prodItemAssem003 != null && prodItemsStepsDataAssem003 != null)
                             {
-                                prodItemAssem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, assemblyWorkCenterCode, assemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                                //prodItemAssem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, assemblyWorkCenterCode, assemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                                WriteFeedback(unitOfWork, prodItemAssem003.Code, assemblyStepCode, assemblyWorkCenterCode, _Logger);
                             }
                         }
                     }
@@ -188,7 +189,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 
                         if(prodItemSort004 != null && prodItemsStepsDataSort004 != null)
                         {
-                            prodItemSort004.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, sortingWorkCenterCode, sortingStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            //prodItemSort004.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, sortingWorkCenterCode, sortingStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            WriteFeedback(unitOfWork, prodItemSort004.Code, sortingStepCode, sortingWorkCenterCode, _Logger);
                         }
                     }
                 }
@@ -216,7 +218,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         
                         if(prodItemPreassepisd != null && prodItemsStepsDataPreassepisd != null)
                         {
-                            prodItemPreassepisd.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, preassemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            //prodItemPreassepisd.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, preassemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            WriteFeedback(unitOfWork, prodItemPreassepisd.Code, preassemblyStepCode, preassemblyWorkCenterCode, _Logger);
                         }
                     }
                 }
@@ -240,7 +243,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                             
                             if(prodItemAssem004 != null && prodItemsStepsDataAssem004 != null)
                             {
-                                prodItemAssem004.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, assemblyWorkCenterCode, assemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                                //prodItemAssem004.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, assemblyWorkCenterCode, assemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                                WriteFeedback(unitOfWork, prodItemAssem004.Code, assemblyStepCode, assemblyWorkCenterCode, _Logger);
                             }
                         }
                     }
@@ -269,7 +273,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         
                         if(prodItemCnc005 != null && prodItemsStepsDataCnc005 != null)
                         {
-                            prodItemCnc005.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cncWorkCenterCode, cncStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            //prodItemCnc005.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cncWorkCenterCode, cncStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            WriteFeedback(unitOfWork, prodItemCnc005.Code, cncStepCode, cncWorkCenterCode, _Logger);
                         }
                     }
                 }
@@ -297,7 +302,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         
                         if(prodItemSort005 != null && prodItemsStepsDataSort005 != null)
                         {
-                            prodItemSort005.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, sortingWorkCenterCode, sortingStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            //prodItemSort005.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, sortingWorkCenterCode, sortingStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            WriteFeedback(unitOfWork, prodItemSort005.Code, sortingStepCode, sortingWorkCenterCode, _Logger);
                         }
                     }
                 }
@@ -323,7 +329,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         
                         if(prodItemPreassem005 != null && prodItemsStepsDataPreassem005 != null)
                         {
-                            prodItemPreassem005.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, preassemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            //prodItemPreassem005.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, preassemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            WriteFeedback(unitOfWork, prodItemPreassem005.Code, preassemblyStepCode, preassemblyWorkCenterCode, _Logger);
                         }
                     }
                 }
@@ -351,7 +358,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         
                         if(prodItemCut001 != null && prodItemsStepsDataCut001 != null)
                         {
-                            prodItemCut001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cuttingWorkCenterCode, cuttingStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            //prodItemCut001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cuttingWorkCenterCode, cuttingStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            WriteFeedback(unitOfWork, prodItemCut001.Code, cuttingStepCode, cuttingWorkCenterCode, _Logger);
                         }
                     }
                 }
@@ -379,7 +387,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         
                         if(prodItemDrill001 != null && prodItemsStepsDataDrill001 != null)
                         {
-                            prodItemDrill001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, drillingWorkCenterCode, drillingStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            //prodItemDrill001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, drillingWorkCenterCode, drillingStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            WriteFeedback(unitOfWork, prodItemDrill001.Code, drillingStepCode, drillingWorkCenterCode, _Logger);
                         }
                     }
                 }
@@ -406,7 +415,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                                                     
                         if(prodItemCnc001 != null && prodItemsStepsDataCnc001 != null)
                         {
-                            prodItemCnc001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cncWorkCenterCode, "E310", 0, FeedbackState.Finished, 0, _Logger);
+                            //prodItemCnc001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cncWorkCenterCode, "E310", 0, FeedbackState.Finished, 0, _Logger);
+                            WriteFeedback(unitOfWork, prodItemCnc001.Code, cncStepCode, cncWorkCenterCode, _Logger);
                         }
                     }
                 }				
@@ -432,7 +442,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                                 
                         if(prodItemSort001 != null && prodItemsStepsDataSort001!=null)
                         {
-                            prodItemSort001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, sortingWorkCenterCode, sortingStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            //prodItemSort001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, sortingWorkCenterCode, sortingStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            WriteFeedback(unitOfWork, prodItemSort001.Code, sortingStepCode, sortingWorkCenterCode, _Logger);
                         }
                     }
                 }
@@ -458,7 +469,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                         
                         if(prodItemPreassem001 != null && prodItemsStepsDataPreassem001 != null)
                         {
-                            prodItemPreassem001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, preassemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            //prodItemPreassem001.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, preassemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            WriteFeedback(unitOfWork, prodItemPreassem001.Code, preassemblyStepCode, preassemblyWorkCenterCode, _Logger);
                         }
                     }
                 }
