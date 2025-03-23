@@ -107,7 +107,7 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
 // 24 = Traverse            Rail                    Traverse                        Carcase        B300_KALWZ14_V200_SORT_PREASSEM
 //-----------------------------------------------------------------------------
 
-            using (var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
+            using (IUnitOfWork unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
             {
                 var prodOrdersRep = unitOfWork.GetRepository<ProductionOrder>();
                 var prodItemsRep = unitOfWork.GetRepository<ProductionItem>();
@@ -134,7 +134,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 
                         if(prodItemPreassem003 != null && prodItemsStepsDataPreassem003 != null)
                         {
-                            prodItemPreassem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, preassemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            //prodItemPreassem003.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, preassemblyWorkCenterCode, preassemblyStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            WriteFeedback(unitOfWork, prodItemPreassem003.Code, preassemblyStepCode, preassemblyWorkCenterCode, _Logger);
                         }
                     }
                 }
@@ -473,10 +474,28 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
         }
     }
     
-    public void WriteFeedback()
+    public void WriteFeedback(IUnitOfWork unitOfWork, string prodItemCode, string prodStepCode, string workCenterCode, Logger _Logger)
     {
         try
         {
+            var feedback = new Feedback();
+                                    
+            feedback.ProductionItemCode = prodItemCode;
+            feedback.ProductionStepCode = prodStepCode;
+            feedback.WorkcenterCode = workCenterCode;
+            feedback.CountGood = 1;
+            feedback.CountScrap = 0;
+            feedback.CountRework = 0;
+            feedback.Timestamp = DateTime.Now;
+            feedback.FeedbackState = FeedbackState.Finished;
+            feedback.ProcessingState = 0;
+            feedback.ProcessingTime = 0;
+            feedback.CreationDate = DateTime.Now;
+            feedback.CreationSource = "SetFeedbackBlueBulk";
+            feedback.ModificationDate = DateTime.Now;
+            feedback.ModificationSource = "SetFeedbackBlueBulk";
+            
+            unitOfWork.AddOrUpdate(new[] { feedback } );
         }
         catch (Exception e)
         {
