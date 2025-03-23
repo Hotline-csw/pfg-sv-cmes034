@@ -215,7 +215,7 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                 
                 var cutDKM006 = prodOrdersRep.GetQueryable(false).Where(
                         po => po.CustomerOrderCode == dkm006 && componentTypesDKM006Cutting.Contains(po.ComponentType) && 
-                              po.ReproductionType == ReproductionType.Standard).ToList();
+                              po.ReproductionType == ReproductionType.NoReproduction).ToList();
                                                         
                 if(cutDKM006.Any())
                 {   
