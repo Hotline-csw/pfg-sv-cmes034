@@ -20,6 +20,7 @@
 //   T.Stürzer       2023-02-12    Created
 //   T.Stürzer       2024-08-16    Changed Feedback from InsertFeedbackFinishedGood to InsertFeedback
 //   T.Stürzer       2024-11-15    Changed Workcenters for feedback
+//   T.Stürzer       2025-03-23    Added WriteFeedback
 //   
 //-----------------------------------------------------------------------------
 
@@ -120,7 +121,10 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                 };
                     
                 var edgeDKS006 = prodOrdersRep.GetQueryable(false).Where(
-                    po => po.CustomerOrderCode == dks006 && componentTypesDKS006Edge.Contains(po.ComponentType)).ToList();
+                    po => 
+                        po.CustomerOrderCode == dks006 && 
+                        po.ReproductionType == ReproductionType.NoReproduction &&
+                        componentTypesDKS006Edge.Contains(po.ComponentType)).ToList();
                                                         
                 if(edgeDKS006.Any())
                 {   
@@ -133,7 +137,8 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                                 
                         if(prodItemEdge006 != null && prodItemsStepsDataEdge006 != null)
                         {
-                            prodItemEdge006.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, edgeWorkCenterCode, edgeStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            //prodItemEdge006.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, edgeWorkCenterCode, edgeStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            WriteFeedback(unitOfWork, prodItemEdge006.Code, edgeStepCode, edgeWorkCenterCode, _Logger);
                         }
                     }
                 }
@@ -145,7 +150,10 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                 };
                 
                 var cncDKS006 = prodOrdersRep.GetQueryable(false).Where(
-                    po => po.CustomerOrderCode == dks006 && componentTypesDKS006Cnc.Contains(po.ComponentType)).ToList();
+                    po => 
+                        po.CustomerOrderCode == dks006 &&
+                        po.ReproductionType == ReproductionType.NoReproduction &&
+                        componentTypesDKS006Cnc.Contains(po.ComponentType)).ToList();
                                                         
                 if(cncDKS006.Any())
                 {   
@@ -159,7 +167,8 @@ public class SetFeedbackRedBulk : GenericTaskBase, HomagGroup.FLS.Services.Commo
                             
                         if(prodItemCnc006 != null && prodItemsStepsDataCnc006 != null)
                         {
-                            prodItemCnc006.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cncWorkCenterCode, cncStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            //prodItemCnc006.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, cncWorkCenterCode, cncStepCode, 0, FeedbackState.Finished, 0, _Logger);
+                            WriteFeedback(unitOfWork, prodItemCnc006.Code, cncStepCode, cncWorkCenterCode, _Logger);
                         }
                     }
                 }
