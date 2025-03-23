@@ -22,6 +22,7 @@
 //   T.Stürzer       2024-08-08    Changed Feedback from InsertFeedbackFinishedGood to InsertFeedback
 //   T.Stürzer       2024-11-15    Changed Workcenters for feedback
 //   T.Stürzer       2025-03-23    Added WriteFeedback
+//   T.Stürzer       2025-03-23    No feedbacks for rework parts
 //   
 //-----------------------------------------------------------------------------
 
@@ -120,9 +121,11 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 var validPositionsDKS003 = new List<string> { "001", "002", "003", "004", "005", "006", "007" };
 
                 var preassemDKS003 = prodOrdersRep.GetQueryable(false).Where(
-                    po => po.CustomerOrderCode == dks003 && 
-                          validPositionsDKS003.Contains(po.CustomerOrderPosition) && 
-                          po.OrderType == ProductionOrderType.ConstructionPart).ToList();
+                    po => 
+                        po.CustomerOrderCode == dks003 && 
+                        validPositionsDKS003.Contains(po.CustomerOrderPosition) &&
+                        po.ReproductionType == ReproductionType.NoReproduction &&
+                        po.OrderType == ProductionOrderType.ConstructionPart).ToList();
             
                 if(preassemDKS003.Any())
                 {   
@@ -143,9 +146,11 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
 				
                 // Assembly Sale Item
                 var assemDKS003 = prodOrdersRep.GetQueryable(false).Where(
-                    po => po.CustomerOrderCode == dks003 && 
-                          validPositionsDKS003.Contains(po.CustomerOrderPosition) && 
-                          po.OrderType == ProductionOrderType.SalesArticle).ToList();
+                    po => 
+                        po.CustomerOrderCode == dks003 && 
+                        validPositionsDKS003.Contains(po.CustomerOrderPosition) &&
+                        po.ReproductionType == ReproductionType.NoReproduction &&
+                        po.OrderType == ProductionOrderType.SalesArticle).ToList();
 
                     if(assemDKS003.Any())
                     {   
@@ -205,9 +210,11 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                     };
                     
                 var preassemDKS004 = prodOrdersRep.GetQueryable(false).Where(
-                    po => po.CustomerOrderCode == dks004 && 
-                          componentTypesDKS004Preassembly.Contains(po.ComponentType) && 
-                          po.OrderType == ProductionOrderType.ConstructionPart).ToList();
+                    po => 
+                        po.CustomerOrderCode == dks004 && 
+                        componentTypesDKS004Preassembly.Contains(po.ComponentType) &&
+                        po.ReproductionType == ReproductionType.NoReproduction &&
+                        po.OrderType == ProductionOrderType.ConstructionPart).ToList();
                                                         
                 if(preassemDKS004.Any())
                 {   
@@ -230,9 +237,11 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 var validPositionsDKS004 = new List<string> { "001", "003", "006" };
                 
                 var assemDKS004 = prodOrdersRep.GetQueryable(false).Where(
-                    po => po.CustomerOrderCode == dks004 && 
-                          validPositionsDKS004.Contains(po.CustomerOrderPosition) && 
-                          po.OrderType == ProductionOrderType.SalesArticle).ToList();
+                    po => 
+                        po.CustomerOrderCode == dks004 && 
+                        validPositionsDKS004.Contains(po.CustomerOrderPosition) &&
+                        po.ReproductionType == ReproductionType.NoReproduction &&
+                        po.OrderType == ProductionOrderType.SalesArticle).ToList();
 
                     if(assemDKS004.Any())
                     {   
