@@ -472,6 +472,18 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
             throw;
         }
     }
+    
+    public void WriteFeedback()
+    {
+        try
+        {
+        }
+        catch (Exception e)
+        {
+            _Logger.Error(ResourcesKeys.ErrorInUserExit(Name), null, e);
+            throw;
+        }
+    }
 
 
     public override ICollection<UserExitParameter> UserExitInputParameters
