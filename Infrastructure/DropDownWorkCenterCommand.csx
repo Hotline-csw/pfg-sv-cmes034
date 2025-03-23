@@ -181,9 +181,30 @@ public class DropDownWorkCenterCommand : UserExitCustomBase, HomagGroup.FLS.Infr
                                 if (prodItemsStepsData != null)
                                 {
                                     //prodItem.InsertFeedback(unitOfWork, _TaskName, 1, 0, 0, dropDownWorkCenter, prodStep.Code, 0, FeedbackState.Finished, 0, _Logger);
+                                    
+                                    var feedback = new Feedback();
+                                    
+                                    feedback.ProductionItemCode = prodItem.Code;
+                                    feedback.ProductionStepCode = prodStep.Code;
+                                    feedback.WorkcenterCode = dropDownWorkCenter;
+                                    feedback.CountGood = 1;
+                                    feedback.CountScrap = 0;
+                                    feedback.CountRework = 0;
+                                    feedback.Timestamp = DateTime.Now;
+                                    feedback.FeedbackState = FeedbackState.Finished;
+                                    feedback.ProcessingState = 0;
+                                    feedback.ProcessingTime = 0;
+                                    feedback.CreationDate = DateTime.Now;
+                                    feedback.CreationSource = "ManualFeedback";
+                                    feedback.ModificationDate = DateTime.Now;
+                                    feedback.ModificationSource = "ManualFeedback";
+                                    
+                                    unitOfWork.AddOrUpdate(new[] { feedback } );
                                 } 
                             }
                         }
+                        
+                        unitOfWork.Save();
                     }
                     
                     var updateFeedbacks = unitOfWork.GetRepository<Feedback>().GetQueryable(false).Where(fb => fb.ProcessingState == 0);
