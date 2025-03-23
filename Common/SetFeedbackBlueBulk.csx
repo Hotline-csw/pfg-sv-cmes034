@@ -261,7 +261,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                     };
                     
                 var cncDKS005 = prodOrdersRep.GetQueryable(false).Where(
-                    po => po.CustomerOrderCode == dks004 && componentTypesDKS005CNC.Contains(po.ComponentType)).ToList();
+                    po => po.CustomerOrderCode == dks004 && componentTypesDKS005CNC.Contains(po.ComponentType) && 
+                          po.ReproductionType == ReproductionType.NoReproduction).ToList();
                                                         
                 if(cncDKS005.Any())
                 {   
@@ -318,7 +319,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 };
                 
                 var preassemDKS005 = prodOrdersRep.GetQueryable(false).Where(
-                    po => po.CustomerOrderCode == dks005 && componentTypesDKS005Preassembly.Contains(po.ComponentType)).ToList();
+                    po => po.CustomerOrderCode == dks005 && componentTypesDKS005Preassembly.Contains(po.ComponentType) && 
+                          po.ReproductionType == ReproductionType.NoReproduction).ToList();
 
                 if(preassemDKS005.Any())
                 {   
@@ -374,7 +376,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                 };
                 
                 var drillDKM001 = prodOrdersRep.GetQueryable(false).Where(
-                    po => po.CustomerOrderCode == dkm001 && componentTypesDKM001Drilling.Contains(po.ComponentType)).ToList();
+                    po => po.CustomerOrderCode == dkm001 && componentTypesDKM001Drilling.Contains(po.ComponentType) && 
+                          po.ReproductionType == ReproductionType.NoReproduction).ToList();
                                                         
                 if(drillDKM001.Any())
                 {   
@@ -431,7 +434,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                     };
                     
                 var sortDKM001 = prodOrdersRep.GetQueryable(false).Where(
-                    po => po.CustomerOrderCode == dkm001 && componentTypesDKM001Sorting.Contains(po.ComponentType)).ToList();
+                    po => po.CustomerOrderCode == dkm001 && componentTypesDKM001Sorting.Contains(po.ComponentType) && 
+                          po.ReproductionType == ReproductionType.NoReproduction).ToList();
                                                         
                 if(sortDKM001.Any())
                 {   
