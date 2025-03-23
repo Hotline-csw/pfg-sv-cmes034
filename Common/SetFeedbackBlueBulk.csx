@@ -21,6 +21,7 @@
 //   T.Stürzer       2023-03-03    Added Condition "NoReproduction"
 //   T.Stürzer       2024-08-08    Changed Feedback from InsertFeedbackFinishedGood to InsertFeedback
 //   T.Stürzer       2024-11-15    Changed Workcenters for feedback
+//   T.Stürzer       2025-03-23    Added WriteFeedback
 //   
 //-----------------------------------------------------------------------------
 
@@ -176,7 +177,8 @@ public class SetFeedbackBlueBulk : GenericTaskBase, HomagGroup.FLS.Services.Comm
                     };
                 
                 var sortDKS004 = prodOrdersRep.GetQueryable(false).Where(
-                    po => po.CustomerOrderCode == dks004 && componentTypesDKS004Sorting.Contains(po.ComponentType)).ToList();
+                    po => po.CustomerOrderCode == dks004 && componentTypesDKS004Sorting.Contains(po.ComponentType) && 
+                          po.ReproductionType == ReproductionType.NoReproduction).ToList();
                 
                 if(sortDKS004.Any())
                 {   
