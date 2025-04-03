@@ -1,0 +1,36 @@
+{
+  "label": "ProductionOrders",
+  "dataSource": "ProductionOrders",
+  "rowStyles": {
+    "styleProperties": [
+      {
+        "condition": "ProductionState== 'Finished'",
+        "color": "#00800f",
+        "backgroundColor": "#a8fac5"
+      }
+    ]
+  },
+  "cellStyles": [
+    {
+      "field": "Code",
+      "styleClasses": [
+        {
+          "condition": "CuttingThickness == 22 || CuttingThickness == 31",
+          "styleClass": "productionOrderCode"
+        }
+      ],
+      "styleProperties": [
+        {
+          "condition": "ReleaseState == 'Released'",
+          "color": "#7335c0",
+          "backgroundColor": "#33c751"
+        }
+      ],
+      "renderer": {}
+    },
+    {
+      "field": "ArticleDescription",
+      "renderer": {}
+    }
+  ]
+}
