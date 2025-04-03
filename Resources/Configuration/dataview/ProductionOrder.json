@@ -1,0 +1,34 @@
+{
+  "label": "Fertigungsauftäge",
+  "name": "mainProd",
+  "configName": "productionOrderDisplay",
+  "showFilter": true,
+  "detailLeft": [
+    {
+      "label": "Bauteile",
+      "name": "PrItm1",
+      "configName": "productionItemDisplay",
+      "parent": "mainProd",
+      "relationFieldsParent": [
+        "Code"
+      ],
+      "relationFieldsDetail": [
+        "ProductionOrderCode"
+      ]
+    }
+  ],
+  "detailRight": [
+    {
+      "label": "Arbeitsgänge",
+      "name": "Step",
+      "configName": "productionStepDisplay",
+      "parent": "mainProd",
+      "relationFieldsParent": [
+        "Code"
+      ],
+      "relationFieldsDetail": [
+        "ProductionOrderCode"
+      ]
+    }
+  ]
+}
