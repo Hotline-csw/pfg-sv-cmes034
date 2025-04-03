@@ -12,12 +12,13 @@
       "refresh": 5,
       "inputOData": {},
       "inputMongo": {
-        "instance": "CMES_Health"
+		"dataSource": "JobHistory",		  
+        "instance": "HEALTH_CMES33_SUPPORT"
       }
     }
   },
 {
-    "label": "Cmes Server 108",
+    "label": "Cmes Server",
     "cols": 6,
     "rows": 3,
     "background": "#ffffff",
@@ -31,12 +32,12 @@
 		"inputMongo":
 		{
 			"dataSource": "PerfmonOneSecond",
-			"instance": "CMES_Health"
+			"instance": "HEALTH_CMES33_SUPPORT"
 		}
 	}
  },
 {
-    "label": "SQL Server PROD",
+    "label": "SQL Server DEV",
     "cols": 6,
     "rows": 3,
     "background": "#ffffff",
@@ -44,18 +45,18 @@
     "component": "cmes-dashboard-sql-server-perf-chart",
     "link": "sql-server-health",
 	"input": {
-		"chartName":"SqlServer Server PROD",
+		"chartName":"SqlServer Server DEV",
 		"refresh": 2,
 		"inputOData": {},
 		"inputMongo":
 		{
 			"dataSource": "DatabasePerformance",
-			"instance": "CMES_Health"
+			"instance": "HEALTH_CMES33_SUPPORT"
 		}
 	}
  },
   {
-    "label": "Letzte cMES Server Exceptions",
+    "label": "Letzte cMES Server Exceptions NEW",
     "cols": 6,
     "rows": 2,
     "background": "#ff0000",
@@ -68,7 +69,7 @@
       "inputOData":
 	  {
 		"dataSource": "CombinedLogItems",
-		"select": "Date, Area, Message, Exception",
+		"select": "Level, Date, Area, Message, Exception ",
 		"filter": "ApplicationType eq 'Web' and Exception ne null",
 		"orderBy": "Sequence desc",
 		"top": 15

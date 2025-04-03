@@ -1,4 +1,3 @@
-
 [
   {
     "label": "Dashboard",
@@ -6,13 +5,44 @@
     "icon": "grid_view"
   },
   {
-    "label": "Verwaltung",
+    "label": "DashboardSecondOne",
+    "link": "cmes-dashboard/cadmin",
+    "icon": "grid_view"
+  },
+  {
+    "label": "Konfig Verwaltung",
+    "icon": "grid_view",
     "items": [
       {
-        "label": "Sortieren",
-        "link": "cmes-sorting",
+        "label": "Menu Config",
+        "link": "cmes-config/menu",
         "icon": "notes"
       },
+      {
+        "label": "Dashboard Config",
+        "link": "cmes-config/dashboard",
+        "icon": "notes"
+      },
+      {
+        "label": "capacity Config",
+        "link": "cmes-config/capacity",
+        "icon": "notes"
+      },
+      {
+        "label": "planning Config",
+        "link": "cmes-config/planning",
+        "icon": "notes"
+      },
+      {
+        "label": "health Config",
+        "link": "cmes-config/health",
+        "icon": "notes"
+      }
+    ]
+  },
+  {
+    "label": "Verwaltung",
+    "items": [
       {
         "label": "Feedback",
         "link": "cmes-custom-page/Feedback",
@@ -32,53 +62,19 @@
         "label": "Auswertung",
         "link": "cmes-custom-page/PartsPerHour",
         "icon": "bar_chart"
-      },
-      {
-        "label": "Layout",
-        "link": "cmes-custom-page/Layout",
-        "icon": "location_on"
-      },
-      {
-        "label": "Demo",
-        "link": "cmes-custom-page/Demo",
-        "icon": "psychology"
-      },
-	  {
-        "label": "CmesHealthW3wp",
-        "link": "cmes-custom-page/CmesHealthW3wp",
-        "icon": "psychology"
-      },
-	  {
-        "label": "CMesHealthFredLocal",
-        "link": "cmes-custom-page/CMesHealthFredLocal",
-        "icon": "psychology"
-      },
-      {
-        "label": "Nobilia",
-        "link": "cmes-custom-page/W2Demo",
-        "icon": "category"
-      },
-      {
-        "label": "Dialog",
-        "link": "cmes-custom-page/TestDialog",
-        "icon": "category"
-      },
-      {
-        "label": "EChart",
-        "link": "cmes-custom-page/EChart",
-        "icon": "category"
-      },
-	  {
-        "label": "EChartFred",
-        "link": "cmes-custom-page/EChartFred",
-        "icon": "category"
       }
+
     ],
     "icon": "offline_pin"
   },
   {
     "label": "Editor",
     "link": "cmes-rule-editor",
+    "icon": "format_align_left"
+  },
+  {
+    "label": "Kapazitäten",
+    "link": "cmes-capacity-page/Standard",
     "icon": "format_align_left"
   },
   {
@@ -92,22 +88,7 @@
     "icon": "format_align_left"
   },
   {
-    "label": "Kapazitätsanzeige",
-    "link": "cmes-capacity-page/Standard",
-    "icon": "format_align_left"
-  },
-  {
-    "label": "KapazitätsanzeigeStatus",
-    "link": "cmes-capacity-page/CapacityByState",
-    "icon": "bar_chart"
-  },
-  {
-    "label": "KapazitätsanzeigePulk",
-    "link": "cmes-capacity-page/CapacityByBulk",
-    "icon": "bar_chart"
-  },
-  {
-    "label": "Pulkplanung",
+    "label": "Pulkplanung FRED",
     "link": "cmes-bulk-planning",
     "icon": "format_align_left"
   },
@@ -115,11 +96,6 @@
     "label": "IntelliStack",
     "link": "cmes-stack",
     "icon": "format_align_justify"
-  },
-  {
-    "label": "Automatische Losbildung",
-    "link": "cmes-automatic-lotgeneration-page",
-    "icon": "format_align_left"
   },
   {
     "label": "Abmelden",

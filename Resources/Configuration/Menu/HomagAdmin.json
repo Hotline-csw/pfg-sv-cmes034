@@ -1,188 +1,105 @@
 [
   {
     "label": "Dashboard",
-    "icon": "grid_view",
     "link": "cmes-dashboard",
-    "navigationExtras": {}
+    "icon": "grid_view"
   },
   {
-    "label": "Management",
-    "icon": "offline_pin",
-    "navigationExtras": {},
+    "label": "DashboardSecondOne",
+    "link": "cmes-dashboard/cadmin",
+    "icon": "grid_view"
+  },
+  {
+    "label": "Konfig Verwaltung",
+    "icon": "grid_view",
     "items": [
       {
-        "label": "Sorting",
-        "icon": "notes",
-        "link": "cmes-sorting",
-        "navigationExtras": {}
+        "label": "Menu Config",
+        "link": "cmes-config/menu",
+        "icon": "notes"
       },
       {
+        "label": "Dashboard Config",
+        "link": "cmes-config/dashboard",
+        "icon": "notes"
+      },
+      {
+        "label": "capacity Config",
+        "link": "cmes-config/capacity",
+        "icon": "notes"
+      },
+      {
+        "label": "planning Config",
+        "link": "cmes-config/planning",
+        "icon": "notes"
+      },
+      {
+        "label": "health Config",
+        "link": "cmes-config/health",
+        "icon": "notes"
+      }
+    ]
+  },
+  {
+    "label": "Verwaltung",
+    "items": [
+      {
         "label": "Feedback",
-        "icon": "notes",
         "link": "cmes-custom-page/Feedback",
         "navigationExtras": {
           "queryParams": {
             "test": "30041 Sorter Out"
           }
-        }
+        },
+        "icon": "notes"
       },
       {
         "label": "Template",
-        "icon": "extension",
         "link": "cmes-custom-page/Template",
-        "navigationExtras": {}
+        "icon": "extension"
       },
       {
-        "label": "DBRevived",
-        "icon": "extension",
-        "link": "cmes-custom-page/DBRevived",
-        "navigationExtras": {}
-      },
-      {
-        "label": "Evaluation",
-        "icon": "bar_chart",
+        "label": "Auswertung",
         "link": "cmes-custom-page/PartsPerHour",
-        "navigationExtras": {}
-      },
-      {
-        "label": "Layout",
-        "icon": "location_on",
-        "link": "cmes-custom-page/Layout",
-        "navigationExtras": {}
-      },
-      {
-        "label": "Demo",
-        "icon": "psychology",
-        "link": "cmes-custom-page/Demo",
-        "navigationExtras": {}
-      },
-      {
-        "label": "CmesHealthW3wp",
-        "icon": "psychology",
-        "link": "cmes-custom-page/CmesHealthW3wp",
-        "navigationExtras": {}
-      },
-      {
-        "label": "CMesHealthFredLocal",
-        "icon": "psychology",
-        "link": "cmes-custom-page/CMesHealthFredLocal",
-        "navigationExtras": {}
-      },
-      {
-        "label": "Nobilia",
-        "icon": "category",
-        "link": "cmes-custom-page/W2Demo",
-        "navigationExtras": {}
-      },
-      {
-        "label": "Dialog",
-        "icon": "category",
-        "link": "cmes-custom-page/TestDialog",
-        "navigationExtras": {}
-      },
-      {
-        "label": "EChart",
-        "icon": "category",
-        "link": "cmes-custom-page/EChart",
-        "navigationExtras": {}
-      },
-      {
-        "label": "EChartFred",
-        "icon": "category",
-        "link": "cmes-custom-page/EChartFred",
-        "navigationExtras": {}
+        "icon": "bar_chart"
       }
-    ]
-  },
-  {
-    "label": "Config Management",
-    "icon": "category",
-    "navigationExtras": {},
-    "items": [
-      {
-        "label": "Planning Config",
-        "icon": "notes",
-        "link": "cmes-config/planning",
-        "navigationExtras": {}
-      },
-      {
-        "label": "Menu Config",
-        "icon": "notes",
-        "link": "cmes-config/menu",
-        "navigationExtras": {}
-      },
-      {
-        "label": "Dashboard Config",
-        "icon": "notes",
-        "link": "cmes-config/dashboard",
-        "navigationExtras": {}
-      }
-    ]
+
+    ],
+    "icon": "offline_pin"
   },
   {
     "label": "Editor",
-    "icon": "format_align_left",
     "link": "cmes-rule-editor",
-    "navigationExtras": {}
+    "icon": "format_align_left"
   },
   {
-    "label": "Capacity - Bulk",
-    "icon": "format_align_left",
-    "link": "cmes-bulk-capacity",
-    "navigationExtras": {}
-  },
-  {
-    "label": "Capacity - Status",
-    "icon": "format_align_left",
-    "link": "cmes-state-capacity",
-    "navigationExtras": {}
-  },
-  {
-    "label": "Capacity display",
-    "icon": "format_align_left",
+    "label": "Kapazitäten",
     "link": "cmes-capacity-page/Standard",
-    "navigationExtras": {}
+    "icon": "format_align_left"
   },
   {
-    "label": "Capacity display - Status",
-    "icon": "bar_chart",
-    "link": "cmes-capacity-page/CapacityByState",
-    "navigationExtras": {}
+    "label": "Kapazität / Pulk",
+    "link": "cmes-bulk-capacity",
+    "icon": "format_align_left"
   },
   {
-    "label": "Capacity display - Bulk",
-    "icon": "bar_chart",
-    "link": "cmes-capacity-page/CapacityByBulk",
-    "navigationExtras": {}
-  },
-    {
-    "label": "Flow",
-    "icon": "format_align_left",
-    "link": "cmes-production-flow",
-    "navigationExtras": {}
+    "label": "Kapazität / Status",
+    "link": "cmes-state-capacity",
+    "icon": "format_align_left"
   },
   {
-    "label": "Manual Bulk planning",
-    "icon": "stacked_bar_chart",
-    "link": "cmes-planning-view/BulkPlanning",
-    "navigationExtras": {}
+    "label": "Pulkplanung FRED",
+    "link": "cmes-bulk-planning",
+    "icon": "format_align_left"
   },
   {
     "label": "IntelliStack",
-    "icon": "format_align_justify",
     "link": "cmes-stack",
-    "navigationExtras": {}
+    "icon": "format_align_justify"
   },
   {
-    "label": "Automatic lot generation",
-    "icon": "format_align_left",
-    "link": "cmes-automatic-lotgeneration-page",
-    "navigationExtras": {}
-  },
-  {
-    "label": "Logout",
-    "icon": "logout",
+    "label": "Abmelden",
     "link": "login",
-    "navigationExtras": {}
+    "icon": "logout"
   }
 ]
