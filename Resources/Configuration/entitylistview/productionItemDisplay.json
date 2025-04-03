@@ -1,0 +1,19 @@
+{
+  "label": "ProductionItems",
+  "dataSource": "ProductionItems",
+  "rowStyles": {
+    "styleProperties": [
+      {
+        "condition": "OptimizationTransferState=='Optimized'",
+        "color": "#4e087d",
+        "backgroundColor": "#eb98ec"
+      }
+    ]
+  },
+  "cellStyles": [
+    {
+      "field": "Code",
+      "renderer": {}
+    }
+  ]
+}
