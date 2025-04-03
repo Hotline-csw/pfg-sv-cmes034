@@ -1,0 +1,119 @@
+
+{
+    "type": "object",
+       
+    
+  
+  
+      "properties": {
+           "label": {"$ref": "#/definitions/label"},
+           "dataSource":{
+                      "type": "string",
+                      "widget": "select",
+                      "emit":"dataSourceSignal",
+                      "choicesCMesEntity":"DataSource"
+          },
+          "rowStyles":
+          {
+                  "type":"object",
+                  "properties": {
+                      
+                      "styleClasses": {"$ref": "#/definitions/styleClasses"},
+                      "styleProperties":{"$ref": "#/definitions/styleProperties"}
+                  }
+              
+          },
+                  
+              
+          "cellStyles": {
+              "type": "array",
+              "layout": "vertical",	
+                      
+                 "items": {
+                  "type":"object",
+                   "layoutLabel":"field",
+                  "properties": {
+                      "field": {"$ref": "#/definitions/field"},
+                      "styleClasses": {"$ref": "#/definitions/styleClasses"},
+                      "styleProperties":{"$ref": "#/definitions/styleProperties"},
+                      "renderer":{"$ref": "#/definitions/renderer"}
+                  }
+              }
+          }
+      
+    },
+      "definitions": {
+          "label": {
+              "type": "string"
+          },
+          "field": {
+              "type": "string",
+              "widget": "select",
+              "choicesCMesEntity":"$[DataSource = '?'].Fields.name",
+              "listen":"dataSourceSignal"
+          },
+      
+           "renderer": {
+               "type":"object",
+                  "properties": {
+                      "templateName":{"type":"string"},
+                      "onInit":{
+                          "type": "object",	
+                          "properties": {					
+                              "class": {"type":"string"},
+                              "function": {"type":"string"}						
+                          }
+                      },
+                      "onClicked":{
+                          "type": "object",	
+                          "properties": {					
+                              "class": {"type":"string"},
+                              "function": {"type":"string"}						
+                          }
+                      },					
+                      "onChange":{
+                          "type": "object",	
+                          "properties": {					
+                              "class": {"type":"string"},
+                              "function": {"type":"string"}						
+                          }
+                      }
+                  }
+          },
+          "styleProperties": {
+              "type": "array",			
+              "layout": "vertical",		
+              "items": {
+                  "type": "object",	
+                   "layoutLabel":"condition",
+                  "properties": {					
+                      "condition": {"type": "string", "widget": "textarea"},
+                      "color": {"type": "string","widget": "color"},
+                      "backgroundColor": {"type": "string","widget": "color"}		
+                  }
+              }
+              
+          },
+              "styleClasses": {
+              "type": "array",			
+              "layout": "vertical",		
+              "items": {
+                  "type": "object",	
+                   "layoutLabel":"condition",
+                  "properties": {					
+                      "condition": {"type": "string", "widget": "textarea"},
+                      "styleClass": {"type": "string"}
+                      
+                  }
+              }
+              
+          }
+          
+      }
+      
+    }
+      
+  
+      
+      
+      
