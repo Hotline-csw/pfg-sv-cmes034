@@ -1,0 +1,64 @@
+{
+	"type": "object",
+	  "properties": {
+		  "label": {"$ref": "#/definitions/label"},
+		  "name": {"$ref": "#/definitions/name"},
+		  "configName": {"$ref": "#/definitions/configName"},
+		  "showFilter": {"$ref": "#/definitions/showFilter"},			
+		  "detailLeft": {"$ref": "#/definitions/detailConfig"},	
+		  "detailRight": {"$ref": "#/definitions/detailConfig"}		
+			  
+	},
+	  "definitions": {
+		  "label": {
+			  "type": "string"
+		  },
+		  "name": {
+			  "type": "string"
+		  },
+		  "configName": {
+			  "type": "string"
+		  },
+		  "showFilter": {
+			  "type": "boolean"
+		  },
+		  "parent": {
+			  "type": "string"
+		  },
+		  "relationFieldsParent": {
+			  "type": "array",
+			  "layout": "horizontal",
+			  "items": {"type": "string"}
+		  },
+		  "relationFieldsDetail": {
+			  "type": "array",
+			  "layout": "horizontal",
+			  "items": {"type": "string"}
+		  },		
+		  "detailConfig": {
+			  "type": "array",			
+			  "layout": "horizontal",	
+			  
+			  "items": {
+				  "type": "object",	
+				  "layoutLabel":"name",
+				  "properties": {					
+					  "label": {"$ref": "#/definitions/label"},
+					  "name": {"$ref": "#/definitions/name"},
+					  "configName": {"$ref": "#/definitions/configName"},
+					  "parent": {"$ref": "#/definitions/parent"},
+					  "relationFieldsParent": {"$ref": "#/definitions/relationFieldsParent"},
+					  "relationFieldsDetail": {"$ref": "#/definitions/relationFieldsDetail"}
+				  }
+			  }
+			  
+		  }
+		  
+	  }
+	  
+	}
+	  
+  
+	  
+	  
+	  
