@@ -51,7 +51,7 @@
 	"icon": {
 		"type": "string",
 		"widget": "selecticon",
-		"choices":["grid_view","notes","extension","bar_chart","location_on","psychology","category","offline_pin","format_align_left","logout"]		
+		"choices":["grid_view","notes","extension","bar_chart","location_on","psychology","category","offline_pin","format_align_left", "settings","web_stories", "view_quilt", "photo_filter", "hive", "table_chart", "format_align_justify", "logout"]		
 	},
 	"link": {"$ref": "../schemas/link.schema.json#/link"},
 	"NavigationExtras": {
