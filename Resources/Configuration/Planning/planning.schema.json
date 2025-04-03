@@ -59,7 +59,13 @@
                 "type": "string"
               },
               "fieldType": {
-                "type": "string"
+                "type": "string",
+                "choices": [
+                  "text",
+                  "color",
+                  "number",
+                  "date"
+                ]
               },
               "value": {
                 "type": "string"
