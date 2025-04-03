@@ -1,0 +1,19 @@
+{
+  "label": "ProductionSteps",
+  "dataSource": "ProductionSteps",
+  "rowStyles": {
+    "styleProperties": [
+      {
+        "condition": "ProductionState== 'Finished'",
+        "color": "#00800f",
+        "backgroundColor": "#a8fac5"
+      }
+    ]
+  },
+  "cellStyles": [
+    {
+      "field": "Code",
+      "renderer": {}
+    }
+  ]
+}
