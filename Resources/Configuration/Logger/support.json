@@ -37,5 +37,18 @@
         "logLevel": "Info"
       }
     ]
+  },
+  {
+    "label": "W2Demo",
+    "appenders": [
+      {
+        "appenderType": "console",
+        "logLevel": "Error"
+      },
+      {
+        "appenderType": "webApi",
+        "logLevel": "Info"
+      }
+    ]
   }
 ]

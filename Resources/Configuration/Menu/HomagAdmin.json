@@ -64,6 +64,11 @@
         "icon": "bar_chart"
       },
       {
+        "label": "W2Demo",
+        "link": "cmes-custom-page/W2Demo",
+        "icon": "bar_chart"
+      },
+      {
         "label": "Auftragsimport Alpnach",
         "link": "cmes-custom-page/AlpnachImport",
         "icon": "bar_chart"
