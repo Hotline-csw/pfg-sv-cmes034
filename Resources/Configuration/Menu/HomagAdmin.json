@@ -62,7 +62,13 @@
         "label": "Auswertung",
         "link": "cmes-custom-page/PartsPerHour",
         "icon": "bar_chart"
+      },
+      {
+        "label": "Demo",
+        "link": "cmes-custom-page/Demo",
+        "icon": "bar_chart"
       }
+	  
 
     ],
     "icon": "offline_pin"
