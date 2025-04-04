@@ -1,5 +1,18 @@
 [
   {
+    "label": "AlpnachImport",
+    "appenders": [
+      {
+        "appenderType": "console",
+        "logLevel": "Error"
+      },
+      {
+        "appenderType": "webApi",
+        "logLevel": "Info"
+      }
+    ]
+  },
+  {
     "label": "Demo",
     "appenders": [
       {
