@@ -1,0 +1,15 @@
+[
+  {
+    "label": "PartsPerHour",
+    "appenders": [
+      {
+        "appenderType": "console",
+        "logLevel": "Error"
+      },
+      {
+        "appenderType": "webApi",
+        "logLevel": "Info"
+      }
+    ]
+  }
+]
