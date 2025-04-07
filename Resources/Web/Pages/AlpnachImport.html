@@ -21,7 +21,8 @@
     <v-subheader>
       Importierte Aufträge
     </v-subheader>
-    <v-text-field v-model="search" label="Search" @input="filterList"></v-text-field>	
+    <v-text-field v-model="search" label="Search" @input="filterlist"></v-text-field>	
+	<!--
     <v-list-item>
       <v-container fluid>
         <v-row>
@@ -35,7 +36,8 @@
       </v-container>
     </v-list-item>
     <v-divider></v-divider>
-    <v-list-item dense v-for="item in filteredList.slice(0, 5)" :key="item.CustomerOrderCode">
+	-->
+    <v-list-item dense v-for="item in filterlist.slice(0,5)" :key="item.CustomerOrderCode">
       <v-container fluid>
         <v-row>
           <v-col cols="2" class="py-0">
@@ -50,13 +52,12 @@
 
   </v-list>
 
-		
-<!--  #####################################################
+<!--	
         <v-content>
+            <v-text-field v-model="search" label="Search" @input="filterlist"></v-text-field>
           <v-container>
-            <v-text-field v-model="search" label="Search" @input="filterList"></v-text-field>
             <v-list>
-              <v-list-item dense v-for="item in filteredList.slice(0, 5)" :key="item.CustomerOrderCode">
+              <v-list-item dense v-for="item in filterlist.slice(0, 5)" :key="item.CustomerOrderCode">
                 <v-list-item-content>
                   <v-list-item-title >{{ item.CustomerOrderCode }}</v-list-item-title>
                   <v-list-item-title >{{ item.CreationDate }}</v-list-item-title>	
@@ -64,8 +65,12 @@
               </v-list-item>
             </v-list>
           </v-container>
-        </v-content>
-  #####################################################-->		
+        </v-content>	
+	-->	
+
+
+
+
       </v-main>
     </v-app>
   </div>
@@ -203,13 +208,13 @@ click: function (chart, options, e) {
       },
 
 	  computed: {
-		filteredList() {
+		filterlist() {
 		  return this.CustomerOrderImportedItems.filter(item => item.CustomerOrderCode.toLowerCase().includes(this.search.toLowerCase()));
 		}
 	  },
 
       methods: {
-			filterList() {
+			filterist() {
 			  // Implement any custom filtering logic here
 			},	  
           getImportedCustomerOrders: function() {
