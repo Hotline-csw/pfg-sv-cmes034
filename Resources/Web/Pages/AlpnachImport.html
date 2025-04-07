@@ -8,9 +8,64 @@
             <v-img src="{{ server }}/dao/script/assets/homag-logo.svg" max-height="50" contain class="ma-2"></v-img>
         </v-sheet>
         <h1 class="text-center">{{header}}</h1>
-        <div id="chartdiv" class="ma-2 ma-md-5">
+        <!--
+		<div id="chartdiv" class="ma-2 ma-md-5">
             <apexchart ref="chart" type="rangeBar" height="450" :options="chartOptions" :series="series"></apexchart>
         </div>
+        <div id="chartdiv" class="ma-2 ma-md-5">
+            <apexchart ref="chart" type="rangeBar" height="450" :options="chartOptions" :series="series"></apexchart>
+        </div>-->
+<!--  #####################################################-->		
+
+  <v-list dense color="#EEEEEE">
+    <v-subheader>
+      Importierte Aufträge
+    </v-subheader>
+    <v-text-field v-model="search" label="Search" @input="filterList"></v-text-field>	
+    <v-list-item>
+      <v-container fluid>
+        <v-row>
+          <v-col cols="2">
+            <strong>Kundenauftrag</strong>
+          </v-col>
+          <v-col cols="2	">
+            <strong>Importiert</strong>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-list-item>
+    <v-divider></v-divider>
+    <v-list-item dense v-for="item in filteredList.slice(0, 5)" :key="item.CustomerOrderCode">
+      <v-container fluid>
+        <v-row>
+          <v-col cols="2" class="py-0">
+            {{ item.CustomerOrderCode }}
+          </v-col>
+          <v-col cols="2" style="color: #AA1111;" class="py-0" >
+            {{ item.CreationDate }}
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-list-item>
+
+  </v-list>
+
+		
+<!--  #####################################################
+        <v-content>
+          <v-container>
+            <v-text-field v-model="search" label="Search" @input="filterList"></v-text-field>
+            <v-list>
+              <v-list-item dense v-for="item in filteredList.slice(0, 5)" :key="item.CustomerOrderCode">
+                <v-list-item-content>
+                  <v-list-item-title >{{ item.CustomerOrderCode }}</v-list-item-title>
+                  <v-list-item-title >{{ item.CreationDate }}</v-list-item-title>	
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-container>
+        </v-content>
+  #####################################################-->		
       </v-main>
     </v-app>
   </div>
@@ -19,7 +74,6 @@
      window.vm = new Vue({
       el: "#app",
     components: {
-          apexchart: VueApexCharts,
         },
       vuetify: new Vuetify({
         theme: {
@@ -33,16 +87,22 @@
         },
       }),
       created() {
-          this.getJobHistoryData();
+          this.getImportedCustomerOrders();
+          //this.getJobHistoryData();		  
           // ToDo: INstallieren von EventHandlern test
       },
       mounted() {
-          
       },
       destroyed(){
           // Aufräumen: z.B. EventHandler entfernen, Timer löschen ect.
       },
+			
+	  
       data: {
+  
+		   search: '',
+			CustomerOrderImportedItems: [],
+			  
           header: "Auftragsimport Übersicht",
           date: new Date().toISOString().substr(0, 10),
           series: [
@@ -63,7 +123,7 @@
                     new Date('2021-04-13T19:47:31.6155631+02:00').getTime(),
                     new Date('2021-04-13T19:48:15.2600616+02:00').getTime()
                   ]
-                }
+                },
               ]
             },
             {
@@ -142,44 +202,47 @@ click: function (chart, options, e) {
           },
       },
 
-      computed: {
-      },
+	  computed: {
+		filteredList() {
+		  return this.CustomerOrderImportedItems.filter(item => item.CustomerOrderCode.toLowerCase().includes(this.search.toLowerCase()));
+		}
+	  },
 
       methods: {
-          getJobHistoryData: function() {
+			filterList() {
+			  // Implement any custom filtering logic here
+			},	  
+          getImportedCustomerOrders: function() {
             var d = new Date();
-            d.setHours(d.getHours() - 1);
+            d.setHours(d.getHours() - 168);
             window.cmesOdata
-                .get("JobHistory")
+                .get("CustomerOrders")
                 .query({
-                    $filter: `StartDate gt ${d.toISOString()}`,
-                    $orderBy: "JobName",
-                    $select: "JobName, StartDate, FinishDate, JobResult",
+                    $filter: `CreationDate gt ${d.toISOString()} `,
+                    $orderBy: "Creationdate",
+                    $select: "Code, CreationDate",
+				
                 })
                 .then((data) => {
-                    //console.log(data);
-                    grouped = data.reduce((h, a) => Object.assign(h, { [a.JobResult]:( h[a.JobResult] || [] ).concat(a) }), {});
-                    //console.log(grouped);
-                    var options = { timeZone: 'UTC' };  
-
-                    let series = [];
-                    Object.entries(grouped).forEach(entry => {
-	                    const [key, value] = entry;
-                        //console.log("Value:")
-                        //console.log(value);
-                        let ppH = [];
-                        value.forEach(job => {
-                            //console.log("Job:")
-                            //console.log(job);
-                            ppH.push({x: job.JobName, y:[window.DateTime.fromISO(job.StartDate).toJSDate().getTime(),
-                                                         job.FinishDate == null?new Date().getTime(): window.DateTime.fromISO(job.FinishDate).toJSDate().getTime() ]})
-                            });
-
-                        series.push({name: key, data: ppH});
-                    
-                    });
-                    //console.log(series);                                                           
-                    this.$refs.chart.updateSeries(series, false, true);
+					if (data === null || data.length === 0) 
+					{
+						console.log('CustomerOrder nicht gefunden.')
+					}
+					else
+					{
+						console.log(JSON.stringify(data));
+						if(Array.isArray(data))
+						{
+							console.log("Array!!!!");
+							data.forEach((element) => {
+								let valueCO = [];		
+								console.log("CustomerOrderImportedItems.Code:" + element.Code);
+								valueCO.CustomerOrderCode = element.Code;
+								valueCO.CreationDate = window.DateTime.fromISO(element.CreationDate).setLocale('de').toLocaleString({weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'});
+								this.CustomerOrderImportedItems.push(valueCO);
+							})
+						}    
+					}		
                 })
                 .catch((err) => console.log(err));
 

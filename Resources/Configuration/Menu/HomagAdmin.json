@@ -10,6 +10,11 @@
     "icon": "grid_view"
   },
   {
+    "label": "Auftragsimport",
+    "link": "cmes-dashboard/OrderImport",
+    "icon": "grid_view"
+  },  
+  {
     "label": "Konfig Verwaltung",
     "icon": "grid_view",
     "items": [
@@ -64,8 +69,8 @@
         "icon": "bar_chart"
       },
       {
-        "label": "xDemo",
-        "link": "cmes-custom-page/xDemo",
+        "label": "Demo",
+        "link": "cmes-custom-page/Demo",
         "icon": "bar_chart"
       },
       {

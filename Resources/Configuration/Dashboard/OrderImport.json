@@ -1,0 +1,49 @@
+[
+
+
+  {
+    "title": "Kundenaufträge",
+    "cols": 2,
+    "rows": 2,
+    "background": "#009933",
+    "component": "cmes-dashboard-count-chart",
+    "link": "cmes-custom-page/W2Demo",
+    "input": {
+      "entityType": "ProductionOrders",
+      "colors": ["#FFFFFF"],
+      "refresh": 120,
+      "groupField": "ProductionState",
+      "valueField": "total",
+      "apply": "filter(date(DesiredEndDate) eq {Today} and ProductionState eq 'Finished')/groupby((ProductionState),aggregate(CustomerOrderCode with countdistinct as total))"
+    }
+  },
+  {
+    "title": "Benutzer",
+    "cols": 2,
+    "rows": 2,
+    "background": "#FAF0E6",
+    "component": "cmes-dashboard-user",
+    "link": "cmes-custom-page/CmesHealthW3wp"
+
+  },
+
+  {
+    "title": "Importierte Aufträge",
+    "cols": 12,
+    "rows": 3,
+    "background": "#D2691E",
+    "foreground": "#fff",
+    "component": "cmes-dashboard-table-chart",
+    "link": "cmes-custom-page/AlpnachImport",
+    "input": {
+      "name": "Server Error",
+      "colors": ["#FF0000"],
+	  "refresh": 5,
+      "entityType": "CustomerOrders",
+  	  "select": "Code, CreationDate",
+      "orderBy": "CreationDate desc",
+      "top": 5
+    }
+
+  }
+]
