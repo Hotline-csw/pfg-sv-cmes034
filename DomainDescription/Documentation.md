@@ -1,0 +1,6880 @@
+# Table of Contents
+## 1 Entities
+| Name | Name | Name | Name |
+|--|--|--|--|
+| [1.1 Binary](#binary) | [1.2 Compartment](#compartment) | [1.3 CsvFindRoute](#csvfindroute) | [1.4 CsvStagingRecord](#csvstagingrecord) |
+| [1.5 CsvStagingRecordsResource](#csvstagingrecordsresource) | [1.6 CtDEdgeInformationToEntityShape](#ctdedgeinformationtoentityshape) | [1.7 CtDFindRoute](#ctdfindroute) | [1.8 CtDHardwareToProductionOrder](#ctdhardwaretoproductionorder) |
+| [1.9 CtDStagingBomLineRecord](#ctdstagingbomlinerecord) | [1.10 CtDStagingContourRecord](#ctdstagingcontourrecord) | [1.11 CtDStagingEdgeRecord](#ctdstagingedgerecord) | [1.12 CtDStagingMachiningRecord](#ctdstagingmachiningrecord) |
+| [1.13 CtDStagingOrderRecord](#ctdstagingorderrecord) | [1.14 CtDStagingRecordsResource](#ctdstagingrecordsresource) | [1.15 CustCurrentValue](#custcurrentvalue) | [1.16 CustDailyValue](#custdailyvalue) |
+| [1.17 CustDGCornerPrinciple](#custdgcornerprinciple) | [1.18 CustDummyIndex](#custdummyindex) | [1.19 CustFredPicture](#custfredpicture) | [1.20 CustHandlingItemsSignal](#custhandlingitemssignal) |
+| [1.21 CustMachineWorkTime](#custmachineworktime) | [1.22 CustomerOrder](#customerorder) | [1.23 CustStackStructure](#custstackstructure) | [1.24 DeviceFunction](#devicefunction) |
+| [1.25 EdgeGroove](#edgegroove) | [1.26 EdgeGrooveLibrary](#edgegroovelibrary) | [1.27 EdgeInformationToEntityShape](#edgeinformationtoentityshape) | [1.28 EdgePass](#edgepass) |
+| [1.29 EdgeProcessing](#edgeprocessing) | [1.30 EdgeProfile](#edgeprofile) | [1.31 EdgeProfileConversion](#edgeprofileconversion) | [1.32 EdgeProfileLibrary](#edgeprofilelibrary) |
+| [1.33 EdgeType](#edgetype) | [1.34 EPChannelInformation](#epchannelinformation) | [1.35 EPEdgeChannel](#epedgechannel) | [1.36 EPPreview](#eppreview) |
+| [1.37 EPPreviewRequirement](#eppreviewrequirement) | [1.38 EPRequirement](#eprequirement) | [1.39 EPRequirementInformation](#eprequirementinformation) | [1.40 EPRequirementsEdge](#eprequirementsedge) |
+| [1.41 Feedback](#feedback) | [1.42 FindEdgeShape](#findedgeshape) | [1.43 FreeDay](#freeday) | [1.44 GlueType](#gluetype) |
+| [1.45 IntelliStack](#intellistack) | [1.46 IntelliStackPile](#intellistackpile) | [1.47 IntelliStackPileItem](#intellistackpileitem) | [1.48 JobHistoryItem](#jobhistoryitem) |
+| [1.49 LabelInfoCncZeroLine](#labelinfocnczeroline) | [1.50 LGFromOptiKPIResult](#lgfromoptikpiresult) | [1.51 LogItem](#logitem) | [1.52 LogItemsResource](#logitemsresource) |
+| [1.53 LotNumberSetting](#lotnumbersetting) | [1.54 MakroGroove](#makrogroove) | [1.55 MakroSurface](#makrosurface) | [1.56 ManualBulk](#manualbulk) |
+| [1.57 Material](#material) | [1.58 MaterialBoard](#materialboard) | [1.59 McsEdgeInformationToEntityShape](#mcsedgeinformationtoentityshape) | [1.60 McsStagingCustomerOrder](#mcsstagingcustomerorder) |
+| [1.61 McsStagingEdge](#mcsstagingedge) | [1.62 McsStagingProductionItem](#mcsstagingproductionitem) | [1.63 McsStagingProductionOrder](#mcsstagingproductionorder) | [1.64 McsStagingProductionOrdersResource](#mcsstagingproductionordersresource) |
+| [1.65 McsStagingProductionStep](#mcsstagingproductionstep) | [1.66 Module](#module) | [1.67 MovingAction](#movingaction) | [1.68 MovingConnection](#movingconnection) |
+| [1.69 MovingManualRequest](#movingmanualrequest) | [1.70 MovingPosition](#movingposition) | [1.71 MovingRequest](#movingrequest) | [1.72 MovingUnplannedRequest](#movingunplannedrequest) |
+| [1.73 Optimization](#optimization) | [1.74 OptimizationBoard](#optimizationboard) | [1.75 OptimizationCuttingPlan](#optimizationcuttingplan) | [1.76 OptimizationCuttingPlansBinary](#optimizationcuttingplansbinary) |
+| [1.77 OptimizationKPIResult](#optimizationkpiresult) | [1.78 OptimizationKPIResultsAdditional](#optimizationkpiresultsadditional) | [1.79 OptimizationMaterialToOptimize](#optimizationmaterialtooptimize) | [1.80 OptimizationMethod](#optimizationmethod) |
+| [1.81 OptimizationPart](#optimizationpart) | [1.82 OptimizationPresetting](#optimizationpresetting) | [1.83 OptimizationPresettingBoard](#optimizationpresettingboard) | [1.84 OptimizationPresettingNcRecord](#optimizationpresettingncrecord) |
+| [1.85 OptimizationPresettingPart](#optimizationpresettingpart) | [1.86 OptimizationPresettingPartsAdditional](#optimizationpresettingpartsadditional) | [1.87 OptimizationRule](#optimizationrule) | [1.88 OptimizationRulesAllocation](#optimizationrulesallocation) |
+| [1.89 OptimizationRulesArea](#optimizationrulesarea) | [1.90 OptimizationRulesRequest](#optimizationrulesrequest) | [1.91 OrientationConversion](#orientationconversion) | [1.92 PartCarrier](#partcarrier) |
+| [1.93 PartCarrierForPartCarrier](#partcarrierforpartcarrier) | [1.94 PartCarrierForPartCarriersHistoryItem](#partcarrierforpartcarriershistoryitem) | [1.95 PartCarrierGroup](#partcarriergroup) | [1.96 PartCarrierProductionItem](#partcarrierproductionitem) |
+| [1.97 PartCarrierProductionItemsHistoryItem](#partcarrierproductionitemshistoryitem) | [1.98 PnxRecord](#pnxrecord) | [1.99 PossibleRoute](#possibleroute) | [1.100 PrintJobItem](#printjobitem) |
+| [1.101 PrintOut](#printout) | [1.102 ProcessingData](#processingdata) | [1.103 ProcessingDataOrientation](#processingdataorientation) | [1.104 ProductionItem](#productionitem) |
+| [1.105 ProductionItemsHistoryItem](#productionitemshistoryitem) | [1.106 ProductionItemsStepsData](#productionitemsstepsdata) | [1.107 ProductionItemsValidation](#productionitemsvalidation) | [1.108 ProductionItemToOptimize](#productionitemtooptimize) |
+| [1.109 ProductionOrder](#productionorder) | [1.110 ProductionOrdersResource](#productionordersresource) | [1.111 ProductionRouteStep](#productionroutestep) | [1.112 ProductionStage](#productionstage) |
+| [1.113 ProductionStep](#productionstep) | [1.114 ProductionStepsResource](#productionstepsresource) | [1.115 ProgramSetting](#programsetting) | [1.116 RangeOfNumbers](#rangeofnumbers) |
+| [1.117 ReorganizationDBTable](#reorganizationdbtable) | [1.118 ReorganizationFileSystem](#reorganizationfilesystem) | [1.119 Restriction](#restriction) | [1.120 Role](#role) |
+| [1.121 RolesRestriction](#rolesrestriction) | [1.122 Route](#route) | [1.123 SapClassType](#sapclasstype) | [1.124 SapIdocState](#sapidocstate) |
+| [1.125 SapStagingOrder](#sapstagingorder) | [1.126 SapStagingResource](#sapstagingresource) | [1.127 SapStagingStep](#sapstagingstep) | [1.128 Securable](#securable) |
+| [1.129 Setting](#setting) | [1.130 ShapePass](#shapepass) | [1.131 SortStep](#sortstep) | [1.132 Stack](#stack) |
+| [1.133 StackItem](#stackitem) | [1.134 StopLimit](#stoplimit) | [1.135 TempStagingFeature](#tempstagingfeature) | [1.136 User](#user) |
+| [1.137 UserRestriction](#userrestriction) | [1.138 ValidationStateDetail](#validationstatedetail) | [1.139 ValidationStateSource](#validationstatesource) | [1.140 WccEdgeInformationToEntityShape](#wccedgeinformationtoentityshape) |
+| [1.141 WccFindRoute](#wccfindroute) | [1.142 WccStagingRecord](#wccstagingrecord) | [1.143 WccStagingRecordsResource](#wccstagingrecordsresource) | [1.144 WorkCenter](#workcenter) |
+| [1.145 WorkCenterCodeFromCamInformation](#workcentercodefromcaminformation) | [1.146 WorkCenterCutting](#workcentercutting) | [1.147 WorkCenterEdgePass](#workcenteredgepass) | [1.148 WorkCenterEdgeProfile](#workcenteredgeprofile) |
+| [1.149 WorkCenterGroove](#workcentergroove) | [1.150 WorkCenterOversizeValue](#workcenteroversizevalue) |
+
+## 2 Views
+| Name | Name | Name | Name |
+|--|--|--|--|
+| [2.1 CombinedLogItem](#combinedlogitem) | [2.2 CustViewAutomaticLotGenerationSelectDailyPartsByCount](#custviewautomaticlotgenerationselectdailypartsbycount) | [2.3 CustViewAutomaticLotGenerationSelectOldPartsByCount](#custviewautomaticlotgenerationselectoldpartsbycount) | [2.4 CustViewDailyValue](#custviewdailyvalue) |
+| [2.5 CustViewDashboardProgressData](#custviewdashboardprogressdata) | [2.6 CustViewDetailManualFeedback](#custviewdetailmanualfeedback) | [2.7 CustViewDetailProgressInformation](#custviewdetailprogressinformation) | [2.8 CustViewFredPatternPart](#custviewfredpatternpart) |
+| [2.9 CustViewFurnitureLabel](#custviewfurniturelabel) | [2.10 CustViewMasterManualFeedback](#custviewmastermanualfeedback) | [2.11 CustViewMasterProgressBulk](#custviewmasterprogressbulk) | [2.12 CustViewMasterProgressComponentTypeBulk](#custviewmasterprogresscomponenttypebulk) |
+| [2.13 CustViewMasterProgressComponentTypeCustomerOrder](#custviewmasterprogresscomponenttypecustomerorder) | [2.14 CustViewMasterProgressOptimization](#custviewmasterprogressoptimization) | [2.15 CustViewMasterProgressWorkCenterCustomerOrder](#custviewmasterprogressworkcentercustomerorder) | [2.16 CustViewMasterUnfinishedPart](#custviewmasterunfinishedpart) |
+| [2.17 CustViewPartsLabel](#custviewpartslabel) | [2.18 PatternEvaluationItem](#patternevaluationitem) | [2.19 PatternManagementItem](#patternmanagementitem) | [2.20 ProductionOrderToOptimize](#productionordertooptimize) |
+| [2.21 ViewBulkCapacityForWorkCenter](#viewbulkcapacityforworkcenter) | [2.22 ViewCutriteSawInformation](#viewcutritesawinformation) | [2.23 ViewExtensionData](#viewextensiondata) | [2.24 ViewFinishedPerHour](#viewfinishedperhour) |
+| [2.25 ViewFitting](#viewfitting) | [2.26 ViewLGFromOptiKPIResult](#viewlgfromoptikpiresult) | [2.27 ViewMaterial](#viewmaterial) | [2.28 ViewMovingAction](#viewmovingaction) |
+| [2.29 ViewMovingRequest](#viewmovingrequest) | [2.30 ViewOptimizationAndKPIResult](#viewoptimizationandkpiresult) | [2.31 ViewOptimizationInformation](#viewoptimizationinformation) | [2.32 ViewOptimizationProductionOrder](#viewoptimizationproductionorder) |
+| [2.33 ViewOptimizationResult](#viewoptimizationresult) | [2.34 ViewOptimizationRulesAllocation](#viewoptimizationrulesallocation) | [2.35 ViewOptimizationRulesRequest](#viewoptimizationrulesrequest) | [2.36 ViewPatternPart](#viewpatternpart) |
+| [2.37 ViewProcessingDataItem](#viewprocessingdataitem) | [2.38 ViewProcessingDataItemsProgram](#viewprocessingdataitemsprogram) | [2.39 ViewProductionFlowStep](#viewproductionflowstep) | [2.40 ViewSurface](#viewsurface) |
+| [2.41 ViewWorkcenterCapacityByBulk](#viewworkcentercapacitybybulk) | [2.42 ViewWorkcenterCapacityByState](#viewworkcentercapacitybystate) | [2.43 ViewWorkCenterOutput](#viewworkcenteroutput) |
+
+## 3 Allowed Value Groups
+| Name | Name | Name | Name |
+|--|--|--|--|
+| [3.1 ActionRequest](#actionrequest) | [3.2 AdditionalOversizeType](#additionaloversizetype) | [3.3 BinaryType](#binarytype) | [3.4 ComponentType](#componenttype) |
+| [3.5 CsvStagingRecordResourceType](#csvstagingrecordresourcetype) | [3.6 CtDStagingRecordResourceType](#ctdstagingrecordresourcetype) | [3.7 CurrentContent](#currentcontent) | [3.8 CurrentRuleMode](#currentrulemode) |
+| [3.9 CuttingPlanState](#cuttingplanstate) | [3.10 CuttingProcessingType](#cuttingprocessingtype) | [3.11 CuttingTemplatePartType](#cuttingtemplateparttype) | [3.12 DisposeState](#disposestate) |
+| [3.13 EdgeIdOnRectangle](#edgeidonrectangle) | [3.14 EdgePassState](#edgepassstate) | [3.15 EdgeProcessingType](#edgeprocessingtype) | [3.16 EdgeToStepsType](#edgetostepstype) |
+| [3.17 EPDisplayColor](#epdisplaycolor) | [3.18 ErrorState](#errorstate) | [3.19 ErrorStateOptimizationPresetting](#errorstateoptimizationpresetting) | [3.20 FeedbackMode](#feedbackmode) |
+| [3.21 FeedbackState](#feedbackstate) | [3.22 Grain](#grain) | [3.23 GrooveDirectionType](#groovedirectiontype) | [3.24 GrooveDistanceType](#groovedistancetype) |
+| [3.25 GrooveLayer](#groovelayer) | [3.26 GrooveType](#groovetype) | [3.27 InputSourceType](#inputsourcetype) | [3.28 JobResult](#jobresult) |
+| [3.29 KPIResultType](#kpiresulttype) | [3.30 MachiningSidesAtItem](#machiningsidesatitem) | [3.31 MacroNumber](#macronumber) | [3.32 MovementCurrentState](#movementcurrentstate) |
+| [3.33 MovementState](#movementstate) | [3.34 MovingActionMode](#movingactionmode) | [3.35 MovingActionTransferstate](#movingactiontransferstate) | [3.36 NarrowPartType](#narrowparttype) |
+| [3.37 NecessaryReleaseType](#necessaryreleasetype) | [3.38 OptimizationDataState](#optimizationdatastate) | [3.39 OptimizationRuleTransferstate](#optimizationruletransferstate) | [3.40 OptimizationTransferState](#optimizationtransferstate) |
+| [3.41 OrientationXY](#orientationxy) | [3.42 OversizeSourceType](#oversizesourcetype) | [3.43 PartCarrierAvailabilityState](#partcarrieravailabilitystate) | [3.44 PartCarrierType](#partcarriertype) |
+| [3.45 PatternMasterInfo](#patternmasterinfo) | [3.46 PatternPictureType](#patternpicturetype) | [3.47 PlanningState](#planningstate) | [3.48 PnxRecordsState](#pnxrecordsstate) |
+| [3.49 PositionHandling](#positionhandling) | [3.50 PrintJobItemProcessingState](#printjobitemprocessingstate) | [3.51 ProcessingDataErrorState](#processingdataerrorstate) | [3.52 ProcessingDataType](#processingdatatype) |
+| [3.53 ProcessingStateMode](#processingstatemode) | [3.54 ProductionItemStepTransferState](#productionitemsteptransferstate) | [3.55 ProductionOrderType](#productionordertype) | [3.56 ProductionState](#productionstate) |
+| [3.57 ProductionStepState](#productionstepstate) | [3.58 ReductionEdgeDataCalculationType](#reductionedgedatacalculationtype) | [3.59 RegenerateDataRequestMode](#regeneratedatarequestmode) | [3.60 ReleaseState](#releasestate) |
+| [3.61 ReproductionMode](#reproductionmode) | [3.62 ReproductionState](#reproductionstate) | [3.63 ReproductionType](#reproductiontype) | [3.64 ResourceType](#resourcetype) |
+| [3.65 ScannerConnectionType](#scannerconnectiontype) | [3.66 ScannerType](#scannertype) | [3.67 SchedulingMode](#schedulingmode) | [3.68 SortStepPickMode](#sortsteppickmode) |
+| [3.69 SortStepSortMode](#sortstepsortmode) | [3.70 SortType](#sorttype) | [3.71 StackItemType](#stackitemtype) | [3.72 StackState](#stackstate) |
+| [3.73 StackType](#stacktype) | [3.74 StagingImportErrorState](#stagingimporterrorstate) | [3.75 StagingTransferState](#stagingtransferstate) | [3.76 Texture](#texture) |
+| [3.77 ThroughFeedSide](#throughfeedside) | [3.78 TransferstateOptimizationPresetting](#transferstateoptimizationpresetting) | [3.79 ValidationState](#validationstate) | [3.80 WccStagingImportErrorState](#wccstagingimporterrorstate) |
+| [3.81 WccStagingRecordResourceType](#wccstagingrecordresourcetype) | [3.82 WccStagingTransferState](#wccstagingtransferstate) | [3.83 wp4State](#wp4state) | [3.84 YesNo](#yesno) |
+
+# 1 Entities
+## 1.1 Binary : IEntityDescription
+## Binary
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_Binary_Binary | Binary | Binary files |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.1.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| <span style="color: #e0b21b" title="Default value not defined!">**BinaryType**</span>| [BinaryType](#binarytype)| Type| BinaryType| 0| True| True| False| | | | False| -1| 0| 0| | False| [BinaryType](#binarytype) | FN_Binary_BinaryType| | | | 
+| Checksum| System.Byte[]| checksum| Checksum| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Binary_Checksum| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CsvStagingRecords| [ICollection`1\<CsvStagingRecord\>](#csvstagingrecord)| Raw data import (CSV)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CsvStagingRecord_CsvStagingRecord| | | | 
+| CsvStagingRecordsResources| [ICollection`1\<CsvStagingRecordsResource\>](#csvstagingrecordsresource)| Raw data import, resources (CSV)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CsvStagingRecordsResource_CsvStagingRecordsResource| | | | 
+| CtDStagingBomLineRecords| [ICollection`1\<CtDStagingBomLineRecord\>](#ctdstagingbomlinerecord)| Parts list elements (production order level C3D)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CtDStagingBomLineRecord_CtDStagingBomLineRecord| | | | 
+| CtDStagingRecordsResources| [ICollection`1\<CtDStagingRecordsResource\>](#ctdstagingrecordsresource)| CNC resources (C3D)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CtDStagingRecordsResource_CtDStagingRecordsResource| | | | 
+| Data| System.Byte[]| Data| Data| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Binary_Data| | | | 
+| EdgeProcessings| [ICollection`1\<EdgeProcessing\>](#edgeprocessing)| Determination of edge processing| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EdgeProcessing_EdgeProcessing| | | | 
+| EdgeTypes| [ICollection`1\<EdgeType\>](#edgetype)| Edge type| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EdgeType_EdgeType| | | | 
+| FindEdgeShapes| [ICollection`1\<FindEdgeShape\>](#findedgeshape)| Edge shape| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_FindEdgeShape_FindEdgeShape| | | | 
+| FredPictures| [ICollection`1\<CustFredPicture\>](#custfredpicture)| CustFredPicture| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CustFredPicture_CustFredPicture| | | | 
+| FredPictures1| [ICollection`1\<CustFredPicture\>](#custfredpicture)| CustFredPicture| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CustFredPicture_CustFredPicture| | | | 
+| GlueTypes| [ICollection`1\<GlueType\>](#gluetype)| Glue type| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_GlueType_GlueType| | | | 
+| LabelInfoCncZeroLines| [ICollection`1\<LabelInfoCncZeroLine\>](#labelinfocnczeroline)| Determination of stop position| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_LabelInfoCncZeroLine_LabelInfoCncZeroLine| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MakroGrooves| [ICollection`1\<MakroGroove\>](#makrogroove)| Determination of groove macro| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_MakroGroove_MakroGroove| | | | 
+| MakroSurfaces| [ICollection`1\<MakroSurface\>](#makrosurface)| Determination of surface macro| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_MakroSurface_MakroSurface| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OriginalPath| System.String| File path| OriginalPath| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Binary_OriginalPath| | | | 
+| PartCarriers| [ICollection`1\<PartCarrier\>](#partcarrier)| Parts carrier| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PartCarrier_PartCarrier| | | | 
+| PartCarriers1| [ICollection`1\<PartCarrier\>](#partcarrier)| Parts carrier| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PartCarrier_PartCarrier| | | | 
+| PrintOuts| [ICollection`1\<PrintOut\>](#printout)| Printing| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PrintOut_PrintOut| | | | 
+| ProcessingData| [ICollection`1\<ProcessingData\>](#processingdata)| Processing data| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProcessingData_ProcessingData| | | | 
+| ProductionOrders| [ICollection`1\<ProductionOrder\>](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| ProductionOrdersResources| [ICollection`1\<ProductionOrdersResource\>](#productionordersresource)| Production order resources| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrdersResource_ProductionOrdersResource| | | | 
+| ProductionStepsResources| [ICollection`1\<ProductionStepsResource\>](#productionstepsresource)| Resources process step| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStepsResource_ProductionStepsResource| | | | 
+| Sequence| System.Int32| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| ShapePasses| [ICollection`1\<ShapePass\>](#shapepass)| Determination of edge throughfeed| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ShapePass_ShapePass| | | | 
+| WccStagingRecords| [ICollection`1\<WccStagingRecord\>](#wccstagingrecord)| Raw data import (WCC)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WccStagingRecord_WccStagingRecord| | | | 
+| WccStagingRecordsResources| [ICollection`1\<WccStagingRecordsResource\>](#wccstagingrecordsresource)| Raw data, import resources| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WccStagingRecordsResource_WccStagingRecordsResource| | | | 
+| WorkCenters| [ICollection`1\<WorkCenter\>](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+## 1.2 Compartment : IEntityDescription
+## Compartment
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_Compartment_Compartment | Compartment | Compartment |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | True | General |  
+### 1.2.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AvailabilityState| [PartCarrierAvailabilityState](#partcarrieravailabilitystate)| Availability status| AvailabilityState| 20| True| True| False| 0| | | False| -1| 0| 0| | False| [PartCarrierAvailabilityState](#partcarrieravailabilitystate) | FN_Compartment_AvailabilityState| | 0 | | 
+| Capacity| System.Decimal| capacity| Capacity| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_Compartment_Capacity| | 0 | | 
+| Code| System.String| key| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Compartment_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Depth| System.Int32| Depth| Depth| 20| True| True| False| 0| 0| | False| -1| 0| 0| | False| | FN_Compartment_Depth| Dimensions| 0 | 0| 
+| DepthSupplement| System.Int32| Allowance depth| DepthSupplement| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_Compartment_DepthSupplement| Dimensions| | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Compartment_Description| | | | 
+| FillingDegree| System.Decimal| Fill level| FillingDegree| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Compartment_FillingDegree| | | | 
+| Height| System.Int32| Height| Height| 20| True| True| False| 0| 0| | False| -1| 0| 0| | False| | FN_Compartment_Height| Dimensions| 0 | 0| 
+| Identifier| System.String| Identifier| Identifier| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Compartment_Identifier| | | | 
+| IgnoreHeight| System.Boolean| Open height| IgnoreHeight| 0| True| True| False| False| | | False| -1| 0| 0| | False| | FN_Compartment_IgnoreHeight| | False | | 
+| InternalIndex| System.Int32| Internal index| InternalIndex| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Compartment_InternalIndex| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| NumberOfPlaces| System.Int32| Number of slots| NumberOfPlaces| 20| False| True| False| | 0| | False| -1| 0| 0| | False| | FN_Compartment_NumberOfPlaces| | | 0| 
+| PartCarrier| [PartCarrier](#partcarrier)| Parts carrier| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PartCarrier_PartCarrier| | | | 
+| PartCarrierCode| System.String| Parts carrier| PartCarrierCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Compartment_PartCarrierCode| | | | 
+| PartCarrierForPartCarriers| [ICollection`1\<PartCarrierForPartCarrier\>](#partcarrierforpartcarrier)| Assignment of parts carrier to parts carrier| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PartCarrierForPartCarrier_PartCarrierForPartCarrier| | | | 
+| PartCarrierProductionItems| [ICollection`1\<PartCarrierProductionItem\>](#partcarrierproductionitem)| Assignment of parts carrier to parts production| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PartCarrierProductionItem_PartCarrierProductionItem| | | | 
+| Rotation| System.Decimal| Turning| Rotation| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_Compartment_Rotation| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StackPattern| System.Int32| Stack picture| StackPattern| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_Compartment_StackPattern| | | | 
+| Width| System.Int32| Width| Width| 20| True| True| False| 0| 0| | False| -1| 0| 0| | False| | FN_Compartment_Width| Dimensions| 0 | 0| 
+| WidthSupplement| System.Int32| Allowance width| WidthSupplement| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_Compartment_WidthSupplement| Dimensions| | | 
+| XCoordinate| System.Decimal| X coordinates| XCoordinate| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_Compartment_XCoordinate| | | | 
+| YCoordinate| System.Decimal| Y coordinates| YCoordinate| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_Compartment_YCoordinate| | | | 
+| ZCoordinate| System.Decimal| Z coordinates| ZCoordinate| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_Compartment_ZCoordinate| | | | 
+| ZRotation| System.Decimal| Z rotation| ZRotation| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_Compartment_ZRotation| | | | 
+## 1.3 CsvFindRoute : IEntityDescription
+## CsvFindRoute
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_CsvFindRoute_CsvFindRoute | CsvFindRoute | Route determination (CSV) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.3.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CncFlag| System.Int32| CNC code| CncFlag| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_CsvFindRoute_CncFlag| | 0 | | 
+| ComponentType| System.Int32| Parts type| ComponentType| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_CsvFindRoute_ComponentType| | 0 | | 
+| ContourEdgeFlag| System.Int32| ID of edge contour| ContourEdgeFlag| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_CsvFindRoute_ContourEdgeFlag| | 0 | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CutFlag| System.Int32| Cutting code| CutFlag| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_CsvFindRoute_CutFlag| | 0 | | 
+| EdgeFlag| System.Int32| Edge code| EdgeFlag| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_CsvFindRoute_EdgeFlag| | 0 | | 
+| ErpWorkflow| System.String| ERP workflow| ErpWorkflow| 0| True| True| False| -| | | False| -1| 0| 0| | False| | FN_CsvFindRoute_ErpWorkflow| | - | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Message| System.String| Message| Message| 1010| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvFindRoute_Message| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| NarrowPartType| [NarrowPartType](#narrowparttype)| Narrow component| NarrowPartType| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [NarrowPartType](#narrowparttype) | FN_CsvFindRoute_NarrowPartType| | 0 | | 
+| OrderType| [ProductionOrderType](#productionordertype)| Application type| OrderType| 0| True| True| False| 3| | | False| -1| 0| 0| | False| [ProductionOrderType](#productionordertype) | FN_CsvFindRoute_OrderType| | 3 | | 
+| Priority| System.Int32| Priority| Priority| 0| True| True| False| 100| | | False| -1| 0| 0| | False| | FN_CsvFindRoute_Priority| | 100 | | 
+| ProductionRoute| System.String| Production route according to customer system| ProductionRoute| 0| True| True| False| #| | | False| -1| 0| 0| | False| | FN_CsvFindRoute_ProductionRoute| | # | | 
+| Route| System.String| Production path| Route| 1000| True| True| False| | | | False| -1| 0| 0| | False| | FN_CsvFindRoute_Route| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| SurfaceFlag| System.Int32| Coating code| SurfaceFlag| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_CsvFindRoute_SurfaceFlag| | 0 | | 
+## 1.4 CsvStagingRecord : IEntityDescription
+## CsvStagingRecord
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_CsvStagingRecord_CsvStagingRecord | CsvStagingRecord | Raw data import (CSV) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.4.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ArticleNumber| System.String| Item designation| ArticleNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_ArticleNumber| | | | 
+| Binaries| [ICollection`1\<Binary\>](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| BracketSuffix| System.String| Suffix for bracket| BracketSuffix| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_BracketSuffix| | | | 
+| CncName| System.String| CNC name| CncName| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_CncName| | | | 
+| Code| System.String| Production order number| Code| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CsvStagingRecordsResources| [ICollection`1\<CsvStagingRecordsResource\>](#csvstagingrecordsresource)| Raw data import, resources (CSV)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CsvStagingRecordsResource_CsvStagingRecordsResource| | | | 
+| CsvValues| System.String| CSV values| CsvValues| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_CsvValues| | | | 
+| CustomerOrderCode| System.String| End customer number| CustomerOrderCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_CustomerOrderCode| | | | 
+| CustomerOrderPosition| System.String| Customer order item| CustomerOrderPosition| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_CustomerOrderPosition| | | | 
+| DesiredTargetQuantity| System.String| Planned quantity| DesiredTargetQuantity| 0| False| True| False| 1| | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_DesiredTargetQuantity| | 1 | | 
+| ErrorMessage| System.String| Production order fault message| ErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_ErrorMessage| | | | 
+| ErrorState| [ErrorState](#errorstate)| Production order fault status| ErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_CsvStagingRecord_ErrorState| | 0 | | 
+| ImportErrorMessage| System.String| Error message| ImportErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_ImportErrorMessage| | | | 
+| ImportErrorState| [StagingImportErrorState](#stagingimporterrorstate)| Error status| ImportErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [StagingImportErrorState](#stagingimporterrorstate) | FN_CsvStagingRecord_ImportErrorState| | 0 | | 
+| ImportFilename| System.String| Name of the imported file| ImportFilename| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_ImportFilename| | | | 
+| Instance| System.String| instance| Instance| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_Instance| | | | 
+| Length| System.String| Length| Length| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_Length| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Material| System.String| Material| Material| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_Material| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OrderType| System.String| Application type| OrderType| 0| True| True| False| 3| | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_OrderType| | 3 | | 
+| OriginalProductionItemCode| System.String| Original part number| OriginalProductionItemCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_OriginalProductionItemCode| | | | 
+| OriginalProductionOrderCode| System.String| Original production order number| OriginalProductionOrderCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_OriginalProductionOrderCode| | | | 
+| ReproductionType| System.Int32| Post-production type| ReproductionType| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_ReproductionType| | 0 | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Thickness| System.String| thickness| Thickness| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_Thickness| | | | 
+| TransferDate| System.String| Date of transfer| Datum der Übertragung| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| Status der Übertragung| 0| True| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_CsvStagingRecord_TransferState| | 10 | | 
+| Width| System.String| Width| Width| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecord_Width| | | | 
+## 1.5 CsvStagingRecordsResource : IEntityDescription
+## CsvStagingRecordsResource
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_CsvStagingRecordsResource_CsvStagingRecordsResource | CsvStagingRecordsResource | Raw data import, resources (CSV) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.5.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| Code| System.String| ID| Code| 20| True| True| True| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecordsResource_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CsvStagingRecord| [CsvStagingRecord](#csvstagingrecord)| Raw data import (CSV)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CsvStagingRecord_CsvStagingRecord| | | | 
+| CsvStagingRecordsSequence| System.Int64| Raw data, import sequence| CsvStagingRecordsSequence| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecordsResource_CsvStagingRecordsSequence| | | | 
+| Data| System.Int32| Data| Data| 70| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecordsResource_Data| | | | 
+| Description| System.String| Description| Description| 50| False| True| False| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecordsResource_Description| | | | 
+| InternalType| [CsvStagingRecordResourceType](#csvstagingrecordresourcetype)| Internal type| InternalType| 100| True| True| False| 0| | | False| -1| 0| 0| | False| [CsvStagingRecordResourceType](#csvstagingrecordresourcetype) | FN_CsvStagingRecordsResource_InternalType| | 0 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MachineName| System.String| CNC machine name| CNC-Maschinenname| 40| True| True| True| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecordsResource_MachineName| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Order| System.Int32| Order| Order| 60| True| True| True| | | | False| -1| 0| 0| | False| | FN_CsvStagingRecordsResource_Order| | | | 
+| Workflow| System.String| Workflow| Workflow| 30| True| True| True| -| | | False| 128| 0| 0| | False| | FN_CsvStagingRecordsResource_Workflow| | - | | 
+## 1.6 CtDEdgeInformationToEntityShape : IEntityDescription
+## CtDEdgeInformationToEntityShape
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_CtDEdgeInformationToEntityShape_CtDEdgeInformationToEntityShape | CtDEdgeInformationToEntityShape | Edge information at right angle (C3D) | Kanteninformationen am Rechteck (C3D) | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | False | True | True |  | True | General |  
+### 1.6.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CncOversizeMultiplierLength| System.Decimal| CNC dimension multiplier (length)| CncOversizeMultiplierLength| 620| True| True| False| | | | False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_CncOversizeMultiplierLength| | | | 
+| CncOversizeMultiplierWidth| System.Decimal| CNC dimension multiplier (width)| CncOversizeMultiplierWidth| 630| True| True| False| | | | False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_CncOversizeMultiplierWidth| | | | 
+| Comment| System.String| Comment| Kommentar| 90| True| True| False| | | | False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_Comment| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EdgeEastIsThroughFeed| System.Boolean| East edge throughfeed| Ostkante Durchlauf| 510| True| True| False| | 0| 1| False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_EdgeEastIsThroughFeed| | | 0| 1
+| EdgeNorthIsThroughFeed| System.Boolean| North edge throughfeed| Nordkante Durchlauf| 520| True| True| False| | 0| 1| False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_EdgeNorthIsThroughFeed| | | 0| 1
+| EdgeSouthIsThroughFeed| System.Boolean| South edge throughfeed| Südkante Durchlauf| 500| True| True| False| | 0| 1| False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_EdgeSouthIsThroughFeed| | | 0| 1
+| EdgeWestIsThroughFeed| System.Boolean| West edge throughfeed| Westkante Durchlauf| 530| True| True| False| | 0| 1| False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_EdgeWestIsThroughFeed| | | 0| 1
+| EndpointEastLeft| System.Int32| End point, east edge, left| Endpunkt Ostkante links| 30| True| True| False| | 0| 5| False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_EndpointEastLeft| | | 0| 5
+| EndpointEastRight| System.Int32| End point, east edge, right| Endpunkt Ostkante rechts| 40| True| True| False| | 0| 5| False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_EndpointEastRight| | | 0| 5
+| EndpointNorthLeft| System.Int32| End point, north edge, left| Endpunkt Nordkante links| 50| True| True| False| | 0| 5| False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_EndpointNorthLeft| | | 0| 5
+| EndpointNorthRight| System.Int32| End point, north edge, right| Endpunkt Nordkante rechts| 60| True| True| False| | 0| 5| False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_EndpointNorthRight| | | 0| 5
+| EndpointSouthLeft| System.Int32| End point, south edge, left| Endpunkt Südkante links| 10| True| True| False| | 0| 5| False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_EndpointSouthLeft| | | 0| 5
+| EndpointSouthRight| System.Int32| End point, south edge, right| Endpunkt Südkante rechts| 20| True| True| False| | 0| 5| False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_EndpointSouthRight| | | 0| 5
+| EndpointWestLeft| System.Int32| End point, west edge, left| Endpunkt Westkante links| 70| True| True| False| | 0| 5| False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_EndpointWestLeft| | | 0| 5
+| EndpointWestRight| System.Int32| End point, west edge, right| Endpunkt Westkante rechts| 80| True| True| False| | 0| 5| False| -1| 0| 0| | False| | FN_CtDEdgeInformationToEntityShape_EndpointWestRight| | | 0| 5
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.7 CtDFindRoute : IEntityDescription
+## CtDFindRoute
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_CtDFindRoute_CtDFindRoute | CtDFindRoute | Route determination (C3D) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.7.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CncFlag| System.Int32| CNC code| CncFlag| 40| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_CtDFindRoute_CncFlag| | 0 | | 
+| CncWorkCenters| System.String| Workstations with CNC programs| CncWorkCenters| 60| True| True| False| #| | | False| -1| 0| 0| | False| | FN_CtDFindRoute_CncWorkCenters| | # | | 
+| ComponentType| System.Int32| Parts type| ComponentType| 70| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_CtDFindRoute_ComponentType| | 0 | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CutFlag| System.Int32| Cutting code| CutFlag| 20| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_CtDFindRoute_CutFlag| | 0 | | 
+| EdgeFlag| System.Int32| Edge code| EdgeFlag| 30| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_CtDFindRoute_EdgeFlag| | 0 | | 
+| ErpWorkflow| System.String| ERP workflow| ErpWorkflow| 0| True| True| False| -| | | False| -1| 0| 0| | False| | FN_CtDFindRoute_ErpWorkflow| | - | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Message| System.String| Message, comment| Message| 500| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDFindRoute_Message| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| NarrowPartType| [NarrowPartType](#narrowparttype)| Narrow component| NarrowPartType| 50| True| True| False| 0| | | False| -1| 0| 0| | False| [NarrowPartType](#narrowparttype) | FN_CtDFindRoute_NarrowPartType| | 0 | | 
+| OrderType| [ProductionOrderType](#productionordertype)| Application type| OrderType| 10| True| True| False| 3| | | False| -1| 0| 0| | False| [ProductionOrderType](#productionordertype) | FN_CtDFindRoute_OrderType| | 3 | | 
+| Priority| System.Int32| Priority| Priority| 80| True| True| False| 100| | | False| -1| 0| 0| | False| | FN_CtDFindRoute_Priority| | 100 | | 
+| Route| System.String| Production path| Route| 90| True| True| False| | | | False| -1| 0| 0| | False| | FN_CtDFindRoute_Route| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.8 CtDHardwareToProductionOrder : IEntityDescription
+## CtDHardwareToProductionOrder
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_CtDHardwareToProductionOrder_CtDHardwareToProductionOrder | CtDHardwareToProductionOrder | Fixtures as production orders (C3D) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.8.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Comment| System.String| Comment| Kommentar| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDHardwareToProductionOrder_Comment| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| GenerateProductionOrder| System.Int32| Create production order| GenerateProductionOrder| 20| True| True| False| 0| 0| 1| False| -1| 0| 0| | False| | FN_CtDHardwareToProductionOrder_GenerateProductionOrder| | 0 | 0| 1
+| HardwareComponentType| System.Int32| Fixture type| Beschlagstyp| 10| True| True| False| 0| 0| 9999| False| -1| 0| 0| | False| | FN_CtDHardwareToProductionOrder_HardwareComponentType| | 0 | 0| 9999
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.9 CtDStagingBomLineRecord : IEntityDescription
+## CtDStagingBomLineRecord
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_CtDStagingBomLineRecord_CtDStagingBomLineRecord | CtDStagingBomLineRecord | Parts list elements (production order level C3D) | C3D-Staging ProductionOrder-Level | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | False | True | True |  | False | General |  
+### 1.9.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binaries| [ICollection`1\<Binary\>](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| BomCut| System.String| Cutting code| Kennung Zuschnitt| 320| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomCut| | | | 
+| BomDescription| System.String| Part description| Teilebeschreibung| 40| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomDescription| | | | 
+| BomId| System.String| Part ID| Teile ID eindeutig im Auftrag| 30| True| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomId| | | | 
+| BomLength| System.String| Length| Länge des Bauteils| 70| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomLength| | | | 
+| BomLevel| System.String| Level| Level = 3: Bauteil| 60| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomLevel| | | | 
+| BomNote1| System.String| Additional field 1| Zusatzfeld 1| 200| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomNote1| | | | 
+| BomNote2| System.String| Additional field 2| Zusatzfeld 2| 210| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomNote2| | | | 
+| BomNote3| System.String| Additional field 3| Zusatzfeld 3| 220| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomNote3| | | | 
+| BomNote4| System.String| Additional field 4| Zusatzfeld 4| 230| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomNote4| | | | 
+| BomNote5| System.String| Additional field 5| Zusatzfeld 5| 240| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomNote5| | | | 
+| BomNote6| System.String| Additional field 6| Zusatzfeld 6| 250| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomNote6| | | | 
+| BomOrientation| System.String| Orientation| Orientierung| 340| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomOrientation| | | | 
+| BomPrice| System.String| Price| Preis| 140| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomPrice| | | | 
+| BomQuantity| System.String| Quantity| Anzahl| 110| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomQuantity| | | | 
+| BomReference| System.String| Reference to assembly| Referenz zur Baugruppe| 50| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomReference| | | | 
+| BomThickness| System.String| thickness| Stärke des Bauteils| 90| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomThickness| | | | 
+| BomTypology| System.String| Parts type| Teiletyp| 330| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomTypology| | | | 
+| BomUnitOfMeasurement| System.String| Unit of measurement| Maßeinheit| 100| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomUnitOfMeasurement| | | | 
+| BomWeight| System.String| weight| Gewicht| 130| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomWeight| | | | 
+| BomWidth| System.String| Width| Breite des Bauteils| 80| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomWidth| | | | 
+| BracketSuffix| System.String| Suffix for bracket| Suffix für Bracket| 620| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BracketSuffix| | | | 
+| CncCount| System.Int32| Number of CNC programs| Gesamtzahl der bereitgestellten CNC Programme pro Bauteil| 360| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_CncCount| | 0 | | 
+| Code| System.String| Production order number| Fertigungsauftragsnummer| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CtDStagingContourRecords| [ICollection`1\<CtDStagingContourRecord\>](#ctdstagingcontourrecord)| Contour elements (C3D)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CtDStagingContourRecord_CtDStagingContourRecord| | | | 
+| CtDStagingEdgeRecords| [ICollection`1\<CtDStagingEdgeRecord\>](#ctdstagingedgerecord)| Edge elements (C3D)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CtDStagingEdgeRecord_CtDStagingEdgeRecord| | | | 
+| CtDStagingMachiningRecords| [ICollection`1\<CtDStagingMachiningRecord\>](#ctdstagingmachiningrecord)| Processes (C3D)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CtDStagingMachiningRecord_CtDStagingMachiningRecord| | | | 
+| CtDStagingOrderRecord| [CtDStagingOrderRecord](#ctdstagingorderrecord)| Customer orders (C3D)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CtDStagingOrderRecord_CtDStagingOrderRecord| | | | 
+| CtDStagingRecordsResources| [ICollection`1\<CtDStagingRecordsResource\>](#ctdstagingrecordsresource)| CNC resources (C3D)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CtDStagingRecordsResource_CtDStagingRecordsResource| | | | 
+| CustomerOrderCode| System.String| Customer order name| Kundenauftragsname| 370| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_CustomerOrderCode| | | | 
+| ErrorMessage| System.String| Production order fault message| ErrorMessage| 930| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_ErrorMessage| | | | 
+| ErrorState| [ErrorState](#errorstate)| Production order fault status| ErrorState| 920| True| True| False| 0| | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_CtDStagingBomLineRecord_ErrorState| | 0 | | 
+| GrainOrientationC3D| System.String| Grain| Maserung| 350| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_GrainOrientationC3D| | | | 
+| Id| System.String| Parts lists ID| Id| 500| True| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_Id| | | | 
+| ImportErrorMessage| System.String| Error message| ImportErrorMessage| 910| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_ImportErrorMessage| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ImportErrorState**</span>| [StagingImportErrorState](#stagingimporterrorstate)| Error status| ImportErrorState| 900| True| True| False| | | | False| -1| 0| 0| | False| [StagingImportErrorState](#stagingimporterrorstate) | FN_CtDStagingBomLineRecord_ImportErrorState| | | | 
+| Instance| System.String| instance| Instance| 990| False| False| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_Instance| | | | 
+| ItemLevel| System.String| Item level| Artikel Level| 440| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_ItemLevel| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Material| System.String| Material| Material| 300| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_Material| | | | 
+| MaterialCategory| System.String| Material category| Materialkategorie| 310| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_MaterialCategory| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OriginalProductionItemCode| System.String| Original component, assembly or article identifier| Original Bauteil-, Baugruppen oder Artikel-Identifier| 610| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_OriginalProductionItemCode| | | | 
+| OriginalProductionOrderCode| System.String| Original production order number| Original-Fertigungsauftragsnummer| 600| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_OriginalProductionOrderCode| | | | 
+| ParentId| System.String| Higher-level parts lists ID| ParentId| 510| True| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_ParentId| | | | 
+| ParentProductionOrderNumber| System.String| High-level production order| ParentProductionOrderNumber| 520| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_ParentProductionOrderNumber| | | | 
+| ReproductionType| System.Int32| Post-production type| ReproductionType| 630| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_ReproductionType| | 0 | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| TopProductionOrderNumber| System.String| Leading production order| TopProductionOrderNumber| 530| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_TopProductionOrderNumber| | | | 
+| TransferDate| System.DateTime| Date of transfer| Datum der Übertragung| 960| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| Status der Übertragung| 950| False| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_CtDStagingBomLineRecord_TransferState| | 10 | | 
+## 1.10 CtDStagingContourRecord : IEntityDescription
+## CtDStagingContourRecord
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_CtDStagingContourRecord_CtDStagingContourRecord | CtDStagingContourRecord | Contour elements (C3D) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.10.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ContourLevel| System.String| Contour level| Innen- oder Außenkontur| 20| True| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingContourRecord_ContourLevel| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CtDStagingBomLineRecord| [CtDStagingBomLineRecord](#ctdstagingbomlinerecord)| Parts list elements (production order level C3D)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CtDStagingBomLineRecord_CtDStagingBomLineRecord| | | | 
+| EdgeContourReference| System.String| Edge reference| Referenz zum Kanten-Datensatz.| 30| True| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingContourRecord_EdgeContourReference| | | | 
+| EndX| System.String| End point in X| Endpunkt  in X| 90| False| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingContourRecord_EndX| | | | 
+| EndY| System.String| End point in Y| Endpunkt  in Y| 100| False| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingContourRecord_EndY| | | | 
+| IdOfPart| System.String| Associated parts ID| Zugehörige Teile ID - eindeutig im Auftrag| 40| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingContourRecord_IdOfPart| | | | 
+| ImportErrorMessage| System.String| Error message| ImportErrorMessage| 970| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingContourRecord_ImportErrorMessage| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ImportErrorState**</span>| [StagingImportErrorState](#stagingimporterrorstate)| Error status| ImportErrorState| 960| True| True| False| | | | False| -1| 0| 0| | False| [StagingImportErrorState](#stagingimporterrorstate) | FN_CtDStagingContourRecord_ImportErrorState| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MidX| System.String| Point on arc in X| Punkt auf Bogen in X| 70| False| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingContourRecord_MidX| | | | 
+| MidY| System.String| Point on arc in Y| Punkt auf Bogen in Y| 80| False| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingContourRecord_MidY| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ProductionOrderCode| System.String| Production order number| Fertigungsauftragsnummer| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingContourRecord_ProductionOrderCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StartX| System.String| Start point in X| Startpunkt in X| 50| False| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingContourRecord_StartX| | | | 
+| StartY| System.String| Start point in Y| Startpunkt in Y| 60| False| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingContourRecord_StartY| | | | 
+| TransferDate| System.DateTime| Date of transfer| Datum der Übertragung| 990| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingContourRecord_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| Status der Übertragung| 980| False| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_CtDStagingContourRecord_TransferState| | 10 | | 
+## 1.11 CtDStagingEdgeRecord : IEntityDescription
+## CtDStagingEdgeRecord
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_CtDStagingEdgeRecord_CtDStagingEdgeRecord | CtDStagingEdgeRecord | Edge elements (C3D) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.11.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CtDStagingBomLineRecord| [CtDStagingBomLineRecord](#ctdstagingbomlinerecord)| Parts list elements (production order level C3D)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CtDStagingBomLineRecord_CtDStagingBomLineRecord| | | | 
+| EdgeCategory| System.String| Edge category| EdgeCategory| 100| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_EdgeCategory| | | | 
+| EdgeColor| System.String| Edge color| Kantenfarbe| 110| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_EdgeColor| | | | 
+| EdgeContourReference| System.String| Reference to contour| Referenz zur Kontur| 80| True| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_EdgeContourReference| | | | 
+| EdgeGluetype| System.String| Type of edge glue| Kantenleimart| 120| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_EdgeGluetype| | | | 
+| EdgeHeight| System.String| Edge height| Kantenhöhe| 60| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_EdgeHeight| | | | 
+| EdgeId| System.String| Edge ID| Kanten-ID (S/N/W/E)| 90| False| True| False| -| | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_EdgeId| | - | | 
+| EdgeJoint| System.String| Edge transition - counter-clockwise| Kantenübergang - Gegenuhrzeigersinn| 150| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_EdgeJoint| | | | 
+| EdgeLength| System.String| Edge length| Kantenlänge| 50| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_EdgeLength| | | | 
+| EdgeMaterial| System.String| Edge material| Kantenmaterial| 40| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_EdgeMaterial| | | | 
+| EdgeName| System.String| Edge name| Kantenname| 20| True| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_EdgeName| | | | 
+| EdgeProcessingBottom| System.String| Bottom processing| Kantenbearbeitung unten| 140| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_EdgeProcessingBottom| | | | 
+| EdgeProcessingTop| System.String| Top processing| Kantenbearbeitung oben| 130| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_EdgeProcessingTop| | | | 
+| EdgeThickness| System.String| Edge thickness| Kantenstärke| 70| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_EdgeThickness| | | | 
+| IdOfPart| System.String| Associated parts ID| Zugehörige Teile ID - eindeutig im Auftrag| 30| True| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_IdOfPart| | | | 
+| ImportErrorMessage| System.String| Error message| ImportErrorMessage| 970| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_ImportErrorMessage| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ImportErrorState**</span>| [StagingImportErrorState](#stagingimporterrorstate)| Error status| ImportErrorState| 960| True| True| False| | | | False| -1| 0| 0| | False| [StagingImportErrorState](#stagingimporterrorstate) | FN_CtDStagingEdgeRecord_ImportErrorState| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ProductionOrderCode| System.String| Production order number| Fertigungsauftragsnummer| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_ProductionOrderCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| TransferDate| System.DateTime| Date of transfer| Datum der Übertragung| 990| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingEdgeRecord_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| Status der Übertragung| 980| False| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_CtDStagingEdgeRecord_TransferState| | 10 | | 
+## 1.12 CtDStagingMachiningRecord : IEntityDescription
+## CtDStagingMachiningRecord
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_CtDStagingMachiningRecord_CtDStagingMachiningRecord | CtDStagingMachiningRecord | Processes (C3D) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.12.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CtDStagingBomLineRecord| [CtDStagingBomLineRecord](#ctdstagingbomlinerecord)| Parts list elements (production order level C3D)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CtDStagingBomLineRecord_CtDStagingBomLineRecord| | | | 
+| FACE| System.String| Processing surface| Seite| 70| True| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_FACE| | | | 
+| GROUP| System.String| Grouping| Gruppierung| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_GROUP| | | | 
+| IdOfPart| System.String| Associated part ID unique in order| Zugehörige Teile ID - eindeutig im Auftrag| 20| True| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_IdOfPart| | | | 
+| ImportErrorMessage| System.String| Error message| ImportErrorMessage| 970| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_ImportErrorMessage| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ImportErrorState**</span>| [StagingImportErrorState](#stagingimporterrorstate)| Error status| ImportErrorState| 960| True| True| False| | | | False| -1| 0| 0| | False| [StagingImportErrorState](#stagingimporterrorstate) | FN_CtDStagingMachiningRecord_ImportErrorState| | | | 
+| INFO1| System.String| Information 1| Information 1| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_INFO1| | | | 
+| INFO2| System.String| Information 2| Information 2| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_INFO2| | | | 
+| INFO3| System.String| Information 3| Information 3| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_INFO3| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MC_ID| System.String| ID of processing| ID der Bearbeitung| 40| True| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_MC_ID| | | | 
+| MC_TYPE| System.String| Type of processing| Typ der Bearbeitung| 30| True| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_MC_TYPE| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PARNAME| System.String| Parameter name| Parametername| 80| True| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_PARNAME| | | | 
+| PARVALUE| System.String| Parameter value| Parameterwert| 90| True| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_PARVALUE| | | | 
+| POSX| System.String| X-position| Position in X| 50| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_POSX| | | | 
+| POSY| System.String| Y-position| Position in Y| 60| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_POSY| | | | 
+| POSZ| System.String| Z-position| Position in Z| 60| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_POSZ| | | | 
+| ProductionOrderCode| System.String| Production order number| Fertigungsauftragsnummer| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_ProductionOrderCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| TransferDate| System.DateTime| Date of transfer| Datum der Übertragung| 990| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingMachiningRecord_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| Status der Übertragung| 980| False| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_CtDStagingMachiningRecord_TransferState| | 10 | | 
+## 1.13 CtDStagingOrderRecord : IEntityDescription
+## CtDStagingOrderRecord
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_CtDStagingOrderRecord_CtDStagingOrderRecord | CtDStagingOrderRecord | Customer orders (C3D) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.13.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Agency| System.String| Agency| Agentur| 190| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_Agency| | | | 
+| Commissions| System.String| Production order| Kommission| 200| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_Commissions| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CtDStagingBomLineRecords| [ICollection`1\<CtDStagingBomLineRecord\>](#ctdstagingbomlinerecord)| Parts list elements (production order level C3D)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CtDStagingBomLineRecord_CtDStagingBomLineRecord| | | | 
+| CustomerReference1| System.String| Client reference 1| Kundenreferenz 1| 80| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_CustomerReference1| | | | 
+| CustomerReference2| System.String| Client reference 2| Kundenreferenz 2| 90| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_CustomerReference2| | | | 
+| DeliveryDate| System.String| Delivery date| Lieferdatum| 120| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_DeliveryDate| | | | 
+| Discount1| System.String| Discount 1| Preisnachlass 1| 220| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_Discount1| | | | 
+| Discount2| System.String| Discount 2| Preisnachlass 2| 230| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_Discount2| | | | 
+| Discount3| System.String| Discount 3| Preisnachlass 3| 240| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_Discount3| | | | 
+| Discount4| System.String| Discount 4| Preisnachlass 4| 250| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_Discount4| | | | 
+| GrossWeight| System.String| Gross weight| Bruttogewicht| 140| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_GrossWeight| | | | 
+| ImportErrorMessage| System.String| Error message| ImportErrorMessage| 970| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_ImportErrorMessage| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ImportErrorState**</span>| [StagingImportErrorState](#stagingimporterrorstate)| Error status| ImportErrorState| 960| True| True| False| | | | False| -1| 0| 0| | False| [StagingImportErrorState](#stagingimporterrorstate) | FN_CtDStagingOrderRecord_ImportErrorState| | | | 
+| IncomingDate| System.String| Date of receipt| Eingangsdatum| 110| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_IncomingDate| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| NetWeight| System.String| Net weight| Nettogewicht| 130| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_NetWeight| | | | 
+| OrderArea| System.String| Order area| Auftragsbereich| 50| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_OrderArea| | | | 
+| OrderConfirmed| System.String| Order confirmed| Auftrag bestätigt| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_OrderConfirmed| | | | 
+| OrderCreationDate| System.String| Order date| Auftragsdatum| 100| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_OrderCreationDate| | | | 
+| OrderNo| System.String| Customer order number| Kundenauftragsnummer| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_OrderNo| | | | 
+| OrderReference| System.String| Order reference| Auftragsreferenz| 40| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_OrderReference| | | | 
+| OrderStatus| System.String| Order status| Auftragsstatus Configurator 3D| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_OrderStatus| | | | 
+| PriceIncreases| System.String| Price increase| Preisanstieg| 160| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_PriceIncreases| | | | 
+| PriceList| System.String| pricelist| Preisliste| 210| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_PriceList| | | | 
+| PriceStandard| System.String| Standard price| Standardpreis| 180| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_PriceStandard| | | | 
+| PriceTotal| System.String| End price| Endpreis| 170| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_PriceTotal| | | | 
+| Review| System.String| Overview| Übersicht| 60| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_Review| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| SpareParts| System.String| Parts| Teile| 70| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_SpareParts| | | | 
+| TransferDate| System.DateTime| Date of transfer| Datum der Übertragung| 990| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| Status der Übertragung| 980| False| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_CtDStagingOrderRecord_TransferState| | 10 | | 
+| Volume| System.String| Volume| Volumen| 150| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingOrderRecord_Volume| | | | 
+## 1.14 CtDStagingRecordsResource : IEntityDescription
+## CtDStagingRecordsResource
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_CtDStagingRecordsResource_CtDStagingRecordsResource | CtDStagingRecordsResource | CNC resources (C3D) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.14.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| CncProgramNo| System.Int32| CNC program number| Fortlaufende Nummer pro CNC Programm| 20| True| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingRecordsResource_CncProgramNo| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CtDStagingBomLineRecord| [CtDStagingBomLineRecord](#ctdstagingbomlinerecord)| Parts list elements (production order level C3D)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CtDStagingBomLineRecord_CtDStagingBomLineRecord| | | | 
+| Data| System.Int32| Data reference| Datenreferenz| 50| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingRecordsResource_Data| | | | 
+| Description| System.String| Description| Beschreibung| 40| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingRecordsResource_Description| | | | 
+| ImportErrorMessage| System.String| Error message| ImportErrorMessage| 970| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingRecordsResource_ImportErrorMessage| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ImportErrorState**</span>| [StagingImportErrorState](#stagingimporterrorstate)| Error status| ImportErrorState| 960| True| True| False| | | | False| -1| 0| 0| | False| [StagingImportErrorState](#stagingimporterrorstate) | FN_CtDStagingRecordsResource_ImportErrorState| | | | 
+| InternalType| [CtDStagingRecordResourceType](#ctdstagingrecordresourcetype)| Internal data type| Interner Datentyp| 60| True| True| False| 0| | | False| -1| 0| 0| | False| [CtDStagingRecordResourceType](#ctdstagingrecordresourcetype) | FN_CtDStagingRecordsResource_InternalType| | 0 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MachineName| System.String| CNC machine name| CNC-Maschinenname| 30| True| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingRecordsResource_MachineName| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ProductionOrderCode| System.String| Production order number| Fertigungsauftragsnummer| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_CtDStagingRecordsResource_ProductionOrderCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.15 CustCurrentValue : IEntityDescription
+## CustCurrentValue
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | True | EN_CustCurrentValue_CustCurrentValue | CustCurrentValue | CustCurrentValue |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.15.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Location| System.Int32| Location| Location| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Location| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Position| System.String| Position| Position| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Position| | | | 
+| Sequence| System.Int32| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Value01Float| System.Double| Value01Float| Value01Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value01Float| | | | 
+| Value01Int| System.Int32| Value01Int| Value01Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value01Int| | | | 
+| Value01String| System.String| Value01String| Value01String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value01String| | | | 
+| Value02Float| System.Double| Value02Float| Value02Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value02Float| | | | 
+| Value02Int| System.Int32| Value02Int| Value02Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value02Int| | | | 
+| Value02String| System.String| Value02String| Value02String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value02String| | | | 
+| Value03Float| System.Double| Value03Float| Value03Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value03Float| | | | 
+| Value03Int| System.Int32| Value03Int| Value03Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value03Int| | | | 
+| Value03String| System.String| Value03String| Value03String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value03String| | | | 
+| Value04Float| System.Double| Value04Float| Value04Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value04Float| | | | 
+| Value04Int| System.Int32| Value04Int| Value04Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value04Int| | | | 
+| Value04String| System.String| Value04String| Value04String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value04String| | | | 
+| Value05Float| System.Double| Value05Float| Value05Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value05Float| | | | 
+| Value05Int| System.Int32| Value05Int| Value05Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value05Int| | | | 
+| Value05String| System.String| Value05String| Value05String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value05String| | | | 
+| Value06Float| System.Double| Value06Float| Value06Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value06Float| | | | 
+| Value06Int| System.Int32| Value06Int| Value06Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value06Int| | | | 
+| Value06String| System.String| Value06String| Value06String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value06String| | | | 
+| Value07Float| System.Double| Value07Float| Value07Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value07Float| | | | 
+| Value07Int| System.Int32| Value07Int| Value07Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value07Int| | | | 
+| Value07String| System.String| Value07String| Value07String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value07String| | | | 
+| Value08Float| System.Double| Value08Float| Value08Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value08Float| | | | 
+| Value08Int| System.Int32| Value08Int| Value08Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value08Int| | | | 
+| Value08String| System.String| Value08String| Value08String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value08String| | | | 
+| Value09Float| System.Double| Value09Float| Value09Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value09Float| | | | 
+| Value09Int| System.Int32| Value09Int| Value09Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value09Int| | | | 
+| Value09String| System.String| Value09String| Value09String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustCurrentValue_Value09String| | | | 
+## 1.16 CustDailyValue : IEntityDescription
+## CustDailyValue
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | True | EN_CustDailyValue_CustDailyValue | CustDailyValue | CustDailyValue |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.16.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| DateOfDay| System.DateTime| DateOfDay| DateOfDay| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_DateOfDay| | | | 
+| Location| System.Int32| Location| Location| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Location| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Position| System.String| Position| Position| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Position| | | | 
+| Sequence| System.Int32| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Value01Float| System.Double| Value01Float| Value01Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value01Float| | | | 
+| Value01Int| System.Int32| Value01Int| Value01Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value01Int| | | | 
+| Value01String| System.String| Value01String| Value01String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value01String| | | | 
+| Value02Float| System.Double| Value02Float| Value02Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value02Float| | | | 
+| Value02Int| System.Int32| Value02Int| Value02Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value02Int| | | | 
+| Value02String| System.String| Value02String| Value02String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value02String| | | | 
+| Value03Float| System.Double| Value03Float| Value03Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value03Float| | | | 
+| Value03Int| System.Int32| Value03Int| Value03Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value03Int| | | | 
+| Value03String| System.String| Value03String| Value03String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value03String| | | | 
+| Value04Float| System.Double| Value04Float| Value04Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value04Float| | | | 
+| Value04Int| System.Int32| Value04Int| Value04Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value04Int| | | | 
+| Value04String| System.String| Value04String| Value04String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value04String| | | | 
+| Value05Float| System.Double| Value05Float| Value05Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value05Float| | | | 
+| Value05Int| System.Int32| Value05Int| Value05Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value05Int| | | | 
+| Value05String| System.String| Value05String| Value05String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value05String| | | | 
+| Value06Float| System.Double| Value06Float| Value06Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value06Float| | | | 
+| Value06Int| System.Int32| Value06Int| Value06Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value06Int| | | | 
+| Value06String| System.String| Value06String| Value06String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value06String| | | | 
+| Value07Float| System.Double| Value07Float| Value07Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value07Float| | | | 
+| Value07Int| System.Int32| Value07Int| Value07Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value07Int| | | | 
+| Value07String| System.String| Value07String| Value07String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value07String| | | | 
+| Value08Float| System.Double| Value08Float| Value08Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value08Float| | | | 
+| Value08Int| System.Int32| Value08Int| Value08Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value08Int| | | | 
+| Value08String| System.String| Value08String| Value08String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value08String| | | | 
+| Value09Float| System.Double| Value09Float| Value09Float| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value09Float| | | | 
+| Value09Int| System.Int32| Value09Int| Value09Int| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value09Int| | | | 
+| Value09String| System.String| Value09String| Value09String| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDailyValue_Value09String| | | | 
+## 1.17 CustDGCornerPrinciple : IEntityDescription
+## CustDGCornerPrinciple
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | True | EN_CustDGCornerPrinciple_CustDGCornerPrinciple | CustDGCornerPrinciple | CustDGCornerPrinciple |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.17.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CornerDesign| System.String| CornerDesign| CornerDesign| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustDGCornerPrinciple_CornerDesign| | | | 
+| CornerPrinciple| System.String| CornerPrinciple| CornerPrinciple| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustDGCornerPrinciple_CornerPrinciple| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustDGCornerPrinciple_Description| | | | 
+| Description1| System.String| Description1| Description1| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustDGCornerPrinciple_Description1| | | | 
+| Description2| System.String| Description2| Description2| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustDGCornerPrinciple_Description2| | | | 
+| Description3| System.String| Description3| Description3| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustDGCornerPrinciple_Description3| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| TestDsc| System.String| TestDsc| TestDsc| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDGCornerPrinciple_TestDsc| | | | 
+| TestDscFred| System.String| TestDscFred| TestDscFred| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDGCornerPrinciple_TestDscFred| | | | 
+| TestDscNeu| System.String| TestDscNeu| TestDscNeu| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDGCornerPrinciple_TestDscNeu| | | | 
+| TestDscNeuNoch| System.String| TestDscNeuNoch| TestDscNeuNoch| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustDGCornerPrinciple_TestDscNeuNoch| | | | 
+| TypeFinishEdge| System.String| TypeFinishEdge| TypeFinishEdge| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustDGCornerPrinciple_TypeFinishEdge| | | | 
+| TypeNewEdge| System.String| TypeNewEdge| TypeNewEdge| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustDGCornerPrinciple_TypeNewEdge| | | | 
+## 1.18 CustDummyIndex : IEntityDescription
+## CustDummyIndex
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | True | EN_CustDummyIndex_CustDummyIndex | CustDummyIndex | CustDummyIndex |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.18.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.19 CustFredPicture : IEntityDescription
+## CustFredPicture
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | True | EN_CustFredPicture_CustFredPicture | CustFredPicture | CustFredPicture |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.19.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| Binary1| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Picture1| System.Int32| Picture1| Picture1| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustFredPicture_Picture1| | | | 
+| Picture2| System.Int32| Picture2| Picture2| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustFredPicture_Picture2| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.20 CustHandlingItemsSignal : IEntityDescription
+## CustHandlingItemsSignal
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | True | EN_CustHandlingItemsSignal_CustHandlingItemsSignal | CustHandlingItemsSignal | CustHandlingItemsSignal |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.20.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EBCurrentPass| System.Int32| EBCurrentPass| EBCurrentPass| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_EBCurrentPass| | | | 
+| EBCustomerEdge| System.String| EBCustomerEdge| EBCustomerEdge| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_EBCustomerEdge| | | | 
+| EBFeedStopContourTrimmingUnit| System.Int32| EBFeedStopContourTrimmingUnit| EBFeedStopContourTrimmingUnit| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_EBFeedStopContourTrimmingUnit| | | | 
+| EBFeedStopGluingUnit| System.Int32| EBFeedStopGluingUnit| EBFeedStopGluingUnit| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_EBFeedStopGluingUnit| | | | 
+| EBFeedStopProfileScrapingUnit| System.Int32| EBFeedStopProfileScrapingUnit| EBFeedStopProfileScrapingUnit| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_EBFeedStopProfileScrapingUnit| | | | 
+| EBFeedStopSnippingUnit| System.Int32| EBFeedStopSnippingUnit| EBFeedStopSnippingUnit| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_EBFeedStopSnippingUnit| | | | 
+| EBMaxPass| System.Int32| EBMaxPass| EBMaxPass| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_EBMaxPass| | | | 
+| EBMonitoringEdgeOverhang| System.Int32| EBMonitoringEdgeOverhang| EBMonitoringEdgeOverhang| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_EBMonitoringEdgeOverhang| | | | 
+| EBProductionStep| System.Int32| EBProductionStep| EBProductionStep| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_EBProductionStep| | | | 
+| EBQualityInfoFred| System.Int32| EBQualityInfoFred| EBQualityInfoFred| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_EBQualityInfoFred| | | | 
+| EBReporterMachine| System.Int32| EBReporterMachine| EBReporterMachine| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_EBReporterMachine| | | | 
+| EBTemperatureGluingUnit| System.Decimal| EBTemperatureGluingUnit| EBTemperatureGluingUnit| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_EBTemperatureGluingUnit| | | | 
+| HandlingUnitLocation| System.Int32| HandlingUnitLocation| HandlingUnitLocation| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_HandlingUnitLocation| | | | 
+| HandlingUnitPosition| System.String| HandlingUnitPosition| HandlingUnitPosition| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_HandlingUnitPosition| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ProductionItem| [ProductionItem](#productionitem)| Parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItem_ProductionItem| | | | 
+| ProductionItemCode| System.String| ProductionItemCode| ProductionItemCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_ProductionItemCode| | | | 
+| ProductionOrderCode| System.String| ProductionOrderCode| ProductionOrderCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_ProductionOrderCode| | | | 
+| Remark| System.String| Remark| Remark| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_Remark| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Timestamp| System.DateTime| Timestamp| Timestamp| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustHandlingItemsSignal_Timestamp| | | | 
+## 1.21 CustMachineWorkTime : IEntityDescription
+## CustMachineWorkTime
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | True | EN_CustMachineWorkTime_CustMachineWorkTime | CustMachineWorkTime | CustMachineWorkTime |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.21.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Day| System.DateTime| Day| Day| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustMachineWorkTime_Day| | | | 
+| End| System.DateTime| End| End| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustMachineWorkTime_End| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Shift| System.String| Shift| Shift| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustMachineWorkTime_Shift| | | | 
+| Start| System.DateTime| Start| Start| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustMachineWorkTime_Start| | | | 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| WorkCenterCode| WorkCenterCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustMachineWorkTime_WorkCenterCode| | | | 
+## 1.22 CustomerOrder : IEntityDescription
+## CustomerOrder
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_CustomerOrder_CustomerOrder | CustomerOrder | Customer order |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.22.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Address1| System.String| Address field1| Address1| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_Address1| | | | 
+| Address2| System.String| Address field2| Address2| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_Address2| | | | 
+| Address3| System.String| Address field3| Address3| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_Address3| | | | 
+| Address4| System.String| Address field4| Address4| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_Address4| | | | 
+| Address5| System.String| Address field5| Address5| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_Address5| | | | 
+| AddressCountry| System.String| End customer address, country| AddressCountry| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_AddressCountry| | | | 
+| Code| System.String| Customer order| Code| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_Code| | | | 
+| Collection| System.String| Collection| Collection| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_Collection| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Customer| System.String| customer| Customer| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_Customer| | | | 
+| CustomPlannedEndDate| System.DateTime| PlannedEndDate| PlannedEndDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_CustomPlannedEndDate| | | | 
+| DeliveryDate| System.DateTime| Delivery date| DeliveryDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_DeliveryDate| | | | 
+| Employee| System.String| Administrator| Employee| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_Employee| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OrderDate| System.DateTime| Order date| OrderDate| 40| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_OrderDate| | | | 
+| OrderDescriptionLong| System.String| Order long text| OrderDescriptionLong| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_OrderDescriptionLong| | | | 
+| OrderDescriptionShort| System.String| Order short text| OrderDescriptionShort| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_OrderDescriptionShort| | | | 
+| OrderHeaderText07| System.String| Application head text 7| OrderHeaderText07| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_OrderHeaderText07| | | | 
+| OrderHeaderText08| System.String| Application head text 8| OrderHeaderText08| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_OrderHeaderText08| | | | 
+| OrderHeaderText09| System.String| Application head text 9| OrderHeaderText09| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_OrderHeaderText09| | | | 
+| OrderHeaderText10| System.String| Application head text 10| OrderHeaderText10| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_OrderHeaderText10| | | | 
+| OrderModificationDate| System.DateTime| Date of last order change| OrderModificationDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_OrderModificationDate| | | | 
+| PlanCriterion1| System.String| Planning criterion 1| PlanCriterion1| 201| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_PlanCriterion1| | | | 
+| PlanCriterion2| System.String| Planning criterion 2| PlanCriterion2| 202| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_PlanCriterion2| | | | 
+| PlanCriterion3| System.String| Planning criterion 3| PlanCriterion3| 203| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_PlanCriterion3| | | | 
+| PlanCriterion4| System.String| Planning criterion 4| PlanCriterion4| 204| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_PlanCriterion4| | | | 
+| PlanCriterion5| System.String| Planning criterion 5| PlanCriterion5| 205| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_PlanCriterion5| | | | 
+| ProductionOrders| [ICollection`1\<ProductionOrder\>](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| Reference| System.String| Reference text| Reference| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_Reference| | | | 
+| Route| System.String| Production path| Route| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_Route| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| ShippingDate| System.DateTime| Loading deadline| ShippingDate| 50| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_ShippingDate| | | | 
+| TradePartner| System.String| trading partner| TradePartner| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustomerOrder_TradePartner| | | | 
+## 1.23 CustStackStructure : IEntityDescription
+## CustStackStructure
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | True | EN_CustStackStructure_CustStackStructure | CustStackStructure | CustStackStructure |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.23.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AlternatingOffsetX| System.Decimal| AlternatingOffsetX| AlternatingOffsetX| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_AlternatingOffsetX| | | | 
+| AlternatingOffsetY| System.Decimal| AlternatingOffsetY| AlternatingOffsetY| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_AlternatingOffsetY| | | | 
+| BaseBoardList| System.String| BaseBoardList| BaseBoardList| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_BaseBoardList| | | | 
+| BaseBoardRule| System.Int32| BaseBoardRule| BaseBoardRule| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_BaseBoardRule| | | | 
+| BaseBoardXOffset2| System.Decimal| BaseBoardXOffset2| BaseBoardXOffset2| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_BaseBoardXOffset2| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_Description| | | | 
+| DistanceBetweenParts| System.Decimal| DistanceBetweenParts| DistanceBetweenParts| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_DistanceBetweenParts| | | | 
+| IntelliStackAlignment| System.Int32| IntelliStackAlignment| IntelliStackAlignment| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_IntelliStackAlignment| | | | 
+| LaneHeightMax| System.Decimal| LaneHeightMax| LaneHeightMax| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_LaneHeightMax| | | | 
+| LaneHeightMin| System.Decimal| LaneHeightMin| LaneHeightMin| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_LaneHeightMin| | | | 
+| LaneHeightTolerance| System.Decimal| LaneHeightTolerance| LaneHeightTolerance| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_LaneHeightTolerance| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MaxStackHeight| System.Decimal| MaxStackHeight| MaxStackHeight| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_MaxStackHeight| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OrderingRelevance| System.Int32| OrderingRelevance| OrderingRelevance| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OrderingRelevance| | | | 
+| Orientation| System.Int32| Orientation| Orientation| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_Orientation| | | | 
+| OverlapMaxXMinus| System.Decimal| OverlapMaxXMinus| OverlapMaxXMinus| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapMaxXMinus| | | | 
+| OverlapMaxXMinus2| System.Decimal| OverlapMaxXMinus2| OverlapMaxXMinus2| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapMaxXMinus2| | | | 
+| OverlapMaxXPlus| System.Decimal| OverlapMaxXPlus| OverlapMaxXPlus| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapMaxXPlus| | | | 
+| OverlapMaxXPlus2| System.Decimal| OverlapMaxXPlus2| OverlapMaxXPlus2| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapMaxXPlus2| | | | 
+| OverlapMaxXPlusOffset2| System.Decimal| OverlapMaxXPlusOffset2| OverlapMaxXPlusOffset2| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapMaxXPlusOffset2| | | | 
+| OverlapMaxYMinus| System.Decimal| OverlapMaxYMinus| OverlapMaxYMinus| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapMaxYMinus| | | | 
+| OverlapMaxYPlus| System.Decimal| OverlapMaxYPlus| OverlapMaxYPlus| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapMaxYPlus| | | | 
+| OverlapXMinus| System.Decimal| OverlapXMinus| OverlapXMinus| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapXMinus| | | | 
+| OverlapXMinus2| System.Decimal| OverlapXMinus2| OverlapXMinus2| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapXMinus2| | | | 
+| OverlapXPlus| System.Decimal| OverlapXPlus| OverlapXPlus| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapXPlus| | | | 
+| OverlapXPlus2| System.Decimal| OverlapXPlus2| OverlapXPlus2| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapXPlus2| | | | 
+| OverlapXPlusOffset2| System.Decimal| OverlapXPlusOffset2| OverlapXPlusOffset2| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapXPlusOffset2| | | | 
+| OverlapYMinus| System.Decimal| OverlapYMinus| OverlapYMinus| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapYMinus| | | | 
+| OverlapYPlus| System.Decimal| OverlapYPlus| OverlapYPlus| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapYPlus| | | | 
+| PartsInXDirection| System.Int32| PartsInXDirection| PartsInXDirection| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_PartsInXDirection| | | | 
+| PartsInYDirection| System.Int32| PartsInYDirection| PartsInYDirection| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_PartsInYDirection| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StackReversable| System.Int32| StackReversable| StackReversable| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_StackReversable| | | | 
+| StackStructureCode| System.Int32| StackStructureCode| StackStructureCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_StackStructureCode| | | | 
+| UseAlternatingOffset| System.Int32| UseAlternatingOffset| UseAlternatingOffset| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_UseAlternatingOffset| | | | 
+| UseLaneLimits| System.Int32| UseLaneLimits| UseLaneLimits| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_UseLaneLimits| | | | 
+## 1.24 DeviceFunction : IEntityDescription
+## DeviceFunction
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_DeviceFunction_DeviceFunction | DeviceFunction | Functions of the device |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.24.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Device ID| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_DeviceFunction_Code| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ConnectionType**</span>| [ScannerConnectionType](#scannerconnectiontype)| Connection type| ConnectionType| 0| True| True| False| | | | False| -1| 0| 0| | False| [ScannerConnectionType](#scannerconnectiontype) | FN_DeviceFunction_ConnectionType| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| DeviceDescription| System.String| Description of device| DeviceDescription| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_DeviceFunction_DeviceDescription| | | | 
+| Function| System.String| Function| Function| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_DeviceFunction_Function| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Parameter| System.String| Parameters| Parameter| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_DeviceFunction_Parameter| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ScannerType**</span>| [ScannerType](#scannertype)| Scanner type| ScannerType| 0| True| True| False| | | | False| -1| 0| 0| | False| [ScannerType](#scannertype) | FN_DeviceFunction_ScannerType| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Usage| System.String| appropriation| Usage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_DeviceFunction_Usage| | | | 
+## 1.25 EdgeGroove : IEntityDescription
+## EdgeGroove
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_EdgeGroove_EdgeGroove | EdgeGroove | Groove processing |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.25.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AlternateCode| System.String| Edge code| AlternateCode| 12| True| True| False| -| | | False| -1| 0| 0| | False| | FN_EdgeGroove_AlternateCode| | - | | 
+| Code| System.Int32| ID| Code| 11| True| True| True| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| DimensionX| System.Decimal| Dimension X| DimensionX| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_DimensionX| | | | 
+| DimensionY| System.Decimal| Dimension Y| DimensionY| 31| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_DimensionY| | | | 
+| Direction| [GrooveDirectionType](#groovedirectiontype)| Position| Direction| 21| False| True| False| | | | False| -1| 0| 0| | False| [GrooveDirectionType](#groovedirectiontype) | FN_EdgeGroove_Direction| | | | 
+| Distance| System.Decimal| Distance| Distance| 40| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_Distance| | | | 
+| DistanceTypeLeft| [GrooveDistanceType](#groovedistancetype)| Left-hand groove clearance type| DistanceTypeLeft| 65| True| True| False| 2| | | False| -1| 0| 0| | False| [GrooveDistanceType](#groovedistancetype) | FN_EdgeGroove_DistanceTypeLeft| | 2 | | 
+| DistanceTypeRight| [GrooveDistanceType](#groovedistancetype)| Right-hand groove clearance type| DistanceTypeRight| 66| True| True| False| 2| | | False| -1| 0| 0| | False| [GrooveDistanceType](#groovedistancetype) | FN_EdgeGroove_DistanceTypeRight| | 2 | | 
+| EntryInPosX| System.Decimal| Groove entry point X| EntryInPosX| 32| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_EntryInPosX| | | | 
+| EntryInPosY| System.Decimal| Groove entry point Y| EntryInPosY| 33| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_EntryInPosY| | | | 
+| EntryInPosZ| System.Decimal| Groove entry point Z| EntryInPosZ| 34| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_EntryInPosZ| | | | 
+| EntryOutPosX| System.Decimal| Groove exit point X| EntryOutPosX| 35| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_EntryOutPosX| | | | 
+| EntryOutPosY| System.Decimal| Groove exit point Y| EntryOutPosY| 36| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_EntryOutPosY| | | | 
+| EntryOutPosZ| System.Decimal| Groove exit point Z| EntryOutPosZ| 37| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_EntryOutPosZ| | | | 
+| ErpWorkflow| System.String| ERP workflow| ErpWorkflow| 3| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_ErpWorkflow| | | | 
+| ErrorMessage| System.String| Error message| ErrorMessage| 62| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_ErrorMessage| | | | 
+| ErrorState| [ProcessingDataErrorState](#processingdataerrorstate)| Error status| ErrorState| 61| True| True| False| 0| | | False| -1| 0| 0| | False| [ProcessingDataErrorState](#processingdataerrorstate) | FN_EdgeGroove_ErrorState| | 0 | | 
+| FromErp| System.Boolean| From ERP| FromErp| 4| True| True| False| False| | | False| -1| 0| 0| | False| | FN_EdgeGroove_FromErp| | False | | 
+| GrooveSequence| System.Int32| Groove order| GrooveSequence| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_GrooveSequence| | | | 
+| GrooveShape| System.String| Groove pattern| GrooveShape| 41| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_GrooveShape| | | | 
+| IsThroughFeed| System.Boolean| In throughfeed| IsThroughFeed| 50| True| True| False| False| | | False| -1| 0| 0| | False| | FN_EdgeGroove_IsThroughFeed| | False | | 
+| Layer| [GrooveLayer](#groovelayer)| Groove position| Layer| 22| False| True| False| | | | False| -1| 0| 0| | False| [GrooveLayer](#groovelayer) | FN_EdgeGroove_Layer| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Macro| System.String| Macro| Macro| 42| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_Macro| | | | 
+| MacroNumber| [MacroNumber](#macronumber)| Processing macro number| MacroNumber| 7| True| True| False| 0| | | False| -1| 0| 0| | False| [MacroNumber](#macronumber) | FN_EdgeGroove_MacroNumber| | 0 | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Possible| System.Int32| Groove can be produced| Possible| 51| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_Possible| | | | 
+| PossibleRouteCode| System.String| Processing route| PossibleRouteCode| 2| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_PossibleRouteCode| | | | 
+| ProductionOrder| [ProductionOrder](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 1| True| True| True| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_ProductionOrderCode| | | | 
+| ProductionStep| [ProductionStep](#productionstep)| Procedures| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStep_ProductionStep| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 5| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_ProductionStepCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| State| System.Int32| Status| State| 60| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_EdgeGroove_State| | 0 | | 
+| Type| [GrooveType](#groovetype)| Type| Type| 20| False| True| False| | | | False| -1| 0| 0| | False| [GrooveType](#groovetype) | FN_EdgeGroove_Type| | | | 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 6| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGroove_WorkCenterCode| | | | 
+## 1.26 EdgeGrooveLibrary : IEntityDescription
+## EdgeGrooveLibrary
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_EdgeGrooveLibrary_EdgeGrooveLibrary | EdgeGrooveLibrary | Groove processing, library |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.26.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AlternateCode| System.String| Edge code| AlternateCode| 10| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGrooveLibrary_AlternateCode| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Depth| System.Decimal| grooving depth| Depth| 21| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGrooveLibrary_Depth| | | | 
+| Description| System.String| Description| Description| 999| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGrooveLibrary_Description| | | | 
+| Distance| System.Decimal| Groove clearance (parallel or in Z)| Distance| 33| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGrooveLibrary_Distance| | | | 
+| DistanceLeft| System.Decimal| Left-hand groove clearance| DistanceLeft| 31| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGrooveLibrary_DistanceLeft| | | | 
+| DistanceRight| System.Decimal| Right-hand groove clearance| DistanceRight| 33| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGrooveLibrary_DistanceRight| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**DistanceTypeLeft**</span>| [GrooveDistanceType](#groovedistancetype)| Left-hand groove clearance type| DistanceTypeLeft| 30| True| True| False| | | | False| -1| 0| 0| | False| [GrooveDistanceType](#groovedistancetype) | FN_EdgeGrooveLibrary_DistanceTypeLeft| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**DistanceTypeRight**</span>| [GrooveDistanceType](#groovedistancetype)| Right-hand groove clearance type| DistanceTypeRight| 32| True| True| False| | | | False| -1| 0| 0| | False| [GrooveDistanceType](#groovedistancetype) | FN_EdgeGrooveLibrary_DistanceTypeRight| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**Layer**</span>| [GrooveLayer](#groovelayer)| Groove position| Layer| 15| True| True| False| | | | False| -1| 0| 0| | False| [GrooveLayer](#groovelayer) | FN_EdgeGrooveLibrary_Layer| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| SearchValue| System.String| Search value/input value| SearchValue| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGrooveLibrary_SearchValue| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Width| System.Decimal| Groove width| Width| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeGrooveLibrary_Width| | | | 
+## 1.27 EdgeInformationToEntityShape : IEntityDescription
+## EdgeInformationToEntityShape
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_EdgeInformationToEntityShape_EdgeInformationToEntityShape | EdgeInformationToEntityShape | Edge data from Geoform (neutral) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.27.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**EdgeAlternateCode**</span>| [EdgeIdOnRectangle](#edgeidonrectangle)| Edge code| EdgeAlternateCode| 0| True| True| False| | | | False| -1| 0| 0| | False| [EdgeIdOnRectangle](#edgeidonrectangle) | FN_EdgeInformationToEntityShape_EdgeAlternateCode| | | | 
+| EdgeCode| System.String| Edge, customer system| EdgeCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeInformationToEntityShape_EdgeCode| | | | 
+| FilterValue| System.String| Filter value| FilterValue| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeInformationToEntityShape_FilterValue| | | | 
+| IsThroughFeed| System.Boolean| Edge, throughfeed| IsThroughFeed| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeInformationToEntityShape_IsThroughFeed| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.28 EdgePass : IEntityDescription
+## EdgePass
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_EdgePass_EdgePass | EdgePass | Edge throughfeeds |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.28.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| BasicMacro| System.String| Basic machine macro| BasicMacro| 7| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_BasicMacro| | | | 
+| Content| System.String| Final output string| Content| 58| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_Content| | | | 
+| CornerLeadingEdge| System.Int32| Corner transition to the leading edge| CornerLeadingEdge| 35| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CornerLeadingEdge| | | | 
+| CornerMacroLeadingEdge| System.String| Corner processing in infeed direction| CornerMacroLeadingEdge| 47| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CornerMacroLeadingEdge| | | | 
+| CornerMacroLeadingEdgeBelow| System.String| Corner processing in infeed direction at the bottom| CornerMacroLeadingEdgeBelow| 46| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CornerMacroLeadingEdgeBelow| | | | 
+| CornerMacroLeadingEdgeTop| System.String| Corner processing in infeed direction at the top| CornerMacroLeadingEdgeTop| 45| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CornerMacroLeadingEdgeTop| | | | 
+| CornerMacroTailingEdge| System.String| Corner processing in outfeed direction| CornerMacroTailingEdge| 50| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CornerMacroTailingEdge| | | | 
+| CornerMacroTailingEdgeBelow| System.String| Corner processing in outfeed direction at the bottom| CornerMacroTailingEdgeBelow| 49| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CornerMacroTailingEdgeBelow| | | | 
+| CornerMacroTailingEdgeTop| System.String| Corner processing in outfeed direction at the top| CornerMacroTailingEdgeTop| 48| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CornerMacroTailingEdgeTop| | | | 
+| CornerTailingEdge| System.Int32| Corner transition to the subsequent edge| CornerTailingEdge| 36| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CornerTailingEdge| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CustomerCornerLeadingEdge| System.String| Leading edge transition according to the customer| CustomerCornerLeadingEdge| 37| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CustomerCornerLeadingEdge| | | | 
+| CustomerCornerLeadingEdgeValue| System.Int32| Leading edge transition| CustomerCornerLeadingEdgeValue| 39| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CustomerCornerLeadingEdgeValue| | | | 
+| CustomerCornerTailingEdge| System.String| Subsequent edge transition according to the customer| CustomerCornerTailingEdge| 38| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CustomerCornerTailingEdge| | | | 
+| CustomerCornerTailingEdgeValue| System.Int32| Subsequent edge transition| CustomerCornerTailingEdgeValue| 40| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CustomerCornerTailingEdgeValue| | | | 
+| CustomerEdge| System.String| Edge according to customer| CustomerEdge| 11| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CustomerEdge| | | | 
+| CustomerProcessingLeadingEdgeValue| System.Int32| Corner processing of leading edge according to the customer| CustomerProcessingLeadingEdgeValue| 41| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CustomerProcessingLeadingEdgeValue| | | | 
+| CustomerProcessingTailingEdgeValue| System.Int32| Corner processing of subsequent edge according to the customer| CustomerProcessingTailingEdgeValue| 42| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_CustomerProcessingTailingEdgeValue| | | | 
+| Edge| System.Int32| Edge| Edge| 8| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_EdgePass_Edge| | 0 | | 
+| EdgeColor| System.String| Edge color according to Homag code| EdgeColor| 14| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_EdgeColor| | | | 
+| EdgeGeometrie| System.String| Customer's edge geometry| EdgeGeometrie| 13| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_EdgeGeometrie| | | | 
+| EdgeHeight| System.Decimal| Edge height| EdgeHeight| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_EdgeHeight| | | | 
+| EdgeInProcess| System.String| Edge code| EdgeInProcess| 9| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_EdgeInProcess| | | | 
+| EdgeMacro| System.String| Edge macro| EdgeMacro| 53| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_EdgeMacro| | | | 
+| EdgeMaterial| System.String| Edge material according to Homag code| EdgeMaterial| 12| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_EdgeMaterial| | | | 
+| EdgeProcessing| System.String| edge processing| EdgeProcessing| 18| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_EdgeProcessing| | | | 
+| EdgeProcessingBelow| System.String| Edge processing, bottom| EdgeProcessingBelow| 17| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_EdgeProcessingBelow| | | | 
+| EdgeProcessingMacro| System.String| Edge processing macro| EdgeProcessingMacro| 54| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_EdgeProcessingMacro| | | | 
+| EdgeProcessingTop| System.String| Edge processing, top| EdgeProcessingTop| 16| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_EdgeProcessingTop| | | | 
+| EdgeProfileCode| System.Int32| ID| EdgeProfileCode| 5| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_EdgeProfileCode| | | | 
+| EdgeProgram| System.String| Edge profiles| EdgeProgram| 59| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_EdgeProgram| | | | 
+| EdgeThickness| System.Decimal| Edge thickness| EdgeThickness| 21| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_EdgeThickness| | | | 
+| EdgeValue| System.String| Edge value| EdgeValue| 19| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_EdgeValue| | | | 
+| FinishingMacro| System.String| Edge end processing macro| FinishingMacro| 55| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_FinishingMacro| | | | 
+| GrooveMacro| System.String| Groove macro| GrooveMacro| 57| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_GrooveMacro| | | | 
+| GrooveMacro2| System.String| Groove macro (unit 2)| GrooveMacro2| 57| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_GrooveMacro2| | | | 
+| GrooveValue| System.String| Groove value| GrooveValue| 22| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_GrooveValue| | | | 
+| HomagGlueType| System.String| Glue type according to Homag code| HomagGlueType| 15| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_HomagGlueType| | | | 
+| LeadingEdge| System.Int32| Leading edge| LeadingEdge| 29| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_EdgePass_LeadingEdge| | 0 | | 
+| LeadingEdgeThickness| System.Decimal| Thickness of the leading edge| LeadingEdgeThickness| 31| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_LeadingEdgeThickness| | | | 
+| LengthAtStepEnd| System.Decimal| Length at end of process step| LengthAtStepEnd| 9| False| True| False| 0| | | False| -1| 0| 0| | False| | FN_EdgePass_LengthAtStepEnd| | 0 | | 
+| LengthAtStepStart| System.Decimal| Length at start of process step| LengthAtStepStart| 7| False| True| False| 0| | | False| -1| 0| 0| | False| | FN_EdgePass_LengthAtStepStart| | 0 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Orientation1| System.Int32| Orientation 1| Orientation1| 23| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_Orientation1| | | | 
+| Orientation2| System.Int32| Orientation 2| Orientation2| 24| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_Orientation2| | | | 
+| Orientation3| System.Int32| Orientation 3| Orientation3| 25| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_Orientation3| | | | 
+| Orientation4| System.Int32| Orientation 4| Orientation4| 26| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_Orientation4| | | | 
+| Orientation5| System.Int32| Orientation 5| Orientation5| 27| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_Orientation5| | | | 
+| OrientationLengthWidth| System.Int32| Length/width alignment| OrientationLengthWidth| 10| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_OrientationLengthWidth| | | | 
+| Overhang| System.Decimal| Workpiece overhang| Overhang| 52| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_Overhang| | | | 
+| Pass| System.Int32| Pass| Pass| 3| True| True| True| | | | False| -1| 0| 0| | False| | FN_EdgePass_Pass| | | | 
+| PassLeadingEdge| System.Int32| Throughfeed of the leading edge| PassLeadingEdge| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_PassLeadingEdge| | | | 
+| PassMachiningType| System.String| Type of throughfeed| PassMachiningType| 61| True| True| False| -| | | False| -1| 0| 0| | False| | FN_EdgePass_PassMachiningType| | - | | 
+| PassTailingEdge| System.Int32| Throughfeed of the subsequent edge| PassTailingEdge| 33| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_PassTailingEdge| | | | 
+| PossibleRouteCode| System.String| Processing route| PossibleRouteCode| 1| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_PossibleRouteCode| | | | 
+| ProcessingLeadingEdgeValue| System.Int32| Processing leading edge value| ProcessingLeadingEdgeValue| 43| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_ProcessingLeadingEdgeValue| | | | 
+| ProcessingTailingEdgeValue| System.Int32| Processing following edge value| ProcessingTailingEdgeValue| 44| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_ProcessingTailingEdgeValue| | | | 
+| ProductionOrder| [ProductionOrder](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_EdgePass_ProductionOrderCode| | | | 
+| ProductionStep| [ProductionStep](#productionstep)| Procedures| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStep_ProductionStep| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 4| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_ProductionStepCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Shape| System.String| Edge image| Shape| 6| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_Shape| | | | 
+| Speed| System.Int32| Feed| Speed| 51| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_Speed| | | | 
+| State| [EdgePassState](#edgepassstate)| Status| State| 60| True| True| False| 0| | | False| -1| 0| 0| | False| [EdgePassState](#edgepassstate) | FN_EdgePass_State| | 0 | | 
+| SurfaceMacro| System.String| Surface macro| SurfaceMacro| 56| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_SurfaceMacro| | | | 
+| TailingEdge| System.Int32| Subsequent edge| TailingEdge| 32| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_EdgePass_TailingEdge| | 0 | | 
+| TailingEdgeThickness| System.Decimal| Thickness of the subsequent edge| TailingEdgeThickness| 34| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgePass_TailingEdgeThickness| | | | 
+| ThroughFeedSide| [ThroughFeedSide](#throughfeedside)| Processing side in throughfeed direction| ThroughFeedSide| 28| True| True| False| 0| | | False| -1| 0| 0| | False| [ThroughFeedSide](#throughfeedside) | FN_EdgePass_ThroughFeedSide| | 0 | | 
+| WidthAtStepEnd| System.Decimal| Width at end of process step| WidthAtStepEnd| 10| False| True| False| 0| | | False| -1| 0| 0| | False| | FN_EdgePass_WidthAtStepEnd| | 0 | | 
+| WidthAtStepStart| System.Decimal| Width at start of process step| WidthAtStepStart| 8| False| True| False| 0| | | False| -1| 0| 0| | False| | FN_EdgePass_WidthAtStepStart| | 0 | | 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 2| True| True| True| | | | False| -1| 0| 0| | False| | FN_EdgePass_WorkCenterCode| | | | 
+## 1.29 EdgeProcessing : IEntityDescription
+## EdgeProcessing
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_EdgeProcessing_EdgeProcessing | EdgeProcessing | Determination of edge processing |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.29.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AdditionalCornerOption| System.String| Add. corner option| AdditionalCornerOption| 5| True| True| False| #| | | False| -1| 0| 0| | False| | FN_EdgeProcessing_AdditionalCornerOption| | # | | 
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| CornerProcessingPartnerBottom| System.String| Corner processing at the bottom| CornerProcessingPartnerBottom| 13| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProcessing_CornerProcessingPartnerBottom| | | | 
+| CornerProcessingPartnerTop| System.String| Corner processing at the top| CornerProcessingPartnerTop| 12| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProcessing_CornerProcessingPartnerTop| | | | 
+| CornerShaping| System.Int32| Corner transition| CornerShaping| 5| True| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProcessing_CornerShaping| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EdgeProcessingBelow| System.String| Edge processing, bottom| EdgeProcessingBelow| 11| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProcessing_EdgeProcessingBelow| | | | 
+| EdgeProcessingTop| System.String| Edge processing, top| EdgeProcessingTop| 10| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProcessing_EdgeProcessingTop| | | | 
+| EdgeThickness| System.Decimal| Edge thickness| EdgeThickness| 1| True| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProcessing_EdgeThickness| | | | 
+| EdgeThicknessPartner| System.Decimal| Partner edge thickness| EdgeThicknessPartner| 2| True| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProcessing_EdgeThicknessPartner| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Picture| System.Int32| Drawing| Picture| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProcessing_Picture| | | | 
+| Profile| System.String| Edge profile| Profile| 3| True| True| False| #| | | False| -1| 0| 0| | False| | FN_EdgeProcessing_Profile| | # | | 
+| ProfilePartner| System.String| Edge profile, partner| ProfilePartner| 4| True| True| False| #| | | False| -1| 0| 0| | False| | FN_EdgeProcessing_ProfilePartner| | # | | 
+| ProgramScheme| System.String| Processing program| ProgramScheme| 14| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProcessing_ProgramScheme| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| False| #| | | False| -1| 0| 0| | False| | FN_EdgeProcessing_WorkCenterCode| | # | | 
+## 1.30 EdgeProfile : IEntityDescription
+## EdgeProfile
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_EdgeProfile_EdgeProfile | EdgeProfile | Edge profile |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.30.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AdditionalInformation| System.String| Additional information| AdditionalInformation| 18| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_AdditionalInformation| | | | 
+| AlternateCode| System.String| Edge code| AlternateCode| 5| True| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_AlternateCode| | | | 
+| Category| System.String| Material category| Category| 16| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_Category| | | | 
+| Code| System.Int32| ID| Code| 2| True| True| True| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_Code| | | | 
+| Color| System.String| Edge color| Color| 14| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_Color| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EdgeId| System.String| Edge ID| EdgeId| 6| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_EdgeId| | | | 
+| EdgeToStepsType| [EdgeToStepsType](#edgetostepstype)| Edge for process step type| EdgeToStepsType| 17| True| True| False| 0| | | False| -1| 0| 0| | False| [EdgeToStepsType](#edgetostepstype) | FN_EdgeProfile_EdgeToStepsType| | 0 | | 
+| ErrorMessage| System.String| Error message| ErrorMessage| 62| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_ErrorMessage| | | | 
+| ErrorState| [ProcessingDataErrorState](#processingdataerrorstate)| Error status| ErrorState| 61| True| True| False| 0| | | False| -1| 0| 0| | False| [ProcessingDataErrorState](#processingdataerrorstate) | FN_EdgeProfile_ErrorState| | 0 | | 
+| FromErp| System.Boolean| From ERP| FromErp| 4| True| True| False| False| | | False| -1| 0| 0| | False| | FN_EdgeProfile_FromErp| | False | | 
+| Geometry| System.String| Geometry| Geometry| 13| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_Geometry| | | | 
+| GlueType| System.String| Glue type| GlueType| 15| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_GlueType| | | | 
+| Height| System.Decimal| Width| Height| 10| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_Height| | | | 
+| IsThroughFeed| System.Boolean| In throughfeed| IsThroughFeed| 3| True| True| False| False| | | False| -1| 0| 0| | False| | FN_EdgeProfile_IsThroughFeed| | False | | 
+| Length| System.Decimal| Length| Length| 9| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_Length| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Material| System.String| Material| Material| 8| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_Material| | | | 
+| MaterialCode| System.String| Material key| MaterialCode| 7| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_MaterialCode| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PossibleRouteCode| System.String| Processing route| PossibleRouteCode| 1| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_PossibleRouteCode| | | | 
+| ProcessingType| [EdgeProcessingType](#edgeprocessingtype)| Processing type| ProcessingType| 17| True| True| False| 0| | | False| -1| 0| 0| | False| [EdgeProcessingType](#edgeprocessingtype) | FN_EdgeProfile_ProcessingType| | 0 | | 
+| ProductionOrder| [ProductionOrder](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_ProductionOrderCode| | | | 
+| ProductionStep| [ProductionStep](#productionstep)| Procedures| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStep_ProductionStep| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 19| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_ProductionStepCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 11| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_Thickness| | | | 
+| Trim| System.String| Transition| Trim| 12| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfile_Trim| | | | 
+## 1.31 EdgeProfileConversion : IEntityDescription
+## EdgeProfileConversion
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_EdgeProfileConversion_EdgeProfileConversion | EdgeProfileConversion | Edge profile, conversion |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.31.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Comment| System.String| Comment| Comment| 80| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfileConversion_Comment| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Profile| System.String| Edge profile| Profile| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfileConversion_Profile| | | | 
+| ProfileFlipped| System.String| Edge profile turned| ProfileFlipped| 10| True| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfileConversion_ProfileFlipped| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.32 EdgeProfileLibrary : IEntityDescription
+## EdgeProfileLibrary
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_EdgeProfileLibrary_EdgeProfileLibrary | EdgeProfileLibrary | Edge data, library |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.32.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Category| System.String| Material category| Category| 80| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfileLibrary_Category| | | | 
+| Color| System.String| Edge color| Color| 70| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfileLibrary_Color| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EdgeId| System.String| Edge ID| EdgeId| 10| True| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfileLibrary_EdgeId| | | | 
+| Geometry| System.String| Geometry| Geometry| 60| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfileLibrary_Geometry| | | | 
+| GlueType| System.String| Glue type| GlueType| 40| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfileLibrary_GlueType| | | | 
+| Height| System.Decimal| Width| Height| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfileLibrary_Height| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Material| System.String| Material| Material| 50| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfileLibrary_Material| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeProfileLibrary_Thickness| | | | 
+## 1.33 EdgeType : IEntityDescription
+## EdgeType
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_EdgeType_EdgeType | EdgeType | Edge type |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.33.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CustomerEdgeType| System.String| Edge type according to customer| CustomerEdgeType| 1| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_EdgeType_CustomerEdgeType| | 0 | | 
+| HomagEdgeType| System.String| Edge type| HomagEdgeType| 10| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_EdgeType_HomagEdgeType| | 0 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Picture| System.Int32| Drawing| Picture| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_EdgeType_Picture| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| False| #| | | False| -1| 0| 0| | False| | FN_EdgeType_WorkCenterCode| | # | | 
+## 1.34 EPChannelInformation : IEntityDescription
+## EPChannelInformation
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_EPChannelInformation_EPChannelInformation | EPChannelInformation | Edge channel information |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.34.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| <span style="color: #e0b21b" title="Default value not defined!">**Color**</span>| [EPDisplayColor](#epdisplaycolor)| Color| Color| 0| True| True| False| | | | False| -1| 0| 0| | False| [EPDisplayColor](#epdisplaycolor) | FN_EPChannelInformation_Color| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EPEdgeChannel| [EPEdgeChannel](#epedgechannel)| Edge channel| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EPEdgeChannel_EPEdgeChannel| | | | 
+| EPEdgeChannelSequence| System.Int32| Edge channel order| EPEdgeChannelSequence| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_EPChannelInformation_EPEdgeChannelSequence| | | | 
+| EPPreview| [EPPreview](#eppreview)| Preview horizon| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EPPreview_EPPreview| | | | 
+| EPPreviewCode| System.String| Edge preview code| EPPreviewCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_EPChannelInformation_EPPreviewCode| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Ratio| System.Decimal| Ratio| Ratio| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPChannelInformation_Ratio| | | | 
+| RequiredInEdgePreviews| System.Boolean| Edge is required in the preview horizon(s)| RequiredInEdgePreviews| 0| True| True| False| True| | | False| -1| 0| 0| | False| | FN_EPChannelInformation_RequiredInEdgePreviews| | True | | 
+## 1.35 EPEdgeChannel : IEntityDescription
+## EPEdgeChannel
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_EPEdgeChannel_EPEdgeChannel | EPEdgeChannel | Edge channel |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.35.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AvailableQuantity| System.Decimal| Available quantity| AvailableQuantity| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_EPEdgeChannel_AvailableQuantity| | | | 
+| ChannelId| System.String| Edge channel ID| ChannelId| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPEdgeChannel_ChannelId| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EdgeMacro| System.String| Edge macro| EdgeMacro| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_EPEdgeChannel_EdgeMacro| | | | 
+| EPChannelInformations| [ICollection`1\<EPChannelInformation\>](#epchannelinformation)| Edge channel information| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EPChannelInformation_EPChannelInformation| | | | 
+| Info1| System.String| Information 1| Info1| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_EPEdgeChannel_Info1| | | | 
+| Info2| System.String| Information 2| Info2| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_EPEdgeChannel_Info2| | | | 
+| Info3| System.String| Information 3| Info3| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_EPEdgeChannel_Info3| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MachineName| System.String| Machine name| MachineName| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPEdgeChannel_MachineName| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Order| System.Int32| Order| Order| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPEdgeChannel_Order| | | | 
+| Sequence| System.Int32| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.36 EPPreview : IEntityDescription
+## EPPreview
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_EPPreview_EPPreview | EPPreview | Preview horizon |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.36.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Code| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_EPPreview_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| DataIsVaild| System.Boolean| Data is valid| DataIsVaild| 0| True| True| False| False| | | False| -1| 0| 0| | False| | FN_EPPreview_DataIsVaild| | False | | 
+| Description| System.String| Description| Description| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPPreview_Description| | | | 
+| EPChannelInformations| [ICollection`1\<EPChannelInformation\>](#epchannelinformation)| Edge channel information| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EPChannelInformation_EPChannelInformation| | | | 
+| EPPreviewRequirements| [ICollection`1\<EPPreviewRequirement\>](#eppreviewrequirement)| Edge requirement per preview horizon| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EPPreviewRequirement_EPPreviewRequirement| | | | 
+| GroupingDefinition| System.String| Grouping| GroupingDefinition| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_EPPreview_GroupingDefinition| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Order| System.Int32| Order| Order| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_EPPreview_Order| | 0 | | 
+## 1.37 EPPreviewRequirement : IEntityDescription
+## EPPreviewRequirement
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_EPPreviewRequirement_EPPreviewRequirement | EPPreviewRequirement | Edge requirement per preview horizon |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.37.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EdgeMacro| System.String| Edge macro| EdgeMacro| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPPreviewRequirement_EdgeMacro| | | | 
+| EPPreview| [EPPreview](#eppreview)| Preview horizon| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EPPreview_EPPreview| | | | 
+| EPPreviewCode| System.String| Edge preview code| EPPreviewCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPPreviewRequirement_EPPreviewCode| | | | 
+| EPRequirementInformations| [ICollection`1\<EPRequirementInformation\>](#eprequirementinformation)| Edge requirement information| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EPRequirementInformation_EPRequirementInformation| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Order| System.Int32| Order| Order| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPPreviewRequirement_Order| | | | 
+| ProductionItem| [ProductionItem](#productionitem)| Parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItem_ProductionItem| | | | 
+| ProductionItemCode| System.String| Processing part| ProductionItemCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_EPPreviewRequirement_ProductionItemCode| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_EPPreviewRequirement_ProductionOrderCode| | | | 
+| Sequence| System.Int32| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.38 EPRequirement : IEntityDescription
+## EPRequirement
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_EPRequirement_EPRequirement | EPRequirement | Edge preview requirement |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.38.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CustomLastMovementDate| System.DateTime| Bauteilbewegung| Bauteilbewegung| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_EPRequirement_CustomLastMovementDate| | | | 
+| EPRequirementsEdges| [ICollection`1\<EPRequirementsEdge\>](#eprequirementsedge)| Edge preview requirement (edges)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EPRequirementsEdge_EPRequirementsEdge| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PreviewHorizon| System.String| Preview horizon| PreviewHorizon| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPRequirement_PreviewHorizon| | | | 
+| ProductionItem| [ProductionItem](#productionitem)| Parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItem_ProductionItem| | | | 
+| ProductionItemCode| System.String| Processing part| ProductionItemCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPRequirement_ProductionItemCode| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPRequirement_ProductionOrderCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.39 EPRequirementInformation : IEntityDescription
+## EPRequirementInformation
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_EPRequirementInformation_EPRequirementInformation | EPRequirementInformation | Edge requirement information |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.39.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| <span style="color: #e0b21b" title="Default value not defined!">**Color**</span>| [EPDisplayColor](#epdisplaycolor)| Color| Color| 0| True| True| False| | | | False| -1| 0| 0| | False| [EPDisplayColor](#epdisplaycolor) | FN_EPRequirementInformation_Color| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EPPreviewRequirement| [EPPreviewRequirement](#eppreviewrequirement)| Edge requirement per preview horizon| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EPPreviewRequirement_EPPreviewRequirement| | | | 
+| EPPreviewRequirementSequence| System.Int32| Edge requirement sequence| EPPreviewRequirementSequence| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_EPRequirementInformation_EPPreviewRequirementSequence| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MachineName| System.String| Machine name| MachineName| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPRequirementInformation_MachineName| | | | 
+| MachineOrder| System.Int32| Machine order| MachineOrder| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPRequirementInformation_MachineOrder| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Ratio| System.Decimal| Ratio| Ratio| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPRequirementInformation_Ratio| | | | 
+| RequiredQuantity| System.Decimal| Required quantity| RequiredQuantity| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPRequirementInformation_RequiredQuantity| | | | 
+| Sequence| System.Int32| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.40 EPRequirementsEdge : IEntityDescription
+## EPRequirementsEdge
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_EPRequirementsEdge_EPRequirementsEdge | EPRequirementsEdge | Edge preview requirement (edges) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.40.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EdgeMacro| System.String| Edge macro| EdgeMacro| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_EPRequirementsEdge_EdgeMacro| | | | 
+| EPRequirement| [EPRequirement](#eprequirement)| Edge preview requirement| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EPRequirement_EPRequirement| | | | 
+| EPRequirementsSequence| System.Int64| Edge preview requirement sequence| EPRequirementsSequence| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_EPRequirementsEdge_EPRequirementsSequence| | | | 
+| IgnoreForCalculate| System.Boolean| Ignore for calculation| IgnoreForCalculate| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPRequirementsEdge_IgnoreForCalculate| | | | 
+| Length| System.Decimal| Edge length| Length| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_EPRequirementsEdge_Length| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MachineName| System.String| Machine number| MachineName| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPRequirementsEdge_MachineName| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Pass| System.Int32| Pass| Pass| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPRequirementsEdge_Pass| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Workcenter| System.String| Workstation| Workcenter| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_EPRequirementsEdge_Workcenter| | | | 
+## 1.41 Feedback : IEntityDescription
+## Feedback
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_Feedback_Feedback | Feedback | Feedback |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | True | General |  
+### 1.41.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CountGood| System.Int32| Number of good parts| CountGood| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Feedback_CountGood| | | | 
+| CountRework| System.Int32| Number of post-processing parts| CountRework| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Feedback_CountRework| | | | 
+| CountScrap| System.Int32| Number of reject parts| CountScrap| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Feedback_CountScrap| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| FeedbackState| [FeedbackState](#feedbackstate)| Feedback status| FeedbackState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [FeedbackState](#feedbackstate) | FN_Feedback_FeedbackState| | 0 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ProcessingState| System.Int32| Processing status| ProcessingState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_Feedback_ProcessingState| | 0 | | 
+| ProcessingTime| System.Decimal| Processing time| ProcessingTime| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Feedback_ProcessingTime| | | | 
+| ProductionItemCode| System.String| Part number| ProductionItemCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Feedback_ProductionItemCode| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Feedback_ProductionStepCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Timestamp| System.DateTime| Feedback time| Timestamp| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Feedback_Timestamp| | | | 
+| WorkcenterCode| System.String| Workstation| WorkcenterCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Feedback_WorkcenterCode| | | | 
+## 1.42 FindEdgeShape : IEntityDescription
+## FindEdgeShape
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_FindEdgeShape_FindEdgeShape | FindEdgeShape | Edge shape |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.42.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| CornerEastNorth| System.Int32| East-north corner transition| CornerEastNorth| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_FindEdgeShape_CornerEastNorth| | | | 
+| CornerNorthWest| System.Int32| North-west corner transition| CornerNorthWest| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_FindEdgeShape_CornerNorthWest| | | | 
+| CornerSouthEast| System.Int32| South-east corner transition| CornerSouthEast| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_FindEdgeShape_CornerSouthEast| | | | 
+| CornerWestSouth| System.Int32| West-south corner transition| CornerWestSouth| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_FindEdgeShape_CornerWestSouth| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EdgeEast| System.String| East edge| EdgeEast| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_FindEdgeShape_EdgeEast| | | | 
+| EdgeNorth| System.String| North edge| EdgeNorth| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_FindEdgeShape_EdgeNorth| | | | 
+| EdgeShape| System.String| Edge image| EdgeShape| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_FindEdgeShape_EdgeShape| | | | 
+| EdgeSouth| System.String| South edge| EdgeSouth| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_FindEdgeShape_EdgeSouth| | | | 
+| EdgeWest| System.String| West edge| EdgeWest| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_FindEdgeShape_EdgeWest| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Picture| System.Int32| Drawing| Picture| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_FindEdgeShape_Picture| | | | 
+| Remark| System.String| remarks| Remark| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_FindEdgeShape_Remark| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.43 FreeDay : IEntityDescription
+## FreeDay
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_FreeDay_FreeDay | FreeDay | Free days |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.43.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Day| System.DateTime| Day| Day| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_FreeDay_Day| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_FreeDay_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int32| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.44 GlueType : IEntityDescription
+## GlueType
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_GlueType_GlueType | GlueType | Glue type |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.44.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CustomerGlueType| System.String| Glue type according to customer| CustomerGlueType| 1| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_GlueType_CustomerGlueType| | 0 | | 
+| HomagGlueType| System.String| Glue type according to Homag code| HomagGlueType| 10| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_GlueType_HomagGlueType| | 0 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Picture| System.Int32| Drawing| Picture| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_GlueType_Picture| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| False| #| | | False| -1| 0| 0| | False| | FN_GlueType_WorkCenterCode| | # | | 
+## 1.45 IntelliStack : IEntityDescription
+## IntelliStack
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_IntelliStack_IntelliStack | IntelliStack | IntelliStack |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.45.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Code| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_IntelliStack_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| IntelliStackPiles| [ICollection`1\<IntelliStackPile\>](#intellistackpile)| IntelliStackPile| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_IntelliStackPile_IntelliStackPile| | | | 
+| LayerLayout| System.String| LayerLayout| LayerLayout| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStack_LayerLayout| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StackData| System.String| StackData| StackData| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStack_StackData| | | | 
+| StackHeight| System.Decimal| StackHeight| StackHeight| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStack_StackHeight| | | | 
+| StackLength| System.Decimal| StackLength| StackLength| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStack_StackLength| | | | 
+| StackWidth| System.Decimal| StackWidth| StackWidth| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStack_StackWidth| | | | 
+## 1.46 IntelliStackPile : IEntityDescription
+## IntelliStackPile
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_IntelliStackPile_IntelliStackPile | IntelliStackPile | IntelliStackPile |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.46.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Code| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_IntelliStackPile_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| IntelliStack| [IntelliStack](#intellistack)| IntelliStack| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_IntelliStack_IntelliStack| | | | 
+| IntelliStackCode| System.String| IntelliStackCode| IntelliStackCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStackPile_IntelliStackCode| | | | 
+| IntelliStackPileItems| [ICollection`1\<IntelliStackPileItem\>](#intellistackpileitem)| IntelliStackPileItem| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_IntelliStackPileItem_IntelliStackPileItem| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StackHeight| System.Decimal| StackHeight| StackHeight| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStackPile_StackHeight| | | | 
+| StackLength| System.Decimal| StackLength| StackLength| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStackPile_StackLength| | | | 
+| StackWidth| System.Decimal| StackWidth| StackWidth| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStackPile_StackWidth| | | | 
+## 1.47 IntelliStackPileItem : IEntityDescription
+## IntelliStackPileItem
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_IntelliStackPileItem_IntelliStackPileItem | IntelliStackPileItem | IntelliStackPileItem |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.47.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| IntelliStackPile| [IntelliStackPile](#intellistackpile)| IntelliStackPile| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_IntelliStackPile_IntelliStackPile| | | | 
+| IntelliStackPileCode| System.String| IntelliStackPileCode| IntelliStackPileCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStackPileItem_IntelliStackPileCode| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ProductionItem| [ProductionItem](#productionitem)| Parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItem_ProductionItem| | | | 
+| ProductionItemCode| System.String| ProductionItemCode| ProductionItemCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStackPileItem_ProductionItemCode| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_IntelliStackPileItem_ProductionOrderCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| XPosition| System.Decimal| XPosition| XPosition| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStackPileItem_XPosition| | | | 
+| YPosition| System.Decimal| YPosition| YPosition| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStackPileItem_YPosition| | | | 
+| ZPosition| System.Decimal| ZPosition| ZPosition| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStackPileItem_ZPosition| | | | 
+| ZRotate| System.Decimal| ZRotate| ZRotate| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_IntelliStackPileItem_ZRotate| | | | 
+## 1.48 JobHistoryItem : IEntityDescription
+## JobHistoryItem
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_JobHistoryItem_JobHistoryItem | JobHistoryItem | Task history |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True | JobHistory | False | General |  
+### 1.48.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| ID| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_JobHistoryItem_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| FinishDate| System.DateTime| End time| FinishDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_JobHistoryItem_FinishDate| | | | 
+| Instance| System.String| instance| Instance| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_JobHistoryItem_Instance| | | | 
+| JobName| System.String| Name| JobName| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_JobHistoryItem_JobName| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**JobResult**</span>| [JobResult](#jobresult)| Result| JobResult| 0| True| True| False| | | | False| -1| 0| 0| | False| [JobResult](#jobresult) | FN_JobHistoryItem_JobResult| | | | 
+| JobType| System.String| Type| JobType| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_JobHistoryItem_JobType| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Memory| System.Decimal| RAM| Memory| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_JobHistoryItem_Memory| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StartDate| System.DateTime| Name of start time| StartDate| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_JobHistoryItem_StartDate| | | | 
+## 1.49 LabelInfoCncZeroLine : IEntityDescription
+## LabelInfoCncZeroLine
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_LabelInfoCncZeroLine_LabelInfoCncZeroLine | LabelInfoCncZeroLine | Determination of stop position |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.49.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EdgeNoCncZeroLine| System.String| stop edge| EdgeNoCncZeroLine| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_LabelInfoCncZeroLine_EdgeNoCncZeroLine| | 0 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OrientationY| System.Decimal| Rotation around Y axis (counterclockwise)| OrientationY| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_LabelInfoCncZeroLine_OrientationY| | 0 | | 
+| OrientationZ| System.Decimal| Rotation around Z axis (counterclockwise)| OrientationZ| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_LabelInfoCncZeroLine_OrientationZ| | 0 | | 
+| Picture| System.Int32| Drawing| Picture| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_LabelInfoCncZeroLine_Picture| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_LabelInfoCncZeroLine_WorkCenterCode| | | | 
+## 1.50 LGFromOptiKPIResult : IEntityDescription
+## LGFromOptiKPIResult
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_LGFromOptiKPIResult_LGFromOptiKPIResult | LGFromOptiKPIResult | Optimization results |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.50.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ActivationState| System.Int32| Status| ActivationState| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_ActivationState| | | | 
+| AreaCreatedOffcut| System.Decimal| Surface of offcuts created| AreaCreatedOffcut| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_AreaCreatedOffcut| | | | 
+| AreaCreatedScrap| System.Decimal| Surface of waste| AreaCreatedScrap| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_AreaCreatedScrap| | | | 
+| AreaCreatedWaste| System.Decimal| Surface of offcuts and waste| AreaCreatedWaste| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_AreaCreatedWaste| | | | 
+| AreaOptimizedPlusPart| System.Decimal| Surface of optional parts| AreaOptimizedPlusPart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_AreaOptimizedPlusPart| | | | 
+| AreaOptimizedRequiredPart| System.Decimal| Surface of mandatory parts| AreaOptimizedRequiredPart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_AreaOptimizedRequiredPart| | | | 
+| AreaUsedBoard| System.Decimal| Surface of panels| AreaUsedBoard| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_AreaUsedBoard| | | | 
+| AreaUsedOffcut| System.Decimal| Surface of offcuts used| AreaUsedOffcut| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_AreaUsedOffcut| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CuttingCosts| System.Decimal| Cutting costs| CuttingCosts| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_CuttingCosts| | | | 
+| CuttingPathLength| System.Decimal| cutting length| CuttingPathLength| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_CuttingPathLength| | | | 
+| CuttingTime| System.Decimal| Cutting time| CuttingTime| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_CuttingTime| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_OptimizationCode| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_OptimizationMethod| | | | 
+| ProcessDetails| System.String| Processing details| ProcessDetails| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_ProcessDetails| | | | 
+| QuantityCreatedOffcut| System.Int32| Number of offcuts created| QuantityCreatedOffcut| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_QuantityCreatedOffcut| | | | 
+| QuantityPlusPart| System.Int32| Number of optimized optional parts| QuantityPlusPart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_QuantityPlusPart| | | | 
+| QuantityRequiredPart| System.Int32| Number of optimized mandatory parts| QuantityRequiredPart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_QuantityRequiredPart| | | | 
+| QuantityRequiredPartNotOptimized| System.Int32| Number of non-optimized mandatory parts| QuantityRequiredPartNotOptimized| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_QuantityRequiredPartNotOptimized| | | | 
+| QuantityUsedBoard| System.Int32| No. of boards| QuantityUsedBoard| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_QuantityUsedBoard| | | | 
+| QuantityUsedOffcut| System.Int32| Number of offcuts| QuantityUsedOffcut| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_QuantityUsedOffcut| | | | 
+| Rate1Waste| System.Decimal| Ratio of waste + offcuts/panels used| Rate1Waste| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_Rate1Waste| | | | 
+| Rate2Waste| System.Decimal| Ratio of waste/parts used| Rate2Waste| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_Rate2Waste| | | | 
+| RateOffcut| System.Decimal| Ratio of offcuts/panels used| RateOffcut| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_RateOffcut| | | | 
+| RatePlusPart| System.Decimal| Ratio of optional parts/panels used| RatePlusPart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_RatePlusPart| | | | 
+| RateRequiredPart| System.Decimal| Ratio of mandatory parts/panels used| RateRequiredPart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_RateRequiredPart| | | | 
+| RateScrap| System.Decimal| Ratio of waste/panels used| RateScrap| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_RateScrap| | | | 
+| ResultFile1| System.String| Results file 1| ResultFile1| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_ResultFile1| | | | 
+| ResultFile2| System.String| Results file 2| ResultFile2| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_LGFromOptiKPIResult_ResultFile2| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.51 LogItem : IEntityDescription
+## LogItem
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_LogItem_LogItem | LogItem | Log messages |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.51.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ApplicationType| System.String| Application| ApplicationType| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_LogItem_ApplicationType| | | | 
+| Area| System.String| Area| Area| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_LogItem_Area| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Date| System.DateTime| Time| Date| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LogItem_Date| | | | 
+| HostName| System.String| Computer| HostName| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_LogItem_HostName| | | | 
+| Instance| System.String| instance| Instance| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_LogItem_Instance| | | | 
+| Level| System.String| Level| Level| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LogItem_Level| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| LogItemsResources| [ICollection`1\<LogItemsResource\>](#logitemsresource)| Log message resources| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_LogItemsResource_LogItemsResource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.52 LogItemsResource : IEntityDescription
+## LogItemsResource
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_LogItemsResource_LogItemsResource | LogItemsResource | Log message resources |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.52.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Exception| System.String| Exception report| Exception| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_LogItemsResource_Exception| | | | 
+| IsLocalized| System.Boolean| Localized| IsLocalized| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LogItemsResource_IsLocalized| | | | 
+| Language| System.String| Language| Language| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_LogItemsResource_Language| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| LogItem| [LogItem](#logitem)| Log messages| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_LogItem_LogItem| | | | 
+| LogItemSequence| System.Int64| Sequence (log message)| LogItemSequence| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_LogItemsResource_LogItemSequence| | | | 
+| Message| System.String| Message| Message| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LogItemsResource_Message| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+## 1.53 LotNumberSetting : IEntityDescription
+## LotNumberSetting
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_LotNumberSetting_LotNumberSetting | LotNumberSetting | Batch number provider |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.53.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CurrentDay| System.String| current day| CurrentDay| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_LotNumberSetting_CurrentDay| | | | 
+| FullOptimizationNumber| System.String| Complete optimization number| FullOptimizationNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_LotNumberSetting_FullOptimizationNumber| | | | 
+| LastNumber| System.Int32| Highest number| LastNumber| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_LotNumberSetting_LastNumber| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.54 MakroGroove : IEntityDescription
+## MakroGroove
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_MakroGroove_MakroGroove | MakroGroove | Determination of groove macro |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.54.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| GrooveDepth| System.Decimal| grooving depth| GrooveDepth| 3| True| True| False| | | | False| -1| 0| 0| | False| | FN_MakroGroove_GrooveDepth| | | | 
+| GrooveDistance| System.Decimal| Groove distance| GrooveDistance| 5| True| True| False| | | | False| -1| 0| 0| | False| | FN_MakroGroove_GrooveDistance| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**GrooveLayer**</span>| [GrooveLayer](#groovelayer)| Groove position| GrooveLayer| 2| True| True| False| | | | False| -1| 0| 0| | False| [GrooveLayer](#groovelayer) | FN_MakroGroove_GrooveLayer| | | | 
+| GrooveMakro| System.String| Groove macro| GrooveMakro| 10| True| True| False| 0000| | | False| -1| 0| 0| | False| | FN_MakroGroove_GrooveMakro| | 0000 | | 
+| GrooveShape| System.String| Groove pattern| GrooveShape| 6| True| True| False| -| | | False| -1| 0| 0| | False| | FN_MakroGroove_GrooveShape| | - | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**GrooveType**</span>| [GrooveType](#groovetype)| Notch, rabbet| GrooveType| 1| True| True| False| | | | False| -1| 0| 0| | False| [GrooveType](#groovetype) | FN_MakroGroove_GrooveType| | | | 
+| GrooveWidth| System.Decimal| Groove width| GrooveWidth| 4| True| True| False| | | | False| -1| 0| 0| | False| | FN_MakroGroove_GrooveWidth| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Picture| System.Int32| Drawing| Picture| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_MakroGroove_Picture| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| False| #| | | False| -1| 0| 0| | False| | FN_MakroGroove_WorkCenterCode| | # | | 
+## 1.55 MakroSurface : IEntityDescription
+## MakroSurface
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_MakroSurface_MakroSurface | MakroSurface | Determination of surface macro |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.55.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Material| System.String| Material| Material| 1| True| True| False| | | | False| -1| 0| 0| | False| | FN_MakroSurface_Material| | | | 
+| MaterialGroupBottom| System.Int32| Material group bottom| MaterialGroupBottom| 4| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_MakroSurface_MaterialGroupBottom| | 0 | | 
+| MaterialGroupTop| System.Int32| Material group top| MaterialGroupTop| 2| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_MakroSurface_MaterialGroupTop| | 0 | | 
+| MaterialVarianteBottom| System.Int32| Material variant bottom| MaterialVarianteBottom| 5| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_MakroSurface_MaterialVarianteBottom| | 0 | | 
+| MaterialVarianteTop| System.Int32| Material variant top| MaterialVarianteTop| 3| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_MakroSurface_MaterialVarianteTop| | 0 | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Picture| System.Int32| Drawing| Picture| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_MakroSurface_Picture| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| SurfaceMacro| System.String| Surface macro| SurfaceMacro| 10| True| True| False| 0000| | | False| -1| 0| 0| | False| | FN_MakroSurface_SurfaceMacro| | 0000 | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| False| #| | | False| -1| 0| 0| | False| | FN_MakroSurface_WorkCenterCode| | # | | 
+## 1.56 ManualBulk : IEntityDescription
+## ManualBulk
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ManualBulk_ManualBulk | ManualBulk | Manual piles |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.56.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Color| System.String| Color| Color| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ManualBulk_Color| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EndDate| System.DateTime| Processing end| EndDate| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ManualBulk_EndDate| | | | 
+| KeyFigures| System.String| Key figures| KeyFigures| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ManualBulk_KeyFigures| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PlanningNumber| System.String| Pile number| PlanningNumber| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ManualBulk_PlanningNumber| | | | 
+| PlanningState| [PlanningState](#planningstate)| Status| PlanningState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [PlanningState](#planningstate) | FN_ManualBulk_PlanningState| | 0 | | 
+| ProductionOrders| [ICollection`1\<ProductionOrder\>](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| SchedulingMode| [SchedulingMode](#schedulingmode)| Scheduling type| SchedulingMode| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [SchedulingMode](#schedulingmode) | FN_ManualBulk_SchedulingMode| | 0 | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StartDate| System.DateTime| Start date| StartDate| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ManualBulk_StartDate| | | | 
+## 1.57 Material : IEntityDescription
+## Material
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_Material_Material | Material | Material |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.57.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Material| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Material_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MaterialBoards| [ICollection`1\<MaterialBoard\>](#materialboard)| Raw plates| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_MaterialBoard_MaterialBoard| | | | 
+| MaterialGroup| System.String| Material group| MaterialGroup| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Material_MaterialGroup| | | | 
+| MaterialParameterName| System.String| Material parameter name| MaterialParameterName| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Material_MaterialParameterName| | | | 
+| MaterialPictureColor| System.String| Material image/color| MaterialPictureColor| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Material_MaterialPictureColor| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StopLimit| [StopLimit](#stoplimit)| Stop limit| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_StopLimit_StopLimit| | | | 
+| StopLimitCode| System.String| Stop limit| StopLimitCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Material_StopLimitCode| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**Texture**</span>| [Texture](#texture)| Texture| Texture| 0| True| True| False| | | | False| -1| 0| 0| | False| [Texture](#texture) | FN_Material_Texture| | | | 
+## 1.58 MaterialBoard : IEntityDescription
+## MaterialBoard
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_MaterialBoard_MaterialBoard | MaterialBoard | Raw plates |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.58.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| BoardLocation| System.String| Panel location| BoardLocation| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MaterialBoard_BoardLocation| | | | 
+| BoardParameterName| System.String| Panel parameter name| BoardParameterName| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MaterialBoard_BoardParameterName| | | | 
+| Code| System.String| Board code| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_MaterialBoard_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Density| System.Decimal| Bulk density| Density| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MaterialBoard_Density| | | | 
+| Length| System.Decimal| Length| Length| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MaterialBoard_Length| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Material| [Material](#material)| Material| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Material_Material| | | | 
+| MaterialCode| System.String| Material| MaterialCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_MaterialBoard_MaterialCode| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Offcut| [YesNo](#yesno)| Offcut| Offcut| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_MaterialBoard_Offcut| | 0 | | 
+| OptimizationMaterialToOptimize| [ICollection`1\<OptimizationMaterialToOptimize\>](#optimizationmaterialtooptimize)| Materials for optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationMaterialToOptimize_OptimizationMaterialToOptimize| | | | 
+| Quantity| System.Int32| Qty.| Quantity| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MaterialBoard_Quantity| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Supplier| System.String| Supplier| Supplier| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MaterialBoard_Supplier| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MaterialBoard_Thickness| | | | 
+| Width| System.Decimal| Width| Width| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MaterialBoard_Width| | | | 
+## 1.59 McsEdgeInformationToEntityShape : IEntityDescription
+## McsEdgeInformationToEntityShape
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_McsEdgeInformationToEntityShape_McsEdgeInformationToEntityShape | McsEdgeInformationToEntityShape | Edge information at right angle (MCS) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.59.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EdgeAlternateCode| System.String| Edge code| EdgeAlternateCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_McsEdgeInformationToEntityShape_EdgeAlternateCode| | | | 
+| EdgeCode| System.Int32| Edge| EdgeCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_McsEdgeInformationToEntityShape_EdgeCode| | | | 
+| EdgeTrim| System.String| Edge transition| EdgeTrim| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsEdgeInformationToEntityShape_EdgeTrim| | | | 
+| IsThroughFeed| System.Int32| Edge, throughfeed| IsThroughFeed| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_McsEdgeInformationToEntityShape_IsThroughFeed| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PartGeometry| System.String| Geometry| PartGeometry| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_McsEdgeInformationToEntityShape_PartGeometry| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.60 McsStagingCustomerOrder : IEntityDescription
+## McsStagingCustomerOrder
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_McsStagingCustomerOrder_McsStagingCustomerOrder | McsStagingCustomerOrder | Raw data, import, customer orders (MCS) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.60.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Customer order number| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingCustomerOrder_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Customer| System.String| customer| Customer| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingCustomerOrder_Customer| | | | 
+| DeliveryDate| System.String| Delivery date| DeliveryDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingCustomerOrder_DeliveryDate| | | | 
+| Employee| System.String| Administrator| Employee| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingCustomerOrder_Employee| | | | 
+| ErrorMessage| System.String| Production order fault message| ErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingCustomerOrder_ErrorMessage| | | | 
+| ErrorState| [ErrorState](#errorstate)| Production order fault status| ErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_McsStagingCustomerOrder_ErrorState| | 0 | | 
+| ImportErrorMessage| System.String| Error message| ImportErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingCustomerOrder_ImportErrorMessage| | | | 
+| ImportErrorState| [StagingImportErrorState](#stagingimporterrorstate)| Error status| ImportErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [StagingImportErrorState](#stagingimporterrorstate) | FN_McsStagingCustomerOrder_ImportErrorState| | 0 | | 
+| Instance| System.String| instance| Instance| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_McsStagingCustomerOrder_Instance| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| McsStagingProductionOrders| [ICollection`1\<McsStagingProductionOrder\>](#mcsstagingproductionorder)| Raw data, import, jobs (MCS)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_McsStagingProductionOrder_McsStagingProductionOrder| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| RecordType| System.String| Record type| RecordType| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingCustomerOrder_RecordType| | | | 
+| Reference| System.String| Reference text| Reference| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingCustomerOrder_Reference| | | | 
+| Route| System.String| Production path| Route| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingCustomerOrder_Route| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| TradePartner| System.String| trading partner| TradePartner| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingCustomerOrder_TradePartner| | | | 
+| TransferDate| System.DateTime| Date of transfer| Datum der Übertragung| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingCustomerOrder_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| Status der Übertragung| 0| True| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_McsStagingCustomerOrder_TransferState| | 10 | | 
+## 1.61 McsStagingEdge : IEntityDescription
+## McsStagingEdge
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_McsStagingEdge_McsStagingEdge | McsStagingEdge | Raw data, import, edges (MCS) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.61.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Edge| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingEdge_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EdgeId| System.String| Edge ID| EdgeId| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingEdge_EdgeId| | | | 
+| EdgeLength| System.String| Edge length| EdgeLength| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingEdge_EdgeLength| | | | 
+| EdgeTrim| System.String| Edge transition| EdgeTrim| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingEdge_EdgeTrim| | | | 
+| ErrorMessage| System.String| Production order fault message| ErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingEdge_ErrorMessage| | | | 
+| ErrorState| [ErrorState](#errorstate)| Production order fault status| ErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_McsStagingEdge_ErrorState| | 0 | | 
+| ImportRun| System.Int64| Import run| ImportRun| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingEdge_ImportRun| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| McsStagingProductionOrder| [McsStagingProductionOrder](#mcsstagingproductionorder)| Raw data, import, jobs (MCS)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_McsStagingProductionOrder_McsStagingProductionOrder| | | | 
+| McsStagingProductionOrderCode| System.String| Production order number| McsStagingProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingEdge_McsStagingProductionOrderCode| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| RecordType| System.String| Record type| RecordType| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingEdge_RecordType| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| TransferDate| System.DateTime| Date of transfer| Datum der Übertragung| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingEdge_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| Status der Übertragung| 0| True| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_McsStagingEdge_TransferState| | 10 | | 
+## 1.62 McsStagingProductionItem : IEntityDescription
+## McsStagingProductionItem
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_McsStagingProductionItem_McsStagingProductionItem | McsStagingProductionItem | Raw data, import, parts (MCS) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.62.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Part number| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionItem_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| DesiredQuantity| System.String| Planned quantity| DesiredQuantity| 0| False| True| False| 1| | | False| -1| 0| 0| | False| | FN_McsStagingProductionItem_DesiredQuantity| | 1 | | 
+| ErrorMessage| System.String| Production order fault message| ErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionItem_ErrorMessage| | | | 
+| ErrorState| [ErrorState](#errorstate)| Production order fault status| ErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_McsStagingProductionItem_ErrorState| | 0 | | 
+| ImportRun| System.Int64| Import run| ImportRun| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionItem_ImportRun| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| McsStagingProductionOrder| [McsStagingProductionOrder](#mcsstagingproductionorder)| Raw data, import, jobs (MCS)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_McsStagingProductionOrder_McsStagingProductionOrder| | | | 
+| McsStagingProductionOrderCode| System.String| Production order number| McsStagingProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionItem_McsStagingProductionOrderCode| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| RecordType| System.String| Record type| RecordType| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionItem_RecordType| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| TransferDate| System.DateTime| Date of transfer| Datum der Übertragung| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionItem_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| Status der Übertragung| 0| True| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_McsStagingProductionItem_TransferState| | 10 | | 
+## 1.63 McsStagingProductionOrder : IEntityDescription
+## McsStagingProductionOrder
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_McsStagingProductionOrder_McsStagingProductionOrder | McsStagingProductionOrder | Raw data, import, jobs (MCS) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.63.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ArticleDescription| System.String| Item description| ArticleDescription| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_ArticleDescription| | | | 
+| ArticleNumber| System.String| Item designation| ArticleNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_ArticleNumber| | | | 
+| BracketSuffix| System.String| Suffix for bracket| BracketSuffix| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_BracketSuffix| | | | 
+| Code| System.String| Production order number| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CustomerOrderPosition| System.String| Customer order item| CustomerOrderPosition| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_CustomerOrderPosition| | | | 
+| CuttingLength| System.String| Cut length| CuttingLength| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_CuttingLength| | | | 
+| CuttingWidth| System.String| Cut width| CuttingWidth| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_CuttingWidth| | | | 
+| DesiredEndDate| System.String| Planned end date| DesiredEndDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_DesiredEndDate| | | | 
+| DesiredStartDate| System.String| Planned start date| DesiredStartDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_DesiredStartDate| | | | 
+| DesiredTargetQuantity| System.String| Planned quantity| DesiredTargetQuantity| 0| False| True| False| 1| | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_DesiredTargetQuantity| | 1 | | 
+| ErrorMessage| System.String| Production order fault message| ErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_ErrorMessage| | | | 
+| ErrorState| [ErrorState](#errorstate)| Production order fault status| ErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_McsStagingProductionOrder_ErrorState| | 0 | | 
+| ImportErrorMessage| System.String| Error message| ImportErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_ImportErrorMessage| | | | 
+| ImportErrorState| [StagingImportErrorState](#stagingimporterrorstate)| Error status| ImportErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [StagingImportErrorState](#stagingimporterrorstate) | FN_McsStagingProductionOrder_ImportErrorState| | 0 | | 
+| ImportFilename| System.String| Name of the imported file| ImportFilename| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_ImportFilename| | | | 
+| ImportRun| System.Int64| Import run| ImportRun| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_ImportRun| | | | 
+| Instance| System.String| instance| Instance| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_Instance| | | | 
+| Length| System.String| Length| Length| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_Length| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Material| System.String| Material| Material| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_Material| | | | 
+| MaterialCategory| System.String| Material category| MaterialCategory| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_MaterialCategory| | | | 
+| McsOrderType| System.String| MCS job type| McsOrderType| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_McsOrderType| | | | 
+| McsStagingCustomerOrder| [McsStagingCustomerOrder](#mcsstagingcustomerorder)| Raw data, import, customer orders (MCS)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_McsStagingCustomerOrder_McsStagingCustomerOrder| | | | 
+| McsStagingCustomerOrderCode| System.String| End customer number| McsStagingCustomerOrderCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_McsStagingCustomerOrderCode| | | | 
+| McsStagingEdges| [ICollection`1\<McsStagingEdge\>](#mcsstagingedge)| Raw data, import, edges (MCS)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_McsStagingEdge_McsStagingEdge| | | | 
+| McsStagingProductionItems| [ICollection`1\<McsStagingProductionItem\>](#mcsstagingproductionitem)| Raw data, import, parts (MCS)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_McsStagingProductionItem_McsStagingProductionItem| | | | 
+| McsStagingProductionOrdersResources| [ICollection`1\<McsStagingProductionOrdersResource\>](#mcsstagingproductionordersresource)| Raw data, import, resources (MCS)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_McsStagingProductionOrdersResource_McsStagingProductionOrdersResource| | | | 
+| McsStagingProductionSteps| [ICollection`1\<McsStagingProductionStep\>](#mcsstagingproductionstep)| Raw data, import, process steps (MCS)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_McsStagingProductionStep_McsStagingProductionStep| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OriginalProductionItemCode| System.String| Original part number| OriginalProductionItemCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_OriginalProductionItemCode| | | | 
+| OriginalProductionOrderCode| System.String| Original production order number| OriginalProductionOrderCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_OriginalProductionOrderCode| | | | 
+| ParentProductionOrderNumber| System.String| High-level production order| ParentProductionOrderNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_ParentProductionOrderNumber| | | | 
+| PartGeometry| System.String| Geometry| PartGeometry| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_PartGeometry| | | | 
+| RecordType| System.String| Record type| RecordType| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_RecordType| | | | 
+| ReproductionType| System.Int32| Post-production type| ReproductionType| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_ReproductionType| | 0 | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Thickness| System.String| thickness| Thickness| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_Thickness| | | | 
+| TopProductionOrderNumber| System.String| Leading production order| TopProductionOrderNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_TopProductionOrderNumber| | | | 
+| TransferDate| System.DateTime| Date of transfer| Datum der Übertragung| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| Status der Übertragung| 0| True| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_McsStagingProductionOrder_TransferState| | 10 | | 
+| Width| System.String| Width| Width| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrder_Width| | | | 
+## 1.64 McsStagingProductionOrdersResource : IEntityDescription
+## McsStagingProductionOrdersResource
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_McsStagingProductionOrdersResource_McsStagingProductionOrdersResource | McsStagingProductionOrdersResource | Raw data, import, resources (MCS) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.64.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| ID| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrdersResource_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrdersResource_Description| | | | 
+| ErrorMessage| System.String| Production order fault message| ErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrdersResource_ErrorMessage| | | | 
+| ErrorState| [ErrorState](#errorstate)| Production order fault status| ErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_McsStagingProductionOrdersResource_ErrorState| | 0 | | 
+| ImportRun| System.Int64| Import run| ImportRun| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrdersResource_ImportRun| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| McsStagingProductionOrder| [McsStagingProductionOrder](#mcsstagingproductionorder)| Raw data, import, jobs (MCS)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_McsStagingProductionOrder_McsStagingProductionOrder| | | | 
+| McsStagingProductionOrderCode| System.String| Production order number| McsStagingProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrdersResource_McsStagingProductionOrderCode| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Quantity| System.String| Qty.| Quantity| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrdersResource_Quantity| | | | 
+| RecordType| System.String| Record type| RecordType| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrdersResource_RecordType| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| TransferDate| System.DateTime| Date of transfer| TransferDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionOrdersResource_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| TransferState| 0| True| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_McsStagingProductionOrdersResource_TransferState| | 10 | | 
+## 1.65 McsStagingProductionStep : IEntityDescription
+## McsStagingProductionStep
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_McsStagingProductionStep_McsStagingProductionStep | McsStagingProductionStep | Raw data, import, process steps (MCS) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.65.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| operation| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| DesiredEndDateProcessing| System.String| Desired end of processing| DesiredEndDateProcessing| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_DesiredEndDateProcessing| | | | 
+| DesiredProcessingTime| System.String| Planned processing time| DesiredProcessingTime| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_DesiredProcessingTime| | | | 
+| DesiredSetupTime| System.String| Planned setup time| DesiredSetupTime| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_DesiredSetupTime| | | | 
+| DesiredStartDateProcessing| System.String| Desired start of processing| DesiredStartDateProcessing| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_DesiredStartDateProcessing| | | | 
+| ErrorMessage| System.String| Production order fault message| ErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_ErrorMessage| | | | 
+| ErrorState| [ErrorState](#errorstate)| Production order fault status| ErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_McsStagingProductionStep_ErrorState| | 0 | | 
+| ImportErrorMessage| System.String| Error message| ImportErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_ImportErrorMessage| | | | 
+| ImportErrorState| [StagingImportErrorState](#stagingimporterrorstate)| Error status| ImportErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [StagingImportErrorState](#stagingimporterrorstate) | FN_McsStagingProductionStep_ImportErrorState| | 0 | | 
+| ImportRun| System.Int64| Import run| ImportRun| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_ImportRun| | | | 
+| Instance| System.String| instance| Instance| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_Instance| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| McsStagingProductionOrder| [McsStagingProductionOrder](#mcsstagingproductionorder)| Raw data, import, jobs (MCS)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_McsStagingProductionOrder_McsStagingProductionOrder| | | | 
+| McsStagingProductionOrderCode| System.String| Production order number| McsStagingProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_McsStagingProductionOrderCode| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Order| System.String| Order| Order| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_Order| | | | 
+| Quantity| System.String| Qty.| Quantity| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_Quantity| | | | 
+| RecordType| System.String| Record type| RecordType| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_RecordType| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| TransferDate| System.DateTime| Date of transfer| Datum der Übertragung| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| Status der Übertragung| 0| True| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_McsStagingProductionStep_TransferState| | 10 | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_McsStagingProductionStep_WorkCenterCode| | | | 
+## 1.66 Module : IEntityDescription
+## Module
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_Module_Module | Module | Module |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.66.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Name| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Module_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Module_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Securables| [ICollection`1\<Securable\>](#securable)| rights| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Securable_Securable| | | | 
+| Sequence| System.Int32| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.67 MovingAction : IEntityDescription
+## MovingAction
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_MovingAction_MovingAction | MovingAction | TransportActions |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.67.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| <span style="color: #e0b21b" title="Default value not defined!">**ActionMode**</span>| [MovingActionMode](#movingactionmode)| Action| ActionMode| 0| True| True| False| | | | False| -1| 0| 0| | False| [MovingActionMode](#movingactionmode) | FN_MovingAction_ActionMode| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| MovementNumber| System.Int64| Transport number| MovementNumber| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingAction_MovementNumber| | | | 
+| PositionNumberFinish| System.String| Target position| PositionNumberFinish| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingAction_PositionNumberFinish| | | | 
+| PositionNumberStart| System.String| Start position| PositionNumberStart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingAction_PositionNumberStart| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StackCode| System.String| STACK NUMBER| StackCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MovingAction_StackCode| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**TransferState**</span>| [MovingActionTransferstate](#movingactiontransferstate)| Transfer status| TransferState| 0| True| True| False| | | | False| -1| 0| 0| | False| [MovingActionTransferstate](#movingactiontransferstate) | FN_MovingAction_TransferState| | | | 
+## 1.68 MovingConnection : IEntityDescription
+## MovingConnection
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_MovingConnection_MovingConnection | MovingConnection | TransportConnections |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.68.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MovingConnection_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| MovingSystem| System.Int32| Transport system| MovingSystem| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingConnection_MovingSystem| | | | 
+| PositionNumberFinish| System.String| Target position| PositionNumberFinish| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_MovingConnection_PositionNumberFinish| | | | 
+| PositionNumberStart| System.String| Start position| PositionNumberStart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_MovingConnection_PositionNumberStart| | | | 
+## 1.69 MovingManualRequest : IEntityDescription
+## MovingManualRequest
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_MovingManualRequest_MovingManualRequest | MovingManualRequest | Manual transport request |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.69.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**CurrentState**</span>| [MovementCurrentState](#movementcurrentstate)| Current transport status| CurrentState| 0| True| True| False| | | | False| -1| 0| 0| | False| [MovementCurrentState](#movementcurrentstate) | FN_MovingManualRequest_CurrentState| | | | 
+| ErrorState| System.Int32| Error status| ErrorState| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingManualRequest_ErrorState| | | | 
+| ErrorString| System.String| Error message| ErrorString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MovingManualRequest_ErrorString| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| MovementNumber| System.Int64| Transport number| MovementNumber| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingManualRequest_MovementNumber| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**MovementState**</span>| [MovementState](#movementstate)| General transport status| MovementState| 0| True| True| False| | | | False| -1| 0| 0| | False| [MovementState](#movementstate) | FN_MovingManualRequest_MovementState| | | | 
+| PositionNumberFinish| System.String| Target position| PositionNumberFinish| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingManualRequest_PositionNumberFinish| | | | 
+| PositionNumberStart| System.String| Start position| PositionNumberStart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingManualRequest_PositionNumberStart| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StackCode| System.String| STACK NUMBER| StackCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MovingManualRequest_StackCode| | | | 
+## 1.70 MovingPosition : IEntityDescription
+## MovingPosition
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_MovingPosition_MovingPosition | MovingPosition | Transport positions |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.70.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| BufferNumber| System.String| Buffer number| BufferNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MovingPosition_BufferNumber| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**CurrentContent**</span>| [CurrentContent](#currentcontent)| Current state| CurrentContent| 0| True| True| False| | | | False| -1| 0| 0| | False| [CurrentContent](#currentcontent) | FN_MovingPosition_CurrentContent| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MovingPosition_Description| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsBuffer**</span>| [YesNo](#yesno)| Is buffer position| IsBuffer| 0| True| True| False| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_MovingPosition_IsBuffer| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PositionArea| System.String| Position range| PositionArea| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingPosition_PositionArea| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**PositionHandling**</span>| [PositionHandling](#positionhandling)| Definition| PositionHandling| 0| True| True| False| | | | False| -1| 0| 0| | False| [PositionHandling](#positionhandling) | FN_MovingPosition_PositionHandling| | | | 
+| PositionNumber| System.String| Position| PositionNumber| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_MovingPosition_PositionNumber| | | | 
+| SpecialHandling| System.Int32| Special treatment| SpecialHandling| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingPosition_SpecialHandling| | | | 
+| StackCode| System.String| STACK NUMBER| StackCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MovingPosition_StackCode| | | | 
+## 1.71 MovingRequest : IEntityDescription
+## MovingRequest
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_MovingRequest_MovingRequest | MovingRequest | Transport requests |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.71.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| <span style="color: #e0b21b" title="Default value not defined!">**ActionRequest**</span>| [ActionRequest](#actionrequest)| TransportAction| ActionRequest| 0| True| True| False| | | | False| -1| 0| 0| | False| [ActionRequest](#actionrequest) | FN_MovingRequest_ActionRequest| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**CurrentState**</span>| [MovementCurrentState](#movementcurrentstate)| Current transport status| CurrentState| 0| True| True| False| | | | False| -1| 0| 0| | False| [MovementCurrentState](#movementcurrentstate) | FN_MovingRequest_CurrentState| | | | 
+| ErrorState| System.Int32| Error status| ErrorState| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingRequest_ErrorState| | | | 
+| ErrorString| System.String| Error message| ErrorString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MovingRequest_ErrorString| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| MovementNumber| System.Int64| Transport number| MovementNumber| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingRequest_MovementNumber| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**MovementState**</span>| [MovementState](#movementstate)| General transport status| MovementState| 0| True| True| False| | | | False| -1| 0| 0| | False| [MovementState](#movementstate) | FN_MovingRequest_MovementState| | | | 
+| PositionNumber| System.String| Item number| PositionNumber| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingRequest_PositionNumber| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StackCode| System.String| STACK NUMBER| StackCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MovingRequest_StackCode| | | | 
+## 1.72 MovingUnplannedRequest : IEntityDescription
+## MovingUnplannedRequest
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_MovingUnplannedRequest_MovingUnplannedRequest | MovingUnplannedRequest | Unplanned transport requests |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.72.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**CurrentState**</span>| [MovementCurrentState](#movementcurrentstate)| Current transport status| CurrentState| 0| True| True| False| | | | False| -1| 0| 0| | False| [MovementCurrentState](#movementcurrentstate) | FN_MovingUnplannedRequest_CurrentState| | | | 
+| ErrorState| System.Int32| Error status| ErrorState| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingUnplannedRequest_ErrorState| | | | 
+| ErrorString| System.String| Error message| ErrorString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MovingUnplannedRequest_ErrorString| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| MovementNumber| System.Int64| Transport number| MovementNumber| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingUnplannedRequest_MovementNumber| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**MovementState**</span>| [MovementState](#movementstate)| General transport status| MovementState| 0| True| True| False| | | | False| -1| 0| 0| | False| [MovementState](#movementstate) | FN_MovingUnplannedRequest_MovementState| | | | 
+| PositionNumberFinish| System.String| Target position| PositionNumberFinish| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingUnplannedRequest_PositionNumberFinish| | | | 
+| PositionNumberStart| System.String| Start position| PositionNumberStart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_MovingUnplannedRequest_PositionNumberStart| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StackCode| System.String| STACK NUMBER| StackCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_MovingUnplannedRequest_StackCode| | | | 
+## 1.73 Optimization : IEntityDescription
+## Optimization
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_Optimization_Optimization | Optimization | Optimization |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | True | General |  
+### 1.73.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Optimization run| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Optimization_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Optimization_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Method| System.String| Optimization strategy| Method| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Optimization_Method| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OptimizationBoards| [ICollection`1\<OptimizationBoard\>](#optimizationboard)| plates| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationBoard_OptimizationBoard| | | | 
+| OptimizationCuttingPlans| [ICollection`1\<OptimizationCuttingPlan\>](#optimizationcuttingplan)| Cutting plan| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationCuttingPlan_OptimizationCuttingPlan| | | | 
+| OptimizationKPIResult| [OptimizationKPIResult](#optimizationkpiresult)| Optimization result, totals values| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationKPIResult_OptimizationKPIResult| | | | 
+| OptimizationMaterialToOptimize| [ICollection`1\<OptimizationMaterialToOptimize\>](#optimizationmaterialtooptimize)| Materials for optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationMaterialToOptimize_OptimizationMaterialToOptimize| | | | 
+| OptimizationParameters| System.String| Optimization parameters| OptimizationParameters| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Optimization_OptimizationParameters| | | | 
+| OptimizationParts| [ICollection`1\<OptimizationPart\>](#optimizationpart)| Optimised parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationPart_OptimizationPart| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**OptimizationState**</span>| [OptimizationDataState](#optimizationdatastate)| Optimization status| OptimizationState| 0| True| True| False| | | | False| -1| 0| 0| | False| [OptimizationDataState](#optimizationdatastate) | FN_Optimization_OptimizationState| | | | 
+| OptimizationSystem| System.String| Optimization system| OptimizationSystem| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Optimization_OptimizationSystem| | | | 
+| ProcessUser| System.String| Optimization user| ProcessUser| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Optimization_ProcessUser| | | | 
+| ProductionItems| [ICollection`1\<ProductionItem\>](#productionitem)| Parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItem_ProductionItem| | | | 
+| ProductionItemsToOptimize| [ICollection`1\<ProductionItemToOptimize\>](#productionitemtooptimize)| Parts for optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItemToOptimize_ProductionItemToOptimize| | | | 
+| SawParameters| System.String| Saw parameters| SawParameters| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Optimization_SawParameters| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| State| System.Int32| Status| State| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Optimization_State| | | | 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Optimization_WorkCenterCode| | | | 
+## 1.74 OptimizationBoard : IEntityDescription
+## OptimizationBoard
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationBoard_OptimizationBoard | OptimizationBoard | plates |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.74.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Storage ID| Code| 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_OptimizationBoard_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Length| System.Decimal| Length| Length| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationBoard_Length| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Material| System.String| Material| Material| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationBoard_Material| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Offcut| System.Int32| Offcut| Offcut| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationBoard_Offcut| | | | 
+| Optimization| [Optimization](#optimization)| Optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Optimization_Optimization| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationBoard_OptimizationCode| | | | 
+| OptimizationCuttingPlan| [OptimizationCuttingPlan](#optimizationcuttingplan)| Cutting plan| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationCuttingPlan_OptimizationCuttingPlan| | | | 
+| OptimizationCuttingPlanCode| System.String| Cutting pattern number| OptimizationCuttingPlanCode| 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_OptimizationBoard_OptimizationCuttingPlanCode| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationBoard_OptimizationMethod| | | | 
+| Quantity| System.Int32| Qty.| Quantity| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationBoard_Quantity| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StartQuantity| System.Int32| Start quantity| StartQuantity| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationBoard_StartQuantity| | | | 
+| Texture| System.Int32| Structure| Texture| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationBoard_Texture| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationBoard_Thickness| | | | 
+| Width| System.Decimal| Width| Width| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationBoard_Width| | | | 
+## 1.75 OptimizationCuttingPlan : IEntityDescription
+## OptimizationCuttingPlan
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationCuttingPlan_OptimizationCuttingPlan | OptimizationCuttingPlan | Cutting plan |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.75.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| BoardSize| System.Decimal| Board size| BoardSize| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_BoardSize| | | | 
+| Code| System.String| Cutting plan| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**CuttingPlanState**</span>| [CuttingPlanState](#cuttingplanstate)| Status| CuttingPlanState| 0| True| True| False| | | | False| -1| 0| 0| | False| [CuttingPlanState](#cuttingplanstate) | FN_OptimizationCuttingPlan_CuttingPlanState| | | | 
+| CycleLayer| System.Int32| Position in the cycle| CycleLayer| 0| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_CycleLayer| | 1 | | 
+| CycleNumber| System.Int32| Throughfeed number| CycleNumber| 0| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_CycleNumber| | 1 | | 
+| EstimatedCuttingTime| System.Int32| Predicted cutting time| EstimatedCuttingTime| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_EstimatedCuttingTime| | | | 
+| LateralCuts| System.Int32| Number of cross-sections| LateralCuts| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_LateralCuts| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| LongitudinalCuts| System.Int32| Number of longitudinal cuts| LongitudinalCuts| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_LongitudinalCuts| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| NcData| System.Byte[]| Cutting pattern data:| NcData| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_NcData| | | | 
+| Optimization| [Optimization](#optimization)| Optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Optimization_Optimization| | | | 
+| OptimizationBoardCode| System.String| Board| OptimizationBoardCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_OptimizationBoardCode| | | | 
+| OptimizationBoards| [ICollection`1\<OptimizationBoard\>](#optimizationboard)| plates| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationBoard_OptimizationBoard| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_OptimizationCode| | | | 
+| OptimizationCuttingPlansBinary| [OptimizationCuttingPlansBinary](#optimizationcuttingplansbinary)| Cutting pattern extensions| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationCuttingPlansBinary_OptimizationCuttingPlansBinary| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_OptimizationMethod| | | | 
+| OptimizationParts| [ICollection`1\<OptimizationPart\>](#optimizationpart)| Optimised parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationPart_OptimizationPart| | | | 
+| Order| System.Int32| Order| Order| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_Order| | | | 
+| PartSize| System.Decimal| Part size| PartSize| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_PartSize| | | | 
+| PatternPicture| System.Byte[]| Cutting pattern image| PatternPicture| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_PatternPicture| | | | 
+| PatternPictureType| System.String| Image type| PatternPictureType| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_PatternPictureType| | | | 
+| QuantityBoard| System.Int32| No. of boards| QuantityBoard| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_QuantityBoard| | | | 
+| QuantityPart| System.Int32| Quantity of parts| QuantityPart| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_QuantityPart| | | | 
+| QuantityRest| System.Int32| Number of offcuts| QuantityRest| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_QuantityRest| | | | 
+| RestSize| System.Decimal| Offcuts size| RestSize| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_RestSize| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| WasteWithOffcut| System.Decimal| Scrap with offcuts| WasteWithOffcut| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_WasteWithOffcut| | | | 
+| WasteWithoutOffcut| System.Decimal| Scrap without offcuts| WasteWithoutOffcut| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlan_WasteWithoutOffcut| | | | 
+## 1.76 OptimizationCuttingPlansBinary : IEntityDescription
+## OptimizationCuttingPlansBinary
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationCuttingPlansBinary_OptimizationCuttingPlansBinary | OptimizationCuttingPlansBinary | Cutting pattern extensions |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.76.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| LabelNestingFile| System.String| Label file| LabelNestingFile| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlansBinary_LabelNestingFile| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlansBinary_OptimizationCode| | | | 
+| OptimizationCuttingPlan| [OptimizationCuttingPlan](#optimizationcuttingplan)| Cutting plan| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationCuttingPlan_OptimizationCuttingPlan| | | | 
+| OptimizationCuttingPlanCode| System.String| Cutting plan| OptimizationCuttingPlanCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlansBinary_OptimizationCuttingPlanCode| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlansBinary_OptimizationMethod| | | | 
+| PatternPicture| System.Byte[]| Cutting pattern image| PatternPicture| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationCuttingPlansBinary_PatternPicture| | | | 
+| PatternPictureType| [PatternPictureType](#patternpicturetype)| Image type| PatternPictureType| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [PatternPictureType](#patternpicturetype) | FN_OptimizationCuttingPlansBinary_PatternPictureType| | 0 | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.77 OptimizationKPIResult : IEntityDescription
+## OptimizationKPIResult
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationKPIResult_OptimizationKPIResult | OptimizationKPIResult | Optimization result, totals values |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.77.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AreaCreatedOffcut| System.Decimal| Surface of offcuts created| AreaCreatedOffcut| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_AreaCreatedOffcut| | | | 
+| AreaCreatedScrap| System.Decimal| Surface of waste| AreaCreatedScrap| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_AreaCreatedScrap| | | | 
+| AreaCreatedWaste| System.Decimal| Surface of offcuts and waste| AreaCreatedWaste| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_AreaCreatedWaste| | | | 
+| AreaOptimizedPlusPart| System.Decimal| Surface of optional parts| AreaOptimizedPlusPart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_AreaOptimizedPlusPart| | | | 
+| AreaOptimizedRequiredPart| System.Decimal| Surface of mandatory parts| AreaOptimizedRequiredPart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_AreaOptimizedRequiredPart| | | | 
+| AreaUsedBoard| System.Decimal| Surface of panels| AreaUsedBoard| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_AreaUsedBoard| | | | 
+| AreaUsedOffcut| System.Decimal| Surface of offcuts used| AreaUsedOffcut| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_AreaUsedOffcut| | | | 
+| Code| System.String| Optimization number| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CuttingCosts| System.Decimal| Cutting costs| CuttingCosts| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_CuttingCosts| | | | 
+| CuttingPathLength| System.Decimal| cutting length| CuttingPathLength| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_CuttingPathLength| | | | 
+| CuttingTime| System.Decimal| Cutting time| CuttingTime| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_CuttingTime| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Method| System.String| Optimization strategy| Method| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_Method| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Optimization| [Optimization](#optimization)| Optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Optimization_Optimization| | | | 
+| OptimizationKPIResultsAdditionals| [ICollection`1\<OptimizationKPIResultsAdditional\>](#optimizationkpiresultsadditional)| Optimization result, totals values, extensions| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationKPIResultsAdditional_OptimizationKPIResultsAdditional| | | | 
+| QuantityCreatedOffcut| System.Int32| Number of offcuts created| QuantityCreatedOffcut| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_QuantityCreatedOffcut| | | | 
+| QuantityPlusPart| System.Int32| Number of optimized optional parts| QuantityPlusPart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_QuantityPlusPart| | | | 
+| QuantityRequiredPart| System.Int32| Number of optimized mandatory parts| QuantityRequiredPart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_QuantityRequiredPart| | | | 
+| QuantityRequiredPartNotOptimized| System.Int32| Number of non-optimized mandatory parts| QuantityRequiredPartNotOptimized| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_QuantityRequiredPartNotOptimized| | | | 
+| QuantityUsedBoard| System.Int32| No. of boards| QuantityUsedBoard| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_QuantityUsedBoard| | | | 
+| QuantityUsedOffcut| System.Int32| Number of offcuts| QuantityUsedOffcut| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_QuantityUsedOffcut| | | | 
+| Rate1Waste| System.Decimal| Ratio of waste + offcuts/panels used| Rate1Waste| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_Rate1Waste| | | | 
+| Rate2Waste| System.Decimal| Ratio of waste/parts used| Rate2Waste| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_Rate2Waste| | | | 
+| RateOffcut| System.Decimal| Ratio of offcuts/panels used| RateOffcut| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_RateOffcut| | | | 
+| RatePlusPart| System.Decimal| Ratio of optional parts/panels used| RatePlusPart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_RatePlusPart| | | | 
+| RateRequiredPart| System.Decimal| Ratio of mandatory parts/panels used| RateRequiredPart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_RateRequiredPart| | | | 
+| RateScrap| System.Decimal| Ratio of waste/panels used| RateScrap| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResult_RateScrap| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.78 OptimizationKPIResultsAdditional : IEntityDescription
+## OptimizationKPIResultsAdditional
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationKPIResultsAdditional_OptimizationKPIResultsAdditional | OptimizationKPIResultsAdditional | Optimization result, totals values, extensions |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.78.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**KPIResultType**</span>| [KPIResultType](#kpiresulttype)| Optimization result type| KPIResultType| 0| True| True| False| | | | False| -1| 0| 0| | False| [KPIResultType](#kpiresulttype) | FN_OptimizationKPIResultsAdditional_KPIResultType| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OptimizationKPIResult| [OptimizationKPIResult](#optimizationkpiresult)| Optimization result, totals values| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationKPIResult_OptimizationKPIResult| | | | 
+| OptimizationKPIResultCode| System.String| Optimization number| OptimizationKPIResultCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResultsAdditional_OptimizationKPIResultCode| | | | 
+| OptimizationKPIResultMethod| System.String| Optimization strategy| OptimizationKPIResultMethod| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResultsAdditional_OptimizationKPIResultMethod| | | | 
+| ResultData| System.String| Results data| ResultData| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResultsAdditional_ResultData| | | | 
+| ResultDataBinary| System.Byte[]| Binary results data| ResultDataBinary| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationKPIResultsAdditional_ResultDataBinary| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.79 OptimizationMaterialToOptimize : IEntityDescription
+## OptimizationMaterialToOptimize
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationMaterialToOptimize_OptimizationMaterialToOptimize | OptimizationMaterialToOptimize | Materials for optimization |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True | OptimizationMaterialToOptimize | False | General |  
+### 1.79.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| ID| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationMaterialToOptimize_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MaterialBoard| [MaterialBoard](#materialboard)| Raw plates| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_MaterialBoard_MaterialBoard| | | | 
+| MaterialBoardCode| System.String| Raw plate| MaterialBoardCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationMaterialToOptimize_MaterialBoardCode| | | | 
+| MaterialCode| System.String| Material| MaterialCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationMaterialToOptimize_MaterialCode| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Optimization| [Optimization](#optimization)| Optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Optimization_Optimization| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationMaterialToOptimize_OptimizationCode| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationMaterialToOptimize_OptimizationMethod| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.80 OptimizationMethod : IEntityDescription
+## OptimizationMethod
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationMethod_OptimizationMethod | OptimizationMethod | Optimization methods |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.80.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Optimization strategy| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationMethod_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationMethod_Description| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsActive**</span>| [YesNo](#yesno)| is active| IsActive| 0| True| True| False| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_OptimizationMethod_IsActive| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OptimizationParameters| System.String| Optimization parameters| OptimizationParameters| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationMethod_OptimizationParameters| | | | 
+| SawParameters| System.String| Saw parameters| SawParameters| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationMethod_SawParameters| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationMethod_WorkCenterCode| | | | 
+## 1.81 OptimizationPart : IEntityDescription
+## OptimizationPart
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationPart_OptimizationPart | OptimizationPart | Optimised parts |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.81.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| ID| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationPart_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CuttingLength| System.Decimal| Cut length| CuttingLength| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPart_CuttingLength| | | | 
+| CuttingThickness| System.Decimal| Cutting strength| CuttingThickness| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPart_CuttingThickness| | | | 
+| CuttingWidth| System.Decimal| Cut width| CuttingWidth| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPart_CuttingWidth| | | | 
+| IsVirtual| System.Boolean| Virtual component| IsVirtual| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPart_IsVirtual| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Offcut| System.Int32| Offcut| Offcut| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPart_Offcut| | | | 
+| Optimization| [Optimization](#optimization)| Optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Optimization_Optimization| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationPart_OptimizationCode| | | | 
+| OptimizationCuttingPlan| [OptimizationCuttingPlan](#optimizationcuttingplan)| Cutting plan| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationCuttingPlan_OptimizationCuttingPlan| | | | 
+| OptimizationCuttingPlanCode| System.String| Cutting plan| OptimizationCuttingPlanCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationPart_OptimizationCuttingPlanCode| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationPart_OptimizationMethod| | | | 
+| OptionalPart| System.Int32| facultative part| OptionalPart| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPart_OptionalPart| | | | 
+| ProductionOrder| [ProductionOrder](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPart_ProductionOrderCode| | | | 
+| Quantity| System.Int32| Qty.| Quantity| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPart_Quantity| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.82 OptimizationPresetting : IEntityDescription
+## OptimizationPresetting
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationPresetting_OptimizationPresetting | OptimizationPresetting | Specification, header data, optimization |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.82.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Optimization number| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationPresetting_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| ErrorMessage| System.String| Error text| Fehler externe Optimierung| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresetting_ErrorMessage| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ErrorState**</span>| [ErrorStateOptimizationPresetting](#errorstateoptimizationpresetting)| Error status| Fehlerstatus externe Optimierung| 0| True| True| False| | | | False| -1| 0| 0| | False| [ErrorStateOptimizationPresetting](#errorstateoptimizationpresetting) | FN_OptimizationPresetting_ErrorState| | | | 
+| FirstDateMES| System.DateTime| CMES start date| FirstDateMES| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresetting_FirstDateMES| | | | 
+| FirstDateOpti| System.DateTime| Start date for external optimization| FirstDateOpti| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresetting_FirstDateOpti| | | | 
+| LastDateMES| System.DateTime| CMES end date| LastDateMES| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresetting_LastDateMES| | | | 
+| LastDateOpti| System.DateTime| End date for external optimization| LastDateOpti| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresetting_LastDateOpti| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OptimizationPresettingBoards| [ICollection`1\<OptimizationPresettingBoard\>](#optimizationpresettingboard)| Panel (boards) specification| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationPresettingBoard_OptimizationPresettingBoard| | | | 
+| OptimizationPresettingParts| [ICollection`1\<OptimizationPresettingPart\>](#optimizationpresettingpart)| Parts specification| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationPresettingPart_OptimizationPresettingPart| | | | 
+| OptimizationSystem| System.String| Optimization system| OptimizationSystem| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresetting_OptimizationSystem| | | | 
+| ProcessUser| System.String| User| ProcessUser| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresetting_ProcessUser| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**TransferState**</span>| [TransferstateOptimizationPresetting](#transferstateoptimizationpresetting)| Transfer status| TransferState| 0| True| False| False| | | | False| -1| 0| 0| | False| [TransferstateOptimizationPresetting](#transferstateoptimizationpresetting) | FN_OptimizationPresetting_TransferState| | | | 
+| UsedOptimizationConfiguration| System.String| Optimization configuration used| UsedOptimizationConfiguration| 0| True| True| False| Undefined| | | False| -1| 0| 0| | False| | FN_OptimizationPresetting_UsedOptimizationConfiguration| | Undefined | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresetting_WorkCenterCode| | | | 
+## 1.83 OptimizationPresettingBoard : IEntityDescription
+## OptimizationPresettingBoard
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationPresettingBoard_OptimizationPresettingBoard | OptimizationPresettingBoard | Panel (boards) specification |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.83.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| BoardBin| System.String| Board location| BoardBin| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_BoardBin| | | | 
+| BoardInformation| System.String| Panel description| BoardInformation| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_BoardInformation| | | | 
+| BoardParameterName| System.String| Panel parameter name| BoardParameterName| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_BoardParameterName| | | | 
+| Code| System.String| Board code| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_Code| | | | 
+| Costs| System.Decimal| Costs| Costs| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_Costs| | 0 | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**Grain**</span>| [Grain](#grain)| Grain| Grain| 0| True| True| False| | | | False| -1| 0| 0| | False| [Grain](#grain) | FN_OptimizationPresettingBoard_Grain| | | | 
+| IsOffcut| System.Int32| Offcuts indicator| IsOffcut| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_IsOffcut| | | | 
+| Length| System.Decimal| Length| Length| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_Length| | | | 
+| Limit| System.String| FCode| Limit| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_Limit| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MarginBottomMaximum| System.Decimal| Maximum margin at the bottom| MarginBottomMaximum| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_MarginBottomMaximum| | | | 
+| MarginBottomMinimum| System.Decimal| Minimum margin at the bottom| MarginBottomMinimum| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_MarginBottomMinimum| | | | 
+| MarginLeftMaximum| System.Decimal| Maximum margin on the left| MarginLeftMaximum| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_MarginLeftMaximum| | | | 
+| MarginLeftMinimum| System.Decimal| Minimum margin on the left| MarginLeftMinimum| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_MarginLeftMinimum| | | | 
+| MarginRightMaximum| System.Decimal| Maximum margin on the right| MarginRightMaximum| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_MarginRightMaximum| | | | 
+| MarginRightMinimum| System.Decimal| Minimum margin on the right| MarginRightMinimum| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_MarginRightMinimum| | | | 
+| MarginTopMaximum| System.Decimal| Maximum top margin| MarginTopMaximum| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_MarginTopMaximum| | | | 
+| MarginTopMinimum| System.Decimal| Minimum top margin| MarginTopMinimum| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_MarginTopMinimum| | | | 
+| MaterialCode| System.String| Material| MaterialCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_MaterialCode| | | | 
+| MaterialDensity| System.Decimal| Material density| MaterialDensity| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_MaterialDensity| | | | 
+| MaterialDescription| System.String| Material description| MaterialDescription| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_MaterialDescription| | | | 
+| MaterialParameterName| System.String| Material parameter name| MaterialParameterName| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_MaterialParameterName| | | | 
+| MaterialPictureColor| System.String| Material image/color| MaterialPictureColor| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_MaterialPictureColor| | | | 
+| MaximumBookHeight| System.Int32| Maximum book height| MaximumBookHeight| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_MaximumBookHeight| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OffcutAreaMaximum| System.Decimal| Maximum offcut area| OffcutAreaMaximum| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_OffcutAreaMaximum| | 0 | | 
+| OffcutAreaMinimum| System.Decimal| Minimum offcut area| OffcutAreaMinimum| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_OffcutAreaMinimum| | 0 | | 
+| OffcutLengthMaximum| System.Decimal| Maximum offcut length| OffcutLengthMaximum| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_OffcutLengthMaximum| | 0 | | 
+| OffcutLengthMinimum| System.Decimal| Minimum offcut length| OffcutLengthMinimum| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_OffcutLengthMinimum| | 0 | | 
+| OffcutWidthMaximum| System.Decimal| Max. offcut width| OffcutWidthMaximum| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_OffcutWidthMaximum| | 0 | | 
+| OffcutWidthMinimum| System.Decimal| Minimal residual width| OffcutWidthMinimum| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_OffcutWidthMinimum| | 0 | | 
+| OptimizationPresetting| [OptimizationPresetting](#optimizationpresetting)| Specification, header data, optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationPresetting_OptimizationPresetting| | | | 
+| OptimizationPresettingCode| System.String| Optimization number| OptimizationPresettingCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_OptimizationPresettingCode| | | | 
+| Quantity| System.Int32| Qty.| Quantity| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_Quantity| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Supplier| System.String| Supplier| Supplier| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_Supplier| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_Thickness| | | | 
+| Width| System.Decimal| Width| Width| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingBoard_Width| | | | 
+## 1.84 OptimizationPresettingNcRecord : IEntityDescription
+## OptimizationPresettingNcRecord
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationPresettingNcRecord_OptimizationPresettingNcRecord | OptimizationPresettingNcRecord | Specification of parts, machine program |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.84.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MachineDataBinary| System.Byte[]| Machine program| MachineDataBinary| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingNcRecord_MachineDataBinary| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OptimizationPresettingCode| System.String| Optimization number| OptimizationPresettingCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingNcRecord_OptimizationPresettingCode| | | | 
+| OptimizationPresettingPart| [OptimizationPresettingPart](#optimizationpresettingpart)| Parts specification| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationPresettingPart_OptimizationPresettingPart| | | | 
+| OptimizationPresettingPartCode| System.String| Part number| OptimizationPresettingPartCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingNcRecord_OptimizationPresettingPartCode| | | | 
+| Order| System.Int32| Order| Order| 0| True| True| True| 0| | | False| -1| 0| 0| | False| | FN_OptimizationPresettingNcRecord_Order| | 0 | | 
+| OriginalFilename| System.String| File name| OriginalFilename| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingNcRecord_OriginalFilename| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.85 OptimizationPresettingPart : IEntityDescription
+## OptimizationPresettingPart
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationPresettingPart_OptimizationPresettingPart | OptimizationPresettingPart | Parts specification |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.85.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Part number| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPart_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**Grain**</span>| [Grain](#grain)| Grain| Grain| 0| True| True| False| | | | False| -1| 0| 0| | False| [Grain](#grain) | FN_OptimizationPresettingPart_Grain| | | | 
+| Length| System.Decimal| Length| Length| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPart_Length| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MaterialCode| System.String| Material| MaterialCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPart_MaterialCode| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OptimizationPresetting| [OptimizationPresetting](#optimizationpresetting)| Specification, header data, optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationPresetting_OptimizationPresetting| | | | 
+| OptimizationPresettingCode| System.String| Optimization number| OptimizationPresettingCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPart_OptimizationPresettingCode| | | | 
+| OptimizationPresettingNcRecords| [ICollection`1\<OptimizationPresettingNcRecord\>](#optimizationpresettingncrecord)| Specification of parts, machine program| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationPresettingNcRecord_OptimizationPresettingNcRecord| | | | 
+| OptimizationPresettingPartsAdditionals| [ICollection`1\<OptimizationPresettingPartsAdditional\>](#optimizationpresettingpartsadditional)| Specification of parts, additional information| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationPresettingPartsAdditional_OptimizationPresettingPartsAdditional| | | | 
+| Order| System.Int32| Order| Order| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPart_Order| | 0 | | 
+| Priority| System.Int32| Priority| Priority| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPart_Priority| | | | 
+| QuantityOver| System.Int32| Excess quantity| QuantityOver| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPart_QuantityOver| | | | 
+| QuantityRequired| System.Int32| Qty.| QuantityRequired| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPart_QuantityRequired| | | | 
+| QuantityUnder| System.Int32| Insufficient quantity| QuantityUnder| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPart_QuantityUnder| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Width| System.Decimal| Width| Width| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPart_Width| | | | 
+## 1.86 OptimizationPresettingPartsAdditional : IEntityDescription
+## OptimizationPresettingPartsAdditional
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationPresettingPartsAdditional_OptimizationPresettingPartsAdditional | OptimizationPresettingPartsAdditional | Specification of parts, additional information |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.86.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Data| System.String| Extension value| Data| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPartsAdditional_Data| | | | 
+| Key| System.String| Extension name| Key| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPartsAdditional_Key| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OptimizationPresettingCode| System.String| Optimization number| OptimizationPresettingCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPartsAdditional_OptimizationPresettingCode| | | | 
+| OptimizationPresettingPart| [OptimizationPresettingPart](#optimizationpresettingpart)| Parts specification| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationPresettingPart_OptimizationPresettingPart| | | | 
+| OptimizationPresettingPartCode| System.String| Part number| OptimizationPresettingPartCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPartsAdditional_OptimizationPresettingPartCode| | | | 
+| Order| System.Int32| Order| Order| 0| True| True| True| 0| | | False| -1| 0| 0| | False| | FN_OptimizationPresettingPartsAdditional_Order| | 0 | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.87 OptimizationRule : IEntityDescription
+## OptimizationRule
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationRule_OptimizationRule | OptimizationRule | Optimization rules |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.87.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Rule number| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationRule_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| IsPriorityRule| [YesNo](#yesno)| Is a priority rule| IsPriorityRule| 0| True| True| False| 1| | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_OptimizationRule_IsPriorityRule| | 1 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OptimizationRulesAllocations| [ICollection`1\<OptimizationRulesAllocation\>](#optimizationrulesallocation)| Assignment of optimization rules| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationRulesAllocation_OptimizationRulesAllocation| | | | 
+| QuantityMandatoryMin| System.Int32| Minimum quantity of mandatory parts| QuantityMandatoryMin| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OptimizationRule_QuantityMandatoryMin| | 0 | | 
+| QuantityMax| System.Int32| Maximum quantity of all parts| QuantityMax| 0| True| True| False| 9999| | | False| -1| 0| 0| | False| | FN_OptimizationRule_QuantityMax| | 9999 | | 
+| QuantityOptionalMax| System.Int32| Maximum quantity of optional parts| QuantityOptionalMax| 0| True| True| False| 9999| | | False| -1| 0| 0| | False| | FN_OptimizationRule_QuantityOptionalMax| | 9999 | | 
+| QuantityOptionalMin| System.Int32| Minimum quantity of optional parts| QuantityOptionalMin| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OptimizationRule_QuantityOptionalMin| | 0 | | 
+| RuleCondition| System.String| Condition for starting this rule| RuleCondition| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRule_RuleCondition| | | | 
+| RuleDescription| System.String| Description| RuleDescription| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRule_RuleDescription| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| UserExitForErrorAction| System.String| User exit for error processing| UserExitForErrorAction| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRule_UserExitForErrorAction| | | | 
+| UserExitForSelection| System.String| User exit for the selection| UserExitForSelection| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRule_UserExitForSelection| | | | 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRule_WorkCenterCode| | | | 
+## 1.88 OptimizationRulesAllocation : IEntityDescription
+## OptimizationRulesAllocation
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationRulesAllocation_OptimizationRulesAllocation | OptimizationRulesAllocation | Assignment of optimization rules |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.88.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| BreakAtThisPoint| [YesNo](#yesno)| Stop after this rule| BreakAtThisPoint| 0| True| False| False| 0| | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_OptimizationRulesAllocation_BreakAtThisPoint| | 0 | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| IsRuleActive| [YesNo](#yesno)| Is the rule active?| IsRuleActive| 0| True| True| False| 1| | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_OptimizationRulesAllocation_IsRuleActive| | 1 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| LotGenerationJobTrigger| System.String| Job trigger| LotGenerationJobTrigger| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesAllocation_LotGenerationJobTrigger| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OptimizationRule| [OptimizationRule](#optimizationrule)| Optimization rules| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationRule_OptimizationRule| | | | 
+| OptimizationRulesArea| [OptimizationRulesArea](#optimizationrulesarea)| Control loops for optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationRulesArea_OptimizationRulesArea| | | | 
+| OptimizationRulesAreaCode| System.String| Control loop| OptimizationRulesAreaCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesAllocation_OptimizationRulesAreaCode| | | | 
+| OptimizationRulesCode| System.String| Rule number| OptimizationRulesCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesAllocation_OptimizationRulesCode| | | | 
+| RuleOrder| System.Int32| Order| RuleOrder| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesAllocation_RuleOrder| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| UserExitParameter| System.String| User exit parameter| UserExitParameter| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesAllocation_UserExitParameter| | | | 
+## 1.89 OptimizationRulesArea : IEntityDescription
+## OptimizationRulesArea
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationRulesArea_OptimizationRulesArea | OptimizationRulesArea | Control loops for optimization |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.89.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AreaOrder| System.Int32| Control loop order| AreaOrder| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesArea_AreaOrder| | | | 
+| Code| System.String| Control loop| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesArea_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| IsAreaActive| [YesNo](#yesno)| Is the control loop active?| IsAreaActive| 0| True| True| False| 1| | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_OptimizationRulesArea_IsAreaActive| | 1 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OptimizationRulesAllocations| [ICollection`1\<OptimizationRulesAllocation\>](#optimizationrulesallocation)| Assignment of optimization rules| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationRulesAllocation_OptimizationRulesAllocation| | | | 
+| OptimizationSystem| System.String| Optimization system| OptimizationSystem| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesArea_OptimizationSystem| | | | 
+| RuleAreaDescription| System.String| Description| RuleAreaDescription| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesArea_RuleAreaDescription| | | | 
+| RuleConditionArea| System.String| User exit that starts the next rule| RuleConditionArea| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesArea_RuleConditionArea| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| UserExitForDynamicRuleOrder| System.String| Userexit für dynamische Reihenfolge der Regeln| UserExitForDynamicRuleOrder| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesArea_UserExitForDynamicRuleOrder| | | | 
+## 1.90 OptimizationRulesRequest : IEntityDescription
+## OptimizationRulesRequest
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_OptimizationRulesRequest_OptimizationRulesRequest | OptimizationRulesRequest | Optimization rule requirements |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.90.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Duration| System.Int32| Time| Duration| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_Duration| | 0 | | 
+| Errorcode| System.Int32| Errorcode| Errorcode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_Errorcode| | | | 
+| Instance| System.String| instance| Instance| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_Instance| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsPriorityRule**</span>| [YesNo](#yesno)| Is a priority rule| IsPriorityRule| 0| True| True| False| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_OptimizationRulesRequest_IsPriorityRule| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_OptimizationCode| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_OptimizationMethod| | | | 
+| OptimizationSystem| System.String| Optimization system| OptimizationSystem| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_OptimizationSystem| | | | 
+| ProcessUser| System.String| User| ProcessUser| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_ProcessUser| | | | 
+| QuantityOptimizedMandatoryParts| System.Int32| Number of required parts optimized| QuantityOptimizedMandatoryParts| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_QuantityOptimizedMandatoryParts| | | | 
+| QuantityOptimizedOptionalParts| System.Int32| Number of optional parts optimized| QuantityOptimizedOptionalParts| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_QuantityOptimizedOptionalParts| | | | 
+| QuantityUsedMandatoryParts| System.Int32| Number of required parts specified| QuantityUsedMandatoryParts| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_QuantityUsedMandatoryParts| | | | 
+| QuantityUsedOptionalParts| System.Int32| Number of optional parts specified| QuantityUsedOptionalParts| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_QuantityUsedOptionalParts| | | | 
+| RuleArea| System.String| Control loop| RuleArea| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_RuleArea| | | | 
+| RuleCode| System.String| rule| RuleCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_RuleCode| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**RuleMode**</span>| [CurrentRuleMode](#currentrulemode)| Rule mode| RuleMode| 0| True| True| False| | | | False| -1| 0| 0| | False| [CurrentRuleMode](#currentrulemode) | FN_OptimizationRulesRequest_RuleMode| | | | 
+| RuleOrder| System.Int32| Order| RuleOrder| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_RuleOrder| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StartDate| System.DateTime| Start date| StartDate| 80| False| True| False| | | | False| -1| 0| 0| | False| | FN_OptimizationRulesRequest_StartDate| Planning| | | 
+| TransferState| [OptimizationRuleTransferstate](#optimizationruletransferstate)| Current rule status| TransferState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [OptimizationRuleTransferstate](#optimizationruletransferstate) | FN_OptimizationRulesRequest_TransferState| | 0 | | 
+## 1.91 OrientationConversion : IEntityDescription
+## OrientationConversion
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_OrientationConversion_OrientationConversion | OrientationConversion | Orientation conversion |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.91.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ConversionType| System.String| Conversion type| ConversionType| 0| True| True| False| -| | | False| -1| 0| 0| | False| | FN_OrientationConversion_ConversionType| | - | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OrientationInX| System.String| Initial value X| OrientationInX| 2| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OrientationConversion_OrientationInX| | 0 | | 
+| OrientationInY| System.String| Initial value Y| OrientationInY| 3| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OrientationConversion_OrientationInY| | 0 | | 
+| OrientationInZ| System.String| Initial value Z| OrientationInZ| 4| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OrientationConversion_OrientationInZ| | 0 | | 
+| OrientationOutX| System.Int32| Result value X| OrientationOutX| 5| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OrientationConversion_OrientationOutX| | 0 | | 
+| OrientationOutY| System.Int32| Result value Y| OrientationOutY| 6| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OrientationConversion_OrientationOutY| | 0 | | 
+| OrientationOutZ| System.Int32| Result Z| OrientationOutZ| 7| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_OrientationConversion_OrientationOutZ| | 0 | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 1| True| True| False| #| | | False| -1| 0| 0| | False| | FN_OrientationConversion_WorkCenterCode| | # | | 
+## 1.92 PartCarrier : IEntityDescription
+## PartCarrier
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_PartCarrier_PartCarrier | PartCarrier | Parts carrier |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.92.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AllowManualComplete| System.Boolean| Close parts carrier| AllowManualComplete| 20| True| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrier_AllowManualComplete| | | | 
+| AvailabilityState| [PartCarrierAvailabilityState](#partcarrieravailabilitystate)| Availability status| AvailabilityState| 20| True| True| False| 0| | | False| -1| 0| 0| | False| [PartCarrierAvailabilityState](#partcarrieravailabilitystate) | FN_PartCarrier_AvailabilityState| | 0 | | 
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| Binary1| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| Code| System.String| key| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrier_Code| | | | 
+| CompartmentCodePattern| System.String| Pattern for name| CompartmentCodePattern| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrier_CompartmentCodePattern| | | | 
+| Compartments| [ICollection`1\<Compartment\>](#compartment)| Compartment| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Compartment_Compartment| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Depth| System.Int32| Depth| Depth| 20| True| True| False| 0| 0| | False| -1| 0| 0| | False| | FN_PartCarrier_Depth| Dimensions| 0 | 0| 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrier_Description| | | | 
+| DrawingTemplate| System.Int32| Drawing template| DrawingTemplate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrier_DrawingTemplate| | | | 
+| Height| System.Int32| Height| Height| 20| True| True| False| 0| 0| | False| -1| 0| 0| | False| | FN_PartCarrier_Height| Dimensions| 0 | 0| 
+| HorizontalSeparatorWidth| System.Int32| Horizontal separator| HorizontalSeparatorWidth| 20| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_PartCarrier_HorizontalSeparatorWidth| | 0 | | 
+| IsFix| System.Boolean| Fix| IsFix| 20| True| True| False| False| | | False| -1| 0| 0| | False| | FN_PartCarrier_IsFix| | False | | 
+| IsRotating| System.Boolean| turnable| IsRotating| 20| True| True| False| False| | | False| -1| 0| 0| | False| | FN_PartCarrier_IsRotating| | False | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MaximumPartsHeight| System.Int32| Maximum part height| MaximumPartsHeight| 20| True| True| False| 0| 0| | False| -1| 0| 0| | False| | FN_PartCarrier_MaximumPartsHeight| | 0 | 0| 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OverviewTemplate| System.Int32| Overview template| OverviewTemplate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrier_OverviewTemplate| | | | 
+| PartCarrierForPartCarriers| [ICollection`1\<PartCarrierForPartCarrier\>](#partcarrierforpartcarrier)| Assignment of parts carrier to parts carrier| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PartCarrierForPartCarrier_PartCarrierForPartCarrier| | | | 
+| PartCarrierGroups| [ICollection`1\<PartCarrierGroup\>](#partcarriergroup)| Parts carrier group| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PartCarrierGroup_PartCarrierGroup| | | | 
+| PartCarrierType| [PartCarrierType](#partcarriertype)| Parts carrier type| PartCarrierType| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [PartCarrierType](#partcarriertype) | FN_PartCarrier_PartCarrierType| | 0 | | 
+| PlaceName| System.String| Station name| PlaceName| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrier_PlaceName| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| ShowLabels| System.Boolean| Display labels| ShowLabels| 20| True| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrier_ShowLabels| | | | 
+| VerticalSeparatorWidth| System.Int32| Vertical separator| VerticalSeparatorWidth| 20| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_PartCarrier_VerticalSeparatorWidth| | 0 | | 
+| Width| System.Int32| Width| Width| 20| True| True| False| 0| 0| | False| -1| 0| 0| | False| | FN_PartCarrier_Width| Dimensions| 0 | 0| 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrier_WorkCenterCode| | | | 
+| XCoordinate| System.Decimal| X coordinates| XCoordinate| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrier_XCoordinate| | | | 
+| YCoordinate| System.Decimal| Y coordinates| YCoordinate| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrier_YCoordinate| | | | 
+| ZCoordinate| System.Decimal| Z coordinates| ZCoordinate| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrier_ZCoordinate| | | | 
+| ZRotation| System.Decimal| Z rotation| ZRotation| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrier_ZRotation| | | | 
+## 1.93 PartCarrierForPartCarrier : IEntityDescription
+## PartCarrierForPartCarrier
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_PartCarrierForPartCarrier_PartCarrierForPartCarrier | PartCarrierForPartCarrier | Assignment of parts carrier to parts carrier |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.93.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Capacity| System.Decimal| capacity| Capacity| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarrier_Capacity| | 0 | | 
+| Compartment| [Compartment](#compartment)| Compartment| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Compartment_Compartment| | | | 
+| CompartmentCode| System.String| Compartment| CompartmentCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarrier_CompartmentCode| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| IsReservation| System.Boolean| reservation| IsReservation| 30| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarrier_IsReservation| | | | 
+| IsUsedForCompletion| System.Boolean| Used for completeness| IsUsedForCompletion| 30| True| True| True| True| | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarrier_IsUsedForCompletion| | True | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PartCarrier| [PartCarrier](#partcarrier)| Parts carrier| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PartCarrier_PartCarrier| | | | 
+| PartCarrierCode| System.String| Parts carrier| PartCarrierCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarrier_PartCarrierCode| | | | 
+| PlaceNumber| System.String| slot number| PlaceNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarrier_PlaceNumber| | | | 
+| Quantity| System.Decimal| Qty.| Quantity| 20| True| True| False| | 0| | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarrier_Quantity| Dimensions| | 0| 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| SortFeatureValue| System.String| Sorting characteristic value| SortFeatureValue| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarrier_SortFeatureValue| | | | 
+| SortStep| [SortStep](#sortstep)| Sorting step| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_SortStep_SortStep| | | | 
+| SortStepCode| System.String| Sorting step| SortStepCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarrier_SortStepCode| | | | 
+## 1.94 PartCarrierForPartCarriersHistoryItem : IEntityDescription
+## PartCarrierForPartCarriersHistoryItem
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_PartCarrierForPartCarriersHistoryItem_PartCarrierForPartCarriersHistoryItem | PartCarrierForPartCarriersHistoryItem | History of assignment of parts carrier to parts carrier |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True | PartCarrierForPartCarriersHistory | False | General |  
+### 1.94.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Capacity| System.Decimal| capacity| Capacity| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarriersHistoryItem_Capacity| | 0 | | 
+| CompartmentCode| System.String| Compartment| CompartmentCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarriersHistoryItem_CompartmentCode| | | | 
+| CompartmentPartCarrierCode| System.String| Part carrier compartment| CompartmentPartCarrierCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarriersHistoryItem_CompartmentPartCarrierCode| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| IsReservation| System.Boolean| reservation| IsReservation| 30| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarriersHistoryItem_IsReservation| | | | 
+| IsUsedForCompletion| System.Boolean| Used for completeness| IsUsedForCompletion| 30| True| True| True| True| | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarriersHistoryItem_IsUsedForCompletion| | True | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PartCarrierCode| System.String| Parts carrier| PartCarrierCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarriersHistoryItem_PartCarrierCode| | | | 
+| PlaceNumber| System.String| slot number| PlaceNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarriersHistoryItem_PlaceNumber| | | | 
+| Quantity| System.Decimal| Qty.| Quantity| 20| True| True| False| | 0| | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarriersHistoryItem_Quantity| Dimensions| | 0| 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| SortFeatureValue| System.String| Sorting characteristic value| SortFeatureValue| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarriersHistoryItem_SortFeatureValue| | | | 
+| SortStepCode| System.String| Sorting step| SortStepCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierForPartCarriersHistoryItem_SortStepCode| | | | 
+## 1.95 PartCarrierGroup : IEntityDescription
+## PartCarrierGroup
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_PartCarrierGroup_PartCarrierGroup | PartCarrierGroup | Parts carrier group |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.95.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CompleteForSortFeature| System.Boolean| Parts carrier is complete if the group is complete| CompleteForSortFeature| 0| True| True| False| False| | | False| -1| 0| 0| | False| | FN_PartCarrierGroup_CompleteForSortFeature| | False | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PartCarrier| [PartCarrier](#partcarrier)| Parts carrier| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PartCarrier_PartCarrier| | | | 
+| PartCarrierCode| System.String| Parts carrier| PartCarrierCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierGroup_PartCarrierCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| SortStep| [SortStep](#sortstep)| Sorting step| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_SortStep_SortStep| | | | 
+| SortStepCode| System.String| Sorting step| SortStepCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierGroup_SortStepCode| | | | 
+## 1.96 PartCarrierProductionItem : IEntityDescription
+## PartCarrierProductionItem
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_PartCarrierProductionItem_PartCarrierProductionItem | PartCarrierProductionItem | Assignment of parts carrier to parts production |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.96.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Capacity| System.Decimal| capacity| Capacity| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItem_Capacity| | 0 | | 
+| Compartment| [Compartment](#compartment)| Compartment| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Compartment_Compartment| | | | 
+| CompartmentCode| System.String| Compartment| CompartmentCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItem_CompartmentCode| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| IsReservation| System.Boolean| reservation| IsReservation| 30| True| True| True| False| | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItem_IsReservation| | False | | 
+| IsUsedForCompletion| System.Boolean| Used for completeness| IsUsedForCompletion| 30| True| True| True| True| | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItem_IsUsedForCompletion| | True | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PlaceNumber| System.String| slot number| PlaceNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItem_PlaceNumber| | | | 
+| ProductionItem| [ProductionItem](#productionitem)| Parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItem_ProductionItem| | | | 
+| ProductionItemCode| System.String| Part| ProductionItemCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItem_ProductionItemCode| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItem_ProductionOrderCode| | | | 
+| Quantity| System.Decimal| Qty.| Quantity| 20| True| True| False| | 0| | False| -1| 0| 0| | False| | FN_PartCarrierProductionItem_Quantity| Dimensions| | 0| 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| SortFeatureValue| System.String| Sorting characteristic value| SortFeatureValue| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItem_SortFeatureValue| | | | 
+| SortStep| [SortStep](#sortstep)| Sorting step| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_SortStep_SortStep| | | | 
+| SortStepCode| System.String| Sorting step| SortStepCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItem_SortStepCode| | | | 
+## 1.97 PartCarrierProductionItemsHistoryItem : IEntityDescription
+## PartCarrierProductionItemsHistoryItem
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_PartCarrierProductionItemsHistoryItem_PartCarrierProductionItemsHistoryItem | PartCarrierProductionItemsHistoryItem | History of assignment of parts carrier to parts |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True | PartCarrierProductionItemsHistory | False | General |  
+### 1.97.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Capacity| System.Decimal| capacity| Capacity| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItemsHistoryItem_Capacity| | 0 | | 
+| CompartmentCode| System.String| Compartment| CompartmentCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItemsHistoryItem_CompartmentCode| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| IsReservation| System.Boolean| reservation| IsReservation| 30| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItemsHistoryItem_IsReservation| | | | 
+| IsUsedForCompletion| System.Boolean| Used for completeness| IsUsedForCompletion| 30| True| True| True| True| | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItemsHistoryItem_IsUsedForCompletion| | True | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PartCarrierCode| System.String| Parts carrier| PartCarrierCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItemsHistoryItem_PartCarrierCode| | | | 
+| PlaceNumber| System.String| slot number| PlaceNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItemsHistoryItem_PlaceNumber| | | | 
+| ProductionItemCode| System.String| Part| ProductionItemCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItemsHistoryItem_ProductionItemCode| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItemsHistoryItem_ProductionOrderCode| | | | 
+| Quantity| System.Decimal| Qty.| Quantity| 20| True| True| False| | 0| | False| -1| 0| 0| | False| | FN_PartCarrierProductionItemsHistoryItem_Quantity| Dimensions| | 0| 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| SortFeatureValue| System.String| Sorting characteristic value| SortFeatureValue| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItemsHistoryItem_SortFeatureValue| | | | 
+| SortStepCode| System.String| Sorting step| SortStepCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PartCarrierProductionItemsHistoryItem_SortStepCode| | | | 
+## 1.98 PnxRecord : IEntityDescription
+## PnxRecord
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_PnxRecord_PnxRecord | PnxRecord | PNX part data to optimization |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.98.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AdditionalInformation1| System.String| Additional information 1| AdditionalInformation1| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation1| | | | 
+| AdditionalInformation10| System.String| Additional information 10| AdditionalInformation10| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation10| | | | 
+| AdditionalInformation11| System.String| Additional information 11| AdditionalInformation11| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation11| | | | 
+| AdditionalInformation12| System.String| Additional information 12| AdditionalInformation12| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation12| | | | 
+| AdditionalInformation13| System.String| Additional information 13| AdditionalInformation13| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation13| | | | 
+| AdditionalInformation14| System.String| Additional information 14| AdditionalInformation14| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation14| | | | 
+| AdditionalInformation15| System.String| Additional information 15| AdditionalInformation15| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation15| | | | 
+| AdditionalInformation16| System.String| Additional information 16| AdditionalInformation16| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation16| | | | 
+| AdditionalInformation17| System.String| Additional information 17| AdditionalInformation17| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation17| | | | 
+| AdditionalInformation18| System.String| Additional information 18| AdditionalInformation18| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation18| | | | 
+| AdditionalInformation19| System.String| Additional information 19| AdditionalInformation19| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation19| | | | 
+| AdditionalInformation2| System.String| Additional information 2| AdditionalInformation2| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation2| | | | 
+| AdditionalInformation20| System.String| Additional information 20| AdditionalInformation20| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation20| | | | 
+| AdditionalInformation21| System.String| Additional information 21| AdditionalInformation21| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation21| | | | 
+| AdditionalInformation22| System.String| Additional information 22| AdditionalInformation22| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation22| | | | 
+| AdditionalInformation23| System.String| Additional information 23| AdditionalInformation23| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation23| | | | 
+| AdditionalInformation24| System.String| Additional information 24| AdditionalInformation24| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation24| | | | 
+| AdditionalInformation25| System.String| Additional information 25| AdditionalInformation25| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation25| | | | 
+| AdditionalInformation26| System.String| Additional information 26| AdditionalInformation26| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation26| | | | 
+| AdditionalInformation27| System.String| Additional information 27| AdditionalInformation27| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation27| | | | 
+| AdditionalInformation28| System.String| Additional information 28| AdditionalInformation28| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation28| | | | 
+| AdditionalInformation29| System.String| Additional information 29| AdditionalInformation29| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation29| | | | 
+| AdditionalInformation3| System.String| Additional information 3| AdditionalInformation3| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation3| | | | 
+| AdditionalInformation30| System.String| Additional information 30| AdditionalInformation30| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation30| | | | 
+| AdditionalInformation31| System.String| Additional information 31| AdditionalInformation31| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation31| | | | 
+| AdditionalInformation32| System.String| Additional information 32| AdditionalInformation32| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation32| | | | 
+| AdditionalInformation33| System.String| Additional information 33| AdditionalInformation33| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation33| | | | 
+| AdditionalInformation34| System.String| Additional information 34| AdditionalInformation34| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation34| | | | 
+| AdditionalInformation35| System.String| Additional information 35| AdditionalInformation35| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation35| | | | 
+| AdditionalInformation36| System.String| Additional information 36| AdditionalInformation36| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation36| | | | 
+| AdditionalInformation37| System.String| Additional information 37| AdditionalInformation37| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation37| | | | 
+| AdditionalInformation38| System.String| Additional information 38| AdditionalInformation38| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation38| | | | 
+| AdditionalInformation39| System.String| Additional information 39| AdditionalInformation39| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation39| | | | 
+| AdditionalInformation4| System.String| Additional information 4| AdditionalInformation4| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation4| | | | 
+| AdditionalInformation40| System.String| Additional information 40| AdditionalInformation40| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation40| | | | 
+| AdditionalInformation41| System.String| Additional information 41| AdditionalInformation41| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation41| | | | 
+| AdditionalInformation42| System.String| Additional information 42| AdditionalInformation42| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation42| | | | 
+| AdditionalInformation43| System.String| Additional information 43| AdditionalInformation43| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation43| | | | 
+| AdditionalInformation44| System.String| Additional information 44| AdditionalInformation44| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation44| | | | 
+| AdditionalInformation45| System.String| Additional information 45| AdditionalInformation45| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation45| | | | 
+| AdditionalInformation46| System.String| Additional information 46| AdditionalInformation46| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation46| | | | 
+| AdditionalInformation47| System.String| Additional information 47| AdditionalInformation47| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation47| | | | 
+| AdditionalInformation48| System.String| Additional information 48| AdditionalInformation48| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation48| | | | 
+| AdditionalInformation49| System.String| Additional information 49| AdditionalInformation49| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation49| | | | 
+| AdditionalInformation5| System.String| Additional information 5| AdditionalInformation5| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation5| | | | 
+| AdditionalInformation50| System.String| Additional information 50| AdditionalInformation50| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation50| | | | 
+| AdditionalInformation51| System.String| Additional information 51| AdditionalInformation51| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation51| | | | 
+| AdditionalInformation52| System.String| Additional information 52| AdditionalInformation52| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation52| | | | 
+| AdditionalInformation53| System.String| Additional information 53| AdditionalInformation53| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation53| | | | 
+| AdditionalInformation54| System.String| Additional information 54| AdditionalInformation54| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation54| | | | 
+| AdditionalInformation55| System.String| Additional information 55| AdditionalInformation55| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation55| | | | 
+| AdditionalInformation56| System.String| Additional information 56| AdditionalInformation56| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation56| | | | 
+| AdditionalInformation57| System.String| Additional information 57| AdditionalInformation57| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation57| | | | 
+| AdditionalInformation58| System.String| Additional information 58| AdditionalInformation58| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation58| | | | 
+| AdditionalInformation59| System.String| Additional information 59| AdditionalInformation59| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation59| | | | 
+| AdditionalInformation6| System.String| Additional information 6| AdditionalInformation6| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation6| | | | 
+| AdditionalInformation60| System.String| Additional information 60| AdditionalInformation60| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation60| | | | 
+| AdditionalInformation61| System.String| Additional information 61| AdditionalInformation61| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation61| | | | 
+| AdditionalInformation62| System.String| Additional information 62| AdditionalInformation62| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation62| | | | 
+| AdditionalInformation63| System.String| Additional information 63| AdditionalInformation63| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation63| | | | 
+| AdditionalInformation64| System.String| Additional information 64| AdditionalInformation64| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation64| | | | 
+| AdditionalInformation65| System.String| Additional information 65| AdditionalInformation65| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation65| | | | 
+| AdditionalInformation66| System.String| Additional information 66| AdditionalInformation66| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation66| | | | 
+| AdditionalInformation67| System.String| Additional information 67| AdditionalInformation67| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation67| | | | 
+| AdditionalInformation68| System.String| Additional information 68| AdditionalInformation68| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation68| | | | 
+| AdditionalInformation69| System.String| Additional information 69| AdditionalInformation69| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation69| | | | 
+| AdditionalInformation7| System.String| Additional information 7| AdditionalInformation7| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation7| | | | 
+| AdditionalInformation70| System.String| Additional information 70| AdditionalInformation70| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation70| | | | 
+| AdditionalInformation71| System.String| Additional information 71| AdditionalInformation71| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation71| | | | 
+| AdditionalInformation72| System.String| Additional information 72| AdditionalInformation72| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation72| | | | 
+| AdditionalInformation73| System.String| Additional information 73| AdditionalInformation73| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation73| | | | 
+| AdditionalInformation74| System.String| Additional information 74| AdditionalInformation74| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation74| | | | 
+| AdditionalInformation75| System.String| Additional information 75| AdditionalInformation75| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation75| | | | 
+| AdditionalInformation76| System.String| Additional information 76| AdditionalInformation76| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation76| | | | 
+| AdditionalInformation77| System.String| Additional information 77| AdditionalInformation77| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation77| | | | 
+| AdditionalInformation78| System.String| Additional information 78| AdditionalInformation78| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation78| | | | 
+| AdditionalInformation79| System.String| Additional information 79| AdditionalInformation79| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation79| | | | 
+| AdditionalInformation8| System.String| Additional information 8| AdditionalInformation8| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation8| | | | 
+| AdditionalInformation80| System.String| Additional information 80| AdditionalInformation80| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation80| | | | 
+| AdditionalInformation81| System.String| Additional information 81| AdditionalInformation81| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation81| | | | 
+| AdditionalInformation82| System.String| Additional information 82| AdditionalInformation82| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation82| | | | 
+| AdditionalInformation83| System.String| Additional information 83| AdditionalInformation83| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation83| | | | 
+| AdditionalInformation84| System.String| Additional information 84| AdditionalInformation84| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation84| | | | 
+| AdditionalInformation85| System.String| Additional information 85| AdditionalInformation85| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation85| | | | 
+| AdditionalInformation86| System.String| Additional information 86| AdditionalInformation86| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation86| | | | 
+| AdditionalInformation87| System.String| Additional information 87| AdditionalInformation87| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation87| | | | 
+| AdditionalInformation88| System.String| Additional information 88| AdditionalInformation88| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation88| | | | 
+| AdditionalInformation89| System.String| Additional information 89| AdditionalInformation89| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation89| | | | 
+| AdditionalInformation9| System.String| Additional information 9| AdditionalInformation9| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation9| | | | 
+| AdditionalInformation90| System.String| Additional information 90| AdditionalInformation90| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation90| | | | 
+| AdditionalInformation91| System.String| Additional information 91| AdditionalInformation91| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation91| | | | 
+| AdditionalInformation92| System.String| Additional information 92| AdditionalInformation92| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation92| | | | 
+| AdditionalInformation93| System.String| Additional information 93| AdditionalInformation93| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation93| | | | 
+| AdditionalInformation94| System.String| Additional information 94| AdditionalInformation94| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation94| | | | 
+| AdditionalInformation95| System.String| Additional information 95| AdditionalInformation95| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation95| | | | 
+| AdditionalInformation96| System.String| Additional information 96| AdditionalInformation96| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation96| | | | 
+| AdditionalInformation97| System.String| Additional information 97| AdditionalInformation97| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation97| | | | 
+| AdditionalInformation98| System.String| Additional information 98| AdditionalInformation98| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation98| | | | 
+| AdditionalInformation99| System.String| Additional information 99| AdditionalInformation99| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_AdditionalInformation99| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| GrainIndicator| System.Int32| Structure| GrainIndicator| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_GrainIndicator| | | | 
+| Length| System.Decimal| Length| Length| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_Length| | | | 
+| LengthEdgeFront| System.Decimal| Front longitudinal edge| LengthEdgeFront| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_LengthEdgeFront| | | | 
+| LengthEdgeRear| System.Decimal| Rear longitudinal edge| LengthEdgeRear| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_LengthEdgeRear| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MaterialCode| System.String| Material| MaterialCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_MaterialCode| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ModificationStatus| [PnxRecordsState](#pnxrecordsstate)| Change status| ModificationStatus| 0| False| True| False| 0| | | False| -1| 0| 0| | False| [PnxRecordsState](#pnxrecordsstate) | FN_PnxRecord_ModificationStatus| | 0 | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PnxRecord_OptimizationCode| | | | 
+| OverproductionAllowed| System.Int32| Overproduction allowed| OverproductionAllowed| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_OverproductionAllowed| | | | 
+| ProductionItem| [ProductionItem](#productionitem)| Parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItem_ProductionItem| | | | 
+| ProductionItemCode| System.String| Part number| ProductionItemCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PnxRecord_ProductionItemCode| | | | 
+| ProductionOrderCode| System.String| Production order number| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PnxRecord_ProductionOrderCode| | | | 
+| Quantity| System.Int32| Qty.| Quantity| 0| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_PnxRecord_Quantity| | 1 | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| UnderproductionAllowed| System.Int32| Underproduction allowed| UnderproductionAllowed| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_UnderproductionAllowed| | | | 
+| Width| System.Decimal| Width| Width| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_Width| | | | 
+| WidthEdgeLeft| System.Decimal| Left lateral edge| WidthEdgeLeft| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_WidthEdgeLeft| | | | 
+| WidthEdgeRight| System.Decimal| Right lateral edge| WidthEdgeRight| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PnxRecord_WidthEdgeRight| | | | 
+## 1.99 PossibleRoute : IEntityDescription
+## PossibleRoute
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_PossibleRoute_PossibleRoute | PossibleRoute | possible production routes |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.99.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Processing route| Code| 200| True| True| True| | | | False| -1| 0| 0| | False| | FN_PossibleRoute_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CuttingLength| System.Decimal| Cut length| CuttingLength| 300| False| True| False| | | | False| -1| 0| 0| | False| | FN_PossibleRoute_CuttingLength| Dimensions| | | 
+| CuttingWidth| System.Decimal| Cut width| CuttingWidth| 310| False| True| False| | | | False| -1| 0| 0| | False| | FN_PossibleRoute_CuttingWidth| Dimensions| | | 
+| DesiredEndDate| System.DateTime| Planned end date| DesiredEndDate| 110| False| True| False| | | | False| -1| 0| 0| | False| | FN_PossibleRoute_DesiredEndDate| | | | 
+| DesiredStartDate| System.DateTime| Planned start date| DesiredStartDate| 100| False| True| False| | | | False| -1| 0| 0| | False| | FN_PossibleRoute_DesiredStartDate| | | | 
+| DisposeState| [DisposeState](#disposestate)| Planning status| DisposeState| 30| True| True| False| 0| | | False| -1| 0| 0| | False| [DisposeState](#disposestate) | FN_PossibleRoute_DisposeState| | 0 | | 
+| EdgeShape| System.String| Edge image| EdgeShape| 80| False| True| False| | | | False| -1| 0| 0| | False| | FN_PossibleRoute_EdgeShape| | | | 
+| EdgeShapeAddOn| System.String| Edge image supplement| EdgeShapeAddOn| 85| False| True| False| | | | False| -1| 0| 0| | False| | FN_PossibleRoute_EdgeShapeAddOn| | | | 
+| ErpWorkflow| System.String| ERP workflow| ErpWorkflow| 50| True| True| False| | | | False| -1| 0| 0| | False| | FN_PossibleRoute_ErpWorkflow| | | | 
+| FinalEdgeTransition| System.String| Final edge transition| FinalEdgeTransition| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_PossibleRoute_FinalEdgeTransition| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OriginalEndDate| System.DateTime| Original end date| OriginalEndDate| 130| False| True| False| | | | False| -1| 0| 0| | False| | FN_PossibleRoute_OriginalEndDate| | | | 
+| OriginalStartDate| System.DateTime| Original start date| OriginalStartDate| 120| False| True| False| | | | False| -1| 0| 0| | False| | FN_PossibleRoute_OriginalStartDate| | | | 
+| Priority| System.Int32| Priority| Priority| 20| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_PossibleRoute_Priority| | 1 | | 
+| ProductionOrder| [ProductionOrder](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| ProductionOrderCode| System.String| Production order number| ProductionOrderCode| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_PossibleRoute_ProductionOrderCode| | | | 
+| ProductionSteps| [ICollection`1\<ProductionStep\>](#productionstep)| Procedures| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStep_ProductionStep| | | | 
+| Route| [Route](#route)| Route| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Route_Route| | | | 
+| RouteCode| System.String| Route| RouteCode| 40| False| True| False| | | | False| -1| 0| 0| | False| | FN_PossibleRoute_RouteCode| | | | 
+| SchedulingMode| [SchedulingMode](#schedulingmode)| Scheduling type| SchedulingMode| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [SchedulingMode](#schedulingmode) | FN_PossibleRoute_SchedulingMode| | 0 | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.100 PrintJobItem : IEntityDescription
+## PrintJobItem
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_PrintJobItem_PrintJobItem | PrintJobItem | Print request | PrintJobItem | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | False | True | True |  | True | General |  
+### 1.100.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| JobName| System.String| Job name| JobName| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_PrintJobItem_JobName| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ProcessingState**</span>| [PrintJobItemProcessingState](#printjobitemprocessingstate)| Processing status| ProcessingState| 0| True| True| False| | | | False| -1| 0| 0| | False| [PrintJobItemProcessingState](#printjobitemprocessingstate) | FN_PrintJobItem_ProcessingState| | | | 
+| ProductionItem| [ProductionItem](#productionitem)| Parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItem_ProductionItem| | | | 
+| ProductionItemCode| System.String| Part number| ProductionItemCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_PrintJobItem_ProductionItemCode| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_PrintJobItem_ProductionOrderCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.101 PrintOut : IEntityDescription
+## PrintOut
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_PrintOut_PrintOut | PrintOut | Printing |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.101.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Pdf| System.Int32| PDF| Pdf| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_PrintOut_Pdf| | | | 
+| PrintDate| System.DateTime| Print date| PrintDate| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_PrintOut_PrintDate| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| wp4ContextName| System.String| Print context| wp4ContextName| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_PrintOut_wp4ContextName| | | | 
+| wp4Id| System.Int64| woodPrint ID| wp4Id| 0| True| False| False| | | | False| -1| 0| 0| | False| | FN_PrintOut_wp4Id| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**wp4State**</span>| [wp4State](#wp4state)| Status| wp4State| 0| True| True| False| | | | False| -1| 0| 0| | False| [wp4State](#wp4state) | FN_PrintOut_wp4State| | | | 
+| wp4StateText| System.String| Status text| wp4StateText| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_PrintOut_wp4StateText| | | | 
+## 1.102 ProcessingData : IEntityDescription
+## ProcessingData
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ProcessingData_ProcessingData | ProcessingData | Processing data |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True | ProcessingData | False | General |  
+### 1.102.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Data| System.Int32| Data| Data| 21| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProcessingData_Data| | | | 
+| Description| System.String| Description| Description| 5| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProcessingData_Description| | | | 
+| ErpWorkflow| System.String| ERP workflow| ErpWorkflow| 33| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProcessingData_ErpWorkflow| | | | 
+| ErrorMessage| System.String| Error message| ErrorMessage| 31| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProcessingData_ErrorMessage| | | | 
+| ErrorState| [ProcessingDataErrorState](#processingdataerrorstate)| Error status| ErrorState| 30| True| True| False| 0| | | False| -1| 0| 0| | False| [ProcessingDataErrorState](#processingdataerrorstate) | FN_ProcessingData_ErrorState| | 0 | | 
+| ExportFileName| System.String| Name of the exported file| ExportFileName| 32| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProcessingData_ExportFileName| | | | 
+| FromErp| System.Boolean| From ERP| FromErp| 34| True| True| False| False| | | False| -1| 0| 0| | False| | FN_ProcessingData_FromErp| | False | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Order| System.Int32| Order| Order| 4| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProcessingData_Order| | | | 
+| OrientationX| System.Decimal| Orientation X| OrientationX| 6| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProcessingData_OrientationX| | | | 
+| OrientationY| System.Decimal| Orientation Y| OrientationY| 7| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProcessingData_OrientationY| | | | 
+| OrientationZ| System.Decimal| Orientation Z| OrientationZ| 8| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProcessingData_OrientationZ| | | | 
+| OversizeLength| System.Decimal| Oversize value, length| OversizeLength| 9| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProcessingData_OversizeLength| | 0 | | 
+| OversizeWidth| System.Decimal| Oversize value, width| OversizeWidth| 10| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProcessingData_OversizeWidth| | 0 | | 
+| PossibleRouteCode| System.String| Processing route| PossibleRouteCode| 1| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProcessingData_PossibleRouteCode| | | | 
+| ProcessingDataType| [ProcessingDataType](#processingdatatype)| Data type| ProcessingDataType| 22| True| True| False| 0| | | False| -1| 0| 0| | False| [ProcessingDataType](#processingdatatype) | FN_ProcessingData_ProcessingDataType| | 0 | | 
+| ProductionOrder| [ProductionOrder](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProcessingData_ProductionOrderCode| | | | 
+| ProductionStep| [ProductionStep](#productionstep)| Procedures| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStep_ProductionStep| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 3| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProcessingData_ProductionStepCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Value| System.String| Value| Value| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProcessingData_Value| | | | 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 2| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProcessingData_WorkCenterCode| | | | 
+## 1.103 ProcessingDataOrientation : IEntityDescription
+## ProcessingDataOrientation
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_ProcessingDataOrientation_ProcessingDataOrientation | ProcessingDataOrientation | Orientation for processing data |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.103.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Comment| System.String| Comment| Comment| 200| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProcessingDataOrientation_Comment| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CurrentWorkCenterCode| System.String| Current workstation| CurrentWorkCenterCode| 10| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProcessingDataOrientation_CurrentWorkCenterCode| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**CurrentWorkCenterOrientationY**</span>| [OrientationXY](#orientationxy)| Y orientation of current workstation| CurrentWorkCenterOrientationY| 100| True| True| False| | | | False| -1| 0| 0| | False| [OrientationXY](#orientationxy) | FN_ProcessingDataOrientation_CurrentWorkCenterOrientationY| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**MachiningSidesAtItem**</span>| [MachiningSidesAtItem](#machiningsidesatitem)| Processing sides on the component| MachiningSidesAtItem| 20| True| True| False| | | | False| -1| 0| 0| | False| [MachiningSidesAtItem](#machiningsidesatitem) | FN_ProcessingDataOrientation_MachiningSidesAtItem| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| NextWorkCenterCode| System.String| Next workstation| NextWorkCenterCode| 30| True| True| False| #| | | False| -1| 0| 0| | False| | FN_ProcessingDataOrientation_NextWorkCenterCode| | # | | 
+| NextWorkCenterOrientationY| System.Int32| Y orientation of next workstation| NextWorkCenterOrientationY| 40| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProcessingDataOrientation_NextWorkCenterOrientationY| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.104 ProductionItem : IEntityDescription
+## ProductionItem
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ProductionItem_ProductionItem | ProductionItem | Parts |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.104.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| BulkNumber| System.String| Pile number| BulkNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItem_BulkNumber| | | | 
+| Code| System.String| Part number| Code| 0| True| True| True| | | | False| 32| 0| 0| | False| | FN_ProductionItem_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CuttingTemplateSequence| System.Int64| Template reference| CuttingTemplateSequence| 10| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItem_CuttingTemplateSequence| | | | 
+| DesiredQuantity| System.Int32| Planned quantity| DesiredQuantity| 0| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_ProductionItem_DesiredQuantity| | 1 | | 
+| EPPreviewRequirements| [ICollection`1\<EPPreviewRequirement\>](#eppreviewrequirement)| Edge requirement per preview horizon| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EPPreviewRequirement_EPPreviewRequirement| | | | 
+| EPRequirements| [ICollection`1\<EPRequirement\>](#eprequirement)| Edge preview requirement| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EPRequirement_EPRequirement| | | | 
+| HandlingItemsSignals| [ICollection`1\<CustHandlingItemsSignal\>](#custhandlingitemssignal)| CustHandlingItemsSignal| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CustHandlingItemsSignal_CustHandlingItemsSignal| | | | 
+| IntelliStackPileItems| [ICollection`1\<IntelliStackPileItem\>](#intellistackpileitem)| IntelliStackPileItem| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_IntelliStackPileItem_IntelliStackPileItem| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Optimization| [Optimization](#optimization)| Optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Optimization_Optimization| | | | 
+| OptimizationCode| System.String| Optimization run| OptimizationCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItem_OptimizationCode| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItem_OptimizationMethod| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**OptimizationTransferState**</span>| [OptimizationTransferState](#optimizationtransferstate)| Status of optimization| OptimizationTransferState| 0| True| True| False| | | | False| -1| 0| 0| | False| [OptimizationTransferState](#optimizationtransferstate) | FN_ProductionItem_OptimizationTransferState| | | | 
+| OptionalPart| System.Int32| facultative part| OptionalPart| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItem_OptionalPart| | | | 
+| PartCarrierProductionItems| [ICollection`1\<PartCarrierProductionItem\>](#partcarrierproductionitem)| Assignment of parts carrier to parts production| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PartCarrierProductionItem_PartCarrierProductionItem| | | | 
+| PnxRecord| [PnxRecord](#pnxrecord)| PNX part data to optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PnxRecord_PnxRecord| | | | 
+| PrintJobItems| [ICollection`1\<PrintJobItem\>](#printjobitem)| Print request| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PrintJobItem_PrintJobItem| | | | 
+| ProductionItemsHistory| [ICollection`1\<ProductionItemsHistoryItem\>](#productionitemshistoryitem)| Parts history| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItemsHistoryItem_ProductionItemsHistoryItem| | | | 
+| ProductionItemsStepsData| [ICollection`1\<ProductionItemsStepsData\>](#productionitemsstepsdata)| Data per part and process step| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItemsStepsData_ProductionItemsStepsData| | | | 
+| ProductionItemsValidations| [ICollection`1\<ProductionItemsValidation\>](#productionitemsvalidation)| Part evaluation| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItemsValidation_ProductionItemsValidation| | | | 
+| ProductionItemToOptimize| [ProductionItemToOptimize](#productionitemtooptimize)| Parts for optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItemToOptimize_ProductionItemToOptimize| | | | 
+| ProductionOrder| [ProductionOrder](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| ProductionOrderCode| System.String| Production order number| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItem_ProductionOrderCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.105 ProductionItemsHistoryItem : IEntityDescription
+## ProductionItemsHistoryItem
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ProductionItemsHistoryItem_ProductionItemsHistoryItem | ProductionItemsHistoryItem | Parts history |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True | ProductionItemsHistory | False | General |  
+### 1.105.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CurrentQuantityGood| System.Int32| Number of good parts| CurrentQuantityGood| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionItemsHistoryItem_CurrentQuantityGood| | 0 | | 
+| CurrentQuantityRework| System.Int32| Number of post-processing parts| CurrentQuantityRework| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionItemsHistoryItem_CurrentQuantityRework| | 0 | | 
+| CurrentQuantityScrap| System.Int32| Number of reject parts| CurrentQuantityScrap| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionItemsHistoryItem_CurrentQuantityScrap| | 0 | | 
+| DesiredEndDateProcessing| System.DateTime| Planned end date| DesiredEndDateProcessing| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemsHistoryItem_DesiredEndDateProcessing| | | | 
+| FeedbackState| [FeedbackState](#feedbackstate)| Feedback status| FeedbackState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [FeedbackState](#feedbackstate) | FN_ProductionItemsHistoryItem_FeedbackState| | 0 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PossibleRouteCode| System.String| Processing route| PossibleRouteCode| 0| True| True| True| 0| | | False| -1| 0| 0| | False| | FN_ProductionItemsHistoryItem_PossibleRouteCode| | 0 | | 
+| ProductionItem| [ProductionItem](#productionitem)| Parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItem_ProductionItem| | | | 
+| ProductionItemCode| System.String| Part number| ProductionItemCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItemsHistoryItem_ProductionItemCode| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItemsHistoryItem_ProductionOrderCode| | | | 
+| ProductionStep| [ProductionStep](#productionstep)| Procedures| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStep_ProductionStep| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItemsHistoryItem_ProductionStepCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Timestamp| System.DateTime| Feedback time| Timestamp| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemsHistoryItem_Timestamp| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemsHistoryItem_WorkCenterCode| | | | 
+## 1.106 ProductionItemsStepsData : IEntityDescription
+## ProductionItemsStepsData
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ProductionItemsStepsData_ProductionItemsStepsData | ProductionItemsStepsData | Data per part and process step |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True | ProductionItemsStepsData | False | General |  
+### 1.106.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CountOutstandingFeedbacks| System.Int32| Number of items of feedback outstanding| CountOutstandingFeedbacks| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionItemsStepsData_CountOutstandingFeedbacks| | 0 | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| FeedbackNumber| System.String| Feedback number| FeedbackNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemsStepsData_FeedbackNumber| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PossibleRouteCode| System.String| Processing route| PossibleRouteCode| 0| True| True| True| 0| | | False| -1| 0| 0| | False| | FN_ProductionItemsStepsData_PossibleRouteCode| | 0 | | 
+| ProductionItem| [ProductionItem](#productionitem)| Parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItem_ProductionItem| | | | 
+| ProductionItemCode| System.String| Part number| ProductionItemCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItemsStepsData_ProductionItemCode| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItemsStepsData_ProductionOrderCode| | | | 
+| ProductionStep| [ProductionStep](#productionstep)| Procedures| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStep_ProductionStep| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItemsStepsData_ProductionStepCode| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**TransferState**</span>| [ProductionItemStepTransferState](#productionitemsteptransferstate)| Status of transfer| TransferState| 0| True| True| False| | | | False| -1| 0| 0| | False| [ProductionItemStepTransferState](#productionitemsteptransferstate) | FN_ProductionItemsStepsData_TransferState| | | | 
+## 1.107 ProductionItemsValidation : IEntityDescription
+## ProductionItemsValidation
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ProductionItemsValidation_ProductionItemsValidation | ProductionItemsValidation | Part evaluation |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.107.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| ID| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItemsValidation_Code| | | | 
+| Comment| System.String| Comment| Comment| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemsValidation_Comment| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| DesiredQuantity| System.Int32| Planned quantity| DesiredQuantity| 0| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_ProductionItemsValidation_DesiredQuantity| | 1 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| NecessaryReleaseType| [NecessaryReleaseType](#necessaryreleasetype)| Required release type| NecessaryReleaseType| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [NecessaryReleaseType](#necessaryreleasetype) | FN_ProductionItemsValidation_NecessaryReleaseType| | 0 | | 
+| ProductionItem| [ProductionItem](#productionitem)| Parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItem_ProductionItem| | | | 
+| ProductionItemCode| System.String| Part number| ProductionItemCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItemsValidation_ProductionItemCode| | | | 
+| ProductionOrder| [ProductionOrder](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| ProductionOrderCode| System.String| Production order number| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItemsValidation_ProductionOrderCode| | | | 
+| ReproductionMode| [ReproductionMode](#reproductionmode)| Type of post-production| ReproductionMode| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ReproductionMode](#reproductionmode) | FN_ProductionItemsValidation_ReproductionMode| | 0 | | 
+| ReproductionOrderCode| System.String| Post-production job number| ReproductionOrderCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemsValidation_ReproductionOrderCode| | | | 
+| ReproductionState| [ReproductionState](#reproductionstate)| Post-production status| ReproductionState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ReproductionState](#reproductionstate) | FN_ProductionItemsValidation_ReproductionState| | 0 | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| ValidationState| [ValidationState](#validationstate)| Status| ValidationState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ValidationState](#validationstate) | FN_ProductionItemsValidation_ValidationState| | 0 | | 
+| ValidationStateDetail| [ValidationStateDetail](#validationstatedetail)| Evaluation detail| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ValidationStateDetail_ValidationStateDetail| | | | 
+| ValidationStateDetailCode| System.String| Evaluation detail| ValidationStateDetailCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemsValidation_ValidationStateDetailCode| | | | 
+| ValidationStateSource| [ValidationStateSource](#validationstatesource)| Evaluation origin| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ValidationStateSource_ValidationStateSource| | | | 
+| ValidationStateSourceCode| System.String| Evaluation source| ValidationStateSourceCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemsValidation_ValidationStateSourceCode| | | | 
+## 1.108 ProductionItemToOptimize : IEntityDescription
+## ProductionItemToOptimize
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ProductionItemToOptimize_ProductionItemToOptimize | ProductionItemToOptimize | Parts for optimization |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True | ProductionItemsToOptimize | False | General |  
+### 1.108.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Active| System.Boolean| Active| Active| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemToOptimize_Active| | | | 
+| Code| System.String| Part number| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItemToOptimize_Code| | | | 
+| ConfigurationName| System.String| Configuration| ConfigurationName| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemToOptimize_ConfigurationName| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Optimization| [Optimization](#optimization)| Optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Optimization_Optimization| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemToOptimize_OptimizationCode| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemToOptimize_OptimizationMethod| | | | 
+| OptimizationSystem| System.String| Optimization system| OptimizationSystem| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemToOptimize_OptimizationSystem| | | | 
+| Optional| System.Boolean| optional| Optional| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemToOptimize_Optional| | | | 
+| ProcessUser| System.String| Optimization user| ProcessUser| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemToOptimize_ProcessUser| | | | 
+| ProductionItem| [ProductionItem](#productionitem)| Parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItem_ProductionItem| | | | 
+| ProductionOrder| [ProductionOrder](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionItemToOptimize_ProductionOrderCode| | | | 
+| Quantity| System.Int32| Qty.| Quantity| 0| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_ProductionItemToOptimize_Quantity| | 1 | | 
+| RulesRequestsSequence| System.Int64| RulesRequestsSequence| RulesRequestsSequence| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionItemToOptimize_RulesRequestsSequence| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.109 ProductionOrder : IEntityDescription
+## ProductionOrder
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ProductionOrder_ProductionOrder | ProductionOrder | Production orders |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.109.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ArticleDescription| System.String| Item description| ArticleDescription| 50| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_ArticleDescription| | | | 
+| ArticleNumber| System.String| Item designation| ArticleNumber| 40| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_ArticleNumber| | | | 
+| Binaries| [ICollection`1\<Binary\>](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| Bracket| System.String| Production package| Bracket| 120| True| True| False| -| | | False| -1| 0| 0| | False| | FN_ProductionOrder_Bracket| | - | | 
+| Code| System.String| Production order number| Code| 20| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_Code| | | | 
+| ComponentType| [ComponentType](#componenttype)| Parts type| ComponentType| 0| True| False| False| 0| | | False| -1| 0| 0| | False| [ComponentType](#componenttype) | FN_ProductionOrder_ComponentType| | 0 | | 
+| CornerEastNorth| System.Int32| East-north corner transition| CornerEastNorth| 0| True| False| False| -1| | | False| -1| 0| 0| | False| | FN_ProductionOrder_CornerEastNorth| | -1 | | 
+| CornerNorthWest| System.Int32| North-west corner transition| CornerNorthWest| 0| True| False| False| -1| | | False| -1| 0| 0| | False| | FN_ProductionOrder_CornerNorthWest| | -1 | | 
+| CornerSouthEast| System.Int32| South-east corner transition| CornerSouthEast| 0| True| False| False| -1| | | False| -1| 0| 0| | False| | FN_ProductionOrder_CornerSouthEast| | -1 | | 
+| CornerWestSouth| System.Int32| West-south corner transition| CornerWestSouth| 0| True| False| False| -1| | | False| -1| 0| 0| | False| | FN_ProductionOrder_CornerWestSouth| | -1 | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CurrentFirstDate| System.DateTime| Start date of first part| CurrentFirstDate| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_CurrentFirstDate| | | | 
+| CurrentLastDate| System.DateTime| End date of last part| CurrentLastDate| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_CurrentLastDate| | | | 
+| CustomerOrder| [CustomerOrder](#customerorder)| Customer order| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CustomerOrder_CustomerOrder| | | | 
+| CustomerOrderCode| System.String| Customer order| CustomerOrderCode| 10| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_CustomerOrderCode| | | | 
+| CustomerOrderPosition| System.String| Customer order item| CustomerOrderPosition| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_CustomerOrderPosition| | | | 
+| CustomProdItemCode| System.String| ProdItemCode| ProdItemCode| 0| True| True| True| 0| | | False| 32| 0| 0| | False| | FN_ProductionOrder_CustomProdItemCode| | 0 | | 
+| CustomSortingCriterion| System.String| Sorting Criterion| SortingCriterion| 0| False| True| False| | | | False| 64| 0| 0| | False| | FN_ProductionOrder_CustomSortingCriterion| | | | 
+| CustomVolume| System.Decimal| Volume in dm3| Volume in dm3| 0| False| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionOrder_CustomVolume| | 0 | | 
+| CuttingLength| System.Decimal| Cut length| CuttingLength| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_CuttingLength| Dimensions| | | 
+| CuttingTemplateNo| System.String| Template number| CuttingTemplateNo| 10| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_CuttingTemplateNo| | | | 
+| CuttingTemplatePartRef| System.String| Template part reference| CuttingTemplatePartRef| 10| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_CuttingTemplatePartRef| | | | 
+| CuttingTemplatePartType| [CuttingTemplatePartType](#cuttingtemplateparttype)| Template part type| CuttingTemplatePartType| 20| True| True| False| 0| | | False| -1| 0| 0| | False| [CuttingTemplatePartType](#cuttingtemplateparttype) | FN_ProductionOrder_CuttingTemplatePartType| | 0 | | 
+| CuttingTemplateRef| System.String| Template reference| CuttingTemplateRef| 10| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_CuttingTemplateRef| | | | 
+| CuttingThickness| System.Decimal| Cutting strength| CuttingThickness| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_CuttingThickness| Dimensions| | | 
+| CuttingWidth| System.Decimal| Cut width| CuttingWidth| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_CuttingWidth| Dimensions| | | 
+| DesiredEndDate| System.DateTime| Planned end date| DesiredEndDate| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_DesiredEndDate| Planning| | | 
+| DesiredStartDate| System.DateTime| Planned start date| DesiredStartDate| 80| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_DesiredStartDate| Planning| | | 
+| DesiredTargetQuantity| System.Int32| Planned quantity| DesiredTargetQuantity| 70| False| True| False| 1| 0| | False| -1| 0| 0| | False| | FN_ProductionOrder_DesiredTargetQuantity| Planning| 1 | 0| 
+| DesiredTargetQuantityMax| System.Int32| Planned maximum quantity| DesiredTargetQuantityMax| 0| False| False| False| 1| | | False| -1| 0| 0| | False| | FN_ProductionOrder_DesiredTargetQuantityMax| Planning| 1 | | 
+| DesiredTargetQuantityMin| System.Int32| Planned minimum quantity| DesiredTargetQuantityMin| 0| False| False| False| 1| | | False| -1| 0| 0| | False| | FN_ProductionOrder_DesiredTargetQuantityMin| Planning| 1 | | 
+| EdgeGrooves| [ICollection`1\<EdgeGroove\>](#edgegroove)| Groove processing| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EdgeGroove_EdgeGroove| | | | 
+| EdgePasses| [ICollection`1\<EdgePass\>](#edgepass)| Edge throughfeeds| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EdgePass_EdgePass| | | | 
+| EdgeProfiles| [ICollection`1\<EdgeProfile\>](#edgeprofile)| Edge profile| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EdgeProfile_EdgeProfile| | | | 
+| EdgeShape| System.String| Edge image| EdgeShape| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_EdgeShape| | | | 
+| EdgeTransition| System.String| Edge transition| EdgeTransition| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_EdgeTransition| | | | 
+| ErpReference| System.String| ERP reference| ErpReference| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_ErpReference| | | | 
+| ErrorMessage| System.String| Error message| ErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_ErrorMessage| | | | 
+| ErrorState| [ErrorState](#errorstate)| Error status| ErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_ProductionOrder_ErrorState| | 0 | | 
+| FinalEdgeTransition| System.String| Final edge transition| FinalEdgeTransition| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_FinalEdgeTransition| | | | 
+| Grain| [Grain](#grain)| Grain| Grain| 0| False| False| False| | | | False| -1| 0| 0| | False| [Grain](#grain) | FN_ProductionOrder_Grain| | | | 
+| GrainOrientation| System.Decimal| Grain orientation| GrainOrientation| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_GrainOrientation| | | | 
+| InputSourceType| [InputSourceType](#inputsourcetype)| Type of data origin (ERP, etc.)| InputSourceType| 99999| True| True| False| 0| | | False| -1| 0| 0| | False| [InputSourceType](#inputsourcetype) | FN_ProductionOrder_InputSourceType| | 0 | | 
+| Instance| System.String| instance| Instance| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_Instance| | | | 
+| IsLengthGreaterEqualWidth| System.Boolean| Length greater than width| IsLengthGreaterEqualWidth| 0| True| False| False| True| | | False| -1| 0| 0| | False| | FN_ProductionOrder_IsLengthGreaterEqualWidth| | True | | 
+| IsRatioPart| System.Boolean| Overhead component| IsRatioPart| 0| True| False| False| False| | | False| -1| 0| 0| | False| | FN_ProductionOrder_IsRatioPart| | False | | 
+| IsSquarePart| System.Boolean| Flat component| IsSquarePart| 0| True| False| False| False| | | False| -1| 0| 0| | False| | FN_ProductionOrder_IsSquarePart| | False | | 
+| Length| System.Decimal| Length| Length| 130| True| True| False| | 0| | False| -1| 0| 0| | False| | FN_ProductionOrder_Length| Dimensions| | 0| 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ManualBulk| [ManualBulk](#manualbulk)| Manual piles| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ManualBulk_ManualBulk| | | | 
+| Material| System.String| Material| Material| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_Material| | | | 
+| MaterialCategory| System.String| Material category| MaterialCategory| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_MaterialCategory| | | | 
+| Mirror| System.Int32| Component mirrored| Mirror| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_Mirror| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| NarrowPartType| [NarrowPartType](#narrowparttype)| Narrow component| NarrowPartType| 0| True| False| False| 0| | | False| -1| 0| 0| | False| [NarrowPartType](#narrowparttype) | FN_ProductionOrder_NarrowPartType| | 0 | | 
+| NcProgramReference| System.String| NC program reference| NcProgramReference| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_NcProgramReference| | | | 
+| OptimizationParts| [ICollection`1\<OptimizationPart\>](#optimizationpart)| Optimised parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationPart_OptimizationPart| | | | 
+| OrderType| [ProductionOrderType](#productionordertype)| Application type| OrderType| 110| True| True| False| 3| | | False| -1| 0| 0| | False| [ProductionOrderType](#productionordertype) | FN_ProductionOrder_OrderType| | 3 | | 
+| OriginalEndDate| System.DateTime| Original end date| OriginalEndDate| 41| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_OriginalEndDate| | | | 
+| OriginalProductionItemCode| System.String| Original part number| OriginalProductionItemCode| 99999| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_OriginalProductionItemCode| | | | 
+| OriginalProductionOrderCode| System.String| Original production order number| OriginalProductionOrderCode| 99999| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_OriginalProductionOrderCode| | | | 
+| OriginalStartDate| System.DateTime| Original start date| OriginalStartDate| 40| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_OriginalStartDate| | | | 
+| OversizeSourceType| [OversizeSourceType](#oversizesourcetype)| Dimension source type| OversizeSourceType| 50| True| True| False| 0| | | False| -1| 0| 0| | False| [OversizeSourceType](#oversizesourcetype) | FN_ProductionOrder_OversizeSourceType| | 0 | | 
+| ParentProductionOrderNumber| System.String| High-level production order| ParentProductionOrderNumber| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_ParentProductionOrderNumber| | | | 
+| PartGeometry| System.String| Geometry| PartGeometry| 0| False| False| False| Geo01| | | False| -1| 0| 0| | False| | FN_ProductionOrder_PartGeometry| | Geo01 | | 
+| PatternMasterInfo| [PatternMasterInfo](#patternmasterinfo)| Information on the structure master| PatternMasterInfo| 20| True| True| False| 0| | | False| -1| 0| 0| | False| [PatternMasterInfo](#patternmasterinfo) | FN_ProductionOrder_PatternMasterInfo| | 0 | | 
+| PlanningSequence| System.Int64| Pile| PlanningSequence| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_PlanningSequence| | | | 
+| PossibleRoutes| [ICollection`1\<PossibleRoute\>](#possibleroute)| possible production routes| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PossibleRoute_PossibleRoute| | | | 
+| ProcessingData| [ICollection`1\<ProcessingData\>](#processingdata)| Processing data| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProcessingData_ProcessingData| | | | 
+| ProcessingState| [ProcessingStateMode](#processingstatemode)| Processing status| ProcessingState| 0| True| False| False| 0| | | False| -1| 0| 0| | False| [ProcessingStateMode](#processingstatemode) | FN_ProductionOrder_ProcessingState| | 0 | | 
+| ProductionItems| [ICollection`1\<ProductionItem\>](#productionitem)| Parts| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItem_ProductionItem| | | | 
+| ProductionItemsToOptimize| [ICollection`1\<ProductionItemToOptimize\>](#productionitemtooptimize)| Parts for optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItemToOptimize_ProductionItemToOptimize| | | | 
+| ProductionItemsValidations| [ICollection`1\<ProductionItemsValidation\>](#productionitemsvalidation)| Part evaluation| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItemsValidation_ProductionItemsValidation| | | | 
+| ProductionOrdersResources| [ICollection`1\<ProductionOrdersResource\>](#productionordersresource)| Production order resources| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrdersResource_ProductionOrdersResource| | | | 
+| ProductionRoute| System.String| Production route according to customer system| ProductionRoute| 0| False| False| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionOrder_ProductionRoute| | 0 | | 
+| ProductionState| [ProductionState](#productionstate)| Production status| ProductionState| 100| True| True| False| 0| | | False| -1| 0| 0| | False| [ProductionState](#productionstate) | FN_ProductionOrder_ProductionState| | 0 | | 
+| ProductionSteps| [ICollection`1\<ProductionStep\>](#productionstep)| Procedures| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStep_ProductionStep| | | | 
+| RegenerateDataRequestMode| [RegenerateDataRequestMode](#regeneratedatarequestmode)| Action for regeneration of production data| RegenerateDataRequestMode| 99990| True| False| False| 0| | | False| -1| 0| 0| | False| [RegenerateDataRequestMode](#regeneratedatarequestmode) | FN_ProductionOrder_RegenerateDataRequestMode| | 0 | | 
+| ReleaseState| [ReleaseState](#releasestate)| Release status| ReleaseState| 90| True| True| False| 0| | | False| -1| 0| 0| | False| [ReleaseState](#releasestate) | FN_ProductionOrder_ReleaseState| | 0 | | 
+| ReproductionType| [ReproductionType](#reproductiontype)| Post-production type| ReproductionType| 99999| True| True| False| 0| | | False| -1| 0| 0| | False| [ReproductionType](#reproductiontype) | FN_ProductionOrder_ReproductionType| | 0 | | 
+| Route| [Route](#route)| Route| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Route_Route| | | | 
+| RouteCode| System.String| Processing route| RouteCode| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_RouteCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| SpecialPartType| System.String| Special component| SpecialPartType| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_SpecialPartType| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 150| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_Thickness| Dimensions| | | 
+| TopProductionOrderNumber| System.String| Leading production order| TopProductionOrderNumber| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrder_TopProductionOrderNumber| | | | 
+| Width| System.Decimal| Width| Width| 140| True| True| False| | 0| | False| -1| 0| 0| | False| | FN_ProductionOrder_Width| Dimensions| | 0| 
+## 1.110 ProductionOrdersResource : IEntityDescription
+## ProductionOrdersResource
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ProductionOrdersResource_ProductionOrdersResource | ProductionOrdersResource | Production order resources |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.110.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AdditionalInformation| System.String| Additional information| AdditionalInformation| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_AdditionalInformation| | | | 
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| Category| System.String| Category| Category| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_Category| | | | 
+| Code| System.String| Resource name| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Data| System.Int32| Data| Data| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_Data| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_Description| | | | 
+| DesiredQuantity| System.Decimal| Planned quantity| DesiredQuantity| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_DesiredQuantity| | | | 
+| ErrorMessage| System.String| Error message| ErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_ErrorMessage| | | | 
+| ErrorState| [ErrorState](#errorstate)| Error status| ErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_ProductionOrdersResource_ErrorState| | 0 | | 
+| Grain| [Grain](#grain)| Grain| Grain| 0| False| True| False| | | | False| -1| 0| 0| | False| [Grain](#grain) | FN_ProductionOrdersResource_Grain| | | | 
+| GrainOrientation| System.Decimal| Grain orientation| GrainOrientation| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_GrainOrientation| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**InternalType**</span>| [ResourceType](#resourcetype)| Internal type| InternalType| 0| True| True| False| | | | False| -1| 0| 0| | False| [ResourceType](#resourcetype) | FN_ProductionOrdersResource_InternalType| | | | 
+| Length| System.Decimal| Length| Length| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_Length| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Material| System.String| Material| Material| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_Material| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Order| System.Int32| Display sequence| Order| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_Order| | | | 
+| ProductionOrder| [ProductionOrder](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_ProductionOrderCode| | | | 
+| QuantityUnit| System.String| Quantity unit| QuantityUnit| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_QuantityUnit| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_Thickness| | | | 
+| Type| System.String| Resource type| Type| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_Type| | | | 
+| Value| System.String| Value| Value| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_Value| | | | 
+| Width| System.Decimal| Width| Width| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrdersResource_Width| | | | 
+## 1.111 ProductionRouteStep : IEntityDescription
+## ProductionRouteStep
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ProductionRouteStep_ProductionRouteStep | ProductionRouteStep | Production path of individual steps |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.111.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Capacity| System.Int32| capacity| Capacity| 0| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_Capacity| | 1 | | 
+| Code| System.String| operation| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| DateOffset| System.Int32| Offset for time calculation (days)| DateOffset| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_DateOffset| | 0 | | 
+| DesiredProcessingTime| System.Decimal| Planned processing time| DesiredProcessingTime| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_DesiredProcessingTime| | 0 | | 
+| DesiredSetupTime| System.Decimal| Planned setup time| DesiredSetupTime| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_DesiredSetupTime| | 0 | | 
+| Duration| System.Int32| Duration between the start and end time (days)| Duration| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_Duration| | 0 | | 
+| FeedbackNumber| System.String| Feedback number| FeedbackNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_FeedbackNumber| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Order| System.Int32| Order| Order| 0| True| False| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_Order| | 0 | | 
+| ProductionRouteCode| System.String| Production path| ProductionRouteCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_ProductionRouteCode| | | | 
+| ProductionStage| [ProductionStage](#productionstage)| Production stage| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStage_ProductionStage| | | | 
+| ProductionStageCode| System.String| Production stage| ProductionStageCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_ProductionStageCode| | | | 
+| QuantityFactor| System.Int32| Quantity factor| QuantityFactor| 0| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_QuantityFactor| | 1 | | 
+| QuantityFactorOffset| System.Decimal| Offset quantity factor| QuantityFactorOffset| 0| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_QuantityFactorOffset| | 1 | | 
+| Route| [Route](#route)| Route| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Route_Route| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| SortStep| [SortStep](#sortstep)| Sorting step| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_SortStep_SortStep| | | | 
+| SortStepCode| System.String| Sorting step| SortStepCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_SortStepCode| | | | 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_WorkCenterCode| | | | 
+| WorkstepDescription| System.String| Process step description| WorkstepDescription| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionRouteStep_WorkstepDescription| | | | 
+## 1.112 ProductionStage : IEntityDescription
+## ProductionStage
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ProductionStage_ProductionStage | ProductionStage | Production stage |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.112.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Production stage| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionStage_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStage_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ProductionRouteSteps| [ICollection`1\<ProductionRouteStep\>](#productionroutestep)| Production path of individual steps| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionRouteStep_ProductionRouteStep| | | | 
+| ProductionSteps| [ICollection`1\<ProductionStep\>](#productionstep)| Procedures| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStep_ProductionStep| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.113 ProductionStep : IEntityDescription
+## ProductionStep
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ProductionStep_ProductionStep | ProductionStep | Procedures |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.113.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Capacity| System.Int32| capacity| Capacity| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionStep_Capacity| | 0 | | 
+| Code| System.String| operation| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionStep_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CurrentFirstDate| System.DateTime| Start date of first part| CurrentFirstDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_CurrentFirstDate| | | | 
+| CurrentLastDate| System.DateTime| End date of last part| CurrentLastDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_CurrentLastDate| | | | 
+| CurrentQuantityGood| System.Int32| Number of good parts| CurrentQuantityGood| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionStep_CurrentQuantityGood| | 0 | | 
+| CurrentQuantityRework| System.Int32| Number of post-processing parts| CurrentQuantityRework| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionStep_CurrentQuantityRework| | 0 | | 
+| CurrentQuantityScrap| System.Int32| Number of reject parts| CurrentQuantityScrap| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionStep_CurrentQuantityScrap| | 0 | | 
+| CurrentTargetQuantity| System.Int32| Current quantity| CurrentTargetQuantity| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_CurrentTargetQuantity| | | | 
+| DateOffset| System.Int32| Offset for time calculation (days)| DateOffset| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_DateOffset| | | | 
+| DesiredEndDateProcessing| System.DateTime| Desired end of processing| DesiredEndDateProcessing| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_DesiredEndDateProcessing| | | | 
+| DesiredProcessingTime| System.Decimal| Planned processing time| DesiredProcessingTime| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_DesiredProcessingTime| | | | 
+| DesiredSetupTime| System.Decimal| Planned setup time| DesiredSetupTime| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_DesiredSetupTime| | | | 
+| DesiredStartDateProcessing| System.DateTime| Desired start of processing| DesiredStartDateProcessing| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_DesiredStartDateProcessing| | | | 
+| DesiredTargetQuantity| System.Int32| Planned quantity| DesiredTargetQuantity| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_DesiredTargetQuantity| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**DisposeState**</span>| [DisposeState](#disposestate)| Planning status| DisposeState| 0| True| True| False| | | | False| -1| 0| 0| | False| [DisposeState](#disposestate) | FN_ProductionStep_DisposeState| | | | 
+| Duration| System.Int32| Duration between the start and end time (days)| Duration| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_Duration| | | | 
+| EdgeGrooves| [ICollection`1\<EdgeGroove\>](#edgegroove)| Groove processing| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EdgeGroove_EdgeGroove| | | | 
+| EdgePasses| [ICollection`1\<EdgePass\>](#edgepass)| Edge throughfeeds| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EdgePass_EdgePass| | | | 
+| EdgeProfiles| [ICollection`1\<EdgeProfile\>](#edgeprofile)| Edge profile| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EdgeProfile_EdgeProfile| | | | 
+| FeedbackNumber| System.String| Feedback number| FeedbackNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_FeedbackNumber| | | | 
+| FeedbackState| [FeedbackState](#feedbackstate)| Feedback status| FeedbackState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [FeedbackState](#feedbackstate) | FN_ProductionStep_FeedbackState| | 0 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Order| System.Int32| Order| Order| 0| True| False| False| 0| | | False| -1| 0| 0| | False| | FN_ProductionStep_Order| | 0 | | 
+| PlanedEndDateProcessing| System.DateTime| Planned processing end| PlanedEndDateProcessing| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_PlanedEndDateProcessing| | | | 
+| PlanedStartDateProcessing| System.DateTime| Planned processing start| PlanedStartDateProcessing| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_PlanedStartDateProcessing| | | | 
+| PossibleRoute| [PossibleRoute](#possibleroute)| possible production routes| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PossibleRoute_PossibleRoute| | | | 
+| PossibleRouteCode| System.String| Processing route| PossibleRouteCode| 0| True| True| True| 0| | | False| -1| 0| 0| | False| | FN_ProductionStep_PossibleRouteCode| | 0 | | 
+| ProcessingData| [ICollection`1\<ProcessingData\>](#processingdata)| Processing data| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProcessingData_ProcessingData| | | | 
+| ProcessingTime| System.Decimal| Processing time| ProcessingTime| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_ProcessingTime| | | | 
+| ProductionItemsHistory| [ICollection`1\<ProductionItemsHistoryItem\>](#productionitemshistoryitem)| Parts history| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItemsHistoryItem_ProductionItemsHistoryItem| | | | 
+| ProductionItemsStepsData| [ICollection`1\<ProductionItemsStepsData\>](#productionitemsstepsdata)| Data per part and process step| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItemsStepsData_ProductionItemsStepsData| | | | 
+| ProductionOrder| [ProductionOrder](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionStep_ProductionOrderCode| | | | 
+| ProductionStage| [ProductionStage](#productionstage)| Production stage| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStage_ProductionStage| | | | 
+| ProductionStageCode| System.String| Production stage| ProductionStageCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_ProductionStageCode| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ProductionState**</span>| [ProductionStepState](#productionstepstate)| Status| ProductionState| 0| True| True| False| | | | False| -1| 0| 0| | False| [ProductionStepState](#productionstepstate) | FN_ProductionStep_ProductionState| | | | 
+| ProductionStepsResources| [ICollection`1\<ProductionStepsResource\>](#productionstepsresource)| Resources process step| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStepsResource_ProductionStepsResource| | | | 
+| QuantityFactor| System.Int32| Quantity factor| QuantityFactor| 0| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_ProductionStep_QuantityFactor| | 1 | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| SortStep| [SortStep](#sortstep)| Sorting step| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_SortStep_SortStep| | | | 
+| SortStepCode| System.String| Sorting step| SortStepCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionStep_SortStepCode| | | | 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_WorkCenterCode| | | | 
+| WorkstepDescription| System.String| Process step description| WorkstepDescription| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStep_WorkstepDescription| | | | 
+## 1.114 ProductionStepsResource : IEntityDescription
+## ProductionStepsResource
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ProductionStepsResource_ProductionStepsResource | ProductionStepsResource | Resources process step |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.114.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| Code| System.String| Resource name| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionStepsResource_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Data| System.Int32| Data| Data| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStepsResource_Data| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStepsResource_Description| | | | 
+| DesiredQuantity| System.Decimal| Planned quantity| DesiredQuantity| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStepsResource_DesiredQuantity| | | | 
+| InternalType| [ResourceType](#resourcetype)| Internal type| InternalType| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ResourceType](#resourcetype) | FN_ProductionStepsResource_InternalType| | 0 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Order| System.Int32| Display sequence| Order| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStepsResource_Order| | | | 
+| PossibleRouteCode| System.String| Processing route| PossibleRouteCode| 0| True| True| True| 0| | | False| -1| 0| 0| | False| | FN_ProductionStepsResource_PossibleRouteCode| | 0 | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionStepsResource_ProductionOrderCode| | | | 
+| ProductionStep| [ProductionStep](#productionstep)| Procedures| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStep_ProductionStep| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionStepsResource_ProductionStepCode| | | | 
+| QuantityUnit| System.String| Quantity unit| QuantityUnit| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStepsResource_QuantityUnit| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Type| System.String| Type| Type| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStepsResource_Type| | | | 
+| Value| System.String| Value| Value| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionStepsResource_Value| | | | 
+## 1.115 ProgramSetting : IEntityDescription
+## ProgramSetting
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ProgramSetting_ProgramSetting | ProgramSetting | Program settings |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.115.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProgramSetting_Description| | | | 
+| Identifier| System.String| ID| Identifier| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProgramSetting_Identifier| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| ValueFloat| System.Decimal| Return value as number| ValueFloat| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProgramSetting_ValueFloat| | | | 
+| ValueString| System.String| Return value as text| ValueString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProgramSetting_ValueString| | | | 
+## 1.116 RangeOfNumbers : IEntityDescription
+## RangeOfNumbers
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_RangeOfNumbers_RangeOfNumbers | RangeOfNumbers | Number range definition |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True | RangeOfNumbers | False | General |  
+### 1.116.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Area| System.String| Area| Area| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_RangeOfNumbers_Area| | | | 
+| CacheSize| System.Int32| Buffer size| CacheSize| 6| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_RangeOfNumbers_CacheSize| | 1 | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CurrentValue| System.Int64| Current value| CurrentValue| 3| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_RangeOfNumbers_CurrentValue| | 0 | | 
+| FormatDefinition| System.String| Formatting| FormatDefinition| 5| False| True| False| | | | False| -1| 0| 0| | False| | FN_RangeOfNumbers_FormatDefinition| | | | 
+| IncrementValue| System.Int32| Stepwise| IncrementValue| 4| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_RangeOfNumbers_IncrementValue| | 1 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MaxValue| System.Int64| Largest value| MaxValue| 2| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_RangeOfNumbers_MaxValue| | 1 | | 
+| MinValue| System.Int64| Smallest value| MinValue| 1| False| True| False| 1| | | False| -1| 0| 0| | False| | FN_RangeOfNumbers_MinValue| | 1 | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.117 ReorganizationDBTable : IEntityDescription
+## ReorganizationDBTable
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ReorganizationDBTable_ReorganizationDBTable | ReorganizationDBTable | Reorganization of database tables |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.117.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Condition| System.String| Query condition| Condition| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ReorganizationDBTable_Condition| | | | 
+| ConnectionName| System.String| Database connection name| ConnectionName| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ReorganizationDBTable_ConnectionName| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| DeletionOrder| System.Int32| Order of deletion| DeletionOrder| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ReorganizationDBTable_DeletionOrder| | | | 
+| Description| System.String| Description| Description| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ReorganizationDBTable_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PackageSize| System.Int32| Book size (data records)| PackageSize| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ReorganizationDBTable_PackageSize| | | | 
+| Sequence| System.Int32| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Table| System.String| Table name| Table| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ReorganizationDBTable_Table| | | | 
+## 1.118 ReorganizationFileSystem : IEntityDescription
+## ReorganizationFileSystem
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ReorganizationFileSystem_ReorganizationFileSystem | ReorganizationFileSystem | Reorganization of file system |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.118.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Days| System.Int32| Number of days| Days| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ReorganizationFileSystem_Days| | 0 | | 
+| DelEmptySubFolders| System.Boolean| Delete empty subfolders| DelEmptySubFolders| 0| True| True| False| False| | | False| -1| 0| 0| | False| | FN_ReorganizationFileSystem_DelEmptySubFolders| | False | | 
+| DeletionOrder| System.Int32| Order of deletion| DeletionOrder| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ReorganizationFileSystem_DeletionOrder| | | | 
+| Description| System.String| Description| Description| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ReorganizationFileSystem_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Path| System.String| Path| Path| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ReorganizationFileSystem_Path| | | | 
+| Recursively| System.Boolean| Search recursively| Recursively| 0| True| True| False| False| | | False| -1| 0| 0| | False| | FN_ReorganizationFileSystem_Recursively| | False | | 
+| SearchPatterns| System.String| Search screen| SearchPatterns| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_ReorganizationFileSystem_SearchPatterns| | | | 
+| Sequence| System.Int32| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.119 Restriction : IEntityDescription
+## Restriction
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_Restriction_Restriction | Restriction | Limitation |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.119.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Name| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Restriction_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Restriction_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| RolesRestrictions| [ICollection`1\<RolesRestriction\>](#rolesrestriction)| Role restriction| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_RolesRestriction_RolesRestriction| | | | 
+| Sequence| System.Int32| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| UserRestrictions| [ICollection`1\<UserRestriction\>](#userrestriction)| User restriction| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_UserRestriction_UserRestriction| | | | 
+## 1.120 Role : IEntityDescription
+## Role
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_Role_Role | Role | User groups |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.120.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Name| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Role_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Role_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| RolesRestrictions| [ICollection`1\<RolesRestriction\>](#rolesrestriction)| Role restriction| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_RolesRestriction_RolesRestriction| | | | 
+| Sequence| System.Int32| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Users| [ICollection`1\<User\>](#user)| User| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_User_User| | | | 
+| WebDashboard| System.String| Dashboard configuration| WebDashboard| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Role_WebDashboard| | | | 
+| WebMenu| System.String| Configuration menu| WebMenu| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Role_WebMenu| | | | 
+## 1.121 RolesRestriction : IEntityDescription
+## RolesRestriction
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_RolesRestriction_RolesRestriction | RolesRestriction | Role restriction |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.121.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Restriction| [Restriction](#restriction)| Limitation| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Restriction_Restriction| | | | 
+| RestrictionCode| System.String| Limitation| RestrictionCode| 1| True| False| True| | | | False| -1| 0| 0| | False| | FN_RolesRestriction_RestrictionCode| | | | 
+| Role| [Role](#role)| User groups| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Role_Role| | | | 
+| RoleCode| System.String| Coil| RoleCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_RolesRestriction_RoleCode| | | | 
+| Sequence| System.Int32| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.122 Route : IEntityDescription
+## Route
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_Route_Route | Route | Route |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.122.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Production path| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Route_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Route_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PossibleRoutes| [ICollection`1\<PossibleRoute\>](#possibleroute)| possible production routes| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PossibleRoute_PossibleRoute| | | | 
+| ProductionOrders| [ICollection`1\<ProductionOrder\>](#productionorder)| Production orders| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionOrder_ProductionOrder| | | | 
+| ProductionRouteSteps| [ICollection`1\<ProductionRouteStep\>](#productionroutestep)| Production path of individual steps| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionRouteStep_ProductionRouteStep| | | | 
+| SchedulingMode| [SchedulingMode](#schedulingmode)| Planning mode| SchedulingMode| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [SchedulingMode](#schedulingmode) | FN_Route_SchedulingMode| | 0 | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.123 SapClassType : IEntityDescription
+## SapClassType
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_SapClassType_SapClassType | SapClassType | SAP classes |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.123.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ClassCode| System.String| SAP class| ClassCode| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_SapClassType_ClassCode| | | | 
+| ClassType| System.String| Type| ClassType| 20| True| True| False| | | | False| -1| 0| 0| | False| | FN_SapClassType_ClassType| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapClassType_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.124 SapIdocState : IEntityDescription
+## SapIdocState
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_SapIdocState_SapIdocState | SapIdocState | Status information |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.124.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Client| System.String| Client| Client| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_SapIdocState_Client| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CustomerType| System.String| Enhancement (defined by customer)| CustomerType| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_CustomerType| | | | 
+| Direction| System.String| Direction| Direction| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_Direction| | | | 
+| EdiFlag| System.String| EDI standard, indicator| EdiFlag| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_EdiFlag| | | | 
+| EdiMessageType| System.String| EDI message type| EdiMessageType| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_EdiMessageType| | | | 
+| EdiVersion| System.String| EDI standard, version and release| EdiVersion| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_EdiVersion| | | | 
+| ErrorMessage| System.String| Error message| ErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_ErrorMessage| | | | 
+| ErrorState| [StagingImportErrorState](#stagingimporterrorstate)| Error status| ErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [StagingImportErrorState](#stagingimporterrorstate) | FN_SapIdocState_ErrorState| | 0 | | 
+| Express| System.String| Override in input| Express| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_Express| | | | 
+| IdocCreationDate| System.String| Creation date| IdocCreationDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_IdocCreationDate| | | | 
+| IdocCreationTime| System.String| Time of creation| IdocCreationTime| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_IdocCreationTime| | | | 
+| IdocNum| System.String| Number of IDoc| IdocNum| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_SapIdocState_IdocNum| | | | 
+| IdocNumReturn| System.String| Number of return IDoc| IdocNumReturn| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_SapIdocState_IdocNumReturn| | | | 
+| IdocRelease| System.String| SAP release of IDoc| IdocRelease| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_IdocRelease| | | | 
+| IdocState| System.String| Status of IDoc| IdocState| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_IdocState| | | | 
+| IdocType| System.String| Name of base type| IdocType| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_IdocType| | | | 
+| KeyMessageArchive| System.String| Key of external message archive| KeyMessageArchive| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_KeyMessageArchive| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| LogicalAddressRecipient| System.String| Logical address of receiver| LogicalAddressRecipient| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_LogicalAddressRecipient| | | | 
+| LogicalAddressSender| System.String| Logical address of sender| LogicalAddressSender| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_LogicalAddressSender| | | | 
+| Message| System.String| message| Message| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_Message| | | | 
+| MessageFeature| System.String| Message variant| MessageFeature| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_MessageFeature| | | | 
+| MessageFunction| System.String| Message function| MessageFunction| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_MessageFunction| | | | 
+| MessageGroup| System.String| Message group| MessageGroup| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_MessageGroup| | | | 
+| MessageType| System.String| message type| MessageType| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_MessageType| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OutputMode| System.String| Output mode| OutputMode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_OutputMode| | | | 
+| PartnerNoReceiver| System.String| Receiver partner number| PartnerNoReceiver| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_PartnerNoReceiver| | | | 
+| PartnerNoSender| System.String| Sender partner number| PartnerNoSender| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_PartnerNoSender| | | | 
+| PartnerRoleReceiver| System.String| Receiver partner role| PartnerRoleReceiver| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_PartnerRoleReceiver| | | | 
+| PartnerRoleSender| System.String| Sender partner role| PartnerRoleSender| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_PartnerRoleSender| | | | 
+| PartnerTypeReceiver| System.String| Receiver partner type| PartnerTypeReceiver| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_PartnerTypeReceiver| | | | 
+| PartnerTypeSender| System.String| Sender partner type| PartnerTypeSender| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_PartnerTypeSender| | | | 
+| ReceiverPort| System.String| Receiver port| ReceiverPort| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_ReceiverPort| | | | 
+| RecipientAddress| System.String| Receiver address| RecipientAddress| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_RecipientAddress| | | | 
+| SenderAddress| System.String| Sender address| SenderAddress| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_SenderAddress| | | | 
+| SenderPort| System.String| Sender port| SenderPort| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_SenderPort| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| SerialNumber| System.String| serialization| SerialNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_SerialNumber| | | | 
+| TableStructure| System.String| Name of table structure| TableStructure| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_SapIdocState_TableStructure| | | | 
+| TestMode| System.String| Test indicator| TestMode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_TestMode| | | | 
+| TransferDate| System.DateTime| Date of transfer| TransferDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_TransferDate| | | | 
+| TransferFile| System.String| Transmission file| TransferFile| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapIdocState_TransferFile| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| TransferState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_SapIdocState_TransferState| | 0 | | 
+## 1.125 SapStagingOrder : IEntityDescription
+## SapStagingOrder
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_SapStagingOrder_SapStagingOrder | SapStagingOrder | Raw data import orders (SAP IDoc) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.125.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ArticleNumber| System.String| Item designation| ArticleNumber| 40| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_ArticleNumber| | | | 
+| Bracket| System.String| Production package| Bracket| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_Bracket| | | | 
+| Code| System.String| Production order number| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CustomerOrderCode| System.String| Customer order| CustomerOrderCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_CustomerOrderCode| | | | 
+| CustomerOrderPosition| System.String| Customer order item| CustomerOrderPosition| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_CustomerOrderPosition| | | | 
+| DesiredEndDateAsString| System.String| Planned end date| DesiredEndDateAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_DesiredEndDateAsString| | | | 
+| DesiredEndTimeAsString| System.String| Planned end time| DesiredEndTimeAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_DesiredEndTimeAsString| | | | 
+| DesiredStartDateAsString| System.String| Planned start date| DesiredStartDateAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_DesiredStartDateAsString| | | | 
+| DesiredStartTimeAsString| System.String| Planned start time| DesiredStartTimeAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_DesiredStartTimeAsString| | | | 
+| DesiredTargetQuantity| System.String| Planned quantity| DesiredTargetQuantity| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_DesiredTargetQuantity| | | | 
+| ErrorMessage| System.String| Production order fault message| ErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_ErrorMessage| | | | 
+| ErrorState| [ErrorState](#errorstate)| Production order fault status| ErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_SapStagingOrder_ErrorState| | 0 | | 
+| IdocNum| System.String| Unique IDoc number| IdocNum| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_IdocNum| | | | 
+| ImportErrorMessage| System.String| Error message| ImportErrorMessage| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_ImportErrorMessage| | | | 
+| ImportErrorState| [StagingImportErrorState](#stagingimporterrorstate)| Error status| ImportErrorState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [StagingImportErrorState](#stagingimporterrorstate) | FN_SapStagingOrder_ImportErrorState| | 0 | | 
+| Instance| System.String| instance| Instance| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_Instance| | | | 
+| Length| System.String| Length| Length| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_Length| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Material| System.String| Material| Material| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_Material| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ParentProductionOrderNumber| System.String| High-level production order| ParentProductionOrderNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_ParentProductionOrderNumber| | | | 
+| PositionQuantity| System.String| Item quantity| PositionQuantity| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_PositionQuantity| | | | 
+| QuantityUnit| System.String| Quantity unit| QuantityUnit| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_QuantityUnit| | | | 
+| RecordType| System.String| Record type| RecordType| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_RecordType| | | | 
+| ReproductionType| System.Int32| Post-production type| ReproductionType| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_SapStagingOrder_ReproductionType| | 0 | | 
+| SapComponentType| System.String| SAP order type| SapComponentType| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_SapComponentType| | | | 
+| SapOrderType| System.String| SAP order category| SapOrderType| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_SapOrderType| | | | 
+| SapStagingResources| [ICollection`1\<SapStagingResource\>](#sapstagingresource)| Raw data import resources (SAP IDoc)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_SapStagingResource_SapStagingResource| | | | 
+| SapStagingSteps| [ICollection`1\<SapStagingStep\>](#sapstagingstep)| Raw data import process steps (SAP IDoc)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_SapStagingStep_SapStagingStep| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Thickness| System.String| thickness| Thickness| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_Thickness| | | | 
+| TopProductionOrderNumber| System.String| Leading production order| TopProductionOrderNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_TopProductionOrderNumber| | | | 
+| TransferDate| System.DateTime| Date of transfer| TransferDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| TransferState| 0| True| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_SapStagingOrder_TransferState| | 10 | | 
+| Width| System.String| Width| Width| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingOrder_Width| | | | 
+## 1.126 SapStagingResource : IEntityDescription
+## SapStagingResource
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_SapStagingResource_SapStagingResource | SapStagingResource | Raw data import resources (SAP IDoc) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.126.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingResource_Description| | | | 
+| DesiredQuantityAsString| System.String| Qty.| DesiredQuantityAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingResource_DesiredQuantityAsString| | | | 
+| IdocNum| System.String| Unique IDoc number| IdocNum| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_SapStagingResource_IdocNum| | | | 
+| IsDummyPosition| System.String| Dummy item| IsDummyPosition| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingResource_IsDummyPosition| | | | 
+| LengthAsString| System.String| Length| LengthAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingResource_LengthAsString| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Material| System.String| Material| Material| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingResource_Material| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ProductionOrderCode| System.String| Order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_SapStagingResource_ProductionOrderCode| | | | 
+| ProductionResourceCode| System.String| Resource| ProductionResourceCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_SapStagingResource_ProductionResourceCode| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_SapStagingResource_ProductionStepCode| | | | 
+| QuantityUnit| System.String| Quantity unit| QuantityUnit| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingResource_QuantityUnit| | | | 
+| RecordType| System.String| Record type| RecordType| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_SapStagingResource_RecordType| | | | 
+| SapStagingOrder| [SapStagingOrder](#sapstagingorder)| Raw data import orders (SAP IDoc)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_SapStagingOrder_SapStagingOrder| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| ThicknessAsString| System.String| Thickness| ThicknessAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingResource_ThicknessAsString| | | | 
+| TransferDate| System.DateTime| Date of transfer| TransferDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingResource_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| TransferState| 0| True| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_SapStagingResource_TransferState| | 10 | | 
+| WidthAsString| System.String| Width| WidthAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingResource_WidthAsString| | | | 
+## 1.127 SapStagingStep : IEntityDescription
+## SapStagingStep
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_SapStagingStep_SapStagingStep | SapStagingStep | Raw data import process steps (SAP IDoc) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.127.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CapacityAsString| System.String| capacity| CapacityAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingStep_CapacityAsString| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| DesiredEndDateAsString| System.String| Planned end date| DesiredEndDateAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingStep_DesiredEndDateAsString| | | | 
+| DesiredEndTimeAsString| System.String| Planned end time| DesiredEndTimeAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingStep_DesiredEndTimeAsString| | | | 
+| DesiredStartDateAsString| System.String| Planned start date| DesiredStartDateAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingStep_DesiredStartDateAsString| | | | 
+| DesiredStartTimeAsString| System.String| Planned start time| DesiredStartTimeAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingStep_DesiredStartTimeAsString| | | | 
+| DesiredTargetQuantityAsString| System.String| Qty.| DesiredTargetQuantityAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingStep_DesiredTargetQuantityAsString| | | | 
+| IdocNum| System.String| Unique IDoc number| IdocNum| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_SapStagingStep_IdocNum| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ProductionOrderCode| System.String| Order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_SapStagingStep_ProductionOrderCode| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_SapStagingStep_ProductionStepCode| | | | 
+| QuantityUnit| System.String| Quantity unit| QuantityUnit| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingStep_QuantityUnit| | | | 
+| RecordType| System.String| Record type| RecordType| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingStep_RecordType| | | | 
+| SapStagingOrder| [SapStagingOrder](#sapstagingorder)| Raw data import orders (SAP IDoc)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_SapStagingOrder_SapStagingOrder| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| TransferDate| System.DateTime| Date of transfer| TransferDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingStep_TransferDate| | | | 
+| TransferState| [StagingTransferState](#stagingtransferstate)| Status of transfer| TransferState| 0| True| True| False| 10| | | False| -1| 0| 0| | False| [StagingTransferState](#stagingtransferstate) | FN_SapStagingStep_TransferState| | 10 | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingStep_WorkCenterCode| | | | 
+| WorkstepDescription| System.String| Process step description| WorkstepDescription| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_SapStagingStep_WorkstepDescription| | | | 
+## 1.128 Securable : IEntityDescription
+## Securable
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_Securable_Securable | Securable | rights |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.128.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| ID| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Securable_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Securable_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Module| [Module](#module)| Module| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Module_Module| | | | 
+| ModuleCode| System.String| Module| ModuleCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Securable_ModuleCode| | | | 
+| Sequence| System.Int32| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Weight| System.String| weight| Weight| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Securable_Weight| | | | 
+## 1.129 Setting : IEntityDescription
+## Setting
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_Setting_Setting | Setting | Settings |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.129.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Component| System.String| Components| Component| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Setting_Component| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Id| System.Int32| ID| Id| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Setting_Id| | | | 
+| Identifier| System.String| key| Identifier| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Setting_Identifier| | | | 
+| Instance| System.String| instance| Instance| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Setting_Instance| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| LogonId| System.String| Login ID| LogonId| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Setting_LogonId| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Module| System.String| Module| Module| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Setting_Module| | | | 
+| Value| System.String| Value| Value| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Setting_Value| | | | 
+## 1.130 ShapePass : IEntityDescription
+## ShapePass
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_ShapePass_ShapePass | ShapePass | Determination of edge throughfeed |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.130.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AdditionalOversizeType| [AdditionalOversizeType](#additionaloversizetype)| Add. trimming value| AdditionalOversizeType| 85| True| True| False| 0| | | False| -1| 0| 0| | False| [AdditionalOversizeType](#additionaloversizetype) | FN_ShapePass_AdditionalOversizeType| | 0 | | 
+| BasicMacro| System.String| Basic machine macro| BasicMacro| 70| True| True| False| | | | False| -1| 0| 0| | False| | FN_ShapePass_BasicMacro| | | | 
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| EdgeInProcess| System.String| Edge in processing| EdgeInProcess| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_ShapePass_EdgeInProcess| | | | 
+| EdgeShape| System.String| Edge image| EdgeShape| 1| True| True| False| | | | False| -1| 0| 0| | False| | FN_ShapePass_EdgeShape| | | | 
+| EdgeShapeAddOn| System.String| Edge image supplement| EdgeShapeAddOn| 2| True| True| False| #| | | False| -1| 0| 0| | False| | FN_ShapePass_EdgeShapeAddOn| | # | | 
+| GrooveInProcess| System.String| Groove in process| GrooveInProcess| 50| True| True| False| -| | | False| -1| 0| 0| | False| | FN_ShapePass_GrooveInProcess| | - | | 
+| GrooveInProcess2| System.String| Groove in process 2| GrooveInProcess2| 50| True| True| False| -| | | False| -1| 0| 0| | False| | FN_ShapePass_GrooveInProcess2| | - | | 
+| GrooveShapeEast| System.String| East groove definition| GrooveShapeEast| 6| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ShapePass_GrooveShapeEast| | 0 | | 
+| GrooveShapeNorth| System.String| North groove definition| GrooveShapeNorth| 3| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ShapePass_GrooveShapeNorth| | 0 | | 
+| GrooveShapeSouth| System.String| South groove definition| GrooveShapeSouth| 5| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ShapePass_GrooveShapeSouth| | 0 | | 
+| GrooveShapeWest| System.String| West groove definition| GrooveShapeWest| 4| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ShapePass_GrooveShapeWest| | 0 | | 
+| IsLengthGreaterEqualWidth| System.Boolean| Length greater than width| IsLengthGreaterEqualWidth| 10| True| True| False| False| | | False| -1| 0| 0| | False| | FN_ShapePass_IsLengthGreaterEqualWidth| | False | | 
+| IsRatioPart| System.Boolean| Overhead component| IsRatioPart| 11| True| True| False| False| | | False| -1| 0| 0| | False| | FN_ShapePass_IsRatioPart| | False | | 
+| IsSquarePart| System.Boolean| Flat component| IsSquarePart| 12| True| True| False| False| | | False| -1| 0| 0| | False| | FN_ShapePass_IsSquarePart| | False | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MillingCount| System.Int32| Number of trimmings| MillingCount| 80| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_ShapePass_MillingCount| | 0 | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| NarrowPartType| [NarrowPartType](#narrowparttype)| Narrow component| NarrowPartType| 13| True| True| False| 0| | | False| -1| 0| 0| | False| [NarrowPartType](#narrowparttype) | FN_ShapePass_NarrowPartType| | 0 | | 
+| OrientationInfeed| System.Int32| Orientation in system infeed| OrientationInfeed| 40| False| True| False| | | | False| -1| 0| 0| | False| | FN_ShapePass_OrientationInfeed| | | | 
+| OrientationInProcess| System.Int32| Orientation in system| OrientationInProcess| 41| False| True| False| | | | False| -1| 0| 0| | False| | FN_ShapePass_OrientationInProcess| | | | 
+| OrientationOutfeed| System.Int32| Orientation in system outfeed| OrientationOutfeed| 42| False| True| False| | | | False| -1| 0| 0| | False| | FN_ShapePass_OrientationOutfeed| | | | 
+| Pass| System.Int32| Pass| Pass| 20| True| True| False| | | | False| -1| 0| 0| | False| | FN_ShapePass_Pass| | | | 
+| PassMachiningType| System.String| Type of throughfeed| PassMachiningType| 29| True| True| False| -| | | False| -1| 0| 0| | False| | FN_ShapePass_PassMachiningType| | - | | 
+| PassMax| System.Int32| Number of cycles| PassMax| 21| True| True| False| | | | False| -1| 0| 0| | False| | FN_ShapePass_PassMax| | | | 
+| Picture| System.Int32| Drawing| Picture| 60| False| True| False| | | | False| -1| 0| 0| | False| | FN_ShapePass_Picture| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| False| #| | | False| -1| 0| 0| | False| | FN_ShapePass_WorkCenterCode| | # | | 
+## 1.131 SortStep : IEntityDescription
+## SortStep
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_SortStep_SortStep | SortStep | Sorting step |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.131.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| key| Code| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_SortStep_Code| | | | 
+| CompletionLinqExpression| System.String| Completeness printout| CompletionLinqExpression| 40| False| True| False| | | | False| -1| 0| 0| | False| | FN_SortStep_CompletionLinqExpression| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_SortStep_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PartCarrierForPartCarriers| [ICollection`1\<PartCarrierForPartCarrier\>](#partcarrierforpartcarrier)| Assignment of parts carrier to parts carrier| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PartCarrierForPartCarrier_PartCarrierForPartCarrier| | | | 
+| PartCarrierGroups| [ICollection`1\<PartCarrierGroup\>](#partcarriergroup)| Parts carrier group| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PartCarrierGroup_PartCarrierGroup| | | | 
+| PartCarrierProductionItems| [ICollection`1\<PartCarrierProductionItem\>](#partcarrierproductionitem)| Assignment of parts carrier to parts production| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PartCarrierProductionItem_PartCarrierProductionItem| | | | 
+| PartCarrierProvider| System.String| Parts carrier provider| PartCarrierProvider| 50| True| True| False| | | | False| 256| 0| 0| | False| | FN_SortStep_PartCarrierProvider| | | | 
+| PartInfoProvider| System.String| Parts information provider| PartInfoProvider| 50| True| True| False| | | | False| 256| 0| 0| | False| | FN_SortStep_PartInfoProvider| | | | 
+| PartListProvider| System.String| Parts list provider| PartListProvider| 50| True| True| False| | | | False| 256| 0| 0| | False| | FN_SortStep_PartListProvider| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**PickMode**</span>| [SortStepPickMode](#sortsteppickmode)| Storage removal mode| PickMode| 20| True| True| False| | | | False| -1| 0| 0| | False| [SortStepPickMode](#sortsteppickmode) | FN_SortStep_PickMode| | | | 
+| ProductionRouteSteps| [ICollection`1\<ProductionRouteStep\>](#productionroutestep)| Production path of individual steps| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionRouteStep_ProductionRouteStep| | | | 
+| ProductionSteps| [ICollection`1\<ProductionStep\>](#productionstep)| Procedures| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStep_ProductionStep| | | | 
+| SaveHistory| System.Boolean| The records removed will be saved.| SaveHistory| 60| True| True| False| | | | False| -1| 0| 0| | False| | FN_SortStep_SaveHistory| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| SortFeature| System.String| Sorting characteristic| SortFeature| 40| True| True| False| Code| | | False| -1| 0| 0| | False| | FN_SortStep_SortFeature| | Code | | 
+| SortFeatureValueListProvider| System.String| Sorting characteristic value list provider| SortFeatureValueListProvider| 50| True| True| False| | | | False| 256| 0| 0| | False| | FN_SortStep_SortFeatureValueListProvider| | | | 
+| SortMode| [SortStepSortMode](#sortstepsortmode)| Sorting mode| SortMode| 20| True| True| False| 0| | | False| -1| 0| 0| | False| [SortStepSortMode](#sortstepsortmode) | FN_SortStep_SortMode| | 0 | | 
+| SortPartCarrierProvider| System.String| Parts carrier sorting provider| SortPartCarrierProvider| 50| True| True| False| | | | False| 256| 0| 0| | False| | FN_SortStep_SortPartCarrierProvider| | | | 
+| SortProvider| System.String| Sorting provider| SortProvider| 50| True| True| False| | | | False| 256| 0| 0| | False| | FN_SortStep_SortProvider| | | | 
+| Type| [SortType](#sorttype)| With or without allocation| Type| 30| True| True| False| 0| | | False| -1| 0| 0| | False| [SortType](#sorttype) | FN_SortStep_Type| | 0 | | 
+## 1.132 Stack : IEntityDescription
+## Stack
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_Stack_Stack | Stack | Stack |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.132.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CentreX| System.Int32| X-position| CentreX| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Stack_CentreX| | | | 
+| CentreY| System.Int32| Y-position| CentreY| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Stack_CentreY| | | | 
+| CentreZ| System.Int32| Z-position| CentreZ| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Stack_CentreZ| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CustomAllocationCode| System.Int64| CustomAllocationCode| CustomAllocationCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Stack_CustomAllocationCode| | | | 
+| CustomBaseBoardType| System.String| CustomBaseBoardType| CustomBaseBoardType| 0| False| True| False| | | | False| 32| 0| 0| | False| | FN_Stack_CustomBaseBoardType| | | | 
+| CustomDestination| System.Int32| CustomDestination| CustomDestination| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Stack_CustomDestination| | | | 
+| CustomExternalStackCode| System.String| CustomExternalStackCode| CustomExternalStackCode| 0| False| True| False| | | | False| 32| 0| 0| | False| | FN_Stack_CustomExternalStackCode| | | | 
+| CustomIntelliStackCode| System.String| CustomIntelliStackCode| CustomIntelliStackCode| 0| False| True| False| | | | False| 64| 0| 0| | False| | FN_Stack_CustomIntelliStackCode| | | | 
+| CustomStackSource| System.Int32| CustomStackSource| CustomStackSource| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Stack_CustomStackSource| | | | 
+| CustomStackState| [StackState](#stackstate)| CustomStackState| CustomStackState| 0| False| True| False| | | | False| -1| 0| 0| | False| [StackState](#stackstate) | FN_Stack_CustomStackState| | | | 
+| CustomStackStructureCode| System.Int32| CustomStackStructureCode| CustomStackStructureCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Stack_CustomStackStructureCode| | | | 
+| CustomStackType| [StackType](#stacktype)| CustomStackType| CustomStackType| 0| False| True| False| 0| | | False| -1| 0| 0| | False| [StackType](#stacktype) | FN_Stack_CustomStackType| | 0 | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsActive**</span>| [YesNo](#yesno)| is active| IsActive| 0| True| True| False| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_Stack_IsActive| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsReserved**</span>| [YesNo](#yesno)| Is reserved| IsReserved| 0| True| True| False| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_Stack_IsReserved| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsValid**</span>| [YesNo](#yesno)| Is valid| IsValid| 0| True| True| False| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_Stack_IsValid| | | | 
+| LayerLayout| System.String| Layer layout| LayerLayout| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Stack_LayerLayout| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PositionNumber| System.String| Position| PositionNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_Stack_PositionNumber| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StackCode| System.String| STACK NUMBER| StackCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_Stack_StackCode| | | | 
+| StackHeight| System.Decimal| Stack height| StackHeight| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Stack_StackHeight| | | | 
+| StackItems| [ICollection`1\<StackItem\>](#stackitem)| Batch contents| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_StackItem_StackItem| | | | 
+| StackLength| System.Decimal| Stack length| StackLength| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Stack_StackLength| | | | 
+| StackWidth| System.Decimal| Stack width| StackWidth| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_Stack_StackWidth| | | | 
+## 1.133 StackItem : IEntityDescription
+## StackItem
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_StackItem_StackItem | StackItem | Batch contents |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.133.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CustomBatchNumberBoard| System.String| CustomBatchNumberBoard| CustomBatchNumberBoard| 0| False| True| False| | | | False| 64| 0| 0| | False| | FN_StackItem_CustomBatchNumberBoard| | | | 
+| CustomCoordinateX| System.Decimal| CustomCoordinateX| CustomCoordinateX| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StackItem_CustomCoordinateX| | | | 
+| CustomCoordinateY| System.Decimal| CustomCoordinateY| CustomCoordinateY| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StackItem_CustomCoordinateY| | | | 
+| CustomCoordinateZ| System.Decimal| CustomCoordinateZ| CustomCoordinateZ| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StackItem_CustomCoordinateZ| | | | 
+| CustomIntelliStackPositionX| System.Decimal| CustomIntelliStackPositionX| CustomIntelliStackPositionX| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StackItem_CustomIntelliStackPositionX| | | | 
+| CustomIntelliStackPositionY| System.Decimal| CustomIntelliStackPositionY| CustomIntelliStackPositionY| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StackItem_CustomIntelliStackPositionY| | | | 
+| CustomIntelliStackPositionZ| System.Decimal| CustomIntelliStackPositionZ| CustomIntelliStackPositionZ| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StackItem_CustomIntelliStackPositionZ| | | | 
+| CustomOrderInStack| System.Int32| CustomOrderInStack| CustomOrderInStack| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StackItem_CustomOrderInStack| | | | 
+| CustomOrderNumber| System.String| CustomOrderNumber| CustomOrderNumber| 0| False| True| False| | | | False| 32| 0| 0| | False| | FN_StackItem_CustomOrderNumber| | | | 
+| CustomOrderPosition| System.String| CustomOrderPosition| CustomOrderPosition| 0| False| True| False| | | | False| 32| 0| 0| | False| | FN_StackItem_CustomOrderPosition| | | | 
+| CustomOrientation| System.Int32| CustomOrientation| CustomOrientation| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StackItem_CustomOrientation| | | | 
+| CustomReceiptDate| System.DateTime| CustomReceiptDate| CustomReceiptDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StackItem_CustomReceiptDate| | | | 
+| CustomReceiptLocation| System.String| CustomReceiptLocation| CustomReceiptLocation| 0| False| True| False| | | | False| 32| 0| 0| | False| | FN_StackItem_CustomReceiptLocation| | | | 
+| CustomReceiptNumber| System.String| CustomReceiptNumber| CustomReceiptNumber| 0| False| True| False| | | | False| 32| 0| 0| | False| | FN_StackItem_CustomReceiptNumber| | | | 
+| LayerNumber| System.Int32| Position| LayerNumber| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_StackItem_LayerNumber| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PositionInLayer| System.Int32| Position in storage| PositionInLayer| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_StackItem_PositionInLayer| | | | 
+| QuantityInLayer| System.Int32| Qty.| QuantityInLayer| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_StackItem_QuantityInLayer| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Stack| [Stack](#stack)| Stack| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Stack_Stack| | | | 
+| StackCode| System.String| STACK NUMBER| StackCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_StackItem_StackCode| | | | 
+| StackItemCode| System.String| Stack part number| StackItemCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_StackItem_StackItemCode| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**StackItemType**</span>| [StackItemType](#stackitemtype)| Type| StackItemType| 0| True| True| False| | | | False| -1| 0| 0| | False| [StackItemType](#stackitemtype) | FN_StackItem_StackItemType| | | | 
+## 1.134 StopLimit : IEntityDescription
+## StopLimit
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_StopLimit_StopLimit | StopLimit | Stop limit |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.134.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Name| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_StopLimit_Code| | | | 
+| CountBoards| System.Int32| No. of boards| CountBoards| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StopLimit_CountBoards| | | | 
+| CountParts| System.Int32| Quantity of parts| CountParts| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StopLimit_CountParts| | | | 
+| CountRest| System.Int32| Number of offcuts| CountRest| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StopLimit_CountRest| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Materials| [ICollection`1\<Material\>](#material)| Material| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Material_Material| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| RestArea| System.Decimal| Offcut area| RestArea| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StopLimit_RestArea| | | | 
+| RestPercent| System.Decimal| Percentage offcut| RestPercent| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StopLimit_RestPercent| | | | 
+| ScrapArea| System.Decimal| Waste surface| ScrapArea| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StopLimit_ScrapArea| | | | 
+| ScrapPercent| System.Decimal| Percentage waste| ScrapPercent| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_StopLimit_ScrapPercent| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.135 TempStagingFeature : IEntityDescription
+## TempStagingFeature
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_TempStagingFeature_TempStagingFeature | TempStagingFeature | Features |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.135.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CustomerOrderCode| System.String| Customer order| CustomerOrderCode| 10| False| True| False| | | | False| -1| 0| 0| | False| | FN_TempStagingFeature_CustomerOrderCode| | | | 
+| FeatureName| System.String| Feature name| FeatureName| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_TempStagingFeature_FeatureName| | | | 
+| FeatureNumberFromAsString| System.String| Characteristic value number from| FeatureNumberFromAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_TempStagingFeature_FeatureNumberFromAsString| | | | 
+| FeatureNumberToAsString| System.String| Characteristic value number to| FeatureNumberToAsString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_TempStagingFeature_FeatureNumberToAsString| | | | 
+| FeatureString| System.String| Feature value string| FeatureString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_TempStagingFeature_FeatureString| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ProductionOrderCode| System.String| Production order number| ProductionOrderCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_TempStagingFeature_ProductionOrderCode| | | | 
+| ProductionResourceCode| System.String| Resource| ProductionResourceCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_TempStagingFeature_ProductionResourceCode| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_TempStagingFeature_ProductionStepCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| TableName| System.String| Table name| TableName| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_TempStagingFeature_TableName| | | | 
+## 1.136 User : IEntityDescription
+## User
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_User_User | User | User |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | False |  | False | General |  
+### 1.136.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Acronym| System.String| Code| Acronym| 3| False| True| False| | | | False| -1| 0| 0| | False| | FN_User_Acronym| | | | 
+| AutoLogoffDuration| System.Int32| Automatic log-off (in minutes)| AutoLogoffDuration| 10| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_User_AutoLogoffDuration| | 0 | | 
+| Code| System.String| Name| Code| 1| True| True| True| | | | False| -1| 0| 0| | False| | FN_User_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Department| System.String| department| Department| 9| False| False| False| | | | False| -1| 0| 0| | False| | FN_User_Department| | | | 
+| Description| System.String| Description| Description| 6| False| True| False| | | | False| -1| 0| 0| | False| | FN_User_Description| | | | 
+| DisplayName| System.String| display name| DisplayName| 2| False| True| False| | | | False| -1| 0| 0| | False| | FN_User_DisplayName| | | | 
+| Email| System.String| eMail| Email| 4| False| True| False| | | | False| -1| 0| 0| | False| | FN_User_Email| | | | 
+| Enabled| System.Boolean| Activated| Enabled| 7| True| True| False| | | | False| -1| 0| 0| | False| | FN_User_Enabled| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| PasswordHash| System.String| Password hash| PasswordHash| 8| True| False| False| | | | False| -1| 0| 0| | False| | FN_User_PasswordHash| | | | 
+| Role| [Role](#role)| User groups| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Role_Role| | | | 
+| RoleCode| System.String| user group| RoleCode| 5| False| True| False| | | | False| -1| 0| 0| | False| | FN_User_RoleCode| | | | 
+| Sequence| System.Int32| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| UserRestrictions| [ICollection`1\<UserRestriction\>](#userrestriction)| User restriction| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_UserRestriction_UserRestriction| | | | 
+## 1.137 UserRestriction : IEntityDescription
+## UserRestriction
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_UserRestriction_UserRestriction | UserRestriction | User restriction |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.137.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Restriction| [Restriction](#restriction)| Limitation| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Restriction_Restriction| | | | 
+| RestrictionCode| System.String| Limitation| RestrictionCode| 1| True| False| True| | | | False| -1| 0| 0| | False| | FN_UserRestriction_RestrictionCode| | | | 
+| Sequence| System.Int32| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| User| [User](#user)| User| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_User_User| | | | 
+| UserCode| System.String| User| UserCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_UserRestriction_UserCode| | | | 
+## 1.138 ValidationStateDetail : IEntityDescription
+## ValidationStateDetail
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ValidationStateDetail_ValidationStateDetail | ValidationStateDetail | Evaluation detail |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.138.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Name| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ValidationStateDetail_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ValidationStateDetail_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| NecessaryReleaseType| [NecessaryReleaseType](#necessaryreleasetype)| Required release type| NecessaryReleaseType| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [NecessaryReleaseType](#necessaryreleasetype) | FN_ValidationStateDetail_NecessaryReleaseType| | 0 | | 
+| ProductionItemsValidations| [ICollection`1\<ProductionItemsValidation\>](#productionitemsvalidation)| Part evaluation| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItemsValidation_ProductionItemsValidation| | | | 
+| ReproductionMode| [ReproductionMode](#reproductionmode)| Type of post-production| ReproductionMode| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ReproductionMode](#reproductionmode) | FN_ValidationStateDetail_ReproductionMode| | 0 | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| ValidationState| [ValidationState](#validationstate)| Status| ValidationState| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [ValidationState](#validationstate) | FN_ValidationStateDetail_ValidationState| | 0 | | 
+| ValidationStateSource| [ValidationStateSource](#validationstatesource)| Evaluation origin| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ValidationStateSource_ValidationStateSource| | | | 
+| ValidationStateSourceCode| System.String| Evaluation source| ValidationStateSourceCode| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ValidationStateDetail_ValidationStateSourceCode| | | | 
+## 1.139 ValidationStateSource : IEntityDescription
+## ValidationStateSource
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_ValidationStateSource_ValidationStateSource | ValidationStateSource | Evaluation origin |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.139.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Code| System.String| Name| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ValidationStateSource_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ValidationStateSource_Description| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ProductionItemsValidations| [ICollection`1\<ProductionItemsValidation\>](#productionitemsvalidation)| Part evaluation| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionItemsValidation_ProductionItemsValidation| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| ValidationStateDetails| [ICollection`1\<ValidationStateDetail\>](#validationstatedetail)| Evaluation detail| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ValidationStateDetail_ValidationStateDetail| | | | 
+## 1.140 WccEdgeInformationToEntityShape : IEntityDescription
+## WccEdgeInformationToEntityShape
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_WccEdgeInformationToEntityShape_WccEdgeInformationToEntityShape | WccEdgeInformationToEntityShape | Edge transition determination (WCC) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.140.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CncOversizeMultiplier| System.Decimal| CNC dimension multiplier| CncOversizeMultiplier| 80| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccEdgeInformationToEntityShape_CncOversizeMultiplier| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| DataChange| System.Int32| Component mirrored| DataChange| 30| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccEdgeInformationToEntityShape_DataChange| | | | 
+| EdgeDirection| System.String| Edge position, HOMAG| EdgeDirection| 50| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccEdgeInformationToEntityShape_EdgeDirection| | | | 
+| EdgeIdInput| System.Int32| Edge sequence, customer system| EdgeIdInput| 40| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccEdgeInformationToEntityShape_EdgeIdInput| | | | 
+| EdgeRelevant| System.Int32| Edge relevant for processing| EdgeRelevant| 60| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccEdgeInformationToEntityShape_EdgeRelevant| | | | 
+| EdgeTransition| System.String| Initial edge transition| EdgeTransition| 20| True| True| False| 011:011:000:000| | | False| -1| 0| 0| | False| | FN_WccEdgeInformationToEntityShape_EdgeTransition| | 011:011:000:000 | | 
+| GeoForm| System.String| Component geometry| GeoForm| 10| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccEdgeInformationToEntityShape_GeoForm| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Picture| System.Int32| Drawing| Picture| 100| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccEdgeInformationToEntityShape_Picture| | | | 
+| Remark| System.String| remarks| Remark| 90| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccEdgeInformationToEntityShape_Remark| | | | 
+| ResultEdgeTransition| System.String| Result edge transition| ResultEdgeTransition| 110| True| True| False| 011:011:000:000| | | False| -1| 0| 0| | False| | FN_WccEdgeInformationToEntityShape_ResultEdgeTransition| | 011:011:000:000 | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 1.141 WccFindRoute : IEntityDescription
+## WccFindRoute
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_WccFindRoute_WccFindRoute | WccFindRoute | Route determination (WCC) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.141.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CncFlag| System.Int32| CNC code| CncFlag| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccFindRoute_CncFlag| | 0 | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CutFlag| System.Int32| Cutting code| CutFlag| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccFindRoute_CutFlag| | 0 | | 
+| EdgeFlag| System.Int32| Edge code| EdgeFlag| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccFindRoute_EdgeFlag| | 0 | | 
+| ErpWorkflow| System.String| ERP workflow| ErpWorkflow| 0| True| True| False| -| | | False| -1| 0| 0| | False| | FN_WccFindRoute_ErpWorkflow| | - | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Message| System.String| Message| Message| 1010| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccFindRoute_Message| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| NarrowPartType| [NarrowPartType](#narrowparttype)| Narrow component| NarrowPartType| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [NarrowPartType](#narrowparttype) | FN_WccFindRoute_NarrowPartType| | 0 | | 
+| OrderType| [ProductionOrderType](#productionordertype)| Application type| OrderType| 0| True| True| False| 3| | | False| -1| 0| 0| | False| [ProductionOrderType](#productionordertype) | FN_WccFindRoute_OrderType| | 3 | | 
+| PartGeometry| System.String| Geometry| PartGeometry| 0| True| True| False| Geo01| | | False| -1| 0| 0| | False| | FN_WccFindRoute_PartGeometry| | Geo01 | | 
+| PartType| System.Int32| Parts lists, part type| PartType| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccFindRoute_PartType| | 0 | | 
+| Priority| System.Int32| Priority| Priority| 900| True| True| False| 100| | | False| -1| 0| 0| | False| | FN_WccFindRoute_Priority| | 100 | | 
+| ProductionRoute| System.String| Production route according to customer system| ProductionRoute| 100| True| True| False| #| | | False| -1| 0| 0| | False| | FN_WccFindRoute_ProductionRoute| | # | | 
+| Route| System.String| Production path| Route| 1000| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccFindRoute_Route| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| SurfaceFlag| System.Int32| Coating code| SurfaceFlag| 0| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccFindRoute_SurfaceFlag| | 0 | | 
+## 1.142 WccStagingRecord : IEntityDescription
+## WccStagingRecord
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_WccStagingRecord_WccStagingRecord | WccStagingRecord | Raw data import (WCC) |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.142.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AddressCountry| System.String| End customer address, country| AddressCountry| 108| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_AddressCountry| | | | 
+| AddressFirstName| System.String| End customer address, first name| AddressFirstName| 102| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_AddressFirstName| | | | 
+| AddressLastName| System.String| End customer address, name| AddressLastName| 103| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_AddressLastName| | | | 
+| AddressPostCode| System.String| End customer address, house number| AddressPostCode| 105| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_AddressPostCode| | | | 
+| AddressStreet| System.String| End customer address, street| AddressStreet| 104| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_AddressStreet| | | | 
+| AddressTown| System.String| End customer address, city| AddressTown| 107| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_AddressTown| | | | 
+| ArticleDescription| System.String| Item description| ArticleDescription| 14| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ArticleDescription| | | | 
+| ArticleDescription2| System.String| Item description 2| ArticleDescription2| 65| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ArticleDescription2| | | | 
+| ArticleInfo1| System.String| Article information 1| ArticleInfo1| 200| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ArticleInfo1| | | | 
+| ArticleInfo10| System.String| Article information 10| ArticleInfo10| 209| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ArticleInfo10| | | | 
+| ArticleInfo2| System.String| Article information 2| ArticleInfo2| 201| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ArticleInfo2| | | | 
+| ArticleInfo3| System.String| Article information 3| ArticleInfo3| 202| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ArticleInfo3| | | | 
+| ArticleInfo4| System.String| Article information 4| ArticleInfo4| 203| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ArticleInfo4| | | | 
+| ArticleInfo5| System.String| Article information 5| ArticleInfo5| 204| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ArticleInfo5| | | | 
+| ArticleInfo6| System.String| Article information 6| ArticleInfo6| 205| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ArticleInfo6| | | | 
+| ArticleInfo7| System.String| Article information 7| ArticleInfo7| 206| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ArticleInfo7| | | | 
+| ArticleInfo8| System.String| Article information 8| ArticleInfo8| 207| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ArticleInfo8| | | | 
+| ArticleInfo9| System.String| Article information 9| ArticleInfo9| 208| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ArticleInfo9| | | | 
+| ArticleNumber| System.String| Item designation| ArticleNumber| 13| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ArticleNumber| | | | 
+| Barcode| System.String| Barcode| Barcode| 31| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Barcode| | | | 
+| Binaries| [ICollection`1\<Binary\>](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| BomFlag| System.Int32| Parts list code| BomFlag| 40| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_WccStagingRecord_BomFlag| | 1 | | 
+| BracketSuffix| System.String| Suffix for bracket| BracketSuffix| 173| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_BracketSuffix| | | | 
+| CamMode| System.String| CAM mode| CamMode| 180| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccStagingRecord_CamMode| | 0 | | 
+| CamTest| System.String| test| CamTest| 139| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_CamTest| | | | 
+| Checksum| System.String| Checksum| Checksum| 35| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Checksum| | | | 
+| Checksum2| System.String| Checksum 2| Checksum2| 36| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Checksum2| | | | 
+| CncExtension| System.String| CNC file extension| CncExtension| 135| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_CncExtension| | | | 
+| CncFlag| System.Int32| CNC code| CncFlag| 42| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccStagingRecord_CncFlag| | 0 | | 
+| CncName| System.String| CNC name| CncName| 133| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_CncName| | | | 
+| CncPath| System.String| CNC path| CncPath| 134| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_CncPath| | | | 
+| Code| System.String| Production order number| Code| 1| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Code| | | | 
+| Collection| System.String| Collection| Collection| 94| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Collection| | | | 
+| ColorBottom| System.String| Bottom color code| ColorBottom| 229| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ColorBottom| | | | 
+| ColorTop| System.String| Top color code| ColorTop| 228| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ColorTop| | | | 
+| ConstructionPrinciple| System.String| Design principle| ConstructionPrinciple| 54| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ConstructionPrinciple| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Customer| System.String| End customer| Customer| 90| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Customer| | | | 
+| CustomerOrderCode| System.String| End customer number| CustomerOrderCode| 91| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_CustomerOrderCode| | | | 
+| CutFlag| System.Int32| Cutting code| CutFlag| 41| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccStagingRecord_CutFlag| | 0 | | 
+| CuttingLength| System.Decimal| Cut length| CuttingLength| 25| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_CuttingLength| | | | 
+| CuttingThickness| System.Decimal| Cutting strength| CuttingThickness| 27| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_CuttingThickness| | | | 
+| CuttingWidth| System.Decimal| Cut width| CuttingWidth| 26| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_CuttingWidth| | | | 
+| DeliveryDate| System.String| Delivery date| DeliveryDate| 98| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_DeliveryDate| | | | 
+| DesiredTargetQuantity| System.Int32| Planned quantity| DesiredTargetQuantity| 10| True| True| False| 1| | | False| -1| 0| 0| | False| | FN_WccStagingRecord_DesiredTargetQuantity| | 1 | | 
+| EdgeCategory| System.String| Edge category| EdgeCategory| 86| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_EdgeCategory| | | | 
+| EdgeColor| System.String| Edge color| EdgeColor| 84| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_EdgeColor| | | | 
+| EdgeGeometry| System.String| edge geometry| EdgeGeometry| 82| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_EdgeGeometry| | | | 
+| EdgeMaterial| System.String| Edge material| EdgeMaterial| 83| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_EdgeMaterial| | | | 
+| EdgeProcessingType| System.Int32| Edge type| EdgeProcessingType| 85| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccStagingRecord_EdgeProcessingType| | 0 | | 
+| EdgeSequence| System.Int32| Edges sequence number| EdgeSequence| 80| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccStagingRecord_EdgeSequence| | 0 | | 
+| EdgeTransition| System.String| Edge transition, Homag| EdgeTransition| 62| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_EdgeTransition| | | | 
+| EdgeTrim| System.String| Edge transition| EdgeTrim| 81| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_EdgeTrim| | | | 
+| Employee| System.String| Administrator| Employee| 95| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Employee| | | | 
+| ErrorMessage| System.String| Production order fault message| ErrorMessage| 9999| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ErrorMessage| | | | 
+| ErrorState| [ErrorState](#errorstate)| Production order fault status| ErrorState| 9998| True| True| False| 0| | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_WccStagingRecord_ErrorState| | 0 | | 
+| FilePath| System.String| Path for files| FilePath| 186| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_FilePath| | | | 
+| GeoForm| System.String| Component geometry| GeoForm| 164| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_GeoForm| | | | 
+| GrainId| System.String| Grain ID| GrainId| 57| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_GrainId| | | | 
+| GrainOrientation| System.Decimal| Grain orientation| GrainOrientation| 58| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_GrainOrientation| | | | 
+| Hinge| System.String| Stop| Hinge| 60| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Hinge| | | | 
+| Id| System.String| Parts lists ID| Id| 4| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Id| | | | 
+| IdSerie| System.String| Series| IdSerie| 51| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_IdSerie| | | | 
+| ImportErrorMessage| System.String| Error message| ImportErrorMessage| 151| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ImportErrorMessage| | | | 
+| ImportErrorState| [WccStagingImportErrorState](#wccstagingimporterrorstate)| Error status| ImportErrorState| 150| True| True| False| 0| | | False| -1| 0| 0| | False| [WccStagingImportErrorState](#wccstagingimporterrorstate) | FN_WccStagingRecord_ImportErrorState| | 0 | | 
+| Instance| System.String| instance| Instance| 9997| False| False| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Instance| | | | 
+| Ispec| System.String| Code of special component| Ispec| 61| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Ispec| | | | 
+| LabelInfo| System.String| Labeling information| LabelInfo| 163| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_LabelInfo| | | | 
+| Length| System.Decimal| Length| Length| 20| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Length| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MachineBarcode| System.String| Machine barcode| MachineBarcode| 132| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_MachineBarcode| | | | 
+| MachinedEdge| System.String| Processing edge| MachinedEdge| 230| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_MachinedEdge| | | | 
+| MachineId| System.String| Machine ID| MachineId| 130| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_MachineId| | | | 
+| MachineName| System.String| Machine directory| Name der CNC-Maschine im SourceSystem| 181| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_MachineName| | | | 
+| MachineNcNumber| System.String| Machine CNC number| MachineNcNumber| 131| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_MachineNcNumber| | | | 
+| MachiningSides| System.Int32| Processing side(s)| MachiningSides| 227| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_MachiningSides| | | | 
+| Mainline| System.String| order line| Mainline| 9| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Mainline| | | | 
+| MaterialCategory| System.String| Material category| MaterialCategory| 64| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_MaterialCategory| | | | 
+| MaterialGrain| System.Int32| Material grain| MaterialGrain| 69| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccStagingRecord_MaterialGrain| | 0 | | 
+| Mirror| System.Int32| Component mirrored| Mirror| 59| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Mirror| | 0 | | 
+| MirrorTopBottom| System.String| Component mirrored on machine| MirrorTopBottom| 160| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_MirrorTopBottom| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| MOrientationX| System.Int32| Orientation X 2| MOrientationX| 226| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_MOrientationX| | | | 
+| MultiPartType| System.Int32| Multiple component type| MultiPartType| 56| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccStagingRecord_MultiPartType| | 0 | | 
+| NcBarcode1| System.String| CNC barcode 1| NcBarcode1| 32| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_NcBarcode1| | | | 
+| NcBarcode2| System.String| CNC barcode 2| NcBarcode2| 33| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_NcBarcode2| | | | 
+| NcBarcode3| System.String| CNC barcode 3| NcBarcode3| 34| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_NcBarcode3| | | | 
+| NcNumber| System.String| CNC number| NcNumber| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_NcNumber| | | | 
+| OrderCreationDate| System.String| Date order was entered| OrderCreationDate| 96| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrderCreationDate| | | | 
+| OrderDescriptionLong| System.String| Order long text| OrderDescriptionLong| 100| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrderDescriptionLong| | | | 
+| OrderDescriptionShort| System.String| Order short text| OrderDescriptionShort| 101| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrderDescriptionShort| | | | 
+| OrderHeaderColor1| System.String| Order header text color 1| OrderHeaderColor1| 113| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrderHeaderColor1| | | | 
+| OrderHeaderColor2| System.String| Order header text color 2| OrderHeaderColor2| 114| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrderHeaderColor2| | | | 
+| OrderHeaderColor3| System.String| Order header text color 3| OrderHeaderColor3| 115| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrderHeaderColor3| | | | 
+| OrderHeaderColor4| System.String| Order header text color 4| OrderHeaderColor4| 116| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrderHeaderColor4| | | | 
+| OrderHeaderColor5| System.String| Order header text color 5| OrderHeaderColor5| 117| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrderHeaderColor5| | | | 
+| OrderHeaderText07| System.String| Application head text 7| OrderHeaderText07| 109| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrderHeaderText07| | | | 
+| OrderHeaderText08| System.String| Application head text 8| OrderHeaderText08| 110| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrderHeaderText08| | | | 
+| OrderHeaderText09| System.String| Application head text 9| OrderHeaderText09| 111| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrderHeaderText09| | | | 
+| OrderHeaderText10| System.String| Application head text 10| OrderHeaderText10| 112| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrderHeaderText10| | | | 
+| OrderId| System.String| Order| OrderId| 6| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrderId| | | | 
+| OrderModificationDate| System.String| Date of last order change| OrderModificationDate| 97| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrderModificationDate| | | | 
+| OrientationX| System.String| Orientation X| OrientationX| 182| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrientationX| | | | 
+| OrientationY| System.String| Orientation Y| OrientationY| 183| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrientationY| | | | 
+| OrientationZ| System.String| Orientation Z| OrientationZ| 184| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OrientationZ| | | | 
+| OriginalProductionItemCode| System.String| Original part number| OriginalProductionItemCode| 171| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OriginalProductionItemCode| | | | 
+| OriginalProductionOrderCode| System.String| Original production order number| OriginalProductionOrderCode| 170| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OriginalProductionOrderCode| | | | 
+| OutPosX| System.Decimal| End point X| OutPosX| 223| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OutPosX| | | | 
+| OutPosY| System.Decimal| End point Y| OutPosY| 224| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OutPosY| | | | 
+| OutPosZ| System.Decimal| End point Z| OutPosZ| 225| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_OutPosZ| | | | 
+| ParentId| System.String| Higher-level parts lists ID| ParentId| 5| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ParentId| | | | 
+| ParentProductionOrderNumber| System.String| High-level production order| ParentProductionOrderNumber| 2| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ParentProductionOrderNumber| | | | 
+| PartDefinition| System.String| Component definition| PartDefinition| 55| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_PartDefinition| | | | 
+| PartType| System.Int32| Parts lists component type| PartType| 8| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_PartType| | | | 
+| PatternInfo| System.String| Template information| PatternInfo| 162| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_PatternInfo| | | | 
+| PatternPartTemplate| System.String| Structure template| PatternPartTemplate| 231| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_PatternPartTemplate| | | | 
+| PosX| System.Decimal| Insertion/start point X| PosX| 220| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_PosX| | | | 
+| PosY| System.Decimal| Insertion/start point Y| PosY| 221| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_PosY| | | | 
+| PosZ| System.Decimal| Insertion/start point Z| PosZ| 222| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_PosZ| | | | 
+| Price| System.Decimal| Price| Price| 24| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Price| | | | 
+| ProcessingComment| System.String| Processing comment| ProcessingComment| 52| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ProcessingComment| | | | 
+| ProcessingNumber| System.String| Processing number| ProcessingNumber| 63| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ProcessingNumber| | | | 
+| ProductionCode| System.String| Production code| ProductionCode| 50| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ProductionCode| | | | 
+| ProductionRoute| System.String| Production route according to customer system| ProductionRoute| 161| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ProductionRoute| | | | 
+| Project| System.String| Project| Project| 187| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Project| | | | 
+| PurchaseOrderDescription| System.String| Purchasing part description| PurchaseOrderDescription| 67| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_PurchaseOrderDescription| | | | 
+| PurchaseOrderNumber| System.String| Purchasing part number| PurchaseOrderNumber| 66| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_PurchaseOrderNumber| | | | 
+| ReferenceText| System.String| Order text| ReferenceText| 92| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ReferenceText| | | | 
+| ReproductionType| System.Int32| Post-production type| ReproductionType| 172| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ReproductionType| | 0 | | 
+| Sandwich| System.Int32| Sandwich| Sandwich| 138| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Sandwich| | 0 | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| ShippingDate| System.String| Loading deadline| ShippingDate| 99| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ShippingDate| | | | 
+| SubPartId| System.String| PROGRAM NUMBER| SubPartId| 136| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_SubPartId| | | | 
+| Supplier| System.String| Supplier| Supplier| 68| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Supplier| | | | 
+| SurfaceGrainId| System.String| Surface grain ID| SurfaceGrainId| 75| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_SurfaceGrainId| | | | 
+| SurfaceGrainOrientation| System.Decimal| Surface grain orientation| SurfaceGrainOrientation| 76| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_SurfaceGrainOrientation| | | | 
+| TableVersion| System.String| Table version| TableVersion| 9996| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_TableVersion| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 22| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Thickness| | | | 
+| TopProductionOrderNumber| System.String| Leading production order| TopProductionOrderNumber| 3| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_TopProductionOrderNumber| | | | 
+| TradePartner| System.String| trading partner| TradePartner| 93| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_TradePartner| | | | 
+| TransferDate| System.String| Date of transfer| TransferDate| 12| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_TransferDate| | | | 
+| TransferState| [WccStagingTransferState](#wccstagingtransferstate)| Status of transfer| TransferState| 11| True| True| False| 10| | | False| -1| 0| 0| | False| [WccStagingTransferState](#wccstagingtransferstate) | FN_WccStagingRecord_TransferState| | 10 | | 
+| TurningOrientation| System.String| Turning| TurningOrientation| 137| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_TurningOrientation| | | | 
+| Typ| System.String| Parts lists type| Typ| 7| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Typ| | | | 
+| VeneerId| System.String| Veneer ID| VeneerId| 53| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_VeneerId| | | | 
+| WccStagingRecordsResources| [ICollection`1\<WccStagingRecordsResource\>](#wccstagingrecordsresource)| Raw data, import resources| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WccStagingRecordsResource_WccStagingRecordsResource| | | | 
+| Weight| System.Decimal| weight| Weight| 23| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Weight| | | | 
+| Width| System.Decimal| Width| Width| 21| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Width| | | | 
+| Workflow| System.String| outlet| Workflow| 185| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Workflow| | | | 
+## 1.143 WccStagingRecordsResource : IEntityDescription
+## WccStagingRecordsResource
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_WccStagingRecordsResource_WccStagingRecordsResource | WccStagingRecordsResource | Raw data, import resources |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.143.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| Code| System.String| ID| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_WccStagingRecordsResource_Code| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Data| System.Int32| Data| Data| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecordsResource_Data| | | | 
+| Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecordsResource_Description| | | | 
+| InternalType| [WccStagingRecordResourceType](#wccstagingrecordresourcetype)| Internal type| InternalType| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [WccStagingRecordResourceType](#wccstagingrecordresourcetype) | FN_WccStagingRecordsResource_InternalType| | 0 | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Order| System.Int32| Order| Order| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecordsResource_Order| | | | 
+| Type| System.String| Type| Type| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecordsResource_Type| | | | 
+| Value| System.String| Value| Value| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecordsResource_Value| | | | 
+| WccStagingRecord| [WccStagingRecord](#wccstagingrecord)| Raw data import (WCC)| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WccStagingRecord_WccStagingRecord| | | | 
+| WccStagingRecordsSequence| System.Int64| Raw data, import sequence| WccStagingRecordsSequence| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_WccStagingRecordsResource_WccStagingRecordsSequence| | | | 
+## 1.144 WorkCenter : IEntityDescription
+## WorkCenter
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | False | EN_WorkCenter_WorkCenter | WorkCenter | Working places |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | False | General |  
+### 1.144.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Binary| [Binary](#binary)| Binary files| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Binary_Binary| | | | 
+| Capacity| System.Int32| capacity| Capacity| 5| False| True| False| 0| | | False| -1| 0| 0| | False| | FN_WorkCenter_Capacity| | 0 | | 
+| CloudConnect| System.Boolean| Cloud connection| CloudConnect| 6| True| True| False| False| | | False| -1| 0| 0| | False| | FN_WorkCenter_CloudConnect| | False | | 
+| Code| System.String| Workstation| Code| 1| True| True| True| | | | False| -1| 0| 0| | False| | FN_WorkCenter_Code| | | | 
+| CostCenter| System.String| cost center| CostCenter| 3| True| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenter_CostCenter| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CustomDisplayOrder| System.String| DisplayOrder| DisplayOrder| 0| False| True| False| | | | False| 32| 0| 0| | False| | FN_WorkCenter_CustomDisplayOrder| | | | 
+| Depth| System.Decimal| Depth| Depth| 27| False| False| False| | | | False| -1| 0| 0| | False| | FN_WorkCenter_Depth| Dimensions| | | 
+| Description| System.String| Description| Description| 2| False| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenter_Description| | | | 
+| DrawingTemplate| System.Int32| Drawing template| DrawingTemplate| 26| False| False| False| | | | False| -1| 0| 0| | False| | FN_WorkCenter_DrawingTemplate| | | | 
+| EdgeGrooves| [ICollection`1\<EdgeGroove\>](#edgegroove)| Groove processing| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EdgeGroove_EdgeGroove| | | | 
+| EdgePasses| [ICollection`1\<EdgePass\>](#edgepass)| Edge throughfeeds| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_EdgePass_EdgePass| | | | 
+| FeedbackGroup| System.String| Feedback group| FeedbackGroup| 28| False| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenter_FeedbackGroup| | | | 
+| FeedbackMode| [FeedbackMode](#feedbackmode)| Feedback type| FeedbackMode| 4| True| True| False| 0| | | False| -1| 0| 0| | False| [FeedbackMode](#feedbackmode) | FN_WorkCenter_FeedbackMode| | 0 | | 
+| Height| System.Decimal| Height| Height| 20| False| False| False| | | | False| -1| 0| 0| | False| | FN_WorkCenter_Height| Dimensions| | | 
+| LabelInfoCncZeroLines| [ICollection`1\<LabelInfoCncZeroLine\>](#labelinfocnczeroline)| Determination of stop position| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_LabelInfoCncZeroLine_LabelInfoCncZeroLine| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MachineNumber| System.String| Machine number| MachineNumber| 7| False| False| False| | | | False| -1| 0| 0| | False| | FN_WorkCenter_MachineNumber| | | | 
+| MachineWorkTimes| [ICollection`1\<CustMachineWorkTime\>](#custmachineworktime)| CustMachineWorkTime| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_CustMachineWorkTime_CustMachineWorkTime| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OptimizationMethods| [ICollection`1\<OptimizationMethod\>](#optimizationmethod)| Optimization methods| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationMethod_OptimizationMethod| | | | 
+| OptimizationRules| [ICollection`1\<OptimizationRule\>](#optimizationrule)| Optimization rules| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_OptimizationRule_OptimizationRule| | | | 
+| Optimizations| [ICollection`1\<Optimization\>](#optimization)| Optimization| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_Optimization_Optimization| | | | 
+| PartCarriers| [ICollection`1\<PartCarrier\>](#partcarrier)| Parts carrier| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_PartCarrier_PartCarrier| | | | 
+| ProcessingData| [ICollection`1\<ProcessingData\>](#processingdata)| Processing data| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProcessingData_ProcessingData| | | | 
+| ProductionRouteSteps| [ICollection`1\<ProductionRouteStep\>](#productionroutestep)| Production path of individual steps| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionRouteStep_ProductionRouteStep| | | | 
+| ProductionSteps| [ICollection`1\<ProductionStep\>](#productionstep)| Procedures| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_ProductionStep_ProductionStep| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Width| System.Decimal| Width| Width| 21| False| False| False| | | | False| -1| 0| 0| | False| | FN_WorkCenter_Width| Dimensions| | | 
+| WorkCenterCodeFromCamInformations| [ICollection`1\<WorkCenterCodeFromCamInformation\>](#workcentercodefromcaminformation)| Determination of work station| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenterCodeFromCamInformation_WorkCenterCodeFromCamInformation| | | | 
+| WorkCenterCuttings| [ICollection`1\<WorkCenterCutting\>](#workcentercutting)| Cutting workstation| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenterCutting_WorkCenterCutting| | | | 
+| WorkCenterEdgePasses| [ICollection`1\<WorkCenterEdgePass\>](#workcenteredgepass)| Workstation edge throughfeeds| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenterEdgePass_WorkCenterEdgePass| | | | 
+| WorkCenterEdgeProfiles| [ICollection`1\<WorkCenterEdgeProfile\>](#workcenteredgeprofile)| Edge profile workstation| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenterEdgeProfile_WorkCenterEdgeProfile| | | | 
+| WorkCenterGrooves| [ICollection`1\<WorkCenterGroove\>](#workcentergroove)| Groove workstation| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenterGroove_WorkCenterGroove| | | | 
+| XCoordinate| System.Decimal| X coordinates| XCoordinate| 22| False| False| False| | | | False| -1| 0| 0| | False| | FN_WorkCenter_XCoordinate| | | | 
+| YCoordinate| System.Decimal| Y coordinates| YCoordinate| 23| False| False| False| | | | False| -1| 0| 0| | False| | FN_WorkCenter_YCoordinate| | | | 
+| ZCoordinate| System.Decimal| Z coordinates| ZCoordinate| 24| False| False| False| | | | False| -1| 0| 0| | False| | FN_WorkCenter_ZCoordinate| | | | 
+| ZRotation| System.Decimal| Z rotation| ZRotation| 25| False| False| False| | | | False| -1| 0| 0| | False| | FN_WorkCenter_ZRotation| | | | 
+## 1.145 WorkCenterCodeFromCamInformation : IEntityDescription
+## WorkCenterCodeFromCamInformation
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_WorkCenterCodeFromCamInformation_WorkCenterCodeFromCamInformation | WorkCenterCodeFromCamInformation | Determination of work station |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.145.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CamInformation| System.String| Cam information| CamInformation| 1| True| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenterCodeFromCamInformation_CamInformation| | | | 
+| Comment| System.String| remarks| Comment| 99| False| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenterCodeFromCamInformation_Comment| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MacroNumber| [MacroNumber](#macronumber)| MacroNumber| MacroNumber| 11| True| True| False| 0| | | False| -1| 0| 0| | False| [MacroNumber](#macronumber) | FN_WorkCenterCodeFromCamInformation_MacroNumber| | 0 | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 10| True| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenterCodeFromCamInformation_WorkCenterCode| | | | 
+## 1.146 WorkCenterCutting : IEntityDescription
+## WorkCenterCutting
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_WorkCenterCutting_WorkCenterCutting | WorkCenterCutting | Cutting workstation |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.146.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Comment| System.String| remarks| Comment| 99| False| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenterCutting_Comment| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ProcessingType| [CuttingProcessingType](#cuttingprocessingtype)| Processing type| ProcessingType| 2| True| True| False| 0| | | False| -1| 0| 0| | False| [CuttingProcessingType](#cuttingprocessingtype) | FN_WorkCenterCutting_ProcessingType| | 0 | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 1| True| True| False| #| | | False| -1| 0| 0| | False| | FN_WorkCenterCutting_ProductionStepCode| | # | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenterCutting_WorkCenterCode| | | | 
+## 1.147 WorkCenterEdgePass : IEntityDescription
+## WorkCenterEdgePass
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_WorkCenterEdgePass_WorkCenterEdgePass | WorkCenterEdgePass | Workstation edge throughfeeds |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.147.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Comment| System.String| remarks| Comment| 99| False| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenterEdgePass_Comment| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Pass| System.Int32| Pass| Pass| 1| True| True| False| 0| | | False| -1| 0| 0| | False| | FN_WorkCenterEdgePass_Pass| | 0 | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| ThroughFeedSide| [ThroughFeedSide](#throughfeedside)| Processing side in throughfeed direction| ThroughFeedSide| 2| True| True| False| 0| | | False| -1| 0| 0| | False| [ThroughFeedSide](#throughfeedside) | FN_WorkCenterEdgePass_ThroughFeedSide| | 0 | | 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenterEdgePass_WorkCenterCode| | | | 
+## 1.148 WorkCenterEdgeProfile : IEntityDescription
+## WorkCenterEdgeProfile
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_WorkCenterEdgeProfile_WorkCenterEdgeProfile | WorkCenterEdgeProfile | Edge profile workstation |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.148.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Comment| System.String| remarks| Comment| 99| False| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenterEdgeProfile_Comment| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ProcessingType| [EdgeProcessingType](#edgeprocessingtype)| Processing type| ProcessingType| 2| True| True| False| 1| | | False| -1| 0| 0| | False| [EdgeProcessingType](#edgeprocessingtype) | FN_WorkCenterEdgeProfile_ProcessingType| | 1 | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 1| True| True| False| #| | | False| -1| 0| 0| | False| | FN_WorkCenterEdgeProfile_ProductionStepCode| | # | | 
+| ReductionEdgeDataCalculationType| [ReductionEdgeDataCalculationType](#reductionedgedatacalculationtype)| Edge data determination restriction| ReductionEdgeDataCalculationType| 3| True| True| False| 0| | | False| -1| 0| 0| | False| [ReductionEdgeDataCalculationType](#reductionedgedatacalculationtype) | FN_WorkCenterEdgeProfile_ReductionEdgeDataCalculationType| | 0 | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenterEdgeProfile_WorkCenterCode| | | | 
+## 1.149 WorkCenterGroove : IEntityDescription
+## WorkCenterGroove
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_WorkCenterGroove_WorkCenterGroove | WorkCenterGroove | Groove workstation |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.149.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Comment| System.String| remarks| Comment| 99| False| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenterGroove_Comment| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| DistanceMax| System.Decimal| Maximum edge distance| DistanceMax| 12| True| True| False| | 0| 999999| False| -1| 0| 0| | False| | FN_WorkCenterGroove_DistanceMax| | | 0| 999999
+| DistanceMin| System.Decimal| Minimum edge spacing| DistanceMin| 11| True| True| False| | 0| 999999| False| -1| 0| 0| | False| | FN_WorkCenterGroove_DistanceMin| | | 0| 999999
+| <span style="color: #e0b21b" title="Default value not defined!">**Layer**</span>| [GrooveLayer](#groovelayer)| Groove position| Layer| 3| True| True| False| | | | False| -1| 0| 0| | False| [GrooveLayer](#groovelayer) | FN_WorkCenterGroove_Layer| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| MacroNumber| [MacroNumber](#macronumber)| MacroNumber| MacroNumber| 20| True| True| False| 1| | | False| -1| 0| 0| | False| [MacroNumber](#macronumber) | FN_WorkCenterGroove_MacroNumber| | 1 | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 1| True| True| False| #| | | False| -1| 0| 0| | False| | FN_WorkCenterGroove_ProductionStepCode| | # | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**Type**</span>| [GrooveType](#groovetype)| Groove type| Type| 2| True| True| False| | | | False| -1| 0| 0| | False| [GrooveType](#groovetype) | FN_WorkCenterGroove_Type| | | | 
+| WidthMax| System.Decimal| Maximum groove width| WidthMax| 6| True| True| False| | 0| 999999| False| -1| 0| 0| | False| | FN_WorkCenterGroove_WidthMax| | | 0| 999999
+| WidthMin| System.Decimal| Minimum groove width| WidthMin| 5| True| True| False| | 0| 999999| False| -1| 0| 0| | False| | FN_WorkCenterGroove_WidthMin| | | 0| 999999
+| WorkCenter| [WorkCenter](#workcenter)| Working places| | 0| False| True| False| | | | False| -1| 0| 0| | False| | EN_WorkCenter_WorkCenter| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenterGroove_WorkCenterCode| | | | 
+## 1.150 WorkCenterOversizeValue : IEntityDescription
+## WorkCenterOversizeValue
+| IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | False | EN_WorkCenterOversizeValue_WorkCenterOversizeValue | WorkCenterOversizeValue | Processing surcharge, workstation |  | True |  |  |  |  |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | True |  | True | General |  
+### 1.150.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Comment| System.String| Comment| Comment| 80| False| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenterOversizeValue_Comment| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Locked| System.Boolean| Blocked| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Locked| | | | 
+| LockSource| System.String| Block source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_LockSource| | | | 
+| Material| System.String| Material| Material| 2| True| True| False| #| | | False| -1| 0| 0| | False| | FN_WorkCenterOversizeValue_Material| | # | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| OversizeValue| System.Decimal| Panel oversize| OversizeValue| 10| True| True| False| | | | False| -1| 0| 0| | False| | FN_WorkCenterOversizeValue_OversizeValue| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 1| True| True| False| #| | | False| -1| 0| 0| | False| | FN_WorkCenterOversizeValue_ProductionStepCode| | # | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| False| #| | | False| -1| 0| 0| | False| | FN_WorkCenterOversizeValue_WorkCenterCode| | # | | 
+# 2 Views
+## 2.1 CombinedLogItem : IViewEntityDescription
+## CombinedLogItem
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_CombinedLogItem_CombinedLogItem | CombinedLogItem | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity |  | Messages |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity 
+### 2.1.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ApplicationType| System.String| Application| ApplicationType| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CombinedLogItem_ApplicationType| | | | 
+| Area| System.String| Area| Area| 3| False| True| True| | | | False| -1| 0| 0| | False| | FN_CombinedLogItem_Area| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| Date| System.DateTime| Time| Date| 2| False| True| True| | | | False| -1| 0| 0| | False| | FN_CombinedLogItem_Date| | | | 
+| Exception| System.String| Exception report| Exception| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CombinedLogItem_Exception| | | | 
+| HostName| System.String| Computer| HostName| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CombinedLogItem_HostName| | | | 
+| Instance| System.String| instance| Instance| 4| False| True| True| | | | False| -1| 0| 0| | False| | FN_CombinedLogItem_Instance| | | | 
+| IsLocalized| System.Boolean| Localized| IsLocalized| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CombinedLogItem_IsLocalized| | | | 
+| Language| System.String| Language| Language| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CombinedLogItem_Language| | | | 
+| Level| System.String| Type| Level| 1| False| True| True| | | | False| -1| 0| 0| | False| | FN_CombinedLogItem_Level| | | | 
+| Message| System.String| Message| Message| 5| False| True| True| | | | False| -1| 0| 0| | False| | FN_CombinedLogItem_Message| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 2.2 CustViewAutomaticLotGenerationSelectDailyPartsByCount : IViewEntityDescription
+## CustViewAutomaticLotGenerationSelectDailyPartsByCount
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewAutomaticLotGenerationSelectDailyPartsByCount_CustViewAutomaticLotGenerationSelectDailyPartsByCount | CustViewAutomaticLotGenerationSelectDailyPartsByCount |  |  | CustViewAutomaticLotGenerationSelectDailyPartsByCount |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.2.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| EarliestStartDate| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EntryCount| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Material| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| RowID| System.Int64| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.3 CustViewAutomaticLotGenerationSelectOldPartsByCount : IViewEntityDescription
+## CustViewAutomaticLotGenerationSelectOldPartsByCount
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewAutomaticLotGenerationSelectOldPartsByCount_CustViewAutomaticLotGenerationSelectOldPartsByCount | CustViewAutomaticLotGenerationSelectOldPartsByCount |  |  | CustViewAutomaticLotGenerationSelectOldPartsByCount |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.3.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| EarliestStartDate| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EntryCount| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Material| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| RowID| System.Int64| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.4 CustViewDailyValue : IViewEntityDescription
+## CustViewDailyValue
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewDailyValue_CustViewDailyValue | CustViewDailyValue |  |  | CustViewDailyValue |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.4.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| A1010| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A1010DateOfLastFeedback| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A1010RestPlanwert| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A1010TimeOfNoFeedback| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A1010TimeOfNoFeedbackColor| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A1010Verzug| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A1010Vorleistung| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A3010| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A3010DateOfLastFeedback| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A3010RestPlanwert| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A3010TimeOfNoFeedback| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A3010TimeOfNoFeedbackColor| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A3010Verzug| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A3010Vorleistung| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5010| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5010DateOfLastFeedback| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5010RestPlanwert| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5010TimeOfNoFeedback| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5010TimeOfNoFeedbackColor| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5010Verzug| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5010Vorleistung| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5020| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5020DateOfLastFeedback| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5020RestPlanwert| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5020TimeOfNoFeedback| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5020TimeOfNoFeedbackColor| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5020Verzug| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5020Vorleistung| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5070| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5070DateOfLastFeedback| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5070RestPlanwert| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5070TimeOfNoFeedback| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5070TimeOfNoFeedbackColor| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5070Verzug| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A5070Vorleistung| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A6010| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A6010DateOfLastFeedback| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A6010RestPlanwert| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A6010TimeOfNoFeedback| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A6010TimeOfNoFeedbackColor| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A6010Verzug| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| A6010Vorleistung| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| DateOfDay| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| NotReleased| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OptimizedAndNotProduced| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ReleasedAndNotOptimized| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.5 CustViewDashboardProgressData : IViewEntityDescription
+## CustViewDashboardProgressData
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewDashboardProgressData_CustViewDashboardProgressData | CustViewDashboardProgressData |  |  | CustViewDashboardProgressData |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.5.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ASSEMRemaining| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| B300Remaining| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| E310Remaining| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EDGERemaining| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ItemsNotReleased| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ItemsOptimizedAndNotProduced| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ItemsReleasedAndNotOptimized| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| PREASSRemaining| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| RowID| System.Int64| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| SORTRemaining| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| V200Remaining| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.6 CustViewDetailManualFeedback : IViewEntityDescription
+## CustViewDetailManualFeedback
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewDetailManualFeedback_CustViewDetailManualFeedback | CustViewDetailManualFeedback |  |  | CustViewDetailManualFeedback |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.6.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Capacity| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CurrentFirstDate| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CurrentLastDate| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| DesiredEndDateProcessing| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| DesiredStartDateProcessing| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| FeedbackState| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Order| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionItemCode| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionOrderCode| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionState| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionStepCode| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Timestamp| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| WorkCenterCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| WorkstepDescription| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.7 CustViewDetailProgressInformation : IViewEntityDescription
+## CustViewDetailProgressInformation
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewDetailProgressInformation_CustViewDetailProgressInformation | CustViewDetailProgressInformation |  |  | CustViewDetailProgressInformation |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.7.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ArticleNumber| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ComponentType| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CurrentFirstDate| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CurrentLastDate| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CurrentTargetQuantity| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CustomerOrderCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CustomerOrderPosition| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| DesiredEndDate| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| DesiredTargetQuantity| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| LastStep| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| NextStep| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OptimizationCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OrderState| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OrderType| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OriginalProductionItemCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OriginalProductionOrderCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| PlanningNumber| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionOrderCode| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionState| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionStepCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ReproductionType| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| RouteCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| UniqueId| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| WorkCenterCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| WorkstepDescription| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.8 CustViewFredPatternPart : IViewEntityDescription
+## CustViewFredPatternPart
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewFredPatternPart_CustViewFredPatternPart | CustViewFredPatternPart |  |  | CustViewFredPatternPart |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.8.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ArticleDescription| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CuttingLength| System.Decimal| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CuttingWidth| System.Decimal| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| LastFeedback| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| LastWorkCenter| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Length| System.Decimal| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Material| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Offcut| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OptimizationCode| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OptimizationCuttingPlanCode| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OptimizationMethod| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionItemCode| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionOrderCodeFred| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Quantity| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Width| System.Decimal| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.9 CustViewFurnitureLabel : IViewEntityDescription
+## CustViewFurnitureLabel
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewFurnitureLabel_CustViewFurnitureLabel | CustViewFurnitureLabel |  |  | CustViewFurnitureLabel |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.9.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ArticleDescription| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ArticleNumber| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Customer| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CustomerOrderCode| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CustomerOrderPosition| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| DeliveryDate| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Dimension| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| JobName| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Length| System.Decimal| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProcessingState| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionOrderCode| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Reference| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| RowID| System.Int64| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ShippingDate| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Thickness| System.Decimal| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Width| System.Decimal| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.10 CustViewMasterManualFeedback : IViewEntityDescription
+## CustViewMasterManualFeedback
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewMasterManualFeedback_CustViewMasterManualFeedback | CustViewMasterManualFeedback |  |  | CustViewMasterManualFeedback |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.10.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ArticleDescription| System.String| ArticleDescription| ArticleDescription| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_ArticleDescription| | | | 
+| ArticleNumber| System.String| ArticleNumber| ArticleNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_ArticleNumber| | | | 
+| Bracket| System.String| Bracket| Bracket| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_Bracket| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ComponentType**</span>| [ComponentType](#componenttype)| ComponentType| ComponentType| 0| True| True| True| | | | False| -1| 0| 0| | False| [ComponentType](#componenttype) | FN_CustViewMasterManualFeedback_ComponentType| | | | 
+| CustomerOrderCode| System.String| CustomerOrderCode| CustomerOrderCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_CustomerOrderCode| | | | 
+| CustomerOrderPosition| System.String| CustomerOrderPosition| CustomerOrderPosition| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_CustomerOrderPosition| | | | 
+| CuttingLength| System.Decimal| CuttingLength| CuttingLength| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_CuttingLength| | | | 
+| CuttingWidth| System.Decimal| CuttingWidth| CuttingWidth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_CuttingWidth| | | | 
+| DesiredEndDate| System.DateTime| DesiredEndDate| DesiredEndDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_DesiredEndDate| | | | 
+| DesiredStartDate| System.DateTime| DesiredStartDate| DesiredStartDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_DesiredStartDate| | | | 
+| Length| System.Decimal| Length| Length| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_Length| | | | 
+| OptimizationCode| System.String| OptimizationCode| OptimizationCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_OptimizationCode| | | | 
+| OrderType| System.Int32| OrderType| OrderType| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_OrderType| | | | 
+| ParentProductionOrderNumber| System.String| ParentProductionOrderNumber| ParentProductionOrderNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_ParentProductionOrderNumber| | | | 
+| PlanningNumber| System.String| PlanningNumber| PlanningNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_PlanningNumber| | | | 
+| ProcessingState| System.Int32| ProcessingState| ProcessingState| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_ProcessingState| | | | 
+| ProductionItemCode| System.String| ProductionItemCode| ProductionItemCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_ProductionItemCode| | | | 
+| ProductionOrderCode| System.String| ProductionOrderCode| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_ProductionOrderCode| | | | 
+| ProductionState| System.Int32| ProductionState| ProductionState| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_ProductionState| | | | 
+| Quantity| System.Int32| Quantity| Quantity| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_Quantity| | | | 
+| ReleaseState| System.Int32| ReleaseState| ReleaseState| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_ReleaseState| | | | 
+| RouteCode| System.String| RouteCode| RouteCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_RouteCode| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Thickness| System.Decimal| Thickness| Thickness| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_Thickness| | | | 
+| TopProductionOrderNumber| System.String| TopProductionOrderNumber| TopProductionOrderNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_TopProductionOrderNumber| | | | 
+| Width| System.Decimal| Width| Width| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterManualFeedback_Width| | | | 
+## 2.11 CustViewMasterProgressBulk : IViewEntityDescription
+## CustViewMasterProgressBulk
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewMasterProgressBulk_CustViewMasterProgressBulk | CustViewMasterProgressBulk |  |  | CustViewMasterProgressBulk |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.11.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AS1Percentage| System.Decimal| Assembly Line 1| AS1Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_AS1Percentage| | | | 
+| AS1Qty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CNC1Percentage| System.Decimal| V200| CNC1Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_CNC1Percentage| | | | 
+| CNC1Qty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CNC2Percentage| System.Decimal| E310| CNC2Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_CNC2Percentage| | | | 
+| CNC2Qty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CompletedOrAllowed| System.Int32| Completed| CompletedOrAllowed| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_CompletedOrAllowed| | | | 
+| CU1Percentage| System.Decimal| B300| CU1Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_CU1Percentage| | | | 
+| CU1Qty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EB1Percentage| System.Decimal| EDGETEQ| EB1Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_EB1Percentage| | | | 
+| EB1Qty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EndDate| System.String| End Date| EndDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_EndDate| | | | 
+| OverallPercentage| System.Decimal| Overall Progress| OverallPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_OverallPercentage| | | | 
+| OverallQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| PlannedEndWeek| System.String| Completion Week| PlannedEndWeek| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_PlannedEndWeek| | | | 
+| PlanningNumber| System.String| Planning Number| PlanningNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_PlanningNumber| | | | 
+| PREPercentage| System.Decimal| Pre-Assembly| PREPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_PREPercentage| | | | 
+| PREQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| QCPercentage| System.Decimal| Quality-Check| QCPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_QCPercentage| | | | 
+| QCQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ReworkPercentage| System.Decimal| Post-Production| ReworkPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_ReworkPercentage| | | | 
+| ReworkQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| RowID| System.Int64| Line| RowID| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_RowID| | | | 
+| SPPercentage| System.Decimal| Sorting & Picking| SPPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressBulk_SPPercentage| | | | 
+| SPQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.12 CustViewMasterProgressComponentTypeBulk : IViewEntityDescription
+## CustViewMasterProgressComponentTypeBulk
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewMasterProgressComponentTypeBulk_CustViewMasterProgressComponentTypeBulk | CustViewMasterProgressComponentTypeBulk |  |  | CustViewMasterProgressComponentTypeBulk |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.12.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CompletedOrAllowed| System.Int32| Completed| CompletedOrAllowed| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeBulk_CompletedOrAllowed| | | | 
+| EndDate| System.String| End Date| EndDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeBulk_EndDate| | | | 
+| FrontPercentage| System.Decimal| Front Parts| FrontPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeBulk_FrontPercentage| | | | 
+| FrontQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| HorizontalPercentage| System.Decimal| Horizontal Parts| HorizontalPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeBulk_HorizontalPercentage| | | | 
+| HorizontalQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OverallPercentage| System.Decimal| Overall Progress| OverallPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeBulk_OverallPercentage| | | | 
+| OverallQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| PlannedEndWeek| System.String| Completion Week| PlannedEndWeek| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeBulk_PlannedEndWeek| | | | 
+| PlanningNumber| System.String| Planning Number| PlanningNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeBulk_PlanningNumber| | | | 
+| ReworkPercentage| System.Decimal| Post-Production| ReworkPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeBulk_ReworkPercentage| | | | 
+| ReworkQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| RowID| System.Int64| Line| RowID| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeBulk_RowID| | | | 
+| VerticalPercentage| System.Decimal| Vertical Parts| VerticalPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeBulk_VerticalPercentage| | | | 
+| VerticalQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.13 CustViewMasterProgressComponentTypeCustomerOrder : IViewEntityDescription
+## CustViewMasterProgressComponentTypeCustomerOrder
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewMasterProgressComponentTypeCustomerOrder_CustViewMasterProgressComponentTypeCustomerOrder | CustViewMasterProgressComponentTypeCustomerOrder |  |  | CustViewMasterProgressComponentTypeCustomerOrder |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.13.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CarcasePercentage| System.Decimal| Carcase Parts| CarcasePercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_CarcasePercentage| | | | 
+| CarcaseQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CompletedOrAllowed| System.Int32| Completed| CompletedOrAllowed| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_CompletedOrAllowed| | | | 
+| CustomerOrderCode| System.String| Customer Order| CustomerOrderCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_CustomerOrderCode| | | | 
+| DeliveryDate| System.String| Delivery Date| DeliveryDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_DeliveryDate| | | | 
+| DeliveryWeek| System.String| Delivery Week| DeliveryWeek| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_DeliveryWeek| | | | 
+| DrawerPercentage| System.Decimal| Drawer Parts| DrawerPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_DrawerPercentage| | | | 
+| DrawerQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| FrontPercentage| System.Decimal| Front Parts| FrontPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_FrontPercentage| | | | 
+| FrontQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| HorizontalPercentage| System.Decimal| Horizontal Parts| HorizontalPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_HorizontalPercentage| | | | 
+| HorizontalQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| LongPercentage| System.Decimal| Long Parts| LongPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_LongPercentage| | | | 
+| LongQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OverallPercentage| System.Decimal| Overall Progress| OverallPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_OverallPercentage| | | | 
+| OverallQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| PlannedEndDate| System.String| End Date| PlannedEndDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_PlannedEndDate| | | | 
+| PlannedEndWeek| System.String| Completion Week| PlannedEndWeek| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_PlannedEndWeek| | | | 
+| PlanningNumber| System.String| Planning Number| PlanningNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_PlanningNumber| | | | 
+| ReworkPercentage| System.Decimal| Post-Production| ReworkPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_ReworkPercentage| | | | 
+| ReworkQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| RowID| System.Int64| Line| RowID| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_RowID| | | | 
+| ShippingDate| System.String| Shipping Date| ShippingDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_ShippingDate| | | | 
+| ShippingWeek| System.String| Shipping Week| ShippingWeek| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_ShippingWeek| | | | 
+| VerticalPercentage| System.Decimal| Vertical Parts| VerticalPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressComponentTypeCustomerOrder_VerticalPercentage| | | | 
+| VerticalQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.14 CustViewMasterProgressOptimization : IViewEntityDescription
+## CustViewMasterProgressOptimization
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewMasterProgressOptimization_CustViewMasterProgressOptimization | CustViewMasterProgressOptimization |  |  | CustViewMasterProgressOptimization |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.14.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| CNC1Percentage| System.Decimal| E310| CNC1Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressOptimization_CNC1Percentage| | | | 
+| CNC1Qty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CNC2Percentage| System.Decimal| E310| CNC2Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressOptimization_CNC2Percentage| | | | 
+| CNC2Qty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CompletedOrAllowed| System.Int32| Completed| CompletedOrAllowed| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressOptimization_CompletedOrAllowed| | | | 
+| CU1Percentage| System.Decimal| B300| CU1Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressOptimization_CU1Percentage| | | | 
+| CU1Qty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EB1Percentage| System.Decimal| EDGETEQ| EB1Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressOptimization_EB1Percentage| | | | 
+| EB1Qty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OptimizationCode| System.String| Optimization Number| OptimizationCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressOptimization_OptimizationCode| | | | 
+| OverallPercentage| System.Decimal| Overall Progress| OverallPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressOptimization_OverallPercentage| | | | 
+| OverallQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ReworkPercentage| System.Decimal| Post-Production| ReworkPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressOptimization_ReworkPercentage| | | | 
+| ReworkQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| RowID| System.Int64| Line| RowID| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressOptimization_RowID| | | | 
+| SPPercentage| System.Decimal| Sorting| SPPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressOptimization_SPPercentage| | | | 
+| SPQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.15 CustViewMasterProgressWorkCenterCustomerOrder : IViewEntityDescription
+## CustViewMasterProgressWorkCenterCustomerOrder
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewMasterProgressWorkCenterCustomerOrder_CustViewMasterProgressWorkCenterCustomerOrder | CustViewMasterProgressWorkCenterCustomerOrder |  |  | CustViewMasterProgressWorkCenterCustomerOrder |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.15.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AS1Percentage| System.Decimal| Assembly Line 1| AS1Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_AS1Percentage| | | | 
+| AS1Qty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CNC1Percentage| System.Decimal| V200| CNC1Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_CNC1Percentage| | | | 
+| CNC1Qty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CNC2Percentage| System.Decimal| E310| CNC2Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_CNC2Percentage| | | | 
+| CNC2Qty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CompletedOrAllowed| System.Int32| Completed| CompletedOrAllowed| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_CompletedOrAllowed| | | | 
+| CU1Percentage| System.Decimal| B300| CU1Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_CU1Percentage| | | | 
+| CU1Qty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CustomerOrderCode| System.String| Customer Order| CustomerOrderCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_CustomerOrderCode| | | | 
+| DeliveryDate| System.String| Delivery Date| DeliveryDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_DeliveryDate| | | | 
+| DeliveryWeek| System.String| Delivery Week| DeliveryWeek| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_DeliveryWeek| | | | 
+| EB1Percentage| System.Decimal| EDGETEQ| EB1Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_EB1Percentage| | | | 
+| EB1Qty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OverallPercentage| System.Decimal| Overall Progress| OverallPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_OverallPercentage| | | | 
+| OverallQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| PlannedEndDate| System.String| End Date| PlannedEndDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_PlannedEndDate| | | | 
+| PlannedEndWeek| System.String| Completion Week| PlannedEndWeek| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_PlannedEndWeek| | | | 
+| PlanningNumber| System.String| Planning Number| PlanningNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_PlanningNumber| | | | 
+| PREPercentage| System.Decimal| Pre-Assembly| PREPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_PREPercentage| | | | 
+| PREQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| QCPercentage| System.Decimal| Quality Check| QCPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_QCPercentage| | | | 
+| QCQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ReworkPercentage| System.Decimal| Post-Production| ReworkPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_ReworkPercentage| | | | 
+| ReworkQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| RowID| System.Int64| Line| RowID| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_RowID| | | | 
+| ShippingDate| System.String| Shipping Date| ShippingDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_ShippingDate| | | | 
+| ShippingWeek| System.String| Shipping Week| ShippingWeek| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_ShippingWeek| | | | 
+| SPPercentage| System.Decimal| Sorting & Picking| SPPercentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterProgressWorkCenterCustomerOrder_SPPercentage| | | | 
+| SPQty| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.16 CustViewMasterUnfinishedPart : IViewEntityDescription
+## CustViewMasterUnfinishedPart
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewMasterUnfinishedPart_CustViewMasterUnfinishedPart | CustViewMasterUnfinishedPart |  |  | CustViewMasterUnfinishedPart |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.16.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ASSEMRest| System.Int32| Assembly| ASSEMRest| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterUnfinishedPart_ASSEMRest| | | | 
+| B300Rest| System.Int32| B300| B300Rest| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterUnfinishedPart_B300Rest| | | | 
+| E310Rest| System.Int32| E310| E310Rest| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterUnfinishedPart_E310Rest| | | | 
+| EDGETEQRest| System.Int32| EDGETEQ| EDGETEQRest| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterUnfinishedPart_EDGETEQRest| | | | 
+| PREASSEMRest| System.Int32| Preassembly| PREASSEMRest| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterUnfinishedPart_PREASSEMRest| | | | 
+| RowID| System.Int64| Line| RowID| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterUnfinishedPart_RowID| | | | 
+| ShippingDate| System.DateTime| Shipping Date| ShippingDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterUnfinishedPart_ShippingDate| | | | 
+| ShippingWeek| System.String| Shipping Week| ShippingWeek| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterUnfinishedPart_ShippingWeek| | | | 
+| SORTRest| System.Int32| Sorting| SORTRest| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterUnfinishedPart_SORTRest| | | | 
+| V200Rest| System.Int32| V200| V200Rest| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_CustViewMasterUnfinishedPart_V200Rest| | | | 
+## 2.17 CustViewPartsLabel : IViewEntityDescription
+## CustViewPartsLabel
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewPartsLabel_CustViewPartsLabel | CustViewPartsLabel |  |  | CustViewPartsLabel |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.17.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Address1| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Address2| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Address3| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Address4| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Address5| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ArticleDescription| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ArticleName| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ArticleNumber| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Bracket| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CabinetDescription| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Code| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ComponentType| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CornerEastNorth| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CornerNorthWest| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CornerSouthEast| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CornerWestSouth| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CreationDate| System.DateTime| Creation date| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
+| CurrentFirstDate| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CurrentLastDate| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Customer| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CustomerOrderCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CustomerOrderPosition| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CuttingLength| System.Decimal| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CuttingThickness| System.Decimal| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CuttingWidth| System.Decimal| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| DesiredEndDate| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| DesiredQuantity| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| DesiredStartDate| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| DesiredTargetQuantity| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| DesiredTargetQuantityMax| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| DesiredTargetQuantityMin| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeMaterialCodeEast| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeMaterialCodeNorth| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeMaterialCodeSouth| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeMaterialCodeWest| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeMaterialEast| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeMaterialNorth| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeMaterialSouth| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeMaterialWest| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeShape| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeTransition| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeTransitionE| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeTransitionN| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeTransitionS| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeTransitionW| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeTrimEast| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeTrimNorth| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeTrimSouth| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| EdgeTrimWest| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Employee| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| FinalEdgeTransition| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Grain| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| GrainOrientation| System.Decimal| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| InputSourceType| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Instance| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| IsLengthGreaterEqualWidth| System.Boolean| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| IsRatioPart| System.Boolean| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| IsSquarePart| System.Boolean| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| JobName| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Length| System.Decimal| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Material| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| MaterialCategory| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Mirror| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
+| NarrowPartType| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| NcProgramReference| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OptimizationCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OptionalPart| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OrderType| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OriginalEndDate| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OriginalProductionItemCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OriginalProductionOrderCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| OriginalStartDate| System.DateTime| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ParentProductionOrderNumber| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| PartGeometry| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| PlanningSequence| System.Int64| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProcessingState| System.Int32| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionOrderCode| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionRoute| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionState| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ReleaseState| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ReproductionType| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| RouteCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| SpecialPartType| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Thickness| System.Decimal| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| TopProductionOrderNumber| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Width| System.Decimal| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.18 PatternEvaluationItem : IViewEntityDescription
+## PatternEvaluationItem
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_PatternEvaluationItem_PatternEvaluationItem | PatternEvaluationItem | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity |  | Overview of the optimization results with an image |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity 
+### 2.18.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Board| System.String| Board| Board| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_Board| | | | 
+| BoardArea| System.Decimal| Board size| BoardArea| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_BoardArea| | | | 
+| Code| System.String| Optimization| Code| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_Code| | | | 
+| CountBoards| System.Int32| No. of boards| CountBoards| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_CountBoards| | | | 
+| CountOptionalParts| System.Int32| Number of optional parts| CountOptionalParts| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_CountOptionalParts| | | | 
+| CountParts| System.Int32| Quantity of parts| CountParts| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_CountParts| | | | 
+| CountRest| System.Int32| Number of offcuts| CountRest| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_CountRest| | | | 
+| CuttingPlanState| [CuttingPlanState](#cuttingplanstate)| Status| CuttingPlanState| 0| False| True| False| | | | False| -1| 0| 0| | False| [CuttingPlanState](#cuttingplanstate) | FN_PatternEvaluationItem_CuttingPlanState| | | | 
+| Cycle| System.Int32| cycle| Cycle| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_Cycle| | | | 
+| Length| System.Decimal| Length| Length| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_Length| | | | 
+| Material| System.String| Material| Material| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_Material| | | | 
+| OptimizationCode| System.String| Optimization run| OptimizationCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_OptimizationCode| | | | 
+| OptimizationMethod| System.String| Method| OptimizationMethod| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_OptimizationMethod| | | | 
+| Order| System.Int32| Order| Order| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_Order| | | | 
+| PartArea| System.Decimal| Part size| PartArea| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_PartArea| | | | 
+| PatternPicture| System.Byte[]| Image| PatternPicture| 0| False| False| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_PatternPicture| | | | 
+| PatternPictureType| System.String| Image type| PatternPictureType| 0| False| False| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_PatternPictureType| | | | 
+| RestArea| System.Decimal| Offcuts size| RestArea| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_RestArea| | | | 
+| RestPercent| System.Decimal| Offcuts (%)| RestPercent| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_RestPercent| | | | 
+| ScrapArea| System.Decimal| Scrap size| ScrapArea| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_ScrapArea| | | | 
+| ScrapPercent| System.Decimal| Scrap (%)| ScrapPercent| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_ScrapPercent| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_Thickness| | | | 
+| Width| System.Decimal| Width| Width| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_Width| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_WorkCenterCode| | | | 
+## 2.19 PatternManagementItem : IViewEntityDescription
+## PatternManagementItem
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_PatternManagementItem_PatternManagementItem | PatternManagementItem | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity |  | Overview of the optimization result without an image |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity 
+### 2.19.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Board| System.String| Board| Board| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_Board| | | | 
+| BoardArea| System.Decimal| Board size| BoardArea| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_BoardArea| | | | 
+| Code| System.String| Optimization| Code| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_Code| | | | 
+| CountBoards| System.Int32| No. of boards| CountBoards| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_CountBoards| | | | 
+| CountOptionalParts| System.Int32| Number of optional parts| CountOptionalParts| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_CountOptionalParts| | | | 
+| CountParts| System.Int32| Quantity of parts| CountParts| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_CountParts| | | | 
+| CountRest| System.Int32| Number of offcuts| CountRest| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_CountRest| | | | 
+| CuttingPlanState| [CuttingPlanState](#cuttingplanstate)| Status| CuttingPlanState| 0| False| True| True| | | | False| -1| 0| 0| | False| [CuttingPlanState](#cuttingplanstate) | FN_PatternManagementItem_CuttingPlanState| | | | 
+| Length| System.Decimal| Length| Length| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_Length| | | | 
+| Material| System.String| Material| Material| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_Material| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_OptimizationCode| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_OptimizationMethod| | | | 
+| Order| System.Int32| Order| Order| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_Order| | | | 
+| PartArea| System.Decimal| Part size| PartArea| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_PartArea| | | | 
+| RestArea| System.Decimal| Offcuts size| RestArea| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_RestArea| | | | 
+| RestPercent| System.Decimal| Offcuts (%)| RestPercent| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_RestPercent| | | | 
+| ScrapArea| System.Decimal| Scrap size| ScrapArea| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_ScrapArea| | | | 
+| ScrapPercent| System.Decimal| Scrap (%)| ScrapPercent| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_ScrapPercent| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Width| System.Decimal| Width| Width| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_Width| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_WorkCenterCode| | | | 
+## 2.20 ProductionOrderToOptimize : IViewEntityDescription
+## ProductionOrderToOptimize
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ProductionOrderToOptimize_ProductionOrderToOptimize | ProductionOrderToOptimize | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity |  | Orders for optimization |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | ProductionOrdersToOptimize | General |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity 
+### 2.20.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Active| System.Boolean| Active| Active| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_Active| | | | 
+| ArticleDescription| System.String| Item description| ArticleDescription| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_ArticleDescription| | | | 
+| ArticleNumber| System.String| Item designation| ArticleNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_ArticleNumber| | | | 
+| Code| System.String| Production order number| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_Code| | | | 
+| ConfigurationName| System.String| Configuration| ConfigurationName| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_ConfigurationName| | | | 
+| CustomerOrderCode| System.String| Customer order| CustomerOrderCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_CustomerOrderCode| | | | 
+| CustomerOrderPosition| System.String| Customer order item| CustomerOrderPosition| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_CustomerOrderPosition| | | | 
+| CuttingLength| System.Decimal| Cut length| CuttingLength| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_CuttingLength| | | | 
+| CuttingWidth| System.Decimal| Cut width| CuttingWidth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_CuttingWidth| | | | 
+| DesiredEndDateProcessing| System.DateTime| Planned end date| DesiredEndDateProcessing| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_DesiredEndDateProcessing| | | | 
+| DesiredProcessingTime| System.Decimal| Planned processing time| DesiredProcessingTime| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_DesiredProcessingTime| | | | 
+| DesiredStartDateProcessing| System.DateTime| Planned start date| DesiredStartDateProcessing| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_DesiredStartDateProcessing| | | | 
+| DesiredTargetQuantity| System.Int32| Planned quantity| DesiredTargetQuantity| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_DesiredTargetQuantity| | | | 
+| MaterialGroup| System.String| Material/material group| MaterialGroup| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_MaterialGroup| | | | 
+| OptimizationCode| System.String| Optimization| OptimizationCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_OptimizationCode| | | | 
+| OptimizationMethod| System.String| Method| OptimizationMethod| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_OptimizationMethod| | | | 
+| Optional| System.Boolean| Optional part| Optional| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_Optional| | | | 
+| ParentProductionOrderNumber| System.String| High-level production order| ParentProductionOrderNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_ParentProductionOrderNumber| | | | 
+| PlanCriterion1| System.String| Planning criterion 1| PlanCriterion1| 201| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_PlanCriterion1| | | | 
+| PlanCriterion2| System.String| Planning criterion 2| PlanCriterion2| 202| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_PlanCriterion2| | | | 
+| PlanCriterion3| System.String| Planning criterion 3| PlanCriterion3| 203| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_PlanCriterion3| | | | 
+| PlanCriterion4| System.String| Planning criterion 4| PlanCriterion4| 204| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_PlanCriterion4| | | | 
+| PlanCriterion5| System.String| Planning criterion 5| PlanCriterion5| 205| False| True| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_PlanCriterion5| | | | 
+| ProcessUser| System.String| Optimization user| ProcessUser| 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_ProcessUser| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Thickness| System.Decimal| Thickness| Thickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_Thickness| | | | 
+| TopProductionOrderNumber| System.String| Leading production order| TopProductionOrderNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_TopProductionOrderNumber| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_WorkCenterCode| | | | 
+## 2.21 ViewBulkCapacityForWorkCenter : IViewEntityDescription
+## ViewBulkCapacityForWorkCenter
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewBulkCapacityForWorkCenter_ViewBulkCapacityForWorkCenter | ViewBulkCapacityForWorkCenter |  |  | Workstation capacity of a batch |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.21.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| BulkColor| System.String| Pile color| BulkColor| 40| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewBulkCapacityForWorkCenter_BulkColor| | | | 
+| Capacity| System.Int32| capacity| Capacity| 20| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewBulkCapacityForWorkCenter_Capacity| | | | 
+| EndDate| System.DateTime| Processing end| EndDate| 35| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewBulkCapacityForWorkCenter_EndDate| | | | 
+| PlanningNumber| System.String| Batch number| PlanningNumber| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewBulkCapacityForWorkCenter_PlanningNumber| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**PlanningState**</span>| [PlanningState](#planningstate)| Planning status| PlanningState| 50| True| True| True| | | | False| -1| 0| 0| | False| [PlanningState](#planningstate) | FN_ViewBulkCapacityForWorkCenter_PlanningState| | | | 
+| StartDate| System.DateTime| Processing start| StartDate| 30| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewBulkCapacityForWorkCenter_StartDate| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewBulkCapacityForWorkCenter_WorkCenterCode| | | | 
+## 2.22 ViewCutriteSawInformation : IViewEntityDescription
+## ViewCutriteSawInformation
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewCutriteSawInformation_ViewCutriteSawInformation | ViewCutriteSawInformation |  |  | Saw information |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.22.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Address1| System.String| Address field1| Address1| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_Address1| | | | 
+| Address2| System.String| Address field2| Address2| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_Address2| | | | 
+| Address3| System.String| Address field3| Address3| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_Address3| | | | 
+| Address4| System.String| Address field4| Address4| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_Address4| | | | 
+| Address5| System.String| Address field5| Address5| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_Address5| | | | 
+| ArticleDescription| System.String| Item description| ArticleDescription| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_ArticleDescription| | | | 
+| ArticleNumber| System.String| Item designation| ArticleNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_ArticleNumber| | | | 
+| Bracket| System.String| Production package| Bracket| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_Bracket| | | | 
+| BulkNumber| System.String| Pile number| BulkNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_BulkNumber| | | | 
+| BulkSequenceNumber| System.Int64| Pile| BulkSequenceNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_BulkSequenceNumber| | | | 
+| Code| System.String| Production order number| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_Code| | | | 
+| Customer| System.String| customer| Customer| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_Customer| | | | 
+| CustomerOrderCode| System.String| Customer order| CustomerOrderCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_CustomerOrderCode| | | | 
+| CustomerOrderPosition| System.String| Customer order item| CustomerOrderPosition| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_CustomerOrderPosition| | | | 
+| CustomerOrderReference| System.String| Customer order reference text| CustomerOrderReference| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_CustomerOrderReference| | | | 
+| CustomerOrderRoute| System.String| Production path| CustomerOrderRoute| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_CustomerOrderRoute| | | | 
+| CuttingLength| System.Decimal| Cut length| CuttingLength| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_CuttingLength| | | | 
+| CuttingTemplateSequence| System.Int64| Template reference| CuttingTemplateSequence| 10| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_CuttingTemplateSequence| | | | 
+| CuttingThickness| System.Decimal| Cutting strength| CuttingThickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_CuttingThickness| | | | 
+| CuttingWidth| System.Decimal| Cut width| CuttingWidth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_CuttingWidth| | | | 
+| DeliveryDate| System.DateTime| Delivery date| DeliveryDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_DeliveryDate| | | | 
+| DesiredEndDate| System.DateTime| Planned end date| DesiredEndDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_DesiredEndDate| | | | 
+| DesiredEndDateProcessing| System.DateTime| Desired end of processing| DesiredEndDateProcessing| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_DesiredEndDateProcessing| | | | 
+| DesiredStartDate| System.DateTime| Planned start date| DesiredStartDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_DesiredStartDate| | | | 
+| DesiredStartDateProcessing| System.DateTime| Desired start of processing| DesiredStartDateProcessing| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_DesiredStartDateProcessing| | | | 
+| DesiredTargetQuantity| System.Int32| Planned quantity| DesiredTargetQuantity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_DesiredTargetQuantity| | | | 
+| DesiredTargetQuantityMax| System.Int32| Planned maximum quantity| DesiredTargetQuantityMax| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_DesiredTargetQuantityMax| | | | 
+| DesiredTargetQuantityMin| System.Int32| Planned minimum quantity| DesiredTargetQuantityMin| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_DesiredTargetQuantityMin| | | | 
+| EdgeEast| System.String| East edge| EdgeEast| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEast| | | | 
+| EdgeEastAlternateCode| System.String| East edge alternative code| EdgeEastAlternateCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastAlternateCode| | | | 
+| EdgeEastBasicMacro| System.String| East edge basic macro| EdgeEastBasicMacro| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastBasicMacro| | | | 
+| EdgeEastCode| System.Int32| East edge code| EdgeEastCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastCode| | | | 
+| EdgeEastContent| System.String| East edge output data| EdgeEastContent| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastContent| | | | 
+| EdgeEastCustomerEdge| System.String| East edge edge number, customer| EdgeEastCustomerEdge| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastCustomerEdge| | | | 
+| EdgeEastEdgePassesSequence| System.Int64| East edge sequence, edge throughfeed| EdgeEastEdgePassesSequence| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastEdgePassesSequence| | | | 
+| EdgeEastEdgeProfileSequence| System.Int64| East edge sequence, edge profile| EdgeEastEdgeProfileSequence| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastEdgeProfileSequence| | | | 
+| EdgeEastEdgeProgram| System.String| East edge edge program| EdgeEastEdgeProgram| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastEdgeProgram| | | | 
+| EdgeEastEdgeValue| System.String| East edge edge value| EdgeEastEdgeValue| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastEdgeValue| | | | 
+| EdgeEastFinishingMacro| System.String| East edge finishing macro| EdgeEastFinishingMacro| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastFinishingMacro| | | | 
+| EdgeEastGlueType| System.String| East edge glue type| EdgeEastGlueType| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastGlueType| | | | 
+| EdgeEastGrooveValue| System.String| East edge groove value| EdgeEastGrooveValue| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastGrooveValue| | | | 
+| EdgeEastHeigth| System.Decimal| East edge height| EdgeEastHeigth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastHeigth| | | | 
+| EdgeEastId| System.String| East edge ID| EdgeEastId| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastId| | | | 
+| EdgeEastLength| System.Decimal| East edge length| EdgeEastLength| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastLength| | | | 
+| EdgeEastMaterial| System.String| East edge material| EdgeEastMaterial| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastMaterial| | | | 
+| EdgeEastOrientation1| System.Int32| East edge orientation 1| EdgeEastOrientation1| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastOrientation1| | | | 
+| EdgeEastOrientation2| System.Int32| East edge orientation 2| EdgeEastOrientation2| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastOrientation2| | | | 
+| EdgeEastOrientationLengthWidth| System.Int32| East edge alignment, length/width| EdgeEastOrientationLengthWidth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastOrientationLengthWidth| | | | 
+| EdgeEastPass| System.Int32| East edge throughfeed| EdgeEastPass| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastPass| | | | 
+| EdgeEastSurfaceMacro| System.String| East edge surface macro| EdgeEastSurfaceMacro| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastSurfaceMacro| | | | 
+| EdgeEastThickness| System.Decimal| East edge thickness| EdgeEastThickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastThickness| | | | 
+| EdgeEastTrim| System.String| East edge trim| EdgeEastTrim| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeEastTrim| | | | 
+| EdgeNorth| System.String| North edge| EdgeNorth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorth| | | | 
+| EdgeNorthAlternateCode| System.String| North edge alternative code| EdgeNorthAlternateCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthAlternateCode| | | | 
+| EdgeNorthBasicMacro| System.String| North edge basic macro| EdgeNorthBasicMacro| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthBasicMacro| | | | 
+| EdgeNorthCode| System.Int32| North edge code| EdgeNorthCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthCode| | | | 
+| EdgeNorthContent| System.String| North edge output data| EdgeNorthContent| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthContent| | | | 
+| EdgeNorthCustomerEdge| System.String| North edge edge number, customer| EdgeNorthCustomerEdge| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthCustomerEdge| | | | 
+| EdgeNorthEdgePassesSequence| System.Int64| North edge sequence, edge throughfeed| EdgeNorthEdgePassesSequence| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthEdgePassesSequence| | | | 
+| EdgeNorthEdgeProfileSequence| System.Int64| North edge sequence, edge profile| EdgeNorthEdgeProfileSequence| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthEdgeProfileSequence| | | | 
+| EdgeNorthEdgeProgram| System.String| North edge edge program| EdgeNorthEdgeProgram| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthEdgeProgram| | | | 
+| EdgeNorthEdgeValue| System.String| North edge edge value| EdgeNorthEdgeValue| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthEdgeValue| | | | 
+| EdgeNorthFinishingMacro| System.String| North edge finishing macro| EdgeNorthFinishingMacro| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthFinishingMacro| | | | 
+| EdgeNorthGlueType| System.String| North edge glue type| EdgeNorthGlueType| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthGlueType| | | | 
+| EdgeNorthGrooveValue| System.String| North edge groove value| EdgeNorthGrooveValue| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthGrooveValue| | | | 
+| EdgeNorthHeigth| System.Decimal| North edge height| EdgeNorthHeigth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthHeigth| | | | 
+| EdgeNorthId| System.String| North edge ID| EdgeNorthId| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthId| | | | 
+| EdgeNorthLength| System.Decimal| North edge length| EdgeNorthLength| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthLength| | | | 
+| EdgeNorthMaterial| System.String| North edge material| EdgeNorthMaterial| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthMaterial| | | | 
+| EdgeNorthOrientation1| System.Int32| North edge orientation 1| EdgeNorthOrientation1| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthOrientation1| | | | 
+| EdgeNorthOrientation2| System.Int32| North edge orientation 2| EdgeNorthOrientation2| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthOrientation2| | | | 
+| EdgeNorthOrientationLengthWidth| System.Int32| North edge alignment, length/width| EdgeNorthOrientationLengthWidth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthOrientationLengthWidth| | | | 
+| EdgeNorthPass| System.Int32| North edge throughfeed| EdgeNorthPass| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthPass| | | | 
+| EdgeNorthSurfaceMacro| System.String| North edge surface macro| EdgeNorthSurfaceMacro| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthSurfaceMacro| | | | 
+| EdgeNorthThickness| System.Decimal| North edge thickness| EdgeNorthThickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthThickness| | | | 
+| EdgeNorthTrim| System.String| North edge trim| EdgeNorthTrim| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeNorthTrim| | | | 
+| EdgeShape| System.String| Edge image| EdgeShape| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeShape| | | | 
+| EdgeSouth| System.String| South edge| EdgeSouth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouth| | | | 
+| EdgeSouthAlternateCode| System.String| South edge alternative code| EdgeSouthAlternateCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthAlternateCode| | | | 
+| EdgeSouthBasicMacro| System.String| South edge basic macro| EdgeSouthBasicMacro| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthBasicMacro| | | | 
+| EdgeSouthCode| System.Int32| South edge code| EdgeSouthCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthCode| | | | 
+| EdgeSouthContent| System.String| South edge output data| EdgeSouthContent| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthContent| | | | 
+| EdgeSouthCustomerEdge| System.String| South edge edge number, customer| EdgeSouthCustomerEdge| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthCustomerEdge| | | | 
+| EdgeSouthEdgePassesSequence| System.Int64| South edge sequence, edge throughfeed| EdgeSouthEdgePassesSequence| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthEdgePassesSequence| | | | 
+| EdgeSouthEdgeProfileSequence| System.Int64| South edge sequence, edge profile| EdgeSouthEdgeProfileSequence| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthEdgeProfileSequence| | | | 
+| EdgeSouthEdgeProgram| System.String| South edge edge program| EdgeSouthEdgeProgram| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthEdgeProgram| | | | 
+| EdgeSouthEdgeValue| System.String| South edge edge value| EdgeSouthEdgeValue| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthEdgeValue| | | | 
+| EdgeSouthFinishingMacro| System.String| South edge finishing macro| EdgeSouthFinishingMacro| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthFinishingMacro| | | | 
+| EdgeSouthGlueType| System.String| South edge glue type| EdgeSouthGlueType| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthGlueType| | | | 
+| EdgeSouthGrooveValue| System.String| South edge groove value| EdgeSouthGrooveValue| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthGrooveValue| | | | 
+| EdgeSouthHeigth| System.Decimal| South edge height| EdgeSouthHeigth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthHeigth| | | | 
+| EdgeSouthId| System.String| South edge ID| EdgeSouthId| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthId| | | | 
+| EdgeSouthLength| System.Decimal| South edge length| EdgeSouthLength| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthLength| | | | 
+| EdgeSouthMaterial| System.String| South edge material| EdgeSouthMaterial| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthMaterial| | | | 
+| EdgeSouthOrientation1| System.Int32| South edge orientation 1| EdgeSouthOrientation1| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthOrientation1| | | | 
+| EdgeSouthOrientation2| System.Int32| South edge orientation 2| EdgeSouthOrientation2| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthOrientation2| | | | 
+| EdgeSouthOrientationLengthWidth| System.Int32| South edge alignment, length/width| EdgeSouthOrientationLengthWidth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthOrientationLengthWidth| | | | 
+| EdgeSouthPass| System.Int32| South edge throughfeed| EdgeSouthPass| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthPass| | | | 
+| EdgeSouthSurfaceMacro| System.String| South edge surface macro| EdgeSouthSurfaceMacro| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthSurfaceMacro| | | | 
+| EdgeSouthThickness| System.Decimal| South edge thickness| EdgeSouthThickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthThickness| | | | 
+| EdgeSouthTrim| System.String| South edge trim| EdgeSouthTrim| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeSouthTrim| | | | 
+| EdgeTransition| System.String| Edge transition| EdgeTransition| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeTransition| | | | 
+| EdgeWest| System.String| West edge| EdgeWest| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWest| | | | 
+| EdgeWestAlternateCode| System.String| West edge alternative code| EdgeWestAlternateCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestAlternateCode| | | | 
+| EdgeWestBasicMacro| System.String| West edge basic macro| EdgeWestBasicMacro| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestBasicMacro| | | | 
+| EdgeWestCode| System.Int32| West edge code| EdgeWestCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestCode| | | | 
+| EdgeWestContent| System.String| West edge output data| EdgeWestContent| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestContent| | | | 
+| EdgeWestCustomerEdge| System.String| West edge edge number, customer| EdgeWestCustomerEdge| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestCustomerEdge| | | | 
+| EdgeWestEdgePassesSequence| System.Int64| West edge sequence, edge throughfeed| EdgeWestEdgePassesSequence| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestEdgePassesSequence| | | | 
+| EdgeWestEdgeProfileSequence| System.Int64| West edge sequence, edge profile| EdgeWestEdgeProfileSequence| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestEdgeProfileSequence| | | | 
+| EdgeWestEdgeProgram| System.String| West edge edge program| EdgeWestEdgeProgram| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestEdgeProgram| | | | 
+| EdgeWestEdgeValue| System.String| West edge edge value| EdgeWestEdgeValue| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestEdgeValue| | | | 
+| EdgeWestFinishingMacro| System.String| West edge finishing macro| EdgeWestFinishingMacro| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestFinishingMacro| | | | 
+| EdgeWestGlueType| System.String| West edge glue type| EdgeWestGlueType| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestGlueType| | | | 
+| EdgeWestGrooveValue| System.String| West edge groove value| EdgeWestGrooveValue| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestGrooveValue| | | | 
+| EdgeWestHeigth| System.Decimal| West edge height| EdgeWestHeigth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestHeigth| | | | 
+| EdgeWestId| System.String| West edge ID| EdgeWestId| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestId| | | | 
+| EdgeWestLength| System.Decimal| West edge length| EdgeWestLength| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestLength| | | | 
+| EdgeWestMaterial| System.String| West edge material| EdgeWestMaterial| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestMaterial| | | | 
+| EdgeWestOrientation1| System.Int32| West edge orientation 1| EdgeWestOrientation1| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestOrientation1| | | | 
+| EdgeWestOrientation2| System.Int32| West edge orientation 2| EdgeWestOrientation2| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestOrientation2| | | | 
+| EdgeWestOrientationLengthWidth| System.Int32| West edge alignment, length/width| EdgeWestOrientationLengthWidth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestOrientationLengthWidth| | | | 
+| EdgeWestPass| System.Int32| West edge throughfeed| EdgeWestPass| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestPass| | | | 
+| EdgeWestSurfaceMacro| System.String| West edge surface macro| EdgeWestSurfaceMacro| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestSurfaceMacro| | | | 
+| EdgeWestThickness| System.Decimal| West edge thickness| EdgeWestThickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestThickness| | | | 
+| EdgeWestTrim| System.String| West edge trim| EdgeWestTrim| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_EdgeWestTrim| | | | 
+| Grain| [Grain](#grain)| Grain| Grain| 0| False| True| True| | | | False| -1| 0| 0| | False| [Grain](#grain) | FN_ViewCutriteSawInformation_Grain| | | | 
+| Length| System.Decimal| Length| Length| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_Length| | | | 
+| MaterialCode| System.String| Material| MaterialCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_MaterialCode| | | | 
+| MaterialCode2| System.String| Alternative material code| MaterialCode2| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_MaterialCode2| | | | 
+| MaterialDescription| System.String| Material description| MaterialDescription| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_MaterialDescription| | | | 
+| MaterialGrain| [Grain](#grain)| Material structure| MaterialGrain| 0| False| True| True| | | | False| -1| 0| 0| | False| [Grain](#grain) | FN_ViewCutriteSawInformation_MaterialGrain| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**NarrowPartType**</span>| [NarrowPartType](#narrowparttype)| Narrow component| NarrowPartType| 0| True| True| True| | | | False| -1| 0| 0| | False| [NarrowPartType](#narrowparttype) | FN_ViewCutriteSawInformation_NarrowPartType| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_OptimizationCode| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_OptimizationMethod| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**OptimizationTransferState**</span>| [OptimizationTransferState](#optimizationtransferstate)| Status of optimization| OptimizationTransferState| 0| True| True| True| | | | False| -1| 0| 0| | False| [OptimizationTransferState](#optimizationtransferstate) | FN_ViewCutriteSawInformation_OptimizationTransferState| | | | 
+| OptionalPart| System.Int32| facultative part| OptionalPart| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_OptionalPart| | | | 
+| OrderDate| System.DateTime| Order date| OrderDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_OrderDate| | | | 
+| ParentProductionOrderNumber| System.String| High-level production order| ParentProductionOrderNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_ParentProductionOrderNumber| | | | 
+| PartGeometry| System.String| Geometry| PartGeometry| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_PartGeometry| | | | 
+| ProductionItemCode| System.String| Part number| ProductionItemCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_ProductionItemCode| | | | 
+| ProductionItemQuantity| System.Int32| Quantity of parts| ProductionItemQuantity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_ProductionItemQuantity| | | | 
+| ProductionOrderCode| System.String| Sequence (production order)| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_ProductionOrderCode| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ProductionState**</span>| [ProductionState](#productionstate)| Status of the production order| ProductionState| 0| True| True| True| | | | False| -1| 0| 0| | False| [ProductionState](#productionstate) | FN_ViewCutriteSawInformation_ProductionState| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_ProductionStepCode| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ReleaseState**</span>| [ReleaseState](#releasestate)| Release status| ReleaseState| 0| True| True| True| | | | False| -1| 0| 0| | False| [ReleaseState](#releasestate) | FN_ViewCutriteSawInformation_ReleaseState| | | | 
+| RouteCode| System.String| Processing route| RouteCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_RouteCode| | | | 
+| SurfaceBottomCode| System.String| Surface bottom| SurfaceBottomCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_SurfaceBottomCode| | | | 
+| SurfaceBottomDescription| System.String| Bottom surface, description| SurfaceBottomDescription| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_SurfaceBottomDescription| | | | 
+| SurfaceBottomDescription2| System.String| Bottom surface, description 2| SurfaceBottomDescription2| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_SurfaceBottomDescription2| | | | 
+| SurfaceBottomGrainId| [Grain](#grain)| Bottom surface, graining| SurfaceBottomGrainId| 0| False| True| True| | | | False| -1| 0| 0| | False| [Grain](#grain) | FN_ViewCutriteSawInformation_SurfaceBottomGrainId| | | | 
+| SurfaceBottomGrainOrientation| System.Decimal| Bottom surface, graining orientation| SurfaceBottomGrainOrientation| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_SurfaceBottomGrainOrientation| | | | 
+| SurfaceTopCode| System.String| Surface top| SurfaceTopCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_SurfaceTopCode| | | | 
+| SurfaceTopDescription| System.String| Top surface, description| SurfaceTopDescription| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_SurfaceTopDescription| | | | 
+| SurfaceTopDescription2| System.String| Top surface, description 2| SurfaceTopDescription2| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_SurfaceTopDescription2| | | | 
+| SurfaceTopGrainId| [Grain](#grain)| Top surface, graining| SurfaceTopGrainId| 0| False| True| True| | | | False| -1| 0| 0| | False| [Grain](#grain) | FN_ViewCutriteSawInformation_SurfaceTopGrainId| | | | 
+| SurfaceTopGrainOrientation| System.Decimal| Top surface, graining orientation| SurfaceTopGrainOrientation| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_SurfaceTopGrainOrientation| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_Thickness| | | | 
+| TopProductionOrderNumber| System.String| Leading production order| TopProductionOrderNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_TopProductionOrderNumber| | | | 
+| Width| System.Decimal| Width| Width| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_Width| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_WorkCenterCode| | | | 
+## 2.23 ViewExtensionData : IViewEntityDescription
+## ViewExtensionData
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewExtensionData_ViewExtensionData | ViewExtensionData |  |  | Extended data |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.23.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Area| System.String| Extended data for ...| Area| 3| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewExtensionData_Area| | | | 
+| InternSortOrder| System.String| Internal sort order| InternSortOrder| 1| False| False| True| | | | False| -1| 0| 0| | False| | FN_ViewExtensionData_InternSortOrder| | | | 
+| Key| System.String| Extension name| Key| 2| True| False| True| | | | False| -1| 0| 0| | False| | FN_ViewExtensionData_Key| | | | 
+| ProductionOrderCode| System.String| Production order number| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewExtensionData_ProductionOrderCode| | | | 
+| Record| System.String| Data record| Record| 4| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewExtensionData_Record| | | | 
+| XmlKey| System.String| key| XmlKey| 5| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewExtensionData_XmlKey| | | | 
+| XmlValue| System.String| Value| XmlValue| 6| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewExtensionData_XmlValue| | | | 
+## 2.24 ViewFinishedPerHour : IViewEntityDescription
+## ViewFinishedPerHour
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewFinishedPerHour_ViewFinishedPerHour | ViewFinishedPerHour |  |  | Evaluation parts/hour |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.24.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Date| System.DateTime| Date| Date| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFinishedPerHour_Date| | | | 
+| FinishedBad| System.Int32| Finished reject parts| FinishedBad| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFinishedPerHour_FinishedBad| | | | 
+| FinishedGood| System.Int32| terminated| FinishedGood| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFinishedPerHour_FinishedGood| | | | 
+| FinishedRework| System.Int32| Finished, post-processed| FinishedRework| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFinishedPerHour_FinishedRework| | | | 
+| Hour| System.Int32| Hour| Hour| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFinishedPerHour_Hour| | | | 
+| RowNumber| System.Int64| Line number| RowNumber| 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_ViewFinishedPerHour_RowNumber| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFinishedPerHour_WorkCenterCode| | | | 
+## 2.25 ViewFitting : IViewEntityDescription
+## ViewFitting
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewFitting_ViewFitting | ViewFitting |  |  | Fittings |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.25.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AdditionalInformation| System.String| Additional information| AdditionalInformation| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_AdditionalInformation| | | | 
+| Code| System.String| ID| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_Code| | | | 
+| Description| System.String| Description| Description| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_Description| | | | 
+| DesiredQuantity| System.Decimal| Planned quantity| DesiredQuantity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_DesiredQuantity| | | | 
+| ErrorMessage| System.String| Error message| ErrorMessage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_ErrorMessage| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ErrorState**</span>| [ErrorState](#errorstate)| Error status| ErrorState| 0| True| True| True| | | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_ViewFitting_ErrorState| | | | 
+| Length| System.Decimal| Length| Length| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_Length| | | | 
+| Material| System.String| Material| Material| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_Material| | | | 
+| ProductionOrderCode| System.String| Production order number| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_ProductionOrderCode| | | | 
+| QuantityUnit| System.String| Quantity unit| QuantityUnit| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_QuantityUnit| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_Thickness| | | | 
+| Type| System.String| Type| Type| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_Type| | | | 
+| Width| System.Decimal| Width| Width| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_Width| | | | 
+## 2.26 ViewLGFromOptiKPIResult : IViewEntityDescription
+## ViewLGFromOptiKPIResult
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewLGFromOptiKPIResult_ViewLGFromOptiKPIResult | ViewLGFromOptiKPIResult |  |  | Optimization results |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.26.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ActivationState| System.Int32| Status| ActivationState| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_ActivationState| | | | 
+| AreaCreatedOffcut| System.Decimal| Surface of offcuts created| AreaCreatedOffcut| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_AreaCreatedOffcut| | | | 
+| AreaCreatedScrap| System.Decimal| Surface of waste| AreaCreatedScrap| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_AreaCreatedScrap| | | | 
+| AreaCreatedWaste| System.Decimal| Surface of offcuts and waste| AreaCreatedWaste| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_AreaCreatedWaste| | | | 
+| AreaOptimizedPlusPart| System.Decimal| Surface of optional parts| AreaOptimizedPlusPart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_AreaOptimizedPlusPart| | | | 
+| AreaOptimizedRequiredPart| System.Decimal| Surface of mandatory parts| AreaOptimizedRequiredPart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_AreaOptimizedRequiredPart| | | | 
+| AreaUsedBoard| System.Decimal| Surface of panels| AreaUsedBoard| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_AreaUsedBoard| | | | 
+| AreaUsedOffcut| System.Decimal| Surface of offcuts used| AreaUsedOffcut| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_AreaUsedOffcut| | | | 
+| CuttingCosts| System.Decimal| Cutting costs| CuttingCosts| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_CuttingCosts| | | | 
+| CuttingPathLength| System.Decimal| cutting length| CuttingPathLength| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_CuttingPathLength| | | | 
+| CuttingTime| System.Decimal| Cutting time| CuttingTime| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_CuttingTime| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_OptimizationCode| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_OptimizationMethod| | | | 
+| QuantityCreatedOffcut| System.Int32| Number of offcuts created| QuantityCreatedOffcut| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_QuantityCreatedOffcut| | | | 
+| QuantityPlusPart| System.Int32| Number of optimized optional parts| QuantityPlusPart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_QuantityPlusPart| | | | 
+| QuantityRequiredPart| System.Int32| Number of optimized mandatory parts| QuantityRequiredPart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_QuantityRequiredPart| | | | 
+| QuantityRequiredPartNotOptimized| System.Int32| Number of non-optimized mandatory parts| QuantityRequiredPartNotOptimized| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_QuantityRequiredPartNotOptimized| | | | 
+| QuantityUsedBoard| System.Int32| No. of boards| QuantityUsedBoard| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_QuantityUsedBoard| | | | 
+| QuantityUsedOffcut| System.Int32| Number of offcuts| QuantityUsedOffcut| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_QuantityUsedOffcut| | | | 
+| Rate1Waste| System.Decimal| Ratio of waste + offcuts/panels used| Rate1Waste| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_Rate1Waste| | | | 
+| Rate2Waste| System.Decimal| Ratio of waste/parts used| Rate2Waste| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_Rate2Waste| | | | 
+| RateOffcut| System.Decimal| Ratio of offcuts/panels used| RateOffcut| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_RateOffcut| | | | 
+| RatePlusPart| System.Decimal| Ratio of optional parts/panels used| RatePlusPart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_RatePlusPart| | | | 
+| RateRequiredPart| System.Decimal| Ratio of mandatory parts/panels used| RateRequiredPart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_RateRequiredPart| | | | 
+| RateScrap| System.Decimal| Ratio of waste/panels used| RateScrap| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_RateScrap| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+## 2.27 ViewMaterial : IViewEntityDescription
+## ViewMaterial
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewMaterial_ViewMaterial | ViewMaterial |  |  | Material |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.27.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AdditionalInformation| System.String| Additional information| AdditionalInformation| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_AdditionalInformation| | | | 
+| Code| System.String| ID| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_Code| | | | 
+| Description| System.String| Description| Description| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_Description| | | | 
+| DesiredQuantity| System.Decimal| Planned quantity| DesiredQuantity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_DesiredQuantity| | | | 
+| ErrorMessage| System.String| Error message| ErrorMessage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_ErrorMessage| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ErrorState**</span>| [ErrorState](#errorstate)| Error status| ErrorState| 0| True| True| True| | | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_ViewMaterial_ErrorState| | | | 
+| Grain| [Grain](#grain)| Structure| Grain| 0| False| True| True| | | | False| -1| 0| 0| | False| [Grain](#grain) | FN_ViewMaterial_Grain| | | | 
+| Length| System.Decimal| Length| Length| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_Length| | | | 
+| Material| System.String| Material| Material| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_Material| | | | 
+| ProductionOrderCode| System.String| Production order number| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_ProductionOrderCode| | | | 
+| QuantityUnit| System.String| Quantity unit| QuantityUnit| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_QuantityUnit| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_Thickness| | | | 
+| Type| System.String| Type| Type| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_Type| | | | 
+| Width| System.Decimal| Width| Width| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_Width| | | | 
+## 2.28 ViewMovingAction : IViewEntityDescription
+## ViewMovingAction
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewMovingAction_ViewMovingAction | ViewMovingAction |  |  | Extended transport actions |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.28.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| <span style="color: #e0b21b" title="Default value not defined!">**ActionMode**</span>| [MovingActionMode](#movingactionmode)| Action| ActionMode| 0| True| True| True| | | | False| -1| 0| 0| | False| [MovingActionMode](#movingactionmode) | FN_ViewMovingAction_ActionMode| | | | 
+| CreationDate| System.DateTime| Creation date| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_CreationDate| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsActive**</span>| [YesNo](#yesno)| is active| IsActive| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewMovingAction_IsActive| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsReserved**</span>| [YesNo](#yesno)| Is reserved| IsReserved| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewMovingAction_IsReserved| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsValid**</span>| [YesNo](#yesno)| Is valid| IsValid| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewMovingAction_IsValid| | | | 
+| LayerLayout| System.String| Layer layout| LayerLayout| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingAction_LayerLayout| | | | 
+| ModificationDate| System.DateTime| Date of change| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
+| MovementNumber| System.Int64| Transport number| MovementNumber| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingAction_MovementNumber| | | | 
+| PositionNumberFinish| System.String| Target position| PositionNumberFinish| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingAction_PositionNumberFinish| | | | 
+| PositionNumberStart| System.String| Start position| PositionNumberStart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingAction_PositionNumberStart| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StackCode| System.String| STACK NUMBER| StackCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingAction_StackCode| | | | 
+| StackHeight| System.Decimal| Stack height| StackHeight| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingAction_StackHeight| | | | 
+| StackLength| System.Decimal| Stack length| StackLength| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingAction_StackLength| | | | 
+| StackWidth| System.Decimal| Stack width| StackWidth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingAction_StackWidth| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**TransferState**</span>| [MovingActionTransferstate](#movingactiontransferstate)| Transfer status| TransferState| 0| True| True| True| | | | False| -1| 0| 0| | False| [MovingActionTransferstate](#movingactiontransferstate) | FN_ViewMovingAction_TransferState| | | | 
+## 2.29 ViewMovingRequest : IViewEntityDescription
+## ViewMovingRequest
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewMovingRequest_ViewMovingRequest | ViewMovingRequest |  |  | Extended transport requests |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.29.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| <span style="color: #e0b21b" title="Default value not defined!">**ActionMode**</span>| [MovingActionMode](#movingactionmode)| Action| ActionMode| 0| True| True| True| | | | False| -1| 0| 0| | False| [MovingActionMode](#movingactionmode) | FN_ViewMovingRequest_ActionMode| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ActionRequest**</span>| [ActionRequest](#actionrequest)| TransportAction| ActionRequest| 0| True| True| True| | | | False| -1| 0| 0| | False| [ActionRequest](#actionrequest) | FN_ViewMovingRequest_ActionRequest| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**CurrentState**</span>| [MovementCurrentState](#movementcurrentstate)| Current transport status| CurrentState| 0| True| True| True| | | | False| -1| 0| 0| | False| [MovementCurrentState](#movementcurrentstate) | FN_ViewMovingRequest_CurrentState| | | | 
+| ErrorState| System.Int32| Error status| ErrorState| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingRequest_ErrorState| | | | 
+| ErrorString| System.String| Error message| ErrorString| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewMovingRequest_ErrorString| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsActive**</span>| [YesNo](#yesno)| is active| IsActive| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewMovingRequest_IsActive| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsReserved**</span>| [YesNo](#yesno)| Is reserved| IsReserved| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewMovingRequest_IsReserved| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsValid**</span>| [YesNo](#yesno)| Is valid| IsValid| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewMovingRequest_IsValid| | | | 
+| LayerLayout| System.String| Layer layout| LayerLayout| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewMovingRequest_LayerLayout| | | | 
+| MovementNumber| System.Int64| Transport number| MovementNumber| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingRequest_MovementNumber| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**MovementState**</span>| [MovementState](#movementstate)| General transport status| MovementState| 0| True| True| True| | | | False| -1| 0| 0| | False| [MovementState](#movementstate) | FN_ViewMovingRequest_MovementState| | | | 
+| PositionNumber| System.String| Position| PositionNumber| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingRequest_PositionNumber| | | | 
+| PositionNumberFinish| System.String| Target position| PositionNumberFinish| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingRequest_PositionNumberFinish| | | | 
+| PositionNumberStart| System.String| Start position| PositionNumberStart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingRequest_PositionNumberStart| | | | 
+| StackCode| System.String| STACK NUMBER| StackCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingRequest_StackCode| | | | 
+| StackHeight| System.Decimal| Stack height| StackHeight| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewMovingRequest_StackHeight| | | | 
+| StackLength| System.Decimal| Stack length| StackLength| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewMovingRequest_StackLength| | | | 
+| StackWidth| System.Decimal| Stack width| StackWidth| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewMovingRequest_StackWidth| | | | 
+## 2.30 ViewOptimizationAndKPIResult : IViewEntityDescription
+## ViewOptimizationAndKPIResult
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewOptimizationAndKPIResult_ViewOptimizationAndKPIResult | ViewOptimizationAndKPIResult |  |  | Optimization results and key figures |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.30.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AreaCreatedOffcut| System.Decimal| Surface of offcuts created| AreaCreatedOffcut| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_AreaCreatedOffcut| | | | 
+| AreaCreatedScrap| System.Decimal| Surface of waste| AreaCreatedScrap| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_AreaCreatedScrap| | | | 
+| AreaCreatedWaste| System.Decimal| Surface of offcuts and waste| AreaCreatedWaste| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_AreaCreatedWaste| | | | 
+| AreaOptimizedPlusPart| System.Decimal| Surface of optional parts| AreaOptimizedPlusPart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_AreaOptimizedPlusPart| | | | 
+| AreaOptimizedRequiredPart| System.Decimal| Surface of mandatory parts| AreaOptimizedRequiredPart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_AreaOptimizedRequiredPart| | | | 
+| AreaUsedBoard| System.Decimal| Surface of panels| AreaUsedBoard| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_AreaUsedBoard| | | | 
+| AreaUsedOffcut| System.Decimal| Surface of offcuts used| AreaUsedOffcut| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_AreaUsedOffcut| | | | 
+| Code| System.String| Optimization run| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_Code| | | | 
+| CuttingCosts| System.Decimal| Cutting costs| CuttingCosts| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_CuttingCosts| | | | 
+| CuttingPathLength| System.Decimal| cutting length| CuttingPathLength| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_CuttingPathLength| | | | 
+| CuttingTime| System.Decimal| Cutting time| CuttingTime| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_CuttingTime| | | | 
+| Method| System.String| Optimization strategy| Method| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_Method| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**OptimizationState**</span>| [OptimizationDataState](#optimizationdatastate)| Optimization status| OptimizationState| 0| True| True| True| | | | False| -1| 0| 0| | False| [OptimizationDataState](#optimizationdatastate) | FN_ViewOptimizationAndKPIResult_OptimizationState| | | | 
+| OptimizationSystem| System.String| Optimization system| OptimizationSystem| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_OptimizationSystem| | | | 
+| ProcessUser| System.String| Optimization user| ProcessUser| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_ProcessUser| | | | 
+| QuantityCreatedOffcut| System.Int32| Number of offcuts created| QuantityCreatedOffcut| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_QuantityCreatedOffcut| | | | 
+| QuantityPlusPart| System.Int32| Number of optimized optional parts| QuantityPlusPart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_QuantityPlusPart| | | | 
+| QuantityRequiredPart| System.Int32| Number of optimized mandatory parts| QuantityRequiredPart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_QuantityRequiredPart| | | | 
+| QuantityRequiredPartNotOptimized| System.Int32| Number of non-optimized mandatory parts| QuantityRequiredPartNotOptimized| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_QuantityRequiredPartNotOptimized| | | | 
+| QuantityUsedBoard| System.Int32| No. of boards| QuantityUsedBoard| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_QuantityUsedBoard| | | | 
+| QuantityUsedOffcut| System.Int32| Number of offcuts| QuantityUsedOffcut| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_QuantityUsedOffcut| | | | 
+| Rate1Waste| System.Decimal| Ratio of waste + offcuts/panels used| Rate1Waste| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_Rate1Waste| | | | 
+| Rate2Waste| System.Decimal| Ratio of waste/parts used| Rate2Waste| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_Rate2Waste| | | | 
+| RateOffcut| System.Decimal| Ratio of offcuts/panels used| RateOffcut| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_RateOffcut| | | | 
+| RatePlusPart| System.Decimal| Ratio of optional parts/panels used| RatePlusPart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_RatePlusPart| | | | 
+| RateRequiredPart| System.Decimal| Ratio of mandatory parts/panels used| RateRequiredPart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_RateRequiredPart| | | | 
+| RateScrap| System.Decimal| Ratio of waste/panels used| RateScrap| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_RateScrap| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_WorkCenterCode| | | | 
+## 2.31 ViewOptimizationInformation : IViewEntityDescription
+## ViewOptimizationInformation
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewOptimizationInformation_ViewOptimizationInformation | ViewOptimizationInformation |  |  | Optimization information |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.31.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Address1| System.String| Address field 1| Address1| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Address1| | | | 
+| Address2| System.String| Address field 2| Address2| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Address2| | | | 
+| Address3| System.String| Address field 3| Address3| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Address3| | | | 
+| Address4| System.String| Address field 4| Address4| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Address4| | | | 
+| Address5| System.String| Address field 5| Address5| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Address5| | | | 
+| ArticleDescription| System.String| Item description| ArticleDescription| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_ArticleDescription| | | | 
+| ArticleNumber| System.String| Item designation| ArticleNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_ArticleNumber| | | | 
+| BulkNumber| System.String| Pile number| BulkNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_BulkNumber| | | | 
+| Code| System.String| Production order number| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Code| | | | 
+| CurrentFirstDate| System.DateTime| Start date of first part| CurrentFirstDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_CurrentFirstDate| | | | 
+| CurrentLastDate| System.DateTime| End date of last part| CurrentLastDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_CurrentLastDate| | | | 
+| CurrentQuantityGood| System.Int32| Number of good parts| CurrentQuantityGood| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_CurrentQuantityGood| | | | 
+| CurrentQuantityRework| System.Int32| Number of post-processing parts| CurrentQuantityRework| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_CurrentQuantityRework| | | | 
+| CurrentQuantityScrap| System.Int32| Number of reject parts| CurrentQuantityScrap| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_CurrentQuantityScrap| | | | 
+| CurrentTargetQuantity| System.Int32| Current quantity| CurrentTargetQuantity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_CurrentTargetQuantity| | | | 
+| Customer| System.String| customer| Customer| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Customer| | | | 
+| CustomerOrderCode| System.String| Customer order| CustomerOrderCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_CustomerOrderCode| | | | 
+| CustomerOrderPosition| System.String| Customer order item| CustomerOrderPosition| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_CustomerOrderPosition| | | | 
+| CuttingLength| System.Decimal| Cut length| CuttingLength| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_CuttingLength| | | | 
+| CuttingThickness| System.Decimal| Cutting strength| CuttingThickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_CuttingThickness| | | | 
+| CuttingWidth| System.Decimal| Cut width| CuttingWidth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_CuttingWidth| | | | 
+| DeliveryDate| System.DateTime| Delivery date| DeliveryDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_DeliveryDate| | | | 
+| DesiredEndDate| System.DateTime| Planned end date| DesiredEndDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_DesiredEndDate| | | | 
+| DesiredEndDateProcessing| System.DateTime| Planned processing end| DesiredEndDateProcessing| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_DesiredEndDateProcessing| | | | 
+| DesiredProcessingTime| System.Decimal| Planned processing time| DesiredProcessingTime| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_DesiredProcessingTime| | | | 
+| DesiredSetupTime| System.Decimal| Planned setup time| DesiredSetupTime| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_DesiredSetupTime| | | | 
+| DesiredStartDate| System.DateTime| Planned start date| DesiredStartDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_DesiredStartDate| | | | 
+| DesiredStartDateProcessing| System.DateTime| Planned processing start| DesiredStartDateProcessing| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_DesiredStartDateProcessing| | | | 
+| DesiredTargetQuantity| System.Int32| Planned quantity| DesiredTargetQuantity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_DesiredTargetQuantity| | | | 
+| DesiredTargetQuantityMax| System.Int32| Planned maximum quantity| DesiredTargetQuantityMax| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_DesiredTargetQuantityMax| | | | 
+| DesiredTargetQuantityMin| System.Int32| Planned minimum quantity| DesiredTargetQuantityMin| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_DesiredTargetQuantityMin| | | | 
+| Edge1| System.String| Edge 1| Edge1| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Edge1| | | | 
+| Edge1DesiredQuantity| System.Decimal| Planned quantity (edge 1)| Edge1DesiredQuantity| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Edge1DesiredQuantity| | | | 
+| Edge2| System.String| Edge 2| Edge2| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Edge2| | | | 
+| Edge2DesiredQuantity| System.Decimal| Planned quantity (edge 2)| Edge2DesiredQuantity| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Edge2DesiredQuantity| | | | 
+| Edge3| System.String| Edge 3| Edge3| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Edge3| | | | 
+| Edge3DesiredQuantity| System.Decimal| Planned quantity (edge 3)| Edge3DesiredQuantity| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Edge3DesiredQuantity| | | | 
+| Edge4| System.String| Edge 4| Edge4| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Edge4| | | | 
+| Edge4DesiredQuantity| System.Decimal| Planned quantity (edge 4)| Edge4DesiredQuantity| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Edge4DesiredQuantity| | | | 
+| FeedbackNumber| System.String| Feedback number| FeedbackNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_FeedbackNumber| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**FeedbackState**</span>| [FeedbackState](#feedbackstate)| Feedback status| FeedbackState| 0| True| True| True| | | | False| -1| 0| 0| | False| [FeedbackState](#feedbackstate) | FN_ViewOptimizationInformation_FeedbackState| | | | 
+| Length| System.Decimal| Length| Length| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Length| | | | 
+| Material| System.String| Material| Material| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Material| | | | 
+| MaterialGroup| System.String| Material group| MaterialGroup| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_MaterialGroup| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_OptimizationCode| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_OptimizationMethod| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**OptimizationTransferState**</span>| [OptimizationTransferState](#optimizationtransferstate)| Status of optimization| OptimizationTransferState| 0| True| True| True| | | | False| -1| 0| 0| | False| [OptimizationTransferState](#optimizationtransferstate) | FN_ViewOptimizationInformation_OptimizationTransferState| | | | 
+| Optional| System.Boolean| Optional parts allowed| Optional| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Optional| | | | 
+| OptionalPart| System.Int32| facultative part| OptionalPart| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_OptionalPart| | | | 
+| OrderDate| System.DateTime| Order date| OrderDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_OrderDate| | | | 
+| ParentProductionOrderNumber| System.String| High-level production order| ParentProductionOrderNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_ParentProductionOrderNumber| | | | 
+| ProductionItemCode| System.String| Part number| ProductionItemCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_ProductionItemCode| | | | 
+| ProductionItemSequence| System.Int64| Sequence (part)| ProductionItemSequence| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_ProductionItemSequence| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_ProductionOrderCode| | | | 
+| ProductionOrdersSequence| System.Int64| Sequence (production order)| ProductionOrdersSequence| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_ProductionOrdersSequence| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ProductionState**</span>| [ProductionState](#productionstate)| Production status| ProductionState| 0| True| True| True| | | | False| -1| 0| 0| | False| [ProductionState](#productionstate) | FN_ViewOptimizationInformation_ProductionState| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_ProductionStepCode| | | | 
+| ProductionStepOrder| System.Int32| Process step (production order)| ProductionStepOrder| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_ProductionStepOrder| | | | 
+| ProductionStepsSequence| System.Int64| Sequence (process step)| ProductionStepsSequence| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_ProductionStepsSequence| | | | 
+| Quantity| System.Int32| Qty.| Quantity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Quantity| | | | 
+| QuantityFactor| System.Int32| Quantity factor| QuantityFactor| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_QuantityFactor| | | | 
+| Reference| System.String| Reference text| Reference| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Reference| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ReleaseState**</span>| [ReleaseState](#releasestate)| Release status| ReleaseState| 0| True| True| True| | | | False| -1| 0| 0| | False| [ReleaseState](#releasestate) | FN_ViewOptimizationInformation_ReleaseState| | | | 
+| Route| System.String| Production path| Route| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Route| | | | 
+| RouteCode| System.String| Processing route| RouteCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_RouteCode| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**Texture**</span>| [Texture](#texture)| Texture| Texture| 0| True| True| True| | | | False| -1| 0| 0| | False| [Texture](#texture) | FN_ViewOptimizationInformation_Texture| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Thickness| | | | 
+| TopProductionOrderNumber| System.String| Leading production order| TopProductionOrderNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_TopProductionOrderNumber| | | | 
+| Width| System.Decimal| Width| Width| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Width| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_WorkCenterCode| | | | 
+| WorkstepDescription| System.String| Process step description| WorkstepDescription| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_WorkstepDescription| | | | 
+## 2.32 ViewOptimizationProductionOrder : IViewEntityDescription
+## ViewOptimizationProductionOrder
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewOptimizationProductionOrder_ViewOptimizationProductionOrder | ViewOptimizationProductionOrder | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity |  | Jobs prepared for the optimization |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity 
+### 2.32.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ArticleDescription| System.String| Item description| ArticleDescription| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_ArticleDescription| | | | 
+| ArticleNumber| System.String| Item designation| ArticleNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_ArticleNumber| | | | 
+| Code| System.String| Production order number| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_Code| | | | 
+| Customer| System.String| customer| Customer| 30| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_Customer| | | | 
+| CustomerOrderCode| System.String| Customer order| CustomerOrderCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_CustomerOrderCode| | | | 
+| CustomerOrderPosition| System.String| Customer order item| CustomerOrderPosition| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_CustomerOrderPosition| | | | 
+| CuttingLength| System.Decimal| Cut length| CuttingLength| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_CuttingLength| | | | 
+| CuttingWidth| System.Decimal| Cut width| CuttingWidth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_CuttingWidth| | | | 
+| DesiredEndDateProcessing| System.DateTime| Planned end date| DesiredEndDateProcessing| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_DesiredEndDateProcessing| | | | 
+| DesiredProcessingTime| System.Decimal| Planned processing time| DesiredProcessingTime| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_DesiredProcessingTime| | | | 
+| DesiredStartDateProcessing| System.DateTime| Planned start date| DesiredStartDateProcessing| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_DesiredStartDateProcessing| | | | 
+| DesiredTargetQuantity| System.Int32| Planned quantity| DesiredTargetQuantity| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_DesiredTargetQuantity| | | | 
+| EndDate| System.DateTime| End of processing, pile| EndDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_EndDate| | | | 
+| MaterialGroup| System.String| Material group| MaterialGroup| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_MaterialGroup| | | | 
+| OptimizationTransferState| [OptimizationTransferState](#optimizationtransferstate)| Status of optimization| OptimizationTransferState| 0| False| True| True| | | | False| -1| 0| 0| | False| [OptimizationTransferState](#optimizationtransferstate) | FN_ViewOptimizationProductionOrder_OptimizationTransferState| | | | 
+| ParentProductionOrderNumber| System.String| High-level production order| ParentProductionOrderNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_ParentProductionOrderNumber| | | | 
+| PlanCriterion1| System.String| Planning criterion 1| PlanCriterion1| 201| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_PlanCriterion1| | | | 
+| PlanCriterion2| System.String| Planning criterion 2| PlanCriterion2| 202| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_PlanCriterion2| | | | 
+| PlanCriterion3| System.String| Planning criterion 3| PlanCriterion3| 203| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_PlanCriterion3| | | | 
+| PlanCriterion4| System.String| Planning criterion 4| PlanCriterion4| 204| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_PlanCriterion4| | | | 
+| PlanCriterion5| System.String| Planning criterion 5| PlanCriterion5| 205| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_PlanCriterion5| | | | 
+| PlanningNumber| System.String| Pile number| PlanningNumber| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_PlanningNumber| | | | 
+| ProductionState| [ProductionState](#productionstate)| Processing status| ProductionState| 0| False| True| True| | | | False| -1| 0| 0| | False| [ProductionState](#productionstate) | FN_ViewOptimizationProductionOrder_ProductionState| | | | 
+| ReleaseState| [ReleaseState](#releasestate)| Release status| ReleaseState| 0| False| True| True| | | | False| -1| 0| 0| | False| [ReleaseState](#releasestate) | FN_ViewOptimizationProductionOrder_ReleaseState| | | | 
+| Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| StartDate| System.DateTime| Start date, pile| StartDate| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_StartDate| | | | 
+| Thickness| System.Decimal| Thickness| Thickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_Thickness| | | | 
+| TopProductionOrderNumber| System.String| Leading production order| TopProductionOrderNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_TopProductionOrderNumber| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_WorkCenterCode| | | | 
+## 2.33 ViewOptimizationResult : IViewEntityDescription
+## ViewOptimizationResult
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewOptimizationResult_ViewOptimizationResult | ViewOptimizationResult |  |  | Optimization results |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.33.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| BoardAreas| System.Decimal| Panel surfaces| BoardAreas| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_BoardAreas| | | | 
+| CountBoards| System.Int32| No. of boards| CountBoards| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_CountBoards| | | | 
+| CountCuttingPlans| System.Int32| Number of cutting patterns| CountCuttingPlans| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_CountCuttingPlans| | | | 
+| CountCycles| System.Int32| Number of cycles| CountCycles| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_CountCycles| | | | 
+| CountMandatoryParts| System.Int32| Number of mandatory parts| CountMandatoryParts| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_CountMandatoryParts| | | | 
+| CountOptionalParts| System.Int32| Number of optional parts| CountOptionalParts| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_CountOptionalParts| | | | 
+| CountRests| System.Int32| Number of offcuts| CountRests| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_CountRests| | | | 
+| Material| System.String| Material| Material| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_Material| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_OptimizationCode| | | | 
+| PartAreas| System.Decimal| Parts surfaces| PartAreas| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_PartAreas| | | | 
+| RestAreas| System.Decimal| Offcut areas| RestAreas| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_RestAreas| | | | 
+| RestPercents| System.Decimal| Offcuts (%)| RestPercents| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_RestPercents| | | | 
+| ScrapAreas| System.Decimal| Cutting surfaces| ScrapAreas| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_ScrapAreas| | | | 
+| ScrapPercents| System.Decimal| Scrap (%)| ScrapPercents| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_ScrapPercents| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_Thickness| | | | 
+## 2.34 ViewOptimizationRulesAllocation : IViewEntityDescription
+## ViewOptimizationRulesAllocation
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewOptimizationRulesAllocation_ViewOptimizationRulesAllocation | ViewOptimizationRulesAllocation |  |  | Rule assignment |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.34.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AreaOrder| System.Int32| Control loop order| AreaOrder| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_AreaOrder| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**BreakAtThisPoint**</span>| [YesNo](#yesno)| Stop after this rule| BreakAtThisPoint| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewOptimizationRulesAllocation_BreakAtThisPoint| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsAreaActive**</span>| [YesNo](#yesno)| Is the control loop active?| IsAreaActive| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewOptimizationRulesAllocation_IsAreaActive| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsPriorityRule**</span>| [YesNo](#yesno)| Is a priority rule| IsPriorityRule| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewOptimizationRulesAllocation_IsPriorityRule| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsRuleActive**</span>| [YesNo](#yesno)| Is the rule active?| IsRuleActive| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewOptimizationRulesAllocation_IsRuleActive| | | | 
+| LotGenerationJobTrigger| System.String| Job trigger| LotGenerationJobTrigger| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_LotGenerationJobTrigger| | | | 
+| OptimizationRulesAreaCode| System.String| Control loop| OptimizationRulesAreaCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_OptimizationRulesAreaCode| | | | 
+| OptimizationRulesCode| System.String| Rule number| OptimizationRulesCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_OptimizationRulesCode| | | | 
+| OptimizationSystem| System.String| Optimization system| OptimizationSystem| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_OptimizationSystem| | | | 
+| QuantityMandatoryMin| System.Int32| Minimum quantity of mandatory parts| QuantityMandatoryMin| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_QuantityMandatoryMin| | | | 
+| QuantityMax| System.Int32| Maximum quantity of all parts| QuantityMax| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_QuantityMax| | | | 
+| QuantityOptionalMax| System.Int32| Maximum quantity of optional parts| QuantityOptionalMax| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_QuantityOptionalMax| | | | 
+| QuantityOptionalMin| System.Int32| Minimum quantity of optional parts| QuantityOptionalMin| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_QuantityOptionalMin| | | | 
+| RuleCondition| System.String| Condition for starting this rule| RuleCondition| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_RuleCondition| | | | 
+| RuleConditionArea| System.String| User exit that starts the next rule| RuleConditionArea| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_RuleConditionArea| | | | 
+| RuleOrder| System.Int32| Rule order| RuleOrder| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_RuleOrder| | | | 
+| UserExitForSelection| System.String| User exit for the selection| UserExitForSelection| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_UserExitForSelection| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_WorkCenterCode| | | | 
+## 2.35 ViewOptimizationRulesRequest : IViewEntityDescription
+## ViewOptimizationRulesRequest
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewOptimizationRulesRequest_ViewOptimizationRulesRequest | ViewOptimizationRulesRequest |  |  | Requested automatic optimizations |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.35.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AreaCode| System.String| Control loop| AreaCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_AreaCode| | | | 
+| AreaOrder| System.Int32| Control loop order| AreaOrder| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_AreaOrder| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**BreakAtThisPoint**</span>| [YesNo](#yesno)| Stop after this rule| BreakAtThisPoint| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewOptimizationRulesRequest_BreakAtThisPoint| | | | 
+| Duration| System.Int32| Time| Duration| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_Duration| | | | 
+| Instance| System.String| instance| Instance| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_Instance| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsAreaActive**</span>| [YesNo](#yesno)| Is the control loop active?| IsAreaActive| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewOptimizationRulesRequest_IsAreaActive| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsPriorityRule**</span>| [YesNo](#yesno)| Is a priority rule| IsPriorityRule| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewOptimizationRulesRequest_IsPriorityRule| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**IsRuleActive**</span>| [YesNo](#yesno)| Is the rule active?| IsRuleActive| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewOptimizationRulesRequest_IsRuleActive| | | | 
+| LotGenerationJobTrigger| System.String| Job trigger| LotGenerationJobTrigger| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_LotGenerationJobTrigger| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_OptimizationCode| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_OptimizationMethod| | | | 
+| OptimizationSystem| System.String| Optimization system| OptimizationSystem| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_OptimizationSystem| | | | 
+| ProcessUser| System.String| User| ProcessUser| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_ProcessUser| | | | 
+| QuantityOptimizedMandatoryParts| System.Int32| Number of required parts optimized| QuantityOptimizedMandatoryParts| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_QuantityOptimizedMandatoryParts| | | | 
+| QuantityOptimizedOptionalParts| System.Int32| Number of optional parts optimized| QuantityOptimizedOptionalParts| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_QuantityOptimizedOptionalParts| | | | 
+| QuantityUsedMandatoryParts| System.Int32| Number of required parts specified| QuantityUsedMandatoryParts| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_QuantityUsedMandatoryParts| | | | 
+| QuantityUsedOptionalParts| System.Int32| Number of optional parts specified| QuantityUsedOptionalParts| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_QuantityUsedOptionalParts| | | | 
+| RuleCode| System.String| Rule number| RuleCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_RuleCode| | | | 
+| RuleCondition| System.String| Condition for starting this rule| RuleCondition| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_RuleCondition| | | | 
+| RuleDescription| System.String| Description| RuleDescription| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_RuleDescription| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**RuleMode**</span>| [CurrentRuleMode](#currentrulemode)| Rule mode| RuleMode| 0| True| True| True| | | | False| -1| 0| 0| | False| [CurrentRuleMode](#currentrulemode) | FN_ViewOptimizationRulesRequest_RuleMode| | | | 
+| RuleOrder| System.Int32| Rule order| RuleOrder| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_RuleOrder| | | | 
+| RulesRequestSequence| System.Int64| Sequence| RulesRequestSequence| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_RulesRequestSequence| | | | 
+| StartDate| System.DateTime| Start date| StartDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_StartDate| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**TransferState**</span>| [OptimizationRuleTransferstate](#optimizationruletransferstate)| Transfer status| TransferState| 0| True| True| True| | | | False| -1| 0| 0| | False| [OptimizationRuleTransferstate](#optimizationruletransferstate) | FN_ViewOptimizationRulesRequest_TransferState| | | | 
+| UserExitForSelection| System.String| User exit that starts the next rule| UserExitForSelection| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_UserExitForSelection| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_WorkCenterCode| | | | 
+## 2.36 ViewPatternPart : IViewEntityDescription
+## ViewPatternPart
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewPatternPart_ViewPatternPart | ViewPatternPart |  |  | Parts per cutting pattern |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.36.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ArticleDescription| System.String| Item description| ArticleDescription| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_ArticleDescription| | | | 
+| CuttingLength| System.Decimal| Cut length| CuttingLength| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_CuttingLength| | | | 
+| CuttingWidth| System.Decimal| Cut width| CuttingWidth| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_CuttingWidth| | | | 
+| LastFeedback| System.DateTime| Last feedback| LastFeedback| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_LastFeedback| | | | 
+| LastWorkCenter| System.String| Last workstation| LastWorkCenter| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_LastWorkCenter| | | | 
+| Length| System.Decimal| Length| Length| 0| False| False| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_Length| | | | 
+| Material| System.String| Material| Material| 0| False| False| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_Material| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**Offcut**</span>| [YesNo](#yesno)| Offcut| Offcut| 0| True| True| True| | | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_ViewPatternPart_Offcut| | | | 
+| OptimizationCode| System.String| Optimization number| OptimizationCode| 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_OptimizationCode| | | | 
+| OptimizationCuttingPlanCode| System.String| Optimization| OptimizationCuttingPlanCode| 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_OptimizationCuttingPlanCode| | | | 
+| OptimizationMethod| System.String| Optimization strategy| OptimizationMethod| 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_OptimizationMethod| | | | 
+| ProductionItemCode| System.String| Part number| ProductionItemCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_ProductionItemCode| | | | 
+| ProductionOrderCode| System.String| Production order number| ProductionOrderCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_ProductionOrderCode| | | | 
+| Quantity| System.Int32| Qty.| Quantity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_Quantity| | | | 
+| Width| System.Decimal| Width| Width| 0| False| False| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_Width| | | | 
+## 2.37 ViewProcessingDataItem : IViewEntityDescription
+## ViewProcessingDataItem
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewProcessingDataItem_ViewProcessingDataItem | ViewProcessingDataItem |  |  | Process data per item |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.37.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ArticleDescription| System.String| Item description| ArticleDescription| 11| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_ArticleDescription| | | | 
+| ArticleNumber| System.String| Item designation| ArticleNumber| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_ArticleNumber| | | | 
+| CuttingLength| System.Decimal| Cut length| CuttingLength| 23| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_CuttingLength| Dimensions| | | 
+| CuttingWidth| System.Decimal| Cut width| CuttingWidth| 24| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_CuttingWidth| Dimensions| | | 
+| FeedbackNumber| System.String| Feedback number| FeedbackNumber| 998| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_FeedbackNumber| | | | 
+| Length| System.Decimal| Length| Length| 20| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_Length| Dimensions| | | 
+| LinkedProgramFileName1| System.String| Name 1. of referenced program| LinkedProgramFileName1| 32| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_LinkedProgramFileName1| | | | 
+| LinkedProgramFileName2| System.String| Name 2. of referenced program| LinkedProgramFileName2| 42| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_LinkedProgramFileName2| | | | 
+| LinkedProgramFileName3| System.String| Name 3. of referenced program| LinkedProgramFileName3| 52| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_LinkedProgramFileName3| | | | 
+| OrientationX1| System.Decimal| Orientation X (1. program)| OrientationX1| 70| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_OrientationX1| | | | 
+| OrientationY1| System.Decimal| Orientation Y (1. program)| OrientationY1| 71| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_OrientationY1| | | | 
+| OrientationZ1| System.Decimal| Orientation Z (1. program)| OrientationZ1| 72| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_OrientationZ1| | | | 
+| ProductionItemCode| System.String| Part number| ProductionItemCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_ProductionItemCode| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 1| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_ProductionOrderCode| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 3| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_ProductionStepCode| | | | 
+| ProgramFileName1| System.String| Name 1. of program| ProgramFileName1| 31| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_ProgramFileName1| | | | 
+| ProgramFileName2| System.String| Name 2. of program| ProgramFileName2| 41| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_ProgramFileName2| | | | 
+| ProgramFileName3| System.String| Name 3. of program| ProgramFileName3| 51| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_ProgramFileName3| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 22| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_Thickness| Dimensions| | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**TransferState**</span>| [ProductionItemStepTransferState](#productionitemsteptransferstate)| Status of transfer| TransferState| 999| True| True| True| | | | False| -1| 0| 0| | False| [ProductionItemStepTransferState](#productionitemsteptransferstate) | FN_ViewProcessingDataItem_TransferState| | | | 
+| Width| System.Decimal| Width| Width| 21| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_Width| Dimensions| | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 2| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_WorkCenterCode| | | | 
+## 2.38 ViewProcessingDataItemsProgram : IViewEntityDescription
+## ViewProcessingDataItemsProgram
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewProcessingDataItemsProgram_ViewProcessingDataItemsProgram | ViewProcessingDataItemsProgram |  |  | Process data for each processing program |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.38.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ArticleDescription| System.String| Item description| ArticleDescription| 11| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_ArticleDescription| | | | 
+| ArticleNumber| System.String| Item designation| ArticleNumber| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_ArticleNumber| | | | 
+| CuttingLength| System.Decimal| Cut length| CuttingLength| 23| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_CuttingLength| Dimensions| | | 
+| CuttingWidth| System.Decimal| Cut width| CuttingWidth| 24| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_CuttingWidth| Dimensions| | | 
+| FeedbackNumber| System.String| Feedback number| FeedbackNumber| 998| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_FeedbackNumber| | | | 
+| Length| System.Decimal| Length| Length| 20| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_Length| Dimensions| | | 
+| LinkedProgramFileName| System.String| Name of referenced program| LinkedProgramFileName| 32| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_LinkedProgramFileName| | | | 
+| OrientationX| System.Decimal| Orientation X| OrientationX| 70| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_OrientationX| | | | 
+| OrientationY| System.Decimal| Orientation Y| OrientationY| 71| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_OrientationY| | | | 
+| OrientationZ| System.Decimal| Orientation Z| OrientationZ| 72| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_OrientationZ| | | | 
+| ProductionItemCode| System.String| Part number| ProductionItemCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_ProductionItemCode| | | | 
+| ProductionOrderCode| System.String| Production order| ProductionOrderCode| 1| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_ProductionOrderCode| | | | 
+| ProductionStepCode| System.String| operation| ProductionStepCode| 3| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_ProductionStepCode| | | | 
+| ProgramFileName| System.String| Program name| ProgramFileName| 31| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_ProgramFileName| | | | 
+| ProgramSequence| System.Int32| Order| ProgramSequence| 35| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_ProgramSequence| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 22| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_Thickness| Dimensions| | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**TransferState**</span>| [ProductionItemStepTransferState](#productionitemsteptransferstate)| Status of transfer| TransferState| 999| True| True| True| | | | False| -1| 0| 0| | False| [ProductionItemStepTransferState](#productionitemsteptransferstate) | FN_ViewProcessingDataItemsProgram_TransferState| | | | 
+| Width| System.Decimal| Width| Width| 21| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_Width| Dimensions| | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 2| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_WorkCenterCode| | | | 
+## 2.39 ViewProductionFlowStep : IViewEntityDescription
+## ViewProductionFlowStep
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewProductionFlowStep_ViewProductionFlowStep | ViewProductionFlowStep |  |  | ViewProductionFlowStep |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.39.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Capacity| System.Int32| capacity| Capacity| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProductionFlowStep_Capacity| | | | 
+| DesiredStartDateProcessing| System.DateTime| Planned start date| DesiredStartDateProcessing| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProductionFlowStep_DesiredStartDateProcessing| | | | 
+| DesiredTargetQuantity| System.Int32| Planned quantity| DesiredTargetQuantity| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProductionFlowStep_DesiredTargetQuantity| | | | 
+| DisposeState| [DisposeState](#disposestate)| Planning status| DisposeState| 0| False| True| False| | | | False| -1| 0| 0| | False| [DisposeState](#disposestate) | FN_ViewProductionFlowStep_DisposeState| | | | 
+| NextWorkCenterCode| System.String| Next workstation| NextWorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProductionFlowStep_NextWorkCenterCode| | | | 
+| Order| System.Int32| Order| Order| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProductionFlowStep_Order| | | | 
+| PlanningNumber| System.String| Pile number| PlanningNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProductionFlowStep_PlanningNumber| | | | 
+| ProductionOrderCode| System.String| Production order number| ProductionOrderCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProductionFlowStep_ProductionOrderCode| | | | 
+| RowNumber| System.Int64| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProductionFlowStep_WorkCenterCode| | | | 
+## 2.40 ViewSurface : IViewEntityDescription
+## ViewSurface
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewSurface_ViewSurface | ViewSurface |  |  | surface |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.40.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| AdditionalInformation| System.String| Additional information| AdditionalInformation| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_AdditionalInformation| | | | 
+| Code| System.String| ID| Code| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_Code| | | | 
+| Description| System.String| Description| Description| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_Description| | | | 
+| DesiredQuantity| System.Decimal| Planned quantity| DesiredQuantity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_DesiredQuantity| | | | 
+| ErrorMessage| System.String| Error message| ErrorMessage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_ErrorMessage| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ErrorState**</span>| [ErrorState](#errorstate)| Error status| ErrorState| 0| True| True| True| | | | False| -1| 0| 0| | False| [ErrorState](#errorstate) | FN_ViewSurface_ErrorState| | | | 
+| Grain| [Grain](#grain)| Grain| Grain| 0| False| True| True| | | | False| -1| 0| 0| | False| [Grain](#grain) | FN_ViewSurface_Grain| | | | 
+| GrainOrientation| System.Decimal| Grain orientation| GrainOrientation| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_GrainOrientation| | | | 
+| Length| System.Decimal| Length| Length| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_Length| | | | 
+| Material| System.String| Material| Material| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_Material| | | | 
+| ProductionOrderCode| System.String| Production order number| ProductionOrderCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_ProductionOrderCode| | | | 
+| QuantityUnit| System.String| Quantity unit| QuantityUnit| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_QuantityUnit| | | | 
+| Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
+| Thickness| System.Decimal| thickness| Thickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_Thickness| | | | 
+| Type| System.String| Type| Type| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_Type| | | | 
+| Width| System.Decimal| Width| Width| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_Width| | | | 
+## 2.41 ViewWorkcenterCapacityByBulk : IViewEntityDescription
+## ViewWorkcenterCapacityByBulk
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewWorkcenterCapacityByBulk_ViewWorkcenterCapacityByBulk | ViewWorkcenterCapacityByBulk |  |  | ViewWorkcenterCapacityByBulk |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | ViewWorkcenterCapacitiesByBulk | General |  |  
+### 2.41.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Percentage| System.Int32| fraction| Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByBulk_Percentage| | | | 
+| PlanningColor| System.String| Pile color| PlanningColor| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByBulk_PlanningColor| | | | 
+| PlanningNumber| System.String| Batch number| PlanningNumber| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByBulk_PlanningNumber| | | | 
+| RowNumber| System.Int64| | | 0| True| False| True| | | | False| -1| 0| 0| | False| | | | | | 
+| StartDate| System.DateTime| Processing start| StartDate| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByBulk_StartDate| | | | 
+| UsedCapacity| System.Int32| Capacity assigned| UsedCapacity| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByBulk_UsedCapacity| | | | 
+| WorkCenterCapacity| System.Int32| Capacity of the workstation| WorkCenterCapacity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByBulk_WorkCenterCapacity| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByBulk_WorkCenterCode| | | | 
+## 2.42 ViewWorkcenterCapacityByState : IViewEntityDescription
+## ViewWorkcenterCapacityByState
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewWorkcenterCapacityByState_ViewWorkcenterCapacityByState | ViewWorkcenterCapacityByState |  |  | ViewWorkcenterCapacityByState |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | ViewWorkcenterCapacitiesByState | General |  |  
+### 2.42.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| Percentage| System.Int32| fraction| Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByState_Percentage| | | | 
+| <span style="color: #e0b21b" title="Default value not defined!">**ProductionState**</span>| [ProductionStepState](#productionstepstate)| Production status| ProductionState| 0| True| True| True| | | | False| -1| 0| 0| | False| [ProductionStepState](#productionstepstate) | FN_ViewWorkcenterCapacityByState_ProductionState| | | | 
+| RowNumber| System.Int64| | | 0| True| False| True| | | | False| -1| 0| 0| | False| | | | | | 
+| StartDate| System.DateTime| Processing start| StartDate| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByState_StartDate| | | | 
+| UsedCapacity| System.Int32| Capacity assigned| UsedCapacity| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByState_UsedCapacity| | | | 
+| WorkCenterCapacity| System.Int32| Capacity of the workstation| WorkCenterCapacity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByState_WorkCenterCapacity| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByState_WorkCenterCode| | | | 
+## 2.43 ViewWorkCenterOutput : IViewEntityDescription
+## ViewWorkCenterOutput
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| False | VE_ViewWorkCenterOutput_ViewWorkCenterOutput | ViewWorkCenterOutput |  |  | Workstation capacity |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.43.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| EndDate| System.DateTime| End time| EndDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_EndDate| | | | 
+| Finished| System.Int32| Number of finished parts| Finished| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_Finished| | | | 
+| FinishedBad| System.Int32| Finished, reworked reject parts| FinishedBad| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_FinishedBad| | | | 
+| FinishedForDay| System.Int32| Planned and finished| FinishedForDay| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_FinishedForDay| | | | 
+| FinishedGood| System.Int32| Finished good parts| FinishedGood| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_FinishedGood| | | | 
+| FinishedRework| System.Int32| Finished, post-processed| FinishedRework| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_FinishedRework| | | | 
+| FinishedScrap| System.Int32| Finished reject parts| FinishedScrap| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_FinishedScrap| | | | 
+| GoodForDay| System.Int32| Number of good parts| GoodForDay| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_GoodForDay| | | | 
+| Planed| System.Int32| Planned| Planed| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_Planed| | | | 
+| PlanedCapacity| System.Int32| Planned capacity| PlanedCapacity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_PlanedCapacity| | | | 
+| ReachedCapacity| System.Int32| Capacity achieved| ReachedCapacity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_ReachedCapacity| | | | 
+| ReWorkForDay| System.Int32| Number of post-processing parts| ReWorkForDay| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_ReWorkForDay| | | | 
+| ScrapForDay| System.Int32| Number of reject parts| ScrapForDay| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_ScrapForDay| | | | 
+| WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_WorkCenterCode| | | | 
+# 3 Allowed Value Groups
+## 3.1 ActionRequest
+### ActionRequest
+| Name | Value | Display Name |
+|------|-------|--------------|
+| NotDefined | 0 | not define |
+| DeliverFullContent | 10 | Bring full container |
+| FetchEmptyTray | 20 | Collect empty container |
+| DeliverEmptyTray | 30 | Bring empty container |
+| FetchFullContent | 40 | Collect full container |
+
+## 3.2 AdditionalOversizeType
+### AdditionalOversizeType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| None | 0 | zero |
+| AddEdgeThickness | 1 | Edge thickness |
+
+## 3.3 BinaryType
+### BinaryType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| PDF | 0 | PDF |
+| Image | 1 | Image |
+| Text | 2 | Text |
+
+## 3.4 ComponentType
+### ComponentType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | Undefined |
+| SidePanel | 1 | Side panel |
+| AdjustableShelf | 2 | Adjustable shelf |
+| TopShelf | 3 | Top shelf |
+| BottomShelf | 4 | Bottom shelf |
+| BackPanel | 5 | Back panel |
+| Panel | 6 | Board |
+| Door | 7 | door |
+| DoorLeft | 8 | Left-hand door |
+| DoorRight | 9 | Right-hand door |
+| PurchasePart | 10 | Purchased part |
+| CenterPanel | 11 | Center attachment wall |
+| FixedShelf | 12 | Shelf |
+| Partition | 13 | Partition panel |
+| Connector | 14 | connector |
+| Handle | 15 | handle |
+| Purchase | 16 | Accessory |
+| DrawerBottom | 17 | Drawer bottom |
+| DrawerSide | 18 | Drawer side |
+| DrawerFront | 19 | Drawer duplicate |
+| Plinth | 20 | Toekick |
+| WorkTop | 21 | Countertop |
+| LightBar | 22 | Light strip |
+| Molding | 23 | Cornice |
+| Traverse | 24 | Rail |
+| DrawerBack | 25 | Rear piece of drawer |
+| LongPart | 26 | Long part |
+
+## 3.5 CsvStagingRecordResourceType
+### CsvStagingRecordResourceType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | Undefined |
+| GrooveData | 1 | Groove data |
+| ProcessingData | 2 | Processing data |
+
+## 3.6 CtDStagingRecordResourceType
+### CtDStagingRecordResourceType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | Undefined |
+| GrooveData | 1 | Groove data |
+| ProcessingData | 2 | Processing data |
+
+## 3.7 CurrentContent
+### CurrentContent
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | Undefined |
+| Empty | 1 | empty |
+| RequestForPosition | 2 | Request for the slot |
+| PositionAllocatedWithStack | 3 | Occupied with stack |
+| ItemAllocated | 4 | Occupied with parts |
+| TrayAllocated | 5 | Occupied with container |
+
+## 3.8 CurrentRuleMode
+### CurrentRuleMode
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Automatic | 0 | Automatic mode |
+| Manual | 1 | Manual mode |
+
+## 3.9 CuttingPlanState
+### CuttingPlanState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Released | 0 | Released |
+| NotReleased | 1 | Not released |
+| Transferred | 2 | Transfer |
+| InProcess | 3 | Currently being processed |
+| Finished | 4 | Completely processed |
+| ToConfirm | 5 | To be confirmed |
+| Internal | 6 | Internal - Do not use |
+| ToDelete | 80 | To be deleted |
+
+## 3.10 CuttingProcessingType
+### CuttingProcessingType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Standard | 0 | Standard |
+| CutExpanded | 1 | Recut expanded |
+| Cut2 | 2 | Cutting 2 |
+
+## 3.11 CuttingTemplatePartType
+### CuttingTemplatePartType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| None | 0 | Without template |
+| ExpandedNarrowPart | 10 | Expanded narrow part |
+| CombinedPartDetail | 30 | Part made up of composite component |
+| CombinedPartMaster | 31 | Composite component |
+| PatternDetail | 40 | Structure part (detail) |
+| PatternMaster | 41 | Structure master |
+
+## 3.12 DisposeState
+### DisposeState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Scheduled | 0 | planned |
+| Alternative | 10 | alternative |
+| Obsolete | 90 | Obsolete |
+
+## 3.13 EdgeIdOnRectangle
+### EdgeIdOnRectangle
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | Undefined |
+| South | 1 | South |
+| East | 2 | East |
+| North | 3 | North |
+| West | 4 | WEST |
+
+## 3.14 EdgePassState
+### EdgePassState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Created | 0 | Created |
+| ReadyForGeneration | 20 | Ready for generation |
+| Generated | 30 | Generated |
+
+## 3.15 EdgeProcessingType
+### EdgeProcessingType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | not define |
+| Edgebanded | 1 | Glued edge |
+| FormattedEdgebanded | 2 | Formatted glued edge |
+| Postforming | 10 | Postforming |
+| Softforming | 11 | softforming |
+| Milled | 20 | Trimmed |
+
+## 3.16 EdgeToStepsType
+### EdgeToStepsType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | not define |
+| ExistingBeforeStep | 1 | Already available before process step |
+| UtilizedAtStep | 2 | Taken into consideration for the current process step |
+| UtilizedAfterStep | 3 | Taken into consideration for a subsequent process step |
+
+## 3.17 EPDisplayColor
+### EPDisplayColor
+| Name | Value | Display Name |
+|------|-------|--------------|
+| None | 0 | does not exist |
+| SufficientlyAvailable | 1 | Sufficiently available |
+| InsufficientlyAvailable | 2 | Insufficiently available |
+| NotAvailable | 3 | Not available |
+| NotRequired | 4 | Not required |
+
+## 3.18 ErrorState
+### ErrorState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| ValidData | 0 | Correct data |
+| InvalidOrderPosition | 1 | Invalid production order in bracket |
+| ErrorOnProductionSteps | 3 | Error in the determination of the work step |
+| ErrorFileNotFound | 4 | File not found |
+| ErrorOnCuttingDimensions | 5 | Error in the calculation of the cutting dimensions |
+| ErrorOnEdgeDefinition | 6 | Error in the determination of the edge transition |
+| ErrorOnEdgeThickness | 7 | Edge thickness invalid |
+| ErrorOnShapeDefinition | 8 | Edge image does not exist |
+| ErrorOnThroughFeedDefinition | 9 | Throughfeed not present |
+| ErrorInDataCompletion | 10 | Error in the data completion |
+| ErrorOnExecuteUserExit | 11 | Error during execution of the user exit |
+| CncFileNotValid | 12 | CNC program is invalid |
+| ErrorOnCalculateProductionStepCapacity | 13 | Error(s) during capacity calculation process step |
+| ErrorTransferResourceData | 14 | Error(s) during transfer of import resources |
+| ErrorTransferProcessingData | 15 | Error(s) during transfer of processing data |
+| ErrorPatternData | 16 | Error in the data of the structural components |
+| ContourNotClosed | 22 | Contour not closed |
+| DifferentProfileData | 24 | Different profile data |
+| ContourEndpointOutsideRectangle | 26 | Contour end point outside rectangle |
+| InvalidEdgeTrim | 30 | Invalid edge transition |
+| ManualReworkNecessary | 40 | Manual intervention required |
+| ImportedValueIsNull | 50 | Imported value is not set |
+| ImportedValueIsTooLong | 51 | Imported value is too long |
+| ImportedValueIsNotNumeric | 52 | Imported value is not numeric |
+| ImportedValueIsDefault | 53 | Imported value is equal to the default value |
+| ImportedValueIsNotAValidDataType | 54 | Imported value is not a valid data category |
+| ImportedValueIsNotAValidDateTime | 55 | Imported value is not a valid date/valid time |
+| ImportedValueIsInvalid | 59 | Imported value is not permitted |
+| ImportedValueStructureError | 60 | Structure error in imported data |
+| ErrorInProductionOrdersResource | 70 | Error in production order resources |
+| ErrorInProcessingData | 71 | Error in processing data |
+| ErrorInEdgeGroove | 72 | Error in groove processing |
+| ErrorInEdgeProfile | 73 | Error in edge profiles |
+| ErrorInPossibleRoute | 74 | Error in possible production routes |
+| ErrorInProductionStage | 75 | Error in production stage |
+| ProductionDataRecreationError | 80 | Error during regeneration of production data |
+
+## 3.19 ErrorStateOptimizationPresetting
+### ErrorStateOptimizationPresetting
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Success | 0 | successfully |
+| CommonError | 10 | General error |
+
+## 3.20 FeedbackMode
+### FeedbackMode
+| Name | Value | Display Name |
+|------|-------|--------------|
+| NoFeedback | 0 | No response |
+| Feedback | 1 | acknowledgement |
+
+## 3.21 FeedbackState
+### FeedbackState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| NotDefined | 0 | not define |
+| Started | 1 | Started |
+| Finished | 2 | terminated |
+
+## 3.22 Grain
+### Grain
+| Name | Value | Display Name |
+|------|-------|--------------|
+| NoGrain | 0 | No grain |
+| GrainX | 1 | Structure 0 degrees (X direction) |
+| GrainY | 2 | Structure 90 of degrees (Y direction) |
+
+## 3.23 GrooveDirectionType
+### GrooveDirectionType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Vertical | 0 | vertical |
+| Horizontal | 1 | horizontal |
+
+## 3.24 GrooveDistanceType
+### GrooveDistanceType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Covered | 0 | Covered |
+| Through | 1 | end-to-end |
+| Inset | 2 | Insert |
+
+## 3.25 GrooveLayer
+### GrooveLayer
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Top | 0 | top |
+| Bottom | 1 | bottom |
+| Horizontal | 2 | horizontal |
+
+## 3.26 GrooveType
+### GrooveType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Groove | 0 | Groove |
+| Rebate | 1 | Rebate |
+
+## 3.27 InputSourceType
+### InputSourceType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | Undefined import format |
+| WCC | 1 | WoodCadCam import format |
+| Configurator3D | 2 | Configurator3D import format |
+| CSV | 3 | CSV import format |
+| SAP | 4 | SAP IDoc import format |
+| MCS | 5 | MCS import format |
+| General | 6 | General data import format |
+| Custom | 99 | Individual import format |
+
+## 3.28 JobResult
+### JobResult
+| Name | Value | Display Name |
+|------|-------|--------------|
+| None | 0 | None |
+| Succeeded | 1 | successfully |
+| PartiallySucceeded | 2 | Partially successfully |
+| Canceled | 3 | Canceled |
+| Failed | 4 | Failed |
+| Created | 5 | Created |
+| Running | 6 | running |
+| Aborted | 7 | Canceled |
+| CanceledByTimeout | 35 | Canceled by time overrun |
+| CanceledByShutdown | 38 | Canceled by shutting down |
+| AbortedByTimeout | 75 | Terminated by time overrun |
+| AbortedByShutdown | 78 | Terminated by shutting down |
+
+## 3.29 KPIResultType
+### KPIResultType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| undefined | 0 | Undefined |
+| SAW | 1 | saw |
+| PTX | 2 | PTX |
+| ProcessDetails | 3 | Process details |
+| Zip | 4 | Zip file |
+
+## 3.30 MachiningSidesAtItem
+### MachiningSidesAtItem
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Top | 0 | top |
+| Bottom | 1 | bottom |
+| Horizontal | 2 | horizontal |
+| TopAndBottom | 3 | Top and bottom |
+| None | 10 | None |
+
+## 3.31 MacroNumber
+### MacroNumber
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | not define |
+| Standard | 1 | Standard |
+| Second | 2 | Second grooving unit |
+
+## 3.32 MovementCurrentState
+### MovementCurrentState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Initial | 0 | Initialisation |
+| RequestWrittenToTransportSystem | 100 | Request written to transport system |
+| RequestReadByTransport | 110 | Request read by transport system |
+| TransportStartedFirstStep | 200 | Transport started (step 1) |
+| TransportStartedLastStep | 290 | Transport started (step 2) |
+| TransportInterrupted | 300 | Transport terminated |
+| TransportContiuedAfterInterruption | 310 | Transport continued |
+| TransportFinishedFirstStep | 400 | Transport ended (step 1) |
+| TransportFinishedLastStep | 490 | Transport ended (step 2) |
+| TransportCouldNotBeStarted | 500 | Transport cannot be started |
+| TransportCouldNotBeFinished | 510 | Transport cannot be ended |
+| TransportCanceledByMES | 520 | Transport terminated by MES |
+| TransportCanceledTransportSystem | 530 | Transport terminated by transport system |
+
+## 3.33 MovementState
+### MovementState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Initial | 0 | Initial |
+| RequestStarted | 10 | Request started |
+| RequestPending | 20 | Request waiting |
+| RequestFinished | 90 | Request completed |
+
+## 3.34 MovingActionMode
+### MovingActionMode
+| Name | Value | Display Name |
+|------|-------|--------------|
+| MESAutomaticAction | 0 | Automatic mode by MES |
+| MESManualAction | 1 | Manual mode by MES |
+| ExternalAction | 2 | External action |
+
+## 3.35 MovingActionTransferstate
+### MovingActionTransferstate
+| Name | Value | Display Name |
+|------|-------|--------------|
+| WritingRecord | 0 | MES is currently writing |
+| ReadyForJob | 10 | Data record ready for job processing |
+| ProcessByJob | 15 | Job is processing the data record |
+| FinishedByJob | 20 | Job has processed data record |
+
+## 3.36 NarrowPartType
+### NarrowPartType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| None | 0 | No narrow part |
+| Normal | 1 | Normal narrow part |
+| AlternativeRoute | 2 | Narrow part with alternative production path |
+| SpecialCase | 3 | Narrow part, special case |
+
+## 3.37 NecessaryReleaseType
+### NecessaryReleaseType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| WithoutRelease | 0 | without release |
+| ReleaseAutomatic | 10 | Automatic release |
+| ReleaseExplicit | 20 | Explicit release |
+
+## 3.38 OptimizationDataState
+### OptimizationDataState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Initial | 0 | Initial |
+| Delayed | 10 | Delayed |
+| ToConfirm | 20 | To be confirmed |
+| Finished | 30 | terminated |
+| ToDelete | 80 | To be deleted |
+
+## 3.39 OptimizationRuleTransferstate
+### OptimizationRuleTransferstate
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Initial | 0 | Undefined |
+| Requested | 10 | requested |
+| Pending | 20 | Pending |
+| Finished | 30 | terminated |
+| ErrorToDecide | 97 | Unconfirmed error |
+| ErrorUnconfirmed | 98 | Error to be confirmed by the user |
+| ErrorConfirmed | 99 | Confirmed error |
+
+## 3.40 OptimizationTransferState
+### OptimizationTransferState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| NotOptimized | 0 | Not optimized |
+| InBulk | 1 | Added to group selection |
+| InOptimization | 2 | Transferred to optimization |
+| InExternalOptimization | 3 | Transferred to external optimization |
+| Optimized | 4 | Optimized |
+| OptimizationFailed | 5 | Optimization failed |
+| WaitForOptimizationResult | 6 | Waiting for external result |
+
+## 3.41 OrientationXY
+### OrientationXY
+| Name | Value | Display Name |
+|------|-------|--------------|
+| ZeroDegree | 0 | 0 degrees |
+| OneHundredAndEightyDegree | 180 | 180 degrees |
+
+## 3.42 OversizeSourceType
+### OversizeSourceType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| NoAction | 0 | No determination |
+| FromCalculation | 1 | From calculation |
+| FromImportCuttingDim | 2 | From imported cutting dimensions |
+
+## 3.43 PartCarrierAvailabilityState
+### PartCarrierAvailabilityState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Available | 0 | available |
+| Complete | 1 | Complete |
+| Blocked | 2 | Blocked |
+| Reserved | 3 | Allocated |
+| CompleteForSortFeature | 4 | Complete for group |
+
+## 3.44 PartCarrierType
+### PartCarrierType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Shelf | 0 | Shelving |
+| Palette | 1 | pallet |
+| Corlette | 2 | Corlette |
+| ShelfCart | 3 | Transport carriage |
+| FrontsCart | 4 | Front carriages |
+| CorpusCart | 5 | Body carriage |
+| FloorStorage | 6 | Shelf storage |
+
+## 3.45 PatternMasterInfo
+### PatternMasterInfo
+| Name | Value | Display Name |
+|------|-------|--------------|
+| None | 0 | No reference to a structure |
+| WithoutPatternMaster | 5 | Without structure master |
+| ToPatternMasterGenerated | 6 | Structure master to be generated |
+| ToPatternMasterImported | 7 | Structure master to be imported |
+| ToPatternTemplateMasterImported | 8 | Structure master to be imported with template specification |
+
+## 3.46 PatternPictureType
+### PatternPictureType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| undefined | 0 | Undefined |
+| JPG | 1 | JPG |
+| BMP | 2 | BMP |
+| PNG | 3 | PNG |
+| PDF | 4 | PDF |
+
+## 3.47 PlanningState
+### PlanningState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| NotPlanned | 0 | Not reserved |
+| InPlanning | 1 | In planning |
+| Planned | 2 | Reserved |
+
+## 3.48 PnxRecordsState
+### PnxRecordsState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | Undefined |
+| Written | 10 | Data record saved |
+| Error | 99 | Errors |
+
+## 3.49 PositionHandling
+### PositionHandling
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Source | 0 | Source position |
+| Target | 1 | Target position |
+| SourceAndTarget | 2 | Source and target position |
+
+## 3.50 PrintJobItemProcessingState
+### PrintJobItemProcessingState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Created | 0 | Created |
+| ReadyForPrinting | 10 | Print job can be started |
+| InPrintingProcess | 15 | Print process active |
+| Printed | 20 | Print job ended |
+
+## 3.51 ProcessingDataErrorState
+### ProcessingDataErrorState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| ValidData | 0 | Correct data |
+| ErrorOrientationsConversion | 1 | Error during conversion of orientations |
+| MissingWorkCenterForMachine | 2 | Missing workstation for machine |
+| InvalidMachiningDepth | 3 | Invalid processing depth |
+| ImportedValueIsInvalid | 59 | Imported value is not permitted |
+| InvalidDataInEdgeProfileLibrary | 60 | Invalid value in EdgeProfileLibrary |
+| Error | 99 | Errors |
+
+## 3.52 ProcessingDataType
+### ProcessingDataType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | Undefined |
+| MachineProgram | 1 | Processing program |
+
+## 3.53 ProcessingStateMode
+### ProcessingStateMode
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Released | 0 | Released |
+| ManualCreated | 4 | Manually created |
+| InProcessForImport | 5 | Import in process |
+| Imported | 10 | Imported (before validation) |
+| InProcessForValidation | 20 | Validation in progress |
+| Validated | 40 | Validated |
+| InProcessForRelease | 45 | Enable in process |
+| NotReleased | 90 | No release due to error |
+
+## 3.54 ProductionItemStepTransferState
+### ProductionItemStepTransferState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Created | 0 | Created |
+| ExportNotNecessary | 1 | Transfer not necessary |
+| ReadyForDelayedExport | 5 | Ready for delayed transmission |
+| ReadyForExport | 10 | Ready for transfer |
+| Exported | 20 | Transfer complete |
+| WorklistExportInProcess | 22 | Worklist is being written |
+| WorklistExported | 24 | Worklist written |
+| NoExportDoneForFinishedStep | 90 | Process step completed without transfer |
+| Error | 99 | Errors |
+
+## 3.55 ProductionOrderType
+### ProductionOrderType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | Undefined |
+| SalesArticle | 1 | Sale item |
+| ConstructionGroup | 2 | assembly unit |
+| ConstructionPart | 3 | component |
+| VirtualPart | 4 | Virtual component without production |
+
+## 3.56 ProductionState
+### ProductionState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| New | 0 | New |
+| ReadyForCreatingProductionSteps | 5 | Ready for creation of process steps |
+| Processing | 25 | Pending |
+| Finished | 35 | terminated |
+
+## 3.57 ProductionStepState
+### ProductionStepState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| New | 0 | New |
+| InPlanning | 10 | In planning |
+| Planned | 20 | Planned |
+| Processing | 25 | Pending |
+| Finished | 35 | terminated |
+
+## 3.58 ReductionEdgeDataCalculationType
+### ReductionEdgeDataCalculationType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| None | 0 | No restriction |
+| WithoutEdgePassMachineData | 100 | Without EdgePass machine data (macros, ...) |
+| WithoutEdgePasses | 200 | Without edge throughfeeds |
+| WithoutEdgeAndGrooveShapes | 300 | Without edge shape, groove shapes and edge throughfeeds |
+
+## 3.59 RegenerateDataRequestMode
+### RegenerateDataRequestMode
+| Name | Value | Display Name |
+|------|-------|--------------|
+| NoAction | 0 | No action |
+| RegeneratePartData | 10 | Data regeneration |
+
+## 3.60 ReleaseState
+### ReleaseState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| NotReleased | 0 | Blocked |
+| Released | 1 | Released |
+
+## 3.61 ReproductionMode
+### ReproductionMode
+| Name | Value | Display Name |
+|------|-------|--------------|
+| NoReproduction | 0 | Without post-production |
+| NewPlanWithERP | 10 | New job via the ERP system |
+| UnchangedPlan | 20 | Unchanged work plan |
+| DataModification | 40 | Data adjustment |
+
+## 3.62 ReproductionState
+### ReproductionState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| New | 0 | New |
+| ReadyForGeneration | 10 | Ready for generation |
+| InProcessForGeneration | 20 | Generation in progress |
+| Generated | 30 | Post-production order generated |
+| NotApplicable | 80 | Post-production order not planned |
+| Error | 90 | Error during generation of post-production order |
+
+## 3.63 ReproductionType
+### ReproductionType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| NoReproduction | 0 | No post-production |
+| Standard | 1 | Standard |
+
+## 3.64 ResourceType
+### ResourceType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| None | 0 | Not set |
+| Material | 4 | Material |
+| SurfaceTop | 5 | Surface top |
+| SurfaceBottom | 6 | Surface bottom |
+| Resource | 8 | Resource |
+
+## 3.65 ScannerConnectionType
+### ScannerConnectionType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Unknown | 0 | Unknown |
+| Datalogic | 10 | Datalogic |
+| Proglove | 20 | Proglove |
+
+## 3.66 ScannerType
+### ScannerType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Unknown | 0 | Unknown |
+| PM9500 | 10 | PM9500 |
+| PM9600 | 11 | PM9600 |
+| Mark2 | 20 | Mark 2 |
+| MarkDisplay | 21 | Mark display |
+| Datalogic | 30 | Datalogic |
+| Proglove | 31 | Proglove |
+
+## 3.67 SchedulingMode
+### SchedulingMode
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Forward | 0 | Forwards |
+| Backward | 1 | Backwards |
+
+## 3.68 SortStepPickMode
+### SortStepPickMode
+| Name | Value | Display Name |
+|------|-------|--------------|
+| ChoiceConfirmation | 0 | Compartment selection and confirmation |
+| NoChoiceNoConfirmation | 1 | Compartment cannot be selected. |
+
+## 3.69 SortStepSortMode
+### SortStepSortMode
+| Name | Value | Display Name |
+|------|-------|--------------|
+| ChoiceConfirmation | 0 | Compartment selection and confirmation |
+| NoChoiceNoConfirmation | 1 | Compartment cannot be selected. |
+
+## 3.70 SortType
+### SortType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Open | 0 | Open (without allocation) |
+| Closed | 1 | Closed (with allocation) |
+| ClosedWithoutReservation | 2 | Closed (no allocation) |
+
+## 3.71 StackItemType
+### StackItemType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| undefined | 0 | Undefined |
+| ProductionItem | 1 | Part |
+| Board | 2 | Board |
+| Protectionboard | 99 | Protection board |
+
+## 3.72 StackState
+### StackState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| StackCreated | 0 | Stack created |
+| StackInProgress | 10 | Stack in progress |
+| StackFinished | 20 | Stack finished |
+| DataTransfered | 30 | Data transfered |
+| ErrorIntelliStack | 90 | Error intelliStack |
+
+## 3.73 StackType
+### StackType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | 0 - Undefined |
+| DataFromInterface | 1 | 1 - Data from interface |
+| ManualData | 2 | 2 - Manual data |
+| StackFromOptimization | 1001 | 1001 - Stack from optimization |
+| StackFromIntelliStack | 1002 | 1002 - Stack from intelli Stack |
+| StackFromProduction | 1003 | 1003 - Stack from production |
+| StackFromSorter | 1004 | 1004 - Stack from Sorter |
+
+## 3.74 StagingImportErrorState
+### StagingImportErrorState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| OK | 0 | no error |
+| ParentNotFound | 1 | Parent component not found |
+| ConstructionPartWithoutMeasures | 3 | Dimension invalid |
+| ConstructionPartWithoutMaterial | 4 | Material invalid |
+| MaterialRecordWithoutArticleNumber | 5 | Material has no valid item number |
+| DuplicateId | 8 | ID present in multiple data records |
+| RequiredDataMissing | 10 | Required data missing |
+| WrongEdgeContourReference | 20 | Invalid reference between edge and contour |
+| ContourNotClosed | 22 | Contour not closed |
+| DifferentProfileData | 24 | Different profile data |
+| ContourEndpointOutsideRectangle | 26 | Contour end point outside rectangle |
+| InvalidEdgeTrim | 30 | Invalid edge transition |
+| ImportedValueIsNull | 50 | Imported value is not set |
+| ImportedValueIsTooLong | 51 | Imported value is too long |
+| ImportedValueIsNotNumeric | 52 | Imported value is not numeric |
+| ImportedValueIsDefault | 53 | Imported value is equal to the default value |
+| ImportedValueIsNotAValidDataType | 54 | Imported value is not a valid data category |
+| ImportedValueIsNotAValidDateTime | 55 | Imported value is not a valid date/valid time |
+| WrongMachining | 70 | Invalid processing |
+| Error | 99 | Errors |
+
+## 3.75 StagingTransferState
+### StagingTransferState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | Undefined |
+| ImportToStagingCompleted | 10 | Import completed successfully |
+| TransferFromStagingToProductionInProcess | 15 | Transfer to the live system active |
+| TransferFromStagingToProductionCommitted | 17 | Transfer to the live system saved |
+| TransferFromStagingToProductionCompleted | 20 | Transfer to the live system completed |
+| ReplacedByNewImport | 30 | Replaced by new import |
+| IgnoreRecordType | 50 | Do not include data record |
+| IgnoreEdges | 51 | Do not include edge |
+| IgnoreMaterialRecord | 52 | Do not include material |
+| IgnoreOrderReImport | 53 | Do not take new order import into account |
+| Error | 99 | Errors |
+
+## 3.76 Texture
+### Texture
+| Name | Value | Display Name |
+|------|-------|--------------|
+| None | 0 | None |
+| Along | 1 | Lengthwise |
+| Cross | 2 | cross |
+
+## 3.77 ThroughFeedSide
+### ThroughFeedSide
+| Name | Value | Display Name |
+|------|-------|--------------|
+| None | 0 | not define |
+| Left | 1 | left |
+| Right | 2 | right |
+
+## 3.78 TransferstateOptimizationPresetting
+### TransferstateOptimizationPresetting
+| Name | Value | Display Name |
+|------|-------|--------------|
+| WrittenByCMES | 0 | Written by CMES |
+| ReleasedByCMES | 10 | Released by CMES |
+| StartedByExternalOptimization | 20 | Started by external optimization |
+| FinishedByExternalOptimization | 30 | Ended by external optimization |
+| FinishedByCMES | 40 | Processed by CMES |
+| RequestForDelete | 80 | Deletion request |
+
+## 3.79 ValidationState
+### ValidationState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| NoError | 0 | Without any errors |
+| RepairNecessary | 10 | Repair required |
+| ReproductionNecessary | 20 | Post-production required |
+
+## 3.80 WccStagingImportErrorState
+### WccStagingImportErrorState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| OK | 0 | no error |
+| ParentNotFound | 1 | Parent component not found |
+| ConstructionPartWithoutMeasures | 3 | Dimension invalid |
+| ConstructionPartWithoutMaterial | 4 | Material invalid |
+| MaterialRecordWithoutArticleNumber | 5 | Material has no valid item number |
+| DuplicateId | 8 | ID present in multiple data records |
+| RequiredDataMissing | 10 | Required data missing |
+| DifferentProfileData | 24 | Different profile data |
+| InvalidEdgeTrim | 30 | Invalid edge transition |
+| ImportedValueIsNull | 50 | Imported value is not set |
+| ImportedValueIsTooLong | 51 | Imported value is too long |
+| ImportedValueIsNotNumeric | 52 | Imported value is not numeric |
+| ImportedValueIsDefault | 53 | Imported value is equal to the default value |
+| ImportedValueIsNotAValidDataType | 54 | Imported value is not a valid data category |
+| ImportedValueIsNotAValidDateTime | 55 | Imported value is not a valid date/valid time |
+| Error | 99 | Errors |
+
+## 3.81 WccStagingRecordResourceType
+### WccStagingRecordResourceType
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | Undefined |
+| GrooveData | 1 | Groove data |
+| ProcessingData | 2 | Processing data |
+
+## 3.82 WccStagingTransferState
+### WccStagingTransferState
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Undefined | 0 | Undefined |
+| ImportFromWccToStagingCompleted | 10 | Import completed successfully |
+| TransferFromStagingToProductionInProcess | 15 | Transfer to the live system active |
+| TransferFromStagingToProductionCommitted | 17 | Transfer to the live system saved |
+| TransferFromStagingToProductionCompleted | 20 | Transfer to the live system completed |
+| ReplacedByNewImport | 30 | Replaced by new import |
+| IgnoreRecordType | 50 | Do not include data record |
+| IgnoreEdges | 51 | Do not include edge |
+| IgnoreMaterialRecord | 52 | Do not include material |
+| IgnoreOrderReImport | 53 | Do not take new order import into account |
+| Error | 99 | Errors |
+
+## 3.83 wp4State
+### wp4State
+| Name | Value | Display Name |
+|------|-------|--------------|
+| NotStartet | 0 | Not complete |
+| Active | 1 | Active |
+| Finished | 2 | Processed |
+| Error | 3 | Failed |
+| Cancel | 4 | Canceled |
+
+## 3.84 YesNo
+### YesNo
+| Name | Value | Display Name |
+|------|-------|--------------|
+| No | 0 | No |
+| Yes | 1 | Yes |
+
