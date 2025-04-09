@@ -39,6 +39,19 @@
     ]
   },
   {
+    "label": "Template",
+    "appenders": [
+      {
+        "appenderType": "console",
+        "logLevel": "Error"
+      },
+      {
+        "appenderType": "webApi",
+        "logLevel": "Info"
+      }
+    ]
+  },
+  {
     "label": "W2Demo",
     "appenders": [
       {

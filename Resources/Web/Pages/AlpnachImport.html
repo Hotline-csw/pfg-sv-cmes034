@@ -18,10 +18,15 @@
 <!--  #####################################################-->		
 
   <v-list dense color="#EEEEEE">
+
+  
+
     <v-subheader>
       Importierte Aufträge
     </v-subheader>
-    <v-text-field v-model="search" label="Search" @keyup="filterlist"></v-text-field>	
+    <v-text-field v-model="search" label="Kundenauftrag" @input="filterlist" ></v-text-field>	
+	<p>Your text: {{ search }}</p>
+	    <v-divider></v-divider>
     <v-list-item>
       <v-container fluid>
         <v-row>
@@ -34,9 +39,9 @@
         </v-row>
       </v-container>
     </v-list-item>
-    <v-divider></v-divider>
 
-    <v-list-item dense v-for="item in filterlist.slice(0,5)" :key="item.Sequence">
+
+    <v-list-item dense v-for="item in filterlist" :key="item.Sequence">
       <v-container fluid>
         <v-row>
           <v-col cols="2" class="py-0">
@@ -92,7 +97,6 @@
       }),
       created() {
           this.getImportedCustomerOrders();
-          //this.getJobHistoryData();		  
           // ToDo: INstallieren von EventHandlern test
       },
       mounted() {
@@ -103,22 +107,24 @@
 			
 	  
       data: {
-  
+			countCustomOrders: 0,
 		   search: '',
-			CustomerOrderImportedItems: [],
+		   searchText: '',
+		   CustomerOrderImportedItems: [],
 			  
           header: "Auftragsimport Übersicht",
           date: new Date().toISOString().substr(0, 10)
       },
 
 	  computed: {
-	  		filterlist() {
-		  return this.CustomerOrderImportedItems.filter(item => item.CustomerOrderCode.toLowerCase().includes(this.search.toLowerCase()));
-		}
-
 	  },
 
       methods: {
+		filterlist() {
+			console.log('Search text:', this.search);
+			return this.CustomerOrderImportedItems.filter(item => item.CustomerOrderCode.toLowerCase().includes(this.search.toLowerCase()));
+		},
+	  
           getImportedCustomerOrders: function() {
             var d = new Date();
             d.setHours(d.getHours() - 168);
@@ -137,13 +143,15 @@
 					}
 					else
 					{
-						console.log(JSON.stringify(data));
+						this.CustomerOrderImportedItems.length = 0;
+						<!--console.log(JSON.stringify(data));-->
 						if(Array.isArray(data))
 						{
-							console.log("Array!!!!");
+
 							data.forEach((element) => {
 								let valueCO = [];		
-								console.log("CustomerOrderImportedItems.Code:" + element.Code);
+								this.countCustomOrders++;
+								console.log('countCustomOrders: ' + this.countCustomOrders);
 								valueCO.Sequence = element.Sequence;
 								valueCO.CustomerOrderCode = element.Code;
 								valueCO.CreationDate = window.DateTime.fromISO(element.CreationDate).setLocale('de').toLocaleString({weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'});
