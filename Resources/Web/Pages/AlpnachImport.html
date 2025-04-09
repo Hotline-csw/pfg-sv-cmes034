@@ -21,8 +21,7 @@
     <v-subheader>
       Importierte Aufträge
     </v-subheader>
-    <v-text-field v-model="search" label="Search" @input="filterlist"></v-text-field>	
-	<!--
+    <v-text-field v-model="search" label="Search" @keyup="filterlist"></v-text-field>	
     <v-list-item>
       <v-container fluid>
         <v-row>
@@ -36,8 +35,8 @@
       </v-container>
     </v-list-item>
     <v-divider></v-divider>
-	-->
-    <v-list-item dense v-for="item in filterlist.slice(0,5)" :key="item.CustomerOrderCode">
+
+    <v-list-item dense v-for="item in filterlist.slice(0,5)" :key="item.Sequence">
       <v-container fluid>
         <v-row>
           <v-col cols="2" class="py-0">
@@ -109,114 +108,17 @@
 			CustomerOrderImportedItems: [],
 			  
           header: "Auftragsimport Übersicht",
-          date: new Date().toISOString().substr(0, 10),
-          series: [
-            {
-              name: 'Succeeded',
-              data: [
-                
-                {
-                  x: 'FLS Demo Data Import',
-                  y: [
-                    new Date('2021-04-13T19:47:37.7634153+02:00').getTime(),
-                    new Date('2021-04-13T19:49:28.7187259+02:00').getTime()
-                  ]
-                },
-                {
-                  x: 'GeneratePlanning',
-                  y: [
-                    new Date('2021-04-13T19:47:31.6155631+02:00').getTime(),
-                    new Date('2021-04-13T19:48:15.2600616+02:00').getTime()
-                  ]
-                },
-              ]
-            },
-            {
-              name: 'Error',
-              data: [
-                {
-                  x: 'FLS Demo Data Import',
-                  y: [
-                    new Date('2021-04-13T19:47:35.86051+02:00').getTime(),
-                    new Date('2021-04-13T19:47:36.2345166+02:00').getTime()
-                  ]
-                }
-              ]
-            }
-            ],
-          chartOptions: {
-            chart: {
-                toolbar: {
-                    tools: {
-                        customIcons:[
-                            {
-icon: '<img src="/static/icons/chart-carpet.png" width="20">',
-index: 0,
-title: 'tooltip of the icon',
-class: 'custom-icon',
-click: function (chart, options, e) {
-  console.log("clicked custom-icon")
-}
-}
-                        ]
-                    }
-                },
-              height: 450,
-              type: 'rangeBar',
-              animations:{
-                  enabled: false
-              }
-
-            },
-            plotOptions: {
-              bar: {
-                horizontal: true,
-                barHeight: '80%'
-              }
-            },
-            xaxis: {
-              type: 'datetime'
-            },
-            stroke: {
-              width: 1
-            },
-            fill: {
-              type: 'solid',
-              opacity: 0.6
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left'
-            },
-            colors: [
-              "#00E396", "#FF0000", "#FEB019", "#FF4560", "#775DD0"
-            ],
-            tooltip: {
-                custom: function(opts) {
-                var options = { timeZone: 'UTC' };    
-                const from = new Date(opts.y1).toLocaleTimeString('de-DE', options)
-                const to = new Date(opts.y2).toLocaleTimeString('de-DE', options)
-                const values = opts.ctx.rangeBar.getTooltipValues(opts)
-            
-                return (
-                  `${from} - ${to}`
-                )
-              }
-            }
-
-          },
+          date: new Date().toISOString().substr(0, 10)
       },
 
 	  computed: {
-		filterlist() {
+	  		filterlist() {
 		  return this.CustomerOrderImportedItems.filter(item => item.CustomerOrderCode.toLowerCase().includes(this.search.toLowerCase()));
 		}
+
 	  },
 
       methods: {
-			filterist() {
-			  // Implement any custom filtering logic here
-			},	  
           getImportedCustomerOrders: function() {
             var d = new Date();
             d.setHours(d.getHours() - 168);
@@ -224,8 +126,8 @@ click: function (chart, options, e) {
                 .get("CustomerOrders")
                 .query({
                     $filter: `CreationDate gt ${d.toISOString()} `,
-                    $orderBy: "Creationdate",
-                    $select: "Code, CreationDate",
+                    $orderBy: "Creationdate desc",
+                    $select: "Sequence, Code, CreationDate",
 				
                 })
                 .then((data) => {
@@ -242,6 +144,7 @@ click: function (chart, options, e) {
 							data.forEach((element) => {
 								let valueCO = [];		
 								console.log("CustomerOrderImportedItems.Code:" + element.Code);
+								valueCO.Sequence = element.Sequence;
 								valueCO.CustomerOrderCode = element.Code;
 								valueCO.CreationDate = window.DateTime.fromISO(element.CreationDate).setLocale('de').toLocaleString({weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'});
 								this.CustomerOrderImportedItems.push(valueCO);

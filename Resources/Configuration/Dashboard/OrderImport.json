@@ -1,30 +1,8 @@
 [
   {
-    "label": "Letzte cMES Server Exceptions NEW",
-    "cols": 6,
-    "rows": 2,
-    "background": "#ff0000",
-    "foreground": "#fff",
-    "component": "cmes-dashboard-table-chart",
-    "link": "cmes-custom-page/W2Demo",
-    "input": {
-      "names": ["Server Error"],
-      "colors": ["#ff0000"],
-      "inputOData":
-	  {
-		"dataSource": "CombinedLogItems",
-		"select": "Level, Date, Area, Message, Exception ",
-		"filter": "ApplicationType eq 'Web' and Exception ne null",
-		"orderBy": "Sequence desc",
-		"top": 15
-	  },
-	  "inputMongo":{}
-    }
-  },
-  {
     "label": "Importierte Aufträge",
     "cols": 4,
-    "rows": 3,
+    "rows": 2,
     "background": "#D2691E",
     "foreground": "#fff",
     "component": "cmes-dashboard-table-chart",
@@ -32,11 +10,35 @@
    "input": {
       "names": ["CustomerOrder"],
       "colors": ["#ff0000"],
+      "refresh": 5,	  
       "inputOData":
 	  {
 		"dataSource": "CustomerOrders",
+		"select": "Code, CreationDate, Customer",
+		"orderBy": "CreationDate desc",
 		"top": 10
 	  }
     }
-  }
+  },
+  {
+    "label": "WCC - Aktueller Auftragsimport - Staging",
+    "cols": 4,
+    "rows": 2,
+    "background": "#D2691E",
+    "foreground": "#fff",
+    "component": "cmes-dashboard-table-chart",
+    "link": "cmes-custom-page/AlpnachImport",
+   "input": {
+      "names": ["Staging"],
+      "colors": ["#ff0000"],
+      "refresh": 5,	  
+      "inputOData":
+	  {
+		"dataSource": "WccStagingRecords",
+		"select": "OrderId",
+		"filter": "TransferState eq 'TransferFromStagingToProductionInProcess'"	
+	
+	  }
+    }
+  }  
 ]
