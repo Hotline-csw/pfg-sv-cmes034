@@ -17,16 +17,13 @@
         </div>-->
 <!--  #####################################################-->		
 
+	<v-text-field v-model="search" label="Kundenauftrag" @input="filterlist" ></v-text-field>	
+    <v-divider></v-divider>
+
   <v-list dense color="#EEEEEE">
-
-  
-
     <v-subheader>
       Importierte Aufträge
     </v-subheader>
-    <v-text-field v-model="search" label="Kundenauftrag" @input="filterlist" ></v-text-field>	
-	<p>Your text: {{ search }}</p>
-	    <v-divider></v-divider>
     <v-list-item>
       <v-container fluid>
         <v-row>
@@ -39,9 +36,7 @@
         </v-row>
       </v-container>
     </v-list-item>
-
-
-    <v-list-item dense v-for="item in filterlist" :key="item.Sequence">
+    <v-list-item dense v-for="item in filterlist()" :key="item.Sequence">
       <v-container fluid>
         <v-row>
           <v-col cols="2" class="py-0">
@@ -53,7 +48,35 @@
         </v-row>
       </v-container>
     </v-list-item>
-
+  </v-list>
+  <v-list dense color="#EEEEEE">
+    <v-subheader>
+      Importierte Aufträge
+    </v-subheader>
+    <v-list-item>
+      <v-container fluid>
+        <v-row>
+          <v-col cols="2">
+            <strong>Kundenauftrag</strong>
+          </v-col>
+          <v-col cols="2	">
+            <strong>Importiert</strong>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-list-item>
+    <v-list-item dense v-for="item in filterlist()" :key="item.Sequence">
+      <v-container fluid>
+        <v-row>
+          <v-col cols="2" class="py-0">
+            {{ item.CustomerOrderCode }}
+          </v-col>
+          <v-col cols="2" style="color: #AA1111;" class="py-0" >
+            {{ item.CreationDate }}
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-list-item>
   </v-list>
 
 <!--	
@@ -109,7 +132,7 @@
       data: {
 			countCustomOrders: 0,
 		   search: '',
-		   searchText: '',
+		   
 		   CustomerOrderImportedItems: [],
 			  
           header: "Auftragsimport Übersicht",
@@ -120,9 +143,18 @@
 	  },
 
       methods: {
-		filterlist() {
-			console.log('Search text:', this.search);
-			return this.CustomerOrderImportedItems.filter(item => item.CustomerOrderCode.toLowerCase().includes(this.search.toLowerCase()));
+		filterlist: function() {
+			console.log('Search text:', this.search.toLowerCase());
+			console.log(this.CustomerOrderImportedItems.length);
+			//console.log(this.CustomerOrderImportedItems.filter(item => item.CustomerOrderCode.toLowerCase().includes(this.search.toLowerCase())));
+			if(this.CustomerOrderImportedItems.filter(item => item.CustomerOrderCode.toLowerCase().includes(this.search.toLowerCase())).length > 5)
+			{
+				return this.CustomerOrderImportedItems.filter(item => item.CustomerOrderCode.toLowerCase().includes(this.search.toLowerCase())).slice(0,5);
+			}
+			else
+			{
+				return this.CustomerOrderImportedItems.filter(item => item.CustomerOrderCode.toLowerCase().includes(this.search.toLowerCase()));			
+			}
 		},
 	  
           getImportedCustomerOrders: function() {
@@ -143,19 +175,33 @@
 					}
 					else
 					{
-						this.CustomerOrderImportedItems.length = 0;
-						<!--console.log(JSON.stringify(data));-->
+						
+						console.log(JSON.stringify(data));
 						if(Array.isArray(data))
 						{
 
 							data.forEach((element) => {
-								let valueCO = [];		
-								this.countCustomOrders++;
-								console.log('countCustomOrders: ' + this.countCustomOrders);
-								valueCO.Sequence = element.Sequence;
-								valueCO.CustomerOrderCode = element.Code;
-								valueCO.CreationDate = window.DateTime.fromISO(element.CreationDate).setLocale('de').toLocaleString({weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'});
-								this.CustomerOrderImportedItems.push(valueCO);
+								if(element === undefined)
+								{
+								//
+								}
+								else
+								{
+									if(element.Code === undefined)
+									{
+									//
+									}
+									else
+									{
+										let valueCO = [];		
+										this.countCustomOrders++;
+										console.log('countCustomOrders: ' + this.countCustomOrders + ' ### ' + element.Code);
+										valueCO.Sequence = element.Sequence;
+										valueCO.CustomerOrderCode = element.Code;
+										valueCO.CreationDate = window.DateTime.fromISO(element.CreationDate).setLocale('de').toLocaleString({weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'});
+										this.CustomerOrderImportedItems.push(valueCO);
+									}
+								}
 							})
 						}    
 					}		
