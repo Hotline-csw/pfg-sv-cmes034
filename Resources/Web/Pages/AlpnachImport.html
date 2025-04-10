@@ -21,7 +21,7 @@
 	  clearable clear-icon="mdi-close-circle" @keyup.enter="filterlist"
 	></v-text-field>
 -->	
-	
+	<button @click="refreshData()">Refresh</button>
 	<v-text-field v-model="search" label="Kundenauftrag" @input="filterlist" ></v-text-field>	
     <v-divider></v-divider>
   <v-list dense color="#EEEEEE">
@@ -147,6 +147,13 @@
 	  },
 
       methods: {
+		refreshData: function() {
+			console.log('refreshData');
+			this.CustomerOrderImportedItems.length = 0;
+			console.log('refreshData' + this.CustomerOrderImportedItems);
+			this.getImportedCustomerOrders();
+			this.filterlist();
+		},		
 		filterlist: function() {
 			console.log('Search text:', this.search.toLowerCase());
 			console.log(this.CustomerOrderImportedItems.length);
@@ -164,6 +171,8 @@
           getImportedCustomerOrders: function() {
             var d = new Date();
             d.setHours(d.getHours() - 168);
+			
+			this.CustomerOrderImportedItems.length = 0;
             window.cmesOdata
                 .get("CustomerOrders")
                 .query({
@@ -175,7 +184,7 @@
                 .then((data) => {
 					if (data === null || data.length === 0) 
 					{
-						console.log('CustomerOrder nicht gefunden.')
+						console.log('Keine Kundenaufträge gefunden.')
 					}
 					else
 					{
