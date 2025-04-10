@@ -16,10 +16,13 @@
             <apexchart ref="chart" type="rangeBar" height="450" :options="chartOptions" :series="series"></apexchart>
         </div>-->
 <!--  #####################################################-->		
-
+	<v-text-field ref="Kundenauftrag" class="mx-2 mx-md-5" hide-details label="Kundenauftrag" v-model="search" outlined
+	  clearable clear-icon="mdi-close-circle" @keyup.enter="filterlist"
+	></v-text-field>
+<!--
 	<v-text-field v-model="search" label="Kundenauftrag" @input="filterlist" ></v-text-field>	
     <v-divider></v-divider>
-
+-->
   <v-list dense color="#EEEEEE">
     <v-subheader>
       Importierte Aufträge
