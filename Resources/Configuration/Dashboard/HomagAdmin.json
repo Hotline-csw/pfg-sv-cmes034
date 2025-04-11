@@ -9,7 +9,7 @@
     "link": "cmes-jobs-health",
     "input": {
       "chartName": "CMes JobHistory 1",
-      "refresh": 5,
+      "refresh": 120,
       "inputOData": {},
       "inputMongo": {
 		"dataSource": "JobHistory",		  
@@ -27,7 +27,7 @@
     "link": "cmes-health",
 	"input": {
 		"chartName":"cMES_Server_Host",
-		"refresh": 2,
+		"refresh": 120,
 		"inputOData": {},
 		"inputMongo":
 		{
@@ -46,7 +46,7 @@
     "link": "sql-server-health",
 	"input": {
 		"chartName":"SqlServer Server DEV",
-		"refresh": 2,
+		"refresh": 120,
 		"inputOData": {},
 		"inputMongo":
 		{

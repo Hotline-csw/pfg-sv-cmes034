@@ -124,6 +124,7 @@
       }),
       created() {
           this.getImportedCustomerOrders();
+		  setInterval(this.refreshData, 6000); // Refresh data every 60 seconds
           // ToDo: INstallieren von EventHandlern test
       },
       mounted() {
