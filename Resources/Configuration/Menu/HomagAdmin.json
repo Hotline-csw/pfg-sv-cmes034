@@ -13,7 +13,18 @@
     "label": "Auftragsimport",
     "link": "cmes-dashboard/OrderImport",
     "icon": "grid_view"
-  },  
+  },
+  {
+	"label": "Auftragsimport Alpnach",
+	"link": "cmes-custom-page/AlpnachImport",
+	"icon": "bar_chart"
+  },
+  {
+	"label": "Simple Text Field",
+	"link": "cmes-custom-page/SimpleTextField",
+	"icon": "bar_chart"
+  },
+ 
   {
     "label": "Konfig Verwaltung",
     "icon": "grid_view",
@@ -72,12 +83,8 @@
         "label": "Demo",
         "link": "cmes-custom-page/Demo",
         "icon": "bar_chart"
-      },
-      {
-        "label": "Auftragsimport Alpnach",
-        "link": "cmes-custom-page/AlpnachImport",
-        "icon": "bar_chart"
       }
+
 	  
 
     ],
