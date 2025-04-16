@@ -121,8 +121,15 @@
     "icon": "format_align_justify"
   },
   {
+          "label": "Logger Config",
+          "icon": "notes",
+          "link": "cmes-config/logger",
+          "navigationExtras": {}
+  },
+  {
     "label": "Abmelden",
     "link": "login",
     "icon": "logout"
   }
+  
 ]
