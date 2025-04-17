@@ -178,8 +178,8 @@
                 .get("CustomerOrders")
                 .query({
                     $filter: `CreationDate gt ${d.toISOString()} `,
-                    $orderBy: "Creationdate desc",
-                    $select: "Sequence, Code, CreationDate",
+                    $orderBy: `Creationdate desc`,
+                    $select: `Sequence, Code, CreationDate`,
 				
                 })
                 .then((data) => {
