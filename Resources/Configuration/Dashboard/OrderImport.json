@@ -35,9 +35,31 @@
       "inputOData":
 	  {
 		"dataSource": "WccStagingRecords",
-		"select": "OrderId",
-		"filter": "TransferState eq 'TransferFromStagingToProductionInProcess'"	
+		"select": "OrderId, CreationDate",
+		"filter": "TransferState eq 'TransferFromStagingToProductionInProcess'",	
+		"orderBy": "CreationDate desc"		
 	
+	  }
+    }
+  },  
+  {
+    "label": "CSV - Aktueller Auftragsimport - Staging",
+    "cols": 4,
+    "rows": 2,
+    "background": "#D2691E",
+    "foreground": "#fff",
+    "component": "cmes-dashboard-table-chart",
+    "link": "cmes-custom-page/AlpnachImport",
+   "input": {
+      "names": ["Staging"],
+      "colors": ["#ff0000"],
+      "refresh": 5,	  
+      "inputOData":
+	  {
+		"dataSource": "CsvStagingRecords",
+		"select": "CustomerOrderCode, CreationDate",
+		"filter": "TransferState eq 'TransferFromStagingToProductionInProcess'",	
+		"orderBy": "CreationDate desc"
 	  }
     }
   }  
