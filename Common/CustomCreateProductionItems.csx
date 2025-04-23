@@ -42,6 +42,7 @@ public class CustomCreateProductionItems : CreateProductionItems
     {
         Guard.ThrowOnArgumentNull(logger, "logger");
         Guard.ThrowOnArgumentNull(productionOrder, "productionOrder");
+        string sCustomProdItemCode = ""; 
 
         if(productionOrder.ReproductionType == ReproductionType.Standard)
         {
@@ -58,9 +59,20 @@ public class CustomCreateProductionItems : CreateProductionItems
         }
         else
         {
+            if(productionOrder.CustomProdItemCode == "0")
+            {
+                // CSV
+                sCustomProdItemCode = productionOrder.Code+"0";
+            }
+            else
+            {
+                // WCC
+                sCustomProdItemCode = productionOrder.CustomProdItemCode;
+            }
+        
             productionOrder.ProductionItems.Add(new ProductionItem
             {
-                Code = productionOrder.CustomProdItemCode,
+                Code = sCustomProdItemCode,             
                 DesiredQuantity = productionOrder.DesiredTargetQuantity ?? 1,
                 CreationDate = DateTime.Now,
                 ModificationDate = DateTime.Now,
