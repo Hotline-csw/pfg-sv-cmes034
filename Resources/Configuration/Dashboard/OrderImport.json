@@ -65,7 +65,7 @@
     }
   } ,
   {
-    "label": "CSV - Aktueller Auftragsimport - Abgeschloosen",
+    "label": "CSV - Aktueller Auftragsimport - Abgeschlossen",
     "cols": 6,
     "rows": 2,
     "background": "#555555",
