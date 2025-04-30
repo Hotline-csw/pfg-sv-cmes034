@@ -1,0 +1,12 @@
+{
+"input": {
+		"refresh": 1,
+		"inputMongo":
+		{
+				"dataSource": "JobHistoryImport",
+				"instance": "HEALTH_CMES33_SUPPORT"
+		}
+	}
+}
+
+
