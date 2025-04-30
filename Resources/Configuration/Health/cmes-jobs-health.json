@@ -6,13 +6,7 @@
 				"dataSource": "JobHistory",
 				"instance": "HEALTH_CMES33_SUPPORT"
 		}
-	},
-"config":{
-	"limitExecutionCount": 1000,
-	"limitMaxRow": 150,
-	"limitMaxWorkerTime": 200,
-	"limitSingleRead": 2
-}
+	}
 }
 
 

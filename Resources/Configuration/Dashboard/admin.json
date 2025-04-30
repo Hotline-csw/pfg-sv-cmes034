@@ -56,50 +56,6 @@
 	}
  },
   {
-    "label": "Letzte cMES Server Exceptions NEW",
-    "cols": 6,
-    "rows": 2,
-    "background": "#ff0000",
-    "foreground": "#fff",
-    "component": "cmes-dashboard-table-chart",
-    "link": "cmes-custom-page/W2Demo",
-    "input": {
-      "names": ["Server Error"],
-      "colors": ["#ff0000"],
-      "inputOData":
-	  {
-		"dataSource": "CombinedLogItems",
-		"select": "Level, Date, Area, Message, Exception ",
-		"filter": "ApplicationType eq 'Web' and Exception ne null",
-		"orderBy": "Sequence desc",
-		"top": 15
-	  },
-	  "inputMongo":{}
-    }
-  },
-  {
-    "label": "Letzte cMES Server Fehler",
-    "cols": 6,
-    "rows": 2,
-    "background": "#E3A300",
-    "foreground": "#fff",
-    "component": "cmes-dashboard-table-chart",
-    "link": "cmes-custom-page/W2Demo",
-    "input": {
-      "names": ["Server Error"],
-      "colors": ["#E3A300"],
-      "inputOData":
-	  {
-		"dataSource": "CombinedLogItems",
-		"select": "Date, Area, Message",
-		"filter": "ApplicationType eq 'Web' and Level eq 'ERROR' and Exception eq null",
-		"orderBy": "Sequence desc",
-		"top": 15
-	  },
-	  "inputMongo":{}
-    }
-  },
-  {
     "label": "Benutzer",
     "cols": 2,
     "rows": 1,
