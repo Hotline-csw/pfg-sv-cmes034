@@ -17,6 +17,24 @@
       }
     }
   },
+  {
+    "label": "CMES JobHistory Import",
+    "cols": 6,
+    "rows": 3,
+    "background": "#f7f7f7",
+    "foreground": "#000000",
+    "component": "cmes-dashboard-cmes-jobs-perf-chart",
+    "link": "cmes-jobs-import-health",
+    "input": {
+      "chartName": "CMes JobHistoryImport",
+      "refresh": 20,
+      "inputOData": {},
+      "inputMongo": {
+		"dataSource": "JobHistoryImport",		  
+        "instance": "HEALTH_CMES33_SUPPORT"
+      }
+    }
+  },  
 {
     "label": "CMES Server",
     "cols": 6,
