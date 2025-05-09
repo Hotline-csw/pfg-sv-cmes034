@@ -169,8 +169,8 @@
         "properties": {
           "name": {
             "type": "string",
-            "pattern": "^[a-zA-Z_]+$",
-            "errorMessage": "Only Characters and _ allowed"
+            "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$",
+            "errorMessage": "Only Characters, Numbers and _ allowed, must start with Character or _"
           },
           "label": {
             "type": "string"
