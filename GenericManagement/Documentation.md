@@ -2173,7 +2173,7 @@
 # 36 EdgeProcessings : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10095|EdgeProcessing||DataCompletion|false|false|false||true|EdgeProcessings|||||Small|||0|
+|false|true|true|true|Production|10096|EdgeProcessing||DataCompletion|false|false|false||true|EdgeProcessings|||||Small|||0|
 ## 36.1 Binaries : DetailImageView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
@@ -2209,7 +2209,7 @@
 # 37 EdgeTypes : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10096|EdgeType||DataCompletion|false|false|false||true|EdgeTypes|||||Small|||0|
+|false|true|true|true|Production|10097|EdgeType||DataCompletion|false|false|false||true|EdgeTypes|||||Small|||0|
 ## 37.1 Binaries : DetailImageView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
@@ -2225,7 +2225,7 @@
 # 38 FindEdgeShapes : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10097|FindEdgeShape||DataCompletion|false|false|false||true|FindEdgeShapes|||||Small|||0|
+|false|true|true|true|Production|10098|FindEdgeShape||DataCompletion|false|false|false||true|FindEdgeShapes|||||Small|||0|
 ## 38.1 Binaries : DetailImageView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
@@ -2265,7 +2265,7 @@
 # 39 GlueTypes : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10098|GlueType||DataCompletion|false|false|false||true|GlueTypes|||||Small|||0|
+|false|true|true|true|Production|10099|GlueType||DataCompletion|false|false|false||true|GlueTypes|||||Small|||0|
 ## 39.1 Binaries : DetailImageView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
@@ -2281,7 +2281,7 @@
 # 40 LabelInfoCncZeroLines : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10099|LabelInfoCncZeroLine||DataCompletion|false|false|false||true|LabelInfoCncZeroLines|||||Small|||0|
+|false|true|true|true|Production|10100|LabelInfoCncZeroLine||DataCompletion|false|false|false||true|LabelInfoCncZeroLines|||||Small|||0|
 ## 40.1 Binaries : DetailImageView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
@@ -2309,7 +2309,7 @@
 # 42 MakroGrooves : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10100|MakroGroove||DataCompletion|false|false|false||true|MakroGrooves|||||Small|||0|
+|false|true|true|true|Production|10101|MakroGroove||DataCompletion|false|false|false||true|MakroGrooves|||||Small|||0|
 ## 42.1 Binaries : DetailImageView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
@@ -3094,3 +3094,47 @@
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DisplayName|DisplayOrder|Filter|IsSecondary|IsSortable|Name|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|
 |false|false|true|false|true|Gesperrte Benutzer|2||true|true|UserRestrictions||
+# 71 ConfirmedMessages : GenericView
+|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+|false|false|false|false|Information|10033|ConfirmedMessage|ConfirmationUser == null && ((ReceiverType == "User" && Receiver == "{User}") \|\| (ReceiverType == "Role" && Receiver == "{Role}") \|\| (ReceiverType == "HostName" && Receiver == "{HostName}"))|Management|true|false|false||false|ConfirmedMessages|||||Small|CountOnlyTileView|CountOnlyTileViewModel|0|
+## 71.1 Navigate : CommandUserExitContextMenu
+|FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
+|--|--|--|--|--|
+|F5|LinkedImage|Gehe zu...|Verlinkte Daten anzeigen|Navigate|
+### 71.1.1 NavigateUserExit : CommandUserExit
+|Name|Order|
+|--|--|
+|NavigateUserExit|1|
+## 71.2 Confirm : CommandUserExitContextMenu
+|FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
+|--|--|--|--|--|
+|F6|ConfirmImage|Bestätigen|Meldung bestätigen|Confirm|
+### 71.2.1 ConfirmUserExit : CommandUserExit
+|Name|Order|
+|--|--|
+|ConfirmUserExit|1|
+## 71.3 Error : CellStyleCondition
+|Background|Cell|ExecutionOrder|Foreground|Key|Rule|
+|--|--|--|--|--|--|
+|#FF4500|Level|1|White|Error|Level = "Error"|
+## 71.4 Warning : CellStyleCondition
+|Background|Cell|ExecutionOrder|Foreground|Key|Rule|
+|--|--|--|--|--|--|
+|#FFA500|Level|2|White|Warning|Level = "Warning"|
+## 71.5 Success : CellStyleCondition
+|Background|Cell|ExecutionOrder|Foreground|Key|Rule|
+|--|--|--|--|--|--|
+|#32CD32|Level|3|White|Success|Level = "Success"|
+## 71.6 Information : CellStyleCondition
+|Background|Cell|ExecutionOrder|Foreground|Key|Rule|
+|--|--|--|--|--|--|
+|#6495ED|Level|4|White|Information|Level = "Information"|
+## 71.7 Notification : CellStyleCondition
+|Background|Cell|ExecutionOrder|Foreground|Key|Rule|
+|--|--|--|--|--|--|
+|#444444|Level|5|White|Notification|Level = "Notification"|
+## 71.8  : DefaultSorting
+|Field|SortDirection|
+|--|--|
+|Date|Descending|
