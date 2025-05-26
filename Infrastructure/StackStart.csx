@@ -12,13 +12,13 @@
 //
 //   Requirements:   <eg. DB-Tables/Attributes, ...>
 //
-//   Author:         <Author>
+//   Author:         E.Hain
 //   Date:           2023-03-06
 //
 //-----------------------------------------------------------------------------
 //   Revision History:
 //   Name            Date          Description
-//   E.Hain          2023-03-06    Created
+//   S.Feist         2025-05-26    Created
 //   
 //-----------------------------------------------------------------------------
 
@@ -35,7 +35,7 @@ using System.Collections;
 [Export("StackStart", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("Stapel-ID generieren und Stapel 'eröffnen'")]
-[EnabledScript(false)]
+[EnabledScript(true)]
 public class StackStart : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit//, IPartImportsSatisfiedNotification // TODO MESSAGING
 {
     //Deklarationen
