@@ -378,7 +378,7 @@
 | BomNote5| System.String| Additional field 5| Zusatzfeld 5| 240| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomNote5| | | | 
 | BomNote6| System.String| Additional field 6| Zusatzfeld 6| 250| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomNote6| | | | 
 | BomOrientation| System.String| Orientation| Orientierung| 340| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomOrientation| | | | 
-| BomPrice| System.String| Price| Preis| 140| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomPrice| | | | 
+| BomPrice| System.String| price| Preis| 140| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomPrice| | | | 
 | BomQuantity| System.String| Quantity| Anzahl| 110| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomQuantity| | | | 
 | BomReference| System.String| Reference to assembly| Referenz zur Baugruppe| 50| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomReference| | | | 
 | BomThickness| System.String| thickness| Stärke des Bauteils| 90| False| True| False| | | | False| -1| 0| 0| | False| | FN_CtDStagingBomLineRecord_BomThickness| | | | 
@@ -4420,7 +4420,7 @@
 | PosX| System.Decimal| Insertion/start point X| PosX| 220| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_PosX| | | | 
 | PosY| System.Decimal| Insertion/start point Y| PosY| 221| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_PosY| | | | 
 | PosZ| System.Decimal| Insertion/start point Z| PosZ| 222| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_PosZ| | | | 
-| Price| System.Decimal| Price| Price| 24| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Price| | | | 
+| Price| System.Decimal| price| Price| 24| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_Price| | | | 
 | ProcessingComment| System.String| Processing comment| ProcessingComment| 52| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ProcessingComment| | | | 
 | ProcessingNumber| System.String| Processing number| ProcessingNumber| 63| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ProcessingNumber| | | | 
 | ProductionCode| System.String| Production code| ProductionCode| 50| False| True| False| | | | False| -1| 0| 0| | False| | FN_WccStagingRecord_ProductionCode| | | | 
