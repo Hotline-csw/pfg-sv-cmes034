@@ -10,14 +10,13 @@
 //
 //   Requirements:   <eg. DB-Tables/Attributes, ...>
 //
-//   Author:         <Author>
-//   Date:           2023-02-27
+//   Author:         E.Hain
+//   Date:           2023-02-27/2023-04-20
 //
 //-----------------------------------------------------------------------------
 //  Revision History:
 //  Name            Date            Description
-//  E.Hain          2023-02-27      Created
-//  E.Hain          2023-04-20      Created the code, to be tested!
+//  S.Feist         2025-05-26      Created
 //   
 //-----------------------------------------------------------------------------
 
