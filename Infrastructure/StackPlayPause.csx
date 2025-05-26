@@ -34,7 +34,7 @@ using System.Collections;
 [Export("StackPlayPause", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("Offenen Stapel pausieren bzw. pausierten Stapel wieder aufnehmen")]
-[EnabledScript(false)]
+[EnabledScript(true)]
 public class StackPlayPause : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit//, IPartImportsSatisfiedNotification // TODO MESSAGING
 {
 
