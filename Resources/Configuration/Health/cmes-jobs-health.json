@@ -4,7 +4,7 @@
 		"inputMongo":
 		{
 				"dataSource": "JobHistory",
-				"instance": "HEALTH_CMES33_SUPPORT"
+				"instance": "PFG-SV-CMES034"
 		}
 	}
 }

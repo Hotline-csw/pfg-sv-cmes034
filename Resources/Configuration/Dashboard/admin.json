@@ -13,7 +13,7 @@
       "inputOData": {},
       "inputMongo": {
 		"dataSource": "JobHistory",		  
-        "instance": "HEALTH_CMES33_SUPPORT"
+        "instance": "PFG-SV-CMES034"
       }
     }
   },
@@ -32,7 +32,7 @@
 		"inputMongo":
 		{
 			"dataSource": "PerfmonOneSecond",
-			"instance": "HEALTH_CMES33_SUPPORT"
+			"instance": "PFG-SV-CMES034"
 		}
 	}
  },
@@ -51,7 +51,7 @@
 		"inputMongo":
 		{
 			"dataSource": "DatabasePerformance",
-			"instance": "HEALTH_CMES33_SUPPORT"
+			"instance": "PFG-SV-CMES034"
 		}
 	}
  },
