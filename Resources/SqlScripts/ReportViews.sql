@@ -1,10 +1,18 @@
--- CREATING NEW TABLE
--- The schema name has to be 'cust'
+-- Printing Center Confi
+-- SF - 2025-06-13
+
 CREATE TABLE[cust].[ReportViews]
- ([Sequence] [bigint] IDENTITY(1,1) NOT NULL,
-[CreationDate] [datetime2](7) NOT NULL default getdate(),
-[CreationSource] [nvarchar](32) NULL,
-[ModificationDate] [datetime2](7) NOT NULL default getdate(),
-[ModificationSource] [nvarchar](32) NULL,
-[Locked] [bit]NOT NULL default 0,
-[LockSource] [nvarchar](32) NULL)
+(
+
+    Sequence                        bigint          not null identity(1,1),
+    ReportView                      nvarchar(64)    not null,                   -- Name des Datenbank-View für den Report, z.B. ViewReportProducerLabels
+    CreationDate                    datetime2       not null default getdate(),
+    CreationSource                  nvarchar(32)    null,
+    ModificationDate                datetime2       not null default getdate(),
+    ModificationSource              nvarchar(32)    null,
+    Locked                          bit             not null default 0,
+    LockSource                      nvarchar(32)    null,
+
+    CONSTRAINT [PK_ReportViews] PRIMARY KEY ( ReportView )
+
+)
