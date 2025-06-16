@@ -25,7 +25,7 @@ using System.ComponentModel;
 [Export("PrintPDFClientMethods", typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("Client-Methoden für Druck über PrintPDF / WebPDF")]
-[EnabledScript(false)]
+[EnabledScript(true)]
 public class PrintPDFClientMethods : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization
 {
     [Import]
@@ -196,13 +196,14 @@ public class PrintPDFClientMethods : UserExitCustomBase, HomagGroup.FLS.Infrastr
                     }
                     
                     (printPDFPrinterDialogViewModel as PrintPDFPrinterDialogViewModel).PrintQuantity = printQuantity;
+                    /*
                     if (PrintScreens != null)
                     {
                         (printPDFPrinterDialogViewModel as PrintPDFPrinterDialogViewModel).BinariesSequence = null;
                         (printPDFPrinterDialogViewModel as PrintPDFPrinterDialogViewModel).PrintScreen = null;
                         (printPDFPrinterDialogViewModel as PrintPDFPrinterDialogViewModel).PrintScreens = PrintScreens;                        
                     }
-                    
+                    */
                     dialogResult = (bool)_LooseXaml.ShowDialog("PrintPDFPrinterDialogView", printPDFPrinterDialogViewModel);
                     
                 }
