@@ -34,7 +34,7 @@ using System.Collections;
 [Export("PrintPDFQuantityDialog", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("Druckdialog mit Mengeneingabe öffnen")]
-[EnabledScript(false)]
+[EnabledScript(true)]
 public class PrintPDFQuantityDialog : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit//, IPartImportsSatisfiedNotification // TODO MESSAGING
 {
     [Import("PrintPDFQuantityInputViewModel")]
@@ -73,7 +73,7 @@ public class PrintPDFQuantityDialog : UserExitCustomBase, HomagGroup.FLS.Infrast
                     if (viewReportBindings.FirstOrDefault().ReportLayout == "FittingSeriesLabel")
                     {
                         (printPDFQuantityInputViewModel as PrintPDFQuantityInputViewModel).LabelText = "Anzahl Etiketten:";
-                        (printPDFQuantityInputViewModel as PrintPDFQuantityInputViewModel).PrintQuantity = viewReportBindings.FirstOrDefault().ReportField01.ToInt32();
+                        //(printPDFQuantityInputViewModel as PrintPDFQuantityInputViewModel).PrintQuantity = viewReportBindings.FirstOrDefault().ReportField01.ToInt32();
                     }
                     else
                     {
