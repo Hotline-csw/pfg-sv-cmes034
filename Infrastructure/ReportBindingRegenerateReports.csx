@@ -29,7 +29,7 @@ using System.Collections;
 [Export("ReportBindingRegenerateReports", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("Druckzentrale - Report(s) neu generieren")]
-[EnabledScript(false)]
+[EnabledScript(true)]
 public class ReportBindingRegenerateReports : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit
 {
     [Import]
