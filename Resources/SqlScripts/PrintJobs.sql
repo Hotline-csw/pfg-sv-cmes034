@@ -8,7 +8,7 @@ CREATE TABLE[cust].[PrintJobs]
     ProductionOrderCode             nvarchar(32)    null,                       -- Production order
     CustomerOrderCode               nvarchar(32)    null,                       -- Customer order
     CustomerOrderPosition           nvarchar(32)    null,                       -- Customer order position
-    //StackCode                       nvarchar(32)    null,                       -- Stapelnummer
+    --StackCode                       nvarchar(32)    null,                       -- Stapelnummer
     OptimizationCode                nvarchar(32)    null,                       -- Optimierungsnummer
     WorkOrder                       nvarchar(32)    null,                       -- Werksauftrag
     Quantity                        int             null,                       -- Menge
