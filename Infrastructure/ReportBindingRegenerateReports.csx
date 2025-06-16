@@ -96,12 +96,12 @@ public class ReportBindingRegenerateReports : UserExitCustomBase, HomagGroup.FLS
                                 else
                                 {
                                     reportBinding.BinariesSequence = 0;
-                                    
+                                    /*
                                     if (reportBinding.MergePDFSequence > 0)
                                     {
                                         reportBinding.MergePDFSequence = 0;
                                     }
-                                    
+                                    */
                                     if (reportBinding.ReportLayout == "AssemblyManual") // Montageanleitung
                                     {
                                         (assemblyManualMethods as AssemblyManualMethods).CreateAssemblyManual(_Logger, unitOfWork, reportBinding);
