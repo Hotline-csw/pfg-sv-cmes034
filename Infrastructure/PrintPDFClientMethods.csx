@@ -228,6 +228,7 @@ public class PrintPDFClientMethods : UserExitCustomBase, HomagGroup.FLS.Infrastr
     }
     
     // Beauftragung Druck mit PrintScreens-Kollektion - z.B. bei Packstückeingabe
+/*
     public void ExecutePrintWithPrintScreens(Logger logger, IEnumerable<CustPrintScreen> printScreens, CustPrinterDefault printer)
     {
         using (var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
@@ -315,11 +316,12 @@ public class PrintPDFClientMethods : UserExitCustomBase, HomagGroup.FLS.Infrastr
 			}
         }
     }
-       
+*/       
     
     // Liste von PrintScreen-Objekten
+/*    
     public List<CustPrintScreen> PrintScreens { get; set; }
-    
+*/    
     
     // Druck Bauteiletikett auf Defaultdrucker
     public bool PrintPartLabelDefaultPrinter(Logger logger, List<string> productionItemCodes)
