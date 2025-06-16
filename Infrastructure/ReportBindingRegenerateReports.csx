@@ -96,6 +96,7 @@ public class ReportBindingRegenerateReports : UserExitCustomBase, HomagGroup.FLS
                                 else
                                 {
                                     reportBinding.BinariesSequence = 0;
+                                    
                                     /*
                                     if (reportBinding.MergePDFSequence > 0)
                                     {
@@ -110,8 +111,9 @@ public class ReportBindingRegenerateReports : UserExitCustomBase, HomagGroup.FLS
                                     }
                                     */
                                     
-                                    else // alle anderen Reports
-                                    {
+                                    // else // alle anderen Reports
+                                    //{
+                                    
                                         if (reportBinding.ReportLayout == "FittingLabelBE" &&
                                             (String.IsNullOrEmpty(reportBinding.ProductionOrderCode) || 
                                             String.IsNullOrEmpty(reportBinding.ProductionOrderCode)))
@@ -155,26 +157,28 @@ public class ReportBindingRegenerateReports : UserExitCustomBase, HomagGroup.FLS
                                         {
                                             // Standartweg
                                             (binaryFromReportMethods as BinaryFromReportMethods)
-                                                .CreateReportBindingBinary( reportBinding.ReportLayout, 
+                                                .CreateReportBindingBinary( 
+                                                                            reportBinding.ReportLayout, 
                                                                             reportBinding.ReportSequence, 
-                                                                            reportBinding.PlanningGroup,
-                                                                            reportBinding.WorkOrder,
-                                                                            reportBinding.VirtualCartCode,
+                                                                            //reportBinding.PlanningGroup,
+                                                                            //reportBinding.WorkOrder,
+                                                                            //reportBinding.VirtualCartCode,
                                                                             reportBinding.OptimizationCode,
                                                                             reportBinding.ProductionOrderCode,
                                                                             reportBinding.ProductionItemCode,
-                                                                            reportBinding.DateReportRelevance,
-                                                                            reportBinding.TrainStation,
-                                                                            reportBinding.TrainStationDescription,
+                                                                            //reportBinding.DateReportRelevance,
+                                                                            //reportBinding.TrainStation,
+                                                                            //reportBinding.TrainStationDescription,
                                                                             reportBinding.CustomerOrderCode,
-                                                                            reportBinding.CustomerOrderPosition,
-                                                                            reportBinding.CapacitySequenceCode,
-										                                    reportBinding.CapacitySequenceDescription,
-                                                                            reportBinding.TaggedLinesGroupName,
-                                                                            reportBinding.ReportField01,
-                                                                            reportBinding.ReportField02);
+                                                                            reportBinding.CustomerOrderPosition
+                                                                            //reportBinding.CapacitySequenceCode,
+										                                    //reportBinding.CapacitySequenceDescription,
+                                                                            //reportBinding.TaggedLinesGroupName,
+                                                                            //reportBinding.ReportField01,
+                                                                            //reportBinding.ReportField02
+                                                                            );
                                         }
-                                    }
+                                    //}
                                     
                                     showRegenerateBallon = true; // Infoballon für Neugenerierung aktivieren
                                 }
