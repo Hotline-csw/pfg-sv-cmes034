@@ -40,10 +40,10 @@ public class ReportBindingRegenerateReports : UserExitCustomBase, HomagGroup.FLS
         
     [Import("BinaryFromReportMethods")]
     HomagGroup.FLS.Infrastructure.Common.Customization.IGlobalCustomization binaryFromReportMethods;
-    
+/*    
     [Import("AssemblyManualMethods")]
     HomagGroup.FLS.Infrastructure.Common.Customization.IGlobalCustomization assemblyManualMethods;
-    
+*/    
     [Import("InfoBallonMessage")]
     HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization infoBallonMessage;
     
@@ -102,10 +102,14 @@ public class ReportBindingRegenerateReports : UserExitCustomBase, HomagGroup.FLS
                                         reportBinding.MergePDFSequence = 0;
                                     }
                                     */
+                                    
+                                    /*
                                     if (reportBinding.ReportLayout == "AssemblyManual") // Montageanleitung
                                     {
                                         (assemblyManualMethods as AssemblyManualMethods).CreateAssemblyManual(_Logger, unitOfWork, reportBinding);
                                     }
+                                    */
+                                    
                                     else // alle anderen Reports
                                     {
                                         if (reportBinding.ReportLayout == "FittingLabelBE" &&
@@ -121,24 +125,26 @@ public class ReportBindingRegenerateReports : UserExitCustomBase, HomagGroup.FLS
                                             if (productionOrder != null)
                                             {
                                                 (binaryFromReportMethods as BinaryFromReportMethods)
-                                                .CreateReportBindingBinary( reportBinding.ReportLayout, 
+                                                .CreateReportBindingBinary( 
+                                                                            reportBinding.ReportLayout, 
                                                                             reportBinding.ReportSequence, 
-                                                                            reportBinding.PlanningGroup,
-                                                                            reportBinding.WorkOrder,
-                                                                            reportBinding.VirtualCartCode,
+                                                                            //reportBinding.PlanningGroup,
+                                                                            //reportBinding.WorkOrder,
+                                                                            //reportBinding.VirtualCartCode,
                                                                             reportBinding.OptimizationCode,
                                                                             productionOrder.Code,
                                                                             productionOrder.Code,
-                                                                            reportBinding.DateReportRelevance,
-                                                                            reportBinding.TrainStation,
-                                                                            reportBinding.TrainStationDescription,
+                                                                            //reportBinding.DateReportRelevance,
+                                                                            //reportBinding.TrainStation,
+                                                                            //reportBinding.TrainStationDescription,
                                                                             reportBinding.CustomerOrderCode,
-                                                                            reportBinding.CustomerOrderPosition,
-                                                                            reportBinding.CapacitySequenceCode,
-										                                    reportBinding.CapacitySequenceDescription,
-                                                                            reportBinding.TaggedLinesGroupName,
-                                                                            reportBinding.ReportField01,
-                                                                            reportBinding.ReportField02);
+                                                                            reportBinding.CustomerOrderPosition
+                                                                            //reportBinding.CapacitySequenceCode,
+										                                    //reportBinding.CapacitySequenceDescription,
+                                                                            //reportBinding.TaggedLinesGroupName,
+                                                                            //reportBinding.ReportField01,
+                                                                            //reportBinding.ReportField02
+                                                                            );
                                             }
                                             else
                                             {
