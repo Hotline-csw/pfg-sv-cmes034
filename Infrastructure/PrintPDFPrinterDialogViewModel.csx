@@ -27,7 +27,7 @@
 [Export("PrintPDFPrinterDialogViewModel", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.IDialogViewModel))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("View Model für Dialog Druckeinstellung")]
-[EnabledScript(false)]
+[EnabledScript(true)]
 public class PrintPDFPrinterDialogViewModel : HomagGroup.Base.UI.Windows.DialogBaseViewModel, HomagGroup.FLS.Infrastructure.Framework.Contracts.IDialogViewModel
 {
     [Import]
@@ -434,6 +434,7 @@ public class PrintPDFPrinterDialogViewModel : HomagGroup.Base.UI.Windows.DialogB
                 //2022-11-16 B.Schmidt
                 //Prüfen ob es sich um einen Druck aus Binaries oder PrintScreen handelt
                 //Druck aus Binary an Print PDF
+/*                
                 if(BinariesSequence!=null && PrintScreens == null)
                 {
                     _Logger.Info($"{BinariesSequence.Count().ToString()} Binaries auf {printer.Printer} drucken");
@@ -459,8 +460,36 @@ public class PrintPDFPrinterDialogViewModel : HomagGroup.Base.UI.Windows.DialogB
             	        }
         	        }
                 }
+*/               
+                if(BinariesSequence!=null)
+                {
+                    _Logger.Info($"{BinariesSequence.Count().ToString()} Binaries auf {printer.Printer} drucken");
+                    
+                    using (var unitOfWork = _UnitOfWorkFactory.CreateUnitOfWork())
+                    {
+                        foreach (var binariesSequence in BinariesSequence)
+                        {
+                            (printPDFMethods as PrintPDFMethods).CreatePDFPrintJob(_Logger, unitOfWork, binariesSequence, printer, PrintQuantity);
+                        }
+                    }
+                    
+                    if (BinariesSequence.Count() > 0 )
+                    {
+                        if (_ShowInfoBallon)
+                        {
+                            string printJobWording = PrintQuantity == 1 ? "Druckauftrag" : "Druckaufträge";
+                            string reportWording = BinariesSequence.Count() == 1 ? "Report" : "Reports";
+            				(infoBallonMessage as InfoBallonMessage).UserFeedback(this.Name
+            						, PrintQuantity.ToString() + " " + printJobWording + " für " + BinariesSequence.Count().ToString() + " " + reportWording + " an Drucker\n" + printer.Printer + "\ngesendet."
+            						, 6000
+            						, HomagGroup.Base.UI.DeviceState.Ok);
+            	        }
+        	        }
+                }
+
                 _Logger.Debug($"test2");
                 //Beauftragung über PrintScreen
+/*                
                 if(PrintScreen != null )
                 {
                     _Logger.Debug($"Druck PrintScreen1");
@@ -523,7 +552,7 @@ public class PrintPDFPrinterDialogViewModel : HomagGroup.Base.UI.Windows.DialogB
                     ExecutePrintWithPrintScreens(_Logger, PrintScreens, printer);
         
                 }
-                
+ */               
                 // Dialog nach Druckbeauftragung schließen
                 this.DialogResult = true;
             }
