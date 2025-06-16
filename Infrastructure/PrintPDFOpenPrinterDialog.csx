@@ -29,7 +29,7 @@ using System.Collections;
 [Export("PrintPDFOpenPrinterDialog", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("Druckdialog öffnen")]
-[EnabledScript(false)]
+[EnabledScript(true)]
 public class PrintPDFOpenPrinterDialog : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit
 {
     [Import]
