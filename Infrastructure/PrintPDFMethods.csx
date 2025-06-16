@@ -27,7 +27,7 @@ using System.ComponentModel;
 [Export("PrintPDFMethods", typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IGlobalCustomization))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("Methoden zum Druck mit WebPDF")]
-[EnabledScript(false)]
+[EnabledScript(true)]
 public class PrintPDFMethods : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Common.Customization.IGlobalCustomization
 {   
     public void CreatePDFPrintJob(Logger logger, IUnitOfWork unitOfWork, int binariesSequence, CustPrinterDefault printer, int printQuantity)
@@ -127,11 +127,16 @@ public class PrintPDFMethods : UserExitCustomBase, HomagGroup.FLS.Infrastructure
             
             if(productionItem!=null)
             {
+                
+                return true;
+                
                 //Der Aufkleber wird nur gedruckt, wenn in der Stückliste der Artikel "Z109272" vorhanden ist
+                /*
                 if(productionItem.ProductionOrder.ProductionOrdersResources.Any(x=>x.CustomArticleNumber=="Z109272"))
                 {
                     return true;
                 }
+                */
             }
             else
             {
