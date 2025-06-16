@@ -27,7 +27,7 @@
 [Export("PrintPDFQuantityInputViewModel", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.IDialogViewModel))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("generated Class")]
-[EnabledScript(false)]
+[EnabledScript(true)]
 public class PrintPDFQuantityInputViewModel : HomagGroup.Base.UI.Windows.DialogBaseViewModel, HomagGroup.FLS.Infrastructure.Framework.Contracts.IDialogViewModel
 {
     [Import]
