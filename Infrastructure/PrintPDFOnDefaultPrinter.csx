@@ -29,7 +29,7 @@ using System.Collections;
 [Export("PrintPDFOnDefaultPrinter", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("PrintPDF - Drucken auf Default-Drucker")]
-[EnabledScript(false)]
+[EnabledScript(true)]
 public class PrintPDFOnDefaultPrinter : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit
 {
     [Import]
