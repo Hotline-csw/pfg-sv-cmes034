@@ -25,7 +25,7 @@ using System.ComponentModel;
 [Export("BinaryFromReportMethods", typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IGlobalCustomization))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("Methoden um im Hintergrund Binary aus Report zu erzeugen")]
-[EnabledScript(false)]
+[EnabledScript(true)]
 public class BinaryFromReportMethods : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Common.Customization.IGlobalCustomization
 {
     [Import]
@@ -38,7 +38,7 @@ public class BinaryFromReportMethods : UserExitCustomBase, HomagGroup.FLS.Infras
 											string reportLayout, 
                                             Int64 reportSequence, 
                                             //string planningGroup, 
-                                            string workOrder, 
+                                            //string workOrder, 
                                             //string virtualCartCode, 
                                             string optimizationCode, 
                                             string productionOrderCode, 
@@ -70,7 +70,7 @@ public class BinaryFromReportMethods : UserExitCustomBase, HomagGroup.FLS.Infras
                                                             report, 
                                                             reportSequence, 
                                                             //planningGroup, 
-                                                            workOrder, 
+                                                            //workOrder, 
                                                             // virtualCartCode,
                                                             optimizationCode, 
                                                             // dateReportRelevance,
@@ -114,21 +114,22 @@ public class BinaryFromReportMethods : UserExitCustomBase, HomagGroup.FLS.Infras
                 if (report != null)
                 {                   
                     // Report-Binding erzeugen / aktualisieren
-                    var reportBinding = CreateReportBinding(unitOfWork, 
+                    var reportBinding = CreateReportBinding(
+                                                            unitOfWork, 
                                                             report, 
                                                             reportSequence, 
                                                             //planningGroup, 
-                                                            workOrder, 
-                                                            //string.Empty,    // VirtualCartCode 
+                                                            //workOrder, 
+                                                            //string.Empty,         // VirtualCartCode 
                                                             optimizationCode, 
                                                             // dateReportRelevance, 
                                                             "CreateReportBindingBinary",
-                                                            string.Empty,   // ProductionOrderCode
-                                                            string.Empty,   // ProductionItemCode
-                                                            string.Empty,   // CustomerOrderCode
-                                                            string.Empty   // CustomerOrderPosition
-                                                            // string.Empty,   // TrainStation
-                                                            // string.Empty    // TrainStationDescription
+                                                            string.Empty,           // ProductionOrderCode
+                                                            string.Empty,           // ProductionItemCode
+                                                            string.Empty,           // CustomerOrderCode
+                                                            string.Empty            // CustomerOrderPosition
+                                                            // string.Empty,        // TrainStation
+                                                            // string.Empty         // TrainStationDescription
                                                             );
                     
                     // Binary erzeugen und an Report-Binding speichern
@@ -423,6 +424,7 @@ public class BinaryFromReportMethods : UserExitCustomBase, HomagGroup.FLS.Infras
     }
     
     // Datum zu Werkauftrag ermitteln
+/*    
     public DateTime GetDateWorkOrder (IUnitOfWork unitOfWork, string workOrder)
     {
         DateTime returnValue = new DateTime();
@@ -449,7 +451,7 @@ public class BinaryFromReportMethods : UserExitCustomBase, HomagGroup.FLS.Infras
         return returnValue;
         
     }
-    
+*/    
     
     
     
@@ -480,16 +482,16 @@ public class BinaryFromReportMethods : UserExitCustomBase, HomagGroup.FLS.Infras
 													fittingLabelReport.Layout, 
                                                     reportSequence, 
                                                     //planningGroup, 
-                                                    workOrder,
+                                                    //workOrder,
+                                                    //string.Empty,         // VirtiaulCartCode?
                                                     string.Empty,
-                                                    string.Empty,
-                                                    string.Empty, // ProductionOrderCode
-                                                    string.Empty, // ProductionItemCode
+                                                    string.Empty,           // ProductionOrderCode
+                                                    string.Empty,           // ProductionItemCode
                                                     // dateReportRelevance,
-                                                    //string.Empty, // TrainStation
-                                                    //string.Empty, // TrainStationDescription
-                                                    string.Empty, // CustomerOrderCode
-                                                    string.Empty  // CustomerOrderPosition
+                                                    //string.Empty,         // TrainStation
+                                                    //string.Empty,         // TrainStationDescription
+                                                    string.Empty,           // CustomerOrderCode
+                                                    string.Empty            // CustomerOrderPosition
                                                     );
                 //}
             }
@@ -511,16 +513,16 @@ public class BinaryFromReportMethods : UserExitCustomBase, HomagGroup.FLS.Infras
 													fittingListReport.Layout, 
                                                     reportSequence, 
                                                     //planningGroup, 
-                                                    workOrder,
+                                                    //workOrder,
+                                                    //string.Empty,         // VirtiaulCartCode?
                                                     string.Empty,
-                                                    string.Empty,
-                                                    string.Empty, // ProductionOrderCode
-                                                    string.Empty, // ProductionItemCode
+                                                    string.Empty,           // ProductionOrderCode
+                                                    string.Empty,           // ProductionItemCode
                                                     // dateReportRelevance,
-                                                    //string.Empty, // TrainStation
-                                                    //string.Empty, // TrainStationDescription
-                                                    string.Empty, // CustomerOrderCode
-                                                    string.Empty  // CustomerOrderPosition
+                                                    //string.Empty,         // TrainStation
+                                                    //string.Empty,         // TrainStationDescription
+                                                    string.Empty,           // CustomerOrderCode
+                                                    string.Empty            // CustomerOrderPosition
                                                     );
                 //}
             }
@@ -546,24 +548,26 @@ public class BinaryFromReportMethods : UserExitCustomBase, HomagGroup.FLS.Infras
                 //{
                     logger.Info($"Binary Report Beschlagbeutel-Etikett Serienaufträg zu FA {productionOrder.Code}");   
             
-                    CreateReportBindingBinary(fittingLabelReport.Layout, 
+                    CreateReportBindingBinary(
+                                                fittingLabelReport.Layout, 
                                                 productionOrder.Sequence, 
                                                 //productionOrder.CustomPlanningGroup, 
-                                                productionOrder.CustomWorkOrder,
-                                                //string.Empty,         // VirtualCartCode
-                                                string.Empty,         // OptimizationCode
-                                                productionOrder.Code, // ProductionOrderCode
-                                                productionOrder.Code, // ProductionItemCode
-                                                (DateTime)productionOrder.DesiredStartDate,
+                                                //productionOrder.CustomWorkOrder,
+                                                //string.Empty,                         // VirtualCartCode
+                                                string.Empty,                           // OptimizationCode
+                                                productionOrder.Code,                   // ProductionOrderCode
+                                                productionOrder.Code,                   // ProductionItemCode
+                                                //(DateTime)productionOrder.DesiredStartDate,
                                                 //productionOrder.CustomTrainStation,           
                                                 //productionOrder.CustomTrainStationDescription,
     											productionOrder.CustomerOrderCode,
-    											productionOrder.CustomerOrderPosition,
+    											productionOrder.CustomerOrderPosition
     											//productionOrder.CustomCapacitySequenceCode,
-    											productionOrder.CustomCapacitySequence,
-    											// null,                // TaggedLinesGroupName
-    											productionOrder.DesiredTargetQuantity.ToString(),
-    											"20");
+    											//productionOrder.CustomCapacitySequence,
+    											// null,                                 // TaggedLinesGroupName
+    											//productionOrder.DesiredTargetQuantity.ToString(),
+    											//"20"
+    											);
                 //}
             }
         }
@@ -580,24 +584,26 @@ public class BinaryFromReportMethods : UserExitCustomBase, HomagGroup.FLS.Infras
                 //{
                     logger.Info($"Binary Report Beschlagbeutel-Kommissionierliste Serienaufträg zu FA {productionOrder.Code}");   
             
-                    CreateReportBindingBinary(fittingListReport.Layout, 
+                    CreateReportBindingBinary(
+                                                fittingListReport.Layout, 
                                                 productionOrder.Sequence, 
                                                 //productionOrder.CustomPlanningGroup, 
-                                                productionOrder.CustomWorkOrder,
-                                                //string.Empty,         // VirtualCartCode
-                                                string.Empty,         // OptimizationCode
-                                                productionOrder.Code, // ProductionOrderCode
-                                                productionOrder.Code, // ProductionItemCode
-                                                (DateTime)productionOrder.DesiredStartDate,
+                                                //productionOrder.CustomWorkOrder,
+                                                //string.Empty,             // VirtualCartCode
+                                                string.Empty,               // OptimizationCode
+                                                productionOrder.Code,       // ProductionOrderCode
+                                                productionOrder.Code,       // ProductionItemCode
+                                                //(DateTime)productionOrder.DesiredStartDate,
                                                 //productionOrder.CustomTrainStation,           
                                                 //productionOrder.CustomTrainStationDescription,
     											productionOrder.CustomerOrderCode,
-    											productionOrder.CustomerOrderPosition,
+    											productionOrder.CustomerOrderPosition
     											//productionOrder.CustomCapacitySequenceCode,
-    											productionOrder.CustomCapacitySequence,
-    											// null,                // TaggedLinesGroupName
-    											null,                // ReportField01
-    											null);               // ReportField01
+    											//productionOrder.CustomCapacitySequence
+    											// null,                     // TaggedLinesGroupName
+    											// null,                     // ReportField01
+    											// null                      // ReportField01
+    											);               
                 //}
             }
         }
@@ -622,16 +628,16 @@ public class BinaryFromReportMethods : UserExitCustomBase, HomagGroup.FLS.Infras
 													"PartLabel", 
                                                     productionItem.Sequence, 
                                                     //productionOrder.CustomPlanningGroup, 
-                                                    productionOrder.CustomWorkOrder,
-                                                    //string.Empty, // VirtualCartCode   
-                                                    string.Empty, // OptimizationCode
-                                                    productionOrder.Code, // ProductionOrderCode
-                                                    productionItem.Code, // ProductionItemCode
-                                                    (DateTime)productionStepStartDateMin,
-                                                    //productionOrder.CustomTrainStation, // TrainStation
-                                                    //productionOrder.CustomTrainStationDescription, // TrainStationDescription
-                                                    productionOrder.CustomerOrderCode, // CustomerOrderCode
-                                                    productionOrder.CustomerOrderPosition  // CustomerOrderPosition
+                                                    //productionOrder.CustomWorkOrder,
+                                                    //string.Empty,                                     // VirtualCartCode   
+                                                    string.Empty,                                       // OptimizationCode
+                                                    productionOrder.Code,                               // ProductionOrderCode
+                                                    productionItem.Code,                                // ProductionItemCode
+                                                    //(DateTime)productionStepStartDateMin,
+                                                    //productionOrder.CustomTrainStation,               // TrainStation
+                                                    //productionOrder.CustomTrainStationDescription,    // TrainStationDescription
+                                                    productionOrder.CustomerOrderCode,                  // CustomerOrderCode
+                                                    productionOrder.CustomerOrderPosition               // CustomerOrderPosition
                                                     );
                 }
                 else
