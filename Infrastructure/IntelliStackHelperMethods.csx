@@ -80,7 +80,8 @@ public class IntelliStackHelperMethods : UserExitCustomBase, HomagGroup.FLS.Infr
                 
                 foreach(var productionItem in items)
                 {
-                            int sorterAssemblyUnit = productionItem.SorterItems.Select(x => x.AssemblyUnit).FirstOrDefault();
+                     /*
+                     int sorterAssemblyUnit = productionItem.SorterItems.Select(x => x.AssemblyUnit).FirstOrDefault();
                     
                     if (stackStructure.OrderingRelevance == YesNo.Yes)
                     {
@@ -99,6 +100,7 @@ public class IntelliStackHelperMethods : UserExitCustomBase, HomagGroup.FLS.Infr
                             subTarget = productionItem.ProductionOrder.CustomerOrderCode + "_" + productionItem.ProductionOrder.CustomerOrderPosition + "_" + sorterAssemblyUnit.ToString();
                         }
                     }
+                    */
                     
                     var partToStack = new PartToStack();
                     
