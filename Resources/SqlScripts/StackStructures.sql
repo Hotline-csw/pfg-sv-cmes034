@@ -27,7 +27,7 @@ CREATE TABLE [cust].[StackStructures]
                                                                                 --   0 = Reihenfolge muss beachtet werden
                                                                                 --   1 = Reihenfolge durch Stapelmodul bestimmbar
                                                                                 -- Übergabe an Stapelmodul in "AccessGroupFeature"
-    StackReversable                 int             not null,                   -- Umkehrbarkeit eines Stapels
+    StackReversable                 int             not null default 0,         -- Umkehrbarkeit eines Stapels
                                                                                 --   0 = Umgekehrter Stapel ist nicht mehr stabil
                                                                                 --   1 = Umgekehrter Stapel ist stabil
     BaseBoardList                   nvarchar(256)   not null,                   -- Liste von ein oder mehreren Schonerplatten,
