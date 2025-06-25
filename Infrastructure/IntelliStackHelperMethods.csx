@@ -457,7 +457,9 @@ public class IntelliStackHelperMethods : UserExitCustomBase, HomagGroup.FLS.Infr
         
         }
     }
-	
+
+/* S.Feist - Deaktivierung für die testumgebung
+
 	public void UpdateHandlingItemsAndSorterItems(IUnitOfWork unitOfWork, List<HomagGroup.FLS.Domain.Data.Stack> stacks, Logger logger)
 	{
 	   foreach (var stack in stacks)
@@ -523,7 +525,8 @@ public class IntelliStackHelperMethods : UserExitCustomBase, HomagGroup.FLS.Infr
 	   
 	   unitOfWork.Save ();
 	}
-	
+*/
+
 	public bool CheckIsResultValid(IUnitOfWork unitOfWork,List<ProductionItem> productionItems, List<HomagGroup.FLS.Domain.Data.Stack> stacks, Logger logger)
 	{
 	   //Prüfen ob alle Teile die angefordert waren auch in einem Stapel auftauchen, wenn nicht liegt ein Fehler vor
