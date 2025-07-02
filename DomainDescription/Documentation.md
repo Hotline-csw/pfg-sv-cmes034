@@ -1041,7 +1041,7 @@
 | MaxStackHeight| System.Decimal| MaxStackHeight| MaxStackHeight| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_MaxStackHeight| | | | 
 | ModificationDate| System.DateTime| Date of change| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationDate| | | | 
 | ModificationSource| System.String| Change source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_ModificationSource| | | | 
-| OrderingRelevance| System.Int32| OrderingRelevance| OrderingRelevance| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OrderingRelevance| | | | 
+| OrderingRelevance| [YesNo](#yesno)| OrderingRelevance| OrderingRelevance| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_CustStackStructure_OrderingRelevance| | 0 | | 
 | Orientation| System.Int32| Orientation| Orientation| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_Orientation| | | | 
 | OverlapMaxXMinus| System.Decimal| OverlapMaxXMinus| OverlapMaxXMinus| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapMaxXMinus| | | | 
 | OverlapMaxXMinus2| System.Decimal| OverlapMaxXMinus2| OverlapMaxXMinus2| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_OverlapMaxXMinus2| | | | 
@@ -1060,10 +1060,10 @@
 | PartsInXDirection| System.Int32| PartsInXDirection| PartsInXDirection| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_PartsInXDirection| | | | 
 | PartsInYDirection| System.Int32| PartsInYDirection| PartsInYDirection| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_PartsInYDirection| | | | 
 | Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
-| StackReversable| System.Int32| StackReversable| StackReversable| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_StackReversable| | | | 
+| StackReversable| [YesNo](#yesno)| StackReversable| StackReversable| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_CustStackStructure_StackReversable| | 0 | | 
 | StackStructureCode| System.Int32| StackStructureCode| StackStructureCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_StackStructureCode| | | | 
-| UseAlternatingOffset| System.Int32| UseAlternatingOffset| UseAlternatingOffset| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_UseAlternatingOffset| | | | 
-| UseLaneLimits| System.Int32| UseLaneLimits| UseLaneLimits| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_UseLaneLimits| | | | 
+| UseAlternatingOffset| [YesNo](#yesno)| UseAlternatingOffset| UseAlternatingOffset| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_CustStackStructure_UseAlternatingOffset| | 0 | | 
+| UseLaneLimits| [YesNo](#yesno)| UseLaneLimits| UseLaneLimits| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [YesNo](#yesno) | FN_CustStackStructure_UseLaneLimits| | 0 | | 
 ## 1.33 DeviceFunction : IEntityDescription
 ## DeviceFunction
 | IsDataCompletion | IsCustom | ResourceKey | Name | DisplayName | Description | DescriptionSpecified | ValidationUserExit | BeforeSaveUserExitName | BeforeSaveUserExit | AfterSaveUserExitName | AfterSaveUserExit | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DisplayNameSpecified | DbTableName | NotifyChanges | DefaultDisplayGroupName | DefaultDisplayGroupXPath 
