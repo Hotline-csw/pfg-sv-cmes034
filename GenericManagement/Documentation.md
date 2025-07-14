@@ -1,7 +1,7 @@
 # 1 ProgrammSettings : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|false|true|false|Information|100079|ProgramSetting||Management Tiles|false|false|false||true|ProgrammSettings|||||Small|||0|
+|false|false|true|false|Information|100079|ProgramSetting||Management Tiles|false|false|false||true|ProgrammSettings|||||Medium|||0|
 # 2 MasterProgressWorkCenterCustomerOrder : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
@@ -1273,7 +1273,7 @@
 # 7 MasterManualFeedback : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|false|false|false|Information|100141|CustViewMasterManualFeedback||Action|false|false|false||true|MasterManualFeedback||||table|Small|||0|
+|false|false|false|false|Information|100141|CustViewMasterManualFeedback||Action|false|false|false||true|MasterManualFeedback||||table|Medium|||0|
 ## 7.1 FeedbackCutting : CommandUserExitContextMenu
 |FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
 |--|--|--|--|--|
@@ -1429,11 +1429,11 @@
 # 11 OptimizationRulesAreas : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10235|OptimizationRulesArea||Management|false|false|false||true|OptimizationRulesAreas|||||Small|||0|
+|false|true|true|true|Production|10235|OptimizationRulesArea||Management|false|false|false||true|OptimizationRulesAreas|||||Medium|||0|
 # 12 OptimizationRules : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10236|OptimizationRule||Management|false|false|false||true|OptimizationRules|||||Small|||0|
+|false|true|true|true|Production|10236|OptimizationRule||Management|false|false|false||true|OptimizationRules|||||Medium|||0|
 # 13 OptimizationRulesAllocations : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
@@ -1445,7 +1445,7 @@
 # 15 CustomerOrder : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|false|false|false|Production|10016|CustomerOrder||Action|false|false|false||true|CustomerOrder||||EmptyTile.png|Small|EmptyTileView|EmptyTileViewMode|0|
+|false|false|false|false|Production|10016|CustomerOrder||Action|false|false|false||true|CustomerOrder||||EmptyTile.png|Medium|EmptyTileView|EmptyTileViewMode|0|
 ## 15.1 ProductionOrders : DetailListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DisplayName|DisplayOrder|Filter|IsSecondary|IsSortable|Name|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|
@@ -1729,7 +1729,7 @@
 # 18 EdgePass : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|false|false|false|Production|10205|EdgePass|ProductionStep.DisposeState="Scheduled"|Action|false|false|false||true|EdgePass||||EmptyTile.png|Small|EmptyTileView|EmptyTileViewMode|0|
+|false|false|false|false|Production|10205|EdgePass|ProductionStep.DisposeState="Scheduled"|Action|false|false|false||true|EdgePass||||EmptyTile.png|Medium|EmptyTileView|EmptyTileViewMode|0|
 ## 18.1 NavigateFromEdgePassesToProductionOrder : CommandUserExitContextMenu
 |FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
 |--|--|--|--|--|
@@ -1793,11 +1793,11 @@
 # 19 WorkCenter : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10009|WorkCenter||Management|false|false|false||true|WorkCenter|||||Small|||0|
+|false|true|true|true|Production|10009|WorkCenter||Management|false|false|false||true|WorkCenter|||||Medium|||0|
 # 20 WccStagingRecords : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|false|false|false|Production|10150|WccStagingRecord||Management|false|false|false||true|WccStagingRecords||||EmptyTile.png|Small|EmptyTileView|EmptyTileViewMode|0|
+|false|false|false|false|Production|10150|WccStagingRecord||Management|false|false|false||true|WccStagingRecords||||EmptyTile.png|Medium|EmptyTileView|EmptyTileViewMode|0|
 ## 20.1 NavigateToImportMessage : CommandUserExitContextMenu
 |FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
 |--|--|--|--|--|
@@ -1849,7 +1849,7 @@
 # 22 CsvStagingRecords : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|false|false|false|Production|10162|CsvStagingRecord||Management|false|false|false||true|CsvStagingRecords||||EmptyTile.png|Small|EmptyTileView|EmptyTileViewMode|0|
+|false|false|false|false|Production|10162|CsvStagingRecord||Management|false|false|false||true|CsvStagingRecords||||EmptyTile.png|Medium|EmptyTileView|EmptyTileViewMode|0|
 ## 22.1 NavigateToImportMessage : CommandUserExitContextMenu
 |FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
 |--|--|--|--|--|
@@ -1941,7 +1941,7 @@
 # 26 Routes : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10010|Route||Management|false|false|false||true|Routes|||||Small|||0|
+|false|true|true|true|Production|10010|Route||Management|false|false|false||true|Routes|||||Medium|||0|
 ## 26.1 ProductionRouteSteps : DetailListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DisplayName|DisplayOrder|Filter|IsSecondary|IsSortable|Name|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|
@@ -1949,15 +1949,15 @@
 # 27 TemplateRouteSteps : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10026|ProductionRouteStep||Management|false|false|false||true|TemplateRouteSteps|||||Small|||0|
+|false|true|true|true|Production|10026|ProductionRouteStep||Management|false|false|false||true|TemplateRouteSteps|||||Medium|||0|
 # 28 ProductionStage : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10183|ProductionStage||Management|false|false|false||true|ProductionStage|||||Small|||0|
+|false|true|true|true|Production|10183|ProductionStage||Management|false|false|false||true|ProductionStage|||||Medium|||0|
 # 29 WccFindRoute : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10148|WccFindRoute||DC|false|false|false||true|WccFindRoute|||||Small|||0|
+|false|true|true|true|Production|10148|WccFindRoute||DC|false|false|false||true|WccFindRoute|||||Medium|||0|
 ## 29.1 ErpWorkflow : CellStyleCondition
 |Background|Cell|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|--|
@@ -2045,7 +2045,7 @@
 # 32 CsvFindRoute : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10163|CsvFindRoute||DC|false|false|false||true|CsvFindRoute|||||Small|||0|
+|false|true|true|true|Production|10163|CsvFindRoute||DC|false|false|false||true|CsvFindRoute|||||Medium|||0|
 ## 32.1 ErpWorkflow : CellStyleCondition
 |Background|Cell|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|--|
@@ -2097,7 +2097,7 @@
 # 34 EdgeGrooveLibrary : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10196|EdgeGrooveLibrary||DC|false|false|false||true|EdgeGrooveLibrary|||||Small|||0|
+|false|true|true|true|Production|10196|EdgeGrooveLibrary||DC|false|false|false||true|EdgeGrooveLibrary|||||Medium|||0|
 ## 34.1 DistanceLeftCovered : CellStyleCondition
 |Background|Cell|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|--|
@@ -2133,7 +2133,7 @@
 # 36 WorkerInformationSystem : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|false|false|false|Production|10048|ProductionOrder|OrderType = 1|Action|false|false|false||true|WorkerInformationSystem|FurnitureLabelPO|||Assembly|Small|EmptyTileView|EdgePreviewTileViewModel|0|
+|false|false|false|false|Production|10048|ProductionOrder|OrderType = 1|Action|false|false|false||true|WorkerInformationSystem|FurnitureLabelPO|||Assembly|Medium|EmptyTileView|EdgePreviewTileViewModel|0|
 ## 36.1 GoFromProductionOrderToReproduction.3 : LinkContextMenu
 |GenericName|Header|HelpText|Modul|Name|
 |--|--|--|--|--|
@@ -2213,7 +2213,7 @@
 # 37 EdgeProcessings : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10096|EdgeProcessing||DataCompletion|false|false|false||true|EdgeProcessings|||||Small|||0|
+|false|true|true|true|Production|10096|EdgeProcessing||DataCompletion|false|false|false||true|EdgeProcessings|||||Medium|||0|
 ## 37.1 Binaries : DetailImageView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
@@ -2249,7 +2249,7 @@
 # 38 EdgeTypes : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10097|EdgeType||DataCompletion|false|false|false||true|EdgeTypes|||||Small|||0|
+|false|true|true|true|Production|10097|EdgeType||DataCompletion|false|false|false||true|EdgeTypes|||||Medium|||0|
 ## 38.1 Binaries : DetailImageView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
@@ -2265,7 +2265,7 @@
 # 39 FindEdgeShapes : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10098|FindEdgeShape||DataCompletion|false|false|false||true|FindEdgeShapes|||||Small|||0|
+|false|true|true|true|Production|10098|FindEdgeShape||DataCompletion|false|false|false||true|FindEdgeShapes|||||Medium|||0|
 ## 39.1 Binaries : DetailImageView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
@@ -2305,7 +2305,7 @@
 # 40 GlueTypes : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10099|GlueType||DataCompletion|false|false|false||true|GlueTypes|||||Small|||0|
+|false|true|true|true|Production|10099|GlueType||DataCompletion|false|false|false||true|GlueTypes|||||Medium|||0|
 ## 40.1 Binaries : DetailImageView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
@@ -2321,7 +2321,7 @@
 # 41 LabelInfoCncZeroLines : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10100|LabelInfoCncZeroLine||DataCompletion|false|false|false||true|LabelInfoCncZeroLines|||||Small|||0|
+|false|true|true|true|Production|10100|LabelInfoCncZeroLine||DataCompletion|false|false|false||true|LabelInfoCncZeroLines|||||Medium|||0|
 ## 41.1 Binaries : DetailImageView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
@@ -2349,7 +2349,7 @@
 # 43 MakroGrooves : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10101|MakroGroove||DataCompletion|false|false|false||true|MakroGrooves|||||Small|||0|
+|false|true|true|true|Production|10101|MakroGroove||DataCompletion|false|false|false||true|MakroGrooves|||||Medium|||0|
 ## 43.1 Binaries : DetailImageView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
@@ -2385,7 +2385,7 @@
 # 44 MakroSurfaces : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10107|MakroSurface||DataCompletion|false|false|false||true|MakroSurfaces|||||Small|||0|
+|false|true|true|true|Production|10107|MakroSurface||DataCompletion|false|false|false||true|MakroSurfaces|||||Medium|||0|
 ## 44.1 Binaries : DetailImageView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
@@ -2417,7 +2417,7 @@
 # 45 OrientationConversions : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10159|OrientationConversion||DataCompletion|false|false|false||true|OrientationConversions|||||Small|||0|
+|false|true|true|true|Production|10159|OrientationConversion||DataCompletion|false|false|false||true|OrientationConversions|||||Medium|||0|
 ## 45.1 ConversionType : CellStyleCondition
 |Background|Cell|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|--|
@@ -2441,7 +2441,7 @@
 # 46 ProcessingDataOrientations : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10168|ProcessingDataOrientation||DataCompletion|false|false|false||true|ProcessingDataOrientations|||||Small|||0|
+|false|true|true|true|Production|10168|ProcessingDataOrientation||DataCompletion|false|false|false||true|ProcessingDataOrientations|||||Medium|||0|
 ## 46.1 CurrentWorkCenterCode : CellStyleCondition
 |Background|Cell|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|--|
@@ -2461,7 +2461,7 @@
 # 47 ShapePasses : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10102|ShapePass||DataCompletion|false|false|false||true|ShapePasses|||||Small|||0|
+|false|true|true|true|Production|10102|ShapePass||DataCompletion|false|false|false||true|ShapePasses|||||Medium|||0|
 ## 47.1 ShapePassFilterByGroup : CommandUserExitContextMenu
 |FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
 |--|--|--|--|--|
@@ -2553,7 +2553,7 @@
 # 48 EdgeProfileConversions : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10194|EdgeProfileConversion||DC|false|false|false||true|EdgeProfileConversions|||||Small|||0|
+|false|true|true|true|Production|10194|EdgeProfileConversion||DC|false|false|false||true|EdgeProfileConversions|||||Medium|||0|
 ## 48.1 Profile : CellStyleCondition
 |Background|Cell|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|--|
@@ -2561,7 +2561,7 @@
 # 49 WccEdgeInformationToEntityShapes : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10157|WccEdgeInformationToEntityShape||DataCompletion|false|false|false||true|WccEdgeInformationToEntityShapes|||||Small|||0|
+|false|true|true|true|Production|10157|WccEdgeInformationToEntityShape||DataCompletion|false|false|false||true|WccEdgeInformationToEntityShapes|||||Medium|||0|
 ## 49.1 ShowResultEdgeTransition : CommandUserExitContextMenu
 |FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
 |--|--|--|--|--|
@@ -2649,7 +2649,7 @@
 # 52 WorkCenterCodeFromCamInformations : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10106|WorkCenterCodeFromCamInformation||DC|false|false|false||true|WorkCenterCodeFromCamInformations|||||Small|||0|
+|false|true|true|true|Production|10106|WorkCenterCodeFromCamInformation||DC|false|false|false||true|WorkCenterCodeFromCamInformations|||||Medium|||0|
 ## 52.1 CamInformation : CellStyleCondition
 |Background|Cell|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|--|
@@ -2657,7 +2657,7 @@
 # 53 WorkCenterCutting : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10212|WorkCenterCutting||DC|false|false|false||true|WorkCenterCutting|||||Small|||0|
+|false|true|true|true|Production|10212|WorkCenterCutting||DC|false|false|false||true|WorkCenterCutting|||||Medium|||0|
 ## 53.1 WorkCenterCode : CellStyleCondition
 |Background|Cell|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|--|
@@ -2669,7 +2669,7 @@
 # 54 WorkCenterEdgePasses : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10213|WorkCenterEdgePass||DC|false|false|false||true|WorkCenterEdgePasses|||||Small|||0|
+|false|true|true|true|Production|10213|WorkCenterEdgePass||DC|false|false|false||true|WorkCenterEdgePasses|||||Medium|||0|
 ## 54.1 WorkCenterCode : CellStyleCondition
 |Background|Cell|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|--|
@@ -2681,7 +2681,7 @@
 # 55 WorkCenterEdgeProfiles : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10185|WorkCenterEdgeProfile||DC|false|false|false||true|WorkCenterEdgeProfiles|||||Small|||0|
+|false|true|true|true|Production|10185|WorkCenterEdgeProfile||DC|false|false|false||true|WorkCenterEdgeProfiles|||||Medium|||0|
 ## 55.1 WorkCenterCode : CellStyleCondition
 |Background|Cell|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|--|
@@ -2693,7 +2693,7 @@
 # 56 WorkCenterGrooves : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10184|WorkCenterGroove||DC|false|false|false||true|WorkCenterGrooves|||||Small|||0|
+|false|true|true|true|Production|10184|WorkCenterGroove||DC|false|false|false||true|WorkCenterGrooves|||||Medium|||0|
 ## 56.1 Rebate : CellStyleCondition
 |Background|Cell|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|--|
@@ -2737,7 +2737,7 @@
 # 57 WorkCenterOversizeValues : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10214|WorkCenterOversizeValue||DC|false|false|false||true|WorkCenterOversizeValues|||||Small|||0|
+|false|true|true|true|Production|10214|WorkCenterOversizeValue||DC|false|false|false||true|WorkCenterOversizeValues|||||Medium|||0|
 ## 57.1 WorkCenterCode : CellStyleCondition
 |Background|Cell|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|--|
@@ -2753,11 +2753,11 @@
 # 58 ReorganizationDBTables : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10111|ReorganizationDBTable||Management|false|false|false||true|ReorganizationDBTables|||||Small|||0|
+|false|true|true|true|Production|10111|ReorganizationDBTable||Management|false|false|false||true|ReorganizationDBTables|||||Medium|||0|
 # 59 ReorganizationFileSystems : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10112|ReorganizationFileSystem||Management|false|false|false||true|ReorganizationFileSystems|||||Small|||0|
+|false|true|true|true|Production|10112|ReorganizationFileSystem||Management|false|false|false||true|ReorganizationFileSystems|||||Medium|||0|
 # 60 ProductionItemsValidationData : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
@@ -2873,11 +2873,11 @@
 # 62 ViewItemsProcessingData : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|false|false|false|Production|10169|ViewProcessingDataItem||Action|false|false|false||true|ViewItemsProcessingData|||||Small|||0|
+|false|false|false|false|Production|10169|ViewProcessingDataItem||Action|false|false|false||true|ViewItemsProcessingData|||||Medium|||0|
 # 63 PartCarrierGroups : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10199|PartCarrierGroup||Management|false|false|false||true|PartCarrierGroups|||||Small|||0|
+|false|true|true|true|Production|10199|PartCarrierGroup||Management|false|false|false||true|PartCarrierGroups|||||Medium|||0|
 ## 63.1 Edit : CommandUserExitContextMenu
 |FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
 |--|--|--|--|--|
@@ -2965,7 +2965,7 @@
 # 65 OptimizationRemovement : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|false|false|false|Production|10219|Optimization|OptimizationCuttingPlans.Any(CuttingPlanState != 5)|Action|false|false|false||true|OptimizationRemovement|||||Small|||0|
+|false|false|false|false|Production|10219|Optimization|OptimizationCuttingPlans.Any(CuttingPlanState != 5)|Action|false|false|false||true|OptimizationRemovement|||||Medium|||0|
 ## 65.1 RemoveOptimization : CommandUserExitContextMenu
 |FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
 |--|--|--|--|--|
@@ -3037,7 +3037,7 @@
 # 67 PrintOuts : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|false|false|false|Production|6|PrintOut||Management|false|false|false||true|PrintOuts|||||Small|||10000|
+|false|false|false|false|Production|6|PrintOut||Management|false|false|false||true|PrintOuts|||||Medium|||10000|
 ## 67.1 Print : CommandUserExitContextMenu
 |FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
 |--|--|--|--|--|
@@ -3049,7 +3049,7 @@
 # 68 ScannerCommunication : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|false|false|Office|13|DeviceFunction||Management|true|false|false||true|ScannerCommunication||||ScannerImageBrush|Small|||10000|
+|false|true|false|false|Office|13|DeviceFunction||Management|true|false|false||true|ScannerCommunication||||ScannerImageBrush|Medium|||10000|
 ## 68.1 Scannerfunktion : GenericDetailView
 |DisplayName|DisplayOrder|IsSecondary|Name|Parameter|View|ViewModel|
 |--|--|--|--|--|--|--|
@@ -3081,7 +3081,7 @@
 # 70 PartCarriers : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|false|false|false|Production|15|PartCarrier||Management|false|false|false||true|PartCarriers|||||Small|||10000|
+|false|false|false|false|Production|15|PartCarrier||Management|false|false|false||true|PartCarriers|||||Medium|||10000|
 ## 70.1 Edit : CommandUserExitContextMenu
 |FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
 |--|--|--|--|--|
@@ -3125,7 +3125,7 @@
 # 71 Restrictions : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|true|true|true|Production|10030|Restriction||Management|false|false|false||true|Restrictions|||||Small|||0|
+|false|true|true|true|Production|10030|Restriction||Management|false|false|false||true|Restrictions|||||Medium|||0|
 ## 71.1 RolesRestrictions : DetailListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DisplayName|DisplayOrder|Filter|IsSecondary|IsSortable|Name|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|
