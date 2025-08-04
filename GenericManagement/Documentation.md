@@ -1445,7 +1445,7 @@
 # 15 CustomerOrder : GenericView
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|false|false|false|false|Production|10016|CustomerOrder||Action|false|false|false||true|CustomerOrder||||EmptyTile.png|Medium|EmptyTileView|EmptyTileViewMode|0|
+|false|true|false|false|Production|10016|CustomerOrder||Action|false|false|false||true|CustomerOrder||||EmptyTile.png|Medium|EmptyTileView|EmptyTileViewMode|0|
 ## 15.1 ProductionOrders : DetailListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DisplayName|DisplayOrder|Filter|IsSecondary|IsSortable|Name|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|
