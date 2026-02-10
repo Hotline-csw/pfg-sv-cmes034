@@ -50,13 +50,14 @@
 | [2.5 CustViewDashboardProgressData](#custviewdashboardprogressdata) | [2.6 CustViewDetailManualFeedback](#custviewdetailmanualfeedback) | [2.7 CustViewDetailProgressInformation](#custviewdetailprogressinformation) | [2.8 CustViewFredPatternPart](#custviewfredpatternpart) |
 | [2.9 CustViewFurnitureLabel](#custviewfurniturelabel) | [2.10 CustViewMasterManualFeedback](#custviewmastermanualfeedback) | [2.11 CustViewMasterProgressBulk](#custviewmasterprogressbulk) | [2.12 CustViewMasterProgressComponentTypeBulk](#custviewmasterprogresscomponenttypebulk) |
 | [2.13 CustViewMasterProgressComponentTypeCustomerOrder](#custviewmasterprogresscomponenttypecustomerorder) | [2.14 CustViewMasterProgressOptimization](#custviewmasterprogressoptimization) | [2.15 CustViewMasterProgressWorkCenterCustomerOrder](#custviewmasterprogressworkcentercustomerorder) | [2.16 CustViewMasterUnfinishedPart](#custviewmasterunfinishedpart) |
-| [2.17 CustViewPartsLabel](#custviewpartslabel) | [2.18 CustViewReportBinding](#custviewreportbinding) | [2.19 PatternEvaluationItem](#patternevaluationitem) | [2.20 PatternManagementItem](#patternmanagementitem) |
-| [2.21 ProductionOrderToOptimize](#productionordertooptimize) | [2.22 ViewBulkCapacityForWorkCenter](#viewbulkcapacityforworkcenter) | [2.23 ViewCutriteSawInformation](#viewcutritesawinformation) | [2.24 ViewExtensionData](#viewextensiondata) |
-| [2.25 ViewFinishedPerHour](#viewfinishedperhour) | [2.26 ViewFitting](#viewfitting) | [2.27 ViewLGFromOptiKPIResult](#viewlgfromoptikpiresult) | [2.28 ViewMaterial](#viewmaterial) |
-| [2.29 ViewMovingAction](#viewmovingaction) | [2.30 ViewMovingRequest](#viewmovingrequest) | [2.31 ViewOptimizationAndKPIResult](#viewoptimizationandkpiresult) | [2.32 ViewOptimizationInformation](#viewoptimizationinformation) |
-| [2.33 ViewOptimizationProductionOrder](#viewoptimizationproductionorder) | [2.34 ViewOptimizationResult](#viewoptimizationresult) | [2.35 ViewOptimizationRulesAllocation](#viewoptimizationrulesallocation) | [2.36 ViewOptimizationRulesRequest](#viewoptimizationrulesrequest) |
-| [2.37 ViewPatternPart](#viewpatternpart) | [2.38 ViewProcessingDataItem](#viewprocessingdataitem) | [2.39 ViewProcessingDataItemsProgram](#viewprocessingdataitemsprogram) | [2.40 ViewProductionFlowStep](#viewproductionflowstep) |
-| [2.41 ViewSurface](#viewsurface) | [2.42 ViewWorkcenterCapacityByBulk](#viewworkcentercapacitybybulk) | [2.43 ViewWorkcenterCapacityByState](#viewworkcentercapacitybystate) | [2.44 ViewWorkCenterOutput](#viewworkcenteroutput) |
+| [2.17 CustViewPartsLabel](#custviewpartslabel) | [2.18 CustViewReportBinding](#custviewreportbinding) | [2.19 CustViewViewWisPartInformationSF](#custviewviewwispartinformationsf) | [2.20 PatternEvaluationItem](#patternevaluationitem) |
+| [2.21 PatternManagementItem](#patternmanagementitem) | [2.22 ProductionOrderToOptimize](#productionordertooptimize) | [2.23 ViewBulkCapacityForWorkCenter](#viewbulkcapacityforworkcenter) | [2.24 ViewCutriteSawInformation](#viewcutritesawinformation) |
+| [2.25 ViewExtensionData](#viewextensiondata) | [2.26 ViewFinishedPerHour](#viewfinishedperhour) | [2.27 ViewFitting](#viewfitting) | [2.28 ViewLGFromOptiKPIResult](#viewlgfromoptikpiresult) |
+| [2.29 ViewMaterial](#viewmaterial) | [2.30 ViewMovingAction](#viewmovingaction) | [2.31 ViewMovingRequest](#viewmovingrequest) | [2.32 ViewOptimizationAndKPIResult](#viewoptimizationandkpiresult) |
+| [2.33 ViewOptimizationInformation](#viewoptimizationinformation) | [2.34 ViewOptimizationProductionOrder](#viewoptimizationproductionorder) | [2.35 ViewOptimizationResult](#viewoptimizationresult) | [2.36 ViewOptimizationRulesAllocation](#viewoptimizationrulesallocation) |
+| [2.37 ViewOptimizationRulesRequest](#viewoptimizationrulesrequest) | [2.38 ViewPatternPart](#viewpatternpart) | [2.39 ViewProcessingDataItem](#viewprocessingdataitem) | [2.40 ViewProcessingDataItemsProgram](#viewprocessingdataitemsprogram) |
+| [2.41 ViewProductionFlowStep](#viewproductionflowstep) | [2.42 ViewSurface](#viewsurface) | [2.43 ViewWorkcenterCapacityByBulk](#viewworkcentercapacitybybulk) | [2.44 ViewWorkcenterCapacityByState](#viewworkcentercapacitybystate) |
+| [2.45 ViewWorkCenterOutput](#viewworkcenteroutput) |
 
 ## 3 Allowed Value Groups
 | Name | Name | Name | Name |
@@ -5376,12 +5377,37 @@
 | ReportSequence| System.Int64| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
 | Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
 | WorkOrder| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
-## 2.19 PatternEvaluationItem : IViewEntityDescription
+## 2.19 CustViewViewWisPartInformationSF : IViewEntityDescription
+## CustViewViewWisPartInformationSF
+| IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| True | VE_CustViewViewWisPartInformationSF_CustViewViewWisPartInformationSF | CustViewViewWisPartInformationSF |  |  | CustViewViewWisPartInformationSF |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
+### 2.19.1 FieldDescriptions
+| Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
+| ArticleNumber| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CustomerOrderCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| CustomerOrderPosition| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Length| System.Decimal| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| MaterialDescription| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ParentProductionOrderNumber| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| PartDrawing| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionItemCode| System.String| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionOrderCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ProductionStepState| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ReProductionCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| ReproductionType| System.Int32| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| RouteCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Thickness| System.Decimal| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| TopProductionOrderNumber| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| Width| System.Decimal| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+| WorkCenterCode| System.String| | | 0| False| True| True| | | | False| -1| 0| 0| | False| | | | | | 
+## 2.20 PatternEvaluationItem : IViewEntityDescription
 ## PatternEvaluationItem
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_PatternEvaluationItem_PatternEvaluationItem | PatternEvaluationItem | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity |  | Overview of the optimization results with an image |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity 
-### 2.19.1 FieldDescriptions
+### 2.20.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | Board| System.String| Board| Board| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_Board| | | | 
@@ -5409,12 +5435,12 @@
 | Thickness| System.Decimal| thickness| Thickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_Thickness| | | | 
 | Width| System.Decimal| Width| Width| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_Width| | | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternEvaluationItem_WorkCenterCode| | | | 
-## 2.20 PatternManagementItem : IViewEntityDescription
+## 2.21 PatternManagementItem : IViewEntityDescription
 ## PatternManagementItem
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_PatternManagementItem_PatternManagementItem | PatternManagementItem | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity |  | Overview of the optimization result without an image |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity 
-### 2.20.1 FieldDescriptions
+### 2.21.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | Board| System.String| Board| Board| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_Board| | | | 
@@ -5438,12 +5464,12 @@
 | Sequence| System.Int64| Sequence| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
 | Width| System.Decimal| Width| Width| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_Width| | | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_PatternManagementItem_WorkCenterCode| | | | 
-## 2.21 ProductionOrderToOptimize : IViewEntityDescription
+## 2.22 ProductionOrderToOptimize : IViewEntityDescription
 ## ProductionOrderToOptimize
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ProductionOrderToOptimize_ProductionOrderToOptimize | ProductionOrderToOptimize | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity |  | Orders for optimization |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | ProductionOrdersToOptimize | General |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity 
-### 2.21.1 FieldDescriptions
+### 2.22.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | Active| System.Boolean| Active| Active| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_Active| | | | 
@@ -5474,12 +5500,12 @@
 | Thickness| System.Decimal| Thickness| Thickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_Thickness| | | | 
 | TopProductionOrderNumber| System.String| Leading production order| TopProductionOrderNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_TopProductionOrderNumber| | | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ProductionOrderToOptimize_WorkCenterCode| | | | 
-## 2.22 ViewBulkCapacityForWorkCenter : IViewEntityDescription
+## 2.23 ViewBulkCapacityForWorkCenter : IViewEntityDescription
 ## ViewBulkCapacityForWorkCenter
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewBulkCapacityForWorkCenter_ViewBulkCapacityForWorkCenter | ViewBulkCapacityForWorkCenter |  |  | Workstation capacity of a batch |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.22.1 FieldDescriptions
+### 2.23.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | BulkColor| System.String| Pile color| BulkColor| 40| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewBulkCapacityForWorkCenter_BulkColor| | | | 
@@ -5489,12 +5515,12 @@
 | <span style="color: #e0b21b" title="Default value not defined!">**PlanningState**</span>| [PlanningState](#planningstate)| Planning status| PlanningState| 50| True| True| True| | | | False| -1| 0| 0| | False| [PlanningState](#planningstate) | FN_ViewBulkCapacityForWorkCenter_PlanningState| | | | 
 | StartDate| System.DateTime| Processing start| StartDate| 30| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewBulkCapacityForWorkCenter_StartDate| | | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 10| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewBulkCapacityForWorkCenter_WorkCenterCode| | | | 
-## 2.23 ViewCutriteSawInformation : IViewEntityDescription
+## 2.24 ViewCutriteSawInformation : IViewEntityDescription
 ## ViewCutriteSawInformation
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewCutriteSawInformation_ViewCutriteSawInformation | ViewCutriteSawInformation |  |  | Saw information |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.23.1 FieldDescriptions
+### 2.24.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | Address1| System.String| Address field1| Address1| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_Address1| | | | 
@@ -5658,12 +5684,12 @@
 | TopProductionOrderNumber| System.String| Leading production order| TopProductionOrderNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_TopProductionOrderNumber| | | | 
 | Width| System.Decimal| Width| Width| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_Width| | | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewCutriteSawInformation_WorkCenterCode| | | | 
-## 2.24 ViewExtensionData : IViewEntityDescription
+## 2.25 ViewExtensionData : IViewEntityDescription
 ## ViewExtensionData
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewExtensionData_ViewExtensionData | ViewExtensionData |  |  | Extended data |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.24.1 FieldDescriptions
+### 2.25.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | Area| System.String| Extended data for ...| Area| 3| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewExtensionData_Area| | | | 
@@ -5673,12 +5699,12 @@
 | Record| System.String| Data record| Record| 4| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewExtensionData_Record| | | | 
 | XmlKey| System.String| key| XmlKey| 5| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewExtensionData_XmlKey| | | | 
 | XmlValue| System.String| Value| XmlValue| 6| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewExtensionData_XmlValue| | | | 
-## 2.25 ViewFinishedPerHour : IViewEntityDescription
+## 2.26 ViewFinishedPerHour : IViewEntityDescription
 ## ViewFinishedPerHour
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewFinishedPerHour_ViewFinishedPerHour | ViewFinishedPerHour |  |  | Evaluation parts/hour |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.25.1 FieldDescriptions
+### 2.26.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | Date| System.DateTime| Date| Date| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFinishedPerHour_Date| | | | 
@@ -5688,12 +5714,12 @@
 | Hour| System.Int32| Hour| Hour| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFinishedPerHour_Hour| | | | 
 | RowNumber| System.Int64| Line number| RowNumber| 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_ViewFinishedPerHour_RowNumber| | | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFinishedPerHour_WorkCenterCode| | | | 
-## 2.26 ViewFitting : IViewEntityDescription
+## 2.27 ViewFitting : IViewEntityDescription
 ## ViewFitting
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewFitting_ViewFitting | ViewFitting |  |  | Fittings |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.26.1 FieldDescriptions
+### 2.27.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | AdditionalInformation| System.String| Additional information| AdditionalInformation| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_AdditionalInformation| | | | 
@@ -5710,12 +5736,12 @@
 | Thickness| System.Decimal| thickness| Thickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_Thickness| | | | 
 | Type| System.String| Type| Type| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_Type| | | | 
 | Width| System.Decimal| Width| Width| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewFitting_Width| | | | 
-## 2.27 ViewLGFromOptiKPIResult : IViewEntityDescription
+## 2.28 ViewLGFromOptiKPIResult : IViewEntityDescription
 ## ViewLGFromOptiKPIResult
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewLGFromOptiKPIResult_ViewLGFromOptiKPIResult | ViewLGFromOptiKPIResult |  |  | Optimization results |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.27.1 FieldDescriptions
+### 2.28.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | ActivationState| System.Int32| Status| ActivationState| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_ActivationState| | | | 
@@ -5744,12 +5770,12 @@
 | RateRequiredPart| System.Decimal| Ratio of mandatory parts/panels used| RateRequiredPart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_RateRequiredPart| | | | 
 | RateScrap| System.Decimal| Ratio of waste/panels used| RateScrap| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewLGFromOptiKPIResult_RateScrap| | | | 
 | Sequence| System.Int64| Sequence| | 0| True| False| True| | | | False| -1| 0| 0| | False| | FN_Sequence| | | | 
-## 2.28 ViewMaterial : IViewEntityDescription
+## 2.29 ViewMaterial : IViewEntityDescription
 ## ViewMaterial
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewMaterial_ViewMaterial | ViewMaterial |  |  | Material |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.28.1 FieldDescriptions
+### 2.29.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | AdditionalInformation| System.String| Additional information| AdditionalInformation| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_AdditionalInformation| | | | 
@@ -5767,12 +5793,12 @@
 | Thickness| System.Decimal| thickness| Thickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_Thickness| | | | 
 | Type| System.String| Type| Type| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_Type| | | | 
 | Width| System.Decimal| Width| Width| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMaterial_Width| | | | 
-## 2.29 ViewMovingAction : IViewEntityDescription
+## 2.30 ViewMovingAction : IViewEntityDescription
 ## ViewMovingAction
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewMovingAction_ViewMovingAction | ViewMovingAction |  |  | Extended transport actions |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.29.1 FieldDescriptions
+### 2.30.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | <span style="color: #e0b21b" title="Default value not defined!">**ActionMode**</span>| [MovingActionMode](#movingactionmode)| Action| ActionMode| 0| True| True| True| | | | False| -1| 0| 0| | False| [MovingActionMode](#movingactionmode) | FN_ViewMovingAction_ActionMode| | | | 
@@ -5791,12 +5817,12 @@
 | StackLength| System.Decimal| Stack length| StackLength| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingAction_StackLength| | | | 
 | StackWidth| System.Decimal| Stack width| StackWidth| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewMovingAction_StackWidth| | | | 
 | <span style="color: #e0b21b" title="Default value not defined!">**TransferState**</span>| [MovingActionTransferstate](#movingactiontransferstate)| Transfer status| TransferState| 0| True| True| True| | | | False| -1| 0| 0| | False| [MovingActionTransferstate](#movingactiontransferstate) | FN_ViewMovingAction_TransferState| | | | 
-## 2.30 ViewMovingRequest : IViewEntityDescription
+## 2.31 ViewMovingRequest : IViewEntityDescription
 ## ViewMovingRequest
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewMovingRequest_ViewMovingRequest | ViewMovingRequest |  |  | Extended transport requests |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.30.1 FieldDescriptions
+### 2.31.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | <span style="color: #e0b21b" title="Default value not defined!">**ActionMode**</span>| [MovingActionMode](#movingactionmode)| Action| ActionMode| 0| True| True| True| | | | False| -1| 0| 0| | False| [MovingActionMode](#movingactionmode) | FN_ViewMovingRequest_ActionMode| | | | 
@@ -5817,12 +5843,12 @@
 | StackHeight| System.Decimal| stack height| StackHeight| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewMovingRequest_StackHeight| | | | 
 | StackLength| System.Decimal| Stack length| StackLength| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewMovingRequest_StackLength| | | | 
 | StackWidth| System.Decimal| Stack width| StackWidth| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewMovingRequest_StackWidth| | | | 
-## 2.31 ViewOptimizationAndKPIResult : IViewEntityDescription
+## 2.32 ViewOptimizationAndKPIResult : IViewEntityDescription
 ## ViewOptimizationAndKPIResult
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewOptimizationAndKPIResult_ViewOptimizationAndKPIResult | ViewOptimizationAndKPIResult |  |  | Optimization results and key figures |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.31.1 FieldDescriptions
+### 2.32.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | AreaCreatedOffcut| System.Decimal| Surface of offcuts created| AreaCreatedOffcut| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_AreaCreatedOffcut| | | | 
@@ -5853,12 +5879,12 @@
 | RateRequiredPart| System.Decimal| Ratio of mandatory parts/panels used| RateRequiredPart| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_RateRequiredPart| | | | 
 | RateScrap| System.Decimal| Ratio of waste/panels used| RateScrap| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_RateScrap| | | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationAndKPIResult_WorkCenterCode| | | | 
-## 2.32 ViewOptimizationInformation : IViewEntityDescription
+## 2.33 ViewOptimizationInformation : IViewEntityDescription
 ## ViewOptimizationInformation
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewOptimizationInformation_ViewOptimizationInformation | ViewOptimizationInformation |  |  | Optimization information |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.32.1 FieldDescriptions
+### 2.33.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | Address1| System.String| Address field 1| Address1| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Address1| | | | 
@@ -5932,12 +5958,12 @@
 | Width| System.Decimal| Width| Width| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_Width| | | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_WorkCenterCode| | | | 
 | WorkstepDescription| System.String| Process step description| WorkstepDescription| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationInformation_WorkstepDescription| | | | 
-## 2.33 ViewOptimizationProductionOrder : IViewEntityDescription
+## 2.34 ViewOptimizationProductionOrder : IViewEntityDescription
 ## ViewOptimizationProductionOrder
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewOptimizationProductionOrder_ViewOptimizationProductionOrder | ViewOptimizationProductionOrder | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity |  | Jobs prepared for the optimization |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.LeadingEntity 
-### 2.33.1 FieldDescriptions
+### 2.34.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | ArticleDescription| System.String| Item description| ArticleDescription| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_ArticleDescription| | | | 
@@ -5969,12 +5995,12 @@
 | Thickness| System.Decimal| Thickness| Thickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_Thickness| | | | 
 | TopProductionOrderNumber| System.String| Leading production order| TopProductionOrderNumber| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_TopProductionOrderNumber| | | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationProductionOrder_WorkCenterCode| | | | 
-## 2.34 ViewOptimizationResult : IViewEntityDescription
+## 2.35 ViewOptimizationResult : IViewEntityDescription
 ## ViewOptimizationResult
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewOptimizationResult_ViewOptimizationResult | ViewOptimizationResult |  |  | Optimization results |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.34.1 FieldDescriptions
+### 2.35.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | BoardAreas| System.Decimal| Panel surfaces| BoardAreas| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_BoardAreas| | | | 
@@ -5992,12 +6018,12 @@
 | ScrapAreas| System.Decimal| Cutting surfaces| ScrapAreas| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_ScrapAreas| | | | 
 | ScrapPercents| System.Decimal| Scrap (%)| ScrapPercents| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_ScrapPercents| | | | 
 | Thickness| System.Decimal| thickness| Thickness| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationResult_Thickness| | | | 
-## 2.35 ViewOptimizationRulesAllocation : IViewEntityDescription
+## 2.36 ViewOptimizationRulesAllocation : IViewEntityDescription
 ## ViewOptimizationRulesAllocation
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewOptimizationRulesAllocation_ViewOptimizationRulesAllocation | ViewOptimizationRulesAllocation |  |  | Rule assignment |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.35.1 FieldDescriptions
+### 2.36.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | AreaOrder| System.Int32| Control loop order| AreaOrder| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_AreaOrder| | | | 
@@ -6018,12 +6044,12 @@
 | RuleOrder| System.Int32| Rule order| RuleOrder| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_RuleOrder| | | | 
 | UserExitForSelection| System.String| User exit for the selection| UserExitForSelection| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_UserExitForSelection| | | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesAllocation_WorkCenterCode| | | | 
-## 2.36 ViewOptimizationRulesRequest : IViewEntityDescription
+## 2.37 ViewOptimizationRulesRequest : IViewEntityDescription
 ## ViewOptimizationRulesRequest
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewOptimizationRulesRequest_ViewOptimizationRulesRequest | ViewOptimizationRulesRequest |  |  | Requested automatic optimizations |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.36.1 FieldDescriptions
+### 2.37.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | AreaCode| System.String| Control loop| AreaCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_AreaCode| | | | 
@@ -6053,12 +6079,12 @@
 | <span style="color: #e0b21b" title="Default value not defined!">**TransferState**</span>| [OptimizationRuleTransferstate](#optimizationruletransferstate)| Transfer status| TransferState| 0| True| True| True| | | | False| -1| 0| 0| | False| [OptimizationRuleTransferstate](#optimizationruletransferstate) | FN_ViewOptimizationRulesRequest_TransferState| | | | 
 | UserExitForSelection| System.String| User exit that starts the next rule| UserExitForSelection| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_UserExitForSelection| | | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewOptimizationRulesRequest_WorkCenterCode| | | | 
-## 2.37 ViewPatternPart : IViewEntityDescription
+## 2.38 ViewPatternPart : IViewEntityDescription
 ## ViewPatternPart
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewPatternPart_ViewPatternPart | ViewPatternPart |  |  | Parts per cutting pattern |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.37.1 FieldDescriptions
+### 2.38.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | ArticleDescription| System.String| Item description| ArticleDescription| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_ArticleDescription| | | | 
@@ -6076,12 +6102,12 @@
 | ProductionOrderCode| System.String| Production order number| ProductionOrderCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_ProductionOrderCode| | | | 
 | Quantity| System.Int32| Qty.| Quantity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_Quantity| | | | 
 | Width| System.Decimal| Width| Width| 0| False| False| True| | | | False| -1| 0| 0| | False| | FN_ViewPatternPart_Width| | | | 
-## 2.38 ViewProcessingDataItem : IViewEntityDescription
+## 2.39 ViewProcessingDataItem : IViewEntityDescription
 ## ViewProcessingDataItem
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewProcessingDataItem_ViewProcessingDataItem | ViewProcessingDataItem |  |  | Process data per item |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.38.1 FieldDescriptions
+### 2.39.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | ArticleDescription| System.String| Item description| ArticleDescription| 11| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_ArticleDescription| | | | 
@@ -6106,12 +6132,12 @@
 | <span style="color: #e0b21b" title="Default value not defined!">**TransferState**</span>| [ProductionItemStepTransferState](#productionitemsteptransferstate)| Status of transfer| TransferState| 999| True| True| True| | | | False| -1| 0| 0| | False| [ProductionItemStepTransferState](#productionitemsteptransferstate) | FN_ViewProcessingDataItem_TransferState| | | | 
 | Width| System.Decimal| Width| Width| 21| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_Width| Dimensions| | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 2| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItem_WorkCenterCode| | | | 
-## 2.39 ViewProcessingDataItemsProgram : IViewEntityDescription
+## 2.40 ViewProcessingDataItemsProgram : IViewEntityDescription
 ## ViewProcessingDataItemsProgram
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewProcessingDataItemsProgram_ViewProcessingDataItemsProgram | ViewProcessingDataItemsProgram |  |  | Process data for each processing program |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.39.1 FieldDescriptions
+### 2.40.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | ArticleDescription| System.String| Item description| ArticleDescription| 11| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_ArticleDescription| | | | 
@@ -6133,12 +6159,12 @@
 | <span style="color: #e0b21b" title="Default value not defined!">**TransferState**</span>| [ProductionItemStepTransferState](#productionitemsteptransferstate)| Status of transfer| TransferState| 999| True| True| True| | | | False| -1| 0| 0| | False| [ProductionItemStepTransferState](#productionitemsteptransferstate) | FN_ViewProcessingDataItemsProgram_TransferState| | | | 
 | Width| System.Decimal| Width| Width| 21| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_Width| Dimensions| | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 2| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProcessingDataItemsProgram_WorkCenterCode| | | | 
-## 2.40 ViewProductionFlowStep : IViewEntityDescription
+## 2.41 ViewProductionFlowStep : IViewEntityDescription
 ## ViewProductionFlowStep
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewProductionFlowStep_ViewProductionFlowStep | ViewProductionFlowStep |  |  | ViewProductionFlowStep |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.40.1 FieldDescriptions
+### 2.41.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | Capacity| System.Int32| capacities| Capacity| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProductionFlowStep_Capacity| | | | 
@@ -6151,12 +6177,12 @@
 | ProductionOrderCode| System.String| Production order number| ProductionOrderCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProductionFlowStep_ProductionOrderCode| | | | 
 | RowNumber| System.Int64| | | 0| True| True| True| | | | False| -1| 0| 0| | False| | | | | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewProductionFlowStep_WorkCenterCode| | | | 
-## 2.41 ViewSurface : IViewEntityDescription
+## 2.42 ViewSurface : IViewEntityDescription
 ## ViewSurface
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewSurface_ViewSurface | ViewSurface |  |  | surface |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.41.1 FieldDescriptions
+### 2.42.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | AdditionalInformation| System.String| Additional information| AdditionalInformation| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_AdditionalInformation| | | | 
@@ -6175,12 +6201,12 @@
 | Thickness| System.Decimal| thickness| Thickness| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_Thickness| | | | 
 | Type| System.String| Type| Type| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_Type| | | | 
 | Width| System.Decimal| Width| Width| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewSurface_Width| | | | 
-## 2.42 ViewWorkcenterCapacityByBulk : IViewEntityDescription
+## 2.43 ViewWorkcenterCapacityByBulk : IViewEntityDescription
 ## ViewWorkcenterCapacityByBulk
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewWorkcenterCapacityByBulk_ViewWorkcenterCapacityByBulk | ViewWorkcenterCapacityByBulk |  |  | ViewWorkcenterCapacityByBulk |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | ViewWorkcenterCapacitiesByBulk | General |  |  
-### 2.42.1 FieldDescriptions
+### 2.43.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | Percentage| System.Int32| fraction| Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByBulk_Percentage| | | | 
@@ -6191,12 +6217,12 @@
 | UsedCapacity| System.Int32| Capacity assigned| UsedCapacity| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByBulk_UsedCapacity| | | | 
 | WorkCenterCapacity| System.Int32| Capacity of the workstation| WorkCenterCapacity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByBulk_WorkCenterCapacity| | | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByBulk_WorkCenterCode| | | | 
-## 2.43 ViewWorkcenterCapacityByState : IViewEntityDescription
+## 2.44 ViewWorkcenterCapacityByState : IViewEntityDescription
 ## ViewWorkcenterCapacityByState
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewWorkcenterCapacityByState_ViewWorkcenterCapacityByState | ViewWorkcenterCapacityByState |  |  | ViewWorkcenterCapacityByState |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True | ViewWorkcenterCapacitiesByState | General |  |  
-### 2.43.1 FieldDescriptions
+### 2.44.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | Percentage| System.Int32| fraction| Percentage| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByState_Percentage| | | | 
@@ -6206,12 +6232,12 @@
 | UsedCapacity| System.Int32| Capacity assigned| UsedCapacity| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByState_UsedCapacity| | | | 
 | WorkCenterCapacity| System.Int32| Capacity of the workstation| WorkCenterCapacity| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByState_WorkCenterCapacity| | | | 
 | WorkCenterCode| System.String| Workstation| WorkCenterCode| 0| True| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkcenterCapacityByState_WorkCenterCode| | | | 
-## 2.44 ViewWorkCenterOutput : IViewEntityDescription
+## 2.45 ViewWorkCenterOutput : IViewEntityDescription
 ## ViewWorkCenterOutput
 | IsCustom | ResourceKey | Name | LeadingEntity | CreateSqlStatement | DisplayName | Description | DescriptionSpecified | Parent | IsDisplayNameNullOrEmpty | IsDescriptionNullOrEmpty | IsBrowsable | DbViewName | DefaultDisplayGroupName | DefaultDisplayGroupXPath | SerializedLeadingEntity 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | False | VE_ViewWorkCenterOutput_ViewWorkCenterOutput | ViewWorkCenterOutput |  |  | Workstation capacity |  | True | HomagGroup.FLS.Services.DataAccess.DomainDescription.Service.DomainDescriptionConfiguration | False | True | True |  | General |  |  
-### 2.44.1 FieldDescriptions
+### 2.45.1 FieldDescriptions
 | Name | DataType | DisplayName | Description | DisplayOrder | IsRequired | IsVisible | IsReadOnly | DefaultValue | MinValue | MaxValue | IsFixedLength | MaxLength | Precision | Scale | ValidationUserExit | LogChanges | AllowedValueGroupKey | ResourceKey | DisplayGroupName | DefaultValueString | MinValueString | MaxValueString 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
 | EndDate| System.DateTime| End time| EndDate| 0| False| True| True| | | | False| -1| 0| 0| | False| | FN_ViewWorkCenterOutput_EndDate| | | | 
