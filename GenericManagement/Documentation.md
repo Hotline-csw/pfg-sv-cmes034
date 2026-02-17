@@ -1458,111 +1458,115 @@
 |CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|ClientType|Description|Entity|Filter|GroupName|HideFilterPanel|HideMasterPanel|HideUpdate|InitialUserExit|IsSortable|Name|PrintRowReport|PrintTableReport|RowStyle|TileIcon|TileSize|TileView|TileViewModel|UpdateInterval|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
 |false|false|false|false|Production|10000|ProductionOrder||Action|false|false|false||true|ProductionOrder||||EmptyTile.png|Medium|EmptyTileView|EmptyTileViewMode|0|
-## 16.1 ResetBracketToStaging : CommandUserExitContextMenu
+## 16.1 PoInfo : DetailEntityView
+|DetailProperties|DisplayName|DisplayOrder|Entity|IsSecondary|Name|ParentProperties|
+|--|--|--|--|--|--|--|
+|ProductionOrderCode|PoInfo|1|CustViewProductionOrderDetailPanelInformation|false|PoInfo|Code|
+## 16.2 ResetBracketToStaging : CommandUserExitContextMenu
 |FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
 |--|--|--|--|--|
 |F4|EmptyTile.png|Aufträge für den erneuten Import vorbereiten|Alle Aufträge des Brackets für den erneuten Import vorbereiten|ResetBracketToStaging|
-### 16.1.1 ResetBracketToStaging : CommandUserExit
+### 16.2.1 ResetBracketToStaging : CommandUserExit
 |Name|Order|
 |--|--|
 |ResetBracketToStaging|1|
-## 16.2 NavigateToImportMessage : CommandUserExitContextMenu
+## 16.3 NavigateToImportMessage : CommandUserExitContextMenu
 |FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
 |--|--|--|--|--|
 |None|EmptyTile.png|Importmeldungen anzeigen|Importmeldungen anzeigen|NavigateToImportMessage|
-### 16.2.1 NavigateToImportMessage : CommandUserExit
+### 16.3.1 NavigateToImportMessage : CommandUserExit
 |Name|Order|
 |--|--|
 |NavigateToImportMessage|1|
-## 16.3 ProductionSteps : DetailListView
+## 16.4 ProductionSteps : DetailListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DisplayName|DisplayOrder|Filter|IsSecondary|IsSortable|Name|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|
 |false|false|false|false|false|Arbeitsgänge|1|DisposeState="Scheduled"|false|true|ProductionSteps||
-### 16.3.1 StatusBeendet : RowStyleCondition
+### 16.4.1 StatusBeendet : RowStyleCondition
 |Background|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|
 |#A8FAC5|1|#199619|StatusBeendet|ProductionState="Finished"|
-## 16.4 ProductionItems : DetailListView
+## 16.5 ProductionItems : DetailListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DisplayName|DisplayOrder|Filter|IsSecondary|IsSortable|Name|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|
 |false|false|false|false|false|Teile|2||false|true|ProductionItems||
-## 16.5 Material : DetailRelationListView
+## 16.6 Material : DetailRelationListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DetailProperties|DisplayName|DisplayOrder|Entity|Filter|IsSecondary|IsSortable|Name|ParentProperties|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
 |false|false|false|false|false|ProductionOrderCode|Material|3|ViewMaterial||false|true|Material|Code||
-## 16.6 Oberfläche : DetailRelationListView
+## 16.7 Oberfläche : DetailRelationListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DetailProperties|DisplayName|DisplayOrder|Entity|Filter|IsSecondary|IsSortable|Name|ParentProperties|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
 |false|false|false|false|false|ProductionOrderCode|Oberflächen|4|ViewSurface||false|true|Oberfläche|Code||
-## 16.7 EdgeProfiles : DetailListView
+## 16.8 EdgeProfiles : DetailListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DisplayName|DisplayOrder|Filter|IsSecondary|IsSortable|Name|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|
 |false|false|false|false|false|Kanten|5|ProductionStep.DisposeState="Scheduled" && (EdgeToStepsType == EdgeToStepsType.undefined \|\| EdgeToStepsType == EdgeToStepsType.UtilizedAtStep)|false|true|EdgeProfiles||
-## 16.8 EdgeProfilesImport : DetailRelationListView
+## 16.9 EdgeProfilesImport : DetailRelationListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DetailProperties|DisplayName|DisplayOrder|Entity|Filter|IsSecondary|IsSortable|Name|ParentProperties|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
 |false|false|false|false|false|ProductionOrderCode|Kanten (Importdaten)|6|EdgeProfile|ProductionStep=null|false|true|EdgeProfilesImport|Code||
-## 16.9 EdgeGrooves : DetailListView
+## 16.10 EdgeGrooves : DetailListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DisplayName|DisplayOrder|Filter|IsSecondary|IsSortable|Name|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|
 |false|false|false|false|false|Nuten|7|ProductionStep.DisposeState="Scheduled"|false|true|EdgeGrooves||
-## 16.10 EdgeGroovesImport : DetailRelationListView
+## 16.11 EdgeGroovesImport : DetailRelationListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DetailProperties|DisplayName|DisplayOrder|Entity|Filter|IsSecondary|IsSortable|Name|ParentProperties|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
 |false|false|false|false|false|ProductionOrderCode|Nuten (Importdaten)|8|EdgeGroove|ProductionStep=null|false|true|EdgeGroovesImport|Code||
-## 16.11 Beschläge : DetailRelationListView
+## 16.12 Beschläge : DetailRelationListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DetailProperties|DisplayName|DisplayOrder|Entity|Filter|IsSecondary|IsSortable|Name|ParentProperties|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
 |false|false|false|false|false|ProductionOrderCode|Beschläge|9|ViewFitting||false|true|Beschläge|Code||
-## 16.12 ProcessingData : DetailListView
+## 16.13 ProcessingData : DetailListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DisplayName|DisplayOrder|Filter|IsSecondary|IsSortable|Name|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|
 |false|false|false|false|false|Bearbeitungsdaten|10|ProductionStep.DisposeState="Scheduled"|false|true|ProcessingData||
-## 16.13 Strukturanzeige : DetailTreeView
+## 16.14 Strukturanzeige : DetailTreeView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
 |Baumansicht|11||false|Strukturanzeige|
-## 16.14 Binaries : DetailImageView
+## 16.15 Binaries : DetailImageView
 |DisplayName|DisplayOrder|Field|IsSecondary|Name|
 |--|--|--|--|--|
 |Zeichnungen|12|Binaries|false|Binaries|
-## 16.15 PossibleRoutes : DetailListView
+## 16.16 PossibleRoutes : DetailListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DisplayName|DisplayOrder|Filter|IsSecondary|IsSortable|Name|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|
 |false|false|false|false|false|Alternative Fertigungswege|13||false|true|PossibleRoutes||
-### 16.15.1 DisposeStateAlternative : RowStyleCondition
+### 16.16.1 DisposeStateAlternative : RowStyleCondition
 |Background|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|
 |#E7CEEC|1|#000000|DisposeStateAlternative|DisposeState="Alternative"|
-### 16.15.2 ChangeScheduledRouteCommand : CommandUserExitContextMenu
+### 16.16.2 ChangeScheduledRouteCommand : CommandUserExitContextMenu
 |FunctionKey|FunctionKeyIcon|Header|HelpText|Name|
 |--|--|--|--|--|
 |None|EmptyTile.png|Fertigungsweg auf planmäßig ändern|Fertigungsweg auf planmäßig ändern|ChangeScheduledRouteCommand|
-#### 16.15.2.1 ChangeScheduledRouteCommand : CommandUserExit
+#### 16.16.2.1 ChangeScheduledRouteCommand : CommandUserExit
 |Name|Order|
 |--|--|
 |ChangeScheduledRouteCommand|1|
-## 16.16 EdgePasses : DetailListView
+## 16.17 EdgePasses : DetailListView
 |CanMultiselect|CanUserCopy|CanUserDelete|CanUserEdit|CanUserInsert|DisplayName|DisplayOrder|Filter|IsSecondary|IsSortable|Name|RowStyle|
 |--|--|--|--|--|--|--|--|--|--|--|--|
 |false|false|false|false|false|Kantendurchläufe|14|ProductionStep.DisposeState="Scheduled"|false|true|EdgePasses||
-## 16.17 ProductionOrderGeometryDetailView : GenericDetailView
+## 16.18 ProductionOrderGeometryDetailView : GenericDetailView
 |DisplayName|DisplayOrder|IsSecondary|Name|Parameter|View|ViewModel|
 |--|--|--|--|--|--|--|
 |Grafische Anzeige|15|false|ProductionOrderGeometryDetailView|MinimumAspectRatioForLeftInfoText=1.5;DisabledEdgeTexts=98\|99|ProductionOrderGeometryDetailView|ProductionOrderGeometryDetailViewModel|
-## 16.18 FehlerBeimAuftrag : CellStyleCondition
+## 16.19 FehlerBeimAuftrag : CellStyleCondition
 |Background|Cell|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|--|
 |#CD5C5C|CustomErrorState|1|#FFFFFF|FehlerBeimAuftrag|CustomErrorState !="ValidData"|
-## 16.19 AuftragGesperrt : CellStyleCondition
+## 16.20 AuftragGesperrt : CellStyleCondition
 |Background|Cell|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|--|
 |#CD5C5C|ReleaseState|2|#FFFFFF|AuftragGesperrt|ReleaseState="NotReleased"|
-## 16.20 StatusBeendet : RowStyleCondition
+## 16.21 StatusBeendet : RowStyleCondition
 |Background|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|
 |#A8FAC5|1|#199619|StatusBeendet|ProductionState="Finished"|
-## 16.21 StatusInBearbeitung : RowStyleCondition
+## 16.22 StatusInBearbeitung : RowStyleCondition
 |Background|ExecutionOrder|Foreground|Key|Rule|
 |--|--|--|--|--|
 |#EEE8AA|2|#199619|StatusInBearbeitung|ProductionState="Processing"|
