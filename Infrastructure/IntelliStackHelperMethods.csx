@@ -29,7 +29,7 @@ using HomagGroup.IntelliStack.Domain.Data.Parts;
 [Export("IntelliStackHelperMethods", typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("Helper Methods für IntelliStack")]
-[EnabledScript(false)]
+[EnabledScript(true)]
 public class IntelliStackHelperMethods : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Common.Customization.IServerCustomization
 {
     [Import]
