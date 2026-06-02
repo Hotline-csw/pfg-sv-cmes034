@@ -1,5 +1,5 @@
 #r ControllerMES.Infrastructure.Resource
-
+#r ControllerMES.Infrastructure.Common
 
 //-----------------------------------------------------------------------------
 //   (Class-)Name:   StackFinish
@@ -17,6 +17,7 @@
 //   Revision History:
 //   Name            Date          Description
 //   S.Feist         2025-05-26    Created
+//   S.Feist         2026-06-02    Commented out "[Import("ItemInStack")]", added "#r ControllerMES.Infrastructure.Common"
 //   
 //-----------------------------------------------------------------------------
 
@@ -55,9 +56,9 @@ public class StackFinish : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Fra
 	
 	[Import("InputBoxViewModel")]
 	HomagGroup.FLS.Infrastructure.Framework.Contracts.IDialogViewModel dialogViewModel;
-	
-	[Import("ItemInStack")]
-	HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization ItemInStack;
+
+//	[Import("ItemInStack")]
+//	HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization ItemInStack;
 	
 
     private Logger _Logger;
@@ -114,6 +115,7 @@ public class StackFinish : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Fra
                                         CustomProductionType productionType = itemExists.ProductionOrder.CustomProductionType ?? CustomProductionType.Losgroesse1;
                                         
                                         //Serienstapel
+                                        /*
                                         if (productionType == CustomProductionType.Serienfertigung)
                                         {
                                             (dialogViewModel as InputBoxViewModel).TestData = String.Empty;
@@ -157,6 +159,8 @@ public class StackFinish : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Fra
                                             }
                                         
                                         }
+                                        
+                                        */
                                         
                                         //Call methods for both series and lot 1
                                         // -01- calling method to update stack status 
