@@ -15,12 +15,12 @@
 //   Requirements:   <eg. DB-Tables/Attributes, ...>
 //
 //   Author:         <Author>
-//   Date:           2026-06-02
+//   Date:           2023-05-09
 //
 //-----------------------------------------------------------------------------
 //   Revision History:
 //   Name            Date          Description
-//   <Author>        2026-06-02    Created
+//   <Author>        2023-05-09    Created
 //   
 //-----------------------------------------------------------------------------
 
@@ -30,13 +30,13 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 
 
-[Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization))]
-[Export("InputBoxView", typeof(UserControl))]
-[Export("InputBoxView", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.IDetailView))]
+[Export("InputBoxView", typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization))]
+[Export("InputBoxView", typeof(Dialog))]
+[Export("InputBoxView", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.IDialogView))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("DetailView (Load Xaml at Runtime)")]
+[Description("DialogView (Load Xaml at Runtime)")]
 [EnabledScript(true)]
-public class InputBoxView : System.Windows.Controls.UserControl, HomagGroup.FLS.Infrastructure.Framework.Contracts.IDetailView, IPartImportsSatisfiedNotification
+public class InputBoxView : HomagGroup.Base.UI.Windows.Dialog, HomagGroup.FLS.Infrastructure.Framework.Contracts.IDialogView, IPartImportsSatisfiedNotification
 {
     [Import]
     private LooseXaml _LooseXaml;
@@ -53,11 +53,11 @@ public class InputBoxView : System.Windows.Controls.UserControl, HomagGroup.FLS.
         }
     }
 
-    public HomagGroup.FLS.Infrastructure.Framework.Contracts.ICustomViewModel ViewModel
+    public HomagGroup.FLS.Infrastructure.Framework.Contracts.IDialogViewModel ViewModel
     {
         get
         {
-            return DataContext as ICustomViewModel;
+            return DataContext as IDialogViewModel;
         }
         set
         {
