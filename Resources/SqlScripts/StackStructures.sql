@@ -1,4 +1,6 @@
 -- intelliStack table for stack structure
+-- 2026-06-02 SF: added "default 0" for IntelliStackAlignment
+
 CREATE TABLE [cust].[StackStructures]
 (
     Sequence                        bigint          not null identity(1,1),
