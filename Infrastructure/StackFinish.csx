@@ -36,7 +36,7 @@ using System.Data.SqlClient;
 [Export("StackFinish", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
 [Description("Abschließen eines Stapels (Staus ändern, PrintJob schreiben, Stapelinhalt an KAM)")]
-[EnabledScript(false)]
+[EnabledScript(true)]
 public class StackFinish : UserExitCustomBase, HomagGroup.FLS.Infrastructure.Framework.Contracts.ICommandUserExit//, IPartImportsSatisfiedNotification // TODO MESSAGING
 {
     [Import]
