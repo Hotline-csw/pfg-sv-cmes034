@@ -30,13 +30,13 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 
 
-[Export("InputBoxView", typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization))]
-[Export("InputBoxView", typeof(Dialog))]
-[Export("InputBoxView", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.IDialogView))]
+[Export(typeof(HomagGroup.FLS.Infrastructure.Common.Customization.IClientCustomization))]
+[Export("InputBoxView", typeof(UserControl))]
+[Export("InputBoxView", typeof(HomagGroup.FLS.Infrastructure.Framework.Contracts.IDetailView))]
 [PartCreationPolicy(CreationPolicy.NonShared)]
-[Description("DialogView (Load Xaml at Runtime)")]
+[Description("DetailView (Load Xaml at Runtime)")]
 [EnabledScript(true)]
-public class InputBoxView : HomagGroup.Base.UI.Windows.Dialog, HomagGroup.FLS.Infrastructure.Framework.Contracts.IDialogView, IPartImportsSatisfiedNotification
+public class InputBoxView : System.Windows.Controls.UserControl, HomagGroup.FLS.Infrastructure.Framework.Contracts.IDetailView, IPartImportsSatisfiedNotification
 {
     [Import]
     private LooseXaml _LooseXaml;
@@ -53,11 +53,11 @@ public class InputBoxView : HomagGroup.Base.UI.Windows.Dialog, HomagGroup.FLS.In
         }
     }
 
-    public HomagGroup.FLS.Infrastructure.Framework.Contracts.IDialogViewModel ViewModel
+    public HomagGroup.FLS.Infrastructure.Framework.Contracts.ICustomViewModel ViewModel
     {
         get
         {
-            return DataContext as IDialogViewModel;
+            return DataContext as ICustomViewModel;
         }
         set
         {
