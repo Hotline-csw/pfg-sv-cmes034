@@ -312,9 +312,9 @@ public class RequestToIntelliStack : GenericTaskBase, HomagGroup.FLS.Services.Co
 					unitOfWork.Save();
 					 
 						 
-					// Allezuvor angelegten 1002 Stapel müssen jetzt in 1003 Stapel kopiert werden
+					// Alle zuvor angelegten 1002 Stapel müssen jetzt in 1003 Stapel kopiert werden
 					// Stapel aus Losbildung/Zuschnitt: Die Items also StackItemCode wird erst später durch die Reihenfolge des Zuschnitts festgelegt
-					//Stapel aus Sortierer UG: 1002 und 1003 Stapel sind identisch
+					// Stapel aus Sortierer UG: 1002 und 1003 Stapel sind identisch
 					 
 					var intelliStacks = unitOfWork.GetRepository<HomagGroup.FLS.Domain.Data.Stack>().Get(x=>x.CustomStackType == StackType.StackFromIntelliStack && x.CustomStackState == StackState.StackCreated);
 					 
