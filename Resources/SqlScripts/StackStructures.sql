@@ -4,7 +4,7 @@ CREATE TABLE [cust].[StackStructures]
     Sequence                        bigint          not null identity(1,1),
     StackStructureCode              int             not null,                   -- Stapelstruktur
     Description                     nvarchar(256)   null,                       -- Beschreibung
-    IntelliStackAlignment           int             not null,                   -- Stapeltyp für IntelliStack
+    IntelliStackAlignment           int             not null default 0,         -- Stapeltyp für IntelliStack
                                                                                 --   0 = Default ( chaotischer Stapel )
                                                                                 --   1 = Cornered (wird als CorneredSouthWest bewertet)
                                                                                 --   2 = CorneredSouthWest
