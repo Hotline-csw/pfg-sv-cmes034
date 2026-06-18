@@ -69,21 +69,21 @@
 | [3.17 EdgePassState](#edgepassstate) | [3.18 EdgeProcessingType](#edgeprocessingtype) | [3.19 EdgeToStepsType](#edgetostepstype) | [3.20 EPDisplayColor](#epdisplaycolor) |
 | [3.21 ErrorState](#errorstate) | [3.22 ErrorStateOptimizationPresetting](#errorstateoptimizationpresetting) | [3.23 FeedbackMode](#feedbackmode) | [3.24 FeedbackState](#feedbackstate) |
 | [3.25 Grain](#grain) | [3.26 GrooveDirectionType](#groovedirectiontype) | [3.27 GrooveDistanceType](#groovedistancetype) | [3.28 GrooveLayer](#groovelayer) |
-| [3.29 GrooveType](#groovetype) | [3.30 InputSourceType](#inputsourcetype) | [3.31 JobResult](#jobresult) | [3.32 KPIResultType](#kpiresulttype) |
-| [3.33 MachiningSidesAtItem](#machiningsidesatitem) | [3.34 MacroNumber](#macronumber) | [3.35 MovementCurrentState](#movementcurrentstate) | [3.36 MovementState](#movementstate) |
-| [3.37 MovingActionMode](#movingactionmode) | [3.38 MovingActionTransferstate](#movingactiontransferstate) | [3.39 NarrowPartType](#narrowparttype) | [3.40 NecessaryReleaseType](#necessaryreleasetype) |
-| [3.41 OptimizationDataState](#optimizationdatastate) | [3.42 OptimizationRuleTransferstate](#optimizationruletransferstate) | [3.43 OptimizationTransferState](#optimizationtransferstate) | [3.44 OrientationXY](#orientationxy) |
-| [3.45 OversizeSourceType](#oversizesourcetype) | [3.46 PartCarrierAvailabilityState](#partcarrieravailabilitystate) | [3.47 PartCarrierType](#partcarriertype) | [3.48 PatternMasterInfo](#patternmasterinfo) |
-| [3.49 PatternPictureType](#patternpicturetype) | [3.50 PlanningState](#planningstate) | [3.51 PnxRecordsState](#pnxrecordsstate) | [3.52 PositionHandling](#positionhandling) |
-| [3.53 PrintJobItemProcessingState](#printjobitemprocessingstate) | [3.54 ProcessingDataErrorState](#processingdataerrorstate) | [3.55 ProcessingDataType](#processingdatatype) | [3.56 ProcessingStateMode](#processingstatemode) |
-| [3.57 ProductionItemStepTransferState](#productionitemsteptransferstate) | [3.58 ProductionOrderType](#productionordertype) | [3.59 ProductionState](#productionstate) | [3.60 ProductionStepState](#productionstepstate) |
-| [3.61 ReductionEdgeDataCalculationType](#reductionedgedatacalculationtype) | [3.62 RegenerateDataRequestMode](#regeneratedatarequestmode) | [3.63 ReleaseState](#releasestate) | [3.64 ReproductionMode](#reproductionmode) |
-| [3.65 ReproductionState](#reproductionstate) | [3.66 ReproductionType](#reproductiontype) | [3.67 ResourceType](#resourcetype) | [3.68 ScannerConnectionType](#scannerconnectiontype) |
-| [3.69 ScannerType](#scannertype) | [3.70 SchedulingMode](#schedulingmode) | [3.71 SortStepPickMode](#sortsteppickmode) | [3.72 SortStepSortMode](#sortstepsortmode) |
-| [3.73 SortType](#sorttype) | [3.74 StackItemType](#stackitemtype) | [3.75 StackState](#stackstate) | [3.76 StackType](#stacktype) |
-| [3.77 StagingImportErrorState](#stagingimporterrorstate) | [3.78 StagingTransferState](#stagingtransferstate) | [3.79 Texture](#texture) | [3.80 ThroughFeedSide](#throughfeedside) |
-| [3.81 TransferstateOptimizationPresetting](#transferstateoptimizationpresetting) | [3.82 ValidationState](#validationstate) | [3.83 WccStagingImportErrorState](#wccstagingimporterrorstate) | [3.84 WccStagingRecordResourceType](#wccstagingrecordresourcetype) |
-| [3.85 WccStagingTransferState](#wccstagingtransferstate) | [3.86 wp4State](#wp4state) | [3.87 YesNo](#yesno) |
+| [3.29 GrooveType](#groovetype) | [3.30 InputSourceType](#inputsourcetype) | [3.31 IntelliStackAlignment](#intellistackalignment) | [3.32 JobResult](#jobresult) |
+| [3.33 KPIResultType](#kpiresulttype) | [3.34 MachiningSidesAtItem](#machiningsidesatitem) | [3.35 MacroNumber](#macronumber) | [3.36 MovementCurrentState](#movementcurrentstate) |
+| [3.37 MovementState](#movementstate) | [3.38 MovingActionMode](#movingactionmode) | [3.39 MovingActionTransferstate](#movingactiontransferstate) | [3.40 NarrowPartType](#narrowparttype) |
+| [3.41 NecessaryReleaseType](#necessaryreleasetype) | [3.42 OptimizationDataState](#optimizationdatastate) | [3.43 OptimizationRuleTransferstate](#optimizationruletransferstate) | [3.44 OptimizationTransferState](#optimizationtransferstate) |
+| [3.45 OrientationXY](#orientationxy) | [3.46 OversizeSourceType](#oversizesourcetype) | [3.47 PartCarrierAvailabilityState](#partcarrieravailabilitystate) | [3.48 PartCarrierType](#partcarriertype) |
+| [3.49 PatternMasterInfo](#patternmasterinfo) | [3.50 PatternPictureType](#patternpicturetype) | [3.51 PlanningState](#planningstate) | [3.52 PnxRecordsState](#pnxrecordsstate) |
+| [3.53 PositionHandling](#positionhandling) | [3.54 PrintJobItemProcessingState](#printjobitemprocessingstate) | [3.55 ProcessingDataErrorState](#processingdataerrorstate) | [3.56 ProcessingDataType](#processingdatatype) |
+| [3.57 ProcessingStateMode](#processingstatemode) | [3.58 ProductionItemStepTransferState](#productionitemsteptransferstate) | [3.59 ProductionOrderType](#productionordertype) | [3.60 ProductionState](#productionstate) |
+| [3.61 ProductionStepState](#productionstepstate) | [3.62 ReductionEdgeDataCalculationType](#reductionedgedatacalculationtype) | [3.63 RegenerateDataRequestMode](#regeneratedatarequestmode) | [3.64 ReleaseState](#releasestate) |
+| [3.65 ReproductionMode](#reproductionmode) | [3.66 ReproductionState](#reproductionstate) | [3.67 ReproductionType](#reproductiontype) | [3.68 ResourceType](#resourcetype) |
+| [3.69 ScannerConnectionType](#scannerconnectiontype) | [3.70 ScannerType](#scannertype) | [3.71 SchedulingMode](#schedulingmode) | [3.72 SortStepPickMode](#sortsteppickmode) |
+| [3.73 SortStepSortMode](#sortstepsortmode) | [3.74 SortType](#sorttype) | [3.75 StackItemType](#stackitemtype) | [3.76 StackState](#stackstate) |
+| [3.77 StackType](#stacktype) | [3.78 StagingImportErrorState](#stagingimporterrorstate) | [3.79 StagingTransferState](#stagingtransferstate) | [3.80 Texture](#texture) |
+| [3.81 ThroughFeedSide](#throughfeedside) | [3.82 TransferstateOptimizationPresetting](#transferstateoptimizationpresetting) | [3.83 ValidationState](#validationstate) | [3.84 WccStagingImportErrorState](#wccstagingimporterrorstate) |
+| [3.85 WccStagingRecordResourceType](#wccstagingrecordresourcetype) | [3.86 WccStagingTransferState](#wccstagingtransferstate) | [3.87 wp4State](#wp4state) | [3.88 YesNo](#yesno) |
 
 # 1 Entities
 ## 1.1 Binary : IEntityDescription
@@ -1033,7 +1033,7 @@
 | CreationSource| System.String| Creation source| | 0| False| False| False| | | | False| -1| 0| 0| | False| | FN_CreationSource| | | | 
 | Description| System.String| Description| Description| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_Description| | | | 
 | DistanceBetweenParts| System.Decimal| DistanceBetweenParts| DistanceBetweenParts| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_DistanceBetweenParts| | | | 
-| IntelliStackAlignment| System.Int32| IntelliStackAlignment| IntelliStackAlignment| 0| True| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_IntelliStackAlignment| | | | 
+| IntelliStackAlignment| [IntelliStackAlignment](#intellistackalignment)| IntelliStackAlignment| IntelliStackAlignment| 0| True| True| False| 0| | | False| -1| 0| 0| | False| [IntelliStackAlignment](#intellistackalignment) | FN_CustStackStructure_IntelliStackAlignment| | 0 | | 
 | LaneHeightMax| System.Decimal| LaneHeightMax| LaneHeightMax| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_LaneHeightMax| | | | 
 | LaneHeightMin| System.Decimal| LaneHeightMin| LaneHeightMin| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_LaneHeightMin| | | | 
 | LaneHeightTolerance| System.Decimal| LaneHeightTolerance| LaneHeightTolerance| 0| False| True| False| | | | False| -1| 0| 0| | False| | FN_CustStackStructure_LaneHeightTolerance| | | | 
@@ -6607,7 +6607,18 @@
 | General | 6 | General data import format |
 | Custom | 99 | Individual import format |
 
-## 3.31 JobResult
+## 3.31 IntelliStackAlignment
+### IntelliStackAlignment
+| Name | Value | Display Name |
+|------|-------|--------------|
+| Default | 0 | 0 - Default |
+| CorneredSouthWest | 2 | 2 - CorneredSouthWest |
+| CorneredSouthEast | 3 | 3 - CorneredSouthEast |
+| CorneredNorthEast | 4 | 4 - CorneredNorthEast |
+| CorneredNorthWest | 5 | 5 - CorneredNorthWest |
+| Centric | 6 | 6 - Centric |
+
+## 3.32 JobResult
 ### JobResult
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6624,7 +6635,7 @@
 | AbortedByTimeout | 75 | Terminated by time overrun |
 | AbortedByShutdown | 78 | Terminated by shutting down |
 
-## 3.32 KPIResultType
+## 3.33 KPIResultType
 ### KPIResultType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6634,7 +6645,7 @@
 | ProcessDetails | 3 | Process details |
 | Zip | 4 | Zip file |
 
-## 3.33 MachiningSidesAtItem
+## 3.34 MachiningSidesAtItem
 ### MachiningSidesAtItem
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6644,7 +6655,7 @@
 | TopAndBottom | 3 | Top and bottom |
 | None | 10 | None |
 
-## 3.34 MacroNumber
+## 3.35 MacroNumber
 ### MacroNumber
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6652,7 +6663,7 @@
 | Standard | 1 | Standard |
 | Second | 2 | Second grooving unit |
 
-## 3.35 MovementCurrentState
+## 3.36 MovementCurrentState
 ### MovementCurrentState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6670,7 +6681,7 @@
 | TransportCanceledByMES | 520 | Transport terminated by MES |
 | TransportCanceledTransportSystem | 530 | Transport terminated by transport system |
 
-## 3.36 MovementState
+## 3.37 MovementState
 ### MovementState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6679,7 +6690,7 @@
 | RequestPending | 20 | Request waiting |
 | RequestFinished | 90 | Request completed |
 
-## 3.37 MovingActionMode
+## 3.38 MovingActionMode
 ### MovingActionMode
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6687,7 +6698,7 @@
 | MESManualAction | 1 | Manual mode by MES |
 | ExternalAction | 2 | External action |
 
-## 3.38 MovingActionTransferstate
+## 3.39 MovingActionTransferstate
 ### MovingActionTransferstate
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6696,7 +6707,7 @@
 | ProcessByJob | 15 | Job is processing the data record |
 | FinishedByJob | 20 | Job has processed data record |
 
-## 3.39 NarrowPartType
+## 3.40 NarrowPartType
 ### NarrowPartType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6705,7 +6716,7 @@
 | AlternativeRoute | 2 | Narrow part with alternative production path |
 | SpecialCase | 3 | Narrow part, special case |
 
-## 3.40 NecessaryReleaseType
+## 3.41 NecessaryReleaseType
 ### NecessaryReleaseType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6713,7 +6724,7 @@
 | ReleaseAutomatic | 10 | Automatic release |
 | ReleaseExplicit | 20 | Explicit release |
 
-## 3.41 OptimizationDataState
+## 3.42 OptimizationDataState
 ### OptimizationDataState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6723,7 +6734,7 @@
 | Finished | 30 | terminated |
 | ToDelete | 80 | To be deleted |
 
-## 3.42 OptimizationRuleTransferstate
+## 3.43 OptimizationRuleTransferstate
 ### OptimizationRuleTransferstate
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6735,7 +6746,7 @@
 | ErrorUnconfirmed | 98 | Error to be confirmed by the user |
 | ErrorConfirmed | 99 | Confirmed error |
 
-## 3.43 OptimizationTransferState
+## 3.44 OptimizationTransferState
 ### OptimizationTransferState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6747,14 +6758,14 @@
 | OptimizationFailed | 5 | Optimization failed |
 | WaitForOptimizationResult | 6 | Waiting for external result |
 
-## 3.44 OrientationXY
+## 3.45 OrientationXY
 ### OrientationXY
 | Name | Value | Display Name |
 |------|-------|--------------|
 | ZeroDegree | 0 | 0 degrees |
 | OneHundredAndEightyDegree | 180 | 180 degrees |
 
-## 3.45 OversizeSourceType
+## 3.46 OversizeSourceType
 ### OversizeSourceType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6762,7 +6773,7 @@
 | FromCalculation | 1 | From calculation |
 | FromImportCuttingDim | 2 | From imported cutting dimensions |
 
-## 3.46 PartCarrierAvailabilityState
+## 3.47 PartCarrierAvailabilityState
 ### PartCarrierAvailabilityState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6772,7 +6783,7 @@
 | Reserved | 3 | Allocated |
 | CompleteForSortFeature | 4 | Complete for group |
 
-## 3.47 PartCarrierType
+## 3.48 PartCarrierType
 ### PartCarrierType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6784,7 +6795,7 @@
 | CorpusCart | 5 | Body carriage |
 | FloorStorage | 6 | Shelf storage |
 
-## 3.48 PatternMasterInfo
+## 3.49 PatternMasterInfo
 ### PatternMasterInfo
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6794,7 +6805,7 @@
 | ToPatternMasterImported | 7 | Structure master to be imported |
 | ToPatternTemplateMasterImported | 8 | Structure master to be imported with template specification |
 
-## 3.49 PatternPictureType
+## 3.50 PatternPictureType
 ### PatternPictureType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6804,7 +6815,7 @@
 | PNG | 3 | PNG |
 | PDF | 4 | PDF |
 
-## 3.50 PlanningState
+## 3.51 PlanningState
 ### PlanningState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6812,7 +6823,7 @@
 | InPlanning | 1 | In planning |
 | Planned | 2 | Reserved |
 
-## 3.51 PnxRecordsState
+## 3.52 PnxRecordsState
 ### PnxRecordsState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6820,7 +6831,7 @@
 | Written | 10 | Data record saved |
 | Error | 99 | Errors |
 
-## 3.52 PositionHandling
+## 3.53 PositionHandling
 ### PositionHandling
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6828,7 +6839,7 @@
 | Target | 1 | Target position |
 | SourceAndTarget | 2 | Source and target position |
 
-## 3.53 PrintJobItemProcessingState
+## 3.54 PrintJobItemProcessingState
 ### PrintJobItemProcessingState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6837,7 +6848,7 @@
 | InPrintingProcess | 15 | Print process active |
 | Printed | 20 | Print job ended |
 
-## 3.54 ProcessingDataErrorState
+## 3.55 ProcessingDataErrorState
 ### ProcessingDataErrorState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6849,14 +6860,14 @@
 | InvalidDataInEdgeProfileLibrary | 60 | Invalid value in EdgeProfileLibrary |
 | Error | 99 | Errors |
 
-## 3.55 ProcessingDataType
+## 3.56 ProcessingDataType
 ### ProcessingDataType
 | Name | Value | Display Name |
 |------|-------|--------------|
 | Undefined | 0 | Undefined |
 | MachineProgram | 1 | Processing program |
 
-## 3.56 ProcessingStateMode
+## 3.57 ProcessingStateMode
 ### ProcessingStateMode
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6869,7 +6880,7 @@
 | InProcessForRelease | 45 | Enable in process |
 | NotReleased | 90 | No release due to error |
 
-## 3.57 ProductionItemStepTransferState
+## 3.58 ProductionItemStepTransferState
 ### ProductionItemStepTransferState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6883,7 +6894,7 @@
 | NoExportDoneForFinishedStep | 90 | Process step completed without transfer |
 | Error | 99 | Errors |
 
-## 3.58 ProductionOrderType
+## 3.59 ProductionOrderType
 ### ProductionOrderType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6893,7 +6904,7 @@
 | ConstructionPart | 3 | component |
 | VirtualPart | 4 | Virtual component without production |
 
-## 3.59 ProductionState
+## 3.60 ProductionState
 ### ProductionState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6902,7 +6913,7 @@
 | Processing | 25 | Pending |
 | Finished | 35 | terminated |
 
-## 3.60 ProductionStepState
+## 3.61 ProductionStepState
 ### ProductionStepState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6912,7 +6923,7 @@
 | Processing | 25 | Pending |
 | Finished | 35 | terminated |
 
-## 3.61 ReductionEdgeDataCalculationType
+## 3.62 ReductionEdgeDataCalculationType
 ### ReductionEdgeDataCalculationType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6921,21 +6932,21 @@
 | WithoutEdgePasses | 200 | Without edge throughfeeds |
 | WithoutEdgeAndGrooveShapes | 300 | Without edge shape, groove shapes and edge throughfeeds |
 
-## 3.62 RegenerateDataRequestMode
+## 3.63 RegenerateDataRequestMode
 ### RegenerateDataRequestMode
 | Name | Value | Display Name |
 |------|-------|--------------|
 | NoAction | 0 | No action |
 | RegeneratePartData | 10 | Data regeneration |
 
-## 3.63 ReleaseState
+## 3.64 ReleaseState
 ### ReleaseState
 | Name | Value | Display Name |
 |------|-------|--------------|
 | NotReleased | 0 | Blocked |
 | Released | 1 | Released |
 
-## 3.64 ReproductionMode
+## 3.65 ReproductionMode
 ### ReproductionMode
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6944,7 +6955,7 @@
 | UnchangedPlan | 20 | Unchanged work plan |
 | DataModification | 40 | Data adjustment |
 
-## 3.65 ReproductionState
+## 3.66 ReproductionState
 ### ReproductionState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6955,14 +6966,14 @@
 | NotApplicable | 80 | Post-production order not planned |
 | Error | 90 | Error during generation of post-production order |
 
-## 3.66 ReproductionType
+## 3.67 ReproductionType
 ### ReproductionType
 | Name | Value | Display Name |
 |------|-------|--------------|
 | NoReproduction | 0 | No post-production |
 | Standard | 1 | Standard |
 
-## 3.67 ResourceType
+## 3.68 ResourceType
 ### ResourceType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6972,7 +6983,7 @@
 | SurfaceBottom | 6 | Surface bottom |
 | Resource | 8 | Resource |
 
-## 3.68 ScannerConnectionType
+## 3.69 ScannerConnectionType
 ### ScannerConnectionType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6980,7 +6991,7 @@
 | Datalogic | 10 | Datalogic |
 | Proglove | 20 | Proglove |
 
-## 3.69 ScannerType
+## 3.70 ScannerType
 ### ScannerType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -6992,28 +7003,28 @@
 | Datalogic | 30 | Datalogic |
 | Proglove | 31 | Proglove |
 
-## 3.70 SchedulingMode
+## 3.71 SchedulingMode
 ### SchedulingMode
 | Name | Value | Display Name |
 |------|-------|--------------|
 | Forward | 0 | Forwards |
 | Backward | 1 | Backwards |
 
-## 3.71 SortStepPickMode
+## 3.72 SortStepPickMode
 ### SortStepPickMode
 | Name | Value | Display Name |
 |------|-------|--------------|
 | ChoiceConfirmation | 0 | Compartment selection and confirmation |
 | NoChoiceNoConfirmation | 1 | Compartment cannot be selected. |
 
-## 3.72 SortStepSortMode
+## 3.73 SortStepSortMode
 ### SortStepSortMode
 | Name | Value | Display Name |
 |------|-------|--------------|
 | ChoiceConfirmation | 0 | Compartment selection and confirmation |
 | NoChoiceNoConfirmation | 1 | Compartment cannot be selected. |
 
-## 3.73 SortType
+## 3.74 SortType
 ### SortType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -7021,7 +7032,7 @@
 | Closed | 1 | Closed (with allocation) |
 | ClosedWithoutReservation | 2 | Closed (no allocation) |
 
-## 3.74 StackItemType
+## 3.75 StackItemType
 ### StackItemType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -7030,7 +7041,7 @@
 | Board | 2 | Board |
 | Protectionboard | 99 | Protection board |
 
-## 3.75 StackState
+## 3.76 StackState
 ### StackState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -7040,7 +7051,7 @@
 | DataTransfered | 30 | Data transfered |
 | ErrorIntelliStack | 90 | Error intelliStack |
 
-## 3.76 StackType
+## 3.77 StackType
 ### StackType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -7052,7 +7063,7 @@
 | StackFromProduction | 1003 | 1003 - Stack from production |
 | StackFromSorter | 1004 | 1004 - Stack from Sorter |
 
-## 3.77 StagingImportErrorState
+## 3.78 StagingImportErrorState
 ### StagingImportErrorState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -7077,7 +7088,7 @@
 | WrongMachining | 70 | Invalid processing |
 | Error | 99 | Errors |
 
-## 3.78 StagingTransferState
+## 3.79 StagingTransferState
 ### StagingTransferState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -7093,7 +7104,7 @@
 | IgnoreOrderReImport | 53 | Do not take new order import into account |
 | Error | 99 | Errors |
 
-## 3.79 Texture
+## 3.80 Texture
 ### Texture
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -7101,7 +7112,7 @@
 | Along | 1 | Lengthwise |
 | Cross | 2 | cross |
 
-## 3.80 ThroughFeedSide
+## 3.81 ThroughFeedSide
 ### ThroughFeedSide
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -7109,7 +7120,7 @@
 | Left | 1 | left |
 | Right | 2 | right |
 
-## 3.81 TransferstateOptimizationPresetting
+## 3.82 TransferstateOptimizationPresetting
 ### TransferstateOptimizationPresetting
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -7120,7 +7131,7 @@
 | FinishedByCMES | 40 | Processed by CMES |
 | RequestForDelete | 80 | Deletion request |
 
-## 3.82 ValidationState
+## 3.83 ValidationState
 ### ValidationState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -7128,7 +7139,7 @@
 | RepairNecessary | 10 | Repair required |
 | ReproductionNecessary | 20 | Post-production required |
 
-## 3.83 WccStagingImportErrorState
+## 3.84 WccStagingImportErrorState
 ### WccStagingImportErrorState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -7149,7 +7160,7 @@
 | ImportedValueIsNotAValidDateTime | 55 | Imported value is not a valid date/valid time |
 | Error | 99 | Errors |
 
-## 3.84 WccStagingRecordResourceType
+## 3.85 WccStagingRecordResourceType
 ### WccStagingRecordResourceType
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -7157,7 +7168,7 @@
 | GrooveData | 1 | Groove data |
 | ProcessingData | 2 | Processing data |
 
-## 3.85 WccStagingTransferState
+## 3.86 WccStagingTransferState
 ### WccStagingTransferState
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -7173,7 +7184,7 @@
 | IgnoreOrderReImport | 53 | Do not take new order import into account |
 | Error | 99 | Errors |
 
-## 3.86 wp4State
+## 3.87 wp4State
 ### wp4State
 | Name | Value | Display Name |
 |------|-------|--------------|
@@ -7183,7 +7194,7 @@
 | Error | 3 | Failed |
 | Cancel | 4 | Canceled |
 
-## 3.87 YesNo
+## 3.88 YesNo
 ### YesNo
 | Name | Value | Display Name |
 |------|-------|--------------|
