@@ -111,44 +111,19 @@ public class RequestToIntelliStack : GenericTaskBase, HomagGroup.FLS.Services.Co
 					var firstItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(x=>x.Code == firstStackItem.StackItemCode);
 					if (firstItem != null)
 					{
-                        var stackStructure = unitOfWork.GetRepository<CustStackStructure>().GetFirstOrDefault(x=>x.StackStructureCode == firstItem .ProductionOrder.CustomStackStructureCode);
+                        var stackStructure = unitOfWork.GetRepository<CustStackStructure>().GetFirstOrDefault(x=>x.StackStructureCode == 1 /*firstItem .ProductionOrder.CustomStackStructureCode*/);
                         if (stackStructure != null)
                         {
-                            //Überprüfung, ob die BaseBoardList aus den Stammdaten valide Werte beinhaltet
-							
-							if(stackStructure.BaseBoardList.Contains("|"))
+                            _Logger.Info("BaseBoardList" + stackStructure.BaseBoardList);
+							if(stackStructure.BaseBoardList == "SPL1" || stackStructure.BaseBoardList == "SPL2")
                             {
-                                if (stackStructure.BaseBoardList == "SPL1|SPL2" || stackStructure.BaseBoardList == "SPL2|SPL1")
-                                {
-                                    _Logger.Info("BaseBoardList" + stackStructure.BaseBoardList);							
-							
-									//Berechnung kleine Schonplatte							
-									StackSettings settings = SetValuesForSetting(unitOfWork,listOfPartToStack,_Logger,"SPL1",stack.StackCode);									
-									Id1 = _StackService.BuildStackFromParts(listOfPartToStack, settings);														   
-									intelliStackResultList.Add(new ListForValidation {Id = Id1,BaseBoard = "SPL1"});
-									
-									//Berechnung große Schonplatte	
-									StackSettings settings2 = SetValuesForSetting(unitOfWork,listOfPartToStack,_Logger,"SPL2",stack.StackCode);															
-									Id2 = _StackService.BuildStackFromParts(listOfPartToStack, settings2);									
-									intelliStackResultList.Add(new ListForValidation {Id = Id2,BaseBoard = "SPL2"});
-									validBaseBoards = true;
-									
-									
-                                }
+                                StackSettings settings = SetValuesForSetting(unitOfWork,listOfPartToStack,_Logger,stackStructure.BaseBoardList,stack.StackCode);
+								Id3 = _StackService.BuildStackFromParts(listOfPartToStack, settings);
+								intelliStackResultList.Add(new ListForValidation {Id = Id3,BaseBoard = stackStructure.BaseBoardList});
+								validBaseBoards = true; // Zulässige Schonplatte
                                 
                             }
-                            else // Es ist nur eine SPL angegeben. prüfen, ob die valide ist
-                            {
-                                _Logger.Info("BaseBoardList" + stackStructure.BaseBoardList);
-								if(stackStructure.BaseBoardList == "SPL1" || stackStructure.BaseBoardList == "SPL2")
-                                {
-                                    StackSettings settings = SetValuesForSetting(unitOfWork,listOfPartToStack,_Logger,stackStructure.BaseBoardList,stack.StackCode);
-									Id3 = _StackService.BuildStackFromParts(listOfPartToStack, settings);
-									intelliStackResultList.Add(new ListForValidation {Id = Id3,BaseBoard = stackStructure.BaseBoardList});
-									validBaseBoards = true; // Zulässige Schonplatte
-                                    
-                                }
-                            }
+                            
 					    }
 						// Falls keine Stammdaten vorhanden sind, oder eine ungültige Schonplatte angegeben ist, muss die Stapelanforderung trotzdem abgearbeitet werden, 
 						//da sonst der Sortierer irgendwann still steht
@@ -187,19 +162,6 @@ public class RequestToIntelliStack : GenericTaskBase, HomagGroup.FLS.Services.Co
 
                             var intelliStackPileFirst = unitOfWork.GetRepository<IntelliStackPile>().GetFirstOrDefault(x=>x.Code == validStackCode);
                             intelliStackPiles.Add(intelliStackPileFirst);
-
-                            //Wenn es sich um einen Dispostapel handelt werden alle Ergebenisstapel übernommen
-                            if ( stack.CustomExternalStackCode.Contains("_L") )
-                            {
-                                var intelliStackPilesAllStacks  = unitOfWork.GetRepository<IntelliStackPile>().Get(x=>x.Code == validStackCode);
-
-                                intelliStackPiles.Clear();
-
-                                foreach (var intelliStackPilesAllStack in intelliStackPilesAllStacks)
-                                {
-                                    intelliStackPiles.Add(intelliStackPilesAllStack);
-                                }
-                            }
 
                             foreach (var intelliStackPile in intelliStackPiles)
                             {
@@ -303,88 +265,11 @@ public class RequestToIntelliStack : GenericTaskBase, HomagGroup.FLS.Services.Co
                                 {
                                     _Logger.Error(String.Format("Keinen IntelliStack in Tabelle IntelliStackPiles mit IntelliStackCode [{0}] gefunden",validId));
                                 }
-
-                            }
-                        
+                            }                        
                         }
 									
-					}
-					unitOfWork.Save();
-					 
-						 
-					// Alle zuvor angelegten 1002 Stapel müssen jetzt in 1003 Stapel kopiert werden
-					// Stapel aus Losbildung/Zuschnitt: Die Items also StackItemCode wird erst später durch die Reihenfolge des Zuschnitts festgelegt
-					// Stapel aus Sortierer UG: 1002 und 1003 Stapel sind identisch
-					 
-					var intelliStacks = unitOfWork.GetRepository<HomagGroup.FLS.Domain.Data.Stack>().Get(x=>x.CustomStackType == StackType.StackFromIntelliStack && x.CustomStackState == StackState.StackCreated);
-					 
-					foreach(var currentStack in intelliStacks)
-					{
-						var newStack = new HomagGroup.FLS.Domain.Data.Stack();
-						
-						newStack.StackCode = _RangeOfNumbersHelper.GetNewUniqueIdentifier(_Logger,"STACKCODES");
-						newStack.CustomExternalStackCode = currentStack.CustomExternalStackCode;
-						newStack.CustomStackType = StackType.StackFromProduction;
-						newStack.CustomBaseBoardType = currentStack.CustomBaseBoardType;                            
-						newStack.PositionNumber = currentStack.PositionNumber;
-						newStack.IsActive = YesNo.Yes;
-						newStack.IsReserved = YesNo.Yes;
-						newStack.IsValid = YesNo.Yes;
-						newStack.CentreX = 0;
-						newStack.CentreY = 0;
-						newStack.CentreZ = 0;
-						newStack.LayerLayout = "";
-						newStack.StackLength = 0M;
-						newStack.StackWidth = 0M;
-						newStack.StackHeight = 0M;
-						newStack.CustomStackState = StackState.StackCreated;
-						newStack.CustomIntelliStackCode = currentStack.CustomIntelliStackCode;
-						newStack.CustomStackSource = currentStack.CustomStackSource;
-						newStack.CustomClass = 9;
-						newStack.CustomAllocationCode = currentStack.CustomAllocationCode;
-						
-						newStack.CustomStackStructureCode = currentStack.CustomStackStructureCode;
-						newStack.CustomDestination = currentStack.CustomDestination;
-						
-						newStack.CreationSource = "RequestToIntelliStack";
-						
-						foreach(var stackItems in currentStack.StackItems.OrderBy(x=>x.LayerNumber).OrderBy(x=>x.PositionInLayer))
-						{
-							var newStackItem = new StackItem();
-							
-							newStackItem.StackCode = newStack.StackCode;
-							newStackItem.LayerNumber = stackItems.LayerNumber; 
-							newStackItem.PositionInLayer = stackItems.PositionInLayer;                       
-							newStackItem.StackItemCode = stackItems.StackItemCode;
-							newStackItem.StackItemType = stackItems.StackItemType;
-							newStackItem.QuantityInLayer = stackItems.QuantityInLayer;
-							newStackItem.CustomCoordinateX = stackItems.CustomCoordinateX;
-							newStackItem.CustomCoordinateY = stackItems.CustomCoordinateY;
-							newStackItem.CustomOrientation = stackItems.CustomOrientation;
-							
-							newStackItem.CustomIntelliStackPositionX = stackItems.CustomIntelliStackPositionX;
-							newStackItem.CustomIntelliStackPositionY = stackItems.CustomIntelliStackPositionY;
-							newStackItem.CustomIntelliStackPositionZ = stackItems.CustomIntelliStackPositionZ;
-							
-							//StackItemCode wird bei Stapeln  aus der Losbildung "_L" erst durch den Zuschnitt ermittelt
-							//Durch die Rückmeldung werden die Items Stück für Stück als StackItemCodes gesetzt
-							
-							if(stackItems.Stack.CustomExternalStackCode.Contains("_L"))
-							{
-								newStackItem.StackItemCode = "?";
-							}
-							else
-							{
-								newStackItem.StackItemCode = stackItems.StackItemCode;
-							}
-							newStack.StackItems.Add(newStackItem);
-							unitOfWork.AddOrUpdate(new[]{newStack});
-							unitOfWork.AddOrUpdate(new[]{newStackItem});
-						
-						}
-						currentStack.CustomStackState = StackState.StackFinished;
-						unitOfWork.Save();
-					}
+					}							
+					
 				}
 				_Logger.Info("Ende RequestToIntelliStack");
 			}
