@@ -66,7 +66,9 @@ public class StackCreationAfterLotGeneration : GenericTaskBase, HomagGroup.FLS.S
 				
 				foreach (var plan in cuttingPlans)
 				{
-					var optimizationPartsOfCuttingPlan = unitOfWork.GetRepository<OptimizationPart>().Get(a => a.OptimizationCode == plan.OptimizationCode && a.OptimizationCuttingPlanCode == plan.Code);
+					var optimizationPartsOfCuttingPlan = unitOfWork.GetRepository<OptimizationPart>().Get(a => a.OptimizationCode == plan.OptimizationCode 
+					&& a.OptimizationCuttingPlanCode == plan.Code
+					&& a.Offcut == 0); // Ergänzt am 2026-06-18
 					foreach (var part in optimizationPartsOfCuttingPlan)
 					{
 						var stackItem = new HomagGroup.FLS.Domain.Data.StackItem();
