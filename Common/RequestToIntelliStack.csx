@@ -63,7 +63,8 @@ public class RequestToIntelliStack : GenericTaskBase, HomagGroup.FLS.Services.Co
             {
                 _Logger.Info("Start RequestToIntelliStack");
                 
-                var stacks = unitOfWork.GetRepository<HomagGroup.FLS.Domain.Data.Stack>().Get(x=>x.CustomStackType == StackType.StackFromOptimization && x.CustomStackState == StackState.StackCreated).Take(10); 
+                var stacks = unitOfWork.GetRepository<HomagGroup.FLS.Domain.Data.Stack>().Get(x=>x.CustomStackType == StackType.StackFromOptimization 
+                                                                                            && x.CustomStackState == StackState.StackCreated).Take(1); 
                 
                 foreach(var stack in stacks)
                 {                    
