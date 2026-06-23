@@ -112,7 +112,8 @@ public class RequestToIntelliStack : GenericTaskBase, HomagGroup.FLS.Services.Co
 					var firstItem = unitOfWork.GetRepository<ProductionItem>().GetFirstOrDefault(x=>x.Code == firstStackItem.StackItemCode);
 					if (firstItem != null)
 					{
-                        var stackStructure = unitOfWork.GetRepository<CustStackStructure>().GetFirstOrDefault(x=>x.StackStructureCode == 1 /*firstItem .ProductionOrder.CustomStackStructureCode*/);
+                        var stackStructure = unitOfWork.GetRepository<CustStackStructure>().GetFirstOrDefault(x=>x.StackStructureCode == firstItem.ProductionOrder.CustomStackStructureCode);
+                        // ggf. "x.StackStructureCode == 1" wenn ProductionOrder.CustomStackStructureCode noch nicht verfügbar
                         if (stackStructure != null)
                         {
                             _Logger.Info("BaseBoardList" + stackStructure.BaseBoardList);
